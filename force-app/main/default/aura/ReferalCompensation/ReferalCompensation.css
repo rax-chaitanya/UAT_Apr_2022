@@ -1,0 +1,226 @@
+.THIS .ReferralTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+.THIS .Referral-name {
+    text-align: center;
+    line-height: 2rem;
+    border: .5px solid #eff0f2; 
+    background-color: #666;
+    padding:20px;
+    color:white;
+    font-weight:500;
+   font-size:117%;
+}
+.THIS .Referral-Item {
+    font-size: 15px;
+    padding:15px;
+    vertical-align: text-top;
+    border: 1px solid #dedede;
+    line-height: 2rem;
+   
+}
+.THIS #td1
+{ 
+    color:#565555;
+    
+    padding:15px;
+    font-size: 15px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.THIS .center {
+    text-align: center;
+}
+.THIS .Referral-mobile {
+    display: none;
+}
+.THIS .headers {
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 1.25em;
+    line-height: 1.25em;
+     
+}
+.THIS .list{
+    padding:0px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-size:medium;
+    line-height: 1.9
+    
+}
+.THIS #body  {
+    display: block;
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 400;
+    text-align: justify;
+   
+    
+}
+.THIS #body1  {
+    display: block;
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 400;
+    text-align: justify; 
+}
+.THIS #header{
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 2.25em;
+    text-align: left;    
+}
+.THIS #headline{
+     display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    margin: 0 0 1em;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 1em;
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 400;   
+}
+@media screen and (max-width: 767px){
+.THIS .productTable-feature:first-child{
+    background: #efefef;
+    display: block;
+    width: 100%;
+}
+}
+@media screen and (max-width: 767px){
+.THIS .Referral-Item {
+    padding: 8px;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .productTable-feature {
+    display: block;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .Referral-Item {
+    display: block;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .ReferralTable {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+}
+}
+@media screen and (max-width: 767px){
+.THIS .Referral-header {
+    display: none;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .Referral-row {
+    display: block;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS.Referral-name:first-child {
+    display: none;
+}
+}
+@media screen and (max-width: 767px){
+.THIS .Referral-name {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row;
+    flex-flow: row;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    font-size: .4em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .Referral-Item::after {
+    display: inline-block;
+    margin-left: 15px;
+}
+  }
+@media screen and (max-width: 767px){
+.THIS .Referral-mobile {
+    display: block;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .productTable-featureItemcenter {
+    padding: 20px;
+   text-align:center;
+}
+}
+@media screen and (max-width: 767px){
+.THIS .Referral-Item {
+    padding: 8px;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .Referral-Item:first-child {
+    background: #efefef;
+    display: block;
+    width: 100%;
+}
+    }
+@media screen and (max-width: 767px){
+.THIS .Referral-mobile {
+    display: block;
+}
+    }

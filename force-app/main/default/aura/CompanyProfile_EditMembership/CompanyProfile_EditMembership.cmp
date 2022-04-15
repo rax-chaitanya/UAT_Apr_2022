@@ -1,0 +1,54 @@
+<aura:component controller="CommunityHeadLineController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+     
+    <aura:attribute name="dataId" type="String" default=""/>
+     <aura:attribute name="sourceedit" type="String" default=""/>
+     <aura:attribute name="options" type="List" access="PRIVATE"/> 
+     <aura:attribute name="headerMessage" type="String" default=""/>
+     <aura:attribute name="headerMessage2" type="String" default=""/>
+    <aura:attribute name="chk" type="Boolean" default="false"/>
+    <aura:attribute name="isValidProfile" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+     <aura:attribute name="PartnerCompany" type="Account"/>	
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal slds-modal_large">
+        <div class="slds-modal__container" style="width: 65%;">
+            <div class="slds-modal__content slds-p-around--medium ">
+                <lightning:inputRichText placeholder="Type something interesting" class="slds-rich-text-editor slds-has-focus"
+                                         formats="[ 'font','size','bold', 'italic', 'underline',
+                                                  'strike', 'list', 'indent', 'align', 'link',
+                                                  'image', 'clean', 'table', 'header', 'color','background','font-family']" value="{!v.headerMessage2}">                             
+                </lightning:inputRichText>
+               
+                <label class="slds-form-element__label" for="select-01">Membership Level</label>
+                <ui:inputSelect  aura:id="MemberShipLevel" class="slds-select"  change="{!c.onPicklistChange}"/> 
+                </div>
+                <div class="slds-modal__footer">
+                <lightning:button aura:id="saveId" label="Save" variant="neutral" onclick="{!c.doSave}"/>
+                <lightning:button aura:id="cancelId" label="Cancel" variant="neutral" onclick="{!c.closeModal}"/>
+            </div>
+            </div>
+      </div>
+     <div class="slds-backdrop " aura:id="Modalbackdrop"></div> 
+    <div aura:id="output" >
+               
+        <aura:if isTrue="{!v.PartnerCompany.Membership__c!=null}">
+              <aura:if isTrue="{!v.headerMessage!=null}" >
+        <div style="color: #EB0000;font-weight:Normal;font-family:Fira Sans;" >
+           <aura:if isTrue="{!v.chk==true}">
+    	<ui:outputText  value="{!v.headerMessage2}" />
+		</aura:if> 
+            Congratulations! You are classified as an <b>{!v.PartnerCompany.Membership__c}</b> in the Partner Program.<!--<span style="font-style: italic;display: inline;"><ui:outputText  value="{!v.headerMessage}"/></span>-->     
+	<lightning:formattedRichText value="{!v.headerMessage}" style="font-family:Fira Sans;"/>      
+                  </div>     
+       </aura:if> 
+        </aura:if>
+        
+        <aura:if isTrue="{!empty(v.PartnerCompany)}">
+        <div style="color: #EB0000;font-weight:Normal;font-family:Fira Sans;" >
+           <lightning:formattedRichText value="{!v.headerMessage}" style="font-family:Fira Sans;"/>
+         </div>     
+            </aura:if>
+         <aura:if isTrue="{!v.isValidProfile}"><div align="right" width="100%">
+     <lightning:button variant="base" label="Edit HeadLine" title="Edit HeadLine" onclick="{!c.openmodal}"/>
+            </div></aura:if>
+</div>
+</aura:component>

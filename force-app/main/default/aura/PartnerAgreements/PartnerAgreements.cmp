@@ -1,0 +1,80 @@
+<aura:component controller="PartnerAgreementsController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <aura:registerEvent name="buttonDisplay" type="c:buttonDisplay"/>
+    <aura:attribute name="stepNum" type="Integer" default="1"/>
+    <aura:attribute name="company" type="Account" required="true"/>
+    <aura:attribute name="strategic" type="boolean" default="false"/>
+    <aura:attribute name="strategicemea" type="boolean" default="false"/>
+	<aura:attribute name="otherPartners" type="boolean" default="false"/>
+    <aura:attribute name="staticImp" type="Integer" default= "1"/>
+    
+    <aura:attribute name="docReferral" type="boolean" default="false"/>
+    <aura:attribute name="docReseller" type="boolean" default="false"/>
+    <aura:attribute name="docReferralReseller" type="boolean" default="false"/>
+    <aura:attribute name="docResellerReferralEMEA" type="boolean" default="false"/>
+    <aura:attribute name="docResellerEMEA" type="boolean" default="false"/>
+    <aura:attribute name="docReferralEMEA" type="boolean" default="false"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="Us_Reseller" type="String" default=''/>
+    <aura:attribute name="Us_Referral" type="String" default=''/>
+    <aura:attribute name="Intl_str" type="String" default=''/>
+    <aura:attribute name="Intl_reseller" type="String" default=''/>
+    <aura:attribute name="Intl_referral" type="String" default=''/>
+
+    <aura:renderIf isTrue="{!v.strategic}">
+            Welcome to the Rackspace Strategic Partner Program.   
+            <br/>
+            Congratulations, you have already successfully executed your agreement in our program!  
+            <br/>
+			<br/>
+            Welcome aboard!
+        </aura:renderIf>   
+     
+    <aura:renderIf isTrue="{!and(v.strategicemea,v.stepNum==1)}">
+            Welcome to the Rackspace Strategic Partner Program.   <br/>
+                   
+        There is one more step you need to take in order to make your participation in our program official.  Please read the program details below and click to accept. 
+        <br/> Failure to accept the terms presented will prevent you from joining the Rackspace Partner Program.   
+            <br/>
+        <iframe src="{!v.Intl_str}" height="1200" width="1260"/>
+        
+    </aura:renderIf>
+    
+    <aura:renderIf isTrue="{!and(v.otherPartners,v.stepNum==1)}">
+        Your application to join the Rackspace Partner Program has been approved!  <br/>
+        There is one more step you need to take in order to make your participation in our program official.  Please read the program details below and click to accept.  
+        <br/>Failure to accept the terms presented will prevent you from joining the Rackspace Partner Program.
+        <br/>
+        <!--  or(,,,,,)  -->
+        <aura:renderIf isTrue="{!v.docReferral}">
+        <iframe src="{!v.Us_Referral}" height="1200" width="1260"/>
+        </aura:renderIf>
+        <aura:renderIf isTrue="{!v.docReseller}">
+        <iframe src="{!v.Us_Reseller}" height="1200" width="1260"/>
+        </aura:renderIf>
+        <aura:renderIf isTrue="{!v.docReferralReseller}">
+        <iframe src="{!v.Us_Referral}" height="1200" width="1260"/>
+        <iframe src="{!v.Us_Reseller}" height="1200" width="1260"/>
+        </aura:renderIf>
+        <aura:renderIf isTrue="{!v.docResellerReferralEMEA}">
+        <iframe src="{!v.Intl_referral}" height="1200" width="1260"/>
+         <iframe src="{!v.Intl_reseller}" height="1200" width="1260"/>
+        </aura:renderIf>
+        <aura:renderIf isTrue="{!v.docResellerEMEA}">
+        <iframe src="{!v.Intl_reseller}" height="1200" width="1260"/>
+        </aura:renderIf>
+        <aura:renderIf isTrue="{!v.docReferralEMEA}">
+        <iframe src="{!v.Intl_referral}" height="1200" width="1260"/>
+        </aura:renderIf>
+    </aura:renderIf>
+    
+    <aura:renderIf isTrue="{!v.stepNum == 2}"><!-- Agreed -->
+        Welcome!
+        <br/>
+        If you would like to re-visit the details of your agreement go to the About Me section in your partner portal and you will find it there.
+          
+        
+    </aura:renderIf>
+    
+    
+</aura:component>

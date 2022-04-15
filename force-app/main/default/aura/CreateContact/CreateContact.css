@@ -1,0 +1,15 @@
+.THIS {
+    
+}
+.THIS.slds-size-5-of-8{
+    margin: auto;
+    width: 50%; 
+    padding: 10px;
+}
+.THIS.divHeader{
+    text-align:left;background-color:#DDE1E2; Width:100%;padding:4px;
+}
+.THIS.slds-spinner_container {  
+  z-index: 10000;
+  position: fixed;   
+}

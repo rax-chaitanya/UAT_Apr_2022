@@ -1,0 +1,32 @@
+<apex:page standardController="Quote" Extensions="DP_CloneQuoteController" lightningStylesheets="false">
+    <apex:form rendered="{!cErr != null}">
+ 
+        <apex:pageMessage severity="error" strength="2" summary="{!cErr}"></apex:pageMessage>
+         <apex:pageMessages ></apex:pageMessages>
+        <div style="text-align:center;">
+            <apex:commandButton value="Back to Quote" action="{!cancel}" immediate="true"/>
+        </div>
+    </apex:form>
+    <apex:form rendered="{!cErr == null}">
+        <apex:sectionHeader title="Clone Quote"/>
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageMessage severity="info" strength="2" summary="This operation will clone the Quote and move it to the selected Opportunity"></apex:pageMessage>
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+                <apex:commandButton value="Clone" action="{!doClone}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!newQuote.Name}"/>
+                <apex:inputField value="{!newQuote.OpportunityId}" required="true"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Refresh Pricing on Clone</apex:outputLabel>
+                    <apex:inputCheckbox value="{!refreshPricing}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem />
+                <apex:pageBlockSectionItem />
+                <apex:pageBlockSectionItem />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

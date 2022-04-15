@@ -1,0 +1,50 @@
+<aura:component controller="LibrariesController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="libraries" type="LibrariesController.DataFiles[]" />
+    <aura:attribute name="Result" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="navigate" type="c:LibrariesEvent"/>
+    <div class="slds-page-header">
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="custom:custom16" size="large"/>
+            </div>
+            <div class="slds-media__body">
+                <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Rohde Corp - 80,000 Widgets">Marketing Toolkit</h1>
+                <p class="slds-text-body_small slds-line-height_reset">List of Libraries</p>
+            </div>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap">
+        <aura:if isTrue="{!v.libraries.length > 0}">
+            <aura:iteration items="{!v.libraries}" var="lib">
+                <div class="slds-size--1-of-1 slds-medium-size--1-of-3 slds-large-size--1-of-4" >
+                    <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small" style="border:0px;">
+                        <div class="box">
+                            <div style="{!'position: relative;height: 10rem;'}">
+                                <!--  <img src="{!lib.url}" style="height: 10rem;"/> -->
+                                <img src="{!'/partners/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;versionId='+ lib.iconId }" style="height: 10rem;"/>
+                            </div>
+                            
+                             <div class="divCss">
+                                <div class="slds-size_1-of-2">
+                                    <p class="slds-truncate" title="{!lib.Name}">  {!lib.Name}</p>
+                                </div>                            
+                            </div>
+                            <div style="border-top: solid rgba(196,0,34,0.175) 0.5px;height: 1px;margin-bottom: 10px;width: 100%;"></div>
+                           <div class="Overflow" style="margin-bottom:30px;color: #666;font-size: 1em;line-height: 1.6em;font-weight: 400;text-align: center;height: 92px !important;">
+                               <span title="{!lib.description}"> {!lib.description} </span>
+                                
+                            </div>
+                            <div style="margin-bottom:10px;text-align:left;">&nbsp;&nbsp;
+                                <a class="slds-badge" id="{!lib.Name}" style="color:#C40022;cursor: pointer;font-weight: bold;" data-val="{!lib.fileId}" onclick = "{!c.GoToLibrary}" >View Library</a>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </aura:iteration>
+        </aura:if>
+       <!-- <aura:if isTrue="{!v.libraries.length ==0}">
+            <span style="font-size: 20px;position: relative;left: 345px;">   Sorry, there is no document exist in the system.</span>
+        </aura:if>    -->
+    </div>
+</aura:component>

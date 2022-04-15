@@ -1,0 +1,16 @@
+<apex:page standardStylesheets="false" sidebar="false">
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" style="width: 500px;"/>
+    <script>
+    $Lightning.use("c:OPCSurveyApplication", function() {
+         $Lightning.createComponent("c:UpdateOPCSurveyCmp",
+                                   { AccManager:"{!$CurrentPage.parameters.AccManager}"},
+                                   "lightning",
+                                   function(cmp) {
+                                       // do some stuff
+                                       
+                                   });
+      
+    });
+    </script>
+</apex:page>

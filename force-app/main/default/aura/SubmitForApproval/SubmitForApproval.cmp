@@ -1,0 +1,17 @@
+<aura:component  controller='SubmitForApproval' implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" 
+                access="global">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="recordSucess" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordError">
+            <ui:message title="Information" severity="info" >
+                
+                {!v.recordError}
+            </ui:message>
+        </div>
+    </aura:if> 
+  
+</aura:component>

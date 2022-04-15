@@ -1,0 +1,7 @@
+<aura:component  implements="force:appHostable,force:lightningQuickAction,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:handler name="change" value="{!v.capCheck}" action="{!c.launchCaptcha}"/>
+    <aura:handler name="checkCaptcha" event="c:checkCaptcha" action="{!c.changeCaptchaStatus}"/>
+
+    <aura:attribute name="capCheck" type="String" default="first"/>
+</aura:component>

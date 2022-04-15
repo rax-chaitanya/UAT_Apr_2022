@@ -1,0 +1,11 @@
+<aura:component controller="GenericConsoleMethodController" implements="lightning:actionOverride,flexipage:availableForAllPageTypes" access="global" >
+    <lightning:omniToolkitAPI aura:id="omniToolkit" />
+    <lightning:utilityBarAPI aura:id="utilitybar" />    
+    <lightning:workspaceAPI aura:id="workspace" />
+    <aura:handler event="lightning:omniChannelWorkAccepted" action="{!c.onWorkAccepted}"/>
+    <aura:handler event="lightning:omniChannelWorkClosed" action="{!c.onWorkClosed }"/>
+    <!-- Code Merge for END CHAT-->
+    <lightning:conversationToolkitAPI aura:id="conversationKit" />      
+    <aura:handler event="lightning:conversationChatEnded" action="{!c.onChatEnded}" />
+    <!--End-->
+</aura:component>

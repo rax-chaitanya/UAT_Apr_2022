@@ -1,0 +1,74 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+    <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    function Validate()
+    {
+        var theUrl; 
+        
+        var orgID = "{!$Organization.Id}"; 
+        var prodOrgID = ("{!$Setup.ProdOrgIDSetting__c.ProdOrgID__c}"); 
+        var primaryContact = "{!Opportunity.Primary_Contact__c}"; 
+        var opportunityId = "{!Opportunity.Opportunity_ID__c}"; 
+        var accNumber = "{!Opportunity.Acc_Number__c}";
+        var loggedInUserProfile = "{!$User.profileId}";
+        var AccContractEnty = "{!Opportunity.Account__r.Contracting_Entity__r.Name}";
+        
+        
+        
+        var errors = []; 
+        
+        
+        if((loggedInUserProfile!='{!$Label.System_Admin_Profile}') && (AccContractEnty =='{!$Label.Datapipe_contracting_entity}')   ) {
+            alert('You cannot build a QM quote with under an account with the DataPipe Contracting Entity. Please use DP Quote tool or move the opportunity to an account with a Rackspace Contracting Entity.');
+            
+        }
+    //Start SFDC-6190  
+     else if((loggedInUserProfile!='{!$Label.System_Admin_Profile}')   && (AccContractEnty =='{!$Label.Bright_Skies_GMBH_contracting_entity}') ) {
+                  alert('{!$Label.Alert_Bright_Skies_GMBH_Contracting_Entity}');
+            
+        } 
+        //End SFDC-6190
+        else{
+            
+            if (!primaryContact) { 
+                errors.push('Opportunity Primary Contact cannot be blank.'); 
+            } 
+            if (!opportunityId) { 
+                errors.push('Opportunity number required. Please refresh the Opportunity page before sending to QM.'); 
+            } 
+            if (!accNumber) { 
+                errors.push('The CORE acount number cannot be blank.'); 
+            } 
+            
+           
+            
+            if (errors.length > 0) { 
+                alert(errors.join("</p><p>")); 
+            } 
+            else { 
+                if ( orgID == prodOrgID) { 
+                    theUrl = '{!$Label.Go_to_Quote_Management}'; 
+                } else { 
+                    theUrl = '{!$Label.Go_to_Quote_Management_Staging}'; 
+                } 
+                
+                theUrl = theUrl.replace(':OPPORTUNITYID', '{!CASESAFEID(Opportunity.Id)}'); 
+                window.open(theUrl); 
+            }
+        }
+    }
+    window.onload = Validate;
+    
+    </script>
+    
+</apex:page>

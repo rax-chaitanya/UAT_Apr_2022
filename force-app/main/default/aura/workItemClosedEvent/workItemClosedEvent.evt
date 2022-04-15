@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Fired when an omni work LiveAgentTranscript is closed." >
+    <aura:attribute name="lctId" type="String" description="Live Chat Transcript Id."/>
+</aura:event>

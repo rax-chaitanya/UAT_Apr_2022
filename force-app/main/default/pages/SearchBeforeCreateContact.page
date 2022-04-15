@@ -1,0 +1,32 @@
+<apex:page docType="html-5.0" standardController="Contact" extensions="SearchBeforeCreateContact" lightningStylesheets="true">    
+    <apex:form id="theForm">
+        <apex:dynamicComponent componentValue="{!dynamicPage}"/>
+                
+        <apex:actionFunction name="toggleChoice" action="{!toggleChoice}" reRender="none, totalSel">
+            <apex:param name="recordIDparam" assignTo="{!recordID}" value="recID" />
+        </apex:actionFunction>
+
+        <apex:actionFunction name="cascadeChoice" action="{!cascadeChoice}" rerender="renderPanel, totalSel"/>
+        
+        
+        <apex:actionFunction name="doTest" action="{!genericFunction}" reRender="contactsPanel, leadsPanel" id="actionFunction">
+            <apex:param assignTo="{!queryID}"  name="qnum" value="p" />
+            <apex:param assignTo="{!pageVal}"  name="pnum" value="p2" /> 
+        </apex:actionFunction>
+        
+        
+        
+        <apex:actionStatus id="status">
+            <apex:facet name="start">
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: black;">
+                    &nbsp;
+                </div>
+                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 30% 50%">
+                    <img src="{!$Resource.loading}" />
+                </div>
+            </apex:facet>
+        </apex:actionStatus>    
+        
+    </apex:form>    
+    
+</apex:page>

@@ -1,0 +1,4 @@
+<apex:page title="Encore" standardController="LiveChatTranscript" docType="html-5.0" >
+      <apex:canvasApp applicationName="Encore" 
+        scrolling="auto"  width="100%" height="infinite"  parameters="{'tId' : '{!JSENCODE($CurrentPage.parameters.Id)}'}"/>
+</apex:page>

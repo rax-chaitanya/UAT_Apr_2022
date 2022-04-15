@@ -1,0 +1,11 @@
+.THIS .slds-modal{
+    z-index: 19001;
+}
+
+.THIS .slds-backdrop{
+    z-index: 19000;
+}
+.THIS .slds-modal{
+    /*max-height: fit-content  !IMPORTANT;
+    margin-top: 20rem !IMPORTANT;*/
+}

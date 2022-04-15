@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" 
+                access="global" >
+    
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+    <lightning:workspaceAPI aura:id="workspace" /> 
+    <lightning:omniToolkitAPI aura:id="omniToolkit" />  
+    
+    <aura:attribute name="transcripts" type="Object"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler event="c:workItemClosedEvent" action="{!c.handleApplicationEvent}"/>
+    
+    <c:LiveAgentTranscriptService aura:id="service"/>
+    
+
+    
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    
+    <aura:if isTrue="{!v.transcripts.length > 0}" >
+        <lightning:datatable data="{! v.transcripts }" 
+                             columns="{! v.mycolumns }" 
+                             keyField="Id"
+                             onrowaction="{!c.handleRowAction}"
+                             onrowselected="{!c.handleRowSelected}"
+                             hideCheckboxColumn="true"
+                             />
+        <aura:set attribute="else">
+            You do not have any Sales post chat surveys to fill out.
+        </aura:set>
+        
+    </aura:if>
+    
+    
+</aura:component>

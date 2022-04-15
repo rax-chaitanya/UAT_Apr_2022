@@ -1,0 +1,92 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <div>
+        <div class="slds-m-top--xx-large" >
+             <p class="slds-text-align--left" id="header"> Become a Rackspace Reseller Partner</p>
+             <p class="slds-text-body--regular" id="body"> <br/>
+                The Rackspace® Reseller Program is built to help enable all types of businesses including,
+                but not limited to, digital agencies, web designers and developers, app developers,
+                MSPs and VARs who want to earn revenue by incorporating managed cloud solutions into 
+                their current product and service offerings. This simple and intuitive program makes it easy 
+                for you to leverage our global brand to help uncover new opportunities and easily resell our 
+                solutions to your customers and prospects. We can help you become a trusted advisor to
+                your customers by delivering an extensive depth and breadth of managed cloud solutions
+                and expertise that ultimately can lead to repeat business for you. <br/><br/>
+               
+                Joining the reseller program gives you access to the benefits you need to begin building 
+                and selling Rackspace solutions to your prospects and customers. Our program offers market
+                competitive reseller discounts that lead to higher margins and greater competitive advantages 
+                as well as marketing and sales resources to support your growing needs. Resellers also receive 
+                a monthly credit across both their dedicated and cloud platforms based on their tier level in 
+                the program.
+                <br/><br/>
+                In addition, the Rackspace Reseller Program includes discounts and incentives for 
+                Microsoft CSP 2-Tier for Azure®.
+            </p><br/><br/>
+            
+    <br/><br/>
+            <div class="slds-text-heading--large">
+                <b style="font-family:FiraSans-regular;"><center>Reseller Discounts</center></b>
+            </div>
+        </div>
+        <br/><br/><br/>
+        <table class="ResellerTable"><!-- productTable -->
+    <thead class="Reseller-header"><!-- productTable-header -->
+      <tr class="Reseller-row"><!--productTable-row-->
+        <th class="Reseller-name">Program Level</th><!--productTable-name-->
+        <th class="Reseller-name">Revenue Attainment</th>
+        <th class="Reseller-name">Discount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="Reseller-row"><!--productTable-featureItem center--><!--productTable-mobileTitle Reseller-Mobile-->
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Program Level</strong><strong class="Reseller-Mobile">Program Level</strong>
+          <strong class="Reseller-Strong">Associate</strong>
+        </td>
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Revenue Attainment</strong><strong class="Reseller-Mobile">Revenue Attainment</strong>$250 - $4,999</td>
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Discount</strong><strong class="Reseller-Mobile">Discount</strong>5%</td>
+      </tr>
+      <tr class="Reseller-row">
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Program Level</strong><strong class="Reseller-Mobile">Program Level</strong>
+          <strong class="Reseller-Strong">Preferred</strong>
+        </td>
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Revenue Attainment</strong><strong class="Reseller-Mobile">Revenue Attainment</strong>$5,000 - $14,999</td>
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Discount</strong><strong class="Reseller-Mobile">Discount</strong>
+          <p>10%</p>
+        </td>
+      </tr>
+      <tr class="Reseller-row">
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Program Level</strong><strong class="Reseller-Mobile">Program Level</strong>
+          <strong class="Reseller-Strong">Premier</strong>
+        </td>
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Revenue Attainment</strong><strong class="Reseller-Mobile">Revenue Attainment</strong>$15,000+</td>
+        <td class="Reseller-Item center"><strong class="Reseller-Mobile">Discount</strong><strong class="Reseller-Mobile">Discount</strong>15%</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+    <br/><br/>
+     <div class="slds-grid slds-wrap">
+     <div class="slds-col slds-size_6-of-12">
+                <h3 class="headers">Managed Cloud Reseller Program Benefits</h3>
+            <ul class="slds-list--dotted">
+                <li class="list">Competitive discount structure</li>
+                <li class="list">Compensation on renewals and upgrades
+                    </li>
+                <li class="list">Designated partner account manager
+                    </li>
+                </ul>
+                <br/><br/>
+        </div>
+     <div class="slds-col slds-size_6-of-12">
+         <h3 class="headers"> Program Requirements</h3>
+            <ul class="slds-list--dotted">
+                <li class="list">Opportunity registration through the Rackspace partner portal</li>
+                <li class="list">On-boarding and Rackspace online products / services training within <br/> first 90 days of program participation</li>
+                <li class="list">Provide first-level support and then leverage Rackspace support</li>
+                <li class="list">Provide billing and accounting support
+                    </li> 
+                </ul>
+                <br/><br/>
+            </div>
+        </div>
+</aura:component>

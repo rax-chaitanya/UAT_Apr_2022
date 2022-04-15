@@ -1,0 +1,80 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" 
+                access="global" controller="RepPostChatSurveyController">
+    <aura:attribute name="showSurvey" type="Boolean" default="true"/>
+    <aura:attribute name="lctId" type="String"/>
+    
+    
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+    <lightning:workspaceAPI aura:id="workspace" /> 
+    <lightning:omniToolkitAPI aura:id="omniToolkit" />  
+    
+
+    <aura:attribute name="survey" type="Rep_Chat_Survey__c" default="{'sobjectType': 'Rep_Chat_Survey__c'}"/>
+    
+    <!--     <aura:handler event="c:workItemClosedEvent" action="{!c.handleApplicationEvent}"/> -->
+    
+    
+
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:workItemClosedEvent" action="{!c.handleApplicationEvent}"/>
+    
+    
+    <aura:if isTrue="{!v.showSurvey}">
+        <!-- Display the new contact form -->
+        <div class="Create Contact">
+            <lightning:card iconName="standard:survey" title="Post Chat Survey">
+                <!-- HARDCODED FOR PLANNED DEMO, WILL CONVERT TO CUSTOM SETTING IF BUSINESS GOES W/APPROACH -->
+                <div class="slds-p-horizontal--small">
+                    <lightning:select aura:id="surveyField"  name="chatCloseOption" label="Chat Close Option" value="{!v.survey.Chat_Close_Option__c}">
+                        <option value="Ding-Out" text="Ding-Out"></option>
+                        <option value="Non-Sales" text="Non-Sales"></option>
+                        <option value="Sales" text="Sales"></option>
+                    </lightning:select>
+                    
+                    <lightning:select aura:id="surveyField" name="chatCloseOutcome" label="Chat Close Outcome" value="{!v.survey.Chat_Close_Outcome__c}">
+                        <option value="" text=""/>
+                        <option value="Lead" text="Lead"/>
+                        <option value="Sign Up" text="Sign Up"/>
+                        <option value="Qualified Out" text="Qualified Out"/>
+                        <option value="Left Chat" text="Left Chat"/>
+                        <option value="Completed Chat" text="Completed Chat"/>
+                        <option value="Directed to Unassisted Signup" text="Directed to Unassisted Signup"/>
+                    </lightning:select>
+                    
+                    <lightning:select aura:id="surveyField" name="chatCloseTypes" label="Chat Close Types" value="{!v.survey.Chat_Close_Types__c}">
+                        <option value="" text=""/>
+                        <option value="3rd party/RPC" text="3rd party/RPC"/>
+                        <option value="Apps" text="Apps"/>
+                        <option value="AWS" text="AWS"/>
+                        <option value="Azure" text="Azure"/>
+                        <option value="Cloud Office" text="Cloud Office"/>
+                        <option value="Cust Uncertain/No Pref" text="Cust Uncertain/No Pref"/>
+                        <option value="Dedicated" text="Dedicated"/>
+                        <option value="Google Cloud" text="Google Cloud"/>
+                        <option value="Inquiry" text="Inquiry"/>
+                        <option value="Malicious Chat" text="Malicious Chat"/>
+                        <option value="MI" text="MI"/>
+                        <option value="Microsoft Private Cloud(HyperV)" text="Microsoft Private Cloud(HyperV)"/>
+                        <option value="MO" text="MO"/>
+                        <option value="Rackspace(OpenStack)Private Cloud" text="Rackspace(OpenStack)Private Cloud"/>
+                        <option value="Rackspace Public Cloud" text="Rackspace Public Cloud"/>
+                        <option value="Recruitment" text="Recruitment"/>
+                        <option value="SPAM" text="SPAM"/>
+                        <option value="Support" text="Support"/>
+                        <option value="VMWare(Mgd Virt or SDC)" text="VMWare(Mgd Virt or SDC)"/>
+                        <option value="No Product Fit/Not Rackspace Listed Product" text="No Product Fit/Not Rackspace Listed Product"/>
+                        <option value="General Enquiry" text="General Enquiry"/>
+                    </lightning:select>
+                    <br/>
+                    <lightning:button label="Save" variant="brand" onclick="{!c.handleSaveSurvey}"/>
+                </div>
+            </lightning:card>
+        </div>
+    </aura:if>
+    
+    
+    
+    
+    
+</aura:component>

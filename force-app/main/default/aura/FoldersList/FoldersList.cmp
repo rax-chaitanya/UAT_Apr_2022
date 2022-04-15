@@ -1,0 +1,40 @@
+<aura:component controller="FolderController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="docs1" type="List" />
+    <aura:attribute name="docs2" type="List" />
+    <aura:attribute name="docs3" type="List" />
+    <aura:attribute name="res" type="String" default="test"/> 
+    <aura:attribute name="res1" type="String" default="test"/> 
+    <aura:attribute name="LN" type="String" default="test"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <c:HeaderNavigation menu="{!v.res1}"/>
+    <aura:if isTrue="{!v.LN =='Enablement Resources'}"> 
+        <div class="slds-box" style="border-style: none;">
+            <p style="background-color:#ECF0F1;font-size: 15px;"><b>Enablement Resources Guidelines :</b></p>
+            <p style="font-size: 1em;line-height: 1.6em">1. Content marked as "Confidential: Partner Use Only" may not be shared and is for Partner benefit only.<br/>
+                2. Cobranded Content and Collateral may be shared with clients.</p>
+        </div>
+    </aura:if>    
+    
+    <div class="slds-grid slds-wrap">
+        <aura:if isTrue="{!and(v.LN =='Videos' , v.docs3.length > 0)}"> 
+            <aura:iteration items="{!v.docs3}" var="doc3">  
+                <c:SubContentCOmponent Docitem="{!doc3}"/>  <br/>   
+            </aura:iteration>
+        </aura:if>
+        <aura:if isTrue="{!v.docs1.length > 0}">
+            <aura:iteration items="{!v.docs1}" var="doc1">            
+                <aura:if isTrue="{!doc1.ISfolder}">
+                    <c:SubFoldersComponent folderitem="{!doc1}" menu="{!v.res1}"/> <br/>                
+                </aura:if>
+                <aura:if isTrue="{!and(not(v.LN =='Videos'),not(doc1.ISfolder))}">
+                    <c:SubContentCOmponent Docitem="{!doc1}"/> <br/>                 
+                </aura:if>    
+            </aura:iteration>
+        </aura:if>
+        <!-- <aura:if isTrue="{!v.docs1.length ==0}">
+            <span style="font-size: 20px;position: relative;left: 345px;">   Sorry, there is no document exist in the system.</span>
+        </aura:if>  -->
+    </div>    
+</aura:component>

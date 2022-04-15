@@ -1,0 +1,45 @@
+<aura:component controller="CommunityHeadLineController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="options" type="List" access="PRIVATE"/> 
+    <aura:attribute name="isValidProfile" type="Boolean" default="false"/>
+    <aura:attribute name="headerMessage" type="String" default=""/>
+    <aura:attribute name="dataId" type="String" default=""/>
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal slds-modal_large">
+        <div class="slds-modal__container" style="width: 65%;">
+            
+            <div class="slds-modal__content slds-p-around--medium ">
+                <lightning:inputRichText placeholder="Type something interesting" class="slds-rich-text-editor slds-has-focus"
+                                         formats="[ 'font','size','bold', 'italic', 'underline',
+                                                  'strike', 'list', 'indent', 'align', 'link',
+                                                  'image', 'clean', 'table', 'header', 'color','background']" value="{!v.headerMessage}">
+
+                </lightning:inputRichText> 
+                
+                
+                <label class="slds-form-element__label" for="select-01">Contract Type</label>
+                <ui:inputSelect  aura:id="ContractType" class="slds-select"  change="{!c.onPicklistChange}"/> 
+                
+                
+            </div>
+            
+            <div class="slds-modal__footer">
+                <lightning:button aura:id="saveId" label="Save" variant="neutral" onclick="{!c.doSave}"/>
+                <lightning:button aura:id="cancelId" label="Cancel" variant="neutral" onclick="{!c.closeModal}"/>
+                
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop " aura:id="Modalbackdrop"></div> 
+    
+    
+    <div aura:id="output" >
+
+        <lightning:formattedRichText value="{!v.headerMessage}" />
+        <aura:if isTrue="{!v.isValidProfile}"><div align="right" width="100%">
+            <lightning:button variant="base" label="Edit HeadLine" title="Edit HeadLine" onclick="{!c.openmodal}"/>
+            </div></aura:if>
+        
+    </div>
+    
+</aura:component>

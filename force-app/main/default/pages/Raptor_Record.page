@@ -1,0 +1,47 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+    <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    function Validate()
+    {
+        var orgID = '{!$Organization.Id}'; 
+        var prodOrgID = ('{!$Setup.ProdOrgIDSetting__c.ProdOrgID__c}'); 
+        var url; 
+        var type = '{!Opportunity.type}';
+        var category = '{!Opportunity.Category__c}';
+        //Added by Biswa for SFDC-3342(Only added the if condion and all others existing functionalityies in else condition)
+        if(type=='Customer Success')
+        {
+            alert("This opportunity type is set as {!Opportunity.Type}, which cannot be sent to Raptor.");
+        }else{
+            if(category == 'Bookings Credit' && (type == 'Mail Online Signup' || type == 'ObjectRocket' || type == 'Rackspace Cloud'
+                                                 || type == 'Professional Services' || type == 'TriCore ProServe')){
+                alert('This Opportunity of type'+' '+type+' '+'and Category '+' '+category+' cannot be sent to Raptor.');
+                
+            }
+            
+            if(prodOrgID == orgID) { 
+                url = '{!$Label.Raptor_Record}'; 
+            } 
+            
+            else { 
+                url = '{!$Label.Raptor_Record_Staging}'; 
+            } 
+            url = url.replace(":OPPORTUNITYNUMBER", '{!Opportunity.Opportunity_ID__c}'); 
+            window.open(url);
+        }
+    }
+    window.onload = Validate;
+    
+    </script>
+    
+</apex:page>

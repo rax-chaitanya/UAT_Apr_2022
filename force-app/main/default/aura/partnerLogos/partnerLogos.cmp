@@ -1,0 +1,76 @@
+<!--
+Component: partnerLogos
+======================================================
+Purpose: This component is used to disply and Download all the available Files to the user based on Membership level. 
+======================================================
+History
+
+VERSION      AUTHOR            DATE                 DETAIL       
+1.0          Samba             15 Oct 2019          INITIAL DEVELOPMENT
+**************************************************************************************************************
+-->
+<aura:component controller = "CompanyProfileController" implements="force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="files" type="List"/>
+    <aura:attribute name="memberShipLevel" type="string"/>
+    <aura:attribute name="isNull" type="Boolean" default= "false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="logosEvent" type="c:partnerlogosEvent"/>
+    <div class="slds-box slds-box_xx-small slds-m-top_none slds-m-left_none styles">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container" >
+                <header class="slds-modal__header" style= "background-color: #ecebea">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Available Logos For Partners</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium " id="modal-content-id-1">
+                    <aura:if isTrue="{!!v.isNull}">
+                       <!--b>Logo Name And Type</b-->
+                        <aura:iteration items="{!v.files}" var="item">
+                            <div class="slds-grid">
+                                <div class="slds-col">
+                                    <div class="slds-grid slds-m-left_none" >
+                                        <div class="slds-box slds-box_x-small slds-text-color_weak slds-size_2-of-3 slds-text-align_left " style ="border-radius: 1px;">
+                                            {!item.Title}.{!item.FileType}</div>	
+                                        <div class="slds-box slds-box_x-small slds-size_1-of-3 slds-text-color_weak slds-text-align_center " style ="border-radius: 1px;">
+                                            <b><a href="{!'/partners/sfc/servlet.shepherd/document/download/'+ item.ContentDocumentId}" target="_blank" download="{!item.Name}"> Download</a><br></br>
+                                            </b> </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </aura:iteration> 
+                        <aura:set attribute="else">
+                            <div>No Logos Available..</div>
+                        </aura:set>
+                    </aura:if>          
+                </div>
+                <footer class="slds-modal__footer" >
+                    <!--  Pagination Buttons Start -->
+                    <!--lightning:button label="Previous"
+                                      disabled="{!v.startPage == 0 || (v.isNull == true)}"  
+                                      onclick="{!c.navigation}"
+                                      variant="brand"
+                                      iconName="utility:back"
+                                      name="previous"/>
+                    <aura:if isTrue="{!!v.isNull}">
+                        <span class="slds-badge slds-badge_lightest"
+                              style="margin-right: 10px;margin-left: 10px;">
+                            Page {!v.currentPage} out of {!v.totalPagesCount}
+                        </span>
+                    </aura:if>
+                    <lightning:button label="Next"
+                                      disabled="{!(v.endPage + 1) >= v.totalRecordsCount || (v.isNull == true)}" 
+                                      onclick="{!c.navigation}"
+                                      variant="brand"
+                                      iconName="utility:forward"
+                                      iconPosition="right"
+                                      name="next"/-->
+                    
+                    <lightning:button label=" Close " 
+                                      title="Close logos window" 
+                                      onclick="{!c.closeWinow}" class="slds-button slds-button_destructive" />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+    
+</aura:component>

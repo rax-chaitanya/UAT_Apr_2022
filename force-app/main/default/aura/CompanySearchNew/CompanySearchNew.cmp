@@ -1,0 +1,203 @@
+<aura:component controller="CompanySearchAndCreateCtrlNew" implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+    <aura:attribute name="cmpName" type="string" description="Company Name"/>
+    <aura:attribute name="website" type="string" description="Website"/>    
+    
+    <aura:attribute name="resultObj" type="CompanySearchAndCreateCtrlNew.CompanyAndCloudDBCompWrapper" description=""/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="CompanyPaginationList" type="object[]"/>
+    <aura:attribute name="DBPaginationList" type="object[]"/>
+    <aura:attribute name="showCmpTbl" type="boolean" default="false"/>
+    <!-- create 2 aura handler with waiting and donewaiting events--> 
+    <!-- Country Picklist Attributes -->
+    <aura:attribute name="countryList" access="public" type="String[]"/>
+    <aura:attribute name="selectedCntry" type="String" default=""/>
+    
+    <!-- Location Type Picklist Attributes -->
+    <aura:attribute name="locationType" access="public" type="String[]"/>
+    <aura:attribute name="selectedloc" type="String" default="0,1"/>
+    <aura:attribute name="acc" type="Account" default="{ 'sobjectType': 'Account' }"/>
+    
+    <aura:attribute name="countryPickList" type="String[]"/>
+    <aura:attribute name="statePickList" type="String[]"/>    
+    <aura:attribute name="pickListMap" type="map"/>
+    <aura:attribute name="selectedState" type="String" default=""/>    
+    <aura:attribute name="statePickEnable" type="boolean" default="true"/>
+    
+    <!--Territory checkbox attributes -->
+    <aura:attribute name="territorySelected" type="List" default="[]"/>
+    <aura:attribute name="territoryList" type="List" default="[]"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    
+    <aura:attribute name="startRec" type="integer" description="using for store page Number"/>
+    <aura:attribute name="endRec" type="integer" description="using for store All Pages page Number"/>
+    <aura:attribute name="dbstartRec" type="integer" description="using for store page Number"/>
+    <aura:attribute name="dbendRec" type="integer" description="using for store All Pages page Number"/>
+
+    <lightning:layout verticalAlign="space"> 
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+            <lightning:card class="slds-card__body slds-card__body_inner slds-theme_shade" iconName="action:new_account" title="Search">
+                
+                <div class="demo-only" style="100%">
+                    <div class="slds-form slds-form_compound">
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps"></legend>
+                            <div class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <label class="slds-form-element__label" for="input-01">Company Name</label>
+                                        <lightning:input required="true" name="inputcmpName" aura:id="inputcmpName" label="" value="{!v.cmpName}"/>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <label class="slds-form-element__label" for="input-01">Location Type</label>
+                                        <lightning:select label="" value="{!v.selectedloc}" name="locType" aura:id="loc_Type">
+                                            <aura:iteration items="{!v.locationType}" var="loc">
+                                                <option text="{!loc.label}" value="{!loc.value}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps"></legend>
+                            <div class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <label class="slds-form-element__label" for="input-01">Website</label>
+                                        &nbsp;&nbsp;&nbsp;<lightning:input required="false" name="inputWebsite" aura:id="inputWebsite" label="" value="{!v.website}"/>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <label class="slds-form-element__label">COUNTRY</label>
+                                        <lightning:select label="" value="{!v.selectedCntry}" name="Country" aura:id="countryList" onchange="{!c.getState}">
+                                            <aura:iteration items="{!v.countryPickList}" var="ctry">
+                                                <option text="{!ctry}" value="{!ctry}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <label class="slds-form-element__label" for="input-01">STATE</label>
+                                        <lightning:select label="" value="{!v.selectedState}" name="State" aura:id="stateList" disabled="{!v.statePickEnable}" onchange="{!c.validateState}">
+                                            <aura:iteration items="{!v.statePickList}" var="ctry">
+                                                <option text="{!ctry}" value="{!ctry}"/>
+                                            </aura:iteration>
+                                        </lightning:select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                            
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps"></legend>
+                            <div class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-1">
+                                        <label class="slds-form-element__label" for="input-01">Territory</label>
+                                        <lightning:checkboxGroup 
+                                             aura:id="territoryCheck"
+                                             name="checkboxGroup"
+                                             label=""
+                                             options="{!v.territoryList}"
+                                             value="{!v.territorySelected}"
+                                             />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>                        
+                    </div>
+                </div>
+
+                <div class="slds-align_absolute-center">
+                    <lightning:button variant="Neutral" label="Search" onclick="{!c.searchCompaniesdAndBCompanies}"/> <!-- disabled="{!v.clickedOnce}" -->
+                    <lightning:button variant="Neutral" label="Clear" onclick="{!c.clearFrom}"/>
+                </div>    
+                </lightning:card>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <aura:if isTrue="{!v.showCmpTbl}">
+            <lightning:layout verticalAlign="space">
+                <lightning:layoutItem flexibility="auto" padding="around-medium">
+                    <lightning:card class="slds-card__body slds-card__body_inner slds-theme_shade" iconName="action:new_account" title="Company Results">
+                        <aura:set attribute="actions">
+                            <lightning:button variant="neutral" label="New" onclick="{!c.createAcRecord}"/>
+                        </aura:set>                     
+                        <c:Company_PaginationNew cmpName="{!v.cmpName}" website="{!v.website}" selectedCntry="{!v.selectedCntry}" selectedState="{!v.selectedState}" territorySelected="{!v.territorySelected}" PaginationList="{!v.CompanyPaginationList}" resultObj="{!v.resultObj}" startRec="{!v.startRec}" endRec="{!v.endRec}"/>
+                        
+                    </lightning:card>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.showCmpTbl}">
+            <lightning:layout verticalAlign="space">
+                <lightning:layoutItem flexibility="auto" padding="around-medium">
+                    <lightning:card class="slds-card__body slds-card__body_inner slds-theme_shade" iconName="action:new_account" title="Data.com Results">
+                        <!-- <div aura:id="datadoccomtable" /> -->
+                        <c:DataDotCom_PaginationNew cmpName="{!v.cmpName}" selectedloc="{!v.selectedloc}" website="{!v.website}"  dbResultObj="{!v.resultObj}" dbPaginationList="{!v.DBPaginationList}" startRec="{!v.dbstartRec}" endRec="{!v.dbendRec}"/>
+                    </lightning:card>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
+        
+        <!-- Start : Creating the Company Record with Lighting Modal and LDS -->
+        <!--Use aura:if tag to display Modal Box, on the bese of conditions. [isOpen boolean attribute] -->   
+        <aura:if isTrue="{!v.isOpen}">            
+            <!--###### MODAL BOX Start From Here ######--> 
+            <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModel}">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="header99" class="slds-text-heading--medium">Create New Company</h2>
+                    </div>
+                    <!--###### MODAL BOX BODY Part Start From Here ######-->
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <!-- Display the new contact form -->
+                        <div class="Create Company">
+                            <lightning:card iconName="" title="">
+                                <div class="slds-p-horizontal--small">
+                                    <lightning:input aura:id="contactField" label="First Name" value="{!v.simpleNewAccount.Name}"/>
+                                    <br/>
+                                </div>
+                            </lightning:card>
+                        </div>
+                        <!-- Display Lightning Data Service errors -->
+                        <aura:if isTrue="{!not(empty(v.newAccountError))}">
+                            <div class="recordError">
+                                {!v.newAccountError}</div>
+                        </aura:if>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--brand" onclick="{!c.handleSaveAccount}">Save</button>
+                        <button class="slds-button slds-button--neutral" onclick="{!c.closeModel}" >Cancel</button>            
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop--open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+        <!-- END: Creating the Company Record with Lighting Model and LDS --> 
+        
+        <!--loading spinner start... style=Brand Medium (blue dots)-->
+        <aura:if isTrue="{!v.Spinner}">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:if>
+        <!-- Loading spinner end--> 
+        
+    </aura:component>

@@ -1,0 +1,42 @@
+.THIS {
+     
+}
+.THIS .docName {
+    position: absolute;
+    top: 70%;
+    left: 29%;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+.THIS .divCss
+{
+    color: #666;
+font-family: "Khand",Helvetica,Arial,sans-serif;
+font-size: 1.25em;
+font-weight: 600;
+letter-spacing: 0;
+line-height: 1em;
+margin: 20px 0 10px;
+position: relative;
+    left: 10px;
+    width: 90%;
+}
+
+.THIS .slds-badge {
+    background-color: antiquewhite !important;
+}
+.THIS .slds-size_1-of-2 {
+    width: 100% !important;
+}
+.THIS .no-preview > p {
+  position: relative;
+  z-index: -1;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 10rem; 
+}
+.THIS .Overflow
+{
+  overflow: hidden;
+}

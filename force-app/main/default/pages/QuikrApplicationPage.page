@@ -1,0 +1,4 @@
+<apex:page >
+      <apex:canvasApp applicationName="QuikrApplication" 
+        height="infinite" width="100%" parameters="{'tId' : '{!JSENCODE($CurrentPage.parameters.tId)}'}"/>
+</apex:page>

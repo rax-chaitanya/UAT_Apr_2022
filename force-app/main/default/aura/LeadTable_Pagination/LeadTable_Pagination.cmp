@@ -1,0 +1,72 @@
+<aura:component controller="ContactSearchAndCreateCtrl">
+    
+    <!-- Attribute Declration For Pagination -->
+    <aura:attribute name="LeadData" type="object[]" />
+    <aura:attribute name="isSending" type="boolean" />    
+    
+    <!-- Attribute Declration For Pagination -->
+    <aura:attribute name="PaginationList" type="object[]"/>
+    <aura:attribute name="startPage" type="integer"/>
+    <aura:attribute name="endPage" type="integer"/>
+    <aura:attribute name="totalRecords" type="integer"/>
+    <aura:attribute name="pageSize" type="integer" default="10"/>
+    
+    <aura:attribute name="page" type="integer" description="using for store page Number"/>
+    <aura:attribute name="pages" type="integer" description="using for store All Pages page Number"/>
+    
+    <!-- Attribute Declration For Pagination End-->
+    
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    
+    <table class="slds-table slds-table slds-table--bordered slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+        <thead>
+            <tr class="slds-text-heading--label">
+                <th scope="col"><div class="slds-truncate" title="FirstName">First Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="LastName">Last Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="Email">Email Address</div></th>
+                <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+                <th scope="col"><div class="slds-truncate" title="Company">Company</div></th>                
+                <th scope="col"><div class="slds-truncate" title="City">City</div></th>
+                <th scope="col"><div class="slds-truncate" title="Street">Street</div></th>
+                <th scope="col"><div class="slds-truncate" title="Country">Country</div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:if isTrue="{!v.PaginationList.length > 0}">
+                <aura:iteration items="{!v.PaginationList}" var="ld"> 
+                    <tr>
+                        <th><div class="slds-truncate" title="{!ld.leadObj.FirstName}">
+                            <ui:outputURL value="{!'/one/one.app#/sObject/' + ld.leadObj.Id +'/view'}" label="{!ld.leadObj.FirstName}" aura:id="{!ld.leadObj.Id}"/>
+                            </div>
+                        </th>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.LastName}">{!ld.leadObj.LastName}</div></td>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.Email}">{!ld.leadObj.Email}</div></td>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.Phone}">{!ld.leadObj.Phone}</div></td>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.Company}">{!ld.leadObj.Company}</div></td>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.mailingcity}">{!ld.leadObj.City}</div></td>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.mailingStreet}">{!ld.leadObj.Street}</div></td>
+                        <td><div class="slds-truncate" title="{!ld.leadObj.mailingcountry}">{!ld.leadObj.Country}</div></td>
+                    </tr>
+                </aura:iteration>
+                <aura:set attribute="else">
+                    <tr><th scope="row" colspan="4">
+                        <div class="slds-text-align_center">No companies were found.</div></th>
+                    </tr>
+                </aura:set>
+            </aura:if>            
+        </tbody>
+        <p>{!v.totalRecords} Leads • page {!v.page} / {!v.pages}</p>
+    </table>
+    <lightning:buttonGroup >
+        <lightning:button label="Previous" disabled="{!v.startPage == 0}"  
+                          onclick="{!c.previous}" variant="brand"
+                          iconName='utility:back'/>
+        &nbsp; &nbsp; &nbsp;
+        <lightning:button label="Next" disabled="{!v.page >= v.pages}" 
+                          onclick="{!c.next}" variant="brand"
+                          iconName='utility:forward' iconPosition='right'/>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+        
+    </lightning:buttonGroup>     
+</aura:component>

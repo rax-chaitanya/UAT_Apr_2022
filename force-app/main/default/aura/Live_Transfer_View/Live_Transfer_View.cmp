@@ -1,0 +1,47 @@
+<aura:component controller="LiveTransferClass" implements="force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes">
+    <lightning:spinner class="slds-hide" aura:id="mySpinner" variant="brand" size="medium"/>
+    <!-- Create attribute to store lookup value as a sObject--> 
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="displayResult" type="Boolean" default="false"/>
+    <aura:attribute name="checked" type="Boolean" default="true"/>
+    <aura:handler name="oSelectedRecordEvent" event="c:SearchLookupEvent" action="{!c.handleRecordSelect}"/>
+    <aura:attribute name="UsersList" type="List"/> 
+    <aura:attribute name="User" type="sObject" default="{}"/>
+    <aura:attribute name="hasNext" type="boolean" default="true"/>
+    <aura:attribute name="counter" type="Integer"/> 
+    <div class="slds-col modal-header slds-modal__header">
+        <c:SearchLookupBox objectAPIName="Group" IconName="standard:group" selectedRecord="{!v.selectedLookUpRecord}" label="Select a QUEUE"/>
+        <br/>  
+    </div>
+    <div class="slds-col modal-body">
+        <aura:if isTrue="{!v.displayResult}"> 
+            <lightning:card class="slds-m-around_large">
+                <aura:set attribute="title">
+                    <div class="slds-align_absolute-center">
+                        <lightning:icon iconName="utility:user" size="small"/>
+                        {!v.User.name }
+                    </div>
+                </aura:set>
+                <aura:set attribute="footer">
+                    <form class="assign-form inline-block slds-p-right_large slds-border_right" onsubmit="{!c.assignLead}">
+                        <input type="hidden" value="{!v.User.userId}" class="assign-user-Id" />
+                        <input type="hidden" value="{!v.User.name}" class="assign-user-Name" />
+                        <lightning:button label="Assign" type="submit" iconName="utility:change_owner" iconPosition="left" variant="success" class="inline-block" />
+                    </form>
+                    <lightning:input type="toggle" label="Mark unavailable" aura:id="toggle" name="checkbox" value="{!v.User.userId}" checked="{!v.checked}" onchange="{!c.doUpdateStatus}" class="inline-block slds-p-left_large"/>
+                </aura:set>
+                <div class="slds-align_absolute-center">
+                    <ui:outputText value="Email" class="slds-text-title_caps slds-border_bottom" />: <ui:outputText value="{!v.User.email}"/>
+                </div>
+                <div class="slds-align_absolute-center">
+                    <ui:outputText value="Phone" class="slds-text-title_caps slds-border_bottom" />: <ui:outputText value="{!v.User.phone}"/>
+                </div>
+            </lightning:card>
+        </aura:if>
+    </div>
+    <div class="modal-header slds-modal__header">
+        <lightning:button aura:id="next-user" class="slds-align_absolute-center" type="button" label="Next User" iconName="utility:sort" iconPosition="left" variant="neutral" onclick="{!c.next}" disabled="{!v.hasNext}"/> 
+    </div>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+</aura:component>

@@ -1,0 +1,114 @@
+<apex:page standardcontroller="Project__c" extensions="ProjectViewController"><apex:messages /> 
+<apex:sectionheader title="{!$ObjectType.Project__c.label} View" subtitle="{!Project__c.name}"/>
+    
+    <apex:form >
+    <apex:pageblock mode="main detail" title="{!$ObjectType.Project__c.label}">
+        
+            <apex:pageblockbuttons >
+                    <apex:commandbutton value="Edit" action="{!Edit}"/>
+                    <apex:commandbutton value="Cancel" action="{!Cancel}"/>
+            </apex:pageblockbuttons>
+            
+                <apex:outputpanel >
+                <apex:pageblocksection title="Customer Details" showheader="true" columns="2">
+            <!--    <apex:outputfield value="{!Project__c.Workshop_LU__c}"/> -->
+                <apex:outputfield value="{!Project__c.DDI__c}"/>
+                <apex:outputfield value="{!Project__c.Project_Name__c}"/>                
+                <apex:outputfield value="{!Project__c.Account__c}"/>
+                <apex:outputfield value="{!Project__c.OwnerID}"/>
+                <apex:outputfield value="{!Project__c.Opportunity__c}" label="Sales Bookings Credit"/>                
+                <apex:outputfield value="{!Project__c.Owner_Role__c}"/>
+                <apex:outputfield value="{!Project__c.Opportunity_MRR__c}" label="Opp Amount"/>
+
+                <apex:outputfield value="{!Project__c.Sales_Rep__c}" />
+                <apex:outputfield value="{!Project__c.Practice__c}" />
+                <apex:outputfield value="{!Project__c.Commissions__c}" />
+                <apex:outputfield value="{!Project__c.Service_Offering__c}"/>
+                <apex:outputfield value="{!Project__c.Commission_Percentage__c}" />
+                <apex:outputfield value="{!Project__c.Ticket_Number__c}" />
+                <apex:outputfield value="{!Project__c.CurrencyIsoCode}" />
+                <apex:outputfield value="{!Project__c.Proposal_Stage__c}" />
+                <apex:outputfield value="{!Project__c.PS_Time_Discounted__c}" />
+                <apex:outputfield value="{!Project__c.INTL_Project_Lost_Reason__c}" label="Lost Reason" />                
+                <apex:outputfield value="{!Project__c.Discount_Approver__c}" />
+                <apex:outputfield value="{!Project__c.Forecast__c}" />
+                <apex:outputfield value="{!Project__c.Discount_Credits__c}" label="Discount Amount"/>
+                <apex:outputfield value="{!Project__c.Probability__c}"/>
+                <apex:outputfield value="{!Project__c.Close_Date__c}" />
+                <apex:outputfield value="{!Project__c.Project_Territory__c}"/>
+                <apex:outputfield value="{!Project__c.DBA_Services__c}" />
+                </apex:pageblocksection>
+                
+                <apex:pageblocksection showheader="true">
+                <apex:outputfield value="{!Project__c.Project_Description__c}"/>
+                </apex:pageblocksection>
+                </apex:outputpanel>                
+            
+            <apex:outputpanel id="Customer_Partner_Detail">  
+            <apex:pageblocksection rendered="{!(Project__c.Practice__c!='Partner Referral')}" title="Partner Detail" showheader="true" columns="2">
+            <apex:outputfield value="{!Project__c.Service_Delivery_Partner__c}" label="Partner" />
+            <apex:outputfield value="{!Project__c.RAX_PO_Number__c}" />
+            <apex:outputfield value="{!Project__c.Partner_Notes__c}"/>
+            <apex:outputfield value="{!Project__c.Total_Partner_Fee__c}"/>
+            </apex:pageblocksection>
+            
+            <apex:pageblocksection rendered="{!(Project__c.Practice__c=='Partner Referral')}" title="Customer Detail" showheader="true" columns="2">
+            <apex:outputfield value="{!Project__c.Customer_Old__c}"/>
+            <apex:outputfield value="{!Project__c.Total_Partner_Invoice_To_Customer__c}"/>
+            <apex:outputfield value="{!Project__c.Customer_Notes__c}"/>
+            </apex:pageblocksection>
+            </apex:outputpanel>
+                    
+            <apex:pageblocksection title="Project Details" showheader="true" columns="2">
+            <apex:outputfield value="{!Project__c.Platform_Source_Environment__c}"/>
+            <apex:outputfield value="{!Project__c.Platform_Destination_Environment__c}"/>
+            <apex:outputfield value="{!Project__c.Project_Duration__c}" />
+            <apex:outputfield value="{!Project__c.Project_Start_Date__c}" />           
+            <apex:outputfield value="{!Project__c.SFDC_Days_Remaining__c}" />
+            <apex:outputfield value="{!Project__c.SFDC_Project_End_Date__c}" />
+            <apex:outputfield value="{!Project__c.Project_Status__c}" />
+            <apex:outputfield value="{!Project__c.Status_Description__c}" />
+            </apex:Pageblocksection>
+            
+           
+            <apex:pageblocksection title="Project Closure" showheader="true" columns="2">
+            <apex:outputfield value="{!Project__c.Customer_NPS_Score__c}"/>
+            <apex:outputfield value="{!Project__c.Internal_NPS_Score__c}" />
+            <apex:outputfield value="{!Project__c.NPS_Comments__c}" />
+            <apex:outputfield value="{!Project__c.Lessons_Learnt__c}" />
+            </apex:Pageblocksection>
+            
+            <apex:pageblocksection title="Invoice Details" showheader="true" columns="3">
+                    <apex:outputtext value="Estimates"/>
+                    <apex:outputtext value="Actuals"/>
+                    <apex:outputtext value="Balance"/>
+                    
+                    <apex:outputfield value="{!Project__c.Total_Estimated_Customer_Invoice__c}" />
+                    <apex:outputfield value="{!Project__c.Total_Customer_Fees_Invoiced__c}"/>
+                <apex:outputfield value="{!Project__c.Total_Customer_Fees_Invoiced__c}"/>
+                    <apex:outputfield value="{!Project__c.Remaining_Customer_Invoices__c}"/>
+
+                    <apex:outputfield value="{!Project__c.Total_Partner_Fee__c}"/>
+                    <apex:outputfield value="{!Project__c.Total_Partner_Fees_Paid__c}"/>
+                    <apex:outputfield value="{!Project__c.Partner_Fee_To_Be_Paid__c}"/>
+
+                    <apex:outputfield value="{!Project__c.Total_Estimated_RAX_Partner_Margin__c}" />
+                    <apex:outputfield value="{!Project__c.Total_RAX_Partner_Margin__c}"/>
+                    <apex:outputfield value="{!Project__c.Remaining_RAX_Partner_Margin__c}"/>
+
+                    <apex:outputfield value="{!Project__c.Total_Estimated_Margin__c}"/>                
+                    <apex:outputfield value="{!Project__c.Net_Actual_margin__c}"/>                
+                    <apex:outputfield value="{!Project__c.Remaining_Net__c}"/>                
+            </apex:Pageblocksection>
+                    
+        </apex:pageblock>        
+    </apex:form>
+    
+    <apex:relatedlist list="Project_Pricing__r"/>
+    <apex:relatedlist list="Project_Role_Resources__r"/>
+    <apex:relatedList list="Vendor_Invoices__r"/>
+    <apex:relatedList list="OpenActivities"/>
+    <apex:relatedList list="ActivityHistories"/>
+    <apex:relatedList list="CombinedAttachments"/>
+        
+</apex:page>

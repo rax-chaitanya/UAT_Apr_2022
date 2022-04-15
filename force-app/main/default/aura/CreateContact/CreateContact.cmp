@@ -1,0 +1,150 @@
+<aura:component controller="CreateContactController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global">   
+    <aura:attribute name="Title" type="String" default=""/>
+    <aura:attribute name="SalutationList" type="List[]" default="[]"/>
+    <aura:attribute name="Salutation" type="String"/>
+    <aura:attribute name="FirstName" type="String" default=""/>
+    <aura:attribute name="LastName" type="String" default=""/>
+    <aura:attribute name="Email" type="String" default=""/>
+    <aura:attribute name="Phone" type="string" default=""/>
+    <aura:attribute name="Fax" type="string" default=""/>
+    <aura:attribute name="Mobile" type="string" default=""/>
+    <aura:attribute name="LanguageList" type="List[]" default="[]"/>
+    <aura:attribute name="Language" type="String"/>
+    <aura:attribute name="billingCountryOptions" type="List[]" default="[]"/>
+    <aura:attribute name="billingStateValues" type="Object" default="{}"/>
+    <aura:attribute name="billingStateOptions" type="List[]" default="[]"/>
+    <aura:attribute name="billingCountry" type="String" default=""/>
+    <aura:attribute name="billingState" type="String" default=""/>
+    <aura:attribute name="BillingStreet" type="String" default=""/>
+    <aura:attribute name="BillingCity" type="String" default=""/>
+    <aura:attribute name="BillingZip" type="string" default=""/>
+    <aura:attribute name="TerritoryList" type="List[]" default="[]"/>
+    <aura:attribute name="Territory" type="string"/>
+    <aura:attribute name="statePickEnable" type="boolean" default="true"/>
+    <aura:attribute name="checkPrimary" type="String" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:spinner aura:id="spinner"/>
+    
+    <div class="slds-align_absolute-center" style="padding-bottom:5px">  
+        <h2><b>Please Enter the Contact Information</b></h2>  
+    </div>
+    
+    <div class="divHeader"> 
+        <div class="slds-media slds-media_center slds-media_small">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="standard:contact" size="small"/>
+            </div>
+            <div class="slds-media__body" style="text-align:left;">
+                <h1 ><b>&nbsp;Contact Information</b></h1>   
+            </div>
+        </div>
+    </div><br/>
+    <div class="slds-grid slds-gutters"> 
+        <div class="slds-col">
+            <lightning:input name="Title"
+                             label="Title"
+                             value="{!v.Title}"/>
+            <lightning:select aura:id ="ContactSalutation"
+                              name="Salutation" 
+                              label="Salutation"
+                              Value="{!v.Salutation}">
+                <option text="--None--" value=""/>
+                <aura:iteration items="{!v.SalutationList}" var="salu">
+                    <option text="{!salu}"></option>
+                </aura:iteration>
+            </lightning:select>
+            <lightning:input name = "FirstName"
+                             label="First Name"
+                             value="{!v.FirstName}"
+                             required="true"/> 
+            
+            <lightning:input Name="LastName"
+                             label="Last Name"
+                             value="{!v.LastName}"
+                             required="true"/>
+            
+        </div>
+        <div class="slds-col">
+            
+            <lightning:input Name="Email"
+                             type="email" 
+                             label="Email" 
+                             value="{!v.Email}"
+                             required="true"/>  
+            <lightning:input Name="Phone"
+                             label="Phone"
+                             value="{!v.Phone}"/>
+            <lightning:input Name="Mobile"
+                             label="Mobile"
+                             value="{!v.Mobile}"/>
+            <lightning:select aura:id = "ContactLanguage" Name="Language" 
+                              label="Language"
+                              Value="{!v.Language}">
+                <option text="--None--" value=""/>
+                <aura:iteration items="{!v.LanguageList}" var="lang">
+                    <option text="{!lang}"></option>
+                </aura:iteration>
+            </lightning:select>
+            
+        </div>
+        <br/>
+    </div>
+    <br/>
+    <div class="divHeader">
+        
+        <div class="slds-media slds-media_center slds-media_small">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="standard:address" size="small"/>
+            </div>
+            <div class="slds-media__body" style="text-align:left;">
+                <h1 ><b>&nbsp;Address Information</b></h1>   
+            </div>
+        </div>
+        
+        
+    </div><br/>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2"> 
+            <span>
+                <lightning:select name="countries" label="Country" required="false" value="{!v.billingCountry}" onchange="{!c.handleCountryChange}">
+                    <option text="--None--" value=""/>
+                    <aura:iteration items="{!v.billingCountryOptions}" var="con">
+                        <option text="{!con}"></option>
+                    </aura:iteration>
+                </lightning:select>
+                <lightning:select name="states" label="State" required="false" value="{!v.billingState}" disabled="{!v.statePickEnable}">
+                    <option text="--None--" value=""/>
+                    <aura:iteration items="{!v.billingStateOptions}" var="st">
+                        <option text="{!st}"></option>
+                    </aura:iteration>  
+                </lightning:select>
+                
+                <lightning:input Name="Fax"
+                                 label="Fax"
+                                 value="{!v.Fax}"/>
+                
+            </span>
+        </div> 
+        
+        <div class="slds-col slds-size_1-of-2">
+            
+            
+            <span>
+                <lightning:input name="city" label="City" value="{!v.BillingCity}" required="False"/>
+                <lightning:input name="address" label="Address" value="{!v.BillingStreet}"  required="False"/>
+                
+                <lightning:input name="postalcode" label="Postal Code" value="{!v.BillingZip}" required="False"/>
+            </span>
+        </div>   
+        
+    </div>
+    <!-- </div>-->
+    <br/><br/>
+    
+    <!-- Loading spinner end-->
+    <div class="slds-align_absolute-center">
+        <lightning:button label="Create Contact" variant="brand" onclick="{!c.SaveContact}" aura:id="disablebuttonid" disabled="False"/>       
+    </div>
+    
+</aura:component>

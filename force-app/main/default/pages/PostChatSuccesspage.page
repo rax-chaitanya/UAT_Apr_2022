@@ -1,0 +1,25 @@
+<apex:page standardStylesheets="false" showHeader="false">
+   <body >
+                    
+                 
+            <table cellspacing="0" cellpadding="8" width="100%" class="window_header" style="background: #000000;  font-color: #FFFFFF;  border-bottom: 10px solid #C40022;">
+    <tbody><tr>
+        <td valign="bottom" align="left">
+<table cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr><td>
+        <apex:image value="{!$Resource.LiveAgentRackspaceNo1Logo}" width="154" height="43"/>
+
+  <!--  <img width="154" height="43" border="0" alt="" src="/resource/1498044322000/LiveAgentRackspaceNo1Logo" /> -->
+    </td></tr>
+</tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+        
+            <!-- Header Include End -->
+    <div align="center">    
+  <b>Thank you for submitting the survey. </b>
+  </div>
+  </body>
+</apex:page>

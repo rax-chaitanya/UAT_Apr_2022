@@ -1,0 +1,33 @@
+<aura:component >
+    <aura:attribute name="company" type="Object" default="{}"/>
+    <aura:attribute name="recalculateCheckbox" type="Boolean" default="false"/>
+    <aura:attribute name="columnsTodisplay" type="String[]" default=""/>
+    <aura:attribute name="ReasonOptions" type="String[]" default=""/>
+    <aura:attribute name="today" type="String" default="2000-01-01"/>
+    
+    <aura:handler name="change" value="{!v.recalculateCheckbox}" action="{!c.recalculateCheckbox}"/>
+    
+    <lightning:card class="company-card">
+        <aura:set attribute="title">
+            <span class="company-header">
+                <lightning:input class="company-checkbox" type="checkbox" label=" " checked="{!v.company.selected}" onchange="{!c.onCompanySelectUnselect}"/>
+                <span class="slds-form-element__label slds-text-heading_medium text company-header-colour"><lightning:icon iconName="action:new_account" size="small" class="slds-iconclass"/>&nbsp;&nbsp;&nbsp;<b>{!v.company.Company_info.Name}</b></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>
+                    <span class="company-header-colour">
+                        <ui:outputText value="Company Owner" class="slds-form-element__label company-header-colour slds-text-title_caps slds-border_bottom" />: <ui:outputText value="{!v.company.Company_info.Owner.Name}" class="slds-text-heading_small company-header-colour"/>
+                    </span>
+                    &nbsp;
+                    <span class="slds-text-body_small weak">
+                        {!v.company.Company_info.Owner.UserRole.Name}&nbsp;{!v.company.Company_info.Owner.IsActive ? '(Active)' : '(Inactive)'}
+                    </span>
+                </b>
+            </span>
+        </aura:set>
+        
+        <!--  <aura:set attribute="body">-->
+        <aura:iteration items="{!v.company.Account_Info}" var="account">
+            <c:GAR_Account_Card account="{!account}" recalculateCheckbox="{!v.recalculateCheckbox}" ReasonOptions="{!v.ReasonOptions}" today="{!v.today}" />
+        </aura:iteration>
+    </lightning:card>
+</aura:component>

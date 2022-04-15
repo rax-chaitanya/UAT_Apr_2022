@@ -1,0 +1,174 @@
+<!--
+* File :  QueueCreatePage.page
+* Description : VF Page to create new Queue. 
+* Created Date : 22/Jun/2017 
+* Author : RDC
+-->
+
+<apex:page controller="QueueCreateController" action="{!Supportedobjects}" showHeader="false"  standardStylesheets="true">
+    <apex:pageblock title="Queue Edit" id="PageBlock">
+             <apex:form id="myForm" style="height:1500px;">
+
+            <apex:pageMessages />
+            <apex:pageBlockSection title="Queue Name and Email Address" columns="1" >
+                <apex:outputpanel >
+                    <table>
+                     
+                        <tr>
+                            <td>
+                            Label
+                            </td>
+                            <td>
+                            <apex:inputText value="{!QueName}" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            Queue Email
+                            </td>
+                            <td>
+                            <apex:inputText value="{!QueEmail}" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            Send Email to Members
+                            </td>
+                            <td>
+                            <apex:inputCheckbox value="{!sendEmailToMembers}" />
+                            </td>
+                        </tr>
+                    
+                    </table>
+                </apex:outputpanel>
+            </apex:pageBlockSection>
+            <!--
+            <apex:pageBlocksection title="Configuration with Omni-Channel Routing" columns="1">
+                <apex:outputpanel >
+                    <table class="layout" >
+                        <tr>
+                            <td>Routing Configuration</td>   
+                            <td>
+                            <apex:inputField id="config" value="{!queueLookUp.QueueRoutingConfigId}" />
+                            </td>
+                        </tr>
+                 </table>
+            </apex:outputpanel>
+    </apex:pageBlocksection>
+        -->
+            <apex:pageBlocksection title="Supported Objects" columns="1">
+               <apex:pageblocksectionitem >
+                    <apex:outputpanel >
+                      <table>
+                      <tr>
+                            <p>Select the objects you want to assign to this queue. Individual records for those objects can then be owned by this queue.</p>
+                     </tr>   
+                      
+                           
+                              <tr>
+                              <td class="selectCell" >
+                                  <div>
+                                      <apex:outputPanel layout="block" styleClass="selectTitle" style="text-align:center">
+                                      <b><apex:outputLabel value="Available Objects" for="multiselectPanel:center" /></b>
+                                      </apex:outputPanel>
+                                  </div>
+                                  
+                                      <apex:selectList id="availableObjectBlock" value="{!selectedSObjects}" multiselect="true" size="6" style="width: 180px;">
+                                      <apex:selectOptions value="{!AvailableSupportedObjects}"/>
+                                      </apex:selectList>
+                              </td>
+                                  <td class="buttonCell"> <br/><br/>
+                                        <apex:outputPanel layout="block" styleClass="text">Add</apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                        <apex:commandLink action="{!addSupportedObjects}" rerender="availableObjectBlock, selectedObjectBlock" id="btnRight_pc"> 
+                                        <apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon" title="Add" />
+                                        </apex:commandLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                        <apex:commandLink action="{!removeSupportedObjects}" rerender="availableObjectBlock, selectedObjectBlock" id="btnLeft_pc">
+                                        <apex:image value="/s.gif" alt="Remove" styleClass="leftArrowIcon" title="Remove" />
+                                        </apex:commandLink>
+                                        <apex:outputPanel layout="block" styleClass="duelingText">Remove</apex:outputPanel>
+                                        </apex:outputPanel>
+                              </td>
+                              <td class="selectCell">
+                                        <apex:outputPanel layout="block" styleClass="selectTitle" style="text-align:center">
+                                        <b> <apex:outputLabel value="Selected Objects" for="multiselectPanel:rightList" /></b>
+                                        </apex:outputPanel>
+                                        <apex:selectList id="selectedObjectBlock" value="{!removeSObjects}" multiselect="true" size="6" style="width: 200px;">
+                                        <apex:selectOptions value="{!SelectedSupportedObjects}"/>
+                                        </apex:selectList>
+                              </td>
+                        </tr>
+                        </table> 
+             </apex:outputpanel>
+        </apex:pageblocksectionItem> 
+   </apex:pageBlocksection>
+  
+   <apex:pageBlocksection title="Queue Members" columns="1">
+               <apex:pageblocksectionitem >
+                   <apex:outputpanel >
+                   
+                      <table>
+                      <tr>
+                        <apex:outputPanel layout="block" >
+                                    <apex:outPutLabel value="Search for Team Member : "/>
+                                    <apex:inputText value="{!whereClause}" style=" margin: 10px;"/>
+                                    <apex:commandButton action="{!filterAvailableOptions}" value="Search" rerender="availableUserBlock" status="loadingStatus"/>
+                                </apex:outputPanel>
+                               
+                      </tr>
+                      <tr>
+                            <p>Select the Users you want to assign to this queue.</p>
+                     </tr>   
+                      
+                           
+                              <tr>
+                              <td class="selectCell" >
+                                  <div>
+                                      <apex:outputPanel layout="block" styleClass="selectTitle" style="text-align:center">
+                                      <b><apex:outputLabel value="Available Users" for="multiselectPanel:center" /></b>
+                                      </apex:outputPanel>
+                                  </div>
+                                  
+                                      <apex:selectList id="availableUserBlock" value="{!selectedUsr}" multiselect="true" size="6" style="width: 180px;">
+                                      <apex:selectOptions value="{!AvailableUsers}"/>
+                                      </apex:selectList>
+                              </td>
+                                  <td class="buttonCell"> <br/><br/>
+                                        <apex:outputPanel layout="block" styleClass="text">Add</apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                        <apex:commandLink action="{!addUsers}" rerender="availableUserBlock, selectedUserBlock" id="btnRight_p"> 
+                                        <apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon" title="Add" />
+                                        </apex:commandLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                        <apex:commandLink action="{!removeUsers}" rerender="availableUserBlock, selectedUserBlock" id="btnLeft_p">
+                                        <apex:image value="/s.gif" alt="Remove" styleClass="leftArrowIcon" title="Remove" />
+                                        </apex:commandLink>
+                                        <apex:outputPanel layout="block" styleClass="duelingText">Remove</apex:outputPanel>
+                                        </apex:outputPanel>
+                              </td>
+                              <td class="selectCell">
+                                        <apex:outputPanel layout="block" styleClass="selectTitle" style="text-align:center">
+                                        <b> <apex:outputLabel value="Selected Users" for="multiselectPanel:rightList" /></b>
+                                        </apex:outputPanel>
+                                        <apex:selectList id="selectedUserBlock" value="{!removeusers}" multiselect="true" size="6" style="width: 200px;">
+                                        <apex:selectOptions value="{!SelectedUsersList}"/>
+                                        </apex:selectList>
+                              </td>
+                        </tr>
+                        </table> 
+             </apex:outputpanel>
+        </apex:pageblocksectionItem> 
+   </apex:pageBlocksection>
+   
+            <div align="center">
+            <apex:commandButton value="Save" action="{!save}" style="width:10%;"/> 
+            <apex:commandButton value="Cancel" action="{!cancel}" style="width:10%;"/> 
+           </div>
+    </apex:form>
+        
+ </apex:pageblock>
+         
+</apex:page>

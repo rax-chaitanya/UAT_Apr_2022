@@ -1,0 +1,73 @@
+    
+    .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family:Times New Roman;
+    margin: 4px 2px;
+}
+
+.buttonsubmit {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.buttonsubmit:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.buttoncancel {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.buttoncancel:hover {
+    background-color: #f44336;
+    color: white;
+}
+.controlshadow {
+    background-color: white;
+    color: black;
+    border: 0px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.pad {
+
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-weight: normal;
+    font-family:Arial;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2F4F4F;
+    
+    
+}
+.headtext
+{
+  width:100%;
+  text-align:center;
+  font-family:Franklin Gothic Medium;
+  //color: blue;
+  color:#34495e;
+  text-shadow: 2px 2px 8px #808080;
+  font-size: 17px;
+  font-weight: bold;
+}
+

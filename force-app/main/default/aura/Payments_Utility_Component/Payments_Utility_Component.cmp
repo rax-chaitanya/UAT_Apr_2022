@@ -1,0 +1,82 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <div style="margin-left:10px;font-size:100%;">
+        <p><b>Important: </b>In order to ensure timely payment of commissions you must submit the</p>
+        <p>following payment forms:</p><br/>
+    </div>
+    <table class=" slds-table slds-table_cell-buffer " style="width:300px;height:100px; border: .5px solid #eff0f2;margin-left:40px">
+        <thead>
+            <tr class="slds-text-body_regular">
+                <th scope="col" style=" border: .5px solid #eff0f2; background-color: #af0808;padding:20px" >
+                    <div class="slds-truncate" title="regions" style="text-align:Center;font-weight:500;color:white;font-size:100%;">Regions</div>
+                </th>
+                <th scope="col" style=" border: .5px solid #eff0f2; background-color: #af0808;padding:20px;"  >
+                    <div class="slds-truncate" title="w8" style="text-align:left;font-weight:500;color: white;font-size:100%; ">W8
+                    </div>
+                </th>
+                <th scope="col" style=" border: .5px solid #eff0f2; background-color: #af0808;padding:20px" >
+                    <div class="slds-truncate" title="w9" style="text-align:left;font-weight:500;color: white;font-size:100%;">W9</div>
+                </th>
+                <th scope="col" style=" border: .5px solid #eff0f2; background-color: #af0808;padding:20px" >
+                    <div class="slds-truncate" title="ach" style="text-align:left;font-weight:500;color: white;font-size:100%;">ACH</div>
+                </th>
+                <th scope="col" style=" border: .5px solid #eff0f2; background-color: #af0808;padding:20px" >
+                    <div class="slds-truncate" title="supplier" style="text-align:left;font-weight:500;color: white;font-size:100%;">Supplier</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="US"  style="border: 1px solid #dddddd;background-color: #af0808;" >
+                    <div class="slds-truncate" style="text-align:left;font-weight:500;padding:15px;font-size: 100%;color: white;">US</div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;color: #b9cae5;"  >
+                    <div class="slds-truncate" style="text-align:Center; padding:15px;font-size: 100%;"></div>
+                </td>
+                <td data-label="x" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:Center;padding:15px;font-size: 100%;">x</div>
+                </td>
+                <td data-label="x" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:Center;padding:15px;font-size: 100%;">x</div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:Center;padding:15px;font-size: 100%;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td data-label=""  style="border: 1px solid #dddddd;background-color: #af0808;" >
+                    <div class="slds-truncate" style="text-align:left;font-weight:500;padding:15px;font-size: 100%;color: white;">EMEA/APAC/ANZ</div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;"  >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;"></div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;"></div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;"></div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;">x</div>
+                </td>
+            </tr>
+            <tr>
+                <td data-label=""  style="border: 1px solid #dddddd;background-color: #af0808;" >
+                    <div class="slds-truncate" style="text-align:left;font-weight:500;padding:15px;font-size: 100%;color: white;"><p>Americas</p><p>(CANADA,LATAM)</p></div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;"  >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;">x</div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;"></div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;">x</div>
+                </td>
+                <td data-label="" style="border: 1px solid #dddddd;" >
+                    <div class="slds-truncate" style="text-align:center;font-size: 100%;padding:15px;"></div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table><br/>
+</aura:component>

@@ -1,0 +1,37 @@
+.THIS slds-file slds-file_card{
+ 
+-webkit-box-shadow: -1px 8px 15px 5px rgba(0,0,0,0.61); 
+box-shadow: -1px 8px 15px 5px rgba(0,0,0,0.61);
+
+} 
+.THIS .box
+{
+    border: 1px solid #f7f8f9; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.THIS .divCss
+{
+    color: #666;
+    font-family: FiraSans-regular;
+    font-size: 1.25em;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 20px 0 10px;
+    position: relative;
+    left: 10px;
+    width: 90%;
+    
+} 
+
+.THIS .slds-badge {
+    background-color: antiquewhite !important;
+}
+
+
+.THIS .slds-size_1-of-2 {
+    width: 100% !important;
+}
+.THIS .Overflow
+{
+  overflow: hidden;
+}

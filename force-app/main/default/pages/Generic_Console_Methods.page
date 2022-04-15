@@ -1,0 +1,99 @@
+<apex:page >
+
+<script type="text/javascript">
+    var __sfdcSessionId = '{!GETSESSIONID()}';
+</script>
+
+<script src="/support/console/40.0/integration.js"></script>
+<script src="/soap/ajax/40.0/connection.js"></script>
+
+<script type="text/javascript">
+        
+    console.log('Quikr permission'+ "{!$Permission.Access_Quikr_Page}");
+    console.log('Rep Chat Survey permission'+ "{!$Permission.Access_Rep_Chat_Survey}");
+    
+    sforce.console.addEventListener(sforce.console.ConsoleEvent.PRESENCE.WORK_ACCEPTED, function (result) {
+        var QuikrPerm = "{!$Permission.Access_Quikr_Page}";
+        console.log('Quikr permission'+ QuikrPerm);
+        if(QuikrPerm == "true") {
+            console.log('Work Items Info: ' + JSON.stringify(result));
+            var chatKey = result.workItemId;
+            console.log('Work item ID'+ result.workItemId);
+            
+            var liveTranscript = result.workItemId;
+            var result = sforce.connection.query("SELECT Id,ChatKey FROM LiveChatTranscript WHERE Id ='" + liveTranscript + "'");
+            
+            var chatRecords = result.getArray("records");
+            if (chatRecords.length != 1) throw "unable to find Chat";
+            var chatKey = chatRecords[0].ChatKey;
+            
+            setTimeout(function(){ sforce.console.chat.getDetailsByChatKey(chatKey, getChatDetails); }, 1000);
+        }
+    });
+    
+    function getChatDetails(result) {
+        //Report whether accepting the chat was succesful
+        if (result.success == true) {
+            var chatPrimarytId = result.primaryTabId;
+            console.log('Primary Tab ID of this chat is: ' + chatPrimarytId);
+            sforce.console.openSubtab(chatPrimarytId,'/apex/QuikrApplicationPage',false,'Quikr',null,null,'QuikrApp');
+        } else {
+            console.log('Getting the details was not successful');
+        }
+    };
+  
+</script>
+
+<script type="text/javascript">
+
+    var eventHandler = function (result) {
+    var SurveyPerm = "{!$Permission.Access_Rep_Chat_Survey}";
+    console.log('Surveypermission'+ SurveyPerm);
+        if(SurveyPerm == "true") {      
+          if(result.success){
+            var ck=result.chatKey;
+            sforce.console.chat.getDetailsByChatKey(ck, getDetailsSuccess);
+          }
+        }    
+    }
+    
+    sforce.console.chat.onChatEnded(eventHandler);
+
+    function getDetailsSuccess(result) {
+        
+        if (result.success == true)
+            ipAddress = result.details.ipAddress;
+            
+            tabId = result.primaryTabId;
+            
+            // setting false on opensubtab parameters opens the sub tab without highlighting the primary tab
+            sforce.console.openSubtab(tabId , '/apex/RepPostChatSurvey', false, 
+                'Survey Post Chat', null, null, 'salesforceSubtab');
+                //  if(tabId.charAt(tabId.length-1)%2==0)
+                col='background-color: lightblue;'
+                //  else
+                //  col='background:green;'    
+                //  sforce.console.setTabStyle(col, tabId);
+            var titleMsg='Chat Ended - '+ipAddress;
+            sforce.console.setTabTitle(titleMsg, tabId);
+            sforce.console.setTabTextStyle('color:blue;font-style:italic;font-weight: bold;', tabId);
+            sforce.console.getSubtabIds(tabId , showTabId);
+            
+    };
+    var showTabId = function showTabId(result) {
+    //Display the subtab IDs and display the recent most opened sub tab and focus the subtab
+    str = result.ids;
+    str=str.toString();
+    
+    var splitSubtabIds = str.split(','); 
+    subtabId=splitSubtabIds[splitSubtabIds.length-1];
+    // sforce.console.focusSubtabById(subtabId); 
+    sforce.console.disableTabClose(true, subtabId);
+    sforce.console.setTabStyle('background-color: lightblue;', subtabId);
+    sforce.console.setTabTitle('Survey', subtabId);
+    
+    };  
+
+</script>
+
+</apex:page>

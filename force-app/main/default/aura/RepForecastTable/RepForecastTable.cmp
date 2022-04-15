@@ -1,0 +1,120 @@
+<aura:component controller="RepForecastController" implements="force:appHostable">
+    <!-- Attributes -->
+    <aura:attribute name="rec_id" type="String"/>
+    <aura:attribute name="forecasted_dates" type="Date[]"/>
+    <aura:attribute name="accounts" type="List"/>
+    <aura:attribute name="forecasts" type="List"/>
+    <aura:attribute name="selected" type="Boolean" default="false"/>
+    <aura:attribute name="rev_forecast_map" type="Map"/>
+    
+    <!-- Handlers --> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler event="aura:waiting" action="{!c.hideSpinner}"/> 
+    <aura:handler event="aura:doneWaiting" action="{!c.showSpinner}" />     
+        
+    
+     <!-- <lightning:spinner aura:id="mySpinner" size="large" /> -->
+    
+    <div class="slds-page-header slds-page-header--object-home">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <div class="slds-media slds-no-space slds-grow">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container">
+                            <lightning:icon iconName="standard:account" size="medium" alternativeText="Indicates approval"/>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <p class="slds-text-title--caps slds-line-height--reset">Accounts</p>
+                        <h1 class="slds-page-header__title slds-p-right--x-small">
+                            <button class="slds-button slds-button--reset slds-type-focus slds-truncate" aria-haspopup="true" title="this should match My Leads">
+                                <span class="slds-grid slds-has-flexi-truncate slds-grid--vertical-align-center">
+                                    <span class="slds-truncate">My Non-Dedicated Accounts Forecast</span>
+                                    <lightning:icon iconName="utility:down" size="x-small" alternativeText="Indicates approval"/>
+                                </span>
+                            </button>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="slds-col slds-grid slds-align-top slds-p-bottom--xx-small">
+                <div class="slds-button-group" role="group">                    
+                    <div class="slds-button--last">
+                        <button class="slds-button" aria-haspopup="true" title="More Actions">
+                            <lightning:spinner aura:id="mySpinner" size="medium" /> 
+                        </button>
+                    </div>
+                </div>
+            </div>  
+            
+            
+            
+            <div class="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small">
+                <button class="slds-button slds-button--neutral" aura:id="edit-all" onclick="{!c.edit}" >Edit All</button>
+                
+                <div class="slds-button-group" role="group">
+                    <button class="slds-button slds-button--neutral slds-hide" aura:id="save-all" onclick="{!c.save}" >Save All</button>
+                    <button class="slds-button slds-button--neutral slds-hide" aura:id="cancel-all" onclick="{!c.cancel}" >Cancel</button>
+                    
+                </div>
+            </div>       
+        </div>
+    </div>
+        
+    <div class="slds-table--edit_container slds-is-relative">
+        <table class="slds-table slds-table--edit slds-table--bordered" role="grid">
+            
+            <thead>
+                <tr class="slds-line-height--reset">
+                    <!--
+                    <th scope="col" style="width:3.75rem;">
+                        <div class="slds-th__action">
+                            <span class="slds-assistive-text">Errors</span>
+                        </div>
+                    </th>
+-->
+                    <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                            <span class="slds-truncate" title="Account Name">Action</span>
+                        </a>
+                    </th>
+                    
+                    <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                            <span class="slds-truncate" title="Account Name">Account Name</span>
+                        </a>
+                    </th>
+                    
+                    <th  class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                            <span class="slds-truncate" title="Account Name">Account Type</span>
+                        </a>
+                    </th>
+                    
+                    <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                            <span class="slds-truncate" title="Account Name">Account Number</span>
+                        </a>
+                    </th>
+                    
+                    <aura:iteration items="{!v.forecasted_dates}" var="date">
+                        <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                            <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                <span class="slds-truncate" title="Account Name"><ui:outputDate value="{!date}" format="MMM 'yy"/></span>
+                            </a>
+                        </th>
+                    </aura:iteration>                         
+                </tr>            
+            </thead>
+            
+            <tbody>    
+                <aura:iteration items="{!v.accounts}" var="acc">
+                    <c:RepForecastAccountRow aura:id="row" account="{!acc}" forecasted_dates="{!v.forecasted_dates}" />
+                </aura:iteration>            
+            </tbody>
+        </table>
+    </div>
+</aura:component>

@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Fired when a successful AccountsInvoiceSummary/Detail is completed">
+    <aura:attribute name="record" type="Object" description="The first index of the payload array"/>
+</aura:event>

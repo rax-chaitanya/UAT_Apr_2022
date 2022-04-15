@@ -1,0 +1,46 @@
+.THIS p{
+    font-size:16px;
+}
+.table1.THIS{
+    width:40px;
+    
+}
+.p1.THIS{
+    font-size:12px;
+    
+}
+.THIS th{
+    border: ".5px solid black"; 
+    background-color: "#f2f2f2";
+}
+.THIS .headers {
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    margin: 5px 0;
+}
+.THIS .list{
+    padding: 0px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-size:medium;
+    line-height: 1.9
+    
+}
+.THIS #CompensationHeader{
+     color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 2.25em;
+    text-align: left;
+    margin-left:5px;
+     
+}
+.THIS #displayValue
+{
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-size: 1.25em;
+}

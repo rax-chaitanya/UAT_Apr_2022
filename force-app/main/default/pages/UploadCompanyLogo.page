@@ -1,0 +1,68 @@
+<apex:page standardController="Account" extensions="CompanyLogoControllerExt" showHeader="false" sidebar="false" standardStylesheets="false"> 
+<script type="text/JavaScript">
+          
+        function closePOPup(){
+              window.top.location = '/{!$CurrentPage.parameters.id}';
+        }
+    </script>
+
+    <apex:stylesheet value="{!URLFOR($Resource.UploadLogoCSS, 'UploadLogo/styles.css')}"/>  
+
+
+    
+  <apex:form >
+
+ <!-- <apex:pageBlock title="Upload Logo" id="pageBlock">
+  <apex:outputText value="{!success}" escape="false"></apex:outputText>
+   <apex:pageMessages id="messages" />-->
+   
+       <p class="headtext">Upload Company Logo</p>
+      <hr></hr>
+      
+       <apex:pageBlock id="NewLogo" mode="maindetail">
+       <apex:outputText value="{!success}" escape="false"></apex:outputText>
+       
+       <apex:outputText value="{!errormsg}" rendered="{!len(errormsg)!=0}" style="color:red;"></apex:outputText>
+       <br></br>
+       <br></br>
+       <!--<div Class="ErrorBlock">
+       <apex:pageMessages id="messages" />rendered="{!if(len(selectedItem)==0)}"
+       </div>-->
+
+      <apex:pageBlockButtons location="bottom">
+        <div style="width:100%;margin-left:77%;">
+         
+       <apex:commandButton action="{!upload}" value="Upload Logo" styleClass="button buttonsubmit" />
+      <apex:commandButton value="Cancel" onClick="closePOPup();" immediate="true" styleClass="button buttoncancel" />
+      
+   </div>
+      </apex:pageBlockButtons>
+       
+      <apex:pageBlockSection columns="1" id="block1">
+
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Company Logo Name :" for="fileName" styleClass="pad"/>
+          <apex:outputText value="LogoInline" id="fileName" styleClass="pad"/>
+        </apex:pageBlockSectionItem>
+        <br></br>
+        <apex:pageBlockSectionItem rendered="{!OldLogo!=null}">
+          <apex:outputLabel value="Existing Logo :" for="ImgName" styleClass="pad"/>
+          <apex:image id="ImgName" value="{!URLFOR($Action.Attachment.Download, OldLogo)}" width="100" height="100" styleClass="pad"/>
+        </apex:pageBlockSectionItem>
+
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Upload Logo :" for="file" styleClass="pad"/>
+          <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="file" contentType="{!attachment.ContentType}" styleClass="pad controlshadow"/>
+        </apex:pageBlockSectionItem>
+        <br></br>
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Description :" for="description" styleClass="pad"/>
+          <apex:inputTextarea value="{!attachment.description}" id="description" styleClass="pad controlshadow"/>
+        </apex:pageBlockSectionItem>
+         <br></br>
+      </apex:pageBlockSection>
+
+    </apex:pageBlock>
+    <!--</apex:pageBlock>-->
+  </apex:form>
+</apex:page>

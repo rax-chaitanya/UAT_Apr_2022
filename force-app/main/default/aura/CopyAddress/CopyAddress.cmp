@@ -1,0 +1,12 @@
+<aura:component controller="UpdateBillingAddress" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" >
+     <aura:attribute name="Company" type="Account"/>
+     <aura:attribute name="recordId" type="String"/>
+ 
+
+   <!-- <lightning:button label="Update" onclick="{!c.addressupdate}"/>!--> 
+  <!--  <p style="font-size:14pt;background:dcdcdc">To copy PrimarAddress in to BillingAddress  <lightning:button variant="brand" label="Click Here" onclick="{!c.addressupdate}"/></p>-->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.addressupdate}"/>
+     <!--  <lightning:button label="Cancel" onclick="{!c.cancel}"/> -->
+        
+</aura:component>

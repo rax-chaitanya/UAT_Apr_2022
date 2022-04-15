@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="folderitem" type="String" />
+    <aura:attribute name="menu" type="String"/>
+     
+   <div class="slds-size--1-of-1 slds-medium-size--1-of-3 slds-large-size--1-of-4" >
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small" style="border:0px;">
+            <div style="border: 1px solid #f7f8f9; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div style="{!'position: relative;height: 10rem;'}">
+            	<img src="{!'/partners/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;versionId='+ v.folderitem.folderIconId }" style="height: 10rem;"/>
+                <!--<span style="top: 35%;left: 7%;position: absolute;color: white;font-size: 150%;font-weight: bold;">{!v.folderitem.title}</span>-->
+            </div>            
+            <div class="divCss">
+                    <div class="slds-size_1-of-2">
+                        <p class="slds-truncate" title="{!v.folderitem.title}">  {!v.folderitem.title}</p>
+                    </div>    
+                </div>
+            <div style="border-top: solid rgba(196,0,34,0.175) 0.5px;height: 1px;margin-bottom: 10px;width: 100%;"></div>
+            
+                <div style="margin-bottom:10px;text-align:left;">&nbsp;&nbsp;
+                    
+           <div class="slds-media slds-media_center">
+               
+           <div class="slds-media__body" style="text-align:left;">
+               <a class="slds-badge" style="color:#C40022;cursor: pointer;font-weight: bold;" data-val="{!v.folderitem.folderId }" onclick = "{!c.GoTofolder}" >View Folder</a>
+               </div>
+               <div class="slds-media__figure" style="text-align:right;">
+              <lightning:icon iconName="doctype:folder" size="medium"/>
+             </div>
+          </div>               
+
+                </div>
+          </div>
+            </div> 
+        </div>  
+              
+</aura:component>

@@ -1,0 +1,50 @@
+<aura:component controller="CompensationInfoController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="PartnerLevel" type="string"/>
+    <div class="slds-m-top--xx-large" >
+        <div class="slds-align--absolute-left"> 
+            <div class="headers" id="CompensationHeader">
+                Compensation 
+            </div>
+        </div>
+    </div>	
+    <div class="slds-align--absolute-left">
+        <br/>
+        <p>
+            Your Partner Type:&nbsp;&nbsp;<b> <aura:text value="{!v.PartnerLevel}" /> </b>
+            <br/><br/>
+            Partners are eligible for compensation once the opportunity is close won into a Rackspace customer. 
+            <br/>
+        </p>
+    </div>
+    <br/>
+    <!--Rewarding Your Commitment Starts -->
+    <aura:if  isTrue="{!or(v.PartnerLevel == 'Referral',v.PartnerLevel == 'ReferralEMEA')}">
+        <c:ReferalCompensation></c:ReferalCompensation>
+    </aura:if>
+    <!--Rewarding Your Commitment Ends  -->
+    
+    <!--Reseller Discounts Starts -->
+    <aura:if isTrue="{!or(v.PartnerLevel  == 'Reseller',v.PartnerLevel  == 'ResellerEMEA')}">  
+        <c:ResellerCompensation></c:ResellerCompensation>
+    </aura:if>
+    <!--Reseller Discounts Ends-->
+    
+     <!--Rewarding Your Commitment & Reseller Discounts Starts  -->
+    <aura:if isTrue="{!or(v.PartnerLevel  == 'Referral/Reseller',v.PartnerLevel  == 'ResellerReferralEMEA')}">
+        <c:ReferalCompensation></c:ReferalCompensation>
+        <c:ResellerCompensation></c:ResellerCompensation>
+    </aura:if>
+    <!--Rewarding Your Commitment & Reseller Discounts Ends  -->
+    
+    <!--Rackspace Business Partnerships Starts -->
+    <aura:if isTrue="{!or(v.PartnerLevel  == 'Strategic',v.PartnerLevel  == 'StrategicEMEA')}">  
+       <c:StrategicMasteragent></c:StrategicMasteragent>
+    </aura:if>
+    
+    <aura:if isTrue="{!or(v.PartnerLevel  == 'Master Agent',v.PartnerLevel  == 'Master Agent EMEA')}">  
+       <c:StrategicMasteragent></c:StrategicMasteragent>
+    </aura:if>
+    <!--Rackspace Business Partnerships Ends-->
+    
+</aura:component>

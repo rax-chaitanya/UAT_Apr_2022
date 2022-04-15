@@ -1,0 +1,86 @@
+<aura:component controller="UpdateOPCController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="picklistValues" type="Object" />
+    <aura:attribute name="AccManager" type="String" />  
+    <aura:attribute type="OPC_Account_Survey__c" name="surveyList" default="[]"/>
+    <aura:attribute name="checkfriday" type="Boolean" default="false"/>
+    <aura:attribute name="noOPCSurveys" type="String" />
+    
+    <aura:handler name="reloadDoInIt" event="c:CMPRefreshEvent" action="{!c.doInit}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="ccontainer slds-m-left_small slds-m-right_small">
+        <lightning:layout class="slds-scope slds-wrap" multipleRows="true">
+            <lightning:layoutItem flexibility="auto" size="12">
+                <div class="slds-text-heading_medium"><lightning:icon iconName="standard:account" size="small" alternativeText="Add Contact"/>
+                    &nbsp;<span><b>OPC Survey List</b></span>
+                </div> 
+            </lightning:layoutItem> <br/>
+        
+            <aura:if isTrue="{!and(or(and(v.noOPCSurveys != null, v.noOPCSurveys != '')),not(v.checkfriday))}">
+                <lightning:layoutItem flexibility="auto" size="12"> <br/>
+                    <lightning:card>
+                        <div class="slds-text-heading_medium alignCSS">&nbsp;&nbsp;<b>{!v.noOPCSurveys}</b></div>
+                    </lightning:card>
+                </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.checkfriday}">
+                <lightning:layoutItem flexibility="auto" size="12"> <br/>
+                    <lightning:card>
+                        <div class="slds-text-heading_medium alignCSS"><b>These Surveys for this month are closed.  Please wait until next month to complete surveys.</b></div>
+                    </lightning:card>
+                </lightning:layoutItem>
+		    </aura:if>    
+            <aura:if isTrue="{!and(or(or(v.noOPCSurveys == null, v.noOPCSurveys == '')),not(v.checkfriday))}">                                
+                    <aura:iteration items="{!v.surveyList}" var="Survey">
+                        <lightning:layoutItem flexibility="auto" size="3" padding="around-small">
+                            <!--    <lightning:input class="account-checkbox" type="checkbox" label=" " checked="{!v.account.selected}"/>-->
+                            <strong class="slds-text-heading_small underline"> Survey Name: {!Survey.Name}</strong>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="custom-box" size="3"  padding="around-small"> 
+                            <span class="slds-col">
+                                <ui:outputText value="Account#" />: <ui:outputText value="{!Survey.Account_Number__c}"/>
+                            </span>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="custom-box" size="3"  padding="around-small">
+                            <ui:outputText value="Account Name" />: <ui:outputText value="{!Survey.Account_Name_value__c }"/> 
+                        </lightning:layoutItem>
+                        <lightning:layoutItem  class="custom-box" size="3"  padding="around-small">
+                            <span class="slds-col">
+                                <ui:outputText value="Survey Date" class="" />: <ui:outputDateTime value="{!Survey.Survey_Date__c }"/>
+                            </span>
+                        </lightning:layoutItem> <br/>
+                        <lightning:layoutItem flexibility="auto" size="12">
+                            <div class="slds-align_absolute-center">
+                                <ui:inputSelect label="Customer Pulse  "  value="{!Survey.Customer_s_Current_Pulse__c}"  >    
+                                    <option>None</option>
+                                    <aura:iteration items="{!v.picklistValues}" var="item" >
+                                        <option value="{!item.value}">
+                                            {!item}
+                                        </option> 
+                                    </aura:iteration>
+                                </ui:inputSelect>
+                            </div>                   
+                        </lightning:layoutItem> <br/>                                                    
+                        <lightning:layoutItem class="custom-box" size="2"  padding="around-small">
+                            <lightning:input type="String" name="input5" label="Monthly Recap" value="{!Survey.Monthly_Call_Recap__c}"/> 
+                        </lightning:layoutItem>
+                        <lightning:layoutItem  class="custom-box" size="2"  padding="around-small">
+                            <lightning:input type="Integer" name="input4" label="MRR Loss" value="{!Survey.MRR_Loss__c}"/>                                
+                        </lightning:layoutItem>
+                        <lightning:layoutItem  class="custom-box" size="2"  padding="around-small">                                        
+                            <lightning:input type="datetime" name="input2" label="Start Churn Date" value="{!Survey.Expected_START_Churn_Date__c }" />                                        
+                        </lightning:layoutItem>                   
+                        <lightning:layoutItem  class="custom-box" size="2"  padding="around-small">
+                            <lightning:input type="datetime" name="input3" label="Stop Churn Date" value="{!Survey.Expected_STOP_Churn_Date__c}"/>                                
+                        </lightning:layoutItem>                                    
+                        <lightning:layoutItem class="custom-box" size="2"  padding="around-small">                           
+                            <lightning:input type="datetime" name="input1" label="Survey Completed Date" value="{!Survey.Survey_Complete_Date__c }"/>                                                                                                  
+                        </lightning:layoutItem>
+                        <lightning:layoutItem class="custom-box" size="2"  padding="around-small">                                        
+                            <c:ProcessOPCSurvey surveyId = "{!Survey.Id}" surveyCompletedDate = "{!Survey.Survey_Complete_Date__c}" CustomersCurrentPulse="{!Survey.Customer_s_Current_Pulse__c}" startchurndate="{!Survey.Expected_START_Churn_Date__c}" stopchurndate="{!Survey.Expected_STOP_Churn_Date__c}" MonthlyRecap="{!Survey.Monthly_Call_Recap__c}" MRRLoss="{!Survey.MRR_Loss__c}"/>                                        
+                        </lightning:layoutItem>
+                    </aura:iteration>                            
+        </aura:if>             
+        </lightning:layout>
+    </div>
+</aura:component>

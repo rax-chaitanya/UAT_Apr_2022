@@ -1,0 +1,18 @@
+<aura:component controller="LeadAssignmentApexController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+<aura:attribute name="recId" type="String" description="Record which is being assigned"/>
+<aura:attribute name="queues" type="Queue__c[]" default=""/>
+<aura:attribute name="selectedValue" type="String" default=""/>
+<aura:attribute name="clickedOnce" type="Boolean" default="false"/>
+<aura:handler name="init" value="{!this}" action="{!c.loadQueues}"/>
+
+<lightning:select aura:id="queuesDropdown" name="select1" label="Select Queue: " value="{!v.selectedValue}" required="true" messageWhenValueMissing="Kindly select a queue ?">
+	<option value="">-- None --</option>
+	<aura:iteration items="{!v.queues}" var="q">
+		<option value="{!q.Id}">{!q.Name}</option>
+	</aura:iteration>
+</lightning:select>
+<br/>
+<lightning:button variant="success" label="Assign Lead" title="Assign Lead" onclick="{!c.assignLead}" disabled="{!v.clickedOnce}"/>
+	
+</aura:component>

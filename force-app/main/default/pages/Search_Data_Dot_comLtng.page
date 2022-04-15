@@ -1,0 +1,37 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+     <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+   
+    
+    function Validate()
+    {
+       var url = "/apex/DataDotComSearch?sfdc.tabName=01r3B000000CjXj&companyname={!Account.Name}&companyid={!Account.Id}"; 
+
+       var openSubtab = function openSubtab(result) { 
+        var primaryTabId = result.id; 
+       sforce.console.openSubtab(primaryTabId , url, true, 'Search Data.com'); 
+        }; 
+
+        if (sforce.console.isInConsole()) { 
+        sforce.console.getEnclosingPrimaryTabId(openSubtab); 
+        }else{ 
+            sforce.one.navigateToURL(url);
+            //window.open(url); 
+            //window.history.back();
+            }
+     }
+     window.onload = Validate;    
+    </script>
+    
+</apex:page>

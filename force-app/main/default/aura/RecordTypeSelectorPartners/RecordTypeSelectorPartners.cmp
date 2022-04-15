@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,force:lightningQuickAction,lightning:availableForFlowActions,lightning:availableForFlowScreens,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="caserecordTypeId" type="Id" access="global" />
+    <lightning:navigation aura:id="navService"/>
+    <aura:renderIf  isTrue="{!!v.isSelected}">
+        <div  class="slds-text-heading_large slds-align_absolute-center" style="font-weight:bold">
+            Please click the button below to raise a Case with Rackspace
+        </div>
+        
+        <div class="slds-grid slds-gutters slds-wrap slds-m-top_large">
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-4">
+                <a onclick="{!c.selectRecordType}" value="Partner Portal">
+                    <img id="01261000000MVYeAAO" src="{!$Resource.NewCaseIcon}" height ="150" width="150"></img>
+                </a>
+            </div>
+        </div> 
+    </aura:renderIf >
+    
+</aura:component>

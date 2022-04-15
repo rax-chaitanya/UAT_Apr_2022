@@ -1,0 +1,313 @@
+<!-- **
+* File :LiveAgentConfigEditPage.page
+* Description : Visualforce page for the User Configuration settings.
+* Created Date : 14/Aug/2017
+* Author : RDC
+* -->
+
+<apex:page controller="LiveAgentConfigEditController"  showHeader="false">
+    <apex:pageblock title="User Configuration Settings">
+    <apex:form >
+            <apex:pageBlockSection >
+               
+               <apex:outputLabel value="Select a Configuration: " style="font-weight:bold;" />
+               
+                <apex:selectList size="1" value="{!config}" style="font-size:12px;font-weight:bold; position: relative; right: 80%;">
+                    <apex:selectOptions value="{!configList}"></apex:selectOptions>
+                    <apex:actionSupport event="onchange" action="{!UpdateList}" rerender="fm"/>
+                </apex:selectList> 
+               
+            </apex:pageBlockSection>
+           
+            </apex:form>
+                    <apex:form id="fm" style="height:1000px;">
+
+            <apex:pageBlockSection title="Basic Information" columns="1" >
+            <apex:pagemessages ></apex:pagemessages>
+                    <apex:outputpanel >
+                        <table>
+                         <tbody>
+                            <tr>
+                                <td>
+                                    Live Agent Configuration Name
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!liveAgentConfigurationName}"/> 
+                                </td>
+                            </tr>
+                            
+                          
+                          
+                            <tr>
+                                <td>
+                                    Sneak Peek Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!sneakPeekEnabled}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Request Sound Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!requestSoundEnabled}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Disconnect Sound Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!disconnectSoundEnabled}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Notifications Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!notificationsEnabled}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Custom Agent Name</td>
+                                <td>
+                                    <apex:inputText value="{!customAgentName}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Auto Greeting
+                                </td>
+                                <td>
+                                    <apex:inputTextarea style="width:590px;height:50px;"  value="{!autoGreeting}" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Auto Away on Decline
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!autoAwayOnDecline}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Auto Away on Push Time-Out
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!autoAwayOnPushTimeOut}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Critical Wait Alert Time (seconds)
+                                </td>
+                                <td>
+                                    <apex:inputText value="{!criticalWaitAlertTime }"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Agent File Transfer Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!agentFileTransferEnabled}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Visitor Blocking Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!visitorBlockingEnabled}"/>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Assistance Flag Enabled
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!assistanceFlagEnabled }"/>
+                                </td>
+                            </tr>
+                          </tbody>  
+                        </table>
+                    </apex:outputpanel>
+                    
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlocksection title="Supervisor Settings" columns="1">
+                    <apex:outputpanel >
+                        <table >
+                            <tbody>
+                            
+                            <tr>
+                                <td>
+                                    Chat Monitoring Enabled
+                                </td>
+                                <td>
+                            <apex:inputCheckbox value="{!chatMonitoringEnabled}">
+                                <apex:actionSupport event="onchange" reRender="whisper,sneak" action="{!chatMonitoring}"/>
+                            </apex:inputCheckbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Whisper Messages Enabled
+                                </td>
+                                <td>
+                            <apex:inputCheckbox value="{!whisperMessagesEnabled}" id="whisper" disabled="{!monitor}"/> 
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Agent Sneak Peek Enabled</td>
+                                <td>
+                                    <apex:inputCheckbox value="{!agentSneakPeekEnabled}" id="sneak" disabled="{!monitor}"/>
+                                </td>
+                            </tr>
+                             <tr>
+                            <td>Default Agent Status Filter </td>
+                            <td>
+                            <apex:selectList value="{!defaultAgentStatusFilters}" multiselect="false" size="1">
+                            <apex:selectOptions value="{!DefaultAgentStatusFilter}"/>
+                            </apex:selectList>
+                            </td>
+                        </tr>
+                        <!--
+                        <tr>
+                            <td>Default Skill Filter</td>   
+                            <td>
+                               <apex:inputField id="Skill" value="{!lcu.SupervisorDefaultSkillId }" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Default Button Filter</td>
+                            <td>
+                               <apex:inputField id="Button" value="{!lcu.SupervisorDefaultButtonId }" />
+                            </td>
+                        </tr>
+                        -->
+                           </tbody>
+                            </table>
+                            
+                            
+                    </apex:outputpanel>
+            </apex:pageBlocksection>    
+            <apex:pageBlockSection title="Chat Conference Settings" columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputPanel >
+                        <table>
+                         <tr>
+                            <p>Sometimes, a single agent doesn't have all the information that's required to solve a customer's problem. Chat conferencing lets your agents invite other agents into a customer chat. Unlike transferring the chat to a new agent, conferencing an agent into a chat doesn't disrupt the flow of conversation with the customer.</p>
+                     </tr>  
+                            <tr>
+                                <td>
+                                   Chat Conferencing Enabled 
+                                </td>
+                                <td>
+                          <apex:inputCheckbox value="{!chatConferencingEnabled}" /> 
+
+                                
+                                </td>
+                            </tr>
+                        </table>    
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+             <apex:pageBlocksection title="Chat Transfer Settings" columns="1">
+               <apex:pageblocksectionitem >
+                    <apex:outputpanel >
+                      <table>
+                      <tr>
+                            <p>Customize how agents can transfer chats to other agents.</p>
+                     </tr>     
+                            <tr>
+                                <td>
+                                Chat Transfer To Agents Enabled
+                                </td>
+                                <td>
+                                <apex:inputCheckbox value="{!chatTransferToAgentsEnabled}" /> 
+                                </td>
+                            </tr>
+                        <tbody>
+                              
+                           
+                        <tr>
+                              <td>
+                               Chat Transfer To Live Chat <br/>
+                               Buttons Enabled
+                              </td>
+                               
+                              <td>
+                              <apex:inputCheckbox value="{!chatTransferToLiveChatButtonsEnabled}" />
+                              </td>
+                         </tr>
+                                 
+                                <tr>
+                                    <td>
+                                    Chat Transfer to Live Chat Buttons
+                                    </td>  
+                                </tr>
+                                 
+                                <tr>
+                                    <!-- chat buttons---->
+                                    <td class="selectCell" >
+                                        <div>
+                                            <apex:outputPanel layout="block" styleClass="selectTitle" style="text-align:center">
+                                            <b>  <apex:outputLabel value="Available Chats" for="multiselectPanel:center" /></b>
+                                            </apex:outputPanel>
+                                        </div>
+                                        <apex:selectList id="availableChatBlock1" value="{!selectedChatIds}" multiselect="true" size="6" style="width: 180px;">
+                                        <apex:selectOptions value="{!availableChats}"/>
+                                        </apex:selectList>
+                                    </td>
+                                    <td class="buttonCell"><br/><br/>
+                                        <apex:outputPanel layout="block" styleClass="text">Add</apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                        <apex:commandLink action="{!addChats}" rerender="availableChatBlock1,selectedChatBlock1" id="btnRight_cb"> 
+                                        <apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon" title="Add" />
+                                        </apex:commandLink>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="text">
+                                        <apex:commandLink action="{!removeChat}" rerender="availableChatBlock1,selectedChatBlock1" id="btnLeft_cb">
+                                        <apex:image value="/s.gif" alt="Remove" styleClass="leftArrowIcon" title="Remove" />
+                                        </apex:commandLink>
+                                        <apex:outputPanel layout="block" styleClass="duelingText">Remove</apex:outputPanel>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td class="selectCell">
+                                        <apex:outputPanel layout="block" styleClass="selectTitle" style="text-align:center">
+                                        <b><apex:outputLabel value="Selected Chats" for="multiselectPanel:rightList" /></b>
+                                        </apex:outputPanel>
+                                        <apex:selectList id="selectedChatBlock1" value="{!removeChatIds}" multiselect="true" size="6" style="width: 180px;">
+                                        <apex:selectOptions value="{!selectedchats}"/>
+                                        </apex:selectList>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+             </apex:outputpanel>
+        </apex:pageblocksectionItem> 
+   </apex:pageBlocksection>
+            <div align="center">
+            <apex:commandButton value="Save" action="{!save}" style="width:10%;"/> 
+            <apex:commandButton value="Cancel" action="{!cancel}" style="width:10%;"/> 
+           </div>
+        </apex:form>
+    </apex:pageblock>
+</apex:page>

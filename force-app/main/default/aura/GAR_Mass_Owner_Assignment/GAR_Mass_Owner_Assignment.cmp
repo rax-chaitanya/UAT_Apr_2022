@@ -1,0 +1,126 @@
+<aura:component >
+    <aura:attribute name="showMassOwnerAssignmentModal" type="Boolean" default="false"/>
+    <aura:attribute name="companies" type="object" default="{}"/>
+    <aura:attribute name="ReasonOptions" type="object"/>
+    <aura:attribute name="today" type="String" default="2000-01-01"/>
+    <aura:attribute name="defaultDate" type="String" default=""/>
+    
+    <aura:attribute name="owner" type="object"/>
+    <aura:attribute name="selectedReason" type="object"/>
+    
+    <div aura:id="notice"></div>
+    
+    <div class="">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open slds-modal-custom" style="margin-top : 8rem;">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.close}">
+                        <lightning:icon iconName="utility:close" size="small" class="slds-iconclass" variant="inverse"/>
+                        
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate slds-border_bottom">Mass Assignment</h2>
+                    <lightning:layout>
+                        <lightning:layoutItem size="4" class="slds-border_right">
+                            <lightning:layout horizontalAlign="center" verticalAlign="center">
+                                <lightning:layoutItem padding="around-small" size="6">
+                                    <lightning:layout multipleRows="true">
+                                        <lightning:layoutItem size="12">
+                                            <ui:outputText value="New Owner:" class="slds-text-title_caps slds-text-heading_small1" />
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem size="12">
+                                            <c:LookupUitility objectAPIName="User" fieldValue="Active" IconName="standard:user" selectedRecord="{!v.owner}" />
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem size="12">
+                                            <aura:if isTrue="{!v.owner.UserRole}">
+                                                <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                                                    <b>{!v.owner.UserRole.Name}&nbsp;{!v.owner.IsActive ? '(Active)' : '(Inactive)'}</b>
+                                                </span>
+                                                <aura:set attribute="else">
+                                                    <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                                                        <b>(Role info)</b>
+                                                    </span>
+                                                </aura:set>
+                                            </aura:if>
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:button label="Assign Owner" iconName="utility:change_owner" variant="brand" onclick="{!c.assignOwner}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="4" class="slds-border_right">
+                            <lightning:layout horizontalAlign="center" verticalAlign="center">
+                                <lightning:layoutItem padding="around-small" size="5">
+                                    <lightning:select name="requestreason" label="Move Reason" aura:id="inputreason" class="slds-text-title_caps" value="{!v.selectedReason}" messageWhenValueMissing="Select a reason..">
+                                        <option text="Select a reason.." value=""/>
+                                        <aura:iteration items="{!v.ReasonOptions}" var="option">
+                                            <option text="{!option}" value="{!option}"/>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:button label="Apply Reason" iconName="utility:display_text" variant="brand" onclick="{!c.assignReason}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="4">
+                            <lightning:layout horizontalAlign="center" verticalAlign="center">
+                                <lightning:layoutItem padding="around-small" size="5">
+                                    <ui:outputText value="Move Date" class="slds-text-title_caps" />: <lightning:input class="move-date"  type="date" label=" " value="{!v.defaultDate}" min="{!v.today}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small">
+                                    <lightning:button label="Apply Move Date" iconName="utility:date_input" variant="brand" onclick="{!c.assignMoveDate}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1 slds-modal__content-custom">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Account Name">Company Name</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Previous Owner">Current Owner</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="New Owner">New Owner</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="New Owner">Move Reason</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="New Owner">Move Date</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.companies}" var="company">
+                                <aura:iteration items="{!company.Account_Info}" var="account">
+                                    <aura:if isTrue="{!account.selected}" >
+                                        <tr>
+                                            <td><div class="slds-truncate">{!account.Account_Name}</div></td>
+                                            <td><div class="slds-truncate">{!company.Company_info.Name}</div></td>
+                                            <td><div class="slds-truncate">{!account.Account_Current_Owner.Name}</div></td>
+                                            <td><div class="slds-truncate">{!account.Request_Item_New_Owner.Name}</div></td>
+                                            <td><div class="slds-truncate">{!account.Request_Item_Reason}</div></td>
+                                            <td><div class="slds-truncate">{!account.Request_Item_Move_Date}</div></td>
+                                        </tr>
+                                    </aura:if>
+                                </aura:iteration>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</aura:component>

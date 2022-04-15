@@ -1,0 +1,64 @@
+<aura:component implements="forceCommunity:themeLayout" description="Private Equity Partner Portal Layout">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="copyrightYear" type="String" default="2019"/>
+    <aura:attribute name="showNav" type="Boolean" default="true" access="global" />
+    <div class="pePortalThemeWrapper">
+ 
+        <div class="pePortalThemeHeader">
+            <div class="slds-container_large slds-container_center">
+                <div class="slds-grid slds-grid_align-spread slds-p-around_small slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <div class="slds-col">
+                                <div class="slds-global-header__logo"></div>
+                            </div>
+                            <p class="slds-col slds-text-heading_medium slds-p-left_small pePortalThemeHeaderTitle">Private Equity Partner Portal</p>
+                        </div>
+                    </div>
+                    <aura:if isTrue="{!v.showNav}">
+                        <div class="slds-col">
+                            {!v.profileMenu}
+                        </div>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+        
+        <aura:if isTrue="{!v.showNav}">
+            <div class="pePortalThemeNav slds-p-top_medium">
+                <div class="slds-container_large slds-container_center">
+                    <div class="slds-grid slds-grid_align-spread slds-p-bottom_medium">
+                        <div class="slds-col">
+                            {!v.navBar}
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </aura:if>
+    
+        <div class="slds-container_large slds-container_center">    
+            <div class="slds-grid">
+                <div class="slds-col">
+                    {!v.body}
+                </div>
+            </div>
+        </div>
+        
+        <footer role="contentinfo" class="pePortalFooter">
+            <div class="slds-container_large slds-container_center">
+                <div class="slds-grid slds-grid_align-spread slds-p-horizontal--small slds-p-vertical--large">
+                    <p class="slds-col">{!v.copyrightYear} Rackspace US, Inc.</p>
+                    
+                    <div class="slds-col">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+        
+
+	</div>  
+</aura:component>

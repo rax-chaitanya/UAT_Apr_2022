@@ -1,0 +1,57 @@
+<aura:component controller="RepForecastController">
+    <aura:attribute name="account" type="Account" required="true"/>
+    <aura:attribute name="rev_forecast" type="Revenue_Forecast__c"/>
+    <aura:attribute name="editable" type="Boolean" required="true"/>
+    <aura:attribute name="forecasted_date" type="Date" />
+    <aura:attribute name="clicked" type="boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="previous" type="Revenue_Forecast__c" access="private"/>
+    
+    <td aura:id="clickable"  class="slds-cell-edit" role="gridcell">
+        <span class="slds-grid slds-grid--align-spread">        
+            <div class="slds-form-element__control slds-grow slds-hint-parent">
+                <aura:if isTrue="{! v.clicked }" >
+                    <div class="slds-grid">
+                        <ui:inputCurrency aura:id="input-currency" updateOn="keypress" format="#,###.##" dblclick="{!c.readMode}" keypress="{!c.changeClass}"  class="slds-input sldsBoxSize" value="{!v.rev_forecast.Amount__c}"/>
+
+                        
+                        <ui:inputSelect aura:id="currencies" multiple="false">
+                            <ui:inputSelectOption text="USD" label="USD" value="true"/>
+                            <ui:inputSelectOption text="AUD" label="AUD"/>
+                            <ui:inputSelectOption text="CHF" label="CHF"/>
+                            <ui:inputSelectOption text="EUR" label="EUR"/>
+                            <ui:inputSelectOption text="GBP" label="GBP"/>
+                            <ui:inputSelectOption text="HKD" label="HKD"/>
+                        </ui:inputSelect>                        
+                        
+                        
+                        &nbsp;             
+                        
+                        <button class="slds-button slds-button--icon-container" onclick="{!c.cancel}">
+                            <lightning:icon iconName="action:close" size="x-small" alternativeText="Cancel the edit of row"/>
+                        </button>                
+                        
+                        
+                        &nbsp;             
+                        
+                        <button class="slds-button slds-button--icon-container" onclick="{!c.readMode}">
+                            <lightning:icon iconName="action:check" size="x-small" alternativeText="Save the row"/>
+                        </button>                
+                        
+                    </div>
+                    <aura:set attribute="else">
+                        <ui:outputCurrency aura:id="output-currency" format="#,##0.00" value="{!v.rev_forecast.Amount__c}"/>&nbsp;{!v.rev_forecast.CurrencyIsoCode}&nbsp; 
+                        <aura:if isTrue="{!v.editable}">
+                            <lightning:buttonIcon size="small" aura:id="edit-icon" variant="bare" iconName="utility:edit"  onclick="{!c.editMode}" />
+                            <aura:set attribute="else">
+                                <lightning:icon size="x-small" iconName="utility:lock" alternativeText="Indicates approval"/>
+                            </aura:set>
+                        </aura:if>
+                    </aura:set>
+                </aura:if>
+            </div>   
+        </span>
+    </td>   
+</aura:component>

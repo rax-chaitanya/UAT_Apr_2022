@@ -1,0 +1,122 @@
+<aura:component controller="ContactSearchAndCreateCtrl" implements="lightning:isUrlAddressable,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+    <aura:attribute name="firstName" type="string" description=""/> 
+    <aura:attribute name="lastName" type="string" description=""/>
+    <aura:attribute name="email" type="string" description=""/> 
+    <aura:attribute name="companyName" type="string" description=""/> 
+    <aura:attribute name="showTable" type="Boolean" default="false"/>
+    
+    <aura:attribute name="contactList" type="object[]"/>
+    <aura:attribute name="leadList" type="object[]"/>
+    <aura:attribute name="contactRecordTypes" type="Object[]"/>
+    
+    <!-- <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/> -->
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:layout verticalAlign="space">
+        <lightning:layoutItem flexibility="auto" padding="around-medium">
+            <lightning:card class="slds-card__body slds-card__body_inner slds-theme_shade" iconName="action:new_contact" title="Search">                
+                <div class="demo-only" style="100%">
+                    <div class="slds-form slds-form_compound">
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps"></legend>
+                            <div class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <!-- <label class="slds-form-element__label" for="input-01">First Name</label> -->
+                                        <lightning:input required="true" name="inputfrstName" aura:id="inputfrstName" label="First Name" value="{!v.firstName}"/>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <!-- <label class="slds-form-element__label" for="input-01">Last Name</label> -->
+                                        <lightning:input required="true" name="inputlstName" aura:id="inputlstName" label="Last Name" value="{!v.lastName}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps"></legend>
+                            <div class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <!-- <label class="slds-form-element__label" for="input-01">Email</label>-->
+                                        <lightning:input type="email" required="false" name="inputemail" aura:id="inputemail" label="Email" value="{!v.email}"/>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <!-- <label class="slds-form-element__label" for="input-01">Company Name</label> -->
+                                        <lightning:input required="false" name="inputcmpName" aura:id="inputcmpName" label="Company Name" value="{!v.companyName}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend slds-text-title_caps"></legend>
+                            <div class="slds-form-element__group">
+                                <div class="slds-form-element__row">
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-3">
+                                        <lightning:button variant="Neutral" label="Search" onclick="{!c.searchContactAndLead}"/> 
+                                        <lightning:button variant="Neutral" label="Clear" onclick="{!c.resetForm}"/>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>                
+            </lightning:card>
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+    <aura:if isTrue="{!v.showTable}">
+        <lightning:layout verticalAlign="space">
+            <lightning:layoutItem flexibility="auto" padding="around-medium">
+                <lightning:card class="slds-card__body slds-card__body_inner slds-theme_shade" iconName="action:new_contact" title="Contact Result">   
+                    <aura:set attribute="actions">
+                        <aura:if isTrue="{!v.contactRecordTypes.length > 0}">
+                            <lightning:buttonMenu aura:id="menu" onselect="{! c.createAcRecord }" alternativeText="New" label="New">
+                                <aura:iteration items="{!v.contactRecordTypes}" var="contactRecordType"> 
+                                  <lightning:menuItem value="{!contactRecordType.value}" label="{!contactRecordType.key}" class="slds-text-link"/>
+                                </aura:iteration>
+                            </lightning:buttonMenu>
+                        </aura:if>     
+                    </aura:set>
+                      
+                    <div aura:id="contactDataTable" /> <!-- - Dynamic loading of component for [pagination -->  
+                    
+                    <!-- <c:ContactTable_Pagination ContactData="{!v.contactList}"/> -->
+                    
+                </lightning:card>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showTable}">
+        <lightning:layout verticalAlign="space">
+            <lightning:layoutItem flexibility="auto" padding="around-medium">
+                <lightning:card class="slds-card__body slds-card__body_inner slds-theme_shade" iconName="action:new_lead" title="Lead Result">
+                    <div aura:id="leadDataTable" />
+                    <!-- <c:LeadTable_Pagination LeadData="{!v.leadList}"/> -->
+                </lightning:card>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </aura:if>
+    
+    <!--loading spinner start... style=Brand Medium (blue dots)-->
+    <!-- <aura:if isTrue="{!v.Spinner}"> -->
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+   <!-- </aura:if> -->    
+    
+    <!-- Loading spinner end-->
+</aura:component>

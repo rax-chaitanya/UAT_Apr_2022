@@ -1,0 +1,11 @@
+.THIS.slds-button_success{
+    line-height : 1rem !IMPORTANT;
+}
+
+.THIS .inline-block{
+    display : inline-block;
+}
+
+.THIS .modal-body{
+    border-bottom : 2px solid rgb(221, 219, 218);
+}

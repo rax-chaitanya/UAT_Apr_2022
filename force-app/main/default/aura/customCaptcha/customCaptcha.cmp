@@ -1,0 +1,24 @@
+<aura:component  implements="force:appHostable,force:lightningQuickAction,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:registerEvent name="checkCaptcha" type="c:checkCaptcha"/>
+
+    <aura:attribute name= "captcha" type="String"/>
+    <aura:attribute name= "valueEntered" type="String" default=""/>
+    
+ 
+    Click on image to reset Captcha<br/>
+    <input  class="field" value="{!v.captcha}" readonly="true" onclick="{!c.test}"/>
+    <br/>
+    <table>
+    <tr>
+    <td style="width: 150px;">
+        <lightning:input class="text" name="input1" placeholder="Captcha here" value="{!v.valueEntered}"/>
+    
+    </td>
+    <td style="padding-top: 20px;">
+        <button style="background-color: #EB0000;color:#FFFFFF;border-color: #EB0000;" onclick="{!c.checkCaptcha}">Submit</button>
+
+    </td>
+    </tr>
+    </table>
+</aura:component>

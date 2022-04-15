@@ -1,0 +1,33 @@
+<aura:component controller="GAR_MoveDateController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:attribute name="record" type="object"/>
+    <aura:attribute name="message" type="boolean" default="false"/>
+    <aura:attribute name="severity" type="String" default="error"/>
+    <aura:attribute name="hasMessage" type="boolean" default="false"/>
+    <aura:attribute name="today" type="String" default="2000-01-01"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:spinner class="slds-show" aura:id="spinner" variant="brand" size="medium" alternativeText="Loading"/>
+    
+    <div class="slds-col modal-header slds-modal__header">
+        <h2 class="title slds-text-heading--medium">Move Realignment Date</h2>
+    </div>
+    <div class="slds-col modal-body slds-p-around--medium">
+        <aura:if isTrue="{!v.hasMessage}">
+            <ui:message aura:id="error" title="" severity="{!v.severity}">
+                <lightning:icon iconName="{!'utility:'+v.severity}" size="small"/>
+                &nbsp;
+                {!v.message}
+            </ui:message>
+        </aura:if>
+        <lightning:layout horizontalAlign="center" verticalAlign="end">
+            <aura:if isTrue="{!v.record.Id}">
+                <lightning:layoutItem padding="around-small">
+                    <lightning:input type="date" label=" " value="{!v.record.Move_Date__c}" min="{!v.today}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:button label="Change Move Date" iconName="utility:date_input" variant="brand" onclick="{!c.changeMoveDate}"/>
+                </lightning:layoutItem>
+            </aura:if>
+        </lightning:layout>
+    </div>
+</aura:component>

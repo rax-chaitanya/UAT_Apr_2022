@@ -1,0 +1,17 @@
+<aura:component controller="UpdateOPCController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="surveyId" type="Id" />
+    <aura:attribute name="surveyCompletedDate" type="DateTime" />
+    <aura:attribute name="CustomersCurrentPulse" type="String" />
+    <aura:attribute name="startchurndate" type="DateTime"/>
+    <aura:attribute name="stopchurndate" type="DateTime"/>
+    <aura:attribute name="MonthlyRecap" type="String"/>
+    <aura:attribute name="MRRLoss" type="Decimal"/>
+    
+    <aura:registerEvent name="reloadDoInIt" type="c:CMPRefreshEvent" />
+    
+    <lightning:layoutItem flexibility="auto" size="1" class="custom-box">
+        <span >
+            <lightning:button variant="success" label="Save" title="Save" onclick="{!c.handleClick}" class="align-page"/>
+        </span>
+    </lightning:layoutItem>
+</aura:component>

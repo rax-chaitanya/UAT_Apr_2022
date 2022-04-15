@@ -1,0 +1,93 @@
+<apex:page showHeader="true" sidebar="true" controller="CompanyCustomEditController">
+    <apex:form >
+        <apex:sectionHeader title="Company Edit" subtitle="{!companyWrap.companyName}" />
+        <apex:pageMessages />
+
+        <apex:pageBlock title="Company Edit" mode="edit" rendered="{!showThePage}">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" title="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" title="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection columns="2" title="Company Information" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Company Name" />
+                    <apex:inputText value="{!companyWrap.companyName}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Phone" />
+                    <apex:inputText value="{!companyWrap.companyPhone}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Company Review Status" />
+		            <apex:selectList value="{!companyWrap.companyReviewStatus}" multiselect="false" size="1">
+						<apex:selectOptions value="{!companyReviewStatusOptions}" />
+					</apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Website" />
+                    <apex:inputText value="{!companyWrap.companyWebsite}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Escalation Notes" />
+                    <apex:inputTextArea value="{!companyWrap.companyEscalationNotes}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection columns="2" title="Data.com Information" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="DUNS Number" />
+                    <apex:inputText value="{!companyWrap.companyDuns}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Data.com Does Not Auto-Update" />
+                    <apex:inputCheckbox value="{!companyWrap.companyDataDotComDoesNotUpdate}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection columns="2" title="Address Information" collapsible="false" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing Street" />
+                    <apex:inputTextarea value="{!companyWrap.companyBillingStreet}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Shipping Street" />
+                    <apex:inputTextarea value="{!companyWrap.companyShippingStreet}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing City" />
+                    <apex:inputText value="{!companyWrap.companyBillingCity}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Shipping City" />
+                    <apex:inputText value="{!companyWrap.companyShippingCity}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing State/Province" />
+                    <apex:inputText value="{!companyWrap.companyBillingState}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Shipping State/Province" />
+                    <apex:inputText value="{!companyWrap.companyShippingState}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing Zip/Postal Code" />
+                    <apex:inputText value="{!companyWrap.companyBillingZip}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Shipping Zip/Postal Code" />
+                    <apex:inputText value="{!companyWrap.companyShippingZip}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Billing Country" />
+                    <apex:inputText value="{!companyWrap.companyBillingCountry}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Shipping Country" />
+                    <apex:inputText value="{!companyWrap.companyShippingCountry}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

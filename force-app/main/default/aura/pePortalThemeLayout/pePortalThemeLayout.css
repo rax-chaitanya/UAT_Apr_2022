@@ -1,0 +1,75 @@
+.THIS {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+	font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('/sfsites/c/resource/1602615905000/Fira_Sans/FiraSans-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('/sfsites/c/resource/1602615905000/Fira_Sans/FiraSans-Regular.ttf');
+    font-weight: normal;
+}
+
+.THIS .pePortalThemeHeader {
+    background-image: linear-gradient( 42deg, rgba(149, 9, 138, 100), rgba(235, 0, 0, 100) );
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    position: relative;
+}
+
+.THIS .slds-global-header__logo {
+    background-image: t('url(' + brandLogoImage  + ')');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 99;
+    cursor: pointer;
+    outline: 0;
+    width: 40px;
+}
+
+.THIS .selfServiceProfileMenuTrigger a:active,
+.THIS .selfServiceProfileMenuTrigger a:hover,
+.THIS .selfServiceProfileMenuTrigger a:focus {
+    color: t(colorTextInverse);
+}
+
+.THIS .pePortalThemeHeaderTitle {
+    color: t(colorTextInverse);
+    font-size: 24px;
+}
+
+.THIS .pePortalThemeNav {
+    background-color: rgb(237,242,247);
+}
+
+.THIS .pePortalFooter  {
+    background-color: rgb(0,0,0);
+}
+
+.THIS .pePortalFooter p {
+    color: rgb(160,174,188);
+}
+
+.THIS .forceCommunityGlobalNavigation,
+.THIS .forceCommunityGlobalNavigation .slds-list__item a:hover,
+.THIS .forceCommunityGlobalNavigation .slds-list__item button:hover { 
+	background: transparent;
+}
+
+.THIS .forceCommunityGlobalNavigation .slds-list__item a,
+.THIS .forceCommunityGlobalNavigation .slds-list__item button {
+    font-size: 16px;
+}
+
+.THIS .forceCommunityGlobalNavigation div.slds-grid:first-of-type { 
+	padding-left: 0;
+}

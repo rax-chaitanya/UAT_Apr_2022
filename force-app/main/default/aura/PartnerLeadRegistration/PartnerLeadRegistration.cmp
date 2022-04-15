@@ -1,0 +1,150 @@
+<aura:component controller="CustomLookUpController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!--Attributes-->
+    <aura:attribute name="display" type="boolean" default="false"/>
+    <aura:attribute name="reloadForm" type="boolean" default="true" />
+    <aura:attribute name="recordTypeId" type="string" />
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/> 
+    <aura:attribute name="SubAgent" type="string" />
+    <aura:attribute name="checkmandatory" type="boolean" default="false" />
+    <aura:attribute name="checkrequired" type="boolean" default="false"/>
+    
+    <aura:attribute name="selectedValue" type="String"/>
+    <aura:attribute name="accountrtvalues" type="List"/>
+    
+    
+    <!--create a component attributs <lightning:spinner aura:id="spinner" variant="brand" /> -->
+    <aura:attribute name="loaded" type="Boolean" default="true" />
+    <lightning:spinner variant="brand" alternativeText="Loading..." class="{!(v.loaded? 'slds-show': 'slds-hide')}" />
+    
+    
+    <!--Component Start-->
+    <div class="slds-m-around_xx-small" >
+        <h1 style="text-align:center;font-weight: bold;font-size:18px;">Lead Registration</h1>
+        <lightning:recordEditForm objectApiName="Lead"
+                                  recordTypeId="{!v.recordTypeId}"
+                                  aura:id="leadForm"
+                                  density="comfy"
+                                  onload="{!c.handleOnLoad}"
+                                  onsubmit="{!c.handleOnSubmit}"
+                                  onsuccess="{!c.handleOnSuccess}"
+                                  onerror="{!c.handleOnError}">
+            <lightning:messages aura:id="OppMessage" />
+            <aura:if isTrue="{!v.reloadForm}">
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem size="6" padding="slds-p-right_large">
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            
+                               <label lightning-combobox_combobox="" class="slds-form-element__label" for="CusLabel">
+                                <aura:if isTrue="{!v.checkrequired}">
+                                     <span class="required">*</span>
+                                	
+                                </aura:if>
+                                
+                                Sub-Agent Info (Company, Contact, Email, Phone)
+                            </label>
+                            <lightning:inputField aura:id="CusLabel" fieldName="Are_you_working_with_an_Agent__c" variant="label-hidden" required="{!v.checkrequired}"/>
+                        </div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5">
+                            <aura:if isTrue="{!v.display}">
+                              <lightning:select name="mySelect" label="Region" aura:id="mySelect" value="{!v.selectedValue}" onchange="{!c.checkmandatorySubAgent}">
+                                    <option value="">--None--</option>
+                                    <aura:iteration items="{!v.accountrtvalues}" var="item">
+                                        <!--<option text="{!item.Name}" value="{!item.Name}" />-->
+                                        <option value="{!item.key}" >{!item.value}</option> 
+                                    </aura:iteration>
+                                </lightning:select>
+                            </aura:if>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium" >
+                        
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            <lightning:inputField fieldName="Type_Of_Deal__c" required="true"/>
+                        </div>
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 ">
+                            <lightning:inputField fieldName="Company" />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            <lightning:inputField fieldName="Website" required="true" />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 ">
+                            <lightning:inputField fieldName="Lead_Type__c" />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            <ui:outputText  value="Name " class="title"/>
+                            <lightning:inputField fieldName="Salutation"   />
+                            <lightning:inputField fieldName="FirstName" required="true"  />
+                            <lightning:inputField fieldName="LastName" required="true"  />
+                            <lightning:inputField fieldName="Suffix"   />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 ">
+                            <lightning:inputField fieldName="Phone"  required="true"/> 
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            <lightning:inputField fieldName="Email" required="true"/>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 ">
+                            <lightning:inputField fieldName="Customer_Comments__c" />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            <ui:outputText  value="Address " class="title"/>
+                            <lightning:inputField fieldName="CountryCode" required="true" aura:Id="countrycode" onchange="{!c. checkmandatorycountry}"  />
+                            <lightning:inputField fieldName="Street"    />
+                            <lightning:inputField fieldName="City"   />
+                            <lightning:inputField fieldName="StateCode"  required="{!v.checkmandatory}" />
+                            <lightning:inputField fieldName="PostalCode"    /> </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 ">
+                            
+                            <lightning:inputField fieldName="Promo_Code__c" />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5 slds-float_right slds-p-right_large">
+                            <lightning:inputField fieldName="DDI__c" />
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6" padding=" slds-p-bottom_medium ">
+                        <div class="slds-size_3-of-5">
+                            <lightning:inputField fieldName="BANT__c" />
+                        </div>
+                    </lightning:layoutItem>
+                    
+                </lightning:layout>
+                <lightning:inputField name="SubAgent" value="{!v.SubAgent}" fieldName="Sub_Agent__c" class="slds-hidden"/>
+            </aura:if>
+            <center >
+                
+                <lightning:button variant="brand" class="myBtn"   
+                                  type="submit"   
+                                  name="Save" label="Confirm" />
+                
+                
+            </center>
+            
+        </lightning:recordEditForm>
+        <lightning:navigation aura:id="navService"/>
+    </div>
+</aura:component>

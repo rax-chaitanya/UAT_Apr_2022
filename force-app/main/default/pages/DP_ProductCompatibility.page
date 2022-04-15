@@ -1,0 +1,217 @@
+<apex:page standardController="Product2" extensions="DP_ProductCompatibilityController"  id="pageId" lightningStylesheets="true">
+
+    <apex:stylesheet value="{!$Resource.JqueryAlert_Css}"/>
+    <apex:includeScript value="{!$Resource.JqueryMin_js}"/>
+    <apex:includeScript value="{!$Resource.JqueryAlert_js}"/>
+    
+    <style>
+        #popup_container {
+            top: 332px;
+        }
+    </style>
+    
+    <script>
+        function delConfirm(recordID){
+            var r=confirm("Are you sure you want to delete this Product Compatibility");
+            if (r==true){
+              del(recordID);
+            } else {
+              return;
+            }
+        }
+        function validateChildProd(){
+         /*   var childProdId = document.getElementById('{!$Component.pageId.formId.pb.prodPBS.ChildProd}').value;
+            if(childProdId==null || childProdId.trim()==''){
+                jAlert("Child Product: You must enter a value.","Ok");
+                return false;
+            } else{
+                addProdCompatibility();
+            }
+            
+        */  
+        var childProdId = document.getElementById('{!$Component.pageId.formId.pb.prodPBS.ChildProd}').value;
+        var includeAll = document.getElementById('{!$Component.pageId.formId.pb.prodPBS.incAll}').checked;
+            if((childProdId==null || childProdId.trim()=='') && (includeAll == false)){
+                jAlert("You must enter a value for Child Product or Include All.","Ok");
+                return false;
+            }else if(childProdId !=null && childProdId.trim()!='' && includeAll == true){
+                jAlert("You must enter either Child Product or Include All.","Ok");
+                return false;
+            } else{
+                addProdCompatibility();
+            }       
+            
+        }
+    </script>
+    <apex:form id="formId">
+        <apex:sectionHeader title="Product Compatibility"/>
+        <apex:actionFunction name="del" action="{!del}" reRender="chPBlock" immediate="true">
+            <!--<apex:param name="fParam" assignTo="{!recordID}" value="recordID"/>-->
+            <apex:param name="delid" value="recordID"/>
+        </apex:actionFunction>
+        
+        <apex:outputPanel id="pmsg">
+            <apex:pageMessages ></apex:pageMessages>
+        </apex:outputPanel>
+        
+        <apex:pageBlock title="" id="pb">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!cancel}" value="Cancel" style="width:100px"/>
+                <apex:commandButton status="saving" reRender="pb,pmsg" value="Save" action="{!saveProd}" style="width:100px"/>
+                <apex:outputPanel style="color:#FF0000;font-weight:bold">
+                    <apex:actionStatus id="saving" startText="Saving Product Details..." stopText=""/>
+                </apex:outputPanel>
+            </apex:pageBlockButtons>
+            <fieldset>
+            <legend>&nbsp;Parent Product&nbsp;</legend>
+                <apex:pageBlockSection columns="3" id="pBlockSec">
+                    <apex:inputField value="{!prod.Name}"/>
+                    <apex:inputField value="{!prod.CurrencyIsoCode}"/>
+                    <apex:inputField value="{!prod.DP_Product_Type__c}"/>
+                    <apex:inputField value="{!prod.DP_Service_Type__c}"/>
+                    <apex:inputField value="{!prod.DP_kW__c}" required="true"/>
+                    <apex:inputField value="{!prod.DP_Data_Center__c}"/>
+                    <apex:inputField value="{!prod.DP_Setup__c}"/>
+                    <apex:inputField value="{!prod.DP_Datapipe_Part_Number__c}"/>
+                    <apex:inputField value="{!prod.DP_Max_Discount__c}"/>
+                    <apex:inputField value="{!prod.DP_Availability__c}" required="true"/>
+                    <apex:inputField value="{!prod.DP_Manufacturer_Part_Number__c}"/>
+                    <apex:inputField value="{!prod.DP_Cost__c}" required="true"/>
+                    <apex:inputField value="{!prod.DP_CAPEX__c}" required="true"/>
+                    <apex:inputField value="{!prod.DP_Formatted_Quantity_Descriptor__c}"/>
+                    <apex:inputField value="{!prod.DP_Formatted_Quantity__c}"/>
+                    <apex:inputField value="{!prod.IsActive}"/>
+                    <apex:inputField value="{!prod.DP_Markup__c}"/>
+                    <apex:inputField value="{!prod.DP_Product_Category__c}"/>
+                    <apex:inputField value="{!prod.DP_Formula_Exempt__c}"/>
+                    <apex:inputField value="{!prod.DP_Ext_Id__c}"/>
+                     <apex:inputField value="{!prod.FocusArea__c}" required="true"/>
+                    <apex:inputField value="{!prod.DP_Asset_Type__c}">
+                    <apex:actionSupport event="onchange" rerender="pBlockSec"/>
+                    </apex:inputField>
+                   <apex:inputField value="{!prod.DP_Account__c}"/>  
+                    <apex:inputField value="{!prod.Description}"/>
+                    <apex:inputField value="{!prod.DP_Overage_Unit_Price__c}" rendered="{!prod.DP_Asset_Type__c == 'Dynamic'}"/>
+                    <apex:inputField value="{!prod.DP_Unit_of_Measure__c}" rendered="{!prod.DP_Asset_Type__c == 'Dynamic'}"/>
+                </apex:pageBlockSection>
+            </fieldset><br/><br/>
+            <apex:outputPanel rendered="{!IF(prod.id!=null,true,false)}" id="prodOP">
+            <fieldset>
+            <legend>&nbsp;Children&nbsp;</legend>
+            <br/>
+            <fieldset>
+            <legend>&nbsp;Add Product Compatibility&nbsp;</legend>
+                <apex:pageBlockSection columns="3" id="prodPBS">
+                    
+                    <apex:inputField value="{!prodCamp.DP_Child_Product__c}" id="ChildProd"/>
+                    <apex:inputField value="{!prodCamp.DP_Minimum_Quantity__c}"/>
+                    <apex:inputField value="{!prodCamp.DP_Maximum_Quantity__c}"/>
+                    <apex:inputField value="{!prodCamp.DP_Increment_Quantity__c}"/>
+                    <apex:inputField value="{!prodCamp.DP_Base_Quantity__c}"/>
+                    <apex:inputField value="{!prodCamp.DP_Product_Type__c}"/>
+                    <apex:inputField value="{!prodCamp.DP_Include_All__c}" id="incAll"/>
+                    
+                </apex:pageBlockSection>
+                <br/>
+                
+                <apex:actionFunction name="addProdCompatibility" action="{!addProdCompatibility}" status="savingPC" reRender="prodOP,pmsg"/>
+                <div align="center">
+                    <apex:commandButton onclick="return validateChildProd();" value="Add Product Compatibility" reRender="prodOP,pmsg"/>
+                    <apex:outputPanel style="color:#FF0000;font-weight:bold">
+                        <apex:actionStatus id="savingPC" startText="Saving..." stopText=""/>
+                    </apex:outputPanel>
+                </div>
+            </fieldset>
+            
+            <br/>
+            
+            <apex:pageBlock title="Product Compatibility" id="chPBlock">
+                <apex:pageBlockSection columns="3">
+                    <apex:pageBlockSectionItem dataStyle="align:left;">
+                        <apex:outputLabel value="Product Type" />
+                        <apex:inputField value="{!chProd.DP_Product_Type__c}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem dataStyle="align:left;">
+                        <apex:outputLabel value="Datapipe Part Number" />
+                        <apex:inputField value="{!chProd.DP_Datapipe_Part_Number__c}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem dataStyle="align:left;">
+                        <apex:commandButton status="Search" reRender="chPBlock" value="Filter" action="{!refresh}" style="width:100px"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:outputPanel style="color:#FF0000;font-weight:bold">
+                    <apex:actionStatus id="Search"><apex:facet name="start">Searching... <img src="/img/loading.gif" alt="Searching..."/></apex:facet></apex:actionStatus>
+                </apex:outputPanel><br/>
+                
+                <apex:actionFunction name="saveEdit" action="{!saveEdit}"/>
+    
+                <apex:outputPanel id="ProductCompatibilityOP" rendered="{!IF(ProductCompatibility.size>0,true,false)}">
+                    <table class="list" width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="headerRow">
+                            <th class="headerRow">Action</th>                            
+                            <th class="headerRow">Product</th>
+                            <th class="headerRow">Product Type</th>
+                            <th class="headerRow">Base Quantity</th>
+                            <th class="headerRow">Increment Quantity</th>
+                            <th class="headerRow">Maximum Quantity</th>
+                            <th class="headerRow">Minimum Quantity</th>
+                        </tr>
+                        <apex:repeat value="{!ProductCompatibility}" var="e">
+                            <tr class="dataRow even first">
+                                <apex:outputPanel id="editRow" layout="none" rendered="{!e.Id == editProdCamp.Id}">
+                                    <td><apex:commandLink action="{!cancelEdit}" rerender="chPBlock">Cancel</apex:commandLink>&nbsp;&nbsp;
+                                    <apex:commandLink action="{!saveEdit}" rerender="chPBlock">Save</apex:commandLink></td>
+                                    <td>
+                                        <apex:inputField rendered="{!e.Id == editProdCamp.Id}" value="{!editProdCamp.DP_Child_Product__c}"/>
+                                    </td>
+                                    <td><apex:outputField rendered="{!e.Id == editProdCamp.Id}" value="{!editProdCamp.DP_Product_Type__c}"/></td>
+                                    <td><apex:inputField rendered="{!e.Id == editProdCamp.Id}" value="{!editProdCamp.DP_Base_Quantity__c}"/></td>
+                                    <td><apex:inputField rendered="{!e.Id == editProdCamp.Id}" value="{!editProdCamp.DP_Increment_Quantity__c}"/></td>
+                                    <td><apex:inputField rendered="{!e.Id == editProdCamp.Id}" value="{!editProdCamp.DP_Maximum_Quantity__c}"/></td>
+                                    <td><apex:inputField rendered="{!e.Id == editProdCamp.Id}" onkeypress="if (event.keyCode == 13) saveEdit()" value="{!editProdCamp.DP_Minimum_Quantity__c}"/></td>
+                                </apex:outputPanel>
+                                <apex:outputPanel id="viewRow" layout="none" rendered="{!e.Id != editProdCamp.Id}">
+                                    <td>
+                                        <apex:commandLink onclick="javascript:delConfirm('{!e.ID}');return false" value="" reRender="chPBlock">
+                                            <apex:image value="/img/func_icons/remove12_on.gif"/>
+                                        </apex:commandLink>&nbsp;&nbsp;
+                                        <apex:commandLink action="{!editProdCompatibility}" rerender="chPBlock">
+                                            <apex:image value="/img/func_icons/util/pencil12.gif"/>
+                                            <apex:param name="editid" value="{!e.id}"/>
+                                        </apex:commandLink>
+                                    </td>
+                                    <td><apex:outputLink value="/{!e.DP_Child_Product__c}" target="__blank">{!e.DP_Child_Product__r.Name}</apex:outputLink>
+                                    <apex:outputText value="All" rendered="{!IF(e.DP_Child_Product__c <> NULL, false, true)}"/></td>
+                                    <td>{!e.DP_Product_Type__c}</td>
+                                    <td>{!e.DP_Base_Quantity__c}</td>
+                                    <td>{!e.DP_Increment_Quantity__c}</td>
+                                    <td>{!e.DP_Maximum_Quantity__c}</td>
+                                    <td>{!e.DP_Minimum_Quantity__c}</td>
+                                </apex:outputPanel>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                </apex:outputPanel>
+
+                <apex:panelGrid id="pgrid" columns="7" rendered="{!IF(ProductCompatibility.size>0,true,false)}">
+                    <apex:commandButton status="fetchStatus" reRender="chPBlock" value="|<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                    <apex:commandButton status="fetchStatus" reRender="chPBlock" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                    <apex:commandButton status="fetchStatus" reRender="chPBlock" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                    <apex:commandButton status="fetchStatus" reRender="chPBlock" value=">|" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                    <apex:outputText >{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,(setCon.pageNumber * size))} of {!noOfRecords}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Page: {!setCon.pageNumber}</b></apex:outputText>
+                    <!--<apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/>-->
+                    <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                        <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                    </apex:outputPanel>
+                </apex:panelGrid>
+                
+                <apex:outputPanel rendered="{!IF(ProductCompatibility.size==0,true,false)}">
+                    <table class="list" border="0" cellspacing="0" cellpadding="0"><tr bgcolor="#f8f8f8"><td>No records to display</td></tr></table>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            </fieldset>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

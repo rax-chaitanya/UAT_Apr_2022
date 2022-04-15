@@ -1,0 +1,31 @@
+<apex:page standardController="Product2" extensions="DP_C62CustomerSpecificProductController" id="pageId">
+
+    <style>
+        #popup_container {
+            top: 332px;
+        }
+    </style>
+    <apex:form id="formId">
+        <apex:pageBlock title="" id="pb">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!cancel}" value="Cancel" style="width:100px"/>
+                <apex:commandButton status="saving" reRender="pb,pmsg" value="Save" action="{!save}" style="width:100px"/>
+                <apex:outputPanel style="color:#FF0000;font-weight:bold">
+                    <apex:actionStatus id="saving" startText="Saving Customer Specific Product Details..." stopText=""/>
+                </apex:outputPanel>
+           </apex:pageBlockButtons>
+           <apex:pageBlockSection columns="1" id="pBlockSec">
+               <apex:outputField value="{!theNewCSP.DP_Product__c}"/>
+               <apex:inputField value="{!theNewCSP.Name}" style="width:400px"/>
+               <apex:inputField value="{!theNewCSP.DP_Account__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_CAPEX__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_Cost__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_Setup__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_Max_Discount__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_Markup__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_Formula_Exempt__c}"/>
+               <apex:inputField value="{!theNewCSP.DP_Service_Type__c}"/>
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

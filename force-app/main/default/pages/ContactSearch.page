@@ -1,0 +1,214 @@
+<apex:page controller="ContactSearchcontroller" >
+    
+            <script type="text/javascript" language="javascript" src="{!URLFOR($Resource.jQueryDataTables, 'js/jquery.js')}"></script>
+            <script type="text/javascript" language="javascript" src="{!URLFOR($Resource.jQueryDataTables, 'js/jquery.dataTables.js')}"></script>
+    
+    
+    
+    
+  <apex:stylesheet value="{!URLFOR($Resource.JqueryTabs, 'jquery-ui.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.jQueryDataTables, 'css/jquery.dataTables.css')}"/>
+
+<script>
+    <!-- To search the records for enter key functionality-->
+    function runScript(ev) 
+    {
+        if (window.event && window.event.keyCode == 13 || ev.which == 13) 
+        {
+            searchRecords1();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+</script> 
+
+<apex:form id="formId">
+    <apex:actionFunction action="{!searchRecords}" name="searchRecords1" rerender="msgs,blockID, SearchResultsPanel" status="status"/>
+    
+    <apex:actionstatus id="status">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                height: 100%;opacity:0.65;width:100%;position:fixed"> 
+            <div class="waitingHolder" style="top: 254.2px; width: 96px;">
+                <img class="waitingImage" src="/img/loading.gif" title="Loading..." />
+                <span class="waitingDescription">Loading...</span>
+            </div>
+            </div>
+        </apex:facet>
+    </apex:actionstatus>
+    
+    <apex:pageBlock id="blockID" >
+        <apex:pageMessages id="msgs"/>
+        <apex:pageBlockSection title="Contact Search" columns="2" id="pgbs">
+        
+              <apex:pageBlockSectionItem >
+                <apex:outputLabel for="LastName">Last Name:</apex:outputLabel>
+                <apex:inputText id="LastName" value="{!lastName}" size="40" onkeypress="return runScript(event)" />
+            </apex:pageBlockSectionItem> 
+            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel for="FirstName">First Name:</apex:outputLabel>
+                <apex:inputText id="FirstName" value="{!firstName}" size="40"  onkeypress="return runScript(event)" />
+            </apex:pageBlockSectionItem>
+           
+           
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel for="Email">Email Address:</apex:outputLabel>
+                <apex:inputText id="Email" value="{!email}"  size="40" onkeypress="return runScript(event)" /> 
+            </apex:pageBlockSectionItem> 
+            
+            <apex:pageBlockSectionItem id="companyName">
+                <apex:outputLabel for="companyName">Company:</apex:outputLabel>
+                <apex:inputText id="companyName" value="{!companyName}"  size="40" onkeypress="return runScript(event)" /> 
+            </apex:pageBlockSectionItem> 
+        </apex:pageBlockSection> 
+      
+        <apex:pageBlockButtons id="buttonsId">         
+            <apex:commandbutton value="Search" action="{!searchRecords}" rerender="msgs,blockID, SearchResultsPanel" status="status"/>
+            <apex:commandButton value="Clear" action="{!cancel}" rerender="msgs"/>         
+            
+
+            <apex:commandButton value="Create New Contact" action="{!showPage}" rendered="{!if(lastname!=null && firstName != null,true,false)}">
+            </apex:commandButton> 
+            
+            <!--<apex:commandButton value="Create New Contact" action="/003/e?nooverride=1&retURL=%2F003%2Fo"  rendered="{!if(lastname!=null,true,false)}"/> -->
+        </apex:pageBlockButtons>    
+    </apex:pageBlock>
+    
+    <apex:outputPanel id="SearchResultsPanel">
+        <apex:pageBlock title="Contact Search Results" rendered="{!if(lastName!=null && firstName != null,true,false)}">
+            <apex:pageBlockSection title="Salesforce Contact Results" collapsible="false" rendered="{!if(lastName != null && firstName != null,true,false)}"/>
+            <apex:pageBlockTable var="cID" value="{!contactsMap}" styleClass="dataTable" rendered="{!if(lastName != null && firstName != null,true,false)}">
+                <apex:column > 
+                    <apex:facet name="header">Select</apex:facet>
+
+                    <apex:outputPanel id="renderPanel">
+                        <apex:commandButton value="Request Access"  action="{!createContactShare}" reRender="renderPanel"  rendered="{!!contactToAccessMap[cID]}">
+                            <apex:param value="{!cID}" name="con_info" assignTo="{!contactID}"/>
+                        </apex:commandButton>
+                        
+                        <apex:commandButton value="View" action="{!URLFOR($Action.Contact.View, cID)}" rendered="{!contactToAccessMap[cID]}"></apex:commandButton> 
+                    </apex:outputPanel>                    
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">First Name</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].firstname}"/>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Last Name</apex:facet>
+                    {!contactsMap[cID].lastName}
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Email Address</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].email}"/>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Phone</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].phone}"/>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Company</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].account.name}"/>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">City</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].mailingCity}"/>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Street</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].mailingStreet}"/>                  
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Country</apex:facet>
+                    <apex:outputField value="{!contactsMap[cID].mailingCountry}"/>                  
+                </apex:column>                
+            </apex:pageBlockTable>
+            
+            
+            <apex:pageBlockSection title="Lead Results" collapsible="false" rendered="{!if(lastname != null && firstName != null,true,false)}"/>
+            <apex:pageBlockTable var="l" value="{!leadList}" styleClass="dataTable" rendered="{!if(lastName != null && firstName != null ,true,false)}">
+                
+                <apex:column > 
+                    <apex:facet name="header">Select</apex:facet>
+                    
+                    <apex:commandButton value="View" action="{!URLFOR($Action.Lead.View, l.id)}"></apex:commandButton> 
+                    
+                </apex:column>
+                                  
+                
+                
+                <apex:column >
+                    <apex:facet name="header">First Name</apex:facet>
+                    <apex:outputField value="{!l.firstname}"/>                      
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Last Name</apex:facet>
+                    {!l.lastname}
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Email Address</apex:facet>
+                    {!l.email}
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Phone</apex:facet>
+                    {!l.phone}
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Company</apex:facet>
+                    {!l.company}
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">City</apex:facet>
+                    {!l.city}
+                </apex:column>
+                
+                
+                <apex:column >
+                    <apex:facet name="header">Street</apex:facet>
+                    {!l.Street}
+                    
+                </apex:column>
+                
+                <apex:column >
+                    <apex:facet name="header">Country</apex:facet>
+                    {!l.country}
+                </apex:column>
+            
+            </apex:pageBlockTable>
+            
+            
+            <script type="text/javascript" language="javascript">
+                var j$ = jQuery.noConflict();
+                j$('table.dataTable').dataTable({
+                                   
+                    "bSort" : true,
+                    "order": [[ 0, "desc" ]]
+                    
+                });
+            </script>  
+            
+            <center>
+            <apex:outputLabel style="color:red" rendered="{!if(LeadList.size == 0 && contactsMapSize == 0,true,false)}">
+                There are no records exist with the given criteria.
+            </apex:outputLabel> 
+        </center>
+        
+        </apex:pageBlock>
+    </apex:outputPanel>
+</apex:form>
+</apex:page>

@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Event template">
+    
+    <aura:attribute name="onboardStep" type="String" access="global"/>
+    <aura:attribute name="stepNum" type="Integer" access="global"/>
+    <aura:attribute name="showbuttons" type="Boolean" access="global"/>
+</aura:event>

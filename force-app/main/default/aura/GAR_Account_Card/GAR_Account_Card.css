@@ -1,0 +1,37 @@
+.THIS .account-checkbox{
+    display: inline-block;
+}
+
+.THIS .slds-card__header{
+    background : none;
+}
+
+.THIS.account-underline{
+    border-bottom: 1px solid rgb(197, 0, 34);
+}
+.THIS .underline{
+    border-bottom : 1px solid rgb(22, 50, 92);
+}
+
+.THIS .owner-heading{
+    text-align : center;
+}
+
+.THIS .search-result{
+    background : #e3e5ed;
+}
+
+.THIS .slds-form-element__label{
+    color: rgb(107, 109, 112) !IMPORTANT;
+}
+
+.THIS .slds-datepicker {
+    padding: 0;
+    font-size: .75rem;
+    left: auto !IMPORTANT;
+    right: 0px;
+}
+
+.THIS .move-date .slds-form-element__label{
+    display : none;
+}

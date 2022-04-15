@@ -1,0 +1,100 @@
+<!-- 
+    
+@author: Atheer Bdaiwi
+@description: This component is used to launch once the "New" button is clicked within the Case object.  
+
+VERSION | AUTHOR | DATE | DESCRIPTION
+1.0 | Atheer Bdaiwi | 06 Dec. 2020 | Used to raise Cases within SFDC by repurposing the "New" button to launch this custom solution
+1.1 | Atheer Bdaiwi | 17 Nov. 2021 | SFDC-6814 - Updated the formatting & indentation of the code 
+1.3 | Atheer Bdaiwi | 19 Nov. 2021 | SFDC-6814 - Transposed the hard-coded record types into custom labels
+1.4 | Atheer Bdaiwi | 08 Nov. 2021 | SFDC-6814 - Transposed the hard-coded record ID for "Transition Team Intake Form" into a custom label
+
+-->
+
+<aura:component
+    implements="force:appHostable,force:lightningQuickAction,lightning:availableForFlowActions,lightning:availableForFlowScreens,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+    access="global">
+    
+    <aura:attribute name="caserecordTypeId" type="Id" access="public" />
+    <lightning:navigation aura:id="navService" />
+    <aura:renderIf isTrue="{!!v.isSelected}">
+        <div class="slds-text-heading_large slds-align_absolute-center" style="font-weight:bold">
+            Which type of Case would you like to raise?
+        </div>        
+        
+        <div class="slds-grid slds-gutters slds-wrap slds-m-top_large">
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Tool Help">
+                    <img id="{!$Label.c.Case_ToolHelp_RecordType}" src="{!$Resource.Case_Tool_Help}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext
+                    content="Used for support for Salesforce, QM, Raptor, LinkedIn,
+                    Outreach, Olono, Revegy. For configuration changes and feature requests, use the Intake Request Case." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Intake Request">
+                    <img id="{!$Label.c.Case_IntakeRequest_RecordType}" src="{!$Resource.Case_Intake_Request_logo}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext
+                    content="Used for Configuration Change and Feature requests in Salesforce, QM, and/or Raptor." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Partner Portal">
+                    <img id="{!$Label.c.Case_PartnerPortal_RecordType}" src="{!$Resource.Case_Partner_Portal_logo}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext content="Used for external cases from the Treehouse Partner Portal only." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Sales Commissions">
+                    <img id="{!$Label.c.Case_SalesCommissions_RecordType}" src="{!$Resource.Case_Sales_Commissions}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext content="Used to direct commission related requests to Commissions team." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Sales Academy Request">
+                    <img id="{!$Label.c.Case_SalesAcademyRequest_RecordType}" src="{!$Resource.Case_Sales_Academy_Request}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext content="Used for requesting additional Training from the Sales Academy." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="ROE Escalations">
+                    <img id="{!$Label.c.Case_RoeEscalations_RecordType}" src="{!$Resource.Case_ROE_Escalations_logo}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext content="Use this case type for all ROE Escalation requests." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="QM Support">
+                    <img id="{!$Label.c.Case_qmSupport_RecordType}" src="{!$Resource.Case_QM_Support_logo}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext
+                    content="Used for support for Salesforce, QM, Raptor, LinkedIn, 
+                    Outreach, Olono, Revegy. For configuration changes and feature requests, use the Intake Request Case." />
+            </div>
+        
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Raptor Support">
+                    <img id="{!$Label.c.Case_RaptorSupport_RecordType}" src="{!$Resource.Case_Raptor_Support_logo}" height="250" width="250"></img>
+                </a>
+                <lightning:helptext content="Used for support within Raptor." />
+<!--
+@author: Atheer Bdaiwi
+@date: 19 Oct. 2021
+@description: The below was added as part of SFDC-6814. New record type added as part of the Transition Team Intake Form    
+-->
+            </div>
+            <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
+                <a onclick="{!c.selectRecordType}" value="Transition Team Intake Form">
+                	<img id="{!$Label.c.Case_TransitionTeamIntakeForm_RecordType}" src="{!$Resource.Transition_team_Intake_Form}" height="250" width="250"></img>                 
+                </a>
+                <lightning:helptext content="Transition Team Intake Form" />
+            </div>
+        </div>
+       
+    </aura:renderIf>    
+</aura:component>

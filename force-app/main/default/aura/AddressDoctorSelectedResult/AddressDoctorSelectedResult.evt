@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="With this event we are passing the selected address(lookup list record) in the parent component">
+    <aura:attribute name="recordSelectEvent" type="sObject"/>
+    <aura:attribute name="isError" type="Boolean"/>
+    <aura:attribute name="errorMessage" type="String"/>
+</aura:event>

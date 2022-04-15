@@ -1,0 +1,28 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller="QuickTextCreateController">
+    <aura:attribute name="quicktextname" type="String" /> 
+    <aura:attribute name="message" type="String" />  
+    <aura:attribute name="category" type="String" /> 
+    <div class="slds-size-5-of-8"> 
+        <div class="slds-align_absolute-center">
+            <!-- <lightning:card iconName="standard:quicktext" title="Quick Text">
+            </lightning:card>-->
+            <div class="slds-page-header">
+                <h1><b>Quick Text</b></h1>
+            </div>
+        </div>
+        
+        <lightning:input aura:id="quicktextselect" name="Quick Text Name" label="Quick Text Name" value="{!v.quicktextname}" required="true" />
+        <lightning:textarea aura:id="quicktextselect1" name="Message" label="Message" value="{!v.message}" required="true" />
+        <lightning:select aura:id="quicktextselect2"  name="Category" label="Category" value="{!v.category}" required="true">
+            <option value="Greetings" text="Greetings"></option>
+            <option value="FAQ" text="FAQ"></option>
+            <option value="Closings" text="Closings"></option>
+        </lightning:select>
+        <br/>
+        <lightning:button label="Save" variant="success" onclick="{!c.handleSaveQuickText}"/>   
+    </div>
+    
+    
+</aura:component>

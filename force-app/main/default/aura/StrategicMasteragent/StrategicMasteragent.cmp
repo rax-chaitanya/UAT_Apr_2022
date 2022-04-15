@@ -1,0 +1,45 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <div>
+        <div class="slds-m-top--xx-large" >
+           <p class="slds-text-align--left" id="header">Rackspace Business Partnerships</p>
+     
+    <p class="slds-text-body--regular" id="body"> <br/>
+        Rackspace<sup>®</sup> technology expertise and offerings enable and enhance the solutions our 
+        partners deliver to market. In support of our strategic partnerships, we provide market
+        leading managed cloud offerings to key partners, enabling their solutions to run more
+        effectively,efficiently, and profitably. Furthermore, the Rackspace managed cloud 
+        provides the best fit for your customers, enabling their applications to live on the public
+        cloud, a private cloud, dedicated servers, or a combination of all three platforms.<br/>
+        <br/>
+         As a strategic partner, we will work together in the development and execution of a 
+        unique, end-to-end value proposition for your customers, that delivers new 
+        opportunities,increases profitability and closes deals faster. The program is 
+        performance-based with a tiered structure where benefits increase along with your 
+        efforts and investment.
+    </p>
+    </div>
+    <br/><br/>
+    <div class="slds-grid slds-wrap">
+     <div class="slds-col slds-size_6-of-12">
+                <h3 class="headers">Program Features</h3><br/>
+            <ul class="slds-list--dotted">
+                <li class="list">Access to specialized teams who understand the agencies and the<br/> platforms they favor</li>
+                <li class="list">Joint marketing activities and sales support to help drive the success<br/> of go-to-market initiatives</li>
+                    
+            <li class="list">Flexible programs that make doing business with us easy</li>
+                </ul><br/><br/>
+        </div>
+            <div class="slds-col slds-size_6-of-12">
+        <h3 class="headers">Program Benefits</h3><br/>
+            <ul class="slds-list--dotted">
+                <li class="list">Flexibility to refer or resell deals with competitive com-<br/>pensation models</li>
+                <li class="list">Access to sales, service and technical advisory teams</li>
+                <li class="list">Customized training programs and joint marketing activities</li>
+           </ul>
+            </div>
+         </div>
+    </div>
+        <br/><br/>
+         
+     
+</aura:component>

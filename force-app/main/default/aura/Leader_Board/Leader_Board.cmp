@@ -1,0 +1,109 @@
+<aura:component controller="LeaderBoardController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="doneLoading" Type="Boolean" default="true"/>
+    <aura:attribute name="MemberLeaderboard" type="List[]"/>
+    <aura:attribute name="PartnerLeaderboard" type="List[]"/>
+    <aura:attribute name="IsPartner" type="Boolean" default="true"/>
+    <aura:attribute name="toggle" type="Boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:spinner alternativeText="Loading" size="medium" aura:id="spinner" class="{!v.doneLoading ? 'slds-hide' : ''}"/>
+    
+    <lightning:card class="leader-card">
+        <aura:set attribute="title">
+            <span class="slds-text-heading_medium">
+                <strong>Leaderboard</strong>
+            </span>
+        </aura:set>
+        
+        
+        <aura:set attribute="actions">
+            <aura:renderIf isTrue="{!!v.IsPartner}">
+                <lightning:button iconName="utility:sync" variant="brand" label="Refresh Level Info" onclick="{!c.refreshIcons}"/>
+            </aura:renderIf>
+        </aura:set>
+        
+        <lightning:layout horizontalAlign="center">
+            <lightning:layoutItem padding="around-small" size="5">
+                <span class="slds-text-heading_small slds-align_absolute-center">Partner User</span>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" size="2">
+                <lightning:input type="toggle" variant="label-hidden" name="toggle" class="inline slds-align_absolute-center" checked="{!v.toggle}"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" size="5">
+                <span class="slds-text-heading_small slds-align_absolute-center">Partner</span>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <aura:if isTrue="{!!v.toggle}">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Opportunity Name">Partner User</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Name">Points</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Close Date">Level</div>
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.MemberLeaderboard}" var="member">
+                        <tr class="{!member.loggedInUser ? 'slds-is-selected' : ''}">
+                            <th data-label="Partner Name" scope="row">
+                                <div class="image-fit">
+                                    <lightning:icon iconName="action:user" size="x-small" class="slds-m-right_small"/>
+                                    <ui:outputText value="{!member.Member.Name}"/>
+                                </div>
+                            </th>
+                            <td data-label="Points">
+                                <div class="slds-truncate" >{!member.ReputationPoints}</div>
+                            </td>
+                            <td data-label="Partner Level">
+                                <div class="image-fit">
+                                    <img src="{!member.levelImageUrl}" alt="{!member.levelName}" title="{!member.levelName}" class="slds-icon_small icon"/>
+                                    <ui:outputText value="{!member.levelName}"/>
+                                </div>
+                            </td>
+                            
+                        </tr>
+                    </aura:iteration> 
+                </tbody>
+            </table>
+        </aura:if>
+        <aura:if isTrue="{!v.toggle}">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Opportunity Name">Partner</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Account Name">Points</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.PartnerLeaderboard}" var="partner">
+                        <tr class="{!partner.loggedInPartner ? 'slds-is-selected' : ''}">
+                            <th data-label="Partner Name" scope="row">
+                                <div class="image-fit">
+                                    <lightning:icon iconName="action:new_account" size="x-small" class="slds-m-right_small"/>
+                                    <ui:outputText value="{!partner.Name}"/>
+                                </div>
+                            </th>
+                            <td data-label="Points">
+                                <div class="slds-truncate" >{!partner.Reputation_Points__c}</div>
+                            </td>
+                        </tr>
+                    </aura:iteration> 
+                </tbody>
+            </table>
+        </aura:if>
+    </lightning:card>
+</aura:component>

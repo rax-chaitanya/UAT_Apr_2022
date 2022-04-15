@@ -1,0 +1,3 @@
+<apex:component controller="APIParameterController" >
+    <apex:attribute name="ApiServiceUrl" type="String" required="true" assignTo="{!serviceUrlApi}" description="apex missing global workaround" />
+</apex:component>

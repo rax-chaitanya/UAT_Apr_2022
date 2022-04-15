@@ -1,0 +1,11 @@
+<apex:page standardController="Opportunity" extensions="OppNutcaseGraphController" showHeader="fasle" sidebar="false">
+
+    <apex:chart height="300" width="500" data="{!ChartData}">
+        <apex:axis type="Numeric" position="left" fields="data1" title="Nutcase Points" grid="false" maximum="5" minimum="-5" steps="9"/>
+
+        <apex:barSeries orientation="vertical" axis="left" xField="name" yField="data1" colorsProgressWithinSeries="true" colorSet="{!barColorString}"/>
+        
+        <apex:axis type="Category" position="bottom" fields="name"  title="Category"/>
+
+    </apex:chart>
+</apex:page>

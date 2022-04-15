@@ -1,0 +1,66 @@
+<!-- **
+* File :QuickTextEditPage.page
+* Description : Visualforce page to Modify the QuickText object records.
+* Created Date : 14/Jul/2017
+* Author : RDC
+* -->
+
+<apex:page title="Quick Text Edit" controller="QuickTextEditController"  showHeader="false" >
+<apex:sectionHeader title="Quick Text" subtitle="Edit"/>
+
+    <apex:pageblock title="Quick Text Settings">
+    <apex:form >
+            <apex:pageBlockSection >
+               
+               <apex:outputLabel value="Select a Quick Text: " style="font-weight:bold;" />
+               
+                <apex:selectList size="1" value="{!quickText}" style="font-size:12px;font-weight:bold; position: relative; right: 80%;">
+                    <apex:selectOptions value="{!quickList}"></apex:selectOptions>
+                    <apex:actionSupport event="onchange" action="{!updateList}" rerender="fm"/>
+                </apex:selectList> 
+              </apex:pageBlockSection>
+     </apex:form> 
+     
+     
+                    <apex:form id="fm" style="height:1500px;">
+
+            <apex:pageBlockSection title="Basic Information" columns="1" >
+            <apex:pagemessages ></apex:pagemessages>
+                    <apex:outputpanel >
+                        <table >
+                         <tbody>
+                            <tr>
+                                <td>
+                                    Message
+                                </td>
+                                <td style="width:105%">
+                                    <apex:inputTextarea value="{!message}" rows="7" cols="50"/> 
+                                </td>
+                            </tr>
+                                 </tbody>
+                            </table>
+                            <table >
+                         <tbody>
+                              <tr>
+                            <td>Category </td>
+                            <td>
+                            <apex:selectList value="{!category}" multiselect="false" size="1">
+                            <apex:selectOptions value="{!categories}"/>
+                            </apex:selectList>
+                            </td>
+                        </tr>
+                          
+     </tbody>
+     </table>
+     </apex:outputPanel>
+     </apex:pageBlockSection>
+   
+     
+        <div align="center">
+            <apex:commandButton value="Save" action="{!save}" style="width:10%;"/> 
+            <apex:commandButton value="Cancel" action="{!cancel}" style="width:10%;"/> 
+           </div>
+             </apex:form>
+     
+     </apex:pageblock>
+</apex:page>

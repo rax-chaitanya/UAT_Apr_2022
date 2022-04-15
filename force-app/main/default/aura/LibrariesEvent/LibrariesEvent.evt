@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION">
+ 
+   <aura:attribute name="result" type="String"/>
+   <aura:attribute name="resource" type="String"/>
+    <aura:attribute name="lib" type="String"/>
+</aura:event>

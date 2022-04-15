@@ -1,0 +1,104 @@
+<aura:component >
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:handler name="oSelectedRecordEvent" event="c:selectedsObjectRecordEvent" action="{!c.handleRecordSelect}"/>
+    <aura:attribute name="accountOwner" type="String" default=""/>
+    <aura:attribute name="columnsTodisplay" type="String[]" default=""/>
+    <aura:attribute name="resultListToDisplay" type="GlobalAccountSearchController.AccountSearchWrapper[]"/>
+    <aura:attribute name="title" type="String" default="Custom Title"/>
+    <aura:attribute name="requestList" type="Account_Realignment_Request__c[]"/>
+    <aura:attribute name="requestItemList" type="Realignment_Request_Item__c[]"/>
+    <div class="" title="Search Result Section" id="show">
+        <aura:iteration items="{!v.resultListToDisplay}" var="rec">
+            <br/>
+            <lightning:card class="company-card">
+                
+                <aura:set attribute="title">
+                    
+                    <span>
+                        <label class="slds-checkbox">
+                            <input class="parentCheckBox" type="checkbox" value="{!rec.Company_info.Id}" id="{!rec.Company_info.Id}" checked="false" onchange="{!c.onParentChange}"/>
+                            <span class="slds-checkbox--faux"></span>
+                            <span class="slds-form-element__label text">&nbsp;&nbsp;&nbsp;<b>{!rec.Company_info.Name}</b>&nbsp;&nbsp;&nbsp;<lightning:icon iconName="action:new_account" size="small" class="slds-iconclass"/></span>
+                        </label>
+                        
+                    </span>
+                </aura:set>
+                
+              <!--  <aura:set attribute="body">-->
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table--fixed-layout">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <aura:iteration items="{!v.columnsTodisplay}" var="colu">
+                                    
+                                    <th class="slds-is-sortable slds-cell-wrap" scope="col" >
+                                        <div class="slds-truncate" title="{!colu}">{!colu}</div>
+                                    </th>
+                                    
+                                </aura:iteration>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!rec.Account_Info}" var="acc">
+                                <tr>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <label class="slds-checkbox">
+                                            <input class="childCheckBox" type="checkbox" value="{!acc.Account_id}" id="{!acc.Account_id}" checked="false" onchange="{!c.childChecked}"/>
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label text"></span>
+                                        </label>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Name}">{!acc.Account_Name}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Number}">{!acc.Account_Number}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Type}">{!acc.Account_Type}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Country}">{!acc.Account_Country}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Current_Owner}">{!acc.Account_Current_Owner}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Current_Owner_Role}">{!acc.Account_Current_Owner_Role}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Account_Current_Owner_ActiveOrInactive}">{!acc.Account_Current_Owner_ActiveOrInactive}</div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                       <div  title=""> <c:LookupUitility objectAPIName="User" fieldValue="Active" IconName="standard:user" selectedRecord="{!acc.Request_Item_New_Owner}" /></div>
+                                        <br/>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Request_Item_Reason}">
+                                            <input type="text" id="text-input-id-1" class="slds-input" placeholder="" value="{!acc.Request_Item_Reason}"/>
+                                        </div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Request_Item_Move_Date}">
+                                            <ui:inputDate aura:id="expdate" class="field" value="{!acc.Request_Item_Move_Date}" displayDatePicker="true" />
+                                        </div>
+                                    </td>
+                                    <td scope="row" class="slds-cell-wrap">
+                                        <div class="slds-truncate" title="{!acc.Request_Item_Validation}">
+                                            <input type="text" id="text-input-id-1" class="slds-input" placeholder="" value="{!acc.Request_Item_Validation}"/>
+                                        </div>
+                                    </td>
+                                     
+                                <!--    <td scope="row">
+                                        <input type="text" id="{!reason+acc.id}" class="slds-truncate" placeholder="Placeholder Text" />
+                                    </td>
+                                    -->
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                <!--</aura:set>-->
+             
+            </lightning:card> 
+        </aura:iteration>
+    </div>
+</aura:component>

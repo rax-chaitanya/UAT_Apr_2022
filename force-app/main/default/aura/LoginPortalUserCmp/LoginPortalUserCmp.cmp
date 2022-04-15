@@ -1,0 +1,94 @@
+<aura:component controller="CommunityLoginController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="Username" type="String" />
+    <aura:attribute name="Password" type="String" />
+    <aura:attribute name="userMessage" type="String"/>
+    <aura:attribute name="pasMessage" type="String"/>
+    <aura:attribute name="loginmessage" type="String"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="isVisible" type="boolean" default="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <table   style="width:100%; ">
+        <div class="slds-grid slds-wrap">
+            <div   class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12">
+                <tr class="slds-text-body_regular">
+                    <td data-label="Banner1">
+                        <div class="page-section page-header">
+                            <img src="{!$Resource.Banner1}" id="banner"/> 
+                        </div>
+                    </td>
+                </tr>
+            </div>
+        </div>
+        <tr>
+            <div    onkeyup="{!c.EnterKeyPress}">
+                <aura:if isTrue="{!v.isVisible}">
+                    
+                    <div class="slds-grid slds-wrap">
+                        
+                        <td class="logoClass">
+                            <div   class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 ">
+                                <span><img src="{!$Resource.RaxPartnerNetworkLogo}" id="imageclass" style=""/></span>
+                            </div>
+                        </td>
+                        <td class="h-line">
+                            <div class="lineclass slds-col slds-size_1-of-1"></div>
+                        </td>
+                        <td class="user-login">
+                            
+                            <div id="formclass"  class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12">
+                                <span id="Login"  class="slds-text-body_regular" style="font-family : Helvetica;">Login to Rackspace Partner Network<span><br/>
+                                    <div id="error">
+                                        
+                                        <h2 style="color:#C40022;"><ui:outputRichText value="{!v.loginmessage}"/> </h2><br/>   
+                                    </div> 
+                                    <div class="slds-form-element" style="font-family : Helvetica;">
+                                        <abbr class="slds-required" title="required">*</abbr>Username<button class="slds-button slds-button slds-button--icon" aria-describedby="help" title="email@domain.com.rax.partner" >
+                                        <lightning:icon iconName="utility:info" size="x-small" alternativeText="email@domain.com.rax.partner"/>
+                                        <span class="slds-assistive-text">email@domain.com.rax.partner</span>
+                                        </button>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputEmail aura:id="username" class="slds-input" value="{!v.Username}" />
+                                            <h2 style="color:#C40022"><ui:outputRichText value="{!v.userMessage}"/> </h2>
+                                        </div>
+                                        
+                                        <br/>
+                                        
+                                        <abbr class="slds-required" title="required">*</abbr>Password
+                                        <div class="slds-form-element__control">
+                                            <ui:inputSecret class="slds-input" aura:id="password" value="{!v.Password}"/>
+                                            <h2 style="color:#C40022"><ui:outputRichText value="{!v.pasMessage}"/> </h2>
+                                        </div>
+                                        
+                                        <br/>
+                                        <lightning:button label="Log In" class="slds-m-top--medium" variant="destructive" onclick="{!c.getInput}"/>
+                                        <br/><br/><br/>
+                                    </div>
+                                    </span>
+                                    
+                                    <div class="demo-only demo-only--sizing slds-grid slds-wrap" style="font-family : Helvetica;">
+                                        <div class="slds-size_2-of-2">
+                                            <a href="{! $Label.c.ForgotPassword}"  style="color:#4286f4">Forgot Password?</a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="{! $Label.c.selfAccountRegistration}" style="color:#4286f4">Sign Up</a>
+                                        </div> 
+                                    </div>
+                                </span>
+                            </div>
+                        </td>
+                    </div>
+                </aura:if>
+            </div>
+        </tr>
+    </table>
+</aura:component>

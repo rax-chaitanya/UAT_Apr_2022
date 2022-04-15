@@ -1,0 +1,157 @@
+<aura:component controller="AddressDoctorComponentController">
+    <aura:attribute name="serchedResC" type="object" default="{}"/>
+	<aura:attribute name="ifResults" type="boolean" default="false"/>
+    <aura:attribute name="initRecordC" type="object" default="{}"/>
+    <aura:attribute name="selectedAddNo" type="String" default=""/>
+    <aura:attribute name="isRunning" type="boolean" default="false"/> 
+    <aura:attribute name="isSearchActive" type="boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.initRecordC}" action="{!c.methodName}"/>
+    <aura:attribute name="lstCountry" type="String[]" default=""/>
+    <aura:attribute name="Account" type="Account" 
+               default="{ 'sobjectType': 'Account' }"/>
+    <!--Register the component level event-->
+    <aura:registerEvent name="eSelectedAddress" type="c:AddressDoctorSelectedResult"/>
+    
+    <aura:if isTrue="{!v.isRunning}">
+            <lightning:spinner alternativeText="Loading" size="large" class="slds-show" aura:id="mySpinner"/>
+    </aura:if>
+    
+    <div aura:id="tabShippingAddr" id="tab-default-2" class="slds-show" role="tabpanel" aria-labelledby="shipping">
+			<div class="slds-form-element__group">
+			<div class="slds-grid">
+            <div class="slds-m-around--medium slds-form-element slds-size_2-of-3" style="">
+                <div class="slds-form slds-form_compound">
+                    <fieldset class="slds-form-element">
+                    <!--<legend class="slds-form-element__label slds-text-title_caps">Address</legend>-->
+                        <div class="slds-form-element__group">
+                            <div class="slds-form-element__row">
+                            <div class="slds-form-element slds-size_1-of-1">
+                            <!--<label class="slds-form-element__label" for="input-03">Street</label>-->
+                                <!--<ui:inputTextArea class="slds-input" aura:id="streetId" value="{!v.initRecordC.street}" required="false"/>-->
+                                <lightning:textarea aura:id="streetId" label="Street" placeholder="" value="{!v.initRecordC.street}" required="true"/>
+                            </div>
+                            </div>
+                        <div class="slds-form-element__row">
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <!--<label class="slds-form-element__label" for="input-04">City/Locality</label>-->
+                                <!--<ui:inputText class="slds-input" aura:id="cityId" value="{!v.initRecordC.city}" required="false" updateOn="{!fillAllFields}"/>-->
+                                	<lightning:input aura:id="cityId" label="City/Locality" placeholder="" value="{!v.initRecordC.city}" required="true"/>
+                            </div>
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <label class="slds-form-element__label" for="input-05">State/Province</label>
+                                <lightning:helptext content="State/Province is required if country is 'United States'"/>
+                                <!--<ui:inputText class="slds-input" aura:id="stateId" value="{!v.initRecordC.province}" required="false"/>-->
+                                <lightning:input class="hideThisLabel" label="State/Province" variant="label-hidden" aura:id="stateId" placeholder="" value="{!v.initRecordC.province}" required="false"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__row">
+                            <div class="slds-form-element slds-size_1-of-2">
+                            <!--<label class="slds-form-element__label" for="input-06">ZIP Code</label>-->
+                                <!--<ui:inputText class="slds-input" aura:id="zipId" value="{!v.initRecordC.zip}" required="false"/>-->
+                                <lightning:input aura:id="zipId" label="ZIP Code" placeholder="" value="{!v.initRecordC.zip}" required="true"/>
+                            </div>
+                            <div class="slds-form-element slds-size_1-of-2">
+                            <!--<label class="slds-form-element__label" for="input-07">Country</label>-->
+                                <!--<ui:inputText class="slds-input" aura:id="countryId" value="{!v.initRecordC.country}" required="false"/>-->
+                                <!--<lightning:input aura:id="countryId" label="Country" placeholder="Enter message..." value="{!v.initRecordC.country}" required="true"/>-->
+                                <lightning:select name="Country" aura:id="countryId" label="Country" value="{!v.initRecordC.country}" required="true">
+                                     <option value="">select country</option>
+                                     <aura:iteration items="{!v.lstCountry}" var="item">
+                                        <option value="{!item}" selected="{!item==v.initRecordC.country}">
+                                            {!item}
+                                        </option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>    
+                        </div>
+                        <div class="slds-form-element__row">
+                            <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="input-06"></label> 
+                                <lightning:button disabled="{!v.isSearchActive}" label="Search" onclick="{!c.search}"/>
+                            </div>
+                        </div>    
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+			<div class="slds-m-around--medium slds-form-element slds-size_1-of-3 slds-hide" style="">
+                
+			</div>
+			</div>
+			</div>
+        
+            <div class="slds slds-scrollable--x slds-m-top_medium">
+              <table class="slds-table slds-table_bordered slds-table_cell-buffer ">
+              <thead>
+                <tr class="slds-text-title_caps">  
+                  <th scope="col">
+                    <div class="slds-truncate" title="Building">Select</div>
+                  </th>  
+                  <th scope="col">
+                    <div class="slds-truncate" title="Building">Building</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate" title="HouseNo">House No</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate" title="Street">Street</div>
+                  </th>
+                  <th scope="col">
+                      <div class="slds-truncate" title="State">State/province</div>
+                  </th>
+                  <th scope="col">
+                      <div class="slds-truncate" title="City">City/Locality</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate" title="Zip">Zip</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate" title="Country">Country</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <aura:if isTrue="{!v.ifResults}">
+                <aura:iteration items="{!v.serchedResC}" var="eachRes">  
+                <tr>
+                  <td data-label="Result Number">
+                    <!--<ui:inputRadio aura:id="{!eachRes.resultNumber}" name="others" label="" change="{!c.onGroup}"/>-->
+                      <span class="slds-radio">
+                      <input type="radio" id="{!eachRes.resultNumber}" name="options" value="{!eachRes.resultNumber}" data-selected-Index="{!eachRes.resultNumber}" onchange="{!c.onGroup}"/>
+                      <label class="slds-radio__label" for="{!eachRes.resultNumber}">
+                        <span class="slds-radio_faux"></span>
+                        <!--<span class="slds-form-element__label">Radio Label One</span>-->
+                      </label>
+                    </span>
+                  </td>                 
+                  <td data-label="Building Name">
+                    <div class="slds-truncate" title="building"><a href="javascript:void(0);">{!eachRes.building}</a></div>
+                  </td>
+                  <td data-label="Account Name">
+                    <div class="slds-truncate" title="houseNo">{!eachRes.houseNo}</div>
+                  </td>
+                  <td data-label="Close Date">
+                    <div class="slds-truncate" title="street">{!eachRes.street}</div>
+                  </td>
+                  <td data-label="Prospecting">
+                    <div class="slds-truncate" title="province">{!eachRes.province}</div>
+                  </td>
+                  <td data-label="Confidence">
+                    <div class="slds-truncate" title="city">{!eachRes.city}</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="zip">{!eachRes.zip}</div>
+                  </td>
+                    <td data-label="Amount">
+                    <div class="slds-truncate" title="country">{!eachRes.country}</div>
+                  </td>
+                </tr>
+                </aura:iteration>  
+                </aura:if>   
+              </tbody>
+            </table>
+            </div>
+      </div>
+	
+</aura:component>

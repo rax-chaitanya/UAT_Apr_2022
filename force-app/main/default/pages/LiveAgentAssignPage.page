@@ -1,0 +1,89 @@
+<!-- **
+* File :LiveAgentAssignPage.page
+* Description : Visualforce page for assigning the Live Agent user to Live agent configuration.
+* Created Date : 14/Aug/2017
+* Author : RDC
+* -->
+
+<apex:page controller="LiveAgentAssignController" showHeader="false">
+<apex:pagemessages />
+ 
+<apex:pageBlock title="Configurations">
+<apex:outputText ><b>*A User can be assigned to only One Live Agent Configuration.</b></apex:outputText>
+           <apex:pageBlockSection title="Select Configuration" columns="5">
+<apex:form >
+  
+           <apex:outputLabel value="Select a Configuration : " style="font-weight:bold"/>
+           <apex:selectList size="1" value="{!config}">
+                  <apex:selectOptions value="{!configList}"></apex:selectOptions>
+                  <apex:actionSupport event="onchange" action="{!UpdateList}" rerender="fm"/>
+           </apex:selectList> 
+   </apex:form>
+   </apex:pageBlockSection>
+
+    <apex:form id="fm" style="height:550px;">
+               <apex:pageBlockSection title="Select Users" columns="1" >
+
+         <apex:outputPanel layout="block">
+            <apex:outPutLabel value="Search for: " style="font-weight:bold"/>
+            <apex:inputText value="{!whereClause}" style=" margin: 10px;"/>
+            <apex:commandButton action="{!filterAvailableUsers}" value="Find" rerender="availableUsersBlock"/>
+        </apex:outputPanel>
+           
+        <apex:outputPanel id="multiselectPanel" layout="block" styleClass="duelingListBox">
+                                          
+
+            <table class="layout">
+                <tbody>
+<tr>Select the Live Agent users for this configuration.</tr>
+                    <tr>
+                        <td class="selectCell">
+                            <apex:outputPanel layout="block" styleClass="selectTitle">
+                                <apex:outputLabel value="Available Users" for="multiselectPanel:leftList" />
+                            </apex:outputPanel>
+                            <apex:selectList id="availableUsersBlock" value="{!selectedUserIds}" multiselect="true" size="15" style="width: 200px;">
+                                <apex:selectOptions value="{!availableUsers}"/>
+                            </apex:selectList>
+                        </td>
+                        <td class="buttonCell">
+                            <apex:outputPanel layout="block" styleClass="text">Add</apex:outputPanel>
+                            <apex:outputPanel layout="block" styleClass="text">
+                                <apex:commandLink action="{!addUser}" rerender="availableUsersBlock, selectedUsersBlock" id="btnRight"> 
+                                    <apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon" title="Add" />
+                                </apex:commandLink>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" styleClass="text">
+                                <apex:commandLink action="{!removeUser}" rerender="availableUsersBlock, selectedUsersBlock" id="btnLeft">
+                                    <apex:image value="/s.gif" alt="Remove" styleClass="leftArrowIcon" title="Remove" />
+                                </apex:commandLink>
+                                <apex:outputPanel layout="block" styleClass="duelingText">Remove</apex:outputPanel>
+                            </apex:outputPanel>
+                        </td>
+                        <td class="selectCell">
+                            <apex:outputPanel layout="block" styleClass="selectTitle">
+                                <apex:outputLabel value="Selected Users" for="multiselectPanel:rightList" />
+                            </apex:outputPanel>
+                            <apex:selectList id="selectedUsersBlock" value="{!removedUserIds}" multiselect="true" size="15" style="width: 200px;">
+                                <apex:selectOptions value="{!selectedUsers}"/>
+                            </apex:selectList>
+                        </td>
+</tr>
+                                
+
+                </tbody>
+                
+            </table>   
+
+             </apex:outputPanel>
+            </apex:pageBlockSection>
+        <br/><br/>  
+            <div align="center">
+
+           <apex:commandButton value="Save" action="{!save}" style="width:10%;"/>
+                      <apex:commandButton value="Cancel" action="{!cancel}" style="width:10%;"/>             
+            </div> 
+ </apex:form>
+
+   </apex:pageBlock>
+
+</apex:page>

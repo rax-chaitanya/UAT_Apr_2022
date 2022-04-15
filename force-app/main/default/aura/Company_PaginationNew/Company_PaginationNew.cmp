@@ -1,0 +1,88 @@
+<aura:component controller="CompanySearchAndCreateCtrlNew">
+    
+    <aura:attribute name="resultObj" type="CompanySearchAndCreateCtrlNew.CompanyAndCloudDBCompWrapper" description=""/>
+    <aura:attribute name="cmpName" type="string" description="Company Name"/>
+    <aura:attribute name="website" type="string" description="Website"/>
+    <aura:attribute name="selectedCntry" type="String" default=""/> 
+    <aura:attribute name="selectedState" type="String" default=""/>
+    <aura:attribute name="territorySelected" type="List" default="[]"/>
+    <!-- Attribute Declration For Pagination -->
+    <aura:attribute name="PaginationList" type="object[]"/>
+    <aura:attribute name="startPage" type="integer"/>
+    <aura:attribute name="endPage" type="integer"/>
+    <aura:attribute name="totalRecords" type="integer"/>
+    <aura:attribute name="pageSize" type="integer" default="10"/>
+    
+    <aura:attribute name="startRec" type="integer" description="using for store page Number"/>
+    <aura:attribute name="endRec" type="integer" description="using for store All Pages page Number"/>
+    
+    <!-- Attribute Declration For Pagination End-->
+    
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    
+    <aura:handler event="c:CompanySearchEventNew" action="{!c.handleApplicationEvent}"/>
+    
+    <table class="slds-table slds-table slds-table--bordered slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+        <thead>
+            <tr class="slds-text-heading--label">
+                <th scope="col"><div class="slds-truncate" title="action">Action</div></th>
+                <th scope="col"><div class="slds-truncate" title="Name">Company Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="Email">Owner Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="Company">Website</div></th>
+                <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+                <th scope="col"><div class="slds-truncate" title="BillingState">Billing State</div></th>
+                <th scope="col"><div class="slds-truncate" title="BillingCountry">Billing Country</div></th>
+                <th scope="col"><div class="slds-truncate" title="territroy">territory</div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:if isTrue="{!v.PaginationList.length > 0}">
+                <aura:iteration items="{!v.PaginationList}" var="cmp"> 
+                    <tr>
+                        <th scope="row">   
+                        <aura:if isTrue="{!(cmp.isAccessible == 0)}">
+                             <a href="#" onclick="{!c.handleRequestAccess}" id="{!cmp.compObj.Id}">Request Access</a>                              
+                        </aura:if>    
+                        <aura:if isTrue="{!(cmp.isAccessible == 1)}">
+                             <ui:outputURL value="{!'/one/one.app#/sObject/' + cmp.compObj.Id +'/view'}" label="Select" aura:id="{!cmp.compObj.Id}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!(cmp.isAccessible == 2)}">
+                             Access Required
+                        </aura:if>
+                        <aura:if isTrue="{!(cmp.isAccessible == 3)}">
+                             Pending Approval for {!$Userinfo.getuserId}
+                        </aura:if>
+                        
+                        </th>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.Name}">{!cmp.compObj.Name}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.Email}">{!cmp.compObj.Owner.Name}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.Company}">{!cmp.compObj.Website}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.Phone}">{!cmp.compObj.Phone}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.BillingState}">{!cmp.compObj.BillingState}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.BillingCountry}">{!cmp.compObj.BillingCountry}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.compObj.Territory__c}">{!cmp.compObj.Territory__c}</div></td>
+                    </tr>
+                </aura:iteration>
+                <aura:set attribute="else">
+                    <tr><th scope="row" colspan="4">
+                        <div class="slds-text-align_center">No companies were found.</div></th>
+                    </tr>
+                </aura:set>
+            </aura:if>            
+        </tbody>
+        <p> {!v.startRec} - {!v.endRec} of {!v.resultObj.totalCmp} Companies</p>
+            
+    </table>
+    <lightning:buttonGroup >
+        <lightning:button label="Previous" disabled="{!v.resultObj.compOffSet == 0}"  
+                          onclick="{!c.previous}" variant="brand"
+                          iconName='utility:back'/>
+        &nbsp; &nbsp; &nbsp;
+        <lightning:button label="Next" disabled="{!v.startRec ge v.resultObj.totalCmp || v.resultObj.totalCmp le 10}" 
+                          onclick="{!c.next}" variant="brand"
+                          iconName='utility:forward' iconPosition='right'/>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+        
+    </lightning:buttonGroup>     
+</aura:component>

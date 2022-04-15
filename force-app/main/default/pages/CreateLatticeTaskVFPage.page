@@ -1,0 +1,15 @@
+<apex:page standardStylesheets="false" sidebar="false">
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" style="width: 500px;"/>
+    <script>
+    $Lightning.use("c:CreateLatticeTaskApplication", function() {
+        $Lightning.createComponent("c:CreateLatticeTask",
+                                   { idd: "{!$CurrentPage.parameters.idd}", playName: "{!$CurrentPage.parameters.playName}", name: "{!$CurrentPage.parameters.name}", selectedLookUpRecord:{"sObjectType":"sObject", "Id":"{!$User.Id}", "Name":"{!$User.FirstName} {!$User.LastName}"}, CampaignId : "{!$CurrentPage.parameters.campaignId}" , ContactId : "{!$CurrentPage.parameters.ContactId}" } ,
+                                   "lightning",
+                                   function(cmp) {
+                                       // do some stuff
+                                   });
+    });
+        
+    </script>
+</apex:page>

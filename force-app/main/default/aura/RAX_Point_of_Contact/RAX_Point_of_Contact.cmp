@@ -1,0 +1,12 @@
+<aura:component controller="RaxInfoController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="aura:doneRendering" action="{!c.afterRender}"/>
+    <aura:attribute name="Info" type="String"/>	
+    <aura:attribute name="testuser" type="String"/>	
+    <aura:dependency resource="markup://force:navigateToComponent" type="EVENT"/>
+    <div style="text-align:center; font-weight:bold;margin-top: 10px;">
+              <aura:text value="{!v.Info}"/>
+    </div>
+   <!-- <c:PartnerOnboarding/>-->
+</aura:component>

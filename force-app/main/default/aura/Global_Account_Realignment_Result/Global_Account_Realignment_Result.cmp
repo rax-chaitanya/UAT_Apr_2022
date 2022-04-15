@@ -1,0 +1,73 @@
+<aura:component >
+    <aura:attribute name="showProcessingResult" type="Boolean" default="false"/>
+    <aura:attribute name="realignmentRequetItems" type="object" default="{}"/>
+    <aura:attribute name="showWarning" type="Boolean" default="false"/>
+    <aura:attribute name="warningMessage" type="String"/>
+    
+    <div class="">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.close}">
+                        <lightning:icon iconName="utility:close" size="small" class="slds-iconclass" variant="inverse"/>
+                        
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Processing Result</h2>
+                </header>
+                
+                <c:GAR_Warning visible="{!v.showWarning}" message="{!v.warningMessage}"/>
+                
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Account Name">Company Name</div>
+                                    <!-- SFDC-7193 Replace account with company -->
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Previous Owner">Previous Owner</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="New Owner">New Owner</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Move Date">Move Date</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Approver">Approver</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Request Status">Request Status</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Request Status">Validation Comments</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.realignmentRequetItems}" var="requestItem">
+                                <tr class="{!requestItem.Not_Processed ? 'not-processed' : ''}">
+                                    <td><div class="slds-truncate">{!requestItem.Account__r.Name}</div></td>
+                                    <td><div class="slds-truncate">{!requestItem.Previous_Account_Owner__r.Name}</div></td>
+                                    <td><div class="slds-truncate">{!requestItem.New_Account_Owner__r.Name}</div></td>
+                                    <td><div class="slds-truncate">{!requestItem.Move_Date__c}</div></td>
+                                    <td><div class="slds-truncate">{!requestItem.Account_Realignment_Request__r.Approver_Formula__c}</div></td>
+                                    <td>
+                                        <div class="slds-truncate">
+                                            <lightning:icon iconName="{!requestItem.Approved__c ? 'utility:check' : requestItem.Not_Processed ? 'utility:error' : 'utility:clock'}" alternativeText="{!requestItem.Request_Status__c}" size="x-small"/>
+                                            {!requestItem.Request_Status__c}
+                                        </div>
+                                    </td>
+                                    <td><div class="slds-truncate slds-cell-wrap">{!requestItem.Validation_Comments__c}</div></td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</aura:component>

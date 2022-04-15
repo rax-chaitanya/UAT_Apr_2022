@@ -1,0 +1,25 @@
+<aura:component controller="PilotAgreementController" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="displayText" type="test"/>
+    <aura:attribute name="previewUrls" type="List"/>
+    <aura:attribute name="previewedUrls" type="List"/>
+    <aura:attribute name="buttonVisiblity" type="Map" default="{'btn1':'slds-show'}"/>
+    
+    <aura:iteration items="{!v.previewUrls}" var="dist">
+        <div class="slds-box slds-theme_shade slds-theme_alert-texture">
+            <iframe src="{!dist.DistributionPublicUrl}" height="1200" width="1260"/>
+            <div class="slds-p-horizontal--small slds-m-top--medium slds-size--1-of-1 slds-align--absolute-center slds-button ">
+                   <lightning:button value="{!dist.Id}" variant="brand" class="{!v.buttonVisibility.btn1}" label="Click To Agree" onclick="{!c.clickToAgree}"/>
+                
+            </div>
+        </div><br/><br/>
+    </aura:iteration>
+    
+    <aura:iteration items="{!v.previewedUrls}" var="disp">
+        <div class="slds-box slds-theme_shade slds-theme_alert-texture">
+            <iframe src="{!disp.DistributionPublicUrl}" height="1200" width="1260"/>
+           
+        </div><br/><br/>
+    </aura:iteration>
+    
+</aura:component>

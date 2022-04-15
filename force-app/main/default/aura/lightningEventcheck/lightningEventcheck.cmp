@@ -1,0 +1,47 @@
+<aura:component controller = "lightningEventcheckController" implements="flexipage:availableForAllPageTypes,lightning:backgroundUtilityItem,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,lightning:actionOverride,force:appHostable,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" 
+                access="global" >	
+    <lightning:workspaceAPI aura:id="workspace" />	
+    <lightning:conversationToolkitAPI aura:id="conversationKit" />
+	<lightning:omniToolkitAPI aura:id="omniToolkit" /> 
+ 
+    <aura:attribute name="recIdOpen" type="String[]"/>
+    <aura:attribute name="tabName" type="String[]"/>
+    <aura:attribute name="newTab" type="String" default="empty"/>
+    <aura:attribute name="viewTabs" type="String[]"/>
+    <aura:attribute name="recordId" type="String"/>
+	<aura:attribute name="sObjectName" type="String"/> 
+    <aura:attribute name="recCreated" type="Boolean" default="false" />
+    <aura:attribute name="stopAddr" type="Boolean" default="true" />
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+  <!-- Events for Lightning Experience -->
+    <aura:handler event="lightning:tabCreated" action="{! c.onTabCreated }"/> 
+    <aura:handler event="lightning:tabUpdated" action = "{! c.onTabUpdated}"/>
+    <aura:handler event="lightning:tabClosed" action="{! c.onTabClosed }"/>
+    <aura:handler event="lightning:tabFocused" action="{! c.onTabFocused }"/>
+    <aura:handler event="lightning:tabRefreshed" action="{! c.onTabRefreshed }"/>
+    <aura:handler event="lightning:tabReplaced" action="{! c.onTabReplaced }"/>
+  <!--+++++++++++++++++++++++++++++++++++-->  
+    
+  <!-- Events for Live Agent -->  
+    <aura:handler event="lightning:conversationAgentSend" action="{! c.onAgentSend}" />
+    <aura:handler event="lightning:conversationChatEnded" action="{!c.onChatEnded}" />
+    <aura:handler event="lightning:conversationCustomEvent" action="{!c.onCustomEvent}" />
+    <aura:handler event="lightning:conversationNewMessage" action="{!c.onNewMessage}" />
+  <!--+++++++++++++++++++++++++++++++++++-->  
+
+  <!-- Events for Omni-Channel -->  
+    <aura:handler event="lightning:omniChannelStatusChanged" action="{! c.onStatusChanged }"/>
+    <aura:handler event="lightning:omniChannelLogout" action="{! c.onLogout }"/>
+    <aura:handler event="lightning:omniChannelWorkAssigned" action="{! c.onWorkAssigned }"/>
+    <aura:handler event="lightning:omniChannelWorkAccepted" action="{! c.onWorkAccepted }"/>
+    <aura:handler event="lightning:omniChannelWorkDeclined" action="{! c.onWorkDeclined }"/>
+    <aura:handler event="lightning:omniChannelWorkClosed" action="{! c.onWorkClosed }"/>
+    <aura:handler event="lightning:omniChannelWorkloadChanged" action="{! c.onWorkloadChanged }"/>
+    <aura:handler event="lightning:omniChannelLoginSuccess" action="{! c.onLoginSuccess }"/>
+  <!--+++++++++++++++++++++++++++++++++++-->  
+
+    
+    
+</aura:component>

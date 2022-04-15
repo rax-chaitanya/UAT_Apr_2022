@@ -1,0 +1,33 @@
+.headtext
+ {
+  width:100%;
+  text-align:center;
+  font-family:Franklin Gothic Medium;
+  color:#34495e;
+  text-shadow: 2px 2px 8px #808080;
+  font-size: 16px;
+  font-weight: bold;
+  }
+.shadow
+ {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+   
+ }
+.center {
+    margin: auto;
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #1975D1;
+}
+ body .bPageBlock .pbBody .red .pbSubheader{
+ border-top: 0px;
+ background:#E7E7E7;
+}
+.tblheader
+    {
+width:100%;
+     -webkit-box-shadow: inset -1px -1px 38px -3px rgba(79,88,214,1);
+-moz-box-shadow: inset -1px -1px 38px -3px rgba(79,88,214,1);
+box-shadow: inset -1px -1px 38px -3px rgba(79,88,214,1);
+    }

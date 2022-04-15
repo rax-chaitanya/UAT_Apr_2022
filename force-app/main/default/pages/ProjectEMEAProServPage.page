@@ -1,0 +1,106 @@
+<apex:page standardcontroller="Project__c" extensions="ProjectExtensionController"><apex:messages rendered="{! showerror}"/>
+<apex:sectionheader title="{!$ObjectType.Project__c.label} Edit" subtitle="{!IF(ISNULL(Project__c.name), 'New Project',Project__c.name)}"/>
+    <apex:form >
+        <apex:pageblock mode="edit" title="{!$ObjectType.Project__c.label} Edit">
+        
+            <apex:pageblockbuttons >
+                    <apex:commandbutton value="Save" action="{!Save}"/>
+                    <apex:commandbutton value="Cancel" action="{!Cancel}"/>
+            </apex:pageblockbuttons>
+                            
+                <apex:pageblocksection title="Customer Details" showheader="true" columns="2">
+                <apex:pageblocksectionitem />
+                <apex:outputfield value="{!Project__c.RecordtypeId}"/>
+             <!--   <apex:inputfield value="{!Project__c.Workshop_LU__c}"/>-->
+                <apex:inputfield value="{!Project__c.DDI_Number__c}"/>
+                <apex:inputfield value="{!Project__c.Account__c}" required="true"/>
+                <apex:inputfield value="{!Project__c.Project_Name__c}" required="true"/>
+                <apex:pageBlockSectionItem />
+                <apex:inputfield value="{!Project__c.Opportunity__c}" label="Sales Booking Credit"/>
+                <apex:inputfield value="{!Project__c.OwnerID}" label="Project Owner"/>
+                <apex:inputfield value="{!Project__c.Sales_Rep__c}"/>
+                <apex:pageBlockSectionItem />              
+                <apex:inputfield value="{!Project__c.Commissions__c}"/>
+                <apex:pageBlockSectionItem />              
+                <apex:inputfield value="{!Project__c.Commission_Percentage__c}"/>
+                
+                <apex:actionRegion >
+                <apex:pageblocksection > 
+                <apex:inputfield value="{!Project__c.Practice__c}" id="PracticeArea" required="true">
+                <apex:actionSupport event="onchange" reRender="Customer_partner_panel" />
+                </apex:inputField>
+                </apex:pageblocksection>               
+                </apex:actionRegion>
+                
+                <apex:pageBlockSectionItem />
+                <apex:inputfield value="{!Project__c.Service_Offering__c}" required="true"/>
+                              
+                <apex:inputfield value="{!Project__c.CurrencyIsoCode}" required="true"/>
+                <apex:inputfield value="{!Project__c.Proposal_Stage__c}" required="true"/>
+                <apex:inputfield value="{!Project__c.PS_Time_Discounted__c}"/>
+                <apex:inputfield value="{!Project__c.INTL_Project_Lost_Reason__c}" label="Lost Reason"/>                
+                <apex:inputfield value="{!Project__c.Discount_Approver__c}"/>
+                <apex:inputfield value="{!Project__c.Close_Date__c}"/>
+            <apex:inputfield value="{!Project__c.Forecast__c}"/>
+                <apex:inputfield value="{!Project__c.Discount_Credits__c}" label="Discount Amount"/>
+              <apex:inputfield value="{!Project__c.Probability__c}"/> 
+                <apex:inputfield value="{!Project__c.Project_Territory__c}" required="true"/>
+                <apex:inputfield value="{!Project__c.DBA_Services__c}" />                
+                </apex:pageblocksection>
+                
+                
+                <apex:pageblocksection >
+                <apex:inputfield value="{!Project__c.Project_Description__c}"/>
+                </apex:pageblocksection>
+                
+                <apex:pageblocksection title="Project Pricing" showheader="true" columns="5">
+                <apex:inputfield value="{!Project__c.Milestone_Description__c}" required="true"/>
+                <apex:inputfield value="{!Project__c.Milestone_Due_Date__c}" label="Due Date"/>
+                <apex:inputfield value="{!Project__c.RAX_PM_Amount__c}" label="RAX PM Fee"/>
+                <apex:inputfield value="{!Project__c.Partner_Fee__c}"/>
+                <apex:inputfield value="{!Project__c.RAX_Partner_Margin_Amount__c}"/>
+                </apex:pageblocksection>
+                        
+            <apex:outputpanel id="Customer_partner_panel">
+            <apex:pageblocksection title="Partner Detail" rendered="{!(Project__c.Practice__c != 'Partner Referral')}"  showheader="true" columns="3">
+         <apex:inputfield value="{!Project__c.Service_Delivery_Partner__c}" label="Partner" />
+            <apex:inputfield value="{!Project__c.RAX_PO_Number__c}" />
+            <apex:inputfield value="{!Project__c.Partner_Notes__c}" />
+            </apex:pageblocksection>
+            
+            <apex:pageblocksection title="Customer Detail" rendered="{!(Project__c.Practice__c == 'Partner Referral')}"  showheader="true" columns="3">
+            <apex:inputfield value="{!Project__c.Customer_Old__c}" />
+            <apex:inputfield value="{!Project__c.Total_Partner_Invoice_To_Customer__c}" />
+            <apex:inputfield value="{!Project__c.Customer_Notes__c}" />
+            </apex:pageblocksection>
+            </apex:outputpanel>
+            
+            <apex:pageblocksection title="Project Details" showheader="true" columns="2">
+            <apex:inputfield value="{!Project__c.Platform_Source_Environment__c}"/>
+            <apex:inputfield value="{!Project__c.Platform_Destination_Environment__c}"/>           
+            <apex:inputfield value="{!Project__c.Project_Start_Date__c}" />
+            <apex:inputfield value="{!Project__c.SFDC_Project_End_Date__c}" />
+            <apex:inputfield value="{!Project__c.Project_Status__c}" />
+            <apex:inputfield value="{!Project__c.Status_Description__c}" />
+            </apex:Pageblocksection>
+             
+            <apex:pageblocksection title="Project Roles & Resources" showheader="true" columns="3">
+            <apex:inputfield value="{!Project__c.Project_Role__c}" required="true"/>
+            <apex:inputfield value="{!Project__c.Contact__c}" required="true"/>
+            <apex:inputfield value="{!Project__c.Project_Role_Contact_Notes__c}"/>
+                      
+            <apex:inputfield value="{!Project__c.Project_Role_2__c}" label="Project Role" required="true"/>
+            <apex:inputfield value="{!Project__c.Contact_2__c}" label="Contact" required="true"/>
+            <apex:inputfield value="{!Project__c.Project_Role_Contact_Notes_2__c}" />
+            </apex:pageblocksection>
+            
+            <apex:pageblocksection title="Project Closure" showheader="true" columns="2">
+            <apex:inputfield value="{!Project__c.Customer_NPS_Score__c}" />
+            <apex:inputfield value="{!Project__c.Internal_NPS_Score__c}" />
+            <apex:inputfield value="{!Project__c.NPS_Comments__c}" />
+            <apex:inputfield value="{!Project__c.Lessons_Learnt__c}" />
+            </apex:Pageblocksection>
+        
+        </apex:pageblock>        
+    </apex:form>
+</apex:page>

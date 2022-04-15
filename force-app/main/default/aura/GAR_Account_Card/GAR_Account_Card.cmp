@@ -1,0 +1,122 @@
+<aura:component controller="GlobalAccountSearchController" >
+    <aura:attribute name="account" type="Object" default="{}"/>
+    <aura:attribute name="ReasonOptions" type="String[]" default=""/>
+    <aura:attribute name="recalculateCheckbox" type="Boolean" default="false"/>
+    <aura:attribute name="today" type="String" default="2018-10-12"/>
+    <aura:handler name="change" value="{!v.account}" action="{!c.handleSelectedChange}" />
+    
+    
+    <lightning:layout verticalAlign="stretch" multipleRows="false" class="{!v.account.isSearchResult ? 'x-large account-underline slds-p-around_xxx-small slds-p-left_small search-result' : 'x-large account-underline slds-p-around_xxx-small slds-p-left_small'}">
+        <lightning:layoutItem flexibility="auto" size="5" class="custom-box slds-border_right">
+            
+            <!--ACCOUNT DETAILS-->
+            <lightning:layout verticalAlign="stretch" multipleRows="true" class="">
+                <lightning:layoutItem flexibility="auto" size="6" class="custom-box">
+                    <lightning:input class="account-checkbox" type="checkbox" label=" " checked="{!v.account.selected}"/>
+                    <strong class="slds-text-heading_small underline">{!v.account.Account_Name}</strong>
+                </lightning:layoutItem>                
+                <lightning:layoutItem flexibility="auto" size="6" class="custom-box">
+                    <span class="">
+                        <ui:outputText value="Company Number" class="slds-text-title_caps slds-border_bottom" />: <ui:outputText value="{!v.account.Account_Number}"/>
+                    </span>
+                </lightning:layoutItem>                
+                <lightning:layoutItem flexibility="auto" size="6" class="custom-box slds-p-left_x-large">
+                    <span class="">
+                        <ui:outputText value="Account type" class="slds-text-title_caps slds-border_bottom" />: <ui:outputText value="{!v.account.accountRecordType}"/>
+                    </span>
+                </lightning:layoutItem> 
+                <lightning:layoutItem flexibility="auto" size="6" class="custom-box">
+                    <span class="">
+                        <ui:outputText value="Billing Country" class="slds-text-title_caps slds-border_bottom" />: <ui:outputText value="{!v.account.Account_Country}"/>
+                    </span>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </lightning:layoutItem>
+        
+        <lightning:layoutItem flexibility="auto" class="custom-box">
+            <span class="">
+                Update Open
+				Opportunities
+                <br/>
+                <lightning:input class="account-checkbox" type="checkbox" label=" " value="{!v.account.opportunityUpdation}" checked="{!v.account.opportunityUpdation}" onchange="{!c.handleOppChange}" aura:id="chck"/>
+            </span>            
+        </lightning:layoutItem>
+  
+        <!--ACCOUNT OWNER DETAILS-->
+        <lightning:layoutItem flexibility="auto" size="1" class="custom-box slds-border_right">
+            <lightning:layout verticalAlign="stretch" horizontalAlign="center" multipleRows="true" class="">
+                <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                    <span class="slds-align_absolute-center">
+                        <span class="slds-border_bottom slds-text-title_caps">
+                            Current Owner
+                        </span>
+                    </span>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                    <span class="slds-text-align_center slds-align_absolute-center">
+                        <ui:outputText value="{!v.account.Account_Current_Owner.Name ? v.account.Account_Current_Owner.Name : 'None'}"/>
+                    </span>
+                </lightning:layoutItem>
+                <aura:if isTrue="{!v.account.Account_Current_Owner.Name}">
+                    <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                        <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                            <b>{!v.account.Account_Current_Owner.UserRole.Name}&nbsp;{!v.account.Account_Current_Owner.IsActive ? '(Active)' : '(Inactive)'}</b>
+                        </span>
+                    </lightning:layoutItem>
+                </aura:if>
+            </lightning:layout>
+        </lightning:layoutItem>        
+        <!--New Owner and Comments-->
+        <lightning:layoutItem flexibility="auto" size="5" class="custom-box slds-border_right1">
+            <lightning:layout verticalAlign="stretch" multipleRows="true" class="">
+                <lightning:layoutItem flexibility="auto" size="5" class="custom-box slds-border_right slds-p-left_xx-small slds-p-right_xx-small slds-p-around_xx-small">
+                    <lightning:layout verticalAlign="stretch" multipleRows="true" class=""> 
+                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                            <span class="slds-align_absolute-center">
+                                <span class="slds-text-title_caps">
+                                    New Owner
+                                </span>
+                            </span>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                            <span class="{!v.account.Is_Request_Item_New_Owner_Blank ? 'slds-has-error' : ''}">
+                                <c:LookupUitility objectAPIName="User" fieldValue="Active" IconName="standard:user" selectedRecord="{!v.account.Request_Item_New_Owner}" />
+                            </span>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                            <aura:if isTrue="{!v.account.Request_Item_New_Owner.Name}">
+                                <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                                    <b>{!v.account.Request_Item_New_Owner.UserRole.Name}&nbsp;{!v.account.Request_Item_New_Owner.IsActive ? '(Active)' : '(Inactive)'}</b>
+                                </span>
+                                <aura:set attribute="else">
+                                    <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                                        <b>(Role info)</b>
+                                    </span>
+                                </aura:set>
+                            </aura:if>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" size="4" class="custom-box slds-p-left_xx-small slds-p-right_xx-small custom-box slds-border_right">
+                    <lightning:layout verticalAlign="stretch" multipleRows="true" class="">
+                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                            <span class="slds-border_bottom">
+                                <lightning:select name="requestreason" label="Request reason" aura:id="inputreason" class="{!v.account.Is_Request_Item_Reason_Blank ? 'slds-text-title_caps slds-has-error' : 'slds-text-title_caps'}" value="{!v.account.Request_Item_Reason}" messageWhenValueMissing="Select a reason.." >
+                                    <option text="Select a reason.." value=""/>
+                                    <aura:iteration items="{!v.ReasonOptions}" var="option">
+                                        <option text="{!option}" value="{!option}"/>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </span>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" size="3" class="custom-box slds-p-left_xx-small">
+                    <span class="">
+                        <ui:outputText value="Move Date" class="slds-text-title_caps slds-border_bottom" />: <lightning:input class="{!v.account.Is_Request_Item_Move_Date ? 'move-date slds-has-error' : 'move-date'}"  type="date" label=" " value="{!v.account.Request_Item_Move_Date}" min="{!v.today}" messageWhenValueMissing="Select a Date.."/>
+                    </span>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

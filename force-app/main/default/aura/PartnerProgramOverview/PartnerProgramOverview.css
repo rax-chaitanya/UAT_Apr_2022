@@ -1,0 +1,20 @@
+.THIS .slds-tabs_default__item.slds-is-active{
+    background: #EB0000; 
+    color:white;
+}
+.THIS p{
+    font-family:FiraSans-regular;
+    font-size:16px;
+}
+.THIS .slds-form-element__label{
+    font-family:FiraSans-regular;
+    font-size:16px;
+    color:#000000;
+}
+.THIS .headers{
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 16px; 
+     
+}

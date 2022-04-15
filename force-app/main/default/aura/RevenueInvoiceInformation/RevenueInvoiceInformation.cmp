@@ -1,0 +1,207 @@
+<aura:component extensible="true" abstract="false" controller="RevenueForecastController" implements="force:appHostable,flexipage:availableForRecordHome,force:lightningQuickAction,force:hasRecordId">
+    <!-- attributes -->
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="sObj" type="Object"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="sobjectType" type="String"/>   
+    <aura:attribute name="objType" type="String"/>   
+    <aura:attribute name="information" type="Object" description="Comes from AccountsInvoiceSummary/Details"/>
+    
+    <!-- handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:populateInvoiceInformationAfterLoad" action="{!c.handleApplicationEvent}"/>    
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>    
+    
+    <div class="slds-page-header slds-page-header--object-home">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <div class="slds-media slds-no-space slds-grow">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container">
+                            <lightning:icon iconName="standard:account" size="medium" alternativeText="Indicates approval"/>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <p class="slds-text-title--caps slds-line-height--reset">
+                            <ui:spinner aura:id="spinner" isVisible="False" />
+                            
+                            <aura:if isTrue="{!v.objType == 'Company'}">
+                                Company
+                                <aura:set attribute="else">
+                                    Account
+                                </aura:set>                     
+                            </aura:if>
+                        </p>
+                        <h1 class="slds-page-header__title slds-p-right--x-small">
+                            <button class="slds-button slds-button--reset slds-type-focus slds-truncate" aria-haspopup="true" title="this should match My Leads">
+                                <span class="slds-grid slds-has-flexi-truncate slds-grid--vertical-align-center">
+                                    <span class="slds-truncate">{!v.record.Name}</span>
+                                </span>
+                            </button>
+                        </h1>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        
+        <aura:if isTrue="{!and(v.objType == 'Account', !empty(v.information) )}">
+            <ul class="slds-grid slds-page-header__detail-row">
+                <li class="slds-page-header__detail-block">
+                    <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Field 1">Account Number</p>
+                    <p class="slds-text-body_regular slds-truncate" title="Description that demonstrates truncation with a long text field">{!v.information.accountNumber}</p>
+                </li>
+                <li class="slds-page-header__detail-block">
+                    <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Type">Type
+                    </p>
+                    <p class="slds-text-body_regular">{!v.information.accountType}</p>
+                </li>
+                <li class="slds-page-header__detail-block">
+                    <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Sub Type">Sub Type
+                    </p>
+                    <p class="slds-text-body_regular">{!v.information.accountSubType}</p>
+                </li>
+                
+                <li class="slds-page-header__detail-block">
+                    <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Field 1">Status</p>
+                    <p class="slds-text-body_regular slds-truncate" title="Description that demonstrates truncation with a long text field">{!v.information.accountStatus}</p>
+                </li>
+                <li class="slds-page-header__detail-block">
+                    <p class="slds-text-title slds-truncate slds-m-bottom_xx-small" title="Field 1">Data as Of</p>
+                    <p class="slds-text-body_regular slds-truncate" title="Description that demonstrates truncation with a long text field">
+                        <ui:outputText value="{!v.information.dataAsOf}"/>
+                    </p>
+                </li>                
+            </ul>    
+        </aura:if>    
+            
+    </div>
+
+    <aura:if isTrue="{!and( v.objType == 'Company' )}">
+        <c:collapsibleSection title="Product Accounts">
+            <aura:set attribute="body">
+                <table aura:id="table-summary" class="slds-table slds-table--edit slds-table--bordered slds-table_striped slds-table_col-bordered" role="grid">             
+                    <thead>
+                        <tr class="slds-line-height--reset">
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                    <span class="" title="Date"><b>Name</b></span>
+                                </a>
+                            </th>
+                            
+                            
+                            
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                    <span class="" title="Total Amount"><b>Account Number</b></span>
+                                </a>
+                            </th>
+                            
+                            <th  class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                    <span class="" title="Customer Credit Amount"><b>Type</b></span>
+                                </a>
+                            </th>
+                            
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                    <span class="" title="Focus Area"><b>DDI</b></span>
+                                </a>
+                            </th>
+                            
+                            
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                    <span class="" title="Focus Area"><b>Status</b></span>
+                                </a>
+                            </th>
+                            
+                            
+                            <th  class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                                    <span class="" title="Discount Amount"><b>Billing City</b></span>
+                                </a>
+                            </th>
+                        </tr>            
+                    </thead>
+                    <aura:if isTrue="{!v.record.Account__r.totalSize > 0}">
+                        <tbody>
+                            <aura:iteration items="{!v.record.Account__r.records}" var="obj">
+                                <tr id="table-row">   
+                                    
+                                    <td role="gridcell" data-label="Account Type"  >
+                                        <span class="slds-grid slds-grid--align-spread">
+                                            <div class="slds-truncate">{!obj.Name}</div>
+                                        </span>
+                                    </td>
+                                    
+                                    
+                                    
+                                    
+                                    <td role="gridcell" data-label="Account Type"  >
+                                        <span class="slds-grid slds-grid--align-spread">
+                                            <div class="slds-truncate">{!obj.Account_Number__c}</div>
+                                        </span>
+                                    </td>
+                                    
+                                    <td role="gridcell" data-label="Account Type"  >
+                                        <span class="slds-grid slds-grid--align-spread">
+                                            <div class="slds-truncate">{!obj.Type}</div>
+                                        </span>
+                                    </td>
+                                    
+                                    <td role="gridcell" data-label="Account Type"  >
+                                        <span class="slds-grid slds-grid--align-spread">
+                                            <div class="slds-truncate">{!obj.DDI__c}</div>
+                                        </span>
+                                    </td>
+                                    
+                                    <td role="gridcell" data-label="Account Type"  >
+                                        <span class="slds-grid slds-grid--align-spread">
+                                            <div class="slds-truncate">{!obj.Status__c}</div>
+                                        </span>
+                                    </td>
+                                    
+                                    
+                                    
+                                    <td role="gridcell" data-label="Account Type"  >
+                                        <span class="slds-grid slds-grid--align-spread">
+                                            <div class="slds-truncate">{!obj.BillingCity}</div>
+                                        </span>
+                                    </td>
+                                </tr>            
+                            </aura:iteration>
+                            
+                            <aura:set attribute="else">
+                                {!v.message}
+                            </aura:set>                     
+                        </tbody>
+                    </aura:if>
+                </table>                    
+                
+                
+                
+                
+            </aura:set>
+        </c:collapsibleSection>
+        
+    </aura:if>
+    
+    <c:collapsibleSection title="Revenue Summary">
+                
+                <aura:set attribute="body">
+                    <lightning:tabset variant="scoped" >
+                        <aura:if isTrue="{! !empty(v.record)}">
+                            <lightning:tab label="Summary">
+                                <c:RevenueInvoiceSummary recordId="{!v.recordId}"  record="{!v.record}" objType="{!v.objType}"/>             
+                            </lightning:tab>
+                            <lightning:tab label="Details">
+                                <c:RevenueInvoiceDetails recordId="{!v.recordId}" record="{!v.record}"  objType="{!v.objType}"/> 
+                            </lightning:tab>
+                        </aura:if>
+                    </lightning:tabset>  
+                </aura:set>
+                
+            </c:collapsibleSection>
+    
+</aura:component>

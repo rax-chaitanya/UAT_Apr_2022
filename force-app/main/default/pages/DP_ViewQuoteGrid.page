@@ -1,0 +1,314 @@
+<apex:page standardController="Quote" extensions="DP_NewEditQuoteController" id="THEPAGE" action="{!selectPriceBook}" lightningStylesheets="false">
+
+    <!-- Library Includes -->
+    <apex:includeScript value="{!$Resource.JqueryMin_js}"/>
+    <apex:includeScript value="{!$Resource.JqueryAlert_js}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jqGrid,'/js/jquery-1.9.0.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jqGrid,'/js/jquery.jqGrid.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jqGrid,'/js/i18n/grid.locale-en.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.FlexBox, '/FlexBox/js/jquery.flexbox.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryGlobalize, '/globalize-master/lib/globalize.js')}"/>  
+    <apex:includeScript value="{!URLFOR($Resource.jQueryGlobalize, '/globalize-master/lib/cultures/globalize.cultures.js')}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    <!-- Stylings -->
+    <apex:stylesheet value="{!URLFOR($Resource.FlexBox, '/FlexBox/css/jquery.flexbox.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jqGrid,'/css/ui.jqgrid.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jqGrid,'/css/ui-lightness/jquery-ui-1.10.3.custom.min.css')}"/>
+    <apex:stylesheet value="{!$Resource.JqueryAlert_Css}"/>
+    
+    <style>
+        .ui-jqgrid-sortable{
+            text-align:left;
+        }
+
+        
+        .jqhighlight{
+        
+           background-color:#4DDD28 !important;
+           color: #000 !important;
+           
+       }
+        
+        a .jqhighlight {
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        
+        .highlight{
+            background-color:#E6F8E0;
+            border-radius:6px;
+        }
+        
+        .noHighlight{
+            background-color:#BDBDBD;
+            border-radius:6px;
+        }
+        
+        .ffb .content .row{
+            height:auto;
+        }
+        
+        table.mrrtable td  {
+            border-left:solid black 1px;
+            border-top:solid black 1px;
+            padding: 10px 15px;
+        }
+        
+        
+        table.mrrtable td:first-child {
+            border-left: none;
+        }
+        
+        .ui-jqgrid .ui-jqgrid-view{
+            font-size:12px !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+    </style>
+    
+    <!-- Class Wide JS -->
+    <script>
+        var j$ = jQuery.noConflict();
+        var isoCodeToLanguage = {'CNY':'zh',
+                                 'EUR':'eu',
+                                 'GBP':'en-GB',
+                                 'HKD':'zh-HK',
+                                 'USD':'en-US'};
+        var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+        var usCulture = Globalize.culture(isoCodeToLanguage['USD']);
+        
+          function formatCurrency(value) {
+            var usValue = Globalize.parseFloat(value, 10, usCulture);
+            culture.numberFormat[','] = ',';
+            culture.numberFormat['.'] = '.';
+            var formattedValue = Globalize.format(usValue, 'c', culture);
+            if (culture.name == 'eu')
+                formattedValue = Globalize.format(usValue, 'c', usCulture).replace('$', '€');
+            return formattedValue;
+        }
+        
+    </script>
+    
+    <apex:form id="NEWEDITQUOTEFORM">
+     
+          <script>
+                    var caption = 'Caption';
+                    var rowNum;
+                    var colNum;
+                    var qlGrid = {!strJSONQLGrid};
+                    var exchangeRate = '{!cQuote.DP_Exchange_Rate__c}';
+                    j$(document).ready(function(){
+                        var qlGridWitdh = document.getElementById('{!$Component.THEPAGE.NEWEDITQUOTEFORM}').offsetWidth; 
+                        j$("#qlGrid").jqGrid({
+                            data: qlGrid,
+                            datatype: 'local',
+                            colNames:['RecId','ParentId','PbeId','Action','Availability','Product','Data Center','DataCenterOptions','Setup Fee','Quantity','Base','Capex','Discount','Max Discount','Total Unit MRR','Extended MRR','Group','ProdId','LandedCost','Exempt','kW','Markup','Cost','USD MRR','DC kW Cost','DC kW Markup','DP List Price','Is Parent','Name','Product Type','Required','Min Qty','Max Qty','Inc Qty','Parent Qty','Prod Cat','Prod Compat Id','TypeOrder','GroupOrder','ParentOrder'],
+                            colModel:[
+                                {name:'strQLItemId',index:'strQLItemId',hidden:true,key:true},
+                                {name:'strParentId',index:'strParentId',hidden:true,formatter:parentGroupFormatter},
+                                {name:'strPBEId',index:'strPBEId',hidden:true},
+                                {name:'strAction',index:'strAction',width:12},
+                                {name:'strAvailability',index:'strAvailability',hidden:true},
+                                {name:'strProduct',index:'strProduct',width:27,},
+                                {name:'strDataCenter',index:'strDataCenter',width:21,formatter:dcFormatter},
+                                {name:'strDCOpts',index:'strDCOpts',hidden:true},
+                                {name:'decSetupFee',index:'decSetupFee',width:12,formatter:formatCurrency1},
+                                {name:'decQty',index:'decQty',width:12,formatter:'number',
+                                                formatoptions:{
+                                                                decimalSeparator:".", 
+                                                                thousandsSeparator: ",", 
+                                                                decimalPlaces: 0
+                                                               }
+                                },
+                                {name:'baseQty',index:'baseQty',width:5},
+                                {name:'decCAPEX',index:'decCAPEX',hidden:true},
+                                {name:'decDiscount',index:'decDiscount',width:12,formatter:'currency',
+                                                formatoptions:{
+                                                                decimalSeparator:".", 
+                                                                thousandsSeparator: ",", 
+                                                                decimalPlaces: 2,
+                                                                //prefix: '',
+                                                                suffix: '%'
+                                                               }
+                                },
+                                {name:'maxDiscount',index:'maxDiscount',width:10,formatter:'currency',
+                                                formatoptions:{
+                                                                decimalSeparator:".", 
+                                                                thousandsSeparator: ",", 
+                                                                decimalPlaces: 2,
+                                                                //prefix: '',
+                                                                suffix: '%'
+                                                               }
+                                },
+                                {name:'decUnitMrr',index:'decUnitMrr',width:12 },
+                                {name:'decMRR',index:'decMRR',width:12,formatter:formatCurrency1,unformat:unformatCurrency},
+                                {name:'strGroupName',index:'strGroupName',hidden:true},
+                                {name:'strProductId',index:'strProductId',hidden:true},
+                                {name:'decLandedCost',index:'decLandedCost',hidden:true},
+                                {name:'strExempt',index:'strExempt',hidden:true},
+                                {name:'decKW',index:'decKW',hidden:true},
+                                {name:'decCost',index:'decCost',hidden:true},
+                                {name:'decMarkup',index:'decMarkup',hidden:true},
+                                {name:'decUSDMRR',index:'decUSDMRR',hidden:true},
+                                {name:'decKWCost',index:'decKWCost',hidden:true},
+                                {name:'decKWMarkup',index:'decKWMarkup',hidden:true},
+                                {name:'decDPLPUSD',index:'decDPLPUSD',hidden:true},
+                                {name:'strIsParent',index:'strIsParent',hidden:true},
+                                {name:'strQLIName',index:'strQLIName',hidden:true},
+                                {name:'strProdType',index:'strProdType',hidden:true},
+                                {name:'strRequired',index:'strRequired',hidden:true},
+                                {name:'decMinQty',index:'decMinQty',hidden:true},
+                                {name:'decMaxQty',index:'decMaxQty',hidden:true},
+                                {name:'decIncQty',index:'decIncQty',hidden:true},
+                                {name:'decParentQty',index:'decParentQty',hidden:true},
+                                {name:'strProdCat',index:'strProdCat',hidden:true},
+                                {name:'strProdCompatId',index:'strProdCompatId',hidden:true},
+                                {name:'decTypeOrder',index:'decTypeOrder',sorttype:'int',hidden:true},
+                                {name:'decGroupOrder',index:'decGroupOrder',sorttype:'int',hidden:true,formatter:mainGroupFormatter},
+                                {name:'decParentOrder',index:'decParentOrder',sorttype:'int',hidden:true,formatter:parentGroupFormatter}],
+                            rowNum:100,
+                            multiSort: true,
+                            pager: '#qlGridPager',
+                            pagerpos:'left',
+                            recordpos:'center',
+                            sortname: 'decTypeOrder',
+                            viewrecords: true,
+                            sortorder: 'asc',
+                            width: qlGridWitdh,
+                            height: 'auto',
+                            caption: 'Quote Line Items',
+                            footerrow:false,
+                            cellEdit: true,
+                            cellsubmit:'clientArray',
+                            grouping:true,
+                            groupingView : {
+                                groupColumnShow : [false,false],
+                                groupField : ['decGroupOrder','decParentOrder'],
+                                groupText : ['{0}','{0}'],
+                                groupCollapse : false,
+                                groupOrder: ['asc']
+                            },
+                            gridComplete : function(){
+                                //Loop through the rows in the qlGrid
+                                var rows = j$("#qlGrid").jqGrid('getRowData');
+                                for(var i = 0; i < rows.length;i++){
+                                    row = rows[i];
+                                    //Calculate the unit mrr
+                                    row.decUnitMrr = row.decMRR / row.decQty;
+                                    if(row.decUnitMrr){
+                                        j$("#qlGrid").jqGrid('setCell',row.strQLItemId,'decUnitMrr',row.decUnitMrr);
+                                    } else {
+                                        j$("#qlGrid").jqGrid('setCell',row.strQLItemId,'decUnitMrr',0);
+                                    }
+                                }
+                                setColSpans();
+                            }
+                        });   
+                    });
+                    function dcFormatter(cellval,opts,rowObject,action){
+                        if(rowObject.strIsParent == '1'){
+                            return '';
+                        } else {
+                            return cellval;
+                        }
+                    }
+                    function mainGroupFormatter(cellval, opts, rowObject, action){
+                        var groupIdPrefix = opts.gid + "ghead_";
+                        if(opts.rowId.substr(0, groupIdPrefix.length) === groupIdPrefix && typeof action === "undefined") {
+                            //The current row is a grouping row
+                            var data = j$(this).jqGrid("getGridParam", "data");
+                            for (var i = 0; i < data.length; i++) {
+                                var item = data[i];
+                                if (item.decGroupOrder === cellval) {
+                                    //Found main group row, count items in group and total the group
+                                    var numItems = 0;
+                                    var totMRR = 0;
+                                    for(var j = 0; j < data.length; j++){
+                                        var jItem = data[j];
+                                        if(jItem.decGroupOrder == item.decGroupOrder){
+                                            //Found items in main grouping
+                                            numItems++;
+                                            totMRR += jItem.decMRR;
+                                        }
+                                    }
+                                    var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                  //  var convertedMrr = Globalize.format(Globalize.parseFloat(totMRR.toString(),10,usCulture),'c',culture);
+                                    var convertedMrr = formatCurrency(totMRR.toString());
+                                    var retString = '<b>' + item.strGroupName + ' - ' + numItems + ' Item(s)</b>'
+                                    + '</td><td><b>' + convertedMrr + '</b>';
+                                    return retString;
+                                }
+                            }
+                        }
+                        return cellval;
+                    }
+                    function parentGroupFormatter(cellval, opts, rowObject, action){
+                        var groupIdPrefix = opts.gid + "ghead_";
+                        if(opts.rowId.substr(0, groupIdPrefix.length) === groupIdPrefix && typeof action === "undefined") {
+                            //The current row is a grouping row
+                            var data = j$(this).jqGrid("getGridParam", "data");
+                            for (var i = 0; i < data.length; i++) {
+                                var item = data[i];
+                                if (item.decParentOrder === cellval && item.strIsParent === '0') {
+                                    //Found parent row, count items in group and total the group
+                                    var numItems = 0;
+                                    var totMRR = 0;
+                                    var unitMRR = 0;
+                                    for(var j = 0; j < data.length; j++){
+                                        var jItem = data[j];
+                                        if(jItem.decParentOrder == item.decParentOrder){
+                                            //Found items in parent grouping
+                                            numItems++;
+                                            totMRR += jItem.decMRR;
+                                            if(jItem.strIsParent == '0'){
+                                                unitMRR += jItem.decMRR / jItem.decQty;
+                                            } else {
+                                                unitMRR += jItem.decMRR / jItem.decParentQty;
+                                            }
+                                        }
+                                    }
+                                    var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                   // var convertedMrr = Globalize.format(Globalize.parseFloat(totMRR.toString(),10,usCulture),'c',culture);
+                                   var convertedMrr = formatCurrency(totMRR.toString());
+                                   // var convertedUnitMrr = Globalize.format(Globalize.parseFloat(unitMRR.toString(),10,usCulture),'c',culture);
+                                    var convertedUnitMrr = formatCurrency(unitMRR.toString());
+                                    var retString = '<b>' + item.strProduct.substring(item.strProduct.indexOf('>')+1,item.strProduct.lastIndexOf('<')) + ' - ' + numItems + ' Item(s)</b>' 
+                                    + '</td><td><b>' + convertedUnitMrr + '</b>' 
+                                    + '</td><td><b>' + convertedMrr + '</b>';
+                                    return retString;
+                                }
+                            }
+                        }
+                        return cellval;
+                    }
+                    
+                     function formatCurrency1(cellval, opts, rowObj,action){
+                         var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);                       
+                         return  formatCurrency(cellval.toString());
+                      
+                    }
+               
+                    function unformatCurrency(cellval,opts){
+                       var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                        var gNum = Globalize.parseFloat(cellval.toString());
+                   
+                      //  if(!gNum || !j$.isNumeric(gNum)) gNum = 0;
+                        return gNum;
+                                               
+                    }
+                </script>
+                <table id="qlGrid" width="100%"/>
+                <script>
+                    function setColSpans(){
+                        //Set the colspan of each of the grouping rows in the qlgrid to 8 to display the rollup values in the correct column
+                        j$('.qlGridghead_1').each(function(i,obj){
+                            j$(j$(this).children().get(0)).attr('colspan',8);
+                        });
+                        j$('.qlGridghead_0').each(function(i,obj){
+                            j$(j$(this).children().get(0)).attr('colspan',9);
+                        });
+                    }
+                </script>
+    </apex:form>
+</apex:page>

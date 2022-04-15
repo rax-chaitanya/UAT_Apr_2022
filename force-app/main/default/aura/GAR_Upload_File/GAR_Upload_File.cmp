@@ -1,0 +1,38 @@
+<aura:component controller="GlobalAccountSearchController">
+    <aura:dependency resource="markup://c:GAR_Notice" />
+    <ltng:require scripts="{!$Resource.GAR + '/GAR/SheetJS/xlsx.core.min.js'}" afterScriptsLoaded="{!c.afterSheetJSLoaded}" />
+    
+    <aura:attribute name="Show_Result" type="Boolean" default="false"/>
+    <aura:attribute name="resultCount" type="Integer" default="0"/>
+    <aura:attribute name="missingAccounts" type="String" default=""/>
+    <aura:attribute name="resultList" type="GlobalAccountSearchController.AccountSearchWrapper[]"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="true"/>
+    <aura:attribute name="selectAll" type="Aura.Action"/>
+    <aura:attribute name="clear" type="Aura.Action"/>
+    <aura:attribute name="inputFileDisabled" type="Boolean" default="true"/>
+
+    <div aura:id="notice"></div>
+    
+    <div class="container">
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <div class="slds-file-selector slds-file-selector_files">
+                    <input type="file" disabled="{!v.inputFileDisabled}" class="slds-file-selector__input slds-assistive-text" id="file-upload-input-01" aria-labelledby="file-selector-primary-label file-selector-secondary-label" aura:id="file" multiple="false" onchange="{!c.save}" onclick="{!c.clearFile}" accept=".xlsx"/>
+                    <label class="slds-file-selector__body" for="file-upload-input-01" id="file-selector-secondary-label">
+                        <span class="slds-button slds-button_brand" title="Upload File">
+                            <lightning:icon iconName="utility:upload" size="x-small" class="upload-icon"/>
+                            &nbsp;&nbsp;
+                            Upload File
+                        </span>
+                    </label>
+                </div>
+                <span class="slds-p-left_small">
+                    <a href="{!$Resource.GAR + '/GAR/SampleTemplate/GAR_Sample_Template.xlsx'}">
+                        <lightning:icon iconName="utility:text_template" size="" alternativeText="Download Sample Template"/>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

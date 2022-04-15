@@ -1,0 +1,7 @@
+<aura:component controller="GenericConsoleMethodController">
+    <aura:method name="findChatsWithoutSurveys" action="{!c.isRepChatPageAccessible}">
+        <aura:attribute name="callback" type="function"/>
+    </aura:method>
+    
+    
+</aura:component>

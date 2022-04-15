@@ -1,0 +1,26 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global">  
+   
+    
+               <div class="slds-align_absolute-center"> 
+                
+                   <div class='slds-grid slds-grid--vertical slds-align--absolute-center slds-container--large'>   
+<div class='slds-align-middle slds-m-bottom--xx-large slds-m-top--xx-large' alt='Page not available'>      
+<img src='/sfsites/c/img/community/slds/messaging/illustration-page-not-found.png' class='slds-p-horizontal--large'/>   
+</div>   
+</div>  
+                </div>
+                          
+                <div class="slds-align_absolute-center"> 
+                    <span style="display: inline-block;color: #87afc7;font-size: 150%;">
+                        <b>You don’t have access to this page.</b>  
+                    </span>
+                </div>
+                <div class="slds-align_absolute-center"> 
+                    <span style="display: inline-block;color: #87afc7;font-size: 150%;">
+                        Contact can be created by Primary Member only.
+                    </span>
+                </div>
+   
+    
+</aura:component>

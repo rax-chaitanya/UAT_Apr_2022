@@ -1,0 +1,84 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+    <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    
+    
+    function Validate()
+    {
+        var oppType='{!Opportunity.Type}';
+        if(oppType=='Customer Success')
+        {
+           alert("This opportunity type is set as {!Opportunity.Type}, which cannot be sent to Raptor.");
+        }else{
+            var AdminProfiles = '{!$Label.Send_to_CVP_Send_to_UK_OVT_INTL_Profiles}';
+            var stageClosedWon = '{!$Label.StageClosedWon}';
+            var oppStage = '{!Opportunity.StageName}';
+            
+            if(oppStage !== stageClosedWon) {
+                alert('{!$Label.ErrMsg_OpportunityStage_SendToRaptorUS}'); 
+            }
+            
+            else if(AdminProfiles.includes('{!$Profile.Id}')) 
+            { 
+                //custom setting that has opportunity types (separated by commas, no space) 
+                var oppTypes = '{!$Label.Not_Sent_to_eConnect}'; 
+                var types = oppTypes.split(","); 
+                
+                var orgID = '{!$Organization.Id}'; 
+                var prodOrgID = ('{!$Setup.ProdOrgIDSetting__c.ProdOrgID__c}'); 
+                
+                var isValid = true; 
+                
+                for (i = 0; i < types.length; ++i) { 
+                    if ( types[i] == "{!Opportunity.Type}" ) 
+                    { 
+                        isValid = false; 
+                        break; 
+                    } 
+                } 
+                
+                
+                
+                if (isValid) { 
+                    
+                    if ({!Opportunity.Contract_Received__c}) { 
+                        var url; 
+                        if (orgID == prodOrgID) { 
+                            url = '{!$Label.Send_to_US_CVP_Raptor}'; 
+                        } else { 
+                            url = '{!$Label.Send_to_US_CVP_Raptor_Staging}'; 
+                        } 
+                        
+                        url = url.replace(":OPPORTUNITYID", '{!CASESAFEID(Opportunity.Id)}'); 
+                        
+                        window.open(url); 
+                        
+                    } else { 
+                        alert('{!$Label.ErrMsg_Opportunity_SendToRaptor}'); 
+                    } 
+                } else { 
+                    alert("This opportunity type is set as {!Opportunity.Type}, which cannot be sent to Raptor."); 
+                } 
+            } 
+                else 
+                { 
+                    alert('You are not an authorized user. Raptor service is only available for Professional services and System Administrators.'); 
+                }
+            
+        }
+    }
+    window.onload = Validate;    
+    </script>
+    
+</apex:page>

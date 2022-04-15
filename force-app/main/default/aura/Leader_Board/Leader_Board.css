@@ -1,0 +1,20 @@
+.THIS .slds-icon_medium{
+    width: 2rem;
+    height: 2rem;
+}
+
+.THIS .icon{
+    margin-right : 0.25rem;
+}
+
+.THIS .inline{
+    display: inline-block !IMPORTANT;
+}
+
+.THIS .slds-checkbox_off{
+    display : none !IMPORTANT;
+}
+
+.THIS .slds-checkbox_on{
+    display : none !IMPORTANT;
+}

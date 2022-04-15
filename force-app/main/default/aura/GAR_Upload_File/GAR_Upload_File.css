@@ -1,0 +1,42 @@
+.THIS .slds-button_icon-brand{
+    background-color: rgb(197, 0, 34);;
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-button_icon-brand:hover{
+    background-color: rgba(166, 15, 30, 1.0);
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-button_icon-brand{
+    background-color: rgb(197, 0, 34);;
+    border-color: rgba(166, 15, 30, 1.0);
+}
+.THIS .slds-button_icon-brand:hover {
+    background-color: rgba(166, 15, 30, 1.0);
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+
+.THIS .slds-button_brand{
+    background-color: rgb(197, 0, 34);;
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-button_brand:hover{
+    background-color: rgba(166, 15, 30, 1.0);
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-button--brand {
+    background-color: rgb(197, 0, 34);;
+    border-color: rgba(166, 15, 30, 1.0);
+}
+.THIS .slds-button--brand:hover {
+    background-color: rgba(166, 15, 30, 1.0);
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .upload-icon .slds-icon-text-default {
+    fill: rgb(255, 255, 255);
+}

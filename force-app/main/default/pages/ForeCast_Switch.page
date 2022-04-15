@@ -1,0 +1,11 @@
+<apex:page >
+<apex:includeScript value="/support/console/25.0/integration.js"/>
+<script type="text/javascript">
+var eventHandler = function (result) {
+sforce.console.setCustomConsoleComponentWindowVisible(false);
+window.open('https://rax--uat.lightning.force.com/one/one.app','_blank');
+console.log('The Custom Console Component button is clicked. The component ID is: ' + result.id + ' and the component window is: ' + (result.windowHidden ? 'hidden' : 'visible'));
+};
+sforce.console.onCustomConsoleComponentButtonClicked(eventHandler);
+</script>
+</apex:page>

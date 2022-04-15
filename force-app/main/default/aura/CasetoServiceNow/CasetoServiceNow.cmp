@@ -1,0 +1,13 @@
+<!--
+* File : CasetoServiceNow.cmp
+* Description : Used to send Case object data to ServiceNow.
+* Ticket : SFDC-3140
+* Created Date : October 2019
+* @author : RDC (Anirudh)
+*-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable" access="global" 
+                controller = "CaseServiceNowController" >
+        
+    <aura:attribute name="recordId" type="String" />   
+     <lightning:button variant="destructive" label="Assign to Product Config" onclick="{! c.MovetoServiceNow }"/>
+</aura:component>

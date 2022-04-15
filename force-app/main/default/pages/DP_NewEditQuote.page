@@ -1,0 +1,1888 @@
+<apex:page standardcontroller="Quote" extensions="DP_NewEditQuoteController" id="THEPAGE" action="{!selectPriceBook}" lightningStylesheets="false" title="Create/Edit Quote">
+
+    <!-- Library Includes -->
+    <apex:includescript value="{!$Resource.JqueryMin_js}" />
+    <apex:includescript value="{!$Resource.JqueryAlert_js}" />
+    <apex:includescript value="{!URLFOR($Resource.jqGrid,'/js/jquery-1.9.0.min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jqGrid,'/js/jquery.jqGrid.min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jqGrid,'/js/i18n/grid.locale-en.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.FlexBox, '/FlexBox/js/jquery.flexbox.min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryGlobalize, '/globalize-master/lib/globalize.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.jQueryGlobalize, '/globalize-master/lib/cultures/globalize.cultures.js')}" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    <!-- Stylings -->
+    <apex:stylesheet value="{!URLFOR($Resource.FlexBox, '/FlexBox/css/jquery.flexbox.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jqGrid,'/css/ui.jqgrid.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.jqGrid,'/css/ui-lightness/jquery-ui-1.10.3.custom.min.css')}" />
+    <apex:stylesheet value="{!$Resource.JqueryAlert_Css}" />
+
+    <style>
+        .float-left {
+            float: left;
+        }
+
+        .ui-jqgrid-sortable {
+            text-align: left;
+        }
+
+
+        .jqhighlight {
+            background-color: #4DDD28 !important;
+            color: #000 !important;
+        }
+
+        a .jqhighlight {
+            color: #000000;
+            text-decoration: underline;
+        }
+
+
+        .highlight {
+            background-color: #E6F8E0;
+            border-radius: 6px;
+        }
+
+        .noHighlight {
+            background-color: #BDBDBD;
+            border-radius: 6px;
+        }
+
+        .ffb .content .row {
+            height: auto;
+        }
+
+        table.mrrtable td {
+            border-left: solid black 1px;
+            border-top: solid black 1px;
+            padding: 10px 15px;
+        }
+
+
+            table.mrrtable td:first-child {
+                border-left: none;
+            }
+
+        .ui-jqgrid .ui-jqgrid-view {
+            font-size: 12px !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+    </style>
+
+    <!-- Class Wide JS -->
+    <script>
+        var j$ = jQuery.noConflict();
+        var askConfirm = false;
+        var mapGroups = {};
+        var hasSaved = false;
+        var hasLoaded = false;
+        var configureid;
+        var isoCodeToLanguage = {'CNY':'zh',
+            'EUR':'eu',
+            'GBP':'en-GB',
+            'HKD':'zh-HK',
+            'USD':'en-US'};
+        var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+        var usCulture = Globalize.culture(isoCodeToLanguage['USD']);
+
+        function formatCurrency(value) {
+            var usValue = Globalize.parseFloat(value, 10, usCulture);
+            culture.numberFormat[','] = ',';
+            culture.numberFormat['.'] = '.';
+            var formattedValue = Globalize.format(usValue, 'c', culture);
+            if (culture.name == 'eu')
+                formattedValue = Globalize.format(usValue, 'c', usCulture).replace('$', '€');
+            return formattedValue;
+        }
+
+        function saveGridState(){
+            //Loop through the rows in the qlGrid
+            var rows= j$("#qlGrid").jqGrid('getRowData');
+            console.log('rows', rows);
+            mapGroups = {};
+            var count = 0;
+            for(var i = 0; i < rows.length;i++){
+                row = rows[i];
+                if(row.strIsParent == '0'){
+                    //Set all child Datacenters to the datacenter for the parent
+                    for(var j = 0; j < rows.length; j++){
+                        var childRow = rows[j];
+                        if(childRow.strParentId == row.strQLItemId){
+                            childRow.strDataCenter = row.strDataCenter;
+                        }
+                    }
+                }
+                if(!(row.strGroupName in mapGroups)){
+                    mapGroups[row.strGroupName] = {groupId:'qlGridghead_0_' + count,expanded:false};
+                    count++;
+                }
+                if(!(row.strParentId in mapGroups)){
+                    mapGroups[row.strParentId] = {groupId:'qlGridghead_1_' + count,expanded:true};
+                    count++;
+                }
+            }
+            //Update the expanded attr of the group based on if the child of that group is hidden
+            for(grpName in mapGroups){
+                var group = mapGroups[grpName];
+                var groupElem = document.getElementById(group.groupId);
+                var nextElem = groupElem.nextSibling;
+                if(groupElem.id.indexOf('ghead_0') > -1 && nextElem.id.indexOf('ghead_1') > -1 && nextElem.style.cssText != 'display: none;'){
+                    //If the group row is a 0 level group and there is a 1 level group under it that is visible then it is expanded
+                    group.expanded = true;
+                } else if(groupElem.id.indexOf('ghead_1') > -1 && nextElem.id.indexOf('ghead') == -1 && nextElem.style.cssText != 'display: none;'){
+                    //If the group row is a 1 level group and there is a visible non group row under it then it is expanded
+                    group.expanded = false;
+                }
+            }
+            hasSaved = true;
+            return rows;
+        }
+
+        function configProdJS(rowId){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            configureid = rowId;
+            addcolor();
+            configProdAF(rowId,JSON.stringify(saveGridState()));
+        }
+
+        function saveAllJS(){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            askConfirm = false;
+            saveAll(JSON.stringify(saveGridState()));
+        }
+
+        function addUpdateQLJS(){
+            j$('.jqhighlight').removeClass('jqhighlight');
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            var previewRows = j$("#previewGrid").getRowData();
+            console.log('previewRows', previewRows);
+            addUpdateQLAF(JSON.stringify(saveGridState()),JSON.stringify(previewRows));
+            return false;
+        }
+
+        function configNewProdJS(){
+            if(j$('#PBEFLEXBOX_hidden').val()==''){
+                jAlert('Please select a product.','Ok');
+                return false;
+            }
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            configNewProdAF(j$('#PBEFLEXBOX_hidden').val(),saveGridState());
+            return false;
+        }
+
+        function addProductJS(){
+            if(j$('#PBEFLEXBOX_hidden').val()==''){
+                jAlert('Please select a product.','Ok');
+                return false;
+            }
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            var debug= j$("#qlGrid").jqGrid('getRowData');
+            //console.log('debug', debug);
+            addProductAF(j$('#PBEFLEXBOX_hidden').val(),JSON.stringify(saveGridState()));
+            return false;
+        }
+
+        function addSuggestedJS(pbeId){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            addOrConfigAF(pbeId,saveGridState());
+            return false;
+        }
+
+        function calcMRRByTermJS(skipSave,rows){
+            if(skipSave){
+                calcMRRByTermAF(JSON.stringify(rows));
+            } else {
+                j$("#qlGrid").saveCell(rowNum,colNum);
+                calcMRRByTermAF(JSON.stringify(saveGridState()));
+            }
+            return false;
+        }
+
+        function delRow(rowId){
+            if(configureid == rowId){
+                j$('td.jqhighlight').removeClass('jqhighlight');
+                cancelconfigaf();
+
+            }
+            calcMRRByTermJS(true,delRowSave(rowId,saveGridState()));
+        }
+
+        function flipRow(rowId){
+            if(configureid == rowId){
+                j$('td.jqhighlight').removeClass('jqhighlight');
+                cancelconfigaf();
+
+            }
+            calcMRRByTermJS(true,flipRowSave(rowId,saveGridState()));
+        }
+
+        function delRowSave(rowId,savedRows){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            var rows = savedRows;
+            var delRow = j$("#qlGrid").getRowData(rowId);
+            j$("#qlGrid").delRowData(rowId);
+            if(delRow.strQLItemId == delRow.strParentId){
+                //Delete all children if the delete row is a parent
+                for(var i = 0; i < rows.length; i++){
+                    var row = rows[i];
+                    if(row.strQLItemId != rowId && row.strParentId == rowId){
+                        j$("#qlGrid").delRowData(row.strQLItemId);
+                    }
+                }
+            }
+            j$("#qlGrid").trigger('reloadGrid');
+            return j$("#qlGrid").getRowData();
+        }
+
+        function flipRowSave(rowId,savedRows){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            var rows = savedRows;
+            var delRow = j$("#qlGrid").getRowData(rowId);
+            //console.log('delRow before', delRow);
+            if(delRow.decMRR >= 0){
+                delRow.strAction = delRow.strAction.replace('Rem','Add'); //'<a href="javascript:void(0)" onclick="javascript:flipRow(\''+delRow.strQLItemId+'\');">'+'Add'+'</a>';
+                delRow.strAssetAction = 'Remove';
+            } else if(delRow.decMRR < 0){
+                delRow.strAction = delRow.strAction.replace('Add','Rem'); //'<a href="javascript:void(0)" onclick="javascript:flipRow(\''+delRow.strQLItemId+'\');">'+'Rem'+'</a>';
+                delRow.strAssetAction = 'Change';
+            }
+
+            if(delRow.decMRR < 0){
+                /*delRow.decMRR = 0-delRow.decMRR;
+                delRow.decUSDMRR = 0-delRow.decUSDMRR;
+                delRow.decSetupFee = 0-delRow.decSetupFee;
+                delRow.decCAPEX = 0-delRow.decCAPEX;
+                delRow.decCost = 0-delRow.decCost;*/
+                delRow.decMRR = 0;
+            } else {
+                delRow.decMRR = 0-delRow.decDPLPUSD;
+            }
+            j$("#qlGrid").setRowData(rowId, delRow);
+            //console.log('delRow after', delRow);
+            if(delRow.strQLItemId == delRow.strParentId){
+                //Delete all children if the delete row is a parent
+                for(var i = 0; i < rows.length; i++){
+                    var row = rows[i];
+                    if(row.strQLItemId != rowId && row.strParentId == rowId && row.strAssetAction ==='Change'){
+                        if(row.decMRR < 0){
+                            /*row.decMRR = 0-row.decMRR;
+                            row.decUSDMRR = 0-row.decUSDMRR;
+                            row.decSetupFee = 0-row.decSetupFee;
+                            row.decCAPEX = 0-row.decCAPEX;
+                            row.decCost = 0-row.decCost;*/
+                            row.decMRR = 0;
+                        } else {
+                            row.decMRR = 0-row.decDPLPUSD;
+                            //row.strAssetAction = 'Remove';
+                        }
+                        j$("#qlGrid").setRowData(row.strQLItemId, row);
+                    }
+                    if(row.strQLItemId != rowId && row.strParentId == rowId && row.strAssetAction !== 'Change'){
+                        j$("#qlGrid").delRowData(row.strQLItemId);
+                    }
+                }
+            }
+            j$("#qlGrid").trigger('reloadGrid');
+            return j$("#qlGrid").getRowData();
+        }
+
+        function changeCurrencyJS(elem){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+                     var previewJSON = JSON.stringify(j$("#previewGrid").jqGrid('getRowData'));
+            changeCurrencyAF(JSON.stringify(saveGridState()),previewJSON);
+
+            return false;
+        }
+
+        function updateTermJS(){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            var previewJSON = JSON.stringify(j$("#previewGrid").jqGrid('getRowData'));
+            updateTermAF(JSON.stringify(saveGridState()),previewJSON);
+            return false;
+        }
+
+        function updateDiscountsJS(quoteDisElem){
+            var discount = quoteDisElem.value;
+            if(discount){
+                if(!j$.isNumeric(discount) || parseInt(discount) < 0 || parseInt(discount) > 100){
+                    j$(quoteDisElem).val(null);
+                    jAlert('Discount must be between 0 - 100','Ok');
+                } else {
+                    j$("#qlGrid").saveCell(rowNum,colNum);
+                    var previewJSON = JSON.stringify(j$("#previewGrid").jqGrid('getRowData'));
+                    updateDiscountsAF(JSON.stringify(saveGridState()),previewJSON);
+                }
+            } else {
+                j$(quoteDisElem).val(0);
+                j$("#qlGrid").saveCell(rowNum,colNum);
+                var previewJSON = JSON.stringify(j$("#previewGrid").jqGrid('getRowData'));
+                updateDiscountsAF(JSON.stringify(saveGridState()),previewJSON);
+            }
+
+            return false;
+        }
+
+        function getToDiscountJS(quoteDisElem){
+            var discount = quoteDisElem.value;
+            if(discount){
+                if(!j$.isNumeric(discount) || parseInt(discount) < 0){
+                    j$(quoteDisElem).val(null);
+                    jAlert('Target Price must be a number greater than 0','Ok');
+                } else {
+                    j$("#qlGrid").saveCell(rowNum,colNum);
+                    var previewJSON = JSON.stringify(j$("#previewGrid").jqGrid('getRowData'));
+                    getToDiscountAF(JSON.stringify(saveGridState()),previewJSON);
+                }
+            } else {
+                j$(quoteDisElem).val(0);
+                j$("#qlGrid").saveCell(rowNum,colNum);
+                var previewJSON = JSON.stringify(j$("#previewGrid").jqGrid('getRowData'));
+                updateDiscountsAF(JSON.stringify(saveGridState()),previewJSON);
+            }
+
+            return false;
+        }
+
+        function delPreviewRow(rowId){
+            j$("#previewGrid").delRowData(rowId);
+            var rows = j$("#previewGrid").getRowData();
+            resetAvailableChildrenAF(JSON.stringify(rows));
+        }
+
+        function flipPreviewRow(rowId){
+            var delRow = j$("#previewGrid").getRowData(rowId);
+            //console.log('delRow before', delRow);
+            /*if(delRow.decMRR > 0){
+                delRow.strAction = delRow.strAction.replace('Rem','Add'); //'<a href="javascript:void(0)" onclick="javascript:flipRow(\''+delRow.strQLItemId+'\');">'+'Add'+'</a>';
+            } else if(delRow.decMRR < 0){
+                delRow.strAction = delRow.strAction.replace('Add','Rem'); //'<a href="javascript:void(0)" onclick="javascript:flipRow(\''+delRow.strQLItemId+'\');">'+'Rem'+'</a>';
+            } else {
+                delRow.strAction = delRow.strAction.replace('Rem','Add'); //'<a href="javascript:void(0)" onclick="javascript:flipRow(\''+delRow.strQLItemId+'\');">'+'Add'+'</a>';
+            }*/
+            if(delRow.strAction.contains('Add')){
+                delRow.strAction = delRow.strAction.replace('Add','Rem');
+                delRow.strAssetAction = 'Change';
+            } else {
+                delRow.strAction = delRow.strAction.replace('Rem','Add');
+                delRow.strAssetAction = 'Remove';
+            }
+            if(delRow.decMRR < 0){
+                /*delRow.decMRR = 0-delRow.decMRR;
+                delRow.decUSDMRR = 0-delRow.decUSDMRR;
+                delRow.decSetupFee = 0-delRow.decSetupFee;
+                delRow.decCAPEX = 0-delRow.decCAPEX;
+                delRow.decCost = 0-delRow.decCost;*/
+                delRow.decMRR = 0;
+            } else {
+                delRow.decMRR = 0-delRow.decDPLPUSD;
+            }
+            j$("#previewGrid").setRowData(rowId, delRow);
+
+            var rows = j$("#previewGrid").getRowData();
+            resetAvailableChildrenAF(JSON.stringify(rows));
+        }
+
+        function calcMRRJS(qliItemId){
+            j$("#qlGrid").saveCell(rowNum,colNum);
+            calcMrrAF(JSON.stringify(saveGridState()),qliItemId);
+            return false;
+        }
+
+        function cancelJS(){
+            askConfirm = false;
+            cancelAF();
+            return false;
+        }
+
+        window.onbeforeunload = function(e){
+            if(askConfirm){
+                var message = "Your changes may not be saved.",
+                e = e || window.event;
+                // For IE and Firefox
+                if (e) {
+                    e.returnValue = message;
+                }
+                // For Safari
+                return message;
+            } else {
+            }
+        }
+
+        j$(document).ready(function(){
+            j$(':input:not(#phSearchInput,:button)').change(function(){
+                askConfirm = true;
+                return false;
+            });
+            j$(':button:not(#phSearchButton,#THEPAGE\\:NEWEDITQUOTEFORM\\:NEWEDITQUOTEPB\\:NEWEDITQUOTEBTNS\\:CANCELBUTTON,#THEPAGE\\:NEWEDITQUOTEFORM\\:NEWEDITQUOTEPB\\:NEWEDITQUOTEBTNS\\:SAVEBUTTON)').click(function(){
+                askConfirm = true;
+                return false;
+            });
+
+        });
+
+        function moveMainDown(element){
+            var jId = j$(element).parent().parent().next().next().attr('id'); //There must be a row data element 2 trs beneath the main group
+            var grid = j$("#qlGrid");
+            var jRow = grid.getRowData(jId);
+            var currGNum = jRow.decGroupOrder;
+            var nextGNum;
+            var rows = saveGridState();
+            for(var i = 0; i < rows.length; i++){
+                var row = rows[i];
+                var rowGNum = row.decGroupOrder;
+                if(currGNum < rowGNum && (!nextGNum || rowGNum < nextGNum)){
+                    nextGNum = rowGNum;
+                }
+            }
+            if(nextGNum){ //If there is a order below, swap them to move it down
+                for(var i = 0; i < rows.length; i++){
+                    var row = rows[i];
+                    var rowGNum = row.decGroupOrder;
+                    if(rowGNum == currGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decGroupOrder',nextGNum);
+                    }
+                    if(rowGNum == nextGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decGroupOrder',currGNum);
+                    }
+                }
+            }
+            grid.trigger('reloadGrid');
+            return false;
+        }
+
+        function moveMainUp(element){
+            var jId = j$(element).parent().parent().next().next().attr('id'); //There must be a row data element 2 trs beneath the main group
+            var grid = j$("#qlGrid");
+            var jRow = grid.getRowData(jId);
+            var currGNum = jRow.decGroupOrder;
+            var prevGNum;
+            var rows = saveGridState();
+            for(var i = 0; i < rows.length; i++){
+                var row = rows[i];
+                var rowGNum = row.decGroupOrder;
+                if(currGNum > rowGNum && (!prevGNum || rowGNum > prevGNum)){
+                    prevGNum = rowGNum;
+                }
+            }
+            if(!isNaN(prevGNum)){ //If there is a order above, swap them to move it up
+                for(var i = 0; i < rows.length; i++){
+                    var row = rows[i];
+                    var rowGNum = row.decGroupOrder;
+                    if(rowGNum == currGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decGroupOrder',prevGNum);
+                    }
+                    if(rowGNum == prevGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decGroupOrder',currGNum);
+                    }
+                }
+            }
+            grid.trigger('reloadGrid');
+            return false;
+        }
+
+        function moveParentUp(element){
+            var jId = j$(element).parent().parent().next().attr('id'); //There must be a row data element 1 tr beneath the parent group
+            var grid = j$("#qlGrid");
+            var jRow = grid.getRowData(jId);
+            var currGNum = jRow.decGroupOrder;
+            var currPNum = jRow.decParentOrder;
+            var prevPNum;
+            var rows = saveGridState();
+            for(var i = 0; i < rows.length; i++){
+                var row = rows[i];
+                var rowPNum = row.decParentOrder;
+                var rowGNum = row.decGroupOrder;
+                if(currPNum > rowPNum && currGNum == rowGNum && (!prevPNum || rowPNum > prevPNum)){
+                    prevPNum = rowPNum;
+                }
+            }
+            if(!isNaN(prevPNum)){ //If there is a order above, swap them to move it up
+                for(var i = 0; i < rows.length; i++){
+                    var row = rows[i];
+                    var rowPNum = row.decParentOrder;
+                    var rowGNum = row.decGroupOrder;
+                    if(rowPNum == currPNum && rowGNum == currGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decParentOrder',prevPNum);
+                    }
+                    if(rowPNum == prevPNum && rowGNum == currGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decParentOrder',currPNum);
+                    }
+                }
+            }
+            grid.trigger('reloadGrid');
+            return false;
+        }
+
+        function moveParentDown(element){
+            var jId = j$(element).parent().parent().next().attr('id'); //There must be a row data element 1 tr beneath the parent group
+            var grid = j$("#qlGrid");
+            var jRow = grid.getRowData(jId);
+            var currGNum = jRow.decGroupOrder;
+            var currPNum = jRow.decParentOrder;
+            var prevPNum;
+            var rows = saveGridState();
+            for(var i = 0; i < rows.length; i++){
+                var row = rows[i];
+                var rowPNum = row.decParentOrder;
+                var rowGNum = row.decGroupOrder;
+                if(currPNum < rowPNum && currGNum == rowGNum && (!prevPNum || rowPNum < prevPNum)){
+                    prevPNum = rowPNum;
+                }
+            }
+            if(!isNaN(prevPNum)){ //If there is a order above, swap them to move it up
+                for(var i = 0; i < rows.length; i++){
+                    var row = rows[i];
+                    var rowPNum = row.decParentOrder;
+                    var rowGNum = row.decGroupOrder;
+                    if(rowPNum == currPNum && rowGNum == currGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decParentOrder',prevPNum);
+                    }
+                    if(rowPNum == prevPNum && rowGNum == currGNum){
+                        grid.jqGrid('setCell',row.strQLItemId,'decParentOrder',currPNum);
+                    }
+                }
+            }
+            grid.trigger('reloadGrid');
+            return false;
+        }
+    </script>
+
+    <apex:form id="NEWEDITQUOTEFORM">
+        <!-- Action Functions -->
+        <apex:actionfunction action="{!cancelConfig}" name="cancelconfigaf" rerender="CONFIGPROD,MESSAGES" status="" />
+
+        <apex:actionfunction action="{!cancel}" name="cancelAF" rerender="MESSAGES" status="" />
+
+        <apex:actionfunction name="calcMrrAF" action="{!calcMRR}" status="CalcMRRByTerms" rerender="TOTSETFEEPG,MRRBYTERM,MESSAGES,QUOTELINESPBS">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+            <apex:param name="p2" value="" assignto="{!cstrItemId}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="updateDiscountsAF" action="{!updateDiscounts}" status="CalcMRRByTerms" rerender="CONFIGPROD,MRRBYTERM,MESSAGES,QUOTELINESPBS">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+            <apex:param name="p2" value="" assignto="{!strJSONPreviewGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="getToDiscountAF" action="{!getToDiscount}" status="CalcMRRByTerms" rerender="DISCOUNTS,CONFIGPROD,MRRBYTERM,MESSAGES,QUOTELINESPBS">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+            <apex:param name="p2" value="" assignto="{!strJSONPreviewGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="calcMRRByTermAF" action="{!calcMRRByTerm}" status="CalcMRRByTerms" rerender="QUOTELINESPBS,MESSAGES,MRRBYTERM">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction action="{!checkHasChildren}" name="setPBE" rerender="PBEFLEXBOX,MESSAGES,ADDPRODBUTTONS" immediate="true">
+            <apex:param value="" name="p1" assignto="{!cSearchPBEId}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="setDC" action="{!setChosenDC}" rerender="PBEFLEXPG,DCFLEXBOX,MESSAGES" immediate="true">
+            <apex:param value="" name="p1" assignto="{!cSearchDCId}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="setContact" rerender="CONFLEXBOX,MESSAGES" immediate="true">
+            <apex:param value="" name="p1" assignto="{!cQuote.ContactId}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="changeCurrencyAF" action="{!changeCurrency}" status="CalcMRRByTerms" rerender="TOTSETFEEPG,CONFIGPROD,QUOTELINESPBS,MESSAGES,MRRBYTERM">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+            <apex:param name="p2" value="" assignto="{!strJSONPreviewGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="updateTermAF" action="{!updateTerm}" status="CalcMRRByTerms" rerender="CONFIGPROD,QUOTELINESPBS,MESSAGES,MRRBYTERM">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+            <apex:param name="p2" value="" assignto="{!strJSONPreviewGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="addProductAF" action="{!addProduct}" status="addingProd" rerender="QUOTELINESPBS,MESSAGES,MRRBYTERM,EXISTINGGROUPS,NEWGROUP">
+            <apex:param name="pbeId" value="" assignto="{!cstrPBEID}" />
+            <apex:param name="rows" value="" assignto="{!strJSONQLGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="addOrConfigAF" action="{!addOrConfig}" status="addingProd" rerender="QUOTELINESPBS,MESSAGES,MRRBYTERM,EXISTINGGROUPS,NEWGROUP,CONFIGPROD">
+            <apex:param name="pbeId" value="" assignto="{!cstrPBEID}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="configNewProdAF" action="{!configNewProd}" status="LOADING" rerender="CONFIGPROD,MESSAGES">
+            <apex:param name="pricebookentryid" value="" assignto="{!cstrPBEID}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="resetAvailableChildrenAF" action="{!resetAvailableChildren}" status="LOADING" rerender="CONFIGPROD,MESSAGES">
+            <apex:param name="jsonRows" value="" assignto="{!strJSONPreviewGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="configProdAF" action="{!configProd}" status="loadingConfigure" rerender="CONFIGPROD,MESSAGES">
+            <apex:param name="rowId" value="" assignto="{!strParentQLIId}" />
+            <apex:param name="rows" value="" assignto="{!strJSONQLGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="saveAll" action="{!saveAll}" rerender="QUOTELINESPBS,MESSAGES,ADDPRODUCTSPBS" status="Saving">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="filterPC" action="{!filterPC}" rerender="MESSAGES,CONFIGGRIDPG,ADDUPDATEPREVIEW" status="Search">
+            <apex:param name="pbeRecId" value="" assignto="{!pbeRecId}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="addToPreviewAF" action="{!addToPreview}" rerender="MESSAGES,CONFIGPROD" status="Search">
+            <apex:param name="rowId" value="" assignto="{!strAddRowId}" />
+        </apex:actionfunction>
+
+        <apex:actionfunction name="addUpdateQLAF" action="{!addUpdateQL}" rerender="MRRBYTERM,QUOTELINESPBS,MESSAGES,CONFIGPROD,EXISTINGGROUPS,NEWGROUP" status="loadingConfigure">
+            <apex:param name="p1" value="" assignto="{!strJSONQLGrid}" />
+            <apex:param name="p2" value="" assignto="{!strJSONPreviewGrid}" />
+        </apex:actionfunction>
+
+        <apex:pagemessages id="MESSAGES"></apex:pagemessages>
+
+        <apex:sectionheader title="Quote Details" />
+        <apex:actionstatus id="Saving">
+            <apex:facet name="stop">
+            </apex:facet>
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="z-index:999;width:100%">
+                    <div class="waitingHolder" style="z-index:999; opacity:1.0;position:fixed;top:200px;right:50%;margin-right:-100px; width:100px; height: 25px;background-color: #fff;border: 1px solid black;border-radius: 5px;padding-top: 10px;color: #000;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription" style="color:#000; opacity:1.0;">Saving...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+        <apex:actionstatus id="ChangingCurrency">
+            <apex:facet name="stop">
+            </apex:facet>
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="z-index:999;width:100%">
+                    <div class="waitingHolder" style="z-index:999; opacity:1.0;position:fixed;top:200px;right:50%;margin-right:-100px; width:195px; height: 25px;background-color: #fff;border: 1px solid black;border-radius: 5px;padding-top: 10px;color: #000;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription" style="color:#000; opacity:1.0;">Converting Currency...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+        <apex:actionstatus id="CalcMRRByTerms">
+            <apex:facet name="stop">
+            </apex:facet>
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="z-index:999;width:100%">
+                    <div class="waitingHolder" style="z-index:999; opacity:1.0;position:fixed;top:200px;right:50%;margin-right:-100px; width:195px; height: 25px;background-color: #fff;border: 1px solid black;border-radius: 5px;padding-top: 10px;color: #000;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription" style="color:#000; opacity:1.0;">Calculating...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+        <apex:actionstatus id="LOADING">
+            <apex:facet name="stop">
+            </apex:facet>
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="z-index:999;width:100%">
+                    <div class="waitingHolder" style="z-index:999; opacity:1.0;position:fixed;top:200px;right:50%;margin-right:-100px; width:195px; height: 25px;background-color: #fff;border: 1px solid black;border-radius: 5px;padding-top: 10px;color: #000;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription" style="color:#000; opacity:1.0;">Loading...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus>
+
+        <apex:pageblock title="" id="NEWEDITQUOTEPB">
+            <apex:pageblockbuttons location="top" id="NEWEDITQUOTEBTNS">
+                <apex:commandbutton immediate="true" id="CANCELBUTTON" value="Cancel" onclick="return cancelJS();" rerender="THEPAGE" style="width:100px" />
+                <apex:commandbutton id="SAVEBUTTON" value="Save" onclick="saveAllJS();" style="width:100px" rerender="THEPAGE" />
+            </apex:pageblockbuttons>
+
+            <!-- Quote Details Section -->
+            <apex:pageblocksection title="Quote Details" columns="2" id="QUOTEDETAILSPBS">
+                <apex:pageblocksectionitem helptext="{!$ObjectType.Quote.fields.Name.inlineHelpText}">
+                    <apex:outputlabel >Quote Name</apex:outputlabel>
+                    <apex:panelgroup >
+                        <div class="requiredInput">
+                            <div class="requiredBlock"></div>
+                            <apex:inputfield value="{!cQuote.Name}" required="false" styleclass="ri" />
+                        </div>
+                    </apex:panelgroup>
+                </apex:pageblocksectionitem>
+
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Quote Currency</apex:outputlabel>
+                    <apex:selectlist size="1" value="{!cQuote.DP_Currency_Code__c}" onchange="changeCurrencyJS();">
+                        <apex:selectoption itemvalue="USD" itemlabel="U.S. Dollar" />
+                        <apex:selectoption itemvalue="HKD" itemlabel="Hong Kong Dollar" />
+                        <apex:selectoption itemvalue="CNY" itemlabel="Chinese Yuan" />
+                        <apex:selectoption itemvalue="EUR" itemlabel="Euro" />
+                        <apex:selectoption itemvalue="GBP" itemlabel="British Pound" />
+                        <apex:selectoption itemvalue="SGD" itemlabel="Singapore Dollar" />
+                    </apex:selectlist>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Customer Info</apex:outputlabel>
+                    <apex:panelgrid columns="1">
+                        <apex:outputfield value="{!cOpportunity.Account__c}" />
+                      <!--  <apex:outputfield value="{!cAccount.Website}" /> -->
+                    </apex:panelgrid>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Is Primary</apex:outputlabel>
+                    <apex:inputcheckbox value="{!cbolActive}" />
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Term</apex:outputlabel>
+                    <apex:panelgroup >
+                        <div class="requiredInput">
+                            <div class="requiredBlock"></div>
+                            <apex:selectlist size="1" value="{!cQuote.DP_Term__c}" styleclass="ri" onchange="updateTermJS();">
+                                <apex:selectoption itemvalue="12" itemlabel="12" />
+                                <apex:selectoption itemvalue="24" itemlabel="24" />
+                                <apex:selectoption itemvalue="36" itemlabel="36" />
+                                <apex:selectoption itemvalue="48" itemlabel="48" />
+                                <apex:selectoption itemvalue="60" itemlabel="60" />
+                            </apex:selectlist>
+                        </div>
+                    </apex:panelgroup>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >MRR by Term</apex:outputlabel>
+                    <apex:panelgrid cellspacing="10px" columns="3" id="MRRBYTERM">
+                        <table columns="6" style="border-collapse:separate;
+                            border:solid black 1px;
+                            border-radius:6px;
+                            -moz-border-radius:6px;" class="mrrtable">
+                            <tr>
+                                <td colspan="3" class="{!IF(cQuote.DP_Term__c == '12','highlight','noHighlight')}">
+                                    <center>12<br /><div id="LEASE12">{!lease12}</div></center>
+                                </td>
+                                <td colspan="3" class="{!IF(cQuote.DP_Term__c == '24','highlight','noHighlight')}">
+                                    <center>24<br /><div id="LEASE24">{!lease24}</div></center>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="{!IF(cQuote.DP_Term__c == '36','highlight','noHighlight')}">
+                                    <center>36<br /><div id="LEASE36">{!lease36}</div></center>
+                                </td>
+                                <td colspan="2" class="{!IF(cQuote.DP_Term__c == '48','highlight','noHighlight')}">
+                                    <center>48<br /><div id="LEASE48">{!lease48}</div></center>
+                                </td>
+                                <td colspan="2" class="{!IF(cQuote.DP_Term__c == '60','highlight','noHighlight')}">
+                                    <center>60<br /><div id="LEASE60">{!lease60}</div></center>
+                                </td>
+                            </tr>
+                        </table>
+                        <script>
+                            var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                        
+
+                            //var l1 = document.getElementById('LEASE1');
+                            //l1.innerHTML = formatCurrency(l1.innerHTML);
+                            var l12 = document.getElementById('LEASE12');
+                          
+                            l12.innerHTML = formatCurrency(l12.innerHTML);
+                          
+                            var l24 = document.getElementById('LEASE24');
+                       
+                            l24.innerHTML = formatCurrency(l24.innerHTML);
+                          
+                            var l36 = document.getElementById('LEASE36');
+                            l36.innerHTML = formatCurrency(l36.innerHTML);
+                        
+                            var l48 = document.getElementById('LEASE48');
+                            l48.innerHTML = formatCurrency(l48.innerHTML);
+                            var l60 = document.getElementById('LEASE60');
+                            l60.innerHTML = formatCurrency(l60.innerHTML);
+                        </script>
+                    </apex:panelgrid>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem ></apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Target Discount Price</apex:outputlabel>
+                    <apex:inputtext value="{!targetPrice}" onchange="getToDiscountJS(this);" />
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Quote Discount</apex:outputlabel>
+                    <apex:outputpanel id="DISCOUNTS">
+                        <apex:inputfield value="{!cQuote.DP_Discount__c}" onchange="updateDiscountsJS(this);" />
+                    </apex:outputpanel>
+                </apex:pageblocksectionitem>
+                <!-- <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Contact Name</apex:outputLabel>
+                    <apex:panelGroup >
+                        <div class="requiredInput">
+                            <div class="requiredBlock"/>
+                            <apex:inputField id="QUOTECONTACT" value="{!cQuote.ContactId}"/>
+                        </div>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem> -->
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Total Setup Fee</apex:outputlabel>
+                    <apex:panelgroup id="TOTSETFEEPG">
+                        <apex:outputtext id="TOTSETFEE" value="{!cTotSetFee}" />
+                        <script>
+                            var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                            //var totSetFee = document.getElementById('{!$Component.TOTSETFEE}');
+                            var totSetFee = document.getElementById('{!$Component.TOTSETFEE}');
+                            totSetFee.innerHTML = formatCurrency(totSetFee.innerHTML);
+                        </script>
+                    </apex:panelgroup>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem id="CONFLEXBOXPBS">
+                    <apex:outputlabel >Contact</apex:outputlabel>
+                    <apex:panelgroup id="CONFLEXBOXPG">
+                        <div id="CONFLEXBOX" />
+                        <script>
+                            j$(function() {
+                                var source = {!Contacts};
+                                j$('#CONFLEXBOX').flexbox(source,{
+                                    maxVisibleRows:10,
+                                    initialValue: "{!IF(cQuote.Contact.Name != null,cQuote.Contact.Name,'')}",
+                                    //width:500,
+                                    onSelect:function(){
+                                        setContact(j$('#CONFLEXBOX_hidden').val());
+                                    }
+                                });
+                                j$('#CONFLEXBOX_input').change(function(){
+                                    var exist = false;
+                                    var id;
+                                    for(var item in source.results){
+                                        if(source.results[item].name == j$('#CONFLEXBOX_hidden').val()){
+                                            exist = true;
+                                            id = source.results[item].id;
+                                        }
+                                    }
+                                    if(!exist){
+                                        j$('#CONFLEXBOX_hidden').val(null);
+                                        j$('#CONFLEXBOX_input').val(null);
+                                        setContact(null);
+                                    } else {
+                                        setContact(id);
+                                    }
+                                });
+                            });
+                        </script>
+                    </apex:panelgroup>
+                </apex:pageblocksectionitem>
+            </apex:pageblocksection>
+            <apex:actionstatus id="addingProd">
+                <apex:facet name="stop">
+                </apex:facet>
+                <apex:facet name="start">
+                    <div class="waitingSearchDiv" id="el_loading" style="z-index:999;width:100%">
+                        <div class="waitingHolder" style="z-index:999; opacity:1.0;position:fixed;top:200px;right:50%;margin-right:-100px; width:100px; height: 25px;background-color: #fff;border: 1px solid black;border-radius: 5px;padding-top: 10px;color: #000;">
+                            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                            <span class="waitingDescription" style="color:#000; opacity:1.0;">Adding...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionstatus>
+            <script>
+                j$(document).ready(function(){
+
+                    j$( "#accordion" ).accordion({collapsible:true,active:false,heightStyle: "content"});
+                });
+            </script>
+            <!-- Page Block Section -->
+            <div class="pbSubheader brandTertiaryBgr tertiaryPalette"><h3>Suggested Products</h3></div>
+            <div id="accordion">
+                <apex:repeat value="{!suggestedProducts}" var="sp">
+                    <h3>{!sp}</h3>
+                    <div>
+                        <table>
+                            <apex:repeat value="{!suggestedProducts[sp]}" var="spl">
+                                <tr>
+                                    <td width="50px">
+                                        <apex:commandlink value="" onclick="return addSuggestedJS('{!spl.Id}');">
+                                            <apex:image value="{!$Resource.AddImage}" height="20px" />
+                                        </apex:commandlink>
+                                    </td>
+                                    <td><span style="font-size:12px">{!spl.Product2.Name}</span></td>
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                    </div>
+                </apex:repeat>
+            </div>
+            <apex:pageblocksection title="Choose Product" columns="1" id="ADDPRODUCTSPBS">
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel value="Service Type" />
+                    <apex:selectlist size="1" value="{!cServiceType}">
+                        <apex:selectoptions value="{!serviceTypes}"></apex:selectoptions>
+                        <apex:actionsupport event="onchange" rerender="ADDPRODUCTSPBS" status="loadingConfigure"></apex:actionsupport>
+                    </apex:selectlist>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel value="Product Type" />
+                    <apex:actionregion >
+                        <apex:selectlist size="1" value="{!cSearchProd}">
+                            <apex:selectoptions value="{!clstProdTypes}"></apex:selectoptions>
+                            <apex:actionsupport event="onchange" status="LOADING" rerender="ADDPRODUCTSPBS,PBEFLEXPG,MESSAGES"></apex:actionsupport>
+                        </apex:selectlist>
+                    </apex:actionregion>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem id="DCFLXBOXPBSI" rendered="{!cSearchProd!= ''}">
+                    <apex:outputlabel >Data Center</apex:outputlabel>
+                    <apex:panelgroup id="DCFLEXPG">
+                        <div id="DCFLEXBOX" />
+                        <script>
+                            j$(function() {
+                                var source = {!DataCenters};
+                                j$('#DCFLEXBOX').flexbox(source,{
+                                    maxVisibleRows:10,
+                                    width:500,
+                                    onSelect:function(){
+                                        setDC(j$('#DCFLEXBOX_hidden').val());
+                                    }
+                                });
+                                j$('#DCFLEXBOX_input').change(function(){
+                                    var exist = false;
+                                    var id;
+                                    for(var item in source.results){
+                                        if(source.results[item].name == j$('#DCFLEXBOX_hidden').val()){
+                                            exist = true;
+                                            id = source.results[item].id;
+                                        }
+                                    }
+                                    if(!exist){
+                                        j$('#DCFLEXBOX_hidden').val(null);
+                                        j$('#DCFLEXBOX_input').val(null);
+                                        setDC(null);
+                                    } else {
+                                        setDC(id);
+                                    }
+                                });
+                            });
+                        </script>
+                    </apex:panelgroup>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem id="PBEFLXBOXPBSI" rendered="{!cSearchProd!= ''}">
+                    <apex:outputlabel >Product</apex:outputlabel>
+                    <apex:panelgroup id="PBEFLEXPG">
+                        <div id="PBEFLEXBOX" />
+                        <script>
+                            j$(function() {
+                                var source = {!PriceBookEntries};
+                                j$('#PBEFLEXBOX').flexbox(source,{
+                                    maxVisibleRows:10,
+                                    width:500,
+                                    onSelect:function(){
+                                        setPBE(j$('#PBEFLEXBOX_hidden').val());
+                                        console.log('settin PBE');
+                                        //find me
+                                    }
+                                });
+                                j$('#PBEFLEXBOX_input').change(function(){
+                                    var exist = false;
+                                    var id;
+                                    for(var item in source.results){
+                                        if(source.results[item].name == j$('#PBEFLEXBOX_hidden').val()){
+                                            exist = true;
+                                            id = source.results[item].id;
+                                        }
+                                    }
+                                    if(!exist){
+                                        j$('#PBEFLEXBOX_hidden').val(null);
+                                        j$('#PBEFLEXBOX_input').val(null);
+                                        setPBE(null);
+                                    } else {
+                                        setPBE(id);
+                                    }
+                                });
+                            });
+                        </script>
+                    </apex:panelgroup>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >Existing Group</apex:outputlabel>
+                    <apex:selectlist value="{!cselQuoteGroup}" size="1" id="EXISTINGGROUPS">
+                        <apex:selectoptions value="{!cQuoteGroups}" />
+                    </apex:selectlist>
+                </apex:pageblocksectionitem>
+
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >New Group</apex:outputlabel>
+                    <apex:inputtext value="{!cstrQuoteGroup}" id="NEWGROUP" onchange="this.value = this.value.trim();" />
+                </apex:pageblocksectionitem>
+                <!--<apex:pageBlockSectionItem >
+                    <apex:outputLabel >Group Name</apex:outputLabel>
+                        <apex:selectList value="{!cstrGroupName}" size="1">
+                            <apex:selectOptions value="{!clstGroupNames }"/>
+                        </apex:selectList>
+                </apex:pageBlockSectionItem>-->
+                <apex:outputpanel id="ADDPRODBUTTONS" rendered="{!cSearchProd!= ''}">
+                    <div align="center">
+                        <apex:commandbutton rendered="{!!hasChildren && !cDynamic}" style="width:100px" onclick="return addProductJS();" value="Add Product" status="LOADING" rerender="QUOTELINESPBS,EXISTINGGROUPS,NEWGROUP,MESSAGES" />
+                        <apex:commandbutton rendered="{!hasChildren || !!cDynamic}" style="width:100px" onclick="return configNewProdJS();" value="Configure" status="LOADING" rerender="CONFIGPROD,EXISTINGGROUPS,NEWGROUP,MESSAGES" />
+                    </div>
+                </apex:outputpanel>
+            </apex:pageblocksection>
+            <!-- BEGIN Configure -->
+            <apex:panelgroup id="CONFIGPROD">
+                <apex:pageblocksection rendered="{!showConfig}" title="Configure - {!cConfigName}" columns="1" id="CONFIGPRODPBS">
+                    <script>colorpbs();</script>
+                    <apex:pageblocksectionitem rendered="{!cstrConfigReqProdType == ''  && !cDynamic}">
+                        <apex:outputlabel >Product Type</apex:outputlabel>
+                        <apex:selectlist size="1" value="{!cstrConfigProdType}">
+                            <apex:selectoptions value="{!clstConfigProdTypes}" />
+                            <apex:actionsupport event="onchange" rerender="PCPBEFLEXPG,MESSAGES,CONFIGGRIDPG,ADDUPDATEPREVIEW">
+                                <apex:param name="pbeRecId" value="" assignto="{!pbeRecId}" />
+                            </apex:actionsupport>
+                        </apex:selectlist>
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem rendered="{!cstrConfigReqProdType != ''  && !cDynamic}">
+                        <apex:outputlabel >Required Product Type</apex:outputlabel>
+                        <apex:selectlist size="1" value="{!cstrConfigReqProdType}">
+                            <apex:selectoptions value="{!clstConfigReqProdTypes}" />
+                            <apex:actionsupport event="onchange" rerender="PCPBEFLEXPG,MESSAGES,CONFIGGRIDPG,ADDUPDATEPREVIEW">
+                                <apex:param name="pbeRecId" value="" assignto="{!pbeRecId}" />
+                            </apex:actionsupport>
+                        </apex:selectlist>
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem rendered="{!cDynamic}">
+                        <apex:outputlabel >Overage Unit Price</apex:outputlabel>
+                        <apex:inputtext label="Overage Unit Price" value="{!cOveragePrice}" />
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem rendered="{!cDynamic}">
+                        <apex:outputlabel value="Unit of Measure" />
+                        <apex:outputtext value="{!cUnit}" />
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem rendered="{!!cDynamic}">
+                        <apex:outputlabel >Product</apex:outputlabel>
+                        <apex:panelgroup id="PCPBEFLEXPG">
+                            <div id="PCPBEFLEXBOX" />
+                            <script>
+                                j$(function() {
+                                    var source = {!PriceBookEntriesPC};
+                                    j$('#PCPBEFLEXBOX').flexbox(source,{
+                                        maxVisibleRows:10,
+                                        width:500,
+                                        onSelect:function(){
+                                            filterPC(j$('#PCPBEFLEXBOX_hidden').val());
+                                        },
+                                    });
+                                    j$('#PCPBEFLEXBOX_input').change(function(){
+                                        var exist = false;
+                                        var id;
+                                        for(var item in source.results){
+                                            if(source.results[item].name == j$('#PCPBEFLEXBOX_hidden').val()){
+                                                exist = true;
+                                                id = source.results[item].id;
+                                            }
+                                        }
+                                        if(!exist){
+                                            j$('#PCPBEFLEXBOX_hidden').val(null);
+                                            j$('#PCPBEFLEXBOX_input').val(null);
+                                            filterPC(null);
+                                        } else {
+                                            filterPC(id);
+                                        }
+                                    });
+                                });
+                            </script>
+                        </apex:panelgroup>
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem >
+                        <apex:panelgroup id="CONFIGGRIDPG">
+                            <script>
+                                var configGrid = {!strJSONConfigGrid};
+                                j$(document).ready(function(){
+                                    var gridWidth = document.getElementById('{!$Component.THEPAGE.NEWEDITQUOTEFORM.NEWEDITQUOTEPB.CONFIGPRODPBS}').offsetWidth;
+                                    j$("#configGrid").jqGrid({
+                                        data: configGrid,
+                                        datatype: 'local',
+                                        colNames:['decOrigQty','strAssetAction','RecId','ParentId','PbeId','Action','Availability','Product','Data Center','DataCenterOptions','Setup Fee','Quantity','Capex','Discount','Max Discount','Total Unit MRR','MRR','Group','ProdId','LandedCost','Exempt','kW','Markup','Cost','USD MRR','DC kW Cost','DC kW Markup','DP List Price','Is Parent','Name','Product Type','Required','Base Qty','Min Qty','Max Qty','Inc Qty','Parent Qty','Prod Cat','Prod Compat Id','PreviousQty','TypeOrder','GroupOrder','ParentOrder','isDynamic','servType','overagePrice','unitMeasure'],
+                                        colModel:[
+                                            {name:'decOrigQty',index:'decOrigQty',hidden:true},
+                                            {name:'strAssetAction',index:'strAssetAction',hidden:true},
+                                            {name:'strQLItemId',index:'strQLItemId',hidden:true,key:true},
+                                            {name:'strParentId',index:'strParentId',hidden:true},
+                                            {name:'strPBEId',index:'strPBEId',hidden:true},
+                                            {name:'strAction',index:'strAction',width:20},
+                                            {name:'strAvailability',index:'strAvailability',hidden:true},
+                                            {name:'strProduct',index:'strProduct'},
+                                            {name:'strDataCenter',index:'strDataCenter',hidden:true},
+
+                                            {name:'strDCOpts',index:'strDCOpts',hidden:true},
+                                            {name:'decSetupFee',index:'decSetupFee',hidden:true},
+                                            {name:'decQty',index:'decQty',hidden:true},
+                                            {name:'decCAPEX',index:'decCAPEX',hidden:true},
+                                            {name:'decDiscount',index:'decDiscount',hidden:true},
+                                            {name:'maxDiscount',index:'maxDiscount',hidden:true},
+                                            {name:'decUnitMrr',index:'decUnitMrr',hidden:true},
+                                            {name:'decMRR',index:'decMRR',width:25,formatter:formatCurrency1},
+                                            {name:'strGroupName',index:'strGroupName',hidden:true},
+                                            {name:'strProductId',index:'strProductId',hidden:true},
+                                            {name:'decLandedCost',index:'decLandedCost',hidden:true},
+
+                                            {name:'strExempt',index:'strExempt',hidden:true},
+                                            {name:'decKW',index:'decKW',hidden:true},
+                                            {name:'decCost',index:'decCost',hidden:true},
+                                            {name:'decMarkup',index:'decMarkup',hidden:true},
+                                            {name:'decUSDMRR',index:'decUSDMRR',hidden:true},
+                                            {name:'decKWCost',index:'decKWCost',hidden:true},
+                                            {name:'decKWMarkup',index:'decKWMarkup',hidden:true},
+                                            {name:'decDPLPUSD',index:'decDPLPUSD',hidden:true},
+                                            {name:'strIsParent',index:'strIsParent',hidden:true},
+                                            {name:'strQLIName',index:'strQLIName',hidden:true},
+
+                                            {name:'strProdType',index:'strProdType',hidden:true},
+                                            {name:'strRequired',index:'strRequired',hidden:true},
+                                            {name:'baseQty',index:'baseQty',hidden:true},
+                                            {name:'decMinQty',index:'decMinQty',hidden:true},
+                                            {name:'decMaxQty',index:'decMaxQty',hidden:true},
+                                            {name:'decIncQty',index:'decIncQty',hidden:true},
+                                            {name:'decParentQty',index:'decParentQty',hidden:true},
+                                            {name:'strProdCat',index:'strProdCat',hidden:true},
+                                            {name:'strProdCompatId',index:'strProdCompatId',hidden:true},
+                                            {name:'decPreviousQty',index:'decPreviousQty',hidden:true},
+
+                                            {name:'decTypeOrder',index:'decTypeOrder',sorttype:'int',hidden:true},
+                                            {name:'decGroupOrder',index:'decGroupOrder',sorttype:'int',hidden:true},
+                                            {name:'decParentOrder',index:'decParentOrder',sorttype:'int',hidden:true,formatter:parentGroupFormatter},
+                                            {name:'isDynamic',index:'isDynamic',hidden:true},
+                                            {name:'strServiceType',index:'strServiceType',hidden:true},
+                                            {name:'decOveragePrice',index:'decOveragePrice',hidden:true},
+                                            {name:'strUnit',index:'strUnit',hidden:true}],
+                                        rowNum:10,
+                                        pager: '#configGridPager',
+                                        pagerpos:'left',
+                                        recordpos:'center',
+                                        viewrecords: true,
+                                        multiSort: false,
+                                        sortorder: 'asc',
+                                        width:gridWidth,
+                                        height: 'auto',
+                                        caption: 'Configuration Products',
+                                    });
+                                });
+                                function formatCurrency1(cellval, opts, rowObj,action){
+                                    var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                    //return Globalize.format(Globalize.parseFloat(cellval.toString()),'c',culture);
+                                    return formatCurrency(cellval.toString());
+                                }
+                            </script>
+                            <table id="configGrid" />
+                            <div id="configGridPager" />
+                        </apex:panelgroup>
+                    </apex:pageblocksectionitem>
+                    <apex:pageblocksectionitem >
+                        <script>
+                            var previewGrid = {!strJSONPreviewGrid};
+                            j$(document).ready(function(){
+                                var gridWidth = document.getElementById('{!$Component.THEPAGE.NEWEDITQUOTEFORM.NEWEDITQUOTEPB.CONFIGPRODPBS}').offsetWidth;
+                                j$("#previewGrid").jqGrid({
+                                    data: previewGrid,
+                                    datatype: 'local',
+                                    colNames:['decOrigQty','strAssetAction','RecId','ParentId','PbeId','Action','Availability','Product','Data Center','DataCenterOptions','Setup Fee','Quantity','Base','Capex','Discount','Max Discount','Extended MRR','Group','ProdId','LandedCost','Exempt','kW','Markup','Cost','USD MRR','DC kW Cost','DC kW Markup','DP List Price','Is Parent','Name','Product Type','Required','Min Qty','Max Qty','Inc Qty','Parent Qty','Prod Cat','Prod Compat Id','PreviousQty','TypeOrder','GroupOrder','ParentOrder','isDynamic','servType','overagePrice','unitMeasure'],
+                                    colModel:[
+                                        {name:'decOrigQty',index:'decOrigQty',hidden:true},
+                                        {name:'strAssetAction',index:'strAssetAction',hidden:true},
+                                        {name:'strQLItemId',index:'strQLItemId',hidden:true,key:true},
+                                        {name:'strParentId',index:'strParentId',hidden:true},
+                                        {name:'strPBEId',index:'strPBEId',hidden:true},
+                                        {name:'strAction',index:'strAction',width:12},
+                                        {name:'strAvailability',index:'strAvailability',hidden:true},
+                                        {name:'strProduct',index:'strProduct',width:27,},
+                                        {name:'strDataCenter',index:'strDataCenter',width:21,formatter:dcFormatter},
+                                        {name:'strDCOpts',index:'strDCOpts',hidden:true},
+                                        {name:'decSetupFee',index:'decSetupFee',width:12,formatter:formatCurrency2,unformat:unformatCurrency},
+                                        {name:'decQty',index:'decQty',width:12,formatter:'number',
+                                            formatoptions:{
+                                                decimalSeparator:".",
+                                                thousandsSeparator: ",",
+                                                decimalPlaces: 0
+                                            }
+                                        },
+                                        {name:'baseQty',index:'baseQty',width:5},
+                                        {name:'decCAPEX',index:'decCAPEX',hidden:true},
+                                        {name:'decDiscount',index:'decDiscount',width:12,formatter:'currency',
+                                            formatoptions:{
+                                                decimalSeparator:".",
+                                                thousandsSeparator: ",",
+                                                decimalPlaces: 2,
+                                                //prefix: '',
+                                                suffix: '%'
+                                            }
+                                        },
+                                        {name:'maxDiscount',index:'maxDiscount',width:10,formatter:'currency',
+                                            formatoptions:{
+                                                decimalSeparator:".",
+                                                thousandsSeparator: ",",
+                                                decimalPlaces: 2,
+                                                //prefix: '',
+                                                suffix: '%'
+                                            }
+                                        },
+                                        //{name:'decUnitMrr',index:'decUnitMrr',hidden:true},
+                                        {name:'decMRR',index:'decMRR',width:12,formatter:formatCurrency2,unformat:unformatCurrency,},
+                                        {name:'strGroupName',index:'strGroupName',hidden:true},
+                                        {name:'strProductId',index:'strProductId',hidden:true},
+                                        {name:'decLandedCost',index:'decLandedCost',hidden:true},
+                                        {name:'strExempt',index:'strExempt',hidden:true},
+                                        {name:'decKW',index:'decKW',hidden:true},
+                                        {name:'decCost',index:'decCost',hidden:true},
+                                        {name:'decMarkup',index:'decMarkup',hidden:true},
+                                        {name:'decUSDMRR',index:'decUSDMRR',hidden:true},
+                                        {name:'decKWCost',index:'decKWCost',hidden:true},
+                                        {name:'decKWMarkup',index:'decKWMarkup',hidden:true},
+                                        {name:'decDPLPUSD',index:'decDPLPUSD',hidden:true},
+                                        {name:'strIsParent',index:'strIsParent',hidden:true},
+                                        {name:'strQLIName',index:'strQLIName',hidden:true},
+                                        {name:'strProdType',index:'strProdType',hidden:true},
+                                        {name:'strRequired',index:'strRequired',hidden:true},
+                                        {name:'decMinQty',index:'decMinQty',hidden:true},
+                                        {name:'decMaxQty',index:'decMaxQty',hidden:true},
+                                        {name:'decIncQty',index:'decIncQty',hidden:true},
+                                        {name:'decParentQty',index:'decParentQty',hidden:true},
+                                        {name:'strProdCat',index:'strProdCat',hidden:true},
+                                        {name:'strProdCompatId',index:'strProdCompatId',hidden:true},
+                                        {name:'decPreviousQty',index:'decPreviousQty',hidden:true},
+                                        {name:'decTypeOrder',index:'decTypeOrder',hidden:true},
+                                        {name:'decGroupOrder',index:'decGroupOrder',sorttype:'int',hidden:true,formatter:mainGroupFormatterPG},
+                                        {name:'decParentOrder',index:'decParentOrder',sorttype:'int',hidden:true,formatter:parentGroupFormatterPG},
+                                        {name:'isDynamic',index:'isDynamic',hidden:true},
+                                        {name:'strServiceType',index:'strServiceType',hidden:true},
+                                        {name:'decOveragePrice',index:'decOveragePrice',hidden:true},
+                                        {name:'strUnit',index:'strUnit',hidden:true}],
+
+                                    rowNum:9999999,
+                                    multiSort: false,
+                                    sortname: 'decTypeOrder',
+                                    sortorder: 'asc',
+                                    width: gridWidth,
+                                    height: 'auto',
+                                    caption: 'Product Preview',
+                                    grouping:true,
+                                    groupingView : {
+                                        groupColumnShow : [false,false],
+                                        groupField : ['decGroupOrder','decParentOrder'],
+                                        groupText : ['{0}','{0}'],
+                                        groupCollapse : false,
+                                        groupOrder: ['asc']
+                                    }
+                                });
+                            });
+                            function dcFormatter(cellval,opts,rowObject,action){
+                                if(rowObject.strIsParent == '1'){
+                                    return '';
+                                } else {
+                                    return cellval;
+                                }
+                            }
+                            function mainGroupFormatterPG(cellval, opts, rowObject, action){
+                                var groupIdPrefix = opts.gid + "ghead_";
+                                if(opts.rowId.substr(0, groupIdPrefix.length) === groupIdPrefix && typeof action === "undefined") {
+                                    //The current row is a grouping row
+                                    var data = j$(this).jqGrid("getGridParam", "data");
+                                    for (var i = 0; i < data.length; i++) {
+                                        var item = data[i];
+                                        if (item.decGroupOrder === cellval) {
+                                            //Found main group row, count items in group and total the group
+                                            var numItems = 0;
+                                            var totMRR = 0;
+                                            for(var j = 0; j < data.length; j++){
+                                                var jItem = data[j];
+                                                if(jItem.decGroupOrder == item.decGroupOrder){
+                                                    //Found items in main grouping
+                                                    numItems++;
+                                                    if(jItem.strAssetAction != 'Change'){
+                                                        totMRR += jItem.decMRR;
+                                                    } else {
+                                                        if(jItem.decMRR < 0 || jItem.decQty != jItem.decOrigQty){
+                                                            totMRR += jItem.decMRR;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                            var convertedMrr = formatCurrency(totMRR.toString());
+                                            //jAlert('convertedMrr','Ok');
+                                            var retString = '<b>' + item.strGroupName + '</b>';
+                                            return retString;
+                                        }
+                                    }
+                                }
+                                return cellval;
+                            }
+                            function parentGroupFormatterPG(cellval, opts, rowObject, action){
+                                var groupIdPrefix = opts.gid + "ghead_";
+                                if(opts.rowId.substr(0, groupIdPrefix.length) === groupIdPrefix && typeof action === "undefined") {
+                                    //The current row is a grouping row
+                                    var data = j$(this).jqGrid("getGridParam", "data");
+                                    for (var i = 0; i < data.length; i++) {
+                                        var item = data[i];
+                                        if (item.decParentOrder === cellval && item.strIsParent === '0') {
+                                            //Found parent row, count items in group and total the group
+                                            var numItems = 0;
+                                            var totMRR = 0;
+                                            for(var j = 0; j < data.length; j++){
+                                                var jItem = data[j];
+                                                if(jItem.decParentOrder == item.decParentOrder){
+                                                    //Found items in parent grouping
+                                                    numItems++;
+                                                    if(jItem.strAssetAction != 'Change'){
+                                                        totMRR += jItem.decMRR;
+                                                    } else {
+                                                        if(jItem.decMRR < 0 || jItem.decQty != jItem.decOrigQty){
+                                                            totMRR += jItem.decMRR;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                            var convertedMrr = formatCurrency(totMRR.toString());
+                                                                             //  var convertedMrr =  reformatCurrency(Globalize.parseFloat(totSetFee.innerHTML,10,usCulture),'c',culture);
+
+                                            var retString = '<b>' + item.strProduct.substring(item.strProduct.indexOf('>')+1,item.strProduct.lastIndexOf('<')) + ' - ' + numItems + ' Item(s) - ' + convertedMrr + '</b>';
+                                            return retString;
+                                        }
+                                    }
+                                }
+                                return cellval;
+                            }
+                            function formatCurrency2(cellval, opts, rowObj,action){
+                       var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                        //if(!cellval || !j$.isNumeric(cellval)) cellval = 0;
+                        return formatCurrency(cellval.toString());
+                    }
+                    function unformatCurrency(cellval,opts){
+                        var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                        var gNum = Globalize.parseFloat(cellval.toString());
+                        if(!gNum || !j$.isNumeric(gNum)) gNum = 0;
+                        return gNum;
+                    }
+                        </script>
+                        <table id="previewGrid" />
+                    </apex:pageblocksectionitem>
+                    <apex:outputpanel id="ADDUPDATEPREVIEW">
+                        <div align="center">
+                            <apex:commandbutton onclick="return addUpdateQLJS();" disabled="{!cstrConfigReqProdType != null && cstrConfigReqProdType != ''}" style="width:150px" value="Add/Update Quote Lines" rerender="CONFIGPROD,EXISTINGGROUPS,NEWGROUP,MESSAGES" />
+                            <apex:commandbutton onclick="j$('td.jqhighlight').removeClass('jqhighlight');" action="{!cancelConfig}" style="width:100px" value="Cancel Config" rerender="CONFIGPROD,MESSAGES" status="loadingConfigure" />
+
+                        </div>
+                    </apex:outputpanel>
+                </apex:pageblocksection>
+            </apex:panelgroup>
+            <!-- END Configure -->
+            <!-- Quote Lines Section -->
+            <apex:pageblocksection title="Quote Lines" columns="1" id="QUOTELINESPBS">
+                <apex:actionstatus id="loadingConfigure">
+                    <apex:facet name="stop">
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <div class="waitingSearchDiv" id="el_loading" style="z-index:999;width:100%">
+                            <div class="waitingHolder" style="z-index:999; opacity:1.0;position:fixed;top:200px;right:50%;margin-right:-100px; width:100px; height: 25px;background-color: #fff;border: 1px solid black;border-radius: 5px;padding-top: 10px;color: #000;">
+                                <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                                <span class="waitingDescription" style="color:#000; opacity:1.0;">Loading...</span>
+                            </div>
+                        </div>
+                    </apex:facet>
+                </apex:actionstatus>
+                <script>
+                    var caption = 'Caption';
+                    var rowNum;
+                    var colNum;
+                    var qlGrid = {!strJSONQLGrid};
+                    var exchangeRate = '{!cQuote.DP_Exchange_Rate__c}';
+                    j$(document).ready(function(){
+                        var qlGridWitdh = document.getElementById('{!$Component.THEPAGE.NEWEDITQUOTEFORM.NEWEDITQUOTEPB.QUOTELINESPBS}').offsetWidth;
+                        j$("#qlGrid").jqGrid({
+                            data: qlGrid,
+                            datatype: 'local',
+                            colNames:['decOrigQty','strAssetAction','RecId','ParentId','PbeId','Action','Availability','Product','Data Center','DataCenterOptions','Setup Fee','Quantity','Base','Capex','Discount','Max Discount','Total Unit MRR','Extended MRR','Group','ProdId','LandedCost','Exempt','kW','Markup','Cost','USD MRR','DC kW Cost','DC kW Markup','DP List Price','Is Parent','Name','Product Type','Required','Min Qty','Max Qty','Inc Qty','Parent Qty','Prod Cat','Prod Compat Id','PreviousQty','TypeOrder','GroupOrder','ParentOrder','isDynamic','servType','overagePrice','unitMeasure'],
+                            colModel:[
+                                {name:'decOrigQty',index:'decOrigQty',hidden:true},
+                                {name:'strAssetAction',index:'strAssetAction',hidden:true},
+                                {name:'strQLItemId',index:'strQLItemId',hidden:true,key:true},
+                                {name:'strParentId',index:'strParentId',hidden:true},
+                                {name:'strPBEId',index:'strPBEId',hidden:true},
+                                {name:'strAction',index:'strAction',width:12},
+                                {name:'strAvailability',index:'strAvailability',hidden:true},
+                                {name:'strProduct',index:'strProduct',width:27,},
+                                {name:'strDataCenter',index:'strDataCenter',width:21,editable:true,formatter:dcFormatter,
+                                    editoptions: {dataEvents:[
+                                                    {type: 'change', fn:function(e){
+                                                        var selRowId = j$('#qlGrid').jqGrid ('getGridParam', 'selrow');
+                                                        var selID = j$('#qlGrid').jqGrid ('getCell', selRowId, 'strQLItemId');
+                                                        calcMRRJS(selID);
+                                                    }
+                                                    }]
+                                    }
+                                },
+                                {name:'strDCOpts',index:'strDCOpts',hidden:true},
+                                {name:'decSetupFee',index:'decSetupFee',width:12,editable:true,formatter:formatCurrency2,unformat:unformatCurrency},
+                                {name:'decQty',index:'decQty',width:12,editable:true,formatter:'number',
+                                    formatoptions:{
+                                        decimalSeparator:".",
+                                        thousandsSeparator: ",",
+                                        decimalPlaces: 0
+                                    },
+                                    editoptions: {dataEvents:[
+                                                    {type: 'change', fn:function(e){
+                                                        var qty = j$(e.target).val();
+                                                        if(qty){
+                                                            if(!j$.isNumeric(qty) || parseInt(qty) <= 0){
+                                                                j$(e.target).val(1);
+                                                            }
+                                                        } else {
+                                                            j$(e.target).val(1);
+                                                        }
+                                                        var selRowId = j$('#qlGrid').jqGrid ('getGridParam', 'selrow');
+                                                        var selID = j$('#qlGrid').jqGrid ('getCell', selRowId, 'strQLItemId');
+                                                        calcMRRJS(selID);
+                                                    }
+                                                    }]
+                                    }
+                                },
+                                {name:'baseQty',index:'baseQty',width:5},
+                                {name:'decCAPEX',index:'decCAPEX',hidden:true},
+                                {name:'decDiscount',index:'decDiscount',width:12,editable:true,formatter:'currency',
+                                    formatoptions:{
+                                        decimalSeparator:".",
+                                        thousandsSeparator: ",",
+                                        decimalPlaces: 2,
+                                        //prefix: '',
+                                        suffix: '%'
+                                    },
+                                    editoptions: { dataEvents: [
+                                                    { type: 'keyup', fn: function (e) {
+                                                        var discount = j$(e.target).val();
+                                                        if(discount){
+                                                            if(!j$.isNumeric(discount) && discount != '-'){
+                                                                discount = 0;
+                                                                j$(e.target).val(null);
+                                                            }
+                                                        } else {
+                                                            discount = 0;
+                                                        }
+                                                        var mrr;
+                                                        var myGrid = j$('#qlGrid'),
+                                                        selRowId = myGrid.jqGrid ('getGridParam', 'selrow'),
+                                                        datapipeListPrice = myGrid.jqGrid ('getCell', selRowId, 'decDPLPUSD');
+                                                        if(exchangeRate ==0 || !j$.isNumeric(discount)){
+                                                            mrr = 0;
+                                                        } else {
+                                                            mrr = datapipeListPrice * (1-(discount/100)) * (1/exchangeRate);
+                                                        }
+                                                        myGrid.jqGrid('setCell',selRowId,'decMRR',mrr,{'font-weight':'bold','color':'red','background-color':''});
+                                                        myGrid.jqGrid('setCell',selRowId,'decMRRUSD',datapipeListPrice);
+                                                    }
+                                                    }]
+                                    }
+                                },
+                                {name:'maxDiscount',index:'maxDiscount',width:10,formatter:'currency',
+                                    formatoptions:{
+                                        decimalSeparator:".",
+                                        thousandsSeparator: ",",
+                                        decimalPlaces: 2,
+                                        //prefix: '',
+                                        suffix: '%'
+                                    }
+                                },
+                                {name:'decUnitMrr',index:'decUnitMrr',width:12,formatter:formatCurrency2,unformat:unformatCurrency},
+                                {name:'decMRR',index:'decMRR',width:12,editable:true,formatter:formatCurrency2,unformat:unformatCurrency,
+                                    editoptions: { dataEvents: [
+                                                    { type: 'keyup', fn: function (e) {
+                                                        var discount;
+                                                        var mrrVal = j$(e.target).val();
+                                                        var myGrid = j$('#qlGrid'),
+                                                        selRowId = myGrid.jqGrid ('getGridParam', 'selrow'),
+                                                        datapipeListPrice = myGrid.jqGrid ('getCell', selRowId, 'decDPLPUSD');
+                                                        usdMrr = mrrVal*exchangeRate;
+                                                        if(datapipeListPrice==0){
+                                                            discount = 0;
+                                                        } else {
+                                                            discount = (1 - (usdMrr / datapipeListPrice)) * 100;
+                                                        }
+                                                        myGrid.jqGrid('setCell',selRowId,'decDiscount',discount,{'font-weight':'bold','color':'red','background-color':''});
+                                                        myGrid.jqGrid('setCell',selRowId,'decMRRUSD',usdMrr);
+                                                    }
+                                                    }]
+                                    }
+                                },
+                                {name:'strGroupName',index:'strGroupName',hidden:true},
+
+                                {name:'strProductId',index:'strProductId',hidden:true},
+                                {name:'decLandedCost',index:'decLandedCost',hidden:true},
+                                {name:'strExempt',index:'strExempt',hidden:true},
+                                {name:'decKW',index:'decKW',hidden:true},
+                                {name:'decCost',index:'decCost',hidden:true},
+                                {name:'decMarkup',index:'decMarkup',hidden:true},
+                                {name:'decUSDMRR',index:'decUSDMRR',hidden:true},
+                                {name:'decKWCost',index:'decKWCost',hidden:true},
+                                {name:'decKWMarkup',index:'decKWMarkup',hidden:true},
+                                {name:'decDPLPUSD',index:'decDPLPUSD',hidden:true},
+
+                                {name:'strIsParent',index:'strIsParent',hidden:true},
+                                {name:'strQLIName',index:'strQLIName',hidden:true},
+                                {name:'strProdType',index:'strProdType',hidden:true},
+                                {name:'strRequired',index:'strRequired',hidden:true},
+                                {name:'decMinQty',index:'decMinQty',hidden:true},
+                                {name:'decMaxQty',index:'decMaxQty',hidden:true},
+                                {name:'decIncQty',index:'decIncQty',hidden:true},
+                                {name:'decParentQty',index:'decParentQty',hidden:true},
+                                {name:'strProdCat',index:'strProdCat',hidden:true},
+                                {name:'strProdCompatId',index:'strProdCompatId',hidden:true},
+
+                                {name:'decPreviousQty',index:'decPreviousQty',hidden:true},
+                                {name:'decTypeOrder',index:'decTypeOrder',sorttype:'int',hidden:true},
+                                {name:'decGroupOrder',index:'decGroupOrder',sorttype:'int',hidden:true,formatter:mainGroupFormatter,unformat:unformatGrp},
+                                {name:'decParentOrder',index:'decParentOrder',sorttype:'int',hidden:true,formatter:parentGroupFormatter,unformat:unformatGrp},
+                                {name:'isDynamic',index:'isDynamic',hidden:true},
+                                {name:'strServiceType',index:'strServiceType',hidden:true},
+                                {name:'decOveragePrice',index:'decOveragePrice',hidden:true},
+                                {name:'strUnit',index:'strUnit',hidden:true}],
+                            rowNum:9999999,
+                            multiSort: true,
+                            pager: '#qlGridPager',
+                            pagerpos:'left',
+                            recordpos:'center',
+                            sortname: 'decTypeOrder',
+                            viewrecords: true,
+                            sortorder: 'asc',
+                            width: qlGridWitdh,
+                            height: 'auto',
+                            caption: 'Quote Line Items',
+                            footerrow:true,
+                            cellEdit: true,
+                            cellsubmit:'clientArray',
+                            grouping:true,
+                            groupingView : {
+                                groupColumnShow : [false,false],
+                                groupField : ['decGroupOrder','decParentOrder'],
+                                groupText : ['{0}','{0}'],
+                                groupCollapse : true,
+                                groupOrder: ['asc']
+                            },
+                            beforeEditCell: function(rowid,cellname,value,iRow,iCol){
+                                rowNum = iRow;
+                                colNum = iCol;
+                            },
+                            beforeSelectRow: function(rowid,e){
+                                var rowData = j$('#qlGrid').getRowData(rowid);
+                                if(rowData['strIsParent'] == '0'){
+                                    j$("#qlGrid").setColProp('strDataCenter',{editable:true});
+                                } else {
+                                    j$("#qlGrid").setColProp('strDataCenter',{editable:false});
+                                }
+                                return true;
+                            },
+                            beforeSaveCell : function(rowid,colname,data){
+                                if(colname == 'decDiscount'){
+                                    if(data == '-'){
+                                        return 0;
+                                    }
+                                }
+                                return data;
+                            },
+                            afterSaveCell : function(rowid,colname,data){
+                                j$("#qlGrid").jqGrid('setCell',rowid,colname,data,{'font-weight':'bold','color':'red','background-color':''});
+                                if(colname == 'decQty' || colname == 'strDataCenter' || colname == 'decDiscount' || colname == 'decMRR' || colname == 'decSetupFee'){
+                                    if(colname == 'decQty'){
+                                        if(data){
+                                            if(!j$.isNumeric(data) || parseInt(data) <= 0){
+                                                data = 1;
+                                                j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                            }
+                                        } else {
+                                            data = 1;
+                                            j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                        }
+                                    } else if(colname == 'decDiscount'){
+                                        if(data){
+                                            if(!j$.isNumeric(data)){
+                                                data= 0;
+                                                j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                            }
+                                        } else {
+                                            data = 0;
+                                            j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                        }
+                                    } else if(colname == 'decMRR'){
+                                        if(data){
+                                            if(!j$.isNumeric(data)){
+                                                data= 0;
+                                                j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                            }
+                                        } else {
+                                            data = 0;
+                                            j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                        }
+                                    } else if(colname == 'servType'){
+                                        if(!data){
+                                            data= '';
+                                            j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                        }
+                                    } else if(colname == 'overagePrice'){
+                                        //if(data){
+                                        data= '{!cOveragePrice}';
+                                        console.log('cOveragePrice', cOveragePrice);
+                                        j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                        /*} else {
+                                            data = 0;
+                                            j$("#qlGrid").jqGrid('setCell',rowid,colname,data);
+                                        }*/
+                                    } else if(colname == 'unitMeasure'){
+                                        data = '{cUnit}';
+                                        console.log('cUnit', cUnit);
+                                    }
+                                    var selID = j$('#qlGrid').jqGrid ('getCell', rowid, 'strQLItemId');
+                                    calcMrrAF(JSON.stringify(saveGridState()),selID);
+                                    return false;
+                                }
+                            },
+                            formatCell: function(rowid,cellname,value,iRow,iCol){
+                                if(cellname == 'strDataCenter'){
+                                    var rowData = j$('#qlGrid').getRowData(rowid);
+                                    var opts = rowData['strDCOpts'];
+                                    var sels;
+                                    if(opts){
+                                        sels = opts + ':' + opts;
+                                    } else {
+                                        sels = {!DataCenterNames}
+                                        }
+                                        j$("#qlGrid").setColProp(cellname,{edittype:'select',editoptions:{value:sels}});
+                                    } else if(cellname == 'decQty'){
+                                        var rowData = j$("#qlGrid").getRowData(rowid);
+                                        var min = parseInt(rowData.decMinQty);
+                                        var max = parseInt(rowData.decMaxQty);
+                                        var inc = parseInt(rowData.decIncQty);
+                                        if(min >= 0 && min <= 1000 && max > 0 && inc >= 0){
+                                            var sels;
+                                            for(var i = min;i <= max;i = i + inc){
+                                                if(i == 0) continue;
+                                                if(sels){
+                                                    sels += ';' + i + ':' + i;
+                                                } else {
+                                                    sels = i + ':' + i;
+                                                }
+                                            }
+                                            j$("#qlGrid").setColProp(cellname,{edittype:'select',editoptions:{value:sels}});
+                                        } else {
+                                            //There are no quantity params, this is a standard textbox
+                                            j$("#qlGrid").setColProp(cellname,{edittype:'text'});
+                                        }
+                                    }
+                                },
+                                gridComplete : function(){
+                                    //Loop through the rows in the qlGrid and collapse the 0 level groups on load, this requries to toggle twice
+                                    var grid = this;
+                                    var jGrid = j$("#qlGrid");
+                                    for(var i=0;i<grid.rows.length;i++){
+                                        var row = grid.rows[i];
+                                        if(row.id.indexOf('ghead_0') > -1){
+                                            j$("#qlGrid").groupingToggle(row.id);
+                                            j$("#qlGrid").groupingToggle(row.id);
+                                        }
+                                    }
+                                    //Expand the items to reload the state
+                                    //Loop through the rows in the qlGrid
+                                    var rows = j$("#qlGrid").jqGrid('getRowData');
+                                    var mapGroupsLoad = {};
+                                    var count = 0;
+                                    for(var i = 0; i < rows.length;i++){
+                                        row = rows[i];
+                                        //Calculate the unit mrr
+                                        if(row.strIsParent == '0'){
+                                            row.decUnitMrr = row.decMRR / row.decQty;
+                                            if(row.strAssetAction != 'Change'){
+                                                row.decUnitMrr = row.decMRR / row.decQty;
+                                            } else {
+                                                row.decUnitMrr = 0;
+                                                if(row.decMRR < 0){
+                                                    row.decUnitMrr = row.decMRR / row.decQty;
+                                                } else {
+                                                    row.decMRR = 0;
+                                                }
+                                            }
+                                        } else {
+                                            row.decUnitMrr = row.decMRR / row.decParentQty;
+                                            if(row.strAssetAction != 'Change'){
+                                                row.decUnitMrr = row.decMRR / row.decParentQty;
+                                            } else {
+                                                row.decUnitMrr = 0;
+                                                if(row.decMRR < 0){
+                                                    row.decUnitMrr = row.decMRR / row.decParentQty;
+                                                } else {
+                                                    row.decMRR = 0;
+                                                }
+                                            }
+                                        }
+                                        if(row.decUnitMrr){
+                                            j$("#qlGrid").jqGrid('setCell',row.strQLItemId,'decUnitMrr',row.decUnitMrr);
+                                        } else {
+                                            j$("#qlGrid").jqGrid('setCell',row.strQLItemId,'decUnitMrr',0);
+                                        }
+                                        if(!(row.strGroupName in mapGroupsLoad)){
+                                            mapGroupsLoad[row.strGroupName] = {groupId:'qlGridghead_0_' + count};
+                                            count++;
+                                        }
+                                        if(!(row.strParentId in mapGroupsLoad)){
+                                            mapGroupsLoad[row.strParentId] = {groupId:'qlGridghead_1_' + count,strGroupName:row.strGroupName};
+                                            count++;
+                                        }
+                                    }
+                                    //Toggle the groups
+                                    if(hasSaved){
+                                        for(grpName in mapGroupsLoad){
+                                            var groupLoad = mapGroupsLoad[grpName];
+                                            var groupSave = mapGroups[grpName];
+                                            if(groupSave){
+                                                if(groupSave.expanded){
+                                                    j$("#qlGrid").groupingToggle(groupLoad.groupId);
+                                                }
+                                            } else if(groupLoad.groupId.indexOf('ghead_1') > -1 && (!mapGroups[groupLoad.strGroupName] || !mapGroups[groupLoad.strGroupName].expanded)){
+                                                //Automatically expand if the parent group did not exist before saving
+                                                j$("#qlGrid").groupingToggle(mapGroupsLoad[groupLoad.strGroupName].groupId);
+                                            }
+                                        }
+                                    }
+                                    hasLoaded = true;
+                                    j$('#qlGrid').sortGrid('intIndex');
+                                    setColSpans();
+                                }
+                            });
+                    });
+                    function dcFormatter(cellval,opts,rowObject,action){
+                        if(rowObject.strIsParent == '1'){
+                            return '';
+                        } else {
+                            return cellval;
+                        }
+                    }
+                    function unformatGrp(cellval,opts){
+                        return parseInt(cellval);
+                    }
+                    function mainGroupFormatter(cellval, opts, rowObject, action){
+                        var groupIdPrefix = opts.gid + "ghead_";
+                        if(opts.rowId.substr(0, groupIdPrefix.length) === groupIdPrefix && typeof action === "undefined") {
+                            //The current row is a grouping row
+                            var data = j$(this).jqGrid("getGridParam", "data");
+                            for (var i = 0; i < data.length; i++) {
+                                var item = data[i];
+                                if (item.decGroupOrder === cellval) {
+                                    //Found main group row, count items in group and total the group
+                                    var numItems = 0;
+                                    var totMRR = 0;
+                                    for(var j = 0; j < data.length; j++){
+                                        var jItem = data[j];
+                                        if(jItem.decGroupOrder == item.decGroupOrder){
+                                            //Found items in main grouping
+                                            numItems++;
+                                            if(jItem.strAssetAction != 'Change'){
+                                                totMRR += jItem.decMRR;
+                                            } else {
+                                                if(jItem.decMRR < 0 || jItem.decQty != jItem.decOrigQty){
+                                                    totMRR += jItem.decMRR;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                    var convertedMrr = formatCurrency(totMRR.toString());
+                                    var retString = '<span style="cursor:pointer;" class="ui-icon float-left ui-icon-triangle-1-s" onclick="moveMainDown(this);"></span>'
+                                        + '<span style="cursor:pointer;" class="ui-icon float-left ui-icon-triangle-1-n" onclick="moveMainUp(this);"></span>'
+                                        + '<b>' + item.strGroupName + ' - ' + numItems + ' Item(s)</b>'
+                                        + '</td><td><b>' + convertedMrr + '</b>';
+                                    return retString;
+                                }
+                            }
+                        }
+                        return cellval;
+                    }
+                    function parentGroupFormatter(cellval, opts, rowObject, action){
+                        var groupIdPrefix = opts.gid + "ghead_";
+                        if(opts.rowId.substr(0, groupIdPrefix.length) === groupIdPrefix && typeof action === "undefined") {
+                            //The current row is a grouping row
+                            var data = j$(this).jqGrid("getGridParam", "data");
+                            for (var i = 0; i < data.length; i++) {
+                                var item = data[i];
+                                if (item.decParentOrder === cellval && item.strIsParent === '0') {
+                                    //Found parent row, count items in group and total the group
+                                    var numItems = 0;
+                                    var totMRR = 0;
+                                    var unitMRR = 0;
+                                    for(var j = 0; j < data.length; j++){
+                                        var jItem = data[j];
+                                        if(jItem.decParentOrder == item.decParentOrder){
+                                            //Found items in parent grouping
+                                            numItems++;
+                                            if(jItem.strAssetAction != 'Change'){
+                                                totMRR += jItem.decMRR;
+                                            } else {
+                                                if(jItem.decMRR < 0 || jItem.decQty != jItem.decOrigQty){
+                                                    totMRR += jItem.decMRR;
+                                                }
+                                            }
+                                            if(jItem.strIsParent == '0'){
+                                                //unitMRR += jItem.decMRR / jItem.decQty;
+                                                if(jItem.strAssetAction != 'Change'){
+                                                    unitMRR += jItem.decMRR / jItem.decQty;
+                                                } else {
+                                                    if(jItem.decMRR < 0){
+                                                        unitMRR += jItem.decMRR / jItem.decQty;
+                                                    }
+                                                }
+                                            } else {
+                                                //unitMRR += jItem.decMRR / jItem.decParentQty;
+                                                if(jItem.strAssetAction != 'Change'){
+                                                    unitMRR += jItem.decMRR / jItem.decParentQty;
+                                                } else {
+                                                    if(jItem.decMRR < 0){
+                                                        unitMRR += jItem.decMRR / jItem.decParentQty;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                                    //var convertedMrr = Globalize.format(Globalize.parseFloat(totMRR.toString(),10,usCulture),'c',culture);
+                                    //var convertedUnitMrr = Globalize.format(Globalize.parseFloat(unitMRR.toString(),10,usCulture),'c',culture);
+                                    var convertedMrr = formatCurrency(totMRR.toString());
+                                    var convertedUnitMrr = formatCurrency(unitMRR.toString());
+                                    var retString = '<span style="cursor:pointer;" class="ui-icon float-left ui-icon-triangle-1-s" onclick="moveParentDown(this);"></span>'
+                                        + '<span style="cursor:pointer;" class="ui-icon float-left ui-icon-triangle-1-n" onclick="moveParentUp(this);"></span>'
+                                        + '<b>' + item.strProduct.substring(item.strProduct.indexOf('>')+1,item.strProduct.lastIndexOf('<')) + ' - ' + numItems + ' Item(s)</b>'
+                                        + '</td><td><b>' + convertedUnitMrr + '</b>'
+                                        + '</td><td><b>' + convertedMrr + '</b>';
+                                    return retString;
+                                }
+                            }
+                        }
+                        return cellval;
+                    }
+                    function formatCurrency2(cellval, opts, rowObj,action){
+                       var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                        if(!cellval || !j$.isNumeric(cellval)) cellval = 0;
+                        return formatCurrency(cellval.toString());
+                    }
+                    function unformatCurrency(cellval,opts){
+                        var culture = Globalize.culture(isoCodeToLanguage['{!cQuote.DP_Currency_Code__c}']);
+                        var gNum = Globalize.parseFloat(cellval.toString());
+                        if(!gNum || !j$.isNumeric(gNum)) gNum = 0;
+                        return gNum;
+                    }
+                </script>
+                <table id="qlGrid" />
+                <script>
+                    function colorpbs(){
+                        j$('#THEPAGE\\:NEWEDITQUOTEFORM\\:NEWEDITQUOTEPB\\:CONFIGPRODPBS').find('div.first').addClass('jqhighlight');
+                    }
+                    function addcolor(){
+                        j$('td.jqhighlight').removeClass('jqhighlight');
+                        //j$('#'+configureid).children('td').addClass('jqhighlight');
+                        j$('#THEPAGE\\:NEWEDITQUOTEFORM\\:NEWEDITQUOTEPB\\:QUOTELINESPBS').find('#'+configureid).children('td').addClass('jqhighlight');
+                    }
+                    //addcolor();
+
+                    function setColSpans(){
+                        //Set the colspan of each of the grouping rows in the qlgrid to 8 to display the rollup values in the correct column
+                        j$('.qlGridghead_1').each(function(i,obj){
+                            j$(j$(this).children().get(0)).attr('colspan',8);
+                        });
+                        j$('.qlGridghead_0').each(function(i,obj){
+                            j$(j$(this).children().get(0)).attr('colspan',9);
+                        });
+                    }
+                </script>
+                <div id="qlGridPager" />
+            </apex:pageblocksection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

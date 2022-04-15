@@ -1,0 +1,80 @@
+<aura:component controller="CompanySearchAndCreateCtrlNew">
+    
+    <aura:attribute name="dbResultObj" type="CompanySearchAndCreateCtrlNew.CompanyAndCloudDBCompWrapper" description=""/>
+    <aura:attribute name="cmpName" type="string" description="Company Name"/>
+    <aura:attribute name="website" type="string" description="Website"/>
+    <aura:attribute name="selectedloc" type="String" default=""/>
+    
+    <aura:attribute name="dbPaginationList" type="object[]"/>
+    <aura:attribute name="startPage" type="integer"/>
+    <aura:attribute name="endPage" type="integer"/>
+    <aura:attribute name="totalRecords" type="integer"/>
+    <aura:attribute name="pageSize" type="integer" default="10"/>
+    
+    <aura:attribute name="startRec" type="integer" description="using for store page Number"/>
+    <aura:attribute name="endRec" type="integer" description="using for store All Pages page Number"/>
+    <!-- Attribute Declration For Pagination End-->
+    
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+	
+    <aura:registerEvent name="companyEvent" type="c:CompanySearchEventNew"/>
+	   
+    <table class="slds-table slds-table slds-table--bordered slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+        <thead> 
+            <tr class="slds-text-heading--label">
+                <th scope="col"><div class="slds-truncate" title="action">Action</div></th>
+                <th scope="col"><div class="slds-truncate" title="Name">Company Name</div></th>
+                <th scope="col"><div class="slds-truncate" title="Email">Tradestyle</div></th>
+                <th scope="col"><div class="slds-truncate" title="Company">Website</div></th>
+                <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+                <th scope="col"><div class="slds-truncate" title="BillingState">Billing State</div></th>
+                <th scope="col"><div class="slds-truncate" title="BillingCountry">Billing Country</div></th>
+                <th scope="col"><div class="slds-truncate" title="territroy">LocationStatus</div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:if isTrue="{!v.dbPaginationList.length > 0}">
+                <aura:iteration items="{!v.dbPaginationList}" var="cmp">
+                    <tr>
+                        <th scope="row"><ui:outputURL value="" label="" />
+                        	<a href="#" onclick="{!c.handleImport}" id="{!cmp.dcdbCompObj.Id}">Import</a>
+                        </th>                        
+                        <td><div class="slds-truncate" title="{!cmp.dcdbCompObj.Name}">{!cmp.dcdbCompObj.Name}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.dcdbCompObj.TradeStyle1}">{!cmp.dcdbCompObj.TradeStyle1}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.dcdbCompObj.url}">{!cmp.dcdbCompObj.URL}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.dcdbCompObj.Phone}">{!cmp.dcdbCompObj.Phone}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.dcdbCompObj.BillingState}">{!cmp.dcdbCompObj.State}</div></td>
+                        <td><div class="slds-truncate" title="{!cmp.dcdbCompObj.BillingCountry}">{!cmp.dcdbCompObj.Country}</div></td>
+                        <td>                            
+                                <aura:if isTrue="{!(cmp.dcdbCompObj.LocationStatus == '0')}">
+                                    Single Location                             
+                                </aura:if>
+                                <aura:if isTrue="{!(cmp.dcdbCompObj.LocationStatus == '1')}">
+                                    Headquarters/Parent.                               
+                                </aura:if>                            
+                        </td>
+                    </tr>
+                </aura:iteration>
+                <aura:set attribute="else">
+                    <tr><th scope="row" colspan="4">
+                        <div class="slds-text-align_center">No companies were found.</div></th>
+                    </tr>
+                </aura:set>
+            </aura:if>            
+        </tbody>
+        <p>{!v.startRec} - {!v.endRec} of {!v.dbResultObj.totalDBComp} Data.Com Companies</p>
+    </table>
+    <lightning:buttonGroup >
+        <lightning:button label="Previous" disabled="{!v.dbResultObj.dbOffSet == 0}"  
+                          onclick="{!c.dbPrevious}" variant="brand"
+                          iconName='utility:back'/>
+        &nbsp; &nbsp; &nbsp;
+        <lightning:button label="Next" disabled="{!v.dbResultObj.dbOffSet >= v.dbResultObj.totalDBComp}" 
+                          onclick="{!c.dbNext}" variant="brand"
+                          iconName='utility:forward' iconPosition='right'/>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+        
+    </lightning:buttonGroup>    
+    
+</aura:component>

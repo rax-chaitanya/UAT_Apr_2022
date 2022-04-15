@@ -1,0 +1,73 @@
+<apex:page controller="PartnerRankingController" showHeader="false" sidebar="false" lightningStylesheets="true">
+<head>
+    <style type="text/css" media="screen">
+     .vf-reset .vf-surface tspan{
+         font-family:FiraSans-Regular !important;
+         }
+    </style>
+</head>
+    <apex:slds />
+    <apex:form >
+        <script>
+        function renderChartTip(klass, item) {                
+            var m = item.storeItem;
+            
+            this.update(''
+                        + '<table>'
+                        + '<tr><td>Partner:</td><td>&nbsp;</td><td>' + m.get('name') + '</td></tr>'
+                        + '<tr><td>Approval Amount:</td><td>&nbsp;</td><td>' + m.get('ChartLabel') + '</td></tr>'
+                        + '</table>'
+                       );
+        }
+        
+        </script>
+        <div style="position: relative;">
+            <apex:outputpanel >
+                <apex:actionstatus id="loadingStatus">
+                    <apex:facet name="start">
+                        <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                                                             height: 100%;opacity:0.65;width:100%;"> 
+                            <div class="waitingHolder" style="top: 10px; width: 300px;">
+                                <img  class="waitingImage" src="{!$Resource.wait}" />
+                                
+                            </div>
+                        </div>
+                    </apex:facet>
+                </apex:actionstatus>
+            </apex:outputpanel> 
+            <apex:pageblock mode="maindetail"> 
+                
+                <apex:pageblocksection id="oppTable"> 
+                    <apex:outputPanel style="font-family:FiraSans-Regular !important;"><br/>
+                        <apex:outputLabel value="Select Time Period : " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:selectlist value="{!strDtFilter}" multiselect="false" size="1">
+                            <apex:selectOption itemValue="Year" itemLabel="YTD"/>
+                            <apex:selectOption itemValue="Quarter" itemLabel="QTD"/>
+                            <apex:actionsupport event="onchange" rerender="oppTable1,msg" status="loadingStatus">  
+                                
+                            </apex:actionsupport> 
+                        </apex:selectlist> 
+                    </apex:outputPanel>
+                </apex:pageblocksection>  
+                <apex:pageblocksection id="oppTable1" >                     
+                    <apex:pageblocksectionitem rendered="{!chartData.size!=0}">                        
+                        <apex:chart width="1100" height="400" data="{!chartData}"  colorSet="{!barColor}">                            
+                            <apex:axis type="Numeric" position="left" fields="data1"  grid="true" title="Amount"/>                    
+                            <apex:axis type="Category" position="bottom" fields="name" title="Partner Rank"  >
+                             
+                            </apex:axis>
+                            <apex:barSeries orientation="vertical" axis="left" xField="titlename" yField="data1" colorsProgressWithinSeries="true" >
+                                <apex:chartLabel field="ChartLabel" display="outside" orientation="horizontal" />
+                                <apex:chartTips height="80" width="140" valueField="ChartLabel"/>                               
+                            </apex:barSeries>
+                        </apex:chart>                        
+                    </apex:pageblocksectionitem>                  
+                </apex:pageblocksection> 
+                <apex:pageblocksection id="msg" >
+                    <apex:pageMessage summary="No Close/Won Opportunities for the {!strDtFilter}." strength="2" severity="info" rendered="{!chartData.size==0}"/>
+                    <apex:pageMessages />
+                </apex:pageblocksection>
+            </apex:pageblock> 
+        </div>
+    </apex:form>
+</apex:page>

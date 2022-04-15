@@ -1,0 +1,63 @@
+<aura:component controller="RepForecastController" implements="force:appHostable">
+    <aura:attribute name="account" type="Account" />
+    <aura:attribute name="row_selected" type="Boolean" default="false"/>
+    <aura:attribute name="forecasted_dates" type="Date[]"/>
+	
+	<!-- method that allows parent component to call a child method -->     
+    <aura:method name="editRow" action="{!c.edit}" access="PUBLIC"/> 
+    
+    <aura:registerEvent name="selectAccount" type="c:selectRepForecastAccount"/>
+    
+    <tr>         
+        <td role="gridcell" data-label="Account Name" class="slds-cell-edit">
+            
+            <aura:if isTrue="{!v.row_selected}">
+                <!--<lightning:spinner aura:id="mySpinner"  size="small" class="slds-hide"/> -->
+                
+                
+                <button class="slds-button slds-button--icon-container" onclick="{!c.cancel}">
+                    <lightning:icon iconName="action:close" size="x-small" alternativeText="Cancel the edit of row"/>
+                </button>                
+                
+                
+                &nbsp;             
+                
+                <button class="slds-button slds-button--icon-container" onclick="{!c.save}">
+                    <lightning:icon iconName="action:check" size="x-small" alternativeText="Save the row"/>
+                </button>                
+                
+                
+                <aura:set attribute="else">
+                    <button class="slds-button slds-button--icon-container" onclick="{!c.edit}">
+                        <lightning:icon iconName="action:edit" size="x-small" alternativeText="Edit the row"/>
+                    </button>                
+                </aura:set>
+            </aura:if>            
+        </td>
+        
+        
+        <td role="gridcell" data-label="Account Name" class="slds-cell-edit">
+            <span class="slds-grid slds-grid--align-spread">
+                <a href="{!'/' + v.account.Id}" class="slds-has-blur-focus slds-truncate">{!v.account.Name}</a> 
+            </span>
+        </td>
+        
+        <td role="gridcell" data-label="Account Type" class="slds-cell-edit">
+            <span class="slds-grid slds-grid--align-spread">
+                <div class="slds-truncate" title="Account Type">{!v.account.Type}</div>
+            </span>
+        </td>
+        
+        <td data-label="Contact">
+            <div class="slds-form-element__control slds-grow">
+                <div class="slds-truncate" title="Account Type">{!v.account.Account_Number_Duplicate__c}</div>
+            </div>                        
+            
+        </td>
+        
+        <aura:iteration items="{!v.forecasted_dates}" var="date">
+			<c:RepForecastAccount aura:id="rep-forecast-account" account="{!v.account}" forecasted_date="{!date}" editable="true"/> 
+        </aura:iteration>
+    </tr>            
+    
+</aura:component>

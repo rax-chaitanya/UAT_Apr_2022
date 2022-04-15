@@ -1,0 +1,15 @@
+<apex:page standardController="Account" extensions="UploadCompanyLogoController" showHeader="true" sidebar="true" standardStylesheets="{!pageManager.Standard_Stylesheets__c}" lightningStylesheets="true"> 
+    <apex:form >
+        <apex:dynamicComponent componentValue="{!dynamicPage}"/>
+        <apex:actionStatus id="status">
+            <apex:facet name="start">
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: black;">
+                    &nbsp;
+                </div>
+                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 30% 50%">
+                    <img src="http://upload.wikimedia.org/wikipedia/commons/e/ed/Cursor_Windows_Vista.gif" />
+                </div>
+            </apex:facet>
+        </apex:actionStatus>      
+    </apex:form>
+</apex:page>

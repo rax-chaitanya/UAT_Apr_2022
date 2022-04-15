@@ -1,0 +1,60 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global"
+                controller="NavigateCWWizardController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="user" type="Object" />
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="hasError" type="boolean" default="false"/>
+    <aura:attribute name="legalApprovalStatus" type="String"/>
+    <aura:attribute name="raptorURL" type="String"/>
+    <aura:attribute name="checkddi" type="boolean"/>
+    
+    
+    
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      layoutType="FULL"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.simpleRecord}"
+                      targetError="{!v.recordError}"
+                      recordUpdated="{!c.handleRecordUpdated}"
+                      />
+
+    <!-- Display a header with details about the record -->
+    <div class="slds-page-header slds-text-heading_label" role="banner">
+        <b>Opportunity Name :</b> &nbsp;{!v.simpleRecord.Name}
+        <!-- <p class="slds-text-heading_label">{!v.simpleRecord.Name}</p>
+        h1 class="slds-page-header__title slds-m-right_small
+            slds-truncate slds-align-left">{!v.simpleRecord.Name}, {!v.simpleRecord.Name}</h1-->
+    </div>  
+    
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.recordError)) }">
+        <div class="recordError">
+            <!--aura:iteration items="{!v.recordError}" var="{!errorMsg}"-->
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.recordError} <br/><br/>
+               <aura:if isTrue="{!not(empty(v.raptorURL)) }">
+                <a href="{!v.raptorURL}" onclick="{!c.handleRaptorDoc}" target="_blank">
+                    <div class="slds-text-color_error slds-text-align_center"><p>Click here to Upload the Documents</p></div>
+                </a>
+                    </aura:if>
+            </ui:message>
+            <!--/aura:iteration-->
+        </div>
+        <!--div class="slds-p-around_medium">
+            <ui:outputURL value= "{!v.raptorURL}" label="Upload Raptor Documents"/>
+        </div-->
+        <!--p><lightning:formattedUrl value="{!v.raptorURL}" label="Rapter Documents" tooltip="Go to Raptor documents page"/></p-->
+        
+        <!--a href="{!v.raptorURL}" onclick="{!c.handleRaptorDoc}" target="_blank">
+            Click here to Upload the Documents
+        </a-->
+    </aura:if>    
+    <!--/aura:set>
+    </aura:if-->
+</aura:component>

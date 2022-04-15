@@ -1,0 +1,22 @@
+<!--
+@description       : SFDC Case #00058275
+@author            : Atheer Bdaiwi
+@group             : 
+@last modified on  : 04-28-2021
+@last modified by  : Atheer Bdaiwi
+Modifications Log 
+Ver   Date         Author          Modification
+1.0   04-19-2021   Atheer Bdaiwi   Initial Version
+-->
+<apex:page standardController="Contact" extensions="ContactLeadHistoryController" lightningStylesheets="true">
+<apex:pageBlock >
+<apex:pageBlockTable value="{!leadHistory}" var="h">
+<apex:column value="{!h.Field}" />
+<apex:column value="{!h.OldValue}" />
+<apex:column value="{!h.NewValue}" />
+<apex:column value="{!h.IsDeleted}" />
+<apex:column value="{!h.CreatedDate}" />
+<apex:column value="{!h.CreatedById}" />
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:page>

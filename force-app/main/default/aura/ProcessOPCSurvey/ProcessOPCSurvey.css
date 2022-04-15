@@ -1,0 +1,12 @@
+.THIS .align-page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgb(217, 219, 221);
+    transition: border .15s linear;
+    background-color: rgb(75, 202, 129);
+    border-color: rgb(75, 202, 129);
+    color: rgb(22, 50, 92);
+    margin-top: 40px;
+}

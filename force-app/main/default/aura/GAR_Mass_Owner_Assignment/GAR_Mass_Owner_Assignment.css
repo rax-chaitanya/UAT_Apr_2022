@@ -1,0 +1,22 @@
+.THIS .slds-modal__header{
+    padding-bottom : 0;
+}
+
+.THIS .move-date .slds-form-element__label{
+    display : none;
+}
+/*.THIS .slds-modal-custom{
+    max-height: 80% !IMPORTANT;
+    margin-top: 10rem !IMPORTANT;
+}
+.THIS.slds-modal-custom{
+    max-height: 80% !IMPORTANT;
+    margin-top: 10rem !IMPORTANT;
+}
+
+.THIS.slds-modal__content-custom{
+    min-height : 60%;
+}
+.THIS .slds-modal__content-custom{
+    min-height : 60%;
+}*/

@@ -1,0 +1,41 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+    <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    function Validate()
+    {
+        //Added by Biswa for SFDC-3342(Only added the if condion and all others existing functionalityies in else condition)
+        var oppType='{!Opportunity.Type}';
+        if(oppType=='Customer Success')
+        {
+            alert("This opportunity type is set as {!Opportunity.Type}, which cannot be sent to Raptor.");
+        }else{
+            var url; 
+            var orgID = '{!$Organization.Id}';
+            var prodOrgID = ('{!$Setup.ProdOrgIDSetting__c.ProdOrgID__c}');
+            
+            if(orgID == prodOrgID) 
+                url = '{!$Label.Raptor_Documents}'; 
+            
+            else
+                url = '{!$Label.Raptor_Documents_Staging}'; 
+            
+            url = url.replace(":OPPORTUNITYID", '{!CASESAFEID(Opportunity.Id)}'); 
+            
+            window.open(url); 
+        }
+    }
+    window.onload = Validate;
+    
+    </script>
+    
+</apex:page>

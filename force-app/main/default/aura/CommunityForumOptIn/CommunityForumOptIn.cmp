@@ -1,0 +1,32 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CommunityForumController">
+    <aura:attribute name="optedIn" Type="Boolean" default="false"/>
+    <aura:attribute name="agreed" Type="Boolean" default="false"/>
+    <aura:attribute name="doneLoading" Type="Boolean" default="true"/>
+    
+    <lightning:spinner alternativeText="Loading" size="medium" aura:id="spinner" class="{!v.doneLoading ? 'slds-hide' : ''}"/>
+    
+    <div class="slds-text-align_center">
+        <div class="slds-text-heading_large">Forum Opt-in Agreement</div>
+        <aura:renderIf isTrue="{!!v.optedIn}">
+            <div class="slds-text-color_default">
+                <p>By accessing, browsing or using the message board, you are agreeing to comply with Rackspace Website Terms of Use located 
+                    <lightning:formattedUrl class="custom-font" value="https://www.rackspace.com/information/legal/websiteterms" label="here" tooltip="RACKSPACE WEBSITE TERMS OF USE" target="_blank"/>.
+                </p>
+                <p>By posting, you acknowledge and agree that the Content you post, including your company user name, will be displayed within the Rackspace Partner Portal.</p>
+            </div>
+            
+            <div class="slds-m-around_large">
+                <lightning:input type="checkbox" checked="{!v.agreed}" label="I agree to opt in." name="optIn" class="slds-m-around_small"/>
+                <lightning:button variant="brand" label="Opt In" title="Opt In" onclick="{!c.optIn}" class="slds-m-around_small"/>
+            </div>
+            
+            <aura:set attribute="else">
+                <div class="slds-text-color_default">
+                    <p>
+                        Success!
+                    </p>
+                </div>
+            </aura:set>
+        </aura:renderIf>
+    </div>
+</aura:component>

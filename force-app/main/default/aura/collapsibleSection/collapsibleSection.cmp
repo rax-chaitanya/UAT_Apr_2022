@@ -1,0 +1,19 @@
+<aura:component >
+    <aura:attribute name="title" type="String"/>
+    <div class="slds-section slds-is-open slds-is-animated" aura:id="section">
+        <h3 class="slds-section__title">
+            
+            
+            
+
+            
+            
+            <lightning:button class="slds-button slds-section__title-action" iconName="utility:switch" value="{!v.title}" onclick="{!c.handleClick}">
+                {!v.title}
+            </lightning:button>
+        </h3>
+        <div aria-hidden="true" class="slds-section__content" aura:id="expando-unique-id">
+            {!v.body}
+        </div>
+    </div>
+</aura:component>

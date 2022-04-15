@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION">
+    <!-- pass context of where the event was fired to the handler. -->
+    <aura:attribute name="resultObj" type="CompanySearchAndCreateCtrlNew.CompanyAndCloudDBCompWrapper" description=""/>
+    <!-- <aura:attribute name="dbResultObj" type="CompanySearchAndCreateCtrlNew.CompanyAndCloudDBCompWrapper" description=""/> -->
+</aura:event>

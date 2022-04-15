@@ -1,0 +1,18 @@
+<!--
+* File : CloneOpportunity.cmp
+* Description : Used to Clone an Opportunity to copy over some fields.
+* Ticket : SFDC-2230
+* Created Date : August 2018
+* @author : RDC (Deepak)
+*-->
+<aura:component controller="CloneOpportunity" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+	<ltng:require styles="/resource/SLDS202/assets/styles/salesforce-lightning-design-system.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="recordId" type="Id" />
+    <aura:dependency resource="c:createRecord"/>
+    <!-- Load the navigation events in the force namespace. -->
+    <aura:dependency resource="markup://force:*" type="EVENT"/>
+    
+</aura:component>

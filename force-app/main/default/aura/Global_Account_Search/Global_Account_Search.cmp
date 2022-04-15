@@ -1,0 +1,290 @@
+<aura:component controller="GlobalAccountSearchController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:dependency resource="markup://c:GAR_Notice" />
+    
+    <aura:attribute name="accountName" type="String" default=""/>
+    <aura:attribute name="Show_Result" type="Boolean" default="false"/>
+    <aura:attribute name="accountNumber" type="String" default=""/>
+    <aura:attribute name="accountType" type="String" default=""/>
+    <!-- SFDC-7193 changes -->
+    <aura:attribute name="accountOwnerRegion" type="String" default="" />
+    <aura:attribute name="accountOwnerSubRegion" type="String" default="" />
+    <aura:attribute name="accountIndustry" type="string" default="" />
+    <aura:attribute name="totalresultCount" type="Integer" default="0"/>  <!-- SFDC-740 changes -->
+
+    <!-- SFDC-7193 changes -->
+    
+    <aura:attribute name="matchingAccounts" type="Boolean" default="false"/>
+    <aura:attribute name="matchingAccountsDisabled" type="Boolean" default="false"/>
+    <aura:attribute name="today" type="String" default="2000-01-01"/>
+    <aura:attribute name="isValidUser" type="Boolean" default="false"/>
+    <aura:attribute name="accountOwnerMandatory" type="Boolean" default="false"/>
+    
+    <!-- SFDC-7193 changes -->
+    <aura:attribute name="OwnerSubRegionDisabled" type="Boolean" default="true"/>
+    <aura:attribute name="accountNameMandatory" type="Boolean" default="false" />
+    <aura:attribute name="accountSubRegionMandatory" type="Boolean" default="false" />
+    <!-- SFDC-7193 changes -->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="accountOwner" type="String" default=""/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="Type" type="String[]" default=""/>
+    <!-- SFDC-7193 changes -->    
+    <aura:attribute name="OwnerRegion" type="String[]" default="" />
+    <aura:attribute name="OwnerSubRegion" type="String[]" default="" />
+    <aura:attribute name="RegiontodependentSubRegion" type="Object" default="" />
+    <aura:attribute name="Industry" type="String[]" default="" />
+    <!-- SFDC-7193 changes -->    
+    <aura:attribute name="ReasonOptions" type="String[]" default=""/>
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="String[]"/>
+    <aura:attribute name="resultList" type="GlobalAccountSearchController.AccountSearchWrapper[]"/>
+    <aura:attribute name="resultCount" type="Integer" default="0"/>
+    <aura:attribute name="missingAccounts" type="String" default=""/>
+    <aura:attribute name="showSpinner" type="Boolean" default="true"/>
+    <aura:attribute name="showProcessingResult" type="Boolean" default="false"/>
+    <aura:attribute name="realignmentRequetItems" type="Object" default="{}"/>
+    <aura:attribute name="showMassOwnerAssignmentModal" type="Boolean" default="false"/>
+    
+    <aura:attribute name="showWarning" type="Boolean" default="false"/>
+    <aura:attribute name="warningMessage" type="String" default="Realignment requests will be processed on/after 6th Business Day"/>
+    
+    <aura:handler name="change" value="{!v.selectedLookUpRecord}" action="{!c.handleRecordSelect}"/>
+    <aura:handler name="change" value="{!v.showProcessingResult}" action="{!c.handleProcessResultChange}"/>
+    <!-- <aura:handler name="change" value="{!v.accountType}" action="{!c.handleaAccountTypeChange}" /> --><!-- SFDC-7193 changes -->
+    
+    <!-- SFDC-7193 changes -->
+    <aura:handler name="change" value="{!v.accountType}" action="{!c.handleAccountInputs}" />
+    <aura:handler name="change" value="{!v.accountOwnerRegion}" action="{!c.handleAccountInputs}" />
+    <aura:handler name="change" value="{!v.accountOwnerSubRegion}" action="{!c.handleAccountInputs}" />
+    <aura:handler name="change" value="{!v.accountIndustry}" action="{!c.handleAccountInputs}" /> 
+    <!-- SFDC-7193 changes -->    
+    
+    
+    <lightning:spinner class="{!v.showSpinner ? 'slds-show' : 'slds-hide'}" variant="brand"  alternativeText="Loading" size="medium" />
+    <div class="body">
+        <div class="container">
+            <div class="" style="background-color:white;" title="Global Account Realignment">
+                <div class="search" aura:id="searchDiv">
+                    <div aura:id="notice"></div>
+                    
+                    <aura:if isTrue="{!v.showProcessingResult}">
+                        <c:Global_Account_Realignment_Result 
+                                                             realignmentRequetItems="{!v.realignmentRequetItems}" 
+                                                             showProcessingResult="{!v.showProcessingResult}"
+                                                             showWarning="{!v.showWarning}" 
+                                                             warningMessage="{!v.warningMessage}"
+                                                             />
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.showMassOwnerAssignmentModal}">
+                        <c:GAR_Mass_Owner_Assignment showMassOwnerAssignmentModal="{!v.showMassOwnerAssignmentModal}" companies="{!v.resultList}" ReasonOptions="{!v.ReasonOptions}"  today="{!v.today}" />
+                    </aura:if>
+                    
+                    <c:GAR_Warning visible="{!v.showWarning}" message="{!v.warningMessage}"/>
+                    
+                    <aura:if isTrue="{!v.isValidUser}">
+                        <!-- <div class="" title="Search Section" style=""> -->
+
+                        <div class="" title="Search Section" >
+                            <lightning:card footer="">
+                                <aura:set attribute="title">
+                                    <span class="slds-text-heading_medium">
+                                        <strong>Search Companies</strong> <!-- SFDC-7193 changes
+																		 Updated Accounts to companies  label-->
+                                    </span>
+                                </aura:set>
+                                <lightning:layout>
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <!-- SFDC-7193 changes Updated Account to company labels -->
+                                            <b><lightning:input label="Company Name" name="accountname" value="{!v.accountName}" placeholder="Company Name" /></b>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    
+                                    
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                          <!-- SFDC-7193 changes Updated Account to company labels -->
+                                            <b><lightning:textarea label="Company Number #" name="accountnumber" value="{!v.accountNumber}" placeholder="Company Number #" /></b>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <!-- SFDC-7193 changes 
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <b>
+                                                <lightning:select name="accounttype" label="Account Type" aura:id="inputtype" value="{!v.accountType}" messageWhenValueMissing="Select Account Type.." >
+                                                    <option text="-None-" value=""/>
+                                                    <aura:iteration items="{!v.Type}" var="option">
+                                                        <option text="{!option}" value="{!option}"/>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </b>
+                                        </div>
+                                    </lightning:layoutItem>
+                                   -->
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <b><span class="{!v.accountOwnerMandatory ? 'slds-has-error' : ''}">
+                                               <!-- SFDC-7193 changes Updated Account to company labels -->
+                                                <c:LookupUitility objectAPIName="User" IconName="standard:user" selectedRecord="{!v.selectedLookUpRecord}" label="Company Owner"/>
+                                                </span>
+                                            </b>
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <!-- <lightning:layoutItem padding="around-small" class="slds-border_right1"> -->
+                                    <lightning:layoutItem padding="around-small" class="">
+                                        <lightning:layout multipleRows="true" horizontalAlign="center">
+                                            <lightning:layoutItem size="12">
+                                                <div class="header-column">
+                                                    <b>
+                                                   <!-- SFDC-7193 changes Updated Account to company labels -->
+                                                        <ui:outputText class="slds-form-element__label" value="Only Show Matching Companies"/>
+                                                    </b>
+                                                </div>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem class="">
+                                                <div class="header-column">
+                                                    <b><lightning:input class="account-checkbox" type="checkbox" label=" " checked="{!v.matchingAccounts}" disabled="{!v.matchingAccountsDisabled}"/></b>
+                                                </div>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                                
+                            <!-- SFDC-7193 changes -->
+  <lightning:layout>
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <b>
+                                                <lightning:select name="accountownerregion" label="Company Owner                                                 Region"
+                                                    aura:id="ownerRegion" value="{!v.accountOwnerRegion}"
+                                                    messageWhenValueMissing="Select Owner Region..">
+                                                    <option text="-None-" value="" />
+                                                    <aura:iteration items="{!v.OwnerRegion}" var="option1">
+                                                        <option text="{!option1}" value="{!option1}" />
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </b>
+                                        </div>
+                                    </lightning:layoutItem>    
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <b><span class="{!v.accountSubRegionMandatory ? 'slds-has-error' : ''}">
+                                                <lightning:select name="accountownersubregion" label="Company Owner
+                                                Sub Region"
+                                                    aura:id="childSubRegion" value="{!v.accountOwnerSubRegion}"
+                                                    messageWhenValueMissing="Select  Owner Sub Region.." disabled="{!v.OwnerSubRegionDisabled}">
+                                                    <option text="-None-" value="" />
+                                                    <aura:iteration items="{!v.OwnerSubRegion}" var="option2">
+                                                        <option text="{!option2}" value="{!option2}"/>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </span>
+                                            </b>
+                                        </div>
+                                    </lightning:layoutItem>  
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <b>
+                                                <lightning:select name="accountindustry" label="Company Industry"
+                                                    aura:id="inputtype" value="{!v.accountIndustry}"
+                                                    messageWhenValueMissing="Select Industry">
+                                                    <option text="-None-" value="" />
+                                                    <aura:iteration items="{!v.Industry}" var="option3">
+                                                        <option text="{!option3}" value="{!option3}" />
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </b>
+                                        </div>
+                                    </lightning:layoutItem> 
+                                </lightning:layout>                               
+                                
+                                
+                            <!-- SFDC-7193 changes -->
+                                
+  
+                                <lightning:layout>
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <lightning:button variant="brand" iconName="utility:search" label="Search" title="Search" onclick="{! c.search }" />
+                                        </div>
+                                    </lightning:layoutItem>
+                                    
+                                    <aura:renderIf isTrue="{!v.Show_Result}">
+                                        <lightning:layoutItem padding="around-small">
+                                            <div class="header-column">
+                                                <lightning:button variant="brand" iconName="utility:change_owner" label="Process" title="Process" onclick="{! c.process }" />
+                                            </div>
+                                        </lightning:layoutItem>
+                                    </aura:renderIf>
+                                    
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <lightning:button variant="brand" iconName="utility:clear" label="Clear" title="Clear" onclick="{! c.clear }" />
+                                        </div>
+                                    </lightning:layoutItem>
+                                    <lightning:layoutItem padding="around-small">
+                                        <div class="header-column">
+                                            <c:GAR_Upload_File Show_Result="{!v.Show_Result}" resultList="{!v.resultList}" resultCount="{!v.resultCount}" missingAccounts="{!v.missingAccounts}" showSpinner="{!v.showSpinner}" selectAll="{!c.selectAll}" clear="{!c.clear}" />
+                                        </div>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
+                            </lightning:card>
+                        </div>
+                    </aura:if>
+                    <aura:renderIf isTrue="{!v.Show_Result}">
+                        <lightning:layout class="slds-border_bottom">
+                            <lightning:layoutItem padding="around-small">
+                                <lightning:button label="Select All"  iconName="utility:mark_all_as_read" variant="brand" onclick="{!c.selectAll}"/>
+                                <lightning:button label="Select Matching Accounts" iconName="utility:filter" variant="brand" onclick="{!c.selectMatching}"/>
+                                <lightning:button label="Assign Owner/Reason/Move Date" iconName="utility:reassign" variant="brand" onclick="{!c.openMassOwnerAssignmentModal}"/>
+                                <lightning:button label="Deselect  All" iconName="utility:clear" variant="brand" onclick="{!c.clearAll}"/>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </aura:renderIf>
+                </div>
+                <div class="result1" aura:id="resultDiv1">
+                    <aura:renderIf isTrue="{!v.Show_Result}">
+                        <div class="slds-text-heading_medium">
+                            &nbsp;
+                            <aura:if isTrue="{!greaterthan(v.totalresultCount,$Label.c.GAR_Initial_Search_Count)}"><!-- SFDC-740 changes -->
+                                <Strong>Current / Total Records: {!v.resultCount} / {!v.totalresultCount} </Strong>
+
+                                <aura:set attribute="else">
+                                    <Strong>Total Records: {!v.resultCount}  </Strong>
+
+                        </aura:set>
+                    </aura:if> 
+                        </div>
+                        <aura:renderIf isTrue="{!v.missingAccounts}">
+                            <!-- <div class="slds-p-around_x-small">                      -->
+                            <div class="slds-var-p-around_x-small">
+                                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning notify" role="alert">
+                                    <span class="slds-assistive-text">warning</span>
+                                    <!-- <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                                        <lightning:icon iconName="utility:warning" size="small" class="slds-iconclass"/>
+                                    </span> -->
+                    
+                                    <span class="slds-icon_container slds-icon-utility-warning slds-var-m-right_x-small" title="Description of icon when needed">
+                                        <lightning:icon iconName="utility:warning" size="small" class=""/>
+                                    </span>
+                                    <h2 class="slds-text-heading_small slds-text-align_left">Accounts with following Account Numbers could not be found: <span class="text-bold">{!v.missingAccounts}</span></h2>
+                                </div>
+                            </div>
+                        </aura:renderIf>
+                        
+                        
+                        
+                        <div class=""  id="show">
+                            <aura:iteration items="{!v.resultList}" var="company">
+                                <br/>
+                                <c:GAR_Search_Result_Card company="{!company}" columnsTodisplay="{!v.columns}" ReasonOptions="{!v.ReasonOptions}" today="{!v.today}"/>
+                            </aura:iteration>
+                        </div>
+                    </aura:renderIf>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

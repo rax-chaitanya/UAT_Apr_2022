@@ -1,0 +1,256 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <div>
+       <div class="slds-text-heading--large" >
+           <b style="font-family:FiraSans-regular;">Rackspace Business Partnerships</b> 
+        </div><br/> 
+     <p>
+        Rackspace<sup>®</sup> technology expertise and offerings enable and enhance the solutions our 
+        partners deliver to market. In support of our strategic partnerships, we provide market
+        leading managed cloud offerings to key partners, enabling their solutions to run more
+        effectively, efficiently and profitably. Furthermore, the Rackspace managed cloud 
+        provides the best fit for your customers, enabling their applications to live on the public
+        cloud, a private cloud, dedicated servers, or a combination of all three platforms.<br/>
+        <br/>
+         As a strategic partner, we will work together in the development and execution of a 
+        unique, end-to-end value proposition for your customers, that delivers new 
+        opportunities, increases profitability and closes deals faster. The program is 
+        performance-based with a tiered structure where benefits increase along with your 
+        efforts and investment.<br/>
+        <br/><br/>
+        <div class="slds-text-heading--medium">
+            <b style="font-family:FiraSans-regular;"><center>Partner Types</center> </b>
+    </div>   
+        <br/>
+  <lightning:tabset selectedTabId="two">
+        <lightning:tab label="Digital Agency" id="one">
+           <p class="slds-text-body--regular" id="body">Rackspace has deep expertise and experience delivering world-class digital solutions. Our digital agency partner program enables you to build customer confidence as a trusted advisor
+               and to pursue new, larger business opportunities by minimizing risk, avoiding upfront staffing costs and acting as an extension to your team.</p>
+      <br></br> 
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_12-of-12">
+            <ul class="slds-list--dotted">
+                <li class="list">Deliver the widest choice of architectures with the help of our specialized resources who possess deep knowledge of the market and digital workloads</li>
+                <li class="list">Build capabilities and go-to-market with industry leading ecommerce and web content management platforms including Magento <sup>®</sup>, Oracle<sup>®</sup>, SiteCore<sup>®</sup> and Adobe<sup>®</sup> – all aligned to complement your business model</li>
+                <li class="list">Robust infrastructure-agnostic managed cloud portfolio combined with predominant digital platforms, plus support for AWS<sup>®</sup> and Azure<sup>™</sup> will help put you ahead of the competition</li>
+                <li class="list"> Unrivaled ability to deliver 24x7x365 <a href="https://www.rackspace.com/fanatical-support" style="color:#C40022;">Fanatical Support<sup>®</sup></a> for you and your customers </li>
+              </ul><br></br>
+            </div>
+             </div> 
+     <div class="slds-col slds-size_12-of-12">
+         <b style="font-family:FiraSans-regular;">Program Features</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Access to specialized teams who understand the agencies and the platforms they favor</li>
+                <li class="list">Joint marketing activities and sales support to help drive the success of go-to-market initiatives</li>
+                    
+            <li class="list">Flexible programs that make doing business with us easy</li>
+                </ul><br/>
+         Click <a href="{!$Label.c.OutlookMailID }" style="color:#C40022;">here</a> for more information 
+        </div>  <br/>
+          <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Benefits</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Flexibility to refer or resell deals with competitive compensation models</li>
+                <li class="list">Access to sales, service and technical advisory teams</li>  
+                <li class="list">Customized training programs and joint marketing activities</li>
+                </ul><br/>
+          </div>
+         <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Requirements</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Develop joint value proposition</li>
+                <li class="list">Achieve annual revenue commitment levels</li>  
+                <li class="list">Agree to program terms and conditions</li>
+             </ul><br/>
+        </div> 
+           </div>   
+            
+      </lightning:tab> 
+      
+        <lightning:tab label="Master Agent" id="two">
+                 <p class="slds-text-body--regular" id="body">We'll help you build and expand your cloud practice faster by leveraging proven and fully supported services. 
+                     These services complement and augment your custom solutions, enabling you to build customer confidence as a trusted advisor.</p>
+      <br></br> 
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_12-of-12">
+            <ul class="slds-list--dotted">
+                <li class="list">Unique depth and breadth of flexible managed cloud portfolio options and expertise combined with Microsoft<sup>®</sup>, VMware<sup>®</sup>, OpenStack<sup>®</sup>, AWS<sup>®</sup> and Azure<sup>™</sup> technology support to meet your customers' unique business needs and offerings</li>
+                <li class="list">Support for complex, high-value customer scenarios with the widest choice of architectures all wrapped by Fanatical Support<sup>®</sup> that help you build trust with your customers and increase loyalty to secure relationships and repeat business for you</li>
+                <li class="list">Robust infrastructure-agnostic managed cloud portfolio combined with predominant digital platforms, plus support for AWS<sup>®</sup> and Azure<sup>™</sup> will help put you ahead of the competition</li>
+                <li class="list"> Delivering Fanatical Support<sup>®</sup> that assures your customers' confidence in you–our driving purpose is to take care of your business</li>
+           </ul>
+            </div>
+            </div>
+            <br></br>
+     <div class="slds-col slds-size_12-of-12">
+                <b style="font-family:FiraSans-regular;">Program Features</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Access to sales, service and technical advisory teams to support your sales engagements</li>
+                <li class="list">Joint marketing activities and go-to-market support</li>         
+                <li class="list">Flexible programs that make doing business with us easy and free of channel conflict</li>
+                </ul><br/>
+            Click <a href="{!$Label.c.OutlookMailID}" style="color:#C40022;">here</a> for more information 
+        </div>  <br/>    
+             <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Benefits</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Flexibility to refer or resell deals with competitive compensation models</li>
+                <li class="list">Access to sales, service and technical advisory teams</li>  
+                <li class="list">Customized training programs and joint marketing activities</li>
+                </ul><br/>
+          </div>
+         <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Requirements</b> <br/>
+            <ul class="slds-list--dotted">
+                <li class="list">Develop joint value proposition</li>
+                <li class="list">Achieve annual revenue commitment levels</li>  
+                <li class="list">Agree to program terms and conditions</li>
+             </ul><br/>
+        </div> 
+           </div> 
+        </lightning:tab>
+        <lightning:tab label="Systems Integrator" id="three">
+          <p class="slds-text-body--regular" id="body">The delivery of cloud solutions is a growing business opportunity. Rackspace works with our systems integrator partners to deliver world-class solutions by broadening, enhancing and validating your own expertise with our portfolio of the industry's best, managed cloud expertise and solutions.</p>
+      <br></br> 
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_12-of-12">
+            <ul class="slds-list--dotted">
+                <li class="list"> Delivery of solutions that are easy to deploy and bundle with your professional services and complementary solutions that also have the flexibility which allows you and your customers to get to market and adapt to changes in the market quicker</li>
+                <li class="list"> Comprehensive technology portfolio that fits your customers' needs with substantial depth and breadth of managed cloud platforms combined with Microsoft<sup>®</sup>, VMware<sup>®</sup> and OpenStack<sup>®</sup> , AWS<sup>®</sup> and Azure<sup>™</sup> expertise</li>
+                <li class="list"> Access to tools and training that help augment your technology portfolio proficiencies and help extend your solution offerings</li>
+                <li class="list">  Fanatical Support® for you and your customers that delivers highly skilled engineers and advisors to provide architecture design, security advice, code development and more</li>
+           </ul>
+            </div>
+            </div> 
+            <br/>
+     <div class="slds-col slds-size_12-of-12">
+                 <b style="font-family:FiraSans-regular;">Program Features</b>  <br/>
+            <ul class="slds-list--dotted">
+                <li class="list"> Access to sales, service and technical advisory teams to support your sales engagements </li>
+                <li class="list"> Joint marketing activities and sales support to help drive go-to-market efforts</li>
+                    
+            <li class="list">Flexible programs make doing business with us easy and help avoid channel conflict</li>
+                </ul><br/>
+         Click <a href="{!$Label.c.OutlookMailID}" style="color:#C40022;">here</a> for more information 
+        </div> <br/>
+          <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Benefits</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Flexibility to refer or resell deals with competitive compensation models</li>
+                <li class="list">Access to sales, service and technical advisory teams</li>  
+                <li class="list">Customized training programs and joint marketing activities</li>
+                </ul><br/>
+          </div>
+         <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Requirements</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Develop joint value proposition</li>
+                <li class="list">Achieve annual revenue commitment levels</li>  
+                <li class="list">Agree to program terms and conditions</li>
+             </ul><br/>
+        </div> 
+           </div>   
+            
+        </lightning:tab>
+      <lightning:tab label="VAR/Solution Provider" id="four">
+         <p class="slds-text-body--regular" id="body">Adding value and delivering cloud solutions is a growing opportunity for VARs and specialized solution providers. We offer you access to the benefits you need to begin building and selling Rackspace solutions to your prospects and customers by broadening, enhancing and validating your own expertise with our portfolio of the industry's best managed cloud expertise and solutions.</p>
+      <br></br> 
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_12-of-12">
+            <ul class="slds-list--dotted">
+                <li class="list">Delivery of solutions that are easy to deploy and bundle with your professional services and complementary solutions</li>
+                <li class="list"> A comprehensive technology portfolio that fits your customers' needs with substantial depth and breadth of managed cloud platforms and expertise in Microsoft<sup>®</sup>, VMware<sup>®</sup>, OpenStack<sup>®</sup>, AWS<sup>®</sup> and Azure<sup>™</sup></li>
+                <li class="list"> Access to tools and training that help augment your technology portfolio proficiencies and help extend your solution offerings</li>
+                <li class="list"> 24x7x365 Fanatical Support<sup>®</sup></li>
+           </ul>
+            </div>
+          </div> <br/>
+     <div class="slds-col slds-size_12-of-12">
+                 <b style="font-family:FiraSans-regular;">Program Features</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list"> Access to sales, service and technical advisory teams to support your sales engagements</li>
+                <li class="list">Joint marketing activities, training and sales support to help your go-to-market efforts</li>        
+                <li class="list">Proven lead generation programs to build healthy pipeline of opportunities for closure</li>
+                <li class="list">Broad base of existing accounts</li>
+                <li class="list">Several programs tailored for your market strategies and deployment models </li>
+                <li class="list"> Flexibility to refer or resell deals with competitive compensation models </li>
+                <li class="list"> Programs to integrate strategic services for mutual success and deeper customer relationships</li>
+                
+                </ul><br/>
+          Click <a href="{!$Label.c.OutlookMailID}" style="color:#C40022;">here</a> for more information
+        </div> <br/>
+           <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Benefits</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Flexibility to refer or resell deals with competitive compensation models</li>
+                <li class="list">Access to sales, service and technical advisory teams</li>  
+                <li class="list">Customized training programs and joint marketing activities</li>
+                </ul><br/>
+          </div>
+         <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Requirements</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Develop joint value proposition</li>
+                <li class="list">Achieve annual revenue commitment levels</li>  
+                <li class="list">Agree to program terms and conditions</li>
+             </ul><br/>
+        </div> 
+           </div>
+          
+        </lightning:tab>
+      <lightning:tab label="Private Equity" id="five">
+        <p class="slds-text-body--regular" id="body"> Private equity partner organizations include those organizations that have wholly owned or materially invested in portfolio companies. Rackspace can help you increase valuation across your portfolio companies by optimizing IT operations, reducing costs, and accelerating transformation of the IT infrastructure of your portfolio companies.</p>
+      <br></br> 
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_12-of-12">
+            <ul class="slds-list--dotted">
+                <li class="list">Leverage our specialized staffing resources to help minimize the impact of your portfolio companies' human capital turnover and fill any skill gaps</li>
+                <li class="list">Accelerate transformation roadmaps and routes to market while cutting costs with advisory services like application workload analysis, architecture design and financial cost modeling of current IT</li>
+                <li class="list">Utilization of Microsoft<sup>®</sup>, VMware<sup>®</sup>, OpenStack<sup>®</sup>, AWS<sup>®</sup>, Azure<sup>™</sup> and managed security offerings to meet your portfolio companies' specific business needs and product roadmaps</li>
+                <li class="list">Access to technical specialists with broad experience in helping businesses transform legacy infrastructure to leading virtualized and cloud-enabled technology at scale </li>
+           </ul>
+            </div>
+             </div>  
+<br></br>
+     <div class="slds-col slds-size_12-of-12">
+                 <b style="font-family:FiraSans-regular;">Program Features</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Highly knowledgeable subject matter experts</li>
+                <ul class="slds-list--dotted">
+                <li class="list">Assess the best fit IT hosting solution model to optimize application performance</li>  
+            <li class="list">Analyze data center consolidation, and</li>
+                <li class="list">Develop IT infrastructure carve-out or roll-up plans and transformation roadmaps</li>
+                </ul>
+                <li class="list"> Competitive compensation models that help you aggregate your spend to achieve discounts that are applied across the entire portfolio</li>
+                <li class="list"> A detailed Total Cost of Ownership (TCO) assessment to help you analyze the costs associated with a do-it-yourself model versus managed cloud services</li>
+                </ul><br/>
+            Click <a href="{!$Label.c.OutlookMailID}" style="color:#C40022;">here</a> for more information
+          </div> <br/>
+          <div class="slds-grid slds-wrap">
+       <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Benefits</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Flexibility to refer or resell deals with competitive compensation models</li>
+                <li class="list">Access to sales, service and technical advisory teams</li>  
+                <li class="list">Customized training programs and joint marketing activities</li>
+                </ul><br/>
+          </div>
+         <div class="slds-col slds-size_6-of-12">
+                 <b style="font-family:FiraSans-regular;"> Program Requirements</b> <br/> 
+            <ul class="slds-list--dotted">
+                <li class="list">Develop joint value proposition</li>
+                <li class="list">Achieve annual revenue commitment levels</li>  
+                <li class="list">Agree to program terms and conditions</li>
+             </ul><br/>
+        </div> 
+           </div>
+          </lightning:tab>
+      
+    </lightning:tabset>
+        
+            </p>
+        </div>
+</aura:component>

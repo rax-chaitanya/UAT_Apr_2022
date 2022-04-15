@@ -1,0 +1,89 @@
+.THIS .company-logo{
+   height : 2rem;
+}
+
+.THIS .app-header{
+    background : rgb(22, 50, 92) !IMPORTANT;
+    color : white !IMPORTANT;
+}
+
+.THIS.slds-button_brand{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgb(217, 219, 221);
+    -webkit-transition: border .15s linear;
+    transition: border .15s linear;
+    background-color: rgb(0, 112, 210);
+    border-color: rgb(0, 112, 210);
+    color: rgb(255, 255, 255);
+}
+
+.THIS .body{
+    margin:0;
+    height:100%;
+}
+.THIS .container {
+    height:100%;
+    width:100%;
+    position: absolute;
+}
+
+.THIS .search {
+    height:100%;
+}
+.THIS .result {
+    overflow-y: scroll;
+    position:absolute;
+    top:200px;
+    bottom:0;
+    left:0;
+    right:0;
+    width:100%;
+}
+
+.THIS .slds-card__body {
+    /*margin-bottom: 0;*/
+}
+
+.THIS .slds-card__header {
+    margin-bottom: 0;
+}
+
+.THIS .slds-button_brand{
+    background-color: rgb(197, 0, 34);;
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-button_brand:hover{
+    background-color: rgba(166, 15, 30, 1.0);
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-button--brand {
+    background-color: rgb(197, 0, 34);;
+    border-color: rgba(166, 15, 30, 1.0);
+}
+.THIS .slds-button--brand:hover {
+    background-color: rgba(166, 15, 30, 1.0);
+    border-color: rgba(166, 15, 30, 1.0);
+}
+
+.THIS .slds-textarea{
+    height : 1.875rem;
+    line-height: 1rem;
+}
+
+.THIS .slds-text-heading_medium{
+    font-weight : 400;
+    margin-top : 1rem;
+}
+
+.THIS .notify{
+    border-radius: 0.4rem;
+}
+
+.THIS .text-bold{
+    font-weight : 500;
+}

@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event template" >
+    <aura:attribute name="captchaVerified" type="Boolean" access="global"/>
+</aura:event>

@@ -1,0 +1,37 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+     <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    <script>
+         sforce.connection.sessionId = "{!$Api.Session_ID}";
+     function Validate()
+        {
+         var url; 
+         var orgID = '{!$Organization.Id}';
+         var prodOrgID = ('{!$Setup.ProdOrgIDSetting__c.ProdOrgID__c}');
+         var userSSO = '{!$User.SSO_Username__c}'; 
+
+         if(orgID == prodOrgID) { 
+            url = '{!$Label.eConnect_Documents}'; 
+        } 
+        else { 
+            url = '{!$Label.eConnect_Documents_Staging}'; 
+        } 
+
+        url = url.replace(":OPPORTUNITYID", '{!CASESAFEID(Opportunity.Id)}'); 
+        url = url.replace(":USERSSO", userSSO); 
+
+        window.open(url); 
+      }
+    window.onload = Validate;
+    
+    </script>
+    
+</apex:page>

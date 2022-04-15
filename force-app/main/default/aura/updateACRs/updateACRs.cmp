@@ -1,0 +1,78 @@
+<aura:component controller="updateACRS" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="conRecord" type="Object"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.conRecord }"
+                      mode="EDIT"/>
+ 
+   
+    <aura:attribute name="ChildRecordList" type="Object[]" />
+    
+    
+    
+    <div class="slds-m-around--x-small">
+        
+        <div class="slds-grid slds-grid--align-end slds-m-around--x-small">
+          <button class="slds-button slds-button--brand" onclick="{!c.updateSelected}">Update Address</button>
+        </div>
+        
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Account Name">Account Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Role">Role</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Email">Email</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Phone">Phone</div>
+                    </th>
+                    <th scope="col">
+                       <label class="slds-checkbox">
+                        <!--header checkbox for select all-->
+                        <ui:inputCheckbox aura:id="checkBoxAll" change="{!c.selectAll}"/>
+                        <span class="slds-checkbox--faux"></span>
+                        <span class="slds-form-element__label text"></span>
+                     </label>
+                    </th>
+                </tr>
+            </thead>
+ 
+            <tbody>
+               <!-- Iterate all child record list in table format -->  
+                <aura:iteration items="{!v.ChildRecordList}" var="rec">
+                    <tr>
+                        <td>
+                            <div class="slds-truncate" title="{!rec.Account__r.Name}">{!rec.Account__r.Name}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!rec.Role__c}">{!rec.Role__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!rec.Email__c}">{!rec.Email__c}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!rec.Phone__c}">{!rec.Phone__c}</div>
+                        </td>
+                        <td>
+                            <label class="slds-checkbox">
+                           <ui:inputCheckbox text="{!rec.Id}" aura:id="checkBox"/>
+                           <span class="slds-checkbox--faux"></span>
+                           <span class="slds-form-element__label text"></span>
+                        </label>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

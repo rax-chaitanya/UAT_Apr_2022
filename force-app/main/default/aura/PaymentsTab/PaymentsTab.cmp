@@ -1,0 +1,72 @@
+<aura:component controller="PaymentController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="w8urls" type="url" default=""/>
+    <aura:attribute name="pUser" type="Object" default=""/>
+    <aura:attribute name="w9urls" type="List[]" default=""/>
+    <aura:attribute name="supplierUrls" type="List[]" default=""/>
+    <aura:attribute name="achurls" type="List[]" default=""/>
+    <aura:attribute	name="stepNum" type="Integer" default="1"/>
+    <aura:attribute name="initSuccess" type="Boolean" default="false"/>
+    <!-- <aura:attribute name="previous" type="Integer" default="0"/> -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- <lightning:spinner variant="brand" size="large" alternativeText="Loading" aura:id="spinner" /> -->
+    
+    <div style="font-family:FiraSans-regular;font-size:16.5px;">   
+        <p style="color:#C40022;margin-Bottom: 10px;"> <b>Important:</b> In order to ensure timely payment of commissions you must submit the following payment forms:</p> 
+        <aura:if isTrue="{!v.initSuccess}">
+            <aura:if isTrue="{! v.stepNum == 1}">
+                <aura:if isTrue="{!or(v.pUser.Account.BillingCountry=='Canada',v.pUser.Account.Territory__c=='LATAM')}">
+                    <!-- <div style="margin-left:10px;font-size:100%;"> -->
+                    <div>
+                        <p><b>W8 – </b>You will need to select the
+                            proper form at the link below based upon your business model.Rackspace is not allowed to
+                            advise you on your selection.If you have any questions or concerns please consult with
+                            your tax advisor.</p>
+                        
+                        <p><a href="{!v.w8urls}" target="_blank">W8</a></p>
+                        
+                        <br/>
+                        
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.pUser.Account.BillingCountry=='United States'}">
+                    <div style="margin-top: 10px;">
+                        <p><b>W9 Form </b></p>
+                        <aura:iteration items = "{!v.w9urls}" var="item">
+                            <p><a href="{!item.ContentDownloadUrl}">{!item.Name}</a></p>
+                        </aura:iteration>
+                        <br/>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!or(v.pUser.Account.Territory__c=='US/CANADA',v.pUser.Account.Territory__c=='LATAM')}">
+                    <div>
+                        <p><b>ACH Form  –</b>This form allows Rackspace to know where and how
+                            
+                            you would like to receive your compensation.</p>
+                        <aura:iteration items = "{!v.achurls}" var="item">
+                            <p><a href="{!item.ContentDownloadUrl}">{!item.Name}</a></p>
+                        </aura:iteration>
+                        <br/> 
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!!or(v.pUser.Account.Territory__c=='US/CANADA',v.pUser.Account.Territory__c=='LATAM')}">
+                    <div>
+                        <p><b>Supplier Form  - </b> On this form you will provide Rackspace with your bank details so that you can receive your compensation.</p>
+                        <aura:iteration items = "{!v.supplierUrls}" var="item">
+                            <p><a href="{!item.ContentDownloadUrl}">{!item.Name}</a></p>
+                        </aura:iteration>
+                        <br/>
+                    </div>
+                </aura:if>
+                <div style="margin-Bottom: 10px;">
+                    <p>Once you have physically signed the document,
+                        email it to <ui:outputEmail value="{!$Label.c.partnerhelpcontactemail}" /> </p>
+                </div>
+                <p><u><b>Disclaimer: You can also find these forms on the Onboarding tab of the portal.</b></u> </p>
+                
+                
+            </aura:if>
+            
+     
+        </aura:if>
+    </div>
+</aura:component>

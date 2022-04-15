@@ -1,0 +1,38 @@
+<apex:page standardController="Account" showHeader="false">
+    <apex:pageBlock >
+        <style>
+            body .bPageBlock .pbBody .blue .pbSubheader{
+            background-color:#0176D3;
+            }
+        </style>
+        <apex:outputPanel styleClass="blue" layout="block">
+            <apex:pageBlockSection collapsible="false" columns="2" title="Revenue Retention and Growth Plays" >
+                <apex:outputField value="{!account.Tenure_months__c}"/>
+                <apex:outputField value="{!account.Avg_MRR_Last_12_month__c}"/>
+                <apex:outputField value="{!account.Invoice_change_in_last_3_months__c}"/>
+                <apex:outputField value="{!account.Invoice_change_in_last_6_months__c}"/>
+                <apex:outputField value="{!account.Current_NPS__c}"/>
+                <apex:outputField value="{!account.Previous_NPS__c}"/>
+                <apex:outputField value="{!account.Ticket_resolution_score__c}"/>
+                <apex:outputField value="{!account.Ticket_response_score__c}"/>
+                <apex:outputField value="{!account.Ticket_movement_score__c }"/>
+                <apex:outputField value="{!account.devices_in_contract__c}"/>
+                <apex:outputField value="{!account.Average_Active_Device_Tenure__c}"/>
+                <apex:outputField value="{!account.Pct_of_Invoice_bandwidth_Overage__c}"/>
+                <apex:outputField value="{!account.Customer_macro_segment__c}"/>
+                <apex:outputField value="{!account.Customer_micro_segment_1__c}"/>
+                <apex:outputField value="{!account.Customer_micro_segment_2__c}"/>
+                <apex:outputField value="{!account.Customer_micro_segment_3__c}"/>
+            </apex:pageBlockSection>
+        </apex:outputPanel>
+        <apex:outputPanel styleClass="blue" layout="block">
+            <apex:pageBlockSection collapsible="false" title="Resource Links" columns="1">
+                <apex:outputLink value="https://rackspace.seismic.com/X5/DocCenter.aspx?ContentId=5a1fe903-581c-4953-9c24-3b19f594a01b#/doccenter/d774158e-89e2-4408-a877-b1480e38cfcd/doc/%252Fdd0f1583ce-19dd-429f-abda-4830bc94f32b%252Flf4385175e-e02e-48d7-9dea-bc544ee1bbc2//?mode=view&searchId=afb5002d-8cd4-4f88-84a5-e7f12a18738d" id="traininglink">MPC Battle Card</apex:outputLink>
+                <apex:outputLink value="https://rackspace.seismic.com/Link/Content/DCA-kfWhxYU0mcJDsZ9ZSgGw" id="traininglink2">Churn Mitigation Battle Card</apex:outputLink>
+                <!-- SFDC-6893 Added By Sundarayya E-->   
+                <apex:outputLink value="https://qliksense.rackspace.corp/sense/app/61b55e90-9435-4ad1-841e-9060f0bef27a/sheet/a9977091-7d6d-45f2-b4b7-1b06ac9253c5/state/analysis?qlikTicket=ojs8q6YGS9QzQsJ" id="traininglink3">Device Contract Status</apex:outputLink>
+                <!-- SFDC-6893 Added By Sundarayya E end-->  
+            </apex:pageBlockSection>
+        </apex:outputPanel>
+    </apex:pageBlock> 
+</apex:page>

@@ -1,0 +1,182 @@
+<aura:component abstract="false" extensible="true" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" controller="RevenueForecastController">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="sObj" type="Object"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="sobjectType" type="String"/>
+    <aura:attribute name="results" type="List"/>    
+    <aura:attribute name="totals" type="Object"/>
+    <aura:attribute name="forecasts" type="Object"/>
+    <aura:attribute name="todaysDate" type="Date"/>
+    <aura:attribute name="objType" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="populateEvent" type="c:populateInvoiceInformationAfterLoad"/>    
+    
+    <table aura:id="table-summary" class="slds-table slds-table--edit slds-table--bordered slds-table_striped slds-table_col-bordered" role="grid">             
+        <thead>
+            <tr class="slds-line-height--reset">
+                <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Date"><b>Invoice Month</b></span>
+                    </a>
+                </th>
+                
+                <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Focus Area"><b>Focus Area</b></span>
+                    </a>
+                </th>
+                
+                
+                <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Total Amount"><b>Total Amount (USD)</b></span>
+                    </a>
+                </th>
+                
+                <th  class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Customer Credit Amount"><b>Customer Credit Amount</b></span>
+                    </a>
+                </th>
+                
+                <th  class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Discount Amount"><b>Discount Amount</b></span>
+                    </a>
+                </th>
+                
+                <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Total Amount (Local Currency)"><b>Local Amount</b></span>
+                    </a>
+                </th>
+                                
+                <th class="slds-is-sortable slds-is-resizable slds-text-title--caps" scope="col">
+                    <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" tabindex="-1">
+                        <span class="" title="Signup Date"><b>Signup Date</b></span>
+                    </a>
+                </th>
+                
+                
+            </tr>            
+        </thead>
+        <aura:if isTrue="{!v.results.length > 0}">
+            <tbody>
+                <aura:iteration items="{!v.results}" var="obj">
+                    <tr id="table-row">         
+                        <td role="gridcell" data-label="Account Type" class="slds-text-title--caps" >
+                            <span class="slds-grid slds-grid--align-spread">
+                                <div class="slds-truncate"><b>{!obj.invoiceMonth}</b></div>
+                            </span>
+                        </td>
+                        
+                        <td role="gridcell" data-label="Account Type"  >
+                            <span class="slds-grid slds-grid--align-spread">
+                                <div class="slds-truncate">{!obj.focusArea}</div>
+                            </span>
+                        </td>
+                        
+                        <td role="gridcell" data-label="Account Type" >
+                            <span class="slds-grid slds-grid--align-spread">        
+                                <div class="slds-form-element__control slds-grow slds-hint-parent">
+                                    <ui:outputCurrency value="{!obj.invoiceAmount}" format="#,##0.00"/>
+                                </div>
+                            </span>
+                        </td>
+                        
+                        <td role="gridcell" data-label="Account Type" >
+                            <span class="slds-grid slds-grid--align-spread">        
+                                <div class="slds-form-element__control slds-grow slds-hint-parent">
+                                    <ui:outputCurrency value="{!obj.customerCreditAmount}" format="#,##0.00"/>
+                                </div>
+                            </span>
+                        </td>
+                        
+                        <td role="gridcell" data-label="Account Type" >
+                            <span class="slds-grid slds-grid--align-spread">        
+                                <div class="slds-form-element__control slds-grow slds-hint-parent">
+                                    <ui:outputCurrency value="{!obj.discountAmount}" format="#,##0.00"/>
+                                </div>
+                            </span>
+                        </td>
+                        
+                        <td role="gridcell" data-label="Account Type" >
+                            <span class="slds-grid slds-grid--align-spread">        
+                                <div class="slds-form-element__control slds-grow slds-hint-parent">
+                                    <ui:outputCurrency value="{!obj.invoiceLocalAmount}" format="#,##0.00"/>&nbsp;{!obj.invoiceLocalCurrency}
+                                </div>
+                            </span>
+                        </td>
+                        
+                        <td role="gridcell" data-label="Account Type" >
+                            <span class="slds-grid slds-grid--align-spread">        
+                                <div class="slds-form-element__control slds-grow slds-hint-parent">
+                                    <ui:outputDate value="{!obj.signupDate}" />
+                                </div>
+                            </span>
+                        </td>
+                    </tr>            
+                </aura:iteration>
+                
+                <tr aura:id="totals">
+                    <td role="gridcell" data-label="Account Type" class="slds-text-title--caps" >
+                        <span class="slds-grid slds-grid--align-spread">
+                            <div class="slds-truncate">{!v.totals.invoiceMonth}</div>
+                        </span>
+                    </td>
+                    
+                    <td role="gridcell" data-label="Account Type" class="slds-text-title--caps" >
+                        <span class="slds-grid slds-grid--align-spread">
+                            <div class="slds-truncate">{!v.totals.focusArea}</div>
+                        </span>
+                    </td>
+                    
+                    
+                    <td role="gridcell" data-label="Account Type" >
+                        <div class="slds-form-element__control slds-grow">
+                            <div class="slds-truncate">
+                                <b><ui:outputCurrency value="{!v.totals.invoiceAmount}" format="#,##0.00"/></b>
+                            </div>
+                        </div>                        
+                    </td>
+                    
+                    <td role="gridcell" data-label="Account Type" >
+                        <div class="slds-form-element__control slds-grow">
+                            <div class="slds-truncate">
+                                <b><ui:outputCurrency value="{!v.totals.customerCreditAmount}" format="#,##0.00"/></b>
+                            </div>
+                        </div>                        
+                    </td>
+                    
+                    <td role="gridcell" data-label="Account Type" >
+                        <div class="slds-form-element__control slds-grow">
+                            <div class="slds-truncate">
+                                <b><ui:outputCurrency value="{!v.totals.discountAmount}" format="#,##0.00"/></b>
+                            </div>
+                        </div>                        
+                    </td>
+                    
+                    <td data-label="Contact">
+                        <div class="slds-form-element__control slds-grow">
+                            <div class="slds-truncate">
+                                <b><ui:outputNumber value="{!v.totals.invoiceLocalAmount}" format="#,##0.00"/></b>
+                            </div>
+                        </div>                        
+                    </td>
+                    
+                    <td role="gridcell" data-label="Account Type" class="slds-text-title--caps" >
+                        <span class="slds-grid slds-grid--align-spread">
+                            <div class="slds-truncate">{!v.totals.signupDate}</div>
+                        </span>
+                    </td>
+                                        
+                    
+                </tr>
+                <aura:set attribute="else">
+                    {!v.message}
+                </aura:set>                     
+            </tbody>
+        </aura:if>
+    </table>
+</aura:component>

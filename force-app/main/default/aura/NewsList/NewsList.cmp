@@ -1,0 +1,32 @@
+<aura:component controller="NewsListController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="newsList" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="slds-grid">
+        <div class="slds-col slds-size_3-of-5">
+            <div class="slds-scrollable" style="padding-top: 10px;max-height:40rem;
+                                                overflow-y:auto; width: 100%;">        
+                <aura:iteration items="{!v.newsList}" var="ref">      
+                    <div class="slds-size_3-of-4">
+                        <div class="slds-media slds-media_center">
+                            <div class="slds-media__figure">                        
+                                <img src="{!'/partners/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId='+ ref.thumbnailImg }" style="width: 100px;height: 70px;"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <p><a href="{!ref.ContVersion.ContentUrl}" target="_blank" style="text-decoration: none;">
+                                    <span style="font-size: 15px;font-weight: bold;"> <p> {!ref.ContVersion.Title} </p></span>
+                                    </a>                                                
+                                </p>
+                                <span style="font-size: 15px;overflow: hidden;text-overflow: ellipsis; display: -webkit-box;line-height: 19px;max-height: 55px;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"> <p>{!ref.ContVersion.Description} </p></span>
+                            </div>
+                        </div>
+                    </div><br/>           
+                </aura:iteration>        
+            </div>
+        </div>
+        <div class="slds-col slds-size_2-of-5">
+            
+            <c:Leader_Board/>
+            
+        </div>
+    </div>
+</aura:component>

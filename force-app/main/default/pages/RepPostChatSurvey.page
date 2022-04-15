@@ -1,0 +1,34 @@
+<apex:page >
+<!--<apex:page title="Chat Survey" standardController="Rep_Chat_Survey__c" extensions="RepChatSurveyExtension"> 
+    
+    <apex:messages style="color:red"></apex:messages>            
+
+    <apex:form >
+        
+        <apex:actionFunction name="getChatKey" action="{!ReadChatKey}" rerender="state">
+            <apex:param name="ck" value="111111" />
+            
+        </apex:actionFunction>
+    </apex:form>
+    <apex:form >
+        
+        <apex:outputPanel > 
+            <apex:pageblock mode="edit" title="Rep Post Chat Survey"  >
+                <apex:pageMessages id="showmsg"></apex:pageMessages>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value="Save" action="{!Save}" disabled="{!isDisabled}" rerender="showmsg" />
+                </apex:pageBlockButtons>
+                <apex:pageblocksection >
+                    <apex:inputField value="{!Rep_Chat_Survey__c.Chat_Close_Option__c}" required="true" />
+                    
+                    <apex:inputField value="{!Rep_Chat_Survey__c.Chat_Close_Outcome__c}" required="true" />
+                    
+                    <apex:inputField value="{!Rep_Chat_Survey__c.Chat_Close_Types__c}" required="true" />
+                    <!--      <apex:outputtext value="{!Rep_Chat_Survey__c.ChatKey__c}" /> -->
+          <!--      </apex:pageblocksection>
+                
+            </apex:pageblock>
+        </apex:outputPanel>
+    </apex:form>-->
+    
+</apex:page>

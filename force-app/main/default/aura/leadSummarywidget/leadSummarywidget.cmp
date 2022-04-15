@@ -1,0 +1,19 @@
+<aura:component  controller="CompanyProfileController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="LeadsCreatedW" type="integer"/>
+    <aura:attribute name="LeadsConvertedW" type="integer"/>
+    <aura:attribute name="companyid" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.companyid != null}">
+    <div class="slds-size_1-of-1 slds-m-left_none">        
+            <div class="slds-box slds-box_x-small slds-text-heading_small slds-m-top_none slds-m-left_none backgroundColor">
+                Lead Summary
+            </div>          	
+                <div class="slds-grid slds-m-left_none">
+                    <div class="slds-box slds-box_x-small slds-text-color_weak slds-size_1-of-2 slds-text-align_left fonttext">Leads Created : 
+                        <b>{!v.LeadsCreatedW}</b></div>	
+                    <div class="slds-box slds-box_x-small slds-size_1-of-2 slds-text-color_weak slds-text-align_left fonttext">Leads Converted %:
+                       <b>{!v.LeadsConvertedW}</b></div>
+                </div>                
+    </div>
+    </aura:if>    
+</aura:component>

@@ -1,0 +1,133 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <div>
+        
+        <div class="slds-m-top--xx-large" >
+            <ltng:require styles="/resource/LTNG/styles/salesforce-lightning-design-system.css"/>
+            <div id="header">Become a Rackspace Referral Partner</div>
+            <p id="body"><br/>
+        The Rackspace® Referral Program provides our partners and customers with a simple,
+        easy and profitable way to refer managed cloud opportunities across our full portfolio.
+        Whether you are an affiliate, agent, master agent, digital agency, consultant, web designer
+        or developer, we want to help you earn commissions by leveraging the Rackspace brand in the
+        global marketplace to uncover new opportunities and easily refer our solutions to your 
+        customers and prospects. Referral partners receive immediate rewards and benefits for their 
+        referrals with a simple and intuitive "click to agree" contract that requires no commitment. 
+        With an extensive best-of-breed portfolio of managed cloud platforms and solutions, as well as 
+        unrivaled expertise and support for Microsoft®, VMware® and OpenStack®, AWS® and Azure™
+        technologies, it's easy to promote Rackspace to your customers.
+            </p><br/><br/>
+            <div id="header">We're here to help you grow</div><br/>
+    <p id="body1" >
+        Rackspace has made the referral program as easy and transparent as possible for us to earn more business together.
+        Unlike most programs that have lengthy and complicated contracts, there are no fees or commitments
+        in this program. At Rackspace it's simple – you are rewarded for referring leads. We have designed
+        a referral partner portal for you that serves as a main hub for your sales, marketing and training
+        resources. Partners can register leads, access marketing resources and co-branded collateral, and
+        leverage on-demand training modules for our products and services. Our dedicated sales and support
+        teams are here to help you learn, grow and enhance our respective businesses for a rewarding and
+        profitable relationship.
+    </p><br/><br/>
+            <div class="slds-text-heading--large">
+                <p style="font-weight:700;color: black;font-size: 120%;"><center>Rewarding Your Commitment</center></p>
+            </div>
+        </div>	
+        <br/><br/>
+        <b>  </b>
+        <p id="headline">
+            The Rackspace referral program pays its partners in one simple single payment that reflects the average monthly recurring revenue of the lead you passed to us. It's
+            hassle free and totally transparent.
+        </p><br/><br/>
+      
+         <table class="ReferralTable"> 
+    <thead class="Referral-header"> 
+      <tr class="Referral-row"> 
+        <th class="Referral-name">Product</th> 
+        <th class="Referral-name">Minimum Spend</th> 
+        <th class="Referral-name">Term (Months)</th> 
+        <th class="Referral-name">Commission Payout*</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="Referral-row">
+        <td class="Referral-Item" id="td1"><strong class="Referral-mobile">Product</strong><strong class="Referral-mobile">Product</strong>
+          <strong class="Referral-strong">Dedicated servers and /or Rackspace Private Cloud</strong>
+        </td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Minimum Spend</strong><strong class="Referral-mobile">Minimum Spend</strong>No Minimum</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Term (Months)</strong><strong class="Referral-mobile">Term (Months)</strong>12</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Commission Payout*</strong><strong class="Referral-mobile">Commission Payout*</strong>1x</td>
+      </tr>
+            <tr class="Referral-row">
+        <td class="Referral-Item" id="td1"><strong class="Referral-mobile">Product</strong><strong class="Referral-mobile">Product</strong>
+          <strong class="Referral-strong">Dedicated servers and /or Rackspace Private Cloud</strong>
+        </td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Minimum Spend</strong><strong class="Referral-mobile">Minimum Spend</strong>No Minimum</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Term (Months)</strong><strong class="Referral-mobile">Term (Months)</strong>24</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Commission Payout*</strong><strong class="Referral-mobile">Commission Payout*</strong>1.5x</td>
+      </tr>
+            <tr class="Referral-row">
+        <td class="Referral-Item" id="td1"><strong class="Referral-mobile">Product</strong><strong class="Referral-mobile">Product</strong>
+          <strong class="Referral-strong">Dedicated servers and /or Rackspace Private Cloud</strong>
+        </td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Minimum Spend</strong><strong class="Referral-mobile">Minimum Spend</strong>No Minimum</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Term (Months)</strong><strong class="Referral-mobile">Term (Months)</strong>36</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Commission Payout*</strong><strong class="Referral-mobile">Commission Payout*</strong>2x</td>
+      </tr>
+      <tr class="Referral-row">
+        <td class="Referral-Item" id="td1"><strong class="Referral-mobile">Product</strong><strong class="Referral-mobile">Product</strong>
+          <strong class="Referral-strong">Rackspace Public Cloud, Email, and/or Office 365</strong>
+        </td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Minimum Spend</strong><strong class="Referral-mobile">Minimum Spend</strong>$50</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Term (Months)</strong><strong class="Referral-mobile">Term (Months)</strong>None</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Commission Payout*</strong><strong class="Referral-mobile">Commission Payout*</strong>1x</td>
+        
+      </tr>
+      <tr class="Referral-row">
+        <td class="Referral-Item" id="td1"><strong class="Referral-mobile">Product</strong><strong class="Referral-mobile">Product</strong>
+          <strong class="Referral-strong">Fanatical Support for AWS (Support service ONLY. AWS infrastructure not included.)</strong>
+        </td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Minimum Spend</strong><strong class="Referral-mobile">Minimum Spend</strong>No Minimum</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Term (Months)</strong><strong class="Referral-mobile">Term (Months)</strong>None</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Commission Payout*</strong><strong class="Referral-mobile">Commission Payout*</strong>.5x</td>
+        
+      </tr>
+      <tr class="Referral-row">
+        <td class="Referral-Item" id="td1"><strong class="Referral-mobile">Product</strong><strong class="Referral-mobile">Product</strong>
+          <strong class="Referral-strong">Fanatical Support for Microsoft Azure (Support service ONLY. Azure infrastructure not included.)</strong>
+        </td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Minimum Spend</strong><strong class="Referral-mobile">Minimum Spend</strong>No Minimum</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Term (Months)</strong><strong class="Referral-mobile">Term (Months)</strong>None</td>
+        <td class="Referral-Item center"><strong class="Referral-mobile">Commission Payout*</strong><strong class="Referral-mobile">Commission Payout*</strong>.5x</td>
+        
+      </tr>
+    </tbody>
+  </table>
+        </div>
+        <br/>
+        <div style="margin-left:17px;" class="slds-text-body_small">*Average Monthly Recurring Revenue (MRR) of the first 3 full months paid invoice.</div>
+        <br/>
+   
+    <br/>
+     <div class="slds-grid slds-wrap">
+     <div class="slds-col slds-size_6-of-12">
+    <h3 class="headers">Program Benefits</h3>
+            <ul class="slds-list--dotted">
+                <li class="list">Immediate payment and benefits to our customers and partners for <br/> their referrals</li>
+                <li class="list">Fanatical Support® for you and your customers
+                    </li>
+            <li class="list">Unique depth and breadth of the Rackspace managed cloud portfolio</li>
+                <li class="list">Designated partner account manager
+                    </li>
+                </ul>
+                <br/><br/>
+  </div>
+   
+  <div class="slds-col slds-size_6-of-12">
+     <h3 class="headers">Program Requirements</h3>
+            <ul class="slds-list--dotted">
+                <li class="list">Sign click to agree contract terms</li>
+                <li class="list">Complete Rackspace on-boarding process</li>
+                <li class="list">Participate in opportunity registration through the Rackspace partner <br/>portal </li>
+           </ul>
+  </div>
+    </div>
+</aura:component>

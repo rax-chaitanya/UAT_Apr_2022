@@ -1,0 +1,31 @@
+.THIS .slds-card{
+    border: 3px solid rgb(197, 0, 34);
+    padding: 0;
+    margin : 0;
+    margin-bottom : 0.15rem;
+}
+
+.THIS .slds-card__header{
+    background : rgb(197, 0, 34);
+    padding: 0;
+    margin : 0;
+    color : rgb(255, 255, 255);
+}
+.THIS .toggle{
+    display : flex;
+}
+
+.THIS .slds-card__body {
+    margin-bottom: 0;
+}
+
+.THIS .slds-modal__header {
+    padding: 0.25rem;
+}
+
+.THIS .slds-iconclass{
+    color : rgb(255, 255, 255);
+    width: 2rem;
+    padding : 0;
+   background : rgb(197, 0, 34);
+}

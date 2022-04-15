@@ -1,0 +1,11 @@
+<apex:page standardController="Opp_FocusArea__c" extensions="EditFocusAreasController" docType="html-5.0" lightningStyleSheets="true">
+    <apex:form >
+        
+        <apex:dynamicComponent componentValue="{!dynamicPage}"/>        
+        <apex:actionFunction name="calculate" action="{!calculate}" reRender="messages">
+            <apex:param name="userClickedParam" assignTo="{!userClicked}" value="ucID" />
+        </apex:actionFunction>
+        
+        <apex:actionFunction name="back" action="{!back}" reRender="none"/>
+    </apex:form>
+</apex:page>

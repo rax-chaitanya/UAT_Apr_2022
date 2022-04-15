@@ -1,0 +1,36 @@
+<!-- **
+* File :BlockVisitorManagement.page
+* Description : Visitor's Block Management Page.
+* Created Date : 29/Aug/2017
+* Author : RDC
+* -->
+
+<apex:page title="Live Chat Blocking Rules" standardStylesheets="true">
+<apex:sectionHeader title="Blocking Rules"/>
+   <apex:form >
+        <style>
+            body .bPageBlock .pbBody .grey .pbSubheader{
+            background-color:#232425;
+            }
+            body .bPageBlock .pbBody .grey .pbSubheader h3{
+            color:#F7FAFC;
+            }     
+            .activeTab {background-color:#236FBD;
+                          color:white;
+                          tab-color:yellow;
+                          background-image:none}
+            .inactiveTab {background-color:white;
+                          color:black;
+                          background-image:none}
+          
+   </style>
+   <apex:tabPanel switchType="ajax" selectedTab="tabOne"
+                  id="theTabPanel" tabClass="activeTab"
+                  inactiveTabClass="inactiveTab">  
+              <apex:tab label="Create Blocking Rule" name="one" id="tabOne" style="background-color:white;">
+                        <apex:iframe src="CreateBlockVisitorPage" height="900"/>
+              </apex:tab>
+              
+           </apex:tabPanel>
+   </apex:form>
+</apex:page>

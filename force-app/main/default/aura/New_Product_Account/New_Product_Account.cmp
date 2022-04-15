@@ -1,0 +1,58 @@
+<aura:component controller="ProductAccountController"
+                implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" >
+    <aura:attribute name="record" type="Object" description="The record object to be displayed"/>			
+    <aura:attribute name="AccRecord" type="Object" description="Account Record Data"/>
+    <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData"/>
+	<aura:attribute name="availableRecordTypes" type="object" />
+    <aura:attribute name="recordTypeId" type="String" default=""/>
+    <aura:attribute name="retrievedTypes" type="Boolean"/>
+    
+    <!--force:hasRecordId,
+		force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.AccRecord }"
+                      mode="VIEW"/-->
+	
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:renderIf isTrue="{!v.retrievedTypes}">
+        <div class="modal-header slds-modal__header slds-size_1-of-1">
+            <h4 class="title slds-text-heading--medium" >New Account</h4>
+        </div>
+        <div class="slds-modal__content slds-p-around--x-small slds-align_absolute-center slds-size_1-of-1 slds-is-relative" aura:id="modalbody" id="modalbody">
+            <form class="slds-form--stacked">
+                <fieldset class="slds-form-element">		                    
+                    <table>
+                        <tr>
+                            <div class="slds-form-element__control">
+                                <aura:iteration items="{!v.availableRecordTypes}" var="type" indexVar="key">                                    
+                                    <span class="slds-radio">
+                                        <input id="{!'radio-'+type.value}" class="slds-button slds-button--destructive" value="{!type.value}" name="options" type="radio" onchange="{!c.optionSelected}" checked="{!type.value == v.availableRecordTypes[0].value ? true : false}"/>
+                                        <label class="slds-radio__label" for="{!'radio-'+type.value}">                                            
+                                            <span class="slds-radio_faux"></span>
+                                            <span class="slds-form-element__label"><b>{!type.value[0]}</b></span><br></br>
+                                            <div class="slds-p-left_xx-large">
+                                                <span class="slds-form-element__label">{!type.value[1]}></span><br></br>
+                                            </div>
+                                        </label>
+                                    </span>
+                                    <br></br> 
+                                </aura:iteration>
+                            </div>
+                        </tr>
+                    </table>
+                </fieldset>
+           </form>       
+        </div>
+        <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+            <div class="forceChangeRecordTypeFooter">
+                <lightning:button variant="destructive-text" label="Cancel" title="Cancel" onclick="{! c.cancel }"/>
+				<lightning:button variant="destructive" label="Next" title="Next" onclick="{! c.createAccount }"/>							
+            </div>
+        </div>        
+    </aura:renderIf>
+  	    
+</aura:component>

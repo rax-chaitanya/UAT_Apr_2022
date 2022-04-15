@@ -1,0 +1,134 @@
+<apex:page id="selfaccountRegistartion" standardController="Account" showHeader="false" extensions="selfAccountRegistration">
+ 
+        <apex:includescript value="https://code.jquery.com/jquery-1.11.1.min.js" / >
+        <apex:includescript value="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" />
+        <apex:stylesheet value="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
+        <apex:includescript value="https://cdn.datatables.net/plug-ins/1.10.12/sorting/date-de.js"/>
+
+    <apex:includeLightning />
+    <apex:slds />
+    
+    <apex:form id="theForm">
+        
+        <div class="slds-box slds-box slds-theme--default">
+            
+            <div class="slds-text-heading_large slds-text-align_center slds-page-header" style="color:white; background-color:black ; height:100px">
+                <div class ="slds-size--1-of-5" style="width:200px">
+                    <apex:image value="{!$Resource.rackspace_logo_white}"/>
+                </div>
+                <center> <b>Rackspace Partner Application Form</b></center>
+                
+            </div><br/> 
+            <div>
+                <apex:image value="{!$Resource.Banner1}"/>
+            </div><br/>     
+            
+            <apex:outputPanel rendered="{! !isRegistered}">
+                <div class="slds-text-heading_small" style="color:black">
+                    
+                    <h3 class="slds-m-top--xx-medium" style="color:black; font-size:25px"><b>Rackspace Partner Application Form</b></h3><br/>
+                    <div class="slds-text-heading_medium">Please fill out the registration form below. All fields marked with an asterisk (*) are required.</div>
+                    
+                    <br/><br/>
+                    <div class="slds-grid slds-gutters">
+                        
+                        <!--<div class="slds-m-top--xx-large slds-size--2-of-5">-->
+                        <div class="slds-col">
+                            
+                            <b><abbr class="slds-required" title="required">*</abbr>Which Program are you interested in?</b>
+                            <div>
+                                <apex:inputfield styleClass="slds-input" required="true" id="poi" value="{!Account.Program_Of_Interest__c}" label="Which Program are you interested in?" tabOrderHint="1">
+                                    
+                                </apex:inputField>
+                            </div>
+                            
+                            <apex:actionRegion >
+                                <b><abbr class="slds-required" title="required">*</abbr>Current Customer?</b><apex:inputfield styleClass="slds-input" required="true" id="currentCustomer" value="{!con.Current_Customer__c}" label="Current Customer" tabOrderHint="3">
+                                <apex:actionSupport event="onchange" rerender="ProdFamilyModel,space"/></apex:inputField>
+                                
+                            </apex:actionRegion>
+                            
+                            
+                            <b><abbr class="slds-required" title="required">*</abbr>Company Name</b><apex:inputfield styleClass="slds-input" required="true" id="accountName" value="{!Account.Name}" label="Company Name" tabOrderHint="5"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>First Name</b><apex:inputField styleClass="slds-input" required="true" id="firstName" value="{!con.FirstName}" label="First Name" tabOrderHint="7"/>
+                            <b>Title</b> <apex:inputField styleClass="slds-input" value="{!con.Title}" label="Title" tabOrderHint="9"/><br/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Phone</b><apex:inputField styleClass="slds-input" required="true" id="phone" value="{!Account.Phone}" label="Phone" tabOrderHint="11"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Country </b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.BillingCountryCode}" label="Country" tabOrderHint="13"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>City </b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.BillingCity}" label="City" tabOrderHint="15"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Address </b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.BillingStreet}" label="Address" tabOrderHint="17"/><br/><br/><br/><br/>                       
+                        </div>
+                        
+                        
+                        
+                        <!-- <div class="slds-col slds-m-top--xx-large slds-size--2-of-5">
+
+<div class="slds-col">-->
+                        <div class="slds-col slds-size_1-of-2">
+                            <b>Please include Rackspace sales rep you are working with,if any:</b><apex:inputfield styleClass="slds-input" value="{!acc.Are_you_working_with_Rackspace_sales_rep__c}" label="Existing Rackspace Sales Rep" tabOrderHint="2"/>
+                            
+                            <apex:outputPanel id="ProdFamilyModel">
+                                <b><apex:outputLabel value="Rackspace Customer Number" for="Test" rendered="{!IF( con.Current_Customer__c = 'Yes', true,false)}"/></b>
+                                <apex:inputField id="Test" value="{!con.Rackspace_Contact_Number__c}" styleClass="slds-input" rendered="{!IF(con.Current_Customer__c = 'Yes', true, false )}" taborderhint="4">
+                                </apex:inputField>
+                                
+                            </apex:outputPanel>
+                            <apex:outputPanel id="space">
+                                <br rendered="{!IF( con.Current_Customer__c = 'Yes', false, true )}"/>
+                                <!-- <br rendered="{!IF( con.Current_Customer__c = 'Yes', false, true )}"/>-->
+                                
+                            </apex:outputPanel>
+                            <b><abbr class="slds-required" title="required">*</abbr>Website</b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.Website}" label="Web site" tabOrderHint="6"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Last Name</b><apex:inputField styleClass="slds-input" required="true" id="lastName" value="{!con.LastName}" label="Last Name" tabOrderHint="8"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Partner Type</b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.Partner_Type__c}" label="Partner Type" tabOrderHint="10"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Email</b><apex:inputField styleClass="slds-input"  required="true" id="email" value="{!con.Email}" label="Email" tabOrderHint="12"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>State/Province</b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.BillingStateCode}" label="State" tabOrderHint="14"/>
+                            <b><abbr class="slds-required" title="required">*</abbr>Postal Code </b><apex:inputfield styleClass="slds-input" required="true" value="{!Account.BillingPostalCode}" label="Postal Code" tabOrderHint="16"/>
+                           
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    <div class="slds-p-horizontal--small slds-m-top--medium slds-size--1-of-1 slds-align--absolute-center">
+                        <apex:commandButton styleClass="submit"  value="Submit" action="{!createAccountContact}"  id="submit" tabindex="241"/>&nbsp;&nbsp;
+                        <apex:commandLink styleClass="cancel" value="Cancel" action="{!cancel}" tabindex="242"/>
+                     <!--   <apex:commandButton styleClass="slds-button cancel" value="Cancel" action="{!cancel}" tabindex="242"/> --> 
+                    </div>
+                </div>
+            </apex:outputPanel>
+            <style type="text/css">
+                .submit{
+                color:white !important;
+                background:#EB0000 !important;
+                width:90px;
+                font-size:20px;
+               font-family: 'Fira Sans' !important;
+                }
+                .cancel{
+                left:5px;
+                color:Black !important;
+                background:white !important;
+                width:75px;
+                font-size:20px;
+              font-family: 'Fira Sans';
+                }
+            </style>
+            <apex:outputPanel rendered="{!isRegistered}">
+                <div class="slds-box slds-box slds-theme--default">
+                    <div class="slds-text-heading_medium slds-text-align_center slds-text-color_success"><b>Account Registered Successfully. Thanks for contacting Rackspace.</b></div><br/><br/><br/>
+                    
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-m-top--xx-large slds-size--1-of-3">
+                            
+                        </div>
+                        <div class="slds-m-top--xx-large slds-text-align_center slds-size--1-of-3">
+                            <apex:outputLink value="{!$Label.Portal_Url}" id="loginLink"><b>Home</b></apex:outputLink>
+                            
+                        </div>
+                    </div>
+                </div>
+            </apex:outputPanel>
+        </div>    
+    </apex:form>
+    
+</apex:page>

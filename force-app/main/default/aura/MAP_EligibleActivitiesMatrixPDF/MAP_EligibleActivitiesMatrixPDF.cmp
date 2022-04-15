@@ -1,0 +1,18 @@
+<aura:component Controller="MAP_EligibleAvtivitiesMatrixController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:attribute name="contentDocs" type="String"/> 
+    <aura:attribute name="partnerTierLevel" type="boolean" default="false"/> 
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <span> 
+        <!--aura:if isTrue="{!v.partnerTierLevel}"-->
+            
+            
+            <!--aura:iteration items="{!v.contentDocs}" var="con"-->
+                <div>
+                    <iframe src="{!v.contentDocs}" width="100%" height="750px;" frameBorder="0"/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/>
+                </div> 
+            <!--/aura:iteration-->
+        <!--/aura:if--> 
+    </span>    
+</aura:component>

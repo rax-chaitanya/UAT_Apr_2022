@@ -1,0 +1,5 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="SeismicLicenseAssignmentController">
+    <aura:attribute name="doneLoading" Type="Boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:spinner alternativeText="Loading" size="medium" aura:id="spinner" class="{!v.doneLoading ? 'slds-hide' : ''}"/>
+</aura:component>

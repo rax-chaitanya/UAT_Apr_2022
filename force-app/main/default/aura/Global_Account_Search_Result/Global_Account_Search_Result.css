@@ -1,0 +1,22 @@
+.THIS .slds-table td {
+    padding: 0rem;
+}
+.THIS .company-card {
+    border: 3px solid rgb(128,0,0);
+    border-radius: 0.5rem;
+}
+
+.THIS .slds-card__header{
+    background : rgb(128,0,0);
+    padding: 0rem 0.75rem .5rem;
+}
+.THIS .slds-form-element__label{
+    color : rgb(255, 255, 255);
+    font-size : 1.0rem;
+}
+.THIS .slds-iconclass{
+    color : rgb(255, 255, 255);
+    width: 1.5rem;
+    height: 1.0rem;
+   background : rgb(128,0,0)
+}

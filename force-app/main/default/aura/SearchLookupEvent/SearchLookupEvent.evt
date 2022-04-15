@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="With this event we are passing the selected sObject(lookup list record) in the parent component">
+    <aura:attribute name="recordSelectEvent" type="sObject"/>
+</aura:event>

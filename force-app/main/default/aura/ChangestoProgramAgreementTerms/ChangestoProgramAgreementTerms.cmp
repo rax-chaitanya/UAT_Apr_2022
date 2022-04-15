@@ -1,0 +1,64 @@
+<aura:component controller="ChangestoProgramAgreementTermsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    
+    <!--Aura Attributes START--> 
+    <aura:attribute name="patColums" type="List"/>
+    <aura:attribute name="patData" type="Object"/>
+    <aura:attribute name="enableInfiniteLoading" type="Boolean" default="true"/>
+    <aura:attribute name="initialRows" type="Integer" default="10"/>
+    <aura:attribute name="currentCount" type="Integer" default="10"/>
+    <aura:attribute name="totalRows" type="Integer" default="0"/>
+    <aura:attribute name="loadOffset" type="Integer" default="1"/><!--Set when to trigger loading of more rows-->
+    <aura:attribute name="norecords" type="Boolean" default="false"/>
+    
+    
+    
+    <div class="slds-page-header_record-home slds-theme_default slds-p-bottom_medium slds-border_bottom ">
+        <div class="slds-page-header__row " >
+            <div class="slds-page-header__col-title">
+                <div class="slds-media ">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-p-top_xx-small" title="Changes to Program Terms">
+                            <lightning:icon iconName="custom:custom67" size="Medium" alternativeText="Program Terms List"/>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <p class="slds-page-header__name-meta">Partner Community Data</p>
+                                </h1>
+                            </div>
+                        </div>
+                        <span class="slds-page-header__title slds-truncate" title="Partner Community Data">Program Agreement Terms</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!--Lightning data table markup-->
+    
+    <div style="height:450px">
+        <lightning:datatable aura:id="dataTableID"
+                             keyField="Id"
+                             hideCheckboxColumn="true"
+                             columns="{!v.patColums}"
+                             data="{!v.patData}"
+                             showRowNumberColumn="true"
+                             enableInfiniteLoading="{!v.enableInfiniteLoading}"
+                             loadMoreOffset="{!v.loadOffset}"
+                             onloadmore="{!c.handleLoadMore}"/>
+    </div>
+    
+    <aura:if isTrue="{!v.norecords}">
+        <p class="slds-align_absolute-center">No items to display</p>
+    </aura:if>
+    
+    
+    
+</aura:component>

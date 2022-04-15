@@ -1,0 +1,21 @@
+.THIS .divCss
+{
+    color: #666;
+font-family: "Khand",Helvetica,Arial,sans-serif;
+font-size: 1.25em;
+font-weight: 600;
+letter-spacing: 0;
+line-height: 1em;
+margin: 20px 0 10px;
+    position: relative;
+    left: 10px;
+    width: 90%;
+
+}
+
+.THIS .slds-badge {
+    background-color: antiquewhite !important;
+}
+.THIS .slds-size_1-of-2 {
+    width: 100% !important;
+}

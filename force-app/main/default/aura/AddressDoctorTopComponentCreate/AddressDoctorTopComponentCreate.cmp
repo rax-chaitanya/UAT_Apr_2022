@@ -1,0 +1,159 @@
+<aura:component controller="AddressDoctorComponentController" 
+                implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable,force:hasRecordId,flexipage:availableForRecordHome,force:hasSObjectName" 
+                access="global">
+    
+    <lightning:workspaceAPI aura:id="workspace"/>
+    
+<aura:attribute name="initialRes" type="object"  default="{}"/>
+<aura:attribute name="initRecord" type="object" default="{}"/>   
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+<aura:attribute name="streetA" type="String" default=""/>
+<aura:attribute name="cityA" type="String" default=""/> 
+<aura:attribute name="stateA" type="String" default=""/> 
+<aura:attribute name="zipA" type="String" default=""/>
+<aura:attribute name="countryA" type="String" default=""/> 
+<aura:attribute name="modeA" type="String" default="INTERACTIVE"/> 
+<aura:attribute name="statusA" type="String" default=""/>
+<aura:attribute name="isRunning" type="boolean" default="false"/>   
+<ltng:require styles="{!$Resource.modal}" />
+<aura:attribute name="recordId" type="String"/>
+<aura:attribute name="sObjectName" type="String"/>    
+<aura:attribute name="ifResults" type="boolean" default="false"/>
+<aura:attribute name="selectedAddNo" type="String" default=""/>
+<aura:attribute name="options" type="List" default="[
+    {'label': 'Billing Address', 'value': 'bill'},
+    {'label': 'Shipping Address', 'value': 'ship'},
+	{'label': 'Mailing Address', 'value': 'mail'}
+    ]"/>
+<aura:attribute name="value" type="List" default="option1"/>
+<aura:attribute name="addressResultSet" type="Set" default="[]" />
+<aura:attribute name="showAddrCheck" type="boolean" default="false"/>
+<aura:attribute name="showAddress" type="boolean" default="true"/>
+<aura:attribute name="showSearch" type="boolean" default="false"/>
+<aura:attribute name="typeOfAddress" type="string" default=""/>
+<aura:attribute name="indexOfAddress" type="Integer"/>
+<aura:attribute name="hasError" type="Boolean" default="false"/>
+<aura:attribute name="errorMessage" type="String"/>    
+<aura:attribute name="addrLabel" type="string" default=" Address"/>
+<aura:attribute name="showConfirmation" type="Boolean" default="false"/>     
+<aura:attribute name="closeOnSave" type="Boolean" default="false"/>
+<aura:attribute name="openTab" type="Boolean" default="false"/> 
+    
+<aura:handler name="eSelectedAddress" event="c:AddressDoctorSelectedResult" action="{!c.handleComponentEvent}"/>    
+    
+   <aura:if isTrue="{!v.isRunning}">
+            <lightning:spinner alternativeText="Loading" size="large" class="slds-show" aura:id="mySpinner"/>
+    </aura:if>    
+    
+ 
+<!--       header       -->
+<div class="custom-header">
+	<aura:if isTrue="{!v.showSearch}"> 
+    <h1>
+      <span class="slds-page-header__title slds-truncate" title="Search Address">Validate Address</span>
+    </h1>
+    </aura:if>
+    <aura:if isTrue="{!!v.showSearch}">
+    <h1>
+      <span class="slds-page-header__title slds-truncate" title="Search Address">Select Address To Edit</span>
+    </h1>
+    </aura:if> 
+</div>
+<!--      header End    -->    
+    
+    
+    
+  <div class="slds-m-around--medium"> 
+      
+     
+	  
+	  <aura:if isTrue="{!v.showAddress}"> 
+      <div aura:id="tabCardId" id="tab-default-1" class="slds-show" role="tabpanel" aria-labelledby="company">
+		<div class="slds-grid slds-wrap">
+          <aura:iteration items="{!v.initialRes}" var="eachResI">
+			
+			<div class="slds-m-around--medium slds-form-element slds-size_6-of-12" style="">
+			<lightning:card title="{!eachResI.addresType +v.addrLabel}" footer=" ">
+			<aura:set attribute="actions">
+				<lightning:button label="Edit" name="{!eachResI.index}" value="{!eachResI.addresType}" onclick="{!c.gotoAddress}"/>
+			</aura:set>
+			<p class="slds-p-horizontal_small">
+				<lightning:formattedAddress
+                    street="{!eachResI.eachAddress.street}"
+                    city="{!eachResI.eachAddress.city}"
+                    country="{!eachResI.eachAddress.country}"
+                    province="{!eachResI.eachAddress.province}"
+                    postalCode="{!eachResI.eachAddress.zip}"
+    			/>
+			</p>
+			</lightning:card>
+			</div>
+            <div class="slds-m-around--medium slds-form-element slds-size_2-of-12" style="">
+                <aura:if isTrue="{!eachResI.eachAddress.ifVerified}"> 
+            	<lightning:icon iconName="action:approval" size="x-small" alternativeText="Approved" title="This Address is verified"/>
+                </aura:if>
+                <aura:if isTrue="{!!eachResI.eachAddress.ifVerified}">
+                <lightning:icon iconName="utility:warning" size="medium" alternativeText="Warning!" variant="warning" title="This Address is not verified"/>
+                </aura:if>
+            </div>    
+			
+		  </aura:iteration>
+		</div>
+      </div>
+      </aura:if> 
+	  
+	  <aura:if isTrue="{!v.showSearch}">
+      	<c:AddressDoctorSearch initRecordC="{!v.initRecord}"/>
+	  </aura:if> 
+      
+  </div>
+    
+   
+  <!--      footer     -->
+  <div style="height: 180px;">
+  <div class="slds-docked-form-footer">
+    <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-error" title="Resolve error">
+      <div class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+        <!--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error" />-->
+		<lightning:icon src="/assets/icons/utility-sprite/svg/symbols.svg#error" alternativeText="error"/>
+      </div>
+      <span class="slds-assistive-text">Resolve error</span>
+    </button>
+    <button type="button" class="slds-button slds-button_neutral" onclick="{!c.cancel}">Close</button>
+	<aura:if isTrue="{!v.showEdit}"> 
+ <lightning:button label="Save &amp; Close" value="true" onclick="{!c.save}"/>
+	<lightning:button label="Save &amp; Edit Address" onclick="{!c.save}"/> 
+	</aura:if> 
+	<aura:if isTrue="{!v.showSearch}"> 
+    <lightning:button label="Back" onclick="{!c.goBack}"/>
+    <aura:if isTrue="{!v.showAddrCheck}">    
+    <lightning:button label="Save Address" onclick="{!c.onSave}"/>
+    </aura:if>    
+	</aura:if>
+  </div>
+</div>
+
+<!--            Footer END               -->    
+
+<!--           Error Modal               -->    
+ <aura:if isTrue="{!v.hasError}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <h2 id="header43" class="slds-text-heading--medium">Error</h2>
+                </div>
+                <div class="slds-modal__content slds-p-around--medium">
+                    <p>{!v.errorMessage}</p>
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button--neutral" onclick="{!c.dismissError}">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </aura:if>
+ 
+<!--           Error Modal End              -->
+    
+
+</aura:component>

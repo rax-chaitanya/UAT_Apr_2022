@@ -1,0 +1,195 @@
+<aura:component controller="CompanyProfileController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:attribute name="PartnerCompany" type="Account"/>	
+    <aura:attribute name="name" type="String"/>
+    <aura:attribute name="description" type="String"/>
+    <aura:attribute name="city" type="String"/>
+    <aura:attribute name="state" type="String"/>
+    <aura:attribute name="country" type="String"/>
+    <aura:attribute name="website" type="String"/>
+    <aura:attribute name="countryValues" type="String"/>
+    <aura:attribute name="solutionValues" type="Object" />
+    <aura:attribute name="productValues" type="Object" />
+    <aura:attribute name="industryValues" type="Object" />
+    <aura:attribute name="solution" type="String"/>
+    <aura:attribute name="Product" type="String"/>
+    <aura:attribute name="Industry" type="String"/>
+    <aura:attribute name="isPrimary" type="Boolean" default="true"/>	
+    <aura:attribute name="static" type="Integer" default="1"/>
+    <aura:attribute name="Spinner" type="boolean" default="true"/>
+    
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <!-- Created for logos comps-->
+    <aura:attribute name="openLogosWindow" type="boolean" default="false"/>
+    <aura:attribute name="openEditHeaderWindow" type="boolean" default="false"/>
+    <aura:handler name="logosEvent" event="c:partnerlogosEvent" action="{!c.setLogoBoolean}"/>
+    <!--aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner-brand  slds-spinner slds-spinner-large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if-->
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--aura:if isTrue="{!v.Spinner==false}"-->
+      <!-- <div style="color: #EB0000;font-weight:Normal;font-family:FiraSans-regular;">
+            Congratulations! You are classified as an <b>{!v.PartnerCompany.Membership__c}{!v.chk2}</b> in the Partner Program.<i>Membership level logos are not associated with the gamification feature within the Portal and are subject to change depending on your performance in the Partner Program.</i>
+      
+    </div>-->
+    <!-- <c:EditHeadLineWindow />-->
+    <c:CompanyProfile_EditMembership/>
+   
+    
+        <br></br>
+           <div class="Test">
+        <lightning:button class="slds-button slds-button_destructive" label="  Partner Logos  " 
+                          title="Neutral action" 
+                          onclick="{!c.gotoLogosComp}"/>
+    </div>
+        <br></br>
+        <br></br>
+        <aura:if isTrue="{!v.openLogosWindow}">
+            <c:partnerLogos/>
+        </aura:if>
+        <div class="slds-form" role="list">
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Partner Company</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputText disabled="true" class="slds-input" value="{!v.name}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Company Description</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputText  disabled="{!v.isPrimary}" class="slds-input" value="{!v.description}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">City</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputText disabled="true" class="slds-input" value="{!v.city}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">State</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputText disabled="true" class="slds-input" value="{!v.state}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Country</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect  class="slds-input" value="{!v.country}"  > 
+                                    <aura:iteration items="{!v.countryValues}" var="item" >
+                                        <option value="{!v.item}">
+                                            {!item}
+                                        </option> 
+                                    </aura:iteration>
+                                </ui:inputSelect> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Website</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputText disabled="true" class="slds-input" value="{!v.website}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Partner Solution</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect  class="slds-input" value="{!v.solution}"  > 
+                                    <aura:iteration items="{!v.solutionValues}" var="item" >
+                                        <option value="{!v.item}">
+                                            {!item}
+                                        </option> 
+                                    </aura:iteration>
+                                </ui:inputSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Industry</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect  class="slds-input" value="{!v.Industry}"  > 
+                                    <aura:iteration items="{!v.industryValues}" var="item" >
+                                        <option value="{!v.item}">
+                                            {!item}
+                                        </option> 
+                                    </aura:iteration>
+                                </ui:inputSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                    <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                        <span class="slds-form-element__label">Partner Product</span>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect  class="slds-input" value="{!v.Product}"  > 
+                                    <aura:iteration items="{!v.productValues}" var="item" >
+                                        <option value="{!v.item}">
+                                            {!item}
+                                        </option> 
+                                    </aura:iteration>
+                                </ui:inputSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                </div>
+            </div>
+            <br/>
+            <center>
+                <aura:renderIf isTrue="{!!v.isPrimary}">
+                    <lightning:button variant="destructive"  class="slds-button slds-button--neutral" onclick="{!c.save}">Save</lightning:button>
+                </aura:renderIf>
+            </center>
+        </div>
+    <!--/aura:if-->
+</aura:component>

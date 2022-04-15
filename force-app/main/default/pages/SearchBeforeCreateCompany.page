@@ -1,0 +1,30 @@
+<apex:page standardController="Account" extensions="SearchBeforeCreateCompany" docType="html-5.0" lightningstyleSheets="true">    
+    <apex:form id="theForm">
+        <apex:dynamicComponent componentValue="{!dynamicPage}"/>
+        
+        <apex:actionFunction name="importDandB" action="{!importDandBCompany}" reRender="dAndBTable, companiesTable, messages">
+            <apex:param assignTo="{!queryID}"  name="qnum" value="p" />
+        </apex:actionFunction>
+        
+        <apex:actionFunction name="requestAccess" action="{!requestCompanyRecordAccess}" reRender="messages, renderPanel">
+            <apex:param assignTo="{!queryID}"  name="qnum" value="p" />
+        </apex:actionFunction>
+        
+        <apex:actionFunction name="doTest" action="{!genericFunction}" reRender="companiesPanel, dAndBPanel" id="actionFunction">
+            <apex:param assignTo="{!queryID}"  name="qnum" value="p" />
+            <apex:param assignTo="{!page}"  name="pnum" value="p2" /> 
+        </apex:actionFunction>
+        
+        
+        <apex:actionStatus id="status">
+            <apex:facet name="start">
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: black;">
+                    &nbsp;
+                </div>
+                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 30% 50%">
+                    <img src="http://upload.wikimedia.org/wikipedia/commons/e/ed/Cursor_Windows_Vista.gif" />
+                </div>
+            </apex:facet>
+        </apex:actionStatus>          
+    </apex:form>    
+</apex:page>

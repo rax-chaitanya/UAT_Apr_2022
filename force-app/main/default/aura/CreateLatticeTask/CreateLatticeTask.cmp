@@ -1,0 +1,131 @@
+<aura:component controller="CreateLatticeTaskController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <lightning:navigation aura:id="navService"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="idd" type="String" />
+    <aura:attribute name="playName" type="String" />
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="CampaignId" type="String" />
+    <aura:attribute name="ContactId" type="String" />
+    <aura:attribute name="CampaignName" type= "String" />
+    <aura:attribute name="nameContact" type= "String" />
+    <aura:attribute name="objInfo" type="Account" default="{sobjectType : 'Task'}" />
+    <aura:attribute name="tsk" type="Task" default="{'sobjectType': 'Task',
+                                                    'Subject': '',
+                                                    'WhoId': '',
+                                                    'WhatId': '', 
+                                                    'Status': 'Completed',
+                                                    'Type__c' : 'Call',
+                                                    'Sub_Type__c' : 'Outbound Task',                         
+                                                    'ActivityDate' : '',
+                                                    'Priority' : 'Normal',
+                                                    'IsReminderSet' : 'false',
+                                                    'OwnerId': '',
+                                                    'Racker_s_Partcipating__c':'',   
+                                                    'Description':''
+                                                    }"/>  
+    <aura:attribute name="isOpen" type="boolean" default="true"/>				   
+    <aura:if isTrue="{!v.isOpen}">
+        
+        <!--###### MODAL BOX Start From Here ######--> 
+        <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+            <div class="slds-modal__container">
+                <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModel}">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <lightning:icon iconName="standard:task" alternativeText="Task"/>
+                    <h2 id="header99" class="slds-text-heading--medium" style="color:FireBrick;"><b>Log Call/Email</b></h2>
+                </div>
+                <!--###### MODAL BOX BODY Part Start From Here ######-->
+                <div class="slds-modal__content slds-p-around--small" >
+                    
+                    <div class="slds-page-header">
+                        <div class="slds-form--stacked slds-m-left_x-large">
+                            <lightning:accordion aura:id="accordion" activeSectionName="Sales Activity Task" allowMultipleSectionsOpen="true">
+                                <lightning:accordionSection name="Sales Activity Task" label="Sales Activity Task">
+                                    
+                                    <div class="slds-grid slds-gutters">
+                                        <!--<div class="slds-col">-->
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <span>
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element_label" for="subject"> Subject</label>
+                                                    <div class="slds-form-element_control">
+                                                        <ui:inputText class="slds-input" aura:id="subject" value="{!v.tsk.Subject}" required="false"></ui:inputText>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element_label" for="taskType">Task Type</label>
+                                                    <div class="slds-form-element_control">
+                                                        <ui:inputSelect class="slds-input" aura:id="taskType" value="{!v.tsk.Type__c}" required="false" ></ui:inputSelect>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element_label" for="status">Status</label>
+                                                    <div class="slds-form-element_control">
+                                                        <ui:inputSelect class="slds-input" aura:id="status" value="{!v.tsk.Status}" required="false"></ui:inputSelect>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <span>
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element_label" for="dueDate">Due Date</label>
+                                                    <div class="slds-form-element_control">
+                                                        <lightning:input type="date" aura:id="duedate" value="{!v.tsk.ActivityDate}" required="false"/>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element_label" for="subType">Sub Type</label>
+                                                    <div class="slds-form-element_control">
+                                                        <ui:inputSelect class="slds-input" aura:id="subType" value="{!v.tsk.Sub_Type__c}" required="false"></ui:inputSelect>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element_label" for="priority">Priority</label>
+                                                    <div class="slds-form-element_control">
+                                                        <ui:inputSelect class="slds-input" aura:id="priority" value="{!v.tsk.Priority}" required="false"></ui:inputSelect>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element_label">  Related To</label>
+                                        <div class="slds-form-element_control">
+                                            <ui:inputText class="slds-input" aura:id="WhoId" value="{!v.nameContact}" required="false"></ui:inputText>
+                                        </div>
+                                    </div>  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element_label"> Campaign</label>
+                                        <div class="slds-form-element_control">
+                                            <ui:inputText class="slds-input" aura:id="WhatId" value="{!v.CampaignName}" required="false"></ui:inputText>
+                                        </div>
+                                    </div> 
+                                    <br/>
+                                    <div class="slds-form-element">
+                                        <lightning:textarea name="RackerPartcipating" value="{!v.tsk.Racker_s_Partcipating__c}" label="Racker(s) Partcipating" />
+                                    </div>
+                                </lightning:accordionSection>  
+                            </lightning:accordion> 
+                        </div>
+                    </div>
+                </div>
+                <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+                <div class="slds-modal__footer">
+                    <lightning:button variant="destructive" label="Cancel" title="Destructive action" onclick="{!c.closeModel}" />
+                    <lightning:button variant="success" label="Save Task" title="Success" onclick="{!c.saveTask}"/>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+        <!--###### MODAL BOX Part END Here ######-->    
+    </aura:if>
+</aura:component>

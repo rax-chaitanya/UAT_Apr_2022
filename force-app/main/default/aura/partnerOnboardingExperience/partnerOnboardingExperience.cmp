@@ -1,0 +1,158 @@
+<!--
+Author: Biswabhanu mishra
+Ticket: SFDC-1204
+Description: Step 3 of OnBoarding wizard
+-->
+<aura:component >
+    <aura:registerEvent name="switchStep" type="c:switchStep"/>
+    <aura:attribute name="stepNum" type="Integer" default="1"/>
+    <aura:attribute name="previousStep" type="Integer" default="1"/>
+    <aura:renderIf isTrue="{!v.stepNum == 1}">
+        <div class="slds-align_absolute-center">
+            <h2 style="font-family:FiraSans-regular"> <b>The Partner Portal</b></h2>
+        </div>
+        <p>You’ll find everything you need through the Partner Portal. </p>
+        <p>The more you know about Rackspace, the easier it is to refer and resell our products to your clients.</p>
+        <p><h6 style="font-family:FiraSans-regular"> Within the Portal, you will be able to:</h6></p> 
+        
+        <li style="font-family:FiraSans-regular;"><u> <a href="#" onclick="{!c.gotoLink}" aura:id="registerLeads" id="registerLeads">Register Leads</a></u></li>
+        <li style="font-family:FiraSans-regular;"><u> <a href="#" onclick="{!c.gotoLink}" id="trackLeadsAndOpportunities">Track Leads and Opportunities</a></u></li>
+        <li style="font-family:FiraSans-regular;"><u> <a href="#" onclick="{!c.gotoLink}" id="compensation">Compensation Details</a></u></li>
+        <li style="font-family:FiraSans-regular;"><u> <a href="#" onclick="{!c.gotoLink}" id="enablementResources">Enablement Resources</a></u></li> 
+        <li style="font-family:FiraSans-regular;"><u> <a href="#" onclick="{!c.gotoLink}" id="caseManagement">Case Management</a></u></li>
+        <li style="font-family:FiraSans-regular;"><u> <a href="#" onclick="{!c.gotoLink}" id="support">Support Resources</a></u></li>
+    </aura:renderIf>
+    
+    <aura:renderIf isTrue="{!v.stepNum == 2}">
+        <div class="slds-align_absolute-center">
+            <div class="slds-text-heading_medium">
+                <h3 style="font-family:FiraSans-regular"><b>Registering Leads</b></h3>
+            </div>
+        </div>
+        <br/>
+        <p>To be eligible for commissions you must have registered the lead, received a registration approval from Rackspace, and the New Contract must be signed within twelve (12) months of the registration approval date. Please register all your deals in the Partner Portal. We want to make sure you get the compensation you deserve!</p>
+        
+        <p>To register a lead, click on the "Register My Lead" tab from the portal home page.</p>
+        
+        <p>Complete the form by filling out the required fields to successfully register your lead.</p>
+        <p>Additionally, please include supplemental information and context about your lead in the comments section.</p>
+        <br/>
+       
+        
+    </aura:renderIf>
+       
+    <aura:renderIf isTrue="{!v.stepNum == 3}">
+        
+        <div class="slds-align_absolute-center">
+            <div class="slds-text-heading_medium">
+                <h3 style="font-family:FiraSans-regular"><b>Tracking Leads and Opportunities</b></h3>
+            </div>
+        </div>
+        <br/>   
+      
+        <p> To view leads, click on the “Deals" tab from the portal home page menu bar.</p>
+        <p>Select “Leads” from the drop down menu.</p>
+        <p>Change the view from “Recently Viewed” to “All Open Leads”.</p>
+        <img src="{!$Resource.OnboardingImages + '/OnboardImages/LeadRecentView.png'}"/> 
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="{!$Resource.OnboardingImages + '/OnboardImages/ArrowForward.png'}"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{!$Resource.OnboardingImages + '/OnboardImages/LeadsAllopenLeads.png'}"/>
+        
+        <br/>
+        <br/>
+        <p>To view leads that have been converted to opportunities, click on the “Deals" tab from the portal home page menu bar.</p>
+        <p>Select “Opportunities” from the drop down menu.</p>
+        <p>Change the view from “Recently Viewed” to “Partner: All Opportunities”.</p>
+    <img src="{!$Resource.OnboardingImages + '/OnboardImages/OpportunityRecentlyViewed.png'}"/> 
+        &nbsp;&nbsp;&nbsp;&nbsp;<img src="{!$Resource.OnboardingImages + '/OnboardImages/ArrowForward.png'}"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{!$Resource.OnboardingImages + '/OnboardImages/OpportunityPartnerAllOpp.png'}"/>
+        
+    </aura:renderIf>
+    <aura:renderIf isTrue="{!v.stepNum == 4}">
+        
+        <div class="slds-align_absolute-center">
+            <div class="slds-text-heading_medium">
+                <h3 style="font-family:FiraSans-regular"><b>Compensation Details</b></h3>
+            </div>
+        </div>
+       
+        <br/>
+        <p>To track your compensation, select the “Compensation” tab from the portal home page.The default view in compensation is your monthly compensation report. This report view will display Partner Name, Month Paid, and Total Compensation.
+        </p>
+        <p>To find your compensation information based upon your contract, select “Compensation” tab from the portal home page. </p>
+        <ul>
+        <li>Select “Compensation” to view monthly compensation line items.
+        </li>
+        <li>Select “Compensation Info” to view program benefits.
+            </li>
+        </ul>
+        
+    </aura:renderIf> 
+    <aura:renderIf isTrue="{!v.stepNum == 5}">
+        <div class="slds-align_absolute-center">
+            <div class="slds-text-heading_medium">
+                <h3 style="font-family:FiraSans-regular"><b>Enablement Resources</b></h3>
+            </div>
+        </div>
+        <br/>
+        <p>The Rackspace Partner Program provides you with relevant and up-to-date content regarding Rackspace products and services. These tools will enable you to drive positive business outcomes with your clients and be a part of the Fanatical Experience.</p>
+        <p>To learn more about an offering, select the “Marketing Toolkit” within the portal to access the latest enablement resources. This includes battle cards, data sheets, first call decks, videos and more.
+</p>
+        <p>Select “View Library” to expand each section and explore topics of interest.
+            <br/>You can download PDF files of these materials within each sub-folder.
+</p>
+        <p>We will provide you with readily available resources and content as they are released.</p>
+    </aura:renderIf>
+    <aura:renderIf isTrue="{!v.stepNum == 6}">
+        <div class="slds-align_absolute-center">
+            <div class="slds-text-heading_medium">
+                <h3 style="font-family:FiraSans-regular"><b>Case Management</b></h3>
+            </div>
+        </div>
+        <br/>
+        <p>You can submit a case via the Partner Portal. Cases include Partner Portal issues and commission discrepancies. All other inquires may be directed to your Partner Account Manager.</p>
+        
+        <p>To submit a case, click on the “Cases" tab from the portal home page. </p>
+        
+        <p>Select “New” on the far right and complete the form by filling out the required fields to successfully submit your case.</p>
+        
+        <p>Please include a detailed description and context about your case so we can better assist you.</p>
+        <br/>
+        
+        <p>If you need further assistance, email our Help Desk at <u>raxpartnerhelp@rackspace.com.</u></p>
+    
+    </aura:renderIf>
+    
+    
+    
+    <aura:renderIf isTrue="{!v.stepNum == 7}">
+<div class="slds-align_absolute-center">
+            <div class="slds-text-heading_medium">
+                     <h1 style="font-family:FiraSans-regular"><b>Support Resources</b></h1>
+      </div>
+        </div>
+        <br/>
+        <p>We have created the Help Desk to better serve our partner community and provide additional resources. Responsibilities of the Help Desk include routing your leads to an appropriate seller, responding to inquiries, resolving issues regarding your account and ongoing operations.</p>
+        <p>On the home page of the portal, your Partner Account Manager and their contact information are listed under the Menu ribbon.<br/>
+           This will be your point of contact with Rackspace regarding our partnership. </p>
+          <ul>
+            <li>If your account is owned by the Help Desk, please direct any inquiries for assistance to <u>raxpartnerhelp@rackspace.com</u>.
+            </li>
+              <li>You can submit a case via the Partner Portal and the Help Desk will promptly reply. Cases include partner portal issues and commission discrepancies.              
+            </li>
+        </ul>
+    </aura:renderIf>
+    <aura:renderIf isTrue="{!v.stepNum == 8}">
+        <div class="slds-text-heading_medium">
+       <h1 style="font-family:FiraSans-regular"><b>Partner Account Managers</b></h1>
+            
+      </div>
+        <p><b>Assistance for Strategic Partners</b></p>
+        <br/>
+        <p>Partner Account Managers (or PAMs) serve as the main point of contact to our Strategic Partners. Like the Help Desk, responsibilities of PAMs include routing your leads to an appropriate seller, responding to inquiries, and resolving issues regarding your account and operations.</p>
+        <p>Log into the Partner Portal with your username and password. Please ensure that you are using the proper username, including the “.rax.partner” extension provided previously. If you are having issues logging in, please email the Help Desk at raxpartnerhelp@rackspace.com for immediate assistance.</p>
+         <p>On the home page of the portal, your Partner Account Manager and their contact information are listed under the Menu ribbon. This will be your point of contact with Rackspace regarding our partnership and you can reach out to them directly for assistance. </p>
+    </aura:renderIf>
+   
+    
+    
+    
+    
+</aura:component>

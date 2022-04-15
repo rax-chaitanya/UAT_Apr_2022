@@ -1,0 +1,95 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="Docitem" type="String" />    
+    <div class="slds-size--1-of-1 slds-medium-size--1-of-3 slds-large-size--1-of-4" >
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small" style="border:0px;">
+            <div style="border: 1px solid #f7f8f9; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                
+                <aura:if isTrue="{!v.Docitem.fileType !='LINK'}">
+                   
+                    <div class="no-preview" style="{!'position: relative;height: 10rem; background:' + v.backgroundColor + ' url(/partners/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;versionId='+ v.Docitem.folderIconId +'&amp;page=0) no-repeat;background-position: center;background-size: cover;'}">
+                    <p>No preview available.</p>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.Docitem.fileType=='LINK'}">
+                    <aura:if isTrue="{!v.Docitem.ISyoutube}">
+                      <div style="{!'position: relative;height: 10rem;border:0px; background-position: center;background-size: cover;'}">
+                        <iframe frameboard="0" width="290px" height="163px" src="{!v.Docitem.contentUrl}" />
+                    </div>
+                    
+                    </aura:if>
+                    <aura:if isTrue="{!not(v.Docitem.ISyoutube)}">
+                      <div class="Overflow" style="{!'position: relative;height: 10rem; background:' + v.backgroundColor + ' url(/partners/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;versionId='+$Label.c.Files_Image_Id+') no-repeat;background-position: center;background-size: cover;'}">
+                      	<span style="top: 35%;left: 7%;position: absolute;color: white;font-size: 100%;  " title="{!v.Docitem.description}">{!v.Docitem.description}</span> 
+                    </div>           
+                   </aura:if>    
+                    
+                    
+                </aura:if>
+               <div class="divCss">
+                    <div class="slds-size_1-of-2">
+                        <p class="slds-truncate" title="{!v.Docitem.title}"> {!v.Docitem.title}</p>
+                    </div>  
+                </div>
+                <div style="border-top: solid rgba(196,0,34,0.175) 0.5px;height: 1px;margin-bottom: 10px;width: 100%;"></div>
+                
+                <aura:if isTrue="{!v.Docitem.fileType=='LINK'}">
+                    <aura:if isTrue="{!v.Docitem.ISyoutube}">
+                   <div class="Overflow" style="margin-bottom:30px;color: #666;font-size: 1em;line-height: 1.6em;font-weight: 400;text-align: center;height: 60px !important;">
+                      	 <span title="{!v.Docitem.description}"> {!v.Docitem.description}</span>
+                    </div>
+                    </aura:if>
+                      
+                    
+                    
+                </aura:if>
+                
+                
+                 <div style="margin-bottom:10px;text-align:left;">&nbsp;&nbsp;              
+                    <div class="slds-media slds-media_center">                        
+                        <div class="slds-media__body" style="text-align:left;">
+                            <aura:if isTrue="{!v.Docitem.fileType !='LINK'}">
+                            <a aura:id="{!v.Docitem.fileId}" class="slds-badge" onclick = "{!c.openSingleFile}" style="color:#C40022;cursor: pointer;font-weight: bold;">View File </a>
+                            </aura:if>
+                            <aura:if isTrue="{!v.Docitem.fileType =='LINK'}">
+                                <aura:if isTrue="{!v.Docitem.ISyoutube}">
+                            <a aura:id="{!v.Docitem.fileId}" class="slds-badge" onclick = "{!c.openSingleFile}" style="color:#C40022;cursor: pointer;font-weight: bold;">Open Video </a>
+                            </aura:if>
+                             <aura:if isTrue="{!not(v.Docitem.ISyoutube)}">
+                            <a aura:id="{!v.Docitem.fileId}" class="slds-badge" onclick = "{!c.openSingleFile}" style="color:#C40022;cursor: pointer;font-weight: bold;">View Customer Story </a>
+                            </aura:if>
+                                </aura:if>
+                            </div>
+                        <div class="slds-media__figure" style="text-align:right;">
+                            <aura:if isTrue="{!v.Docitem.fileType !='LINK'}">
+                                <aura:if isTrue="{!v.Docitem.fileType =='PDF'}">
+                                <lightning:icon iconName="doctype:pdf" size="medium"/>
+                                </aura:if>
+                                <aura:if isTrue="{!or(v.Docitem.fileType=='TEXT', v.Docitem.fileType=='WORD_X')}">
+                                <lightning:icon iconName="doctype:txt" size="medium"/>
+                                </aura:if>
+                                <aura:if isTrue="{!v.Docitem.fileType =='EXCEL_X'}">
+                                <lightning:icon iconName="doctype:excel" size="medium"/>
+                                </aura:if>
+                                <aura:if isTrue="{!v.Docitem.fileType =='POWER_POINT_X'}">
+                                <lightning:icon iconName="doctype:ppt" size="medium"/>
+                                </aura:if>
+                                <aura:if isTrue="{!or(v.Docitem.fileType=='PNG', v.Docitem.fileType=='JPG',v.Docitem.fileType=='SVG',v.Docitem.fileType=='GIF')}">
+                                <lightning:icon iconName="doctype:image" size="medium"/>
+                                </aura:if>
+                            </aura:if>
+                            <aura:if isTrue="{!v.Docitem.fileType =='LINK'}">
+                                <aura:if isTrue="{!v.Docitem.ISyoutube}">
+                               		<lightning:icon iconName="doctype:video" size="medium"/>
+                                </aura:if>
+                                <aura:if isTrue="{!not(v.Docitem.ISyoutube)}">
+                                    <lightning:icon iconName="doctype:link" size="medium"/>
+                                </aura:if>
+                            </aura:if>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div> 
+    </div>   
+    
+</aura:component>

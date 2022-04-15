@@ -1,0 +1,72 @@
+.THIS .productTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+.THIS .productTable-name {
+    text-align: center;
+    line-height: 2rem;
+    border: .5px solid #eff0f2; 
+    background-color: #666;
+    padding:20px;
+    color:white;
+   font-weight:500;
+   font-size:117%;
+}
+.THIS .productTable-featureItem {
+    font-size: 15px;
+    padding:15px;
+    vertical-align: text-top;
+    border: 1px solid #dedede;
+    line-height: 2rem;
+   
+}
+.THIS #td1
+{ 
+    color:#565555;
+    
+    padding:15px;
+    font-size: 15px;
+    
+}
+.THIS .center {
+    text-align: center;
+}
+.THIS .productTable-mobileTitle {
+    display: none;
+}
+
+
+.THIS .list{
+    padding:0px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-size:medium;
+    line-height: 1.9
+    
+}
+.THIS #headers {
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    margin: 5px 0;
+}
+.THIS #body
+{
+    text-align:justify;
+}
+.THIS #body1
+{
+    text-align:justify;
+}
+
+.THIS #header{
+    color: #2a2a2a;
+    font-family: FiraSans-regular;
+    font-weight: 600;
+    font-size: 2.25em;
+   
+    
+     
+}

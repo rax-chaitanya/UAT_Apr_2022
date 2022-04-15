@@ -1,0 +1,65 @@
+<apex:page showHeader="false" title="Agreement Acceptance" controller="AgreementController"  >
+<apex:slds />
+<center>
+<apex:form >
+<apex:pageBlock title="Rackspace Agreement">
+    <apex:outputPanel rendered="{! company.Partner_Level__c = $Label.Referral}">
+        <apex:iframe src="{!referralContent.DistributionPublicUrl}" height="1200" width="1000"/>
+        <br> </br>           
+        <a href="{!referralContent.ContentDownloadUrl}" shouldstayinownframe="true" title="Download">
+        <apex:image id="img1" value="{!$Resource.Download_Icon}" width="20" height="20" alt=""/>
+        <span class="actionLabel">Download</span>
+        </a>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{! company.Partner_Level__c =  $Label.Reseller}">
+         <apex:iframe src="{!resellerContent.DistributionPublicUrl}" height="1200" width="1000"/><br> </br>
+          <a href="{!resellerContent.ContentDownloadUrl}" shouldstayinownframe="true" title="Download">
+          <apex:image id="img2" value="{!$Resource.Download_Icon}" width="20" height="20" alt=""/>
+          <span class="actionLabel">Download</span>
+        </a>
+    </apex:outputPanel>    
+    <apex:outputPanel rendered="{! OR(company.Partner_Level__c = $Label.Referral_Reseller,company.Partner_Level__c = 'Master Agent')}">
+         <apex:iframe src="{!referralContent.DistributionPublicUrl}" height="1200" width="1000"/><br> </br>
+          <a href="{!referralContent.ContentDownloadUrl}" shouldstayinownframe="true" title="Download">
+          <apex:image id="img3" value="{!$Resource.Download_Icon}" width="20" height="20" alt=""/>
+           <span class="actionLabel">Download</span>
+        </a><br> </br>
+         <apex:iframe src="{!resellerContent.DistributionPublicUrl}" height="1200" width="1000"/><br> </br>
+          <a href="{!resellerContent.ContentDownloadUrl}" shouldstayinownframe="true" title="Download">
+          <apex:image id="img4" value="{!$Resource.Download_Icon}" width="20" height="20" alt=""/>
+          <span class="actionLabel">Download</span>
+        </a>
+    </apex:outputPanel>
+</apex:pageBlock>  
+<br></br>     
+<apex:commandButton styleClass="slds-button btn-cls" action="{!gotoPortal}" value="I Agree"/> 
+
+</apex:form>
+</center>
+<style type="text/css">
+.btn-cls{
+    color: white !important;
+    background: #008000 !important;
+    width: 9% !important;
+    font-size: 200% !important;
+    line-height: 2.875rem !important;
+}
+a{  
+    padding: 10px 10px 10px 10px;
+    border-radius: 16px solid;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.actionLabel{
+     color: black !important;
+     font-size: 135%;
+     font-weight:bold;
+} 
+.slds-scope a:hover, .slds-scope a:focus {
+    background: wheat !important;
+    text-decoration: none;
+    color: black !important;
+}
+</style>
+<br></br>
+</apex:page>

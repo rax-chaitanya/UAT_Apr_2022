@@ -1,0 +1,56 @@
+.THIS .slds-table td {
+    padding: 0rem 0.5rem 0rem 0.5rem;
+}
+
+.THIS .slds-cell-wrap{
+    text-align: center;
+}
+
+.THIS .no-wrap{
+    text-align: inherit;
+}
+.THIS.company-card {
+    border: 3px solid rgb(197, 0, 34);
+    border-radius: 0.5rem;
+    margin: 0 .25rem 0 0.25rem;
+}
+
+.THIS .slds-card__header{
+    background : rgb(197, 0, 34);
+    padding: 0.5rem .75rem 0.75rem;
+}
+.THIS .slds-form-element__label{
+    color : rgb(255, 255, 255);
+    /*font-size : 1.0rem;*/
+}
+.THIS .slds-iconclass{
+    color : rgb(255, 255, 255);
+    width: 1.5rem;
+    height: 1.0rem;
+   background : rgb(197, 0, 34);
+}
+
+.THIS .company-checkbox{
+    display: inline-block;
+}
+
+.THIS .table-container{
+    overflow-x: scroll;
+}
+.THIS .search-result{
+    background : #e3e5ed;
+
+}
+.THIS .search-result-sibling{
+    /*background : #f4f6fe;*/
+}
+.THIS .error{
+    background-color: #c23934;
+}
+
+.THIS .slds-button__icon{
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+    font-size: .625rem;
+}

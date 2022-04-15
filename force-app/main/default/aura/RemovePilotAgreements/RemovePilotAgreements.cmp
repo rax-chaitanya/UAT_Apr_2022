@@ -1,0 +1,51 @@
+<aura:component controller="PilotAgreementController" implements="force:lightningQuickAction,force:hasRecordId" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="AgreementsList" type="Object[]" />
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"/>
+    <div class="slds-m-around--x-small">
+        
+        <div class="slds-grid slds-grid--align-end slds-m-around--x-small">
+            <button class="slds-button slds-button--brand" onclick="{!c.removePilotOnSelected}">Remove</button>
+        </div>
+        
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Agreement Name">Agreement Name</div>
+                    </th>
+                    
+                    <th scope="col">
+                        <label class="slds-checkbox">
+                            <!--header checkbox for select all-->
+                            <ui:inputCheckbox aura:id="checkBoxAll" change="{!c.selectAll}"/>
+                            <span class="slds-checkbox--faux"></span>
+                            <span class="slds-form-element__label text"></span>
+                        </label>
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <!-- Iterate all child record list in table format -->  
+                <aura:iteration items="{!v.AgreementsList}" var="rec">
+                    <tr>
+                        <td>
+                            <div class="slds-truncate" title="{!rec.Name}">{!rec.Name}</div>
+                        </td>
+                        
+                        <td>
+                            <label class="slds-checkbox">
+                                <ui:inputCheckbox text="{!rec.Id}" aura:id="checkBox"/>
+                                <span class="slds-checkbox--faux"></span>
+                                <span class="slds-form-element__label text"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

@@ -1,0 +1,70 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+    <apex:includeScript value="/soap/ajax/34.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/34.0/apex.js"/>  
+     <apex:includeScript value="/support/console/39.0/integration.js"/>
+    
+    <apex:includeLightning />
+    
+    
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="lightning" />
+    
+    
+    <script>
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+   
+    
+    function Validate()
+    {
+    
+            var accId='{!Account.Id}'; 
+            var userId='{!$User.Id}'; 
+           
+            //Query for checking user access on record 
+            var queryAccess= "SELECT RecordId, HasReadAccess,HasEditAccess, HasTransferAccess, MaxAccessLevel FROM UserRecordAccess WHERE UserId = '{!$User.Id}' AND RecordId = '{!Account.Id}'" ; 
+            var resultAccess = sforce.connection.query(queryAccess); 
+            var recordsAccess = resultAccess.getArray("records"); 
+            if((recordsAccess[0].HasEditAccess)==='true'){ 
+            
+            
+            if('{!Account.DunsNumber}'!=''){ 
+            var query = "select FortuneRank from DataclouddAndBCompany where DunsNumber = '{!Account.DunsNumber}' limit 1"; 
+            
+            var result = sforce.connection.query(query); 
+            var records = result.getArray("records"); 
+            
+            var myObj = records[0]; 
+            
+            var queryAcc = "select Id,Fortune_Rank__c from Account where Id = '{!Account.Id}' limit 1"; 
+            var resultAcc = sforce.connection.query(queryAcc); 
+            var recordsAcc = resultAcc.getArray("records"); 
+            var myAcc=recordsAcc[0]; 
+            
+            if(myObj.FortuneRank!=null){ 
+            myAcc.Fortune_Rank__c = myObj.FortuneRank ; 
+            
+            var results = sforce.connection.update([myAcc]); 
+            alert("{!$Label.Furtune_Rank_Update_Success}"); 
+           //window.history.back() 
+          // history.go(-1);
+          //location.reload(false);
+         //  window.open('/'+'{!Account.Id}','_parent');
+         // sforce.console.openPrimaryTab(undefined, '/{!Account.Id}', true, '{!Account.Name}');
+            }else{ 
+            alert("{!$Label.Fortune_Rank_Not_found}");
+         //   history.go(-1); 
+            } 
+            }else{ 
+            alert("{!$Label.DUNS_Number_Not_Found}"); 
+         //   history.go(-1);
+            } 
+            }else{ 
+            alert("{!$Label.Fortune_Rank_No_Access}"); 
+           // history.go(-1);
+            }
+       
+    }
+    window.onload = Validate;    
+    </script>
+    
+</apex:page>

@@ -1,0 +1,42 @@
+<apex:page docType="html-5.0" controller="OpportunityCloseWonWizardController" showHeader="true"  lightningStylesheets="true">          
+    <apex:form id="theForm">
+        <apex:dynamicComponent componentValue="{!dynamicPage}" />
+        
+        
+        <apex:actionFunction action="{!editAccCont}" name="actionFunctionEditAccCont" reRender="pageBlock2">
+            <apex:param name="recordIDparam" assignTo="{!recordID}" value="recID" />
+        </apex:actionFunction>
+        
+        <apex:actionFunction action="{!deleteAccCont}" name="actionFunctionDeleteAccCont" reRender="pageBlock2">
+            <apex:param name="recordIDparam" assignTo="{!recordID}" value="recID" />
+        </apex:actionFunction>
+        
+        <!-- Added for SFDC-4959 and used in component CM-18194 -->  
+        <apex:actionFunction action="{!goToOpp}" name="goToOpp" reRender="theForm">
+        </apex:actionFunction>
+        
+        <apex:actionFunction action="{!goToPage}" name="goToPage" reRender="theForm">
+            <apex:param name="recordIDparam" assignTo="{!recordID}" value="recID" />
+        </apex:actionFunction>
+        
+        
+        <!--        <apex:actionFunction action="{!primaryQuoteUpdate}" name="actionFunctionPrimaryQuoteUpdate" reRender="isPrimaryCol"> -->
+        
+        <apex:actionFunction action="{!primaryQuoteUpdate}" name="actionFunctionPrimaryQuoteUpdate" reRender="checkPrimaryCol"> 
+            <apex:param name="quoteIDparam" assignTo="{!quoteID}" value="recID" /> 
+        </apex:actionFunction>
+        
+        <apex:actionFunction immediate="true" action="{!checkVal}" name="actionFunctionChangeVal" reRender="PartnerRenewal">
+            <apex:param name="recordIDparam" assignTo="{!recordID}" value="recID" /> 
+        </apex:actionFunction>
+        
+        <apex:actionFunction immediate="true" action="{!updateWhyDidWeWin}" name="actionFunctionupdateWhyDidWeWin" reRender="ClosedWonQuestions">
+            <apex:param name="something" assignTo="{!recordID}" value="recID" /> 
+        </apex:actionFunction>
+        
+        
+        
+        
+        
+    </apex:form>
+</apex:page>

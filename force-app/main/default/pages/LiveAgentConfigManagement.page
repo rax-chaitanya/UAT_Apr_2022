@@ -1,0 +1,41 @@
+<!-- **
+* File :LiveAgentConfigManagement.page
+* Description : Visualforce page for user config management settings.
+* Created Date : 27/July/2017
+* Author : RDC
+* -->
+
+<apex:page title="User Configuration Management" standardStylesheets="false">
+<apex:sectionHeader title="Live Agent" subtitle="Management"/>
+   <apex:form >
+        <style>
+            body .bPageBlock .pbBody .grey .pbSubheader{
+            background-color:#232425;
+            }
+            body .bPageBlock .pbBody .grey .pbSubheader h3{
+            color:#F7FAFC;
+            }
+             .activeTab {background-color:#236FBD;
+                          color:white;
+                          tab-color:yellow;
+                          background-image:none}
+            .inactiveTab {background-color:white;
+                          color:black;
+                          background-image:none}
+          
+        </style>    
+       <apex:tabPanel switchType="ajax" selectedTab="tabOne"
+                  id="theTabPanel" tabClass="activeTab"
+                  inactiveTabClass="inactiveTab">  
+            <apex:tab label="Create Live Agent Config" name="one" id="tabOne" style="background-color:white;">
+                <apex:iframe src="LiveAgentConfigurationPage" height="1100"/>
+              </apex:tab>
+              <apex:tab label="Add/Delete Live Agent Config Users" name="two" id="tabTwo" style="background-color:white;">
+            <apex:iframe src="LiveAgentAssignPage" height="635"/>
+            </apex:tab>
+            <apex:tab label="Edit Live Agent Configurations" name="three" id="tabThree" style="background-color:white;">
+            <apex:iframe src="LiveAgentConfigEditPage" height="1075"/>
+            </apex:tab>
+           </apex:tabPanel>
+   </apex:form>
+</apex:page>

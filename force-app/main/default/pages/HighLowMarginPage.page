@@ -1,0 +1,94 @@
+<apex:page standardController="Opportunity" extensions="HighLowMarginController" lightningStylesheets="true" showHeader="false" docType="html-5.0" applyhtmltag="false">
+    
+    <style>
+        .roundImg{
+        width: 20rem;
+        height: 20rem;
+        border-radius: 80%;        
+        max-width: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto }
+        }
+    </style>
+    
+    <style>
+        .roundImg2{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        max-width: none;
+        }
+    </style>
+    
+    <style>
+        .custom1 {
+        background-color: #DBF3FA;
+        }
+        .custom2 {
+        background-image: url("{!$Resource.RAX_Background}");
+        }
+        .custom3 {
+        background-color: red;
+        }
+        .custom4 {
+        background-color: black;
+        }
+    </style>  
+
+    
+    <apex:slds />
+    
+    <div class="custom2">        
+        
+        <div class="slds-scope">
+            
+            
+            <div class="slds-container_x-large slds-container_center">
+                
+                
+                <div class="header">
+                    <left><img src="{!$Resource.RAX_Logo_2}" styleclass="roundImg2" width="13%"/></left>
+                </div>
+                
+                
+                <div class="slds-grid slds-grid_align-center slds-p-around_small slds-grid_vertical-align-center">
+                    <div class="slds-col"><apex:image url="{!$Resource.AstroCash}" styleclass="roundImg"/></div>
+                </div>
+                
+                <div class="slds-grid slds-grid_align-center slds-p-around_small slds-grid_vertical-align-center">
+                    <div class="slds-col"><p style="font-size:30px; color:black"><b>CREDITING TABLE</b></p></div>
+                </div> 
+                
+                <div class="slds-grid slds-grid_align-center slds-p-around_small slds-grid_vertical-align-center">
+                    <div class="slds-col"><p style="color:red; font-size:18px"><b><u>DISCLAIMER</u>: This Calculator should only be used for the following Plan Number: 1,2,3,4,6,7. It can be used for Plan Number 5 but only for EDP</b></p>
+                        <br/></div>
+                </div> 
+                
+                <div class="slds-grid slds-grid_align-center slds-p-around_small slds-grid_vertical-align-center">
+                    <div class="slds-col"><p style="font-size:14px; color:black"> Contract Length: <b>{!opp.Contract_Length__c}</b></p>
+                        <br/>
+                        
+                        <div class="slds-grid slds-grid_align-center slds-p-around_small slds-grid_vertical-align-center">
+                            <apex:pageBlock >
+                                <apex:pageBlockTable value="{! recordList}" var="item" columnsWidth="70%, 15%, 15%" style="width:800px">                                    
+                                    <apex:column headerValue="Product Bucket" value="{! item.productBucket}" styleClass="custom1"> </apex:column>                                    
+                                    <apex:column headerValue="Bookings" value="{! item.bookings}" styleClass="custom1"> </apex:column>                                    
+                                    <apex:column headerValue="Estimated Commissionable Bookings" value="{! item.commissionableBookings}" styleClass="custom1" > </apex:column>                                    
+                                </apex:pageBlockTable>
+                            </apex:pageBlock>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="slds-grid slds-grid_align-center slds-p-around_x-large slds-grid_vertical-align-center">
+                    <div class="slds-col"><p style="font-size:20px; color:red"><b>The purpose of this calculator is to aid in the understanding of your compensation plan. 
+                        This calculator has no bearing on the calculations of your actual variable compensation and any errors within these calculations 
+                        have no bearing on your prospective variable compensation plan payouts.</b></p></div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+</apex:page>

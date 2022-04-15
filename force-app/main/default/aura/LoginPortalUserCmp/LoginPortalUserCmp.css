@@ -1,0 +1,60 @@
+@media screen  and (min-width : 1024px){
+    .THIS .logoClass {
+        margin-left:20%;
+        margin-top:10%;
+    }
+    .THIS .h-line{
+        padding: 30px 0px 20px 95px;
+    }
+    .THIS .user-login{
+        margin-left:220px;
+        margin-top:3%;
+    }
+    .THIS .lineclass{
+        border-left: thick solid #e6e6ff;
+        height:350px;
+    }
+}
+@media screen and (max-width : 500px)  {
+    .THIS .page-section{
+        margin-top: 5%;       
+    }
+    .THIS .lineclass{
+        border-bottom : thick solid #e6e6ff;
+        width:300px;
+        height:0px;
+    }
+    .THIS .logoClass {
+        margin-left: 15%;
+        margin-top:0%;
+    }
+    .THIS .user-login{
+        margin-left:25px;        
+    }
+    .THIS .h-line{
+        padding: 1px 0px 15px 20px;
+    }
+    
+}
+
+@media screen  and (min-width : 501px) and (max-width : 980px) {
+    .THIS .logoClass {
+        margin-left: 1%;
+        margin-top: 20%;
+    }
+    .THIS .page-section{
+        margin-top: 3%;       
+    }    
+    .THIS .h-line{
+        padding: 12px 0 20px 15px;
+    }
+    .THIS .user-login{
+        margin-left:35px;
+        margin-top:3%;
+    }
+    .THIS .lineclass{
+        border-left: thick solid #e6e6ff;
+        height:350px;
+    }
+    
+}

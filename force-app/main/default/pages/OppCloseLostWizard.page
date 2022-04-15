@@ -1,0 +1,16 @@
+<apex:page controller="OpportunityLostController" docType="html-5.0" lightningStylesheets="true">
+
+        <apex:dynamicComponent componentValue="{!dynamicPage}"/>
+
+    <apex:form id="sss">
+        
+        <apex:actionFunction immediate="true" action="{!changeLostReason}" name="actionFunctionChangeLostReason" reRender="pageBlock">
+            <apex:param name="oppcomtestId"  assignTo="{!recordID}" value="recId"/>
+            
+        </apex:actionFunction>
+        
+        <apex:actionFunction action="{!EditCompetitor}" name="actionFunctionEditCompetitor" reRender="pageBlock">
+            <apex:param name="oppcomid"  assignTo="{!recordID}" value="recId"/>
+        </apex:actionFunction>
+    </apex:form>    
+</apex:page>

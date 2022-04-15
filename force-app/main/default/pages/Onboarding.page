@@ -1,0 +1,21 @@
+<apex:page showHeader="false">
+    <apex:includeLightning />
+    
+    <div id="DisplayId"></div> 
+    
+    <script>
+    
+    $Lightning.use("c:OnboardingApp", function() {
+       
+        $Lightning.createComponent("c:PartnerOnboarding",
+                                   { 
+                                      
+                                   },
+                                   "DisplayId",
+                                   function(component) {
+                                       
+                                       
+                                   });
+    });
+    </script>
+</apex:page>

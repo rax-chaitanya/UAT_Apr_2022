@@ -1,0 +1,315 @@
+<apex:page tabStyle="Quote" controller="DPNewConfigurationDocumentController"  title="New Proposal" lightningStylesheets="false">
+    <apex:includeScript value="{!URLFOR($Resource.jqGrid,'/js/jquery-1.9.0.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryGlobalize, '/globalize-master/lib/globalize.js')}"/>  
+    <apex:includeScript value="{!URLFOR($Resource.jQueryGlobalize, '/globalize-master/lib/cultures/globalize.cultures.js')}"/>
+    
+    <c:APIParameterInitialization ApiServiceUrl="{!$Api.Partner_Server_URL_370}" />
+    
+    
+    
+    <apex:form id="theForm" >
+        
+        <apex:pageMessages > </apex:pageMessages>
+        
+        
+        <apex:actionFunction name="sendMap" action="{!processGlobalizeMap}" id="sendMapId" rerender="">
+            <apex:param name="value1" value="" id="param"/>
+        </apex:actionFunction>
+        <apex:inputText styleClass="sendMap hidden" value="{!hiddenSendMap}" />
+        
+        <apex:sectionHeader title="New Proposal" />
+        
+        <apex:pageBlock rendered="{!showProdInactiveError =true}">
+            
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="Back to Quote" style="width:100px" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Error" rendered="{!showMainError}">
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="Home" style="width:100px" action="{!home}"/>                 
+            </apex:pageBlockButtons>
+            <apex:pageMessage severity="Error" strength="3" title="Error" summary="This page can only be accessed by clicking the Generate Proposal button on a Quote"/>
+        </apex:pageBlock>
+        <apex:pageBlock title="Step 1" rendered="{!and(page = 1,theQuote.isSyncing = false,!showMainError )}">     
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="Back to Quote" style="width:100px" action="{!cancel}"/>                 
+            </apex:pageBlockButtons>
+            <apex:pageMessage severity="Error" strength="3" title="Error" summary="A proposal can only be generated from an active Quote"/>
+        </apex:pageBlock>     
+        
+        
+        
+        
+        <!-- Go-Live Approval Section -->      
+        <!--
+<apex:pageBlock title="Step 1" rendered="{!and(page = 1,theQuote.isSyncing = true,theQuote.DP_Go_Live_Override__c = false,theQuote.DP_Exception_Lines__c = 0,!showMainError)}" >
+<apex:pageBlockButtons location="both" >
+<apex:commandButton value="Back to Quote" style="width:100px" action="{!cancel}"/>
+<apex:commandButton value="Submit for Approval" style="width:150px" action="{!submitForApproval}"/>              
+</apex:pageBlockButtons>
+<apex:pageMessage severity="Info" strength="3" title="Approval Required" summary="This Quote must be approved before a proposal can be generated"/>
+<div class="pbSubheader brandTertiaryBgr tertiaryPalette"><h3>Approval Request Comments</h3></div>
+<div style="padding-left: 20px">
+<div class="requiredInput">
+<div class="requiredBlock"></div>
+<apex:inputTextarea value="{!approvalRequest}" id="appr" cols="80" rows="5" />
+</div>               
+</div>
+</apex:pageBlock>
+-->
+        <!--- Quote Discount Approval Section -->
+        <apex:pageBlock title="Step 1" rendered="{!and(page = 1,theQuote.isSyncing = true,theQuote.DP_Exception_Lines__c > 0,theQuote.DP_Discount_Override__c = false,!showMainError )}" >
+            
+            
+            <apex:pageBlockButtons location="both" >
+                <apex:commandButton value="Back to Quote" style="width:100px" action="{!cancel}"/>
+                <apex:commandButton value="Edit Quote" style="width:100px" action="{!editQuote}"/>          
+                <apex:commandButton value="Submit for Approval" style="width:150px" action="{!submitForApproval}"/>              
+            </apex:pageBlockButtons>
+            <apex:pageMessage severity="Info" strength="3" title="Approval Required" summary="This Quote must be approved before a proposal can be generated"/>
+            <apex:pageBlockSection columns="1" collapsible="false" title="Exception Quote Line Items">
+                <apex:pageBlockTable title="Exception Quote Lines" value="{!ExceptionQuoteLineItems}" var="e" rendered="true">
+                    <apex:column value="{!e.PriceBookEntry.Name}"/>
+                    <apex:column value="{!e.Quantity}"/>
+                    <apex:column value="{!e.DP_Discount__c}"/>
+                    <apex:column value="{!e.DP_Max_Discount__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <div class="pbSubheader brandTertiaryBgr tertiaryPalette"><h3>Approval Request Comments</h3></div>
+            <div style="padding-left: 20px">
+                <div class="requiredInput">
+                    <div class="requiredBlock"></div>
+                    <apex:inputTextarea value="{!approvalRequest}" id="appr" cols="80" rows="5" />
+                </div>               
+            </div>
+        </apex:pageBlock>
+        <apex:pageblock title="Step 1" rendered="{!and( page = 1,theQuote.isSyncing = true,or(theQuote.DP_Exception_Lines__c = 0,theQuote.DP_Discount_Override__c = true),!showMainError)}">
+            
+            
+            
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton value="Cancel" style="width:100px" action="{!cancel}"/>
+                <apex:commandButton value="Next" style="width:100px" action="{!nextPage}"/>              
+            </apex:pageBlockButtons>
+            <style>
+                .template { 
+                margin:auto;
+                width:175px;
+                height:220px;
+                }
+                .templateselected {
+                background-color:rgb(229, 193, 48);
+                }
+                .templateimage {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                }
+            </style>
+            <script>
+            $(document).ready(function(){
+                $('input[type="checkbox"]').click(function(){
+                    //console.log('clicked');
+                    //console.log($(this).attr('class'));
+                    console.log($(this).is(':checked'));
+                    if($(this).is(':checked')){
+                        $('.template.'+$(this).attr('class')).addClass('templateselected');
+                    } else {
+                        $('.template.'+$(this).attr('class')).removeClass('templateselected');               
+                    }
+                });
+                $('.boxes').click(function(){
+                    $(this).parent().find('input').prop('checked',!$(this).parent().find('input').is(':checked'));
+                    if($(this).is('.templateselected')){
+                        console.log('willremove selected class');
+                        $(this).removeClass('templateselected'); 
+                    } else {
+                        console.log('adding selected class');
+                        $(this).addClass('templateselected');
+                    }
+                });
+            });
+            </script>
+            <table width="90%" style="margin:auto">
+                <apex:repeat value="{!templateRowList}" var="tr">
+                    <tr>
+                        <apex:repeat value="{!tr.wrapperlist}" var="w">
+                            <td>
+                                <div class="template {!w.index} boxes {!if(w.checked,"templateselected","")}">
+                                    <center>
+                                        <apex:outputPanel rendered="{!w.thetemplate.id != null}">
+                                            <img class="templateimage" src="{!URLFOR($Action.Attachment.Download, thumbnailIdMap[w.thetemplate.Id])}"    />
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!w.thetemplate.id == null}">
+                                            <div class="templateimage" style="width:155px;height:200px;"></div>
+                                        </apex:outputPanel>                                                              
+                                    </center>
+                                </div>
+                                <center>
+                                    {!w.theTemplate.APXTConga4__Name__c}
+                                    <br/>
+                                    <apex:inputCheckbox value="{!w.checked}" styleClass="{!w.index} hidden"/>     
+                                </center>
+                            </td>
+                        </apex:repeat>              
+                    </tr>
+                </apex:repeat>
+            </table>
+            <script>
+            
+            var isoCodeToLanguage = {'CNY':'zh',
+                                     'EUR':'eu',
+                                     'GBP':'en-GB',
+                                     'HKD':'zh-HK',
+                                     'USD':'en-US'};
+            
+            var map = {!SerializedGlobalizeMap};
+            //console.log(!theQuote.DP_Currency_Code__c);
+            var culture = Globalize.culture(isoCodeToLanguage['{!theQuote.DP_Currency_Code__c}']);
+            console.log(map);
+            //console.log(Globalize.culture().name);
+            
+            var usCulture = Globalize.culture(isoCodeToLanguage['USD']);
+            
+            //var map = {!SerializedGlobalizeMap};
+            
+            
+            
+            function currencyFormatDE (num) {
+                var culture = Globalize.culture(isoCodeToLanguage['{!theQuote.DP_Currency_Code__c}']);
+                return " € "+ num 
+                // .toFixed(0)  + " € " // always two decimal digits
+                // .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " €" // use . as a separator
+                
+                // .replace(",", ".") // replace decimal point character with ,
+                
+                //  return num.toLocaleString( Globalize.culture().name, { style: 'currency', currency: isoCodeToLanguage['{!theQuote.DP_Currency_Code__c}'] });
+                
+            }
+            
+            
+            
+            
+            if (culture.name == 'eu')
+            {for(var i in map){
+                map[i] = currencyFormatDE(i) ;     
+                //map[i] = currencyFormatDE(Globalize.parseFloat(i)) ;                                                          
+            }
+            }
+            
+            if (culture.name != 'eu')  {
+                for(var i in map)
+                {                                    
+                    //  map[i] = formatCurrency(Globalize.parseFloat(i),'c',culture);
+                    map[i] = Globalize.format(Globalize.parseFloat(i),'c',culture);
+                }
+            }
+            
+            
+            /*
+               use globalize on everything in the map and then send back to controller with process global map
+               
+               */
+          console.log(map);
+          console.log(JSON.stringify(map));
+          
+          var serMap = JSON.stringify(map);
+          
+          $('.sendMap').val(serMap);
+          
+          
+          </script>
+          
+      </apex:pageblock>   
+      <apex:pageBlock title="Step 2" rendered="{!page = 2}">
+          <apex:pageMessage severity="error" strength="3" summary="You can only select 10 or fewer templates" 
+                            rendered="{!templateIdList.size > 10}"></apex:pageMessage>                    
+          
+          <apex:pageBlockButtons location="top" >
+              <apex:commandButton value="Cancel" style="width:100px" action="{!cancel}" />
+              <apex:commandButton value="Back" style="width:100px" action="{!previousPage}"/>
+              <apex:commandButton value="Generate Document" style="width:150px" action="{!nextPage3}" rendered="{!templateIdList.size <= 10}"/>
+          </apex:pageBlockButtons>
+          
+          <table>
+              <tr>
+                  <td>
+                      <b>Collapse Quote Line Details</b>
+                      <table>
+                          <apex:repeat value="{!excludeWrapperList}" var="e">
+                              <tr>
+                                  <td>
+                                      <apex:inputCheckbox value="{!e.checked}" >
+                                          <apex:actionsupport event="onchange" action="{!updateCollapse}" />
+                                      </apex:inputCheckBox>
+                                  </td>
+                                  <td>{!e.Name}</td>
+                              </tr>
+                          </apex:repeat>
+                          <tr>
+                              <td colspan="2"><apex:commandButton value="Collapse All" action="{!collapseQuoteLineAll}"/></td>                   
+                          </tr>
+                      </table>
+                  </td>
+                  
+                  <td>
+                      <b>Hide Parent Price Details</b>
+                      <table>
+                          <apex:repeat value="{!excludeWrapperList}" var="e">
+                              <tr>
+                                  <td>
+                                      <apex:inputCheckbox value="{!e.hideChildPrice}" >
+                                          <apex:actionsupport event="onchange" action="{!updateCollapse}" />
+                                      </apex:inputCheckBox>
+                                  </td>
+                                  <td>{!e.Name}</td>
+                              </tr>
+                          </apex:repeat>
+                          <tr>
+                              <td colspan="2"><apex:commandButton value="Hide All" action="{!hideChildPriceAll}"/></td>                   
+                          </tr>
+                      </table>
+                  </td>
+                  <td>
+                      <b>Show Parent Description</b>
+                      <table>
+                          <apex:repeat value="{!excludeWrapperList}" var="e">
+                              <tr>
+                                  <td>
+                                      <apex:inputCheckbox value="{!e.showdescription}" >
+                                          <apex:actionsupport event="onchange" action="{!updateCollapse}" />
+                                      </apex:inputCheckBox>
+                                  </td>
+                                  <td>{!e.Name}</td>
+                              </tr>
+                          </apex:repeat>
+                          
+                      </table>
+                  </td>
+                  
+              </tr>
+          </table>
+          <div id="output" class="hidden">
+              
+          </div>  
+          <apex:inputField value="{!theQuote.DP_Formatted_Quote__c}"/>           
+          
+          
+      </apex:pageBlock>
+      <apex:pageblock title="Generate Document" rendered="{!page = 3}">
+          <apex:pageBlockButtons location="top">
+              <apex:commandButton value="Back to Quote" action="{!cancel}"/>
+          </apex:pageBlockButtons>
+          <apex:outputPanel rendered="{!templateIdList.size <= 10}">
+              <center>                      
+                  <iframe style="border: 0px none" width="300px" height="150px" src="https://www.appextremes.com/apps/Conga/Composer.aspx?SessionId={!sessionId}&ServerUrl={!serverurl}&TemplateId={!selectedTemplates}&AWD=1&id={!RecordId}&DS7=13&OFN={!theQuote.Name}&LG4=1&LG3=1&LG1=Proposal+Generated&MFTSId0={!theQuote.Id}&MFTS0=DP_Generating_Proposal__c&MFTSValue0=false">
+                  </iframe>
+              </center>
+          </apex:outputPanel>
+      </apex:pageblock>            
+    </apex:form>
+</apex:page>

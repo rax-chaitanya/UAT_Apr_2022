@@ -1,0 +1,100 @@
+<apex:page showHeader="false" controller="LiveAgentPostChat" >
+      <div id='details'>
+             <apex:form id="apexform">
+             <apex:pageMessages id="pgMsg" />
+
+                 <apex:pageblock id="mainBlock1">  
+                 <!--              Button Id: <apex:outputText value="{!$CurrentPage.parameters.buttonId}" /><br/>
+                   Transcript: <apex:outputText value="{!$CurrentPage.parameters.transcript}" /><br/> -->
+                  <form style="margin: 0px" name="myform">
+                   <input type="hidden" value="true" name="button_post_chat_survey_0" />
+                   <tr>
+        <td id="header_bar" colspan="3">
+            <!-- Header Include Start -->
+            <table cellspacing="0" cellpadding="8" width="100%" class="window_header" style="background: #000000;  font-color: #FFFFFF;  border-bottom: 10px solid #C40022;">
+    <tbody><tr>
+        <td valign="bottom" align="left">
+<table cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr><td>
+        <apex:image value="{!$Resource.LiveAgentRackspaceNo1Logo}" height="35"/>
+
+  <!--  <img width="154" height="43" border="0" alt="" src="/resource/1498044322000/LiveAgentRackspaceNo1Logo" /> -->
+    </td></tr>
+</tbody></table>
+        </td>
+        <td valign="bottom" align="right" style=" font-size: 133%;">
+            <b></b>
+        </td>
+    </tr>
+</tbody></table>
+            <!-- Header Include End -->
+        </td>
+    </tr>    
+    <tr>
+        <td width="520" colspan="2" ><b>
+            To help us improve, please complete the short survey below before
+clicking Submit in the lower left corner.</b>
+        </td>
+    </tr>  
+     <table style="width:100%" >      
+    <tr>
+                                <td><b>Please rate your chat experience ( 10 being fanatical and 0 being poor) <font size="4" color="red">*</font></b></td>
+                            </tr>
+                                                       </table>
+
+                           <tr>
+                                <td>
+                                    <table style="width:100%" >
+                                        <tr>
+                                            <td style="width:35%">
+                                                <div >
+                                                    <span class="chat-survey-radio-wrapper chat-survey-custom-radio-wrapper">
+                                                        <apex:selectRadio value="{!Feedback}">
+                                                           <apex:selectOptions value="{!items}"/><br/>
+                                                        </apex:selectRadio><br/>
+                                                  </span>
+                                          </div>
+                                           </td>
+                                            <!--<td> <font color="red">*</font></td>--> 
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Please provide a short reason for your score: <font size="4" color="red">*</font></b></td>
+                            </tr>
+                            <tr>
+                                <table style="width:100%" >
+                                    <tr>
+                                        <td style="width:35%">
+                                            
+                                            <apex:inputTextarea value="{!chatFeedback }"  rows="3" cols="40"/>   
+                                            
+                                            
+                                        </td>
+                                        <td> </td> 
+                                    </tr>
+                                    
+                               <tr>
+                                <td class="chat_survey_required_indicator_legend" colspan="3">
+                                <br/>
+                ( <font size="4" color="red">*</font> - indicates required field)
+                                </td>
+                                </tr>
+                                </table>
+                                
+                                
+                            </tr>
+                    </form>
+         </apex:pageblock>
+            <table style="width:100%">
+                                    <tr>
+                                        <td align="left">
+                                         <apex:commandButton action="{!save}" value="Submit"   title="Submit" rerender="pgMsg"/> 
+                                           
+                                         </td> 
+                                    </tr>
+                                    </table>
+    </apex:form>
+      </div>
+ </apex:page>

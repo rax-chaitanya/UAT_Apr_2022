@@ -1,0 +1,6 @@
+<aura:component implements="lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.navigate}"/>
+      
+    
+</aura:component>

@@ -1,0 +1,145 @@
+<aura:component controller="GAR_ApprovalController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global">
+    <aura:attribute name="record" type="object"/>
+    <aura:attribute name="comments" type="String"/>
+    <aura:attribute name="message" type="boolean" default="false"/>
+    <aura:attribute name="severity" type="String" default="error"/>
+    <aura:attribute name="hasMessage" type="boolean" default="false"/>
+    <aura:attribute name="processed" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:spinner class="slds-show" aura:id="spinner" variant="brand" size="medium" alternativeText="Loading"/>
+    
+    <div class="slds-col modal-header slds-modal__header">
+        <h2 class="title slds-text-heading--medium">
+            <lightning:icon iconName="action:submit_for_approval" size="small"/>
+            &nbsp;
+            Account Realignment Request Approval
+        </h2>
+    </div>
+    <div class="slds-col modal-body slds-p-around--small1">
+        <aura:if isTrue="{!v.hasMessage}">
+            <ui:message aura:id="error" title="" severity="{!v.severity}">
+                <lightning:icon iconName="{!'utility:'+v.severity}" size="small"/>
+                &nbsp;
+                {!v.message}
+            </ui:message>
+        </aura:if>
+        <lightning:layout multipleRows="true">
+            <aura:if isTrue="{!v.record.Id}">
+                <aura:if isTrue="{!!v.processed}">
+                    <lightning:layoutItem size="12">
+                        <lightning:textarea name="input1" label="Comments" value="{!v.comments}"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="12" class="slds-border_bottom slds-p-bottom_xx-small">
+                        <lightning:button label="Approve" iconName="utility:check" variant="success" onclick="{!c.approve}"/>
+                        <lightning:button label="Reject All" iconName="utility:close" variant="destructive" onclick="{!c.reject}"/>
+                    </lightning:layoutItem>
+                </aura:if>
+                <lightning:layoutItem size="12" class="slds-p-top_small scroll">
+                    <aura:iteration items="{!v.record.Realignment_Request_Items__r}" var="requestItem">
+                        <lightning:card>
+                            <aura:set attribute="title">
+                                <lightning:icon iconName="action:new_account" size="small" class="slds-iconclass"/>
+                                <span><strong>{!requestItem.Account__r.Name}</strong>&nbsp;</span>&nbsp;
+                                <span class="slds-text-body_small">
+                                    <span class="slds-text-title_caps slds-border_bottom slds-text-body_small slds-text-color_inverse">Company Number</span>: <span class="slds-text-body_small slds-text-color_inverse">{!requestItem.Account__r.Company_Number__c}</span> 
+                                </span>
+                            </aura:set>
+                            <!--<aura:set attribute="footer">
+                                <lightning:badge label="Tag1"/>
+                                <lightning:badge label="Tag2"/>
+                                <lightning:badge label="Tag3"/>
+                            </aura:set>-->
+                            <lightning:layout multipleRows="true" class="slds-p-top_xx-small">
+                                <lightning:layoutItem size="4">
+                                    <lightning:layout verticalAlign="stretch" horizontalAlign="center" multipleRows="true" class="">
+                                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                            <span class="slds-align_absolute-center">
+                                                <span class="slds-border_bottom slds-text-title_caps">
+                                                    Current Owner
+                                                </span>
+                                            </span>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                            <span class="slds-text-align_center slds-align_absolute-center">
+                                                <ui:outputText value="{!requestItem.Previous_Account_Owner__r.Name ? requestItem.Previous_Account_Owner__r.Name : 'None'}"/>
+                                            </span>
+                                        </lightning:layoutItem>
+                                        <aura:if isTrue="{!requestItem.Previous_Account_Owner__c}">
+                                            <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                                <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                                                    <b>{!requestItem.Previous_Account_Owner__r.UserRole.Name}&nbsp;{!requestItem.Previous_Account_Owner__r.IsActive ? '(Active)' : '(Inactive)'}</b>
+                                                </span>
+                                            </lightning:layoutItem>
+                                        </aura:if>
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="4">
+                                    <lightning:layout verticalAlign="stretch" horizontalAlign="center" multipleRows="true" class="">
+                                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                            <span class="slds-align_absolute-center">
+                                                <span class="slds-border_bottom slds-text-title_caps">
+                                                    New Owner
+                                                </span>
+                                            </span>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                            <span class="slds-text-align_center slds-align_absolute-center">
+                                                <ui:outputText value="{!requestItem.New_Account_Owner__r.Name ? requestItem.New_Account_Owner__r.Name : 'None'}"/>
+                                            </span>
+                                        </lightning:layoutItem>
+                                        <aura:if isTrue="{!requestItem.New_Account_Owner__r}">
+                                            <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                                <span class="slds-text-align_center slds-align_absolute-center slds-text-body_small">
+                                                    <b>{!requestItem.New_Account_Owner__r.UserRole.Name}&nbsp;{!requestItem.New_Account_Owner__r.IsActive ? '(Active)' : '(Inactive)'}</b>
+                                                </span>
+                                            </lightning:layoutItem>
+                                        </aura:if>
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                                <aura:if isTrue="{!!v.processed}">
+                                    <lightning:layoutItem size="4">
+                                        <lightning:layout verticalAlign="stretch" horizontalAlign="center" multipleRows="true" class="">
+                                            <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                                <span class="slds-align_absolute-center">
+                                                    <span class="slds-border_bottom slds-text-title_caps">
+                                                        Action
+                                                    </span>
+                                                </span>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                                <div class="slds-align_absolute-center">
+                                                    <lightning:input class="toggle" type="toggle" label="" name="Action" checked="{!requestItem.selected}" messageToggleActive="Approve" messageToggleInactive="Reject"/>
+                                                </div>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </lightning:layoutItem>
+                                </aura:if>
+                                <aura:if isTrue="{!v.processed}">
+                                    <lightning:layoutItem size="4">
+                                        <lightning:layout verticalAlign="stretch" horizontalAlign="center" multipleRows="true" class="">
+                                            <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                                <span class="slds-align_absolute-center">
+                                                    <span class="slds-border_bottom slds-text-title_caps">
+                                                        Status
+                                                    </span>
+                                                </span>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem flexibility="auto" size="12" class="custom-box">
+                                                <div class="slds-align_absolute-center slds-text-heading_small">
+                                                    {!requestItem.Request_Status__c}
+                                                    &nbsp;
+                                                    <lightning:icon iconName="{!requestItem.Request_Status__c == 'Approved' ? 'action:approval' : 'action:close'}" size="xx-small"/>
+                                                </div>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </lightning:layoutItem>
+                                </aura:if>
+                            </lightning:layout>
+                        </lightning:card>
+                    </aura:iteration>
+                </lightning:layoutItem>
+            </aura:if>
+        </lightning:layout>
+    </div>
+</aura:component>

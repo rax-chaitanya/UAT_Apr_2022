@@ -1,0 +1,37 @@
+<aura:component controller="DDIValidationController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" >
+	<aura:attribute name="record" type="Object"
+    description="The record object to be displayed"/>
+    <aura:attribute name="simpleRecord" type="Object"
+    description="A simplified view record object to be displayed"/>
+    <aura:attribute name="Account" type="Object"
+    description="A simplified view record object to be displayed"/>
+    <aura:attribute name="recordError" type="String"
+    description="An error message bound to force:recordData"/>
+    <force:recordData aura:id="recordEditor"
+    fields="Name,DDI__c,Type,QuotingSystem__c,Account__c,Account__r.Type,CAC_Integration_Status__c"
+    recordId="{!v.recordId}"
+    targetError="{!v.recordError}"
+    targetRecord="{!v.record}"
+    targetFields ="{!v.simpleRecord}"
+    recordUpdated="{!c.handleRecordUpdated}"
+    mode="EDIT"/>
+     
+    <!--force:recordData aura:id="recordHandler"
+      recordId="{!v.recordId}"
+      fields="Name,DDI_c"
+      targetRecord="{!v.record}"
+      targetFields="{!v.simpleRecord}"
+      targetError="{!v.recordError}"
+      mode="VIEW"
+      recordUpdated="{!c.handleRecordUpdated}"
+      /-->
+    <!-- Display a lightning card with details about the record -->
+
+    
+<!-- Display Lightning Data Service errors, if any -->
+<aura:if isTrue="{!not(empty(v.recordError))}">
+    <div class="recordError">
+        {!v.recordError}
+    </div>
+</aura:if>
+</aura:component>

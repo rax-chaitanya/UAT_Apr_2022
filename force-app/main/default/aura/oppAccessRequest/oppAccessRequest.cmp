@@ -1,0 +1,42 @@
+<aura:component controller="RequestOpportunityAccessController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="Action" type="String"/>
+    <aura:attribute name="roles" type="List"/>
+    <aura:attribute name="teamRole" type="String"/>
+    
+    <lightning:spinner aura:id="spinner" alternativeText="Loading" size="small" />
+    
+    <aura:renderIf isTrue="{! v.Action == 'Select Role'}">
+        <div class="slds-m-top--xx-large" >
+            <div class="slds-align--absolute-left"> 
+                <lightning:select label="Select a Role" name="teamRole" aura:id="teamRole" value="{!v.teamRole}">
+                    <option value="">--select--</option>
+                    <aura:iteration items="{!v.roles}" var="role">
+                        <option text="{!role.label}" value="{!role.value}"/>
+                    </aura:iteration>
+                </lightning:select>
+                
+                
+            </div>
+            <br/>
+            <div align="center">
+                <lightning:button variant="brand" label="Submit" onclick="{! c.requestforApproval }" />
+                
+            </div>
+            
+        </div>
+    </aura:renderIf>
+    
+    <aura:renderIf isTrue="{! v.Action != 'Select Role'}">
+        <div class="slds-m-top--xx-large" >
+            <div class="slds-align--absolute-left"> 
+                <div class="slds-text-heading--large">
+                    {! v.message}
+                </div>
+            </div>
+        </div>
+    </aura:renderIf>
+    
+</aura:component>

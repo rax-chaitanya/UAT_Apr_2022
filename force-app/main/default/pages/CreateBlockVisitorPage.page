@@ -1,0 +1,98 @@
+<!-- **
+* File :CreateBlockVisitorPage.page
+* Description : Block the ip address of the visitors.
+* Created Date : 29/Aug/2017
+* Author : RDC
+* -->
+
+<apex:page controller="CreateBlockVisitorController" showHeader="false" >
+    <apex:actionstatus id="counterStatus">
+    <apex:facet name="start">
+        <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+            <div class="waitingHolder" style="top: 100px; width: 91px;">
+            <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+            <span class="waitingDescription">Loading...</span>
+            </div>
+        </div>
+    </apex:facet>
+</apex:actionstatus>
+     <apex:form id="myForm" style="height:1500px;">
+    <apex:pageblock title="Live Chat Blocking Rules" id="PageBlock">
+                    <apex:pageBlockButtons location="Bottom">
+                     <apex:commandButton value="Save" action="{!save}" style="width:10%;"/>
+                     <apex:commandButton value="Cancel" action="{!cancel}" style="width:10%;"/>
+                     </apex:pageBlockButtons>
+            
+
+            <apex:pageMessages />
+            <apex:pageBlockSection title="Rule Information" columns="1" >
+                <apex:outputpanel >
+                    <table>
+                        <tr>
+                            <td>
+                            Live Chat Blocking Rule Name
+                            </td>
+                            <td>
+                            <apex:inputText value="{!blockVisitorLabel}" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            Developer Name
+                            </td>
+                            <td>
+                             <apex:inputText value="{!developerName}"  />  
+                            </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        Block Type
+                       </td>
+                        </tr>
+              <tr>
+              <td>
+                      <apex:selectRadio layout="pageDirection" value="{!isSelected}">
+                         
+                     <apex:selectOption itemLabel="Single IP Address" itemValue="True" ></apex:selectOption>
+                         
+                     <apex:selectOption itemLabel="IP Address Range" itemValue="False"></apex:selectOption>
+                     <apex:actionSupport event="onchange" reRender="PageBlock" status="counterStatus"/>
+                     </apex:selectRadio>
+
+                     </td>
+                     </tr>        
+                       
+                           <tr>
+                            <td>
+                             <apex:outputLabel value=" From IP Address"  ></apex:outputLabel>
+                            </td>
+                            <td>
+                            <apex:inputText value="{!fromIpAddress}"  /> 
+                            </td>
+                           </tr>
+                        <tr>
+                            <td>
+                           <apex:outputLabel value=" To IP Address" rendered="{!NOT(isSelected)}" ></apex:outputLabel>
+                            </td>
+                            <td>
+                            <apex:inputText value="{!toIpAddress}" rendered="{!NOT(isSelected)}"   /> 
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                           <apex:outputLabel value=" Description"   ></apex:outputLabel>
+                            </td>
+                            <td>
+                            <apex:inputTextarea value="{!description}" /> 
+                            </td>
+                        </tr>
+                        
+                        
+         </table>
+          </apex:outputpanel>
+                 </apex:pageBlockSection>
+                 </apex:pageblock>
+        </apex:form>
+   
+</apex:page>

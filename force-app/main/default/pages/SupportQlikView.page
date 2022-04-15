@@ -1,0 +1,45 @@
+<apex:page title="Qlikview Support">
+<!--<apex:slds />
+<div class="slds-scope">
+<h3  class="slds-page-header__title"> </h3>-->
+    <apex:sectionHeader title="Qlikview Support"/>
+   <apex:form >
+        <style>
+            body .bPageBlock .pbBody .grey .pbSubheader{
+            background-color:#232425;
+            }
+            body .bPageBlock .pbBody .grey .pbSubheader h3{
+            color:#F7FAFC;
+            }     
+            .activeTab {background-color:#236FBD;
+                          color:white;
+                          tab-color:yellow;
+                          background-image:none}
+            .inactiveTab {background-color:white;
+                          color:black;
+                          background-image:none}
+          
+   </style>
+   <apex:tabPanel switchType="ajax" selectedTab="tabOne"
+                  id="theTabPanel" tabClass="activeTab"
+                  inactiveTabClass="inactiveTab"> 
+                  
+              <apex:tab label="Cloud Office Support" name="one" id="tabOne"  style="background-color:white;" >
+                   <apex:iframe height="1000px" width="100%" src="https://qlikview.fedsso.rackspace.com/QvAJAXZfc/opendoc.htm?document=dashboards%2Fchat%20metrics.qvw&host=QVS%40496797-qvprod1" scrolling="true"/>
+              </apex:tab>
+              
+              <apex:tab label="Engine Room" name="two" id="tabTwo" style="background-color:white;">
+                       <apex:iframe height="1000px" width="100%" src="https://qlikview.fedsso.rackspace.com/QvAJAXZfc/opendoc.htm?document=dashboards%2Fchat%20metrics.qvw&host=QVS%40496797-qvprod1" scrolling="true"/>
+                  
+              </apex:tab>
+              
+              <apex:tab label="LATAM Support" name="three" id="tabthree" style="background-color:white;">
+            <apex:iframe height="1000px" width="100%" src="https://qlikview.fedsso.rackspace.com/QvAJAXZfc/opendoc.htm?document=nps%2Fnps%20chat.qvw&host=QVS%40496797-qvprod1" scrolling="true"/>
+
+              </apex:tab>
+              
+              
+           </apex:tabPanel>
+   </apex:form>
+   <!-- </div>-->
+</apex:page>

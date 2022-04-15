@@ -1,0 +1,9 @@
+<aura:component controller="ExportPartnerCompensationDetailsToExcel" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="isVisible" type="boolean"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <div class="slds-float_right">
+        <aura:if isTrue="{!v.isVisible}">
+            <lightning:button iconName="utility:download" label="Export Compensation" title="Export Compensation" onclick="{!c.handleClick }"/>
+        </aura:if>
+    </div>    
+</aura:component>

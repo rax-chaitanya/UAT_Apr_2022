@@ -1,0 +1,69 @@
+<aura:component controller="CompensationInfoController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+  <aura:handler name="change" value="{!v.info}" action="{!c.onValueChange}" />
+    <aura:attribute name="options" type="List" default="[
+    {'label': 'Compensation', 'value': 'option1'},
+    {'label': 'Compensation Info', 'value': 'option2'}
+    
+    ]"/>
+    <aura:attribute name="value" type="String" default="option1"/>
+    <aura:attribute name="info" type="Boolean" default="true"/>
+    <aura:attribute name="comp" type="Boolean" default="false"/>
+    <div >
+        <lightning:radioGroup aura:id="mygroup"
+        name="radioButtonGroup"
+        options="{! v.options }"
+        value="{! v.value }"
+        onchange="{! c.handleChange }"
+        class="slds-form-element__label "
+    />
+    
+    <!--Start : SFDC-1847 -->
+         
+     <!--End : SFDC-1847 -->    
+         
+    <!--
+    <span class="slds-radio" >
+      <input type="radio" id="radio-1" name="options" value="option1" onchange="{! c.handleChange }"  checked="{!v.info}"/>
+      <label class="slds-radio__label" for="radio-1">
+        <span class="slds-radio_faux"></span>
+        <span style ="font-size: 15px;">Compensation Info</span>
+      </label>
+    </span>
+    <span class="slds-radio">
+        <input type="radio" id="radio-2" name="options" value="option1" onchange="{! c.handleChange }" checked="{!v.comp}"/>
+      <label class="slds-radio__label" for="radio-2">
+        <span class="slds-radio_faux"></span>
+        <span style ="font-size: 15px;">Compensation</span>
+      </label>
+    </span>
+-->
+
+
+        </div>
+    <br/>
+    <aura:if isTrue="{!(v.value == 'option1')}">
+         <div class="slds-float_right">
+            <a href="/partners/apex/ExportCompensationDetails">              
+                <button class="slds-button slds-button_neutral">
+                    <lightning:icon iconName="utility:download" size="xx-small" alternativeText="Export To Excel"/>
+                    Export Compensation
+                </button>
+            </a>
+        </div><br/><br/>
+       <lightning:listView aura:id="listViewCompensation"
+    objectApiName="Partner_Compensation__c"
+    listName="Partner_compensation"
+    rows="25"
+    showActionBar="false"
+    enableInlineEdit="false"
+    showRowLevelActions="false"
+                           
+/>  	
+       
+       
+    </aura:if> 
+    <aura:if isTrue="{!(v.value == 'option2')}">
+        <c:Compensation_Info />
+   </aura:if> 
+
+</aura:component>

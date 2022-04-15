@@ -1,0 +1,120 @@
+<!--
+Author: Kartikeya Tewari
+Ticket: SFDC-1204
+Description: Onboarding wizard main component.
+-->
+<aura:component controller="PartnerOnboardingController" implements="force:appHostable,force:lightningQuickAction,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="company" type="Account"/>
+    <aura:handler name="buttonDisplay" event="c:buttonDisplay" action="{!c.changeButtons}"/>
+    <aura:attribute name="staticImp" type="Integer" default= "1"/>
+    <aura:attribute name="progress" type="Integer" default="0"/>
+    <aura:handler event="c:switchStep" action="{!c.handleswitchEvent}"/>                 
+    <aura:attribute name="onboardStep" type="String" default="agreements"/>
+    <aura:attribute name="stepNum" type="Integer" default="1"/>
+    <aura:attribute name="isOpen" type="boolean" default="true" />
+    <aura:attribute name="isFinished" type="boolean" default="false" />
+    <aura:attribute name="showButtons" type="boolean" default="true" />
+    <aura:attribute name="showPrevious" type="boolean" default="true"/>
+    <aura:attribute name="showNext" type="boolean" default="false"/>
+    <aura:attribute name="showSave" type="boolean" default="false"/>
+    <aura:attribute name="progressComplete" type="boolean" default="false"/>
+    <aura:renderIf isTrue="{!v.isOpen}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open slds-modal_large" aura:id="workspace" style="font-family:FiraSans-regular;font-size:16.5px;">
+            <!-- style="font-family:Arial;font-size:16.5px;" -->
+            <div class="slds-modal__container">
+                <div class="slds-modal__header slds-text-heading_large" style="color:#000000;">
+                    <b> 
+                        Onboarding Wizard
+                    </b>
+                </div>
+                <div>
+                    <div class="slds-grid slds-grid_align-spread slds-p-around_x-small" id="progress-bar-label-id-1" style="font-family:FiraSans-regular;font-size:15px;justify-content: center;color: #000000;">
+                        <center>
+                            <div class="slds-text-align_center" style="font-size: 17px;">
+                                <b>Onboarding Progress</b> &nbsp;
+                                <span aria-hidden="true">
+                                    <strong>{!v.progress}% Complete</strong>
+                                </span>
+                            </div>     
+                        </center>
+                    </div>
+                    <aura:if isTrue= "{!v.progressComplete}">
+                        <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" role="progressbar">
+                            <span class="slds-progress-bar__value"  style="width: 100%;background: #FFDEDF">
+                                <span class="slds-assistive-text">Progress: 100%</span>
+                            </span>
+                        </div>
+                        
+                        
+                        
+                    </aura:if>
+                    <aura:if isTrue= "{!lessthan(v.progress,99)}">
+                        <div class="slds-progress-bar slds-progress-bar_large" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="progress-bar-label-id-1" role="progressbar">
+                            <span class="slds-progress-bar__value slds-progress-bar__value_success" style="width: 0%;background: #FFDEDF">
+                            </span>
+                        </div>
+                    </aura:if>
+                </div>
+                
+                <div class="slds-vertical-tabs">
+                    <ul class="slds-vertical-tabs__nav" role="tablist" aria-orientation="vertical">
+                        <aura:renderIf isTrue="{!v.company.Partner_Level__c!='Sub Agent'}">
+                        <li class="slds-vertical-tabs__nav-item slds-is-active" title="Agreements" role="presentation" id="agreements" onclick="{!c.switchTab}">
+                            <b>  <a style="background-color: #BABEC4; color: black; width: 200px;" class="slds-vertical-tabs__link" href="javascript:void(0)" role="tab" tabindex="0" aria-selected="true" aria-controls="slds-vertical-tabs-0" id="agreements" aura:id="agreements">Agreements</a></b>
+                        </li>
+                        </aura:renderIf>
+                        <aura:renderIf isTrue="{!!or(v.company.Partner_Level__c=='Reseller',v.company.Partner_Level__c=='ResellerEMEA')}">
+                            <aura:renderIf isTrue="{!v.company.Partner_Level__c!='Sub Agent'}">
+                            <li class="slds-vertical-tabs__nav-item" title="Payments" role="presentation" id="payments"  onclick="{!c.switchTab}">
+                                <b> <a style="background-color: #BABEC4; color: black; width: 200px;" class="slds-vertical-tabs__link" href="javascript:void(0)" role="tab" tabindex="-1" aria-selected="false" aria-controls="slds-vertical-tabs-1" id="payments" aura:id="payments">Payments</a></b>
+                            </li>
+                            </aura:renderIf>
+                        </aura:renderIf>    
+                        <li class="slds-vertical-tabs__nav-item" title="Onboarding Experience" role="presentation" id="onboarding" onclick="{!c.switchTab}">
+                            <b><a style="background-color: #BABEC4; color: black; width: 200px;" class="slds-vertical-tabs__link" href="javascript:void(0)" role="tab" tabindex="-1" aria-selected="false" aria-controls="slds-vertical-tabs-2" id="onboarding" aura:id="onboarding">Onboarding Experience</a></b>
+                        </li>
+                    </ul>
+                    <div class="slds-vertical-tabs__content slds-show slds-scrollable" id="slds-vertical-tabs-0" role="tabpanel" aria-labelledby="slds-vertical-tabs-0__nav">
+                        <div class="slds-text-longform" style="font-size: 20px;">
+                            <aura:renderIf isTrue="{!v.onboardStep == 'agreements'}">
+                                <c:PartnerAgreements company="{!v.company}" stepNum="{!v.stepNum}"/>
+                            </aura:renderIf>
+                            
+                            <aura:renderIf isTrue="{!v.onboardStep == 'payments'}">
+                                <c:Payments stepNum = "{!v.stepNum}"/>
+                            </aura:renderIf>
+                            
+                            <aura:renderIf isTrue="{!v.onboardStep == 'onboarding'}">
+                                <c:partnerOnboardingExperience stepNum="{!v.stepNum}"/>
+                            </aura:renderIf>
+                        </div> 
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+                <div class="slds-modal__footer" align="center">
+                    <aura:if isTrue="{!v.showButtons}">
+                          <aura:renderIf isTrue="{!v.onboardStep != 'agreements'}">
+                            <button disabled= "{!v.showPrevious}" id="prevbutton" style="background-color: #EB0000;color:#ffffff;border-color: #EB0000;" class="slds-button slds-button--brand nav" onclick="{!c.previousStep}" >Previous</button>
+                        </aura:renderIf>
+                        <aura:renderIf isTrue="{!or(and(and(v.company.Partner_Level__c!='Strategic',v.company.Partner_Level__c!='StrategicEMEA'), v.stepNum!=7) ,and(or(v.company.Partner_Level__c=='Strategic',v.company.Partner_Level__c=='StrategicEMEA'),v.stepNum!=8 )) }">
+                            <button disabled= "{!v.showNext}" style="background-color: #EB0000;color:#ffffff;border-color: #EB0000;" class="slds-button slds-button--brand nav" onclick="{!c.nextStep}">Next</button>
+                        </aura:renderIf>
+                        
+                        <button disabled= "{!v.showSave}" id = "savebutton" class="slds-button slds-button_success" onclick="{!c.saveAndClose}" style="background-color: #EB0000;color:#ffffff;border-color: #EB0000;">Save and Close</button>
+                        
+                        
+                    </aura:if>
+                    <aura:renderIf isTrue="{! !v.showButtons}">
+                        <button style="background-color: #EB0000;color:#ffffff;border-color: #EB0000;" class="slds-button slds-button--brand" onclick="{!c.agreedTerms}">I Agree</button>
+                        <button style="background-color: #EB0000;color:#FFFFFF;border-color: #EB0000;" class="slds-button slds-button--neutral" onclick="{!c.needMoreTime}">Need More Time To Review</button>
+                    </aura:renderIf>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+    </aura:renderIf>
+</aura:component>

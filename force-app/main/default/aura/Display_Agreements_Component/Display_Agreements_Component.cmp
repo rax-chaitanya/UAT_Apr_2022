@@ -1,0 +1,11 @@
+<aura:component  implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    <br/><br/>
+    <div class="slds-text-heading_medium slds-align_absolute-center"><p><b>Agreement Terms :</b></p></div>
+    <br/><br/>
+    <c:downloadAgreement/>
+    <br/><br/>
+    <div class="slds-text-heading_medium slds-align_absolute-center"><p><b>Pilot Agreements :</b></p></div>
+    <br/>
+    <c:PilotAgreement/>
+    
+</aura:component>

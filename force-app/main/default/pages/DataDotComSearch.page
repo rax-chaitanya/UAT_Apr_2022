@@ -1,0 +1,88 @@
+<apex:page title="Data.com Search" showHeader="true" sidebar="true" controller="DataDotComSearchController">
+    <script type="text/javascript">
+        function confirmAdd() {
+            return confirm('Are you sure you want to create a new Account?');
+        }
+    </script>
+
+    <apex:form id="theForm">
+        <apex:sectionHeader title="Data.com Search" />
+        <apex:pageMessages escape="false" />
+
+        <apex:pageBlock id="theSearchPageBlock" title="Query Information" mode="edit" >
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Search" title="Search" action="{!search}" reRender="theForm" />
+                <apex:commandButton value="Add to Salesforce" title="Add to Salesforce" onclick="if(!confirmAdd()) return false;" action="{!insertNewCompany}" rendered="{!searchCompleted}" reRender="theForm" />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection columns="2" title="Search Details" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Company Name" />
+                    <apex:inputText value="{!companyNameInput}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="State" />
+                    <apex:inputText value="{!stateInput}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Location Type" />
+                    <apex:selectList value="{!locationTypeInput}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!locationTypeOptions}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Country" />
+                    <apex:inputText value="{!countryInput}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Query Limit" />
+                    <apex:selectList value="{!queryLimitInput}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!queryLimitOptions}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+
+        <apex:pageBlock id="theResultsPageBlock"  title="Search Results" rendered="{!displaySearchResults}">
+            <apex:pageBlockTable value="{!searchResultsMap}" var="key" >
+                <apex:column headerValue="Action" style="text-align:center;">
+                    <!-- Import button is shown when the page is launched from the tab, and the record isn't already in Salesforce -->
+                    <apex:commandLink value="Import" title="Import" action="{!importNewCompany}" reRender="theResultsPageBlock" styleClass="btn" style="text-decoration:none;padding:4px;" rendered="{!AND(ISNULL(companyIdInput),NOT(searchResultsMap[key].alreadyInSalesforce))}">
+                        <apex:param name="dunsToImport" assignTo="{!dunsToImport}" value="{!searchResultsMap[key].dAndBCompanyDunsNumber}"></apex:param>
+                    </apex:commandLink>
+                    
+                    <!-- View in SFDC link is shown when the page is launched from the tab, and the record is already in Salesforce -->
+                    <apex:outputLink style="padding:4px;" value="/{!searchResultsMap[key].existingAccountId}" title="View in SFDC" target="_blank" rendered="{!AND(ISNULL(companyIdInput),searchResultsMap[key].alreadyInSalesforce)}">View in SFDC</apex:outputLink>
+
+                    <!-- Select button is shown when the page is launched from a Company record -->
+                    <apex:commandLink value="Select" title="Select" action="{!selectCompany}" reRender="theResultsPageBlock" styleClass="btn" style="text-decoration:none;padding:4px;" rendered="{!NOT(ISNULL(companyIdInput))}">
+                        <apex:param name="dunsToAssign" assignTo="{!dunsToAssign}" value="{!searchResultsMap[key].dAndBCompanyDunsNumber}"></apex:param>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Name" value="{!searchResultsMap[key].dAndBCompanyName}"/>
+                <apex:column headerValue="Tradestyle" value="{!searchResultsMap[key].dAndBCompanyTradestyle}"/>
+                <apex:column headerValue="DUNS Number" value="{!searchResultsMap[key].dAndBCompanyDunsNumber}"/>
+                <apex:column headerValue="Location Type" value="{!searchResultsMap[key].dAndBCompanyLocationType}"/>
+                <apex:column headerValue="Website" value="{!searchResultsMap[key].dAndBCompanyWebsite}"/>
+                <apex:column headerValue="Phone" value="{!searchResultsMap[key].dAndBCompanyPhone}"/>
+                <apex:column headerValue="Street" value="{!searchResultsMap[key].dAndBCompanyStreet}"/>
+                <apex:column headerValue="City" value="{!searchResultsMap[key].dAndBCompanyCity}"/>
+                <apex:column headerValue="State" value="{!searchResultsMap[key].dAndBCompanyState}"/>
+                <apex:column headerValue="Country" value="{!searchResultsMap[key].dAndBCompanyCountry}"/>
+                <apex:column headerValue="Out of Business" value="{!searchResultsMap[key].dAndBCompanyOutOfBusiness}"/>
+               
+               <apex:column >
+                <apex:facet name="header">Annual Revenue</apex:facet>
+                <apex:outputText value="${0, number, ###,###,##0}" >
+                <apex:param value="{!searchResultsMap[key].dAndBCompanyrevenue}" />
+                </apex:outputText>
+                </apex:column>
+               
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

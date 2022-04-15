@@ -1,0 +1,5 @@
+<aura:component controller="GlobalAccountSearchController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <div class="slds-p-around_xx-large">
+        <lightning:button class="slds-align_absolute-center" variant="brand" iconName="utility:cases" label="Open Global Account Realignment App" title="Open Global Account Realignment App" onclick="{! c.openGAR }" />
+    </div>
+</aura:component>

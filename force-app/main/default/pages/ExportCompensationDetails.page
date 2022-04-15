@@ -1,0 +1,86 @@
+<!-- Author : Anilkumar
+     Date : 26-Apr-2018
+    -->
+<apex:page standardController="Partner_Compensation__c" extensions="ExportPartnerCompensationDetailsToExcel" contentType="application/vnd.ms-excel#Partner Compensation.xls" cache="true"> <!--  -->
+        
+     
+    <apex:outputText value="{!xlsHeader}"/>
+    <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+         xmlns:o="urn:schemas-microsoft-com:office:office"
+         xmlns:x="urn:schemas-microsoft-com:office:excel"
+         xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+         xmlns:html="http://www.w3.org/TR/REC-html40">
+         <Styles>
+             <Style ss:ID="s1">
+             <Alignment/>
+             <Borders/>
+             <Font ss:Bold="1"/>
+             <Interior/>
+             <NumberFormat/>
+             <Protection/>
+             </Style>
+         </Styles>
+         
+         <Worksheet ss:Name="Accounts">
+             <Table x:FullColumns="1" x:FullRows="1">
+                <Column ss:Width="170"/>
+                <Row>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Partner Compensation Name</Data></Cell>
+                    <apex:outputText rendered="{!flag}">
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Compensation Detail Name</Data></Cell>
+                    </apex:outputText>
+
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Partner Account</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Amount($)</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Opp Close Date</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Opportunity Num</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Opportunity Type</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Lead Sub Agent</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Fix%</Data></Cell>  
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Contract Term</Data></Cell>                  
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Paid Date</Data></Cell>                       
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Eligible Amount($)</Data></Cell>                    
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Compensation Type</Data></Cell>                    
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Account Name</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Account Number</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Account DDI</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Currency</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Accounts Aging</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Backpay</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >SPIFF – One-time payments</Data></Cell>
+                    <Cell ss:StyleID="s1"><Data ss:Type="String" >Clawbacks</Data></Cell>
+                </Row>
+                <apex:repeat value="{!partnerCompDetails}" var="compensation">
+                    <apex:repeat value="{!compensation.RV_Compensation_Detail__r}" var="comp">
+                     <Row>
+                        <Cell><Data ss:Type="String">{!compensation.Name}</Data></Cell> 
+                        <apex:outputText rendered="{!flag}">
+                          <Cell><Data ss:Type="String">{!comp.Name}</Data></Cell>
+                          </apex:outputText>
+
+                        <Cell><Data ss:Type="String">{!comp.AccountName__c}</Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outPutText value="{0,number,#,##0.00}"><apex:param value="{!comp.Amount__c}"/></apex:outPutText></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outputText value="{0,date,MMM-dd-yyyy}"><apex:param value="{!comp.Opp_Close_Date__c}" /></apex:outputText></Data></Cell>
+                        <Cell><Data ss:Type="String">{!comp.Opp_ID__c}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!comp.Opp_Type__c}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!comp.Lead_Sub_Agent__c}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!comp.Fix__c}</Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outPutText value="{0,number,#,##0}"><apex:param value="{!comp.Contract_Term__c}"/></apex:outPutText></Data></Cell>
+                        <Cell><Data ss:Type="String"><apex:outPutText value="{0,date,MMM-dd-yyyy}"><apex:param value="{!comp.Paid_Date__c}"/></apex:outPutText></Data></Cell>                     
+                        <Cell><Data ss:Type="String">{!comp.Eligible_Amount__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.Compensation_Type__c}</Data></Cell>                        
+                        <Cell><Data ss:Type="String">{!comp.Opp_Account_Name__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.Opportunity__r.Acc_Number__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.Account_DDI__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.CurrencyIsoCode}</Data></Cell>
+                        <Cell><Data ss:Type="String">{!comp.Accounts_Aging__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.Backpay__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.SPIFF_One_time_payments__c}</Data></Cell> 
+                        <Cell><Data ss:Type="String">{!comp.Clawbacks__c}</Data></Cell>
+                     </Row>
+                    </apex:repeat> 
+                </apex:repeat>
+             </Table>
+         </Worksheet>
+    </Workbook> 
+</apex:page>

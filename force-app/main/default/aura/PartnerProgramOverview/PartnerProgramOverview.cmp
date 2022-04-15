@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="change" value="{!this}" action="{!c.handleChange}" />
+    <aura:attribute name="options" type="list" default="[
+      {'label': 'Partner Program Overview','value': 'option1'},
+        {'label': 'Reseller Program', 'value': 'option2'},  
+         {'label': 'Referral Program', 'value': 'option3'},
+         {'label':'Strategic Program', 'value':'option4'}
+                                                        
+    ]"/>  
+    <aura:attribute name="value" type="String" default="option1"/>
+    <div> 
+     
+    <lightning:radioGroup  aura:id="mygroup"  
+                          name="radioButtonGroup" 
+                          options="{!v.options }" 
+                          value="{! v.value }"  
+                          type="radio" 
+                         onchange="{!c.handleChange }" 
+                         class="slds-form-element__label "/> 
+      </div>       
+    <br/>
+    <aura:if isTrue="{!(v.value == 'option1')}">
+        <c:PartnerOverview></c:PartnerOverview>
+    </aura:if>
+    <aura:if isTrue="{!(v.value =='option2')}">
+        <c:ResellerProgramOverview> </c:ResellerProgramOverview> 
+    </aura:if>
+    <aura:if isTrue="{!(v.value =='option3')}">
+        <c:ReferalProgramOverview> </c:ReferalProgramOverview>
+    </aura:if>
+    <aura:if isTrue="{!(v.value =='option4')}">
+       <c:StrategicProgramOverview></c:StrategicProgramOverview>  
+    </aura:if>
+   
+  
+</aura:component>

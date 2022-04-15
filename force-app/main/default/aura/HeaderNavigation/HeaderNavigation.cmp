@@ -1,0 +1,31 @@
+<aura:component  controller="FolderController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="menu" type="string" />
+  
+    <aura:attribute name="menuitems" type="List" />	
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <div class="slds-page-header">
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="custom:custom16" size="large"/>
+            </div>
+            <div class="slds-media__body">
+                <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Rohde Corp - 80,000 Widgets">Marketing Toolkit</h1>
+                <p class="slds-text-body_small slds-line-height_reset"> 
+                    <div style="height: 25px;">
+                        <nav role="navigation" aria-label="Breadcrumbs">
+                            <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+                                <a class="slds-breadcrumb__item slds-text-title_caps" style="color: #C40022 !important;padding: 0px 10px 15px 1px;" onclick = "{!c.GoToHomePage}"> Home </a>
+                                <aura:iteration items="{!v.menuitems}" var="cus" indexVar="key">
+                                    <!-- <li class="slds-breadcrumb__item slds-text-title_caps">{!cus.key}<a href="">{!cus.value}</a></li>-->
+                                    <a class="slds-breadcrumb__item slds-text-title_caps" style="color: #C40022 !important; padding: 0px 10px 15px 10px;" data-val="{!cus.key }" onclick = "{!c.GoTofolder}" id="{!cus.value}"> {!cus.value}  </a>
+                                </aura:iteration>
+                            </ol>
+                        </nav>
+                    </div> 
+                </p>  
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

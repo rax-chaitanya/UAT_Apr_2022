@@ -1,0 +1,16 @@
+.THIS.field{
+    width: 220px;
+    height: 70px;
+    font-size: 45px;
+    padding: 5px;
+  border: 1px solid #dce4ec;
+  border-radius: 2px;
+    border-width: thin;
+   border-color: gray;
+}
+
+.THIS.text{
+   width: 220px;
+    border-width: thin;
+   border-color: gray;
+}

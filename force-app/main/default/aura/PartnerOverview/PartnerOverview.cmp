@@ -1,0 +1,32 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<div style="font-family:FiraSans-regular;">
+        <div class="slds-text-heading--large" >
+             <b>Become a Rackspace Partner</b> </div>
+             <p class="slds-text-body--regular"> <br/>
+                 The Rackspace Partner Network is designed to provide varying types of partners with
+                 access to expertise and support across the world’s leading public, private and hybrid 
+                 cloud platforms. We aspire to provide the support and flexibility you need so that you can 
+                 better serve your customers, build loyalty and create new revenue opportunities.  <br/><br/>
+        <div class="slds-text-heading--Medium">
+                <b style="font-family:Arial">Fanatical Experience:<sup>™</sup></b> The Rackspace team is here to support you by providing dedicated resources at 
+            every step of the customer journey. A Partner Account Manager or the Partner Help Desk will help you get started. <br/><br/>
+ </div> 
+  <b style="font-family:Arial;">Business Support:</b> To help Channel partners succeed, Rackspace provides inside and field sales support, technical support,
+            operations support, access to partner tools and product enablement materials.<br/><br/>
+<div class="slds-text-heading--Medium">
+    <b style="font-family:Arial;"> Simple Commission Structure:</b> Rackspace partners receive commissions for all eligible orders associated with new 
+    footprint/new logo opportunities submitted and approved per the Lead Registration Guidelines. Channel partners who execute the Strategic Partner Agreement dated April 2018, will be paid for 
+    eligible initial sales, renewals, upgrades and extensions for the opportunity subject to the terms of your Rackspace agreement.<br/><br/>
+</div>
+    <div class="slds-text-heading--Medium">
+    <b style="font-family:Arial;"> Earning Potential: </b>All qualified opportunities are honored, and Channel partners will receive commissions with no minimum or 
+ maximum payout term in accordance with the terms of the Strategic Partner Agreement dated April 2018 once executed.<br/><br/>
+ </div> 
+    <div class="slds-text-heading--Medium">
+    <b style="font-family:Arial;">Go-To-Market Strategy:</b> Rackspace will invest time, effort and resources to help you enable your GTM Strategy. Your success is Rackspace success.<br/><br/>
+    </div>       
+   <br/><br/>
+     	</p>                  
+      
+        </div>
+</aura:component>

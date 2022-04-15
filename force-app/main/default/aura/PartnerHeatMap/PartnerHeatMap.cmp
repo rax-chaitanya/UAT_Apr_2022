@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+   
+    
+    <iframe src="https://qlikview.rackspace.corp/QvAJAXZfc/opendoc.htm?document=dashboards%2Fpartner%20analytics%20and%20metrics.qvw&amp;host=QVS%40496797-qvprod1"
+            width="100%"
+            height="1000px"
+            scrolling="True"/>
+    
+</aura:component>
