@@ -3,8 +3,6 @@
 Author: Omkar Narkar
 Description: This utility apex class is created for the Global Account Realignment. Epic : SFDC-2278.
 
-Enhancements:
-@story: SFDC-7172, @dev: Caleb Garcia, @date:2/23/2022, @desc: For account owner movement changes Region = EMEA, then GAR requests will be routed to EMEA's sub region approvers
 **********************************************************************************/
 public class AccountRealignmentUtility {
     
@@ -50,8 +48,7 @@ public class AccountRealignmentUtility {
                     Status__c = 'New',
                     Submitted_date__c =Date.Today(),
                     Approver_Type__c = approvarDetailMap.get(approver).get('Type'),
-                    Region__c = approvarDetailMap.get(approver).get('Region'),
-                    Sub_Region__c = approvarDetailMap.get(approver).get('Sub Region')
+                    Region__c = approvarDetailMap.get(approver).get('Region')
                 ));
         }
         Database.insert(requests.values());
@@ -104,7 +101,7 @@ public class AccountRealignmentUtility {
         return result;
     }
     
-    //@story: SFDC-7172, added variable assignment 'ownerSubRegion' for owner.subregion and added to 'approver' map
+    
     private static Map<String, String> processItem(Realignment_Request_Item__c item, Set<Id> userIds, Set<Id> accountIds){
         
         User loggedInUser = getLoggedInUser();
@@ -113,10 +110,8 @@ public class AccountRealignmentUtility {
         Map<String, String> approver = new Map<String, String>();
         approver.put('Type', 'Self');
         String ownerRegion = account.Owner.Region__c == null ? 'AMER' : account.Owner.Region__c;
-        String ownerSubRegion = account.Owner.Sub_Region__c;
         approver.put('Region', ownerRegion);
-        approver.put('Sub Region',ownerSubRegion);
-
+        
         //Checking if Valid Business Manager
         List<String> businessManagers = getBusinessManagers(account);
         if(businessManagers.contains(UserInfo.getUserId())){
@@ -124,7 +119,7 @@ public class AccountRealignmentUtility {
             return approver;
         }
         
-        //SFDC-7321 - GART Tool Validation when Previous owner and New owner matches - Starts - Rishabh - 10/03/2022
+         //SFDC-7321 - GART Tool Validation when Previous owner and New owner matches - Starts - Rishabh - 10/03/2022
         if(newOwner.Id == account.OwnerId){
             approver.put('Rule', 'Auto Approved');
             return approver;
@@ -138,7 +133,7 @@ public class AccountRealignmentUtility {
             approver.put('Rule', 'Auto Approved');
             return approver;
         }
-     
+        
         for(Account_Realignment_Rule__mdt rule : getRules()){
             Boolean result;
             approver.put('Rule', rule.Validation_Description__c);
@@ -182,16 +177,12 @@ public class AccountRealignmentUtility {
         approver.put('Rule', 'Auto approved.');
         return approver;
     }
-    //SFDC-7172, added condition for businessManagerMap to return 'ownerRegion'only if Region != EMEA OR subregion is null otherwise use 'ownerSubRegion'
+    
     private static Map<String, List<String>> businessManagerMap;
     public static List<String> getBusinessManagers(Account account){
         String ownerRegion = account.Owner.Region__c == null ? 'AMER' : account.Owner.Region__c;
-        String ownerSubRegion = account.Owner.Sub_Region__c;
-        if(businessManagerMap != null && (ownerRegion != 'EMEA' || String.isBlank(ownerSubRegion))){
+        if(businessManagerMap != null){
             return businessManagerMap.get(ownerRegion);
-        }
-        else if (businessManagerMap != null && ownerRegion == 'EMEA' && String.isNotBlank(ownerSubRegion)){
-            return businessManagerMap.get(ownerSubRegion);
         }
         businessManagerMap = new Map<String, List<String>>();
         Map<String, Set<String>> regionQueueMap = new Map<String, Set<String>>();
@@ -212,10 +203,8 @@ public class AccountRealignmentUtility {
                 }
             }
         }
-        if(ownerRegion != 'EMEA' || String.isBlank(ownerSubRegion)){
+        
         return businessManagerMap.get(ownerRegion);
-        }
-        return businessManagerMap.get(ownerSubRegion);
     }
     
     private static boolean getComparisonResult(String expr1, String comparator, String expr2){

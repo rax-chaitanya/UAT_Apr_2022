@@ -3,12 +3,15 @@ public class CohortCalculationSchedulerTest {
 	@testSetup
     public static void setupTestData(){
         
-       
+         List<Trigger_Manager__c> tms = new List<Trigger_Manager__c>();
+        tms.add( new Trigger_Manager__c (Name ='AccountContactRelation',Is_Active__c = true));
+        insert tms;
         TestClassUtility.setTestSetupData();
         List<FieldMapping__c> fieldMappings = new List<FieldMapping__c>();
         fieldMappings.add(new FieldMapping__c(Name = 'Territory-Company', CompName__c = 'Account', SourceField__c = 'BillingCountry', TargetField__c = 'Territory__c'));
         fieldMappings.add(new FieldMapping__c(Name = 'Territory-Contact', CompName__c = 'Contact', SourceField__c = 'MailingCountry', TargetField__c = 'Territory__c'));
         fieldMappings.add(new FieldMapping__c(Name = 'Territory-Lead', CompName__c = 'Lead', SourceField__c = 'Country', TargetField__c = 'Territory__c'));
+        
         insert fieldMappings;
         
         

@@ -11,7 +11,7 @@ global class CohortRectificationScheduler implements Schedulable{
         Cohort_Calculation_Settings__c CS = Cohort_Calculation_Settings__c.getInstance();
         if(cs.is_active__c){
             CohortRectificationBatch batch = new CohortRectificationBatch();
-            database.executebatch(batch,100);
+            database.executebatch(batch,10);
            
         }
         
