@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Master_Budget_is_Constant</fullName>
+    <active>true</active>
+    <description>Master Budget cannot be changed once set.</description>
+    <errorConditionFormula>AND(ISCHANGED(pse__Budget_Header__c),LEN(PRIORVALUE(pse__Budget_Header__c))&gt;0)</errorConditionFormula>
+    <errorDisplayField>pse__Budget_Header__c</errorDisplayField>
+    <errorMessage>Master Budget cannot be changed once set.</errorMessage>
+</ValidationRule>

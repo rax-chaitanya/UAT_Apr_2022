@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gross_Margin_Stage_3_5_More_than_10K</fullName>
+    <active>false</active>
+    <description>IF &quot;Gross Margin&quot; &gt;= 10K
+
+AND
+
+&quot;Stage&quot; 1-5
+
+AND
+
+It&apos;s not upon creation
+
+THEN
+
+Make &quot;Gross Margin&quot; mandatory
+
+
+ALSO
+
+Make sure &quot;Gross Margin&quot; &gt; 0</description>
+    <errorConditionFormula>AND(
+
+AND(
+NOT(ISNEW()),
+OR(
+Amount &gt;= 10000,
+AND(Approval_Amount__c &gt;= 10000, 
+NOT(CONTAINS( $Label.Opp_Professional_Service_Record_TypeId ,RecordTypeId )), 
+NOT(ISPICKVAL(QuotingSystem__c,&apos;Datapipe&apos;)), 
+NOT(ISPICKVAL(Acquisition__c,&apos;Datapipe&apos;)))),
+NOT(ISPICKVAL(Type,&quot;Mail Contract Signup&quot;)),
+NOT(ISPICKVAL(Type,&quot;Mail Online Signup&quot;)),
+NOT(ISPICKVAL(Type,&quot;Revenue Ticket&quot;)),
+NOT(ISPICKVAL(Type,&quot;RBU&quot;)),
+NOT(ISPICKVAL(Type,&quot;Renewal&quot;)),
+NOT(ISPICKVAL(Category__c,&quot;Renewal&quot;)),
+NOT(CONTAINS($Label.Sales_ops_Admin_Profile,$Profile.Id)),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id))
+),
+
+OR(
+ISPICKVAL(StageName,&quot;Stage 1 - Planning &amp; Identification&quot;),
+ISPICKVAL(StageName,&quot;Stage 2 - Opportunity Development&quot;),
+ISPICKVAL(StageName,&quot;Stage 3 - Proposal &amp; Quote&quot;),
+ISPICKVAL(StageName,&quot;Stage 4 - Negotiation &amp; Quote Mod&quot;),
+ISPICKVAL(StageName,&quot;Stage 5 - Closing the Business&quot;)
+),
+
+OR(
+Gross_Margin_Min__c = 0,
+ISBLANK(Gross_Margin_Min__c),
+Gross_Margin_Max__c = 0,
+ISBLANK(Gross_Margin_Max__c)
+)
+
+)</errorConditionFormula>
+    <errorMessage>Please populate both “Gross Margin Min and Max” with a percentage greater than zero.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Budget_Amount_Consumed_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISNULL(pse__Amount_Consumed__c)</errorConditionFormula>
+    <errorDisplayField>pse__Amount_Consumed__c</errorDisplayField>
+    <errorMessage>Budget Amount Consumed is required</errorMessage>
+</ValidationRule>

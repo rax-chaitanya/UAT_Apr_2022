@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Task_Project_is_Required_and_Constant</fullName>
+    <active>true</active>
+    <description>A Task&apos;s Project field value may not be blank initially if it is a top-level Task (if child task, Project will be auto-set from parent) and may not be updated once set.</description>
+    <errorConditionFormula>OR(AND(OR(ISNULL(pse__Parent_Task__c),(pse__Parent_Task__c=&apos;&apos;)),OR(ISNULL(pse__Project__c),(pse__Project__c=&apos;&apos;))),ISCHANGED(pse__Project__c))</errorConditionFormula>
+    <errorDisplayField>pse__Project__c</errorDisplayField>
+    <errorMessage>A Task&apos;s Project field value may not be blank initially if it is a top-level Task (if child task, Project will be auto-set from parent) and may not be updated once set.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_is_Required</fullName>
+    <active>true</active>
+    <description>Reason is a mandatory field when associated with the following Lead Statuses: &quot;Unqualified - To Lead Gen&quot;, &quot;Unqualified - To Marketing&quot;, &quot;Tele-Qualified Lead&quot;, &quot;Sales Accepted Lead&quot;, &quot;Tele-Accepted Lead&quot;, &quot;Rejected&quot;.</description>
+    <errorConditionFormula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISPICKVAL( Reason__c ,&quot;&quot;),CONTAINS( $Label.Validate_Reason_Not_Required , TEXT( Status ) ), 
+NOT(AND(ISNEW(),ISPICKVAL( LeadSource ,&quot;Site Submission&quot;))), $Profile.Name &lt;&gt; &quot;Rackspace-Marketo&quot;)</errorConditionFormula>
+    <errorDisplayField>Reason__c</errorDisplayField>
+    <errorMessage>Please select &apos;Reason&apos;</errorMessage>
+</ValidationRule>

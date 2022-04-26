@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_Is_Required</fullName>
+    <active>true</active>
+    <description>Please select Country for lead.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISBLANK(Country),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)))</errorConditionFormula>
+    <errorDisplayField>Country</errorDisplayField>
+    <errorMessage>Email or Phone Number and Country are required.</errorMessage>
+</ValidationRule>

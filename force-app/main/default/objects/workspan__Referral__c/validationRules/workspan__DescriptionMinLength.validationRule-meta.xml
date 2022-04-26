@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__DescriptionMinLength</fullName>
+    <active>true</active>
+    <description>Description length should be at least 50 characters for Outgoing Amazon Referrals.</description>
+    <errorConditionFormula>workspan__SourcedToPartner__c = &apos;Amazon&apos;
+&amp;&amp; ISPICKVAL(workspan__ReferralType__c , &apos;Outgoing&apos;)
+&amp;&amp; LEN(workspan__Description__c) &lt; 50</errorConditionFormula>
+    <errorDisplayField>workspan__Description__c</errorDisplayField>
+    <errorMessage>At least 50 characters required.</errorMessage>
+</ValidationRule>

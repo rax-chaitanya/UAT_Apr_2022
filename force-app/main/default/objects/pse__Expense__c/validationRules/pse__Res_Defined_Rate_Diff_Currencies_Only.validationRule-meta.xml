@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Res_Defined_Rate_Diff_Currencies_Only</fullName>
+    <active>true</active>
+    <description>Resource-defined Exchange Rate can only be set if Incurred and Resource currencies are different.  If the currencies are the same, a relative rate of 1.0 is implied.</description>
+    <errorConditionFormula>AND(NOT(OR(ISNULL(pse__Exchange_Rate_Resource_Defined__c),(pse__Exchange_Rate_Resource_Defined__c=1.0))),(TEXT(CurrencyIsoCode)=TEXT(pse__Resource__r.CurrencyIsoCode)))</errorConditionFormula>
+    <errorDisplayField>pse__Exchange_Rate_Resource_Defined__c</errorDisplayField>
+    <errorMessage>Resource-defined Exchange Rate can only be set if Incurred and Resource currencies are different.  If the currencies are the same, a relative rate of 1.0 is implied.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PartnerAllCloudsGuide_ID_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISBLANK(PartnerAllCloudsGuide_ID__c),
+OR(
+ $User.Username =  $Label.Partner_All_cloud_user ,
+ OwnerId =  $Label.Partner_all_cloud_ownerId 
+)
+
+)</errorConditionFormula>
+    <errorDisplayField>PartnerAllCloudsGuide_ID__c</errorDisplayField>
+    <errorMessage>PartnerAllCloudsGuide_ID field is Required for AllClouds Guide user</errorMessage>
+</ValidationRule>

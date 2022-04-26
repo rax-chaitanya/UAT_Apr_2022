@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <name>Contract_Length</name>
+        <label>Contract Length</label>
+        <locationX>540</locationX>
+        <locationY>499</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Term_2__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Contract_Length__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Term_2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>OPP_Type_AWS_Azure_Google_MCO_Optimizee</name>
+        <label>OPP Type : AWS,Azure,Google, MCO, Optimizee++</label>
+        <locationX>528</locationX>
+        <locationY>359</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Term_2__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>12.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Term_2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Term_2_PS</name>
+        <label>Update Term 2 : PS</label>
+        <locationX>530</locationX>
+        <locationY>219</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Term_2__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>10.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Term_2</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>OPP_Type</name>
+        <label>OPP Type</label>
+        <locationX>166</locationX>
+        <locationY>361</locationY>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>Opp_Type_PS</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Professional Services</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>TriCore ProServe</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Term_2_PS</targetReference>
+            </connector>
+            <label>Opp Type : PS</label>
+        </rules>
+        <rules>
+            <name>OPP_Type_Not_PS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Professional Services</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contract_Length__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OPP_Type_AWS_Azure_Google_MCO_Optimizee</targetReference>
+            </connector>
+            <label>OPP Type Not PS</label>
+        </rules>
+        <rules>
+            <name>Opp_Type_Contract_Length</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Professional Services</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contract_Length__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contract_Length</targetReference>
+            </connector>
+            <label>Opp Type , Contract Length</label>
+        </rules>
+    </decisions>
+    <description>Ignore Closed Lost Opportunities</description>
+    <formulas>
+        <name>admin_int_api_profiles</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+OR({!$Profile.Id} = &apos;00e61000000l8Bs&apos;,{!$Profile.Id} = &apos;00e6100000163ts&apos;,{!$Profile.Id} = &apos;00e61000000izkP&apos;,{!$Profile.Id} = &apos;00e3f000000p6dE&apos;,{!$Profile.Id} = &apos;00e61000000l8Bw&apos;), TRUE, FALSE)</expression>
+    </formulas>
+    <formulas>
+        <name>ProfileName</name>
+        <dataType>String</dataType>
+        <expression>{!$Profile.Id}</expression>
+    </formulas>
+    <interviewLabel>Term 2 Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Term 2 Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Term_2</name>
+        <label>Update Term 2</label>
+        <locationX>772</locationX>
+        <locationY>357</locationY>
+        <inputAssignments>
+            <field>Term_2__c</field>
+            <value>
+                <elementReference>$Record.Term_2__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>48</locationX>
+        <locationY>9</locationY>
+        <connector>
+            <targetReference>OPP_Type</targetReference>
+        </connector>
+        <filterLogic>1 AND  (2 OR 3 OR 4)</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Term_2__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Contract_Length__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Alert_Threshold_must_be_in_1_to_100</fullName>
+    <active>true</active>
+    <description>The value in the Alert Threshold field must be between 1 and 100.</description>
+    <errorConditionFormula>pse__Alert_Threshold__c &lt; 0.01 || pse__Alert_Threshold__c &gt; 1</errorConditionFormula>
+    <errorDisplayField>pse__Alert_Threshold__c</errorDisplayField>
+    <errorMessage>Invalid value in the Alert Threshold field. You must enter a whole number between 1 and 100.</errorMessage>
+</ValidationRule>

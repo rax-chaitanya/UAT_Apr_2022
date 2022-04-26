@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LBI__Cannot_be_preprocessed_with_rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(LBI__ScoringRule__c))
+,
+ISPICKVAL(LBI__Status__c, &apos;Preprocessed&apos;)
+)</errorConditionFormula>
+    <errorDisplayField>LBI__Status__c</errorDisplayField>
+    <errorMessage>Status cannot be preprocessed if scoring rule is attached.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supply_Partner_Details_Contact_DH</fullName>
+    <active>true</active>
+    <description>Forces users to supply Partner Details if Partner is selected.</description>
+    <errorConditionFormula>ISPICKVAL(LeadSource, &quot;Partner Campaign&quot;) &amp;&amp;
+ ISBLANK(Onica_Partner_Details__c) &amp;&amp;
+ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_Partner_Details__c</errorDisplayField>
+    <errorMessage>Select the partner who was involved in the selling motion for this deal. (Ex: Vmware, Sumo, etc)</errorMessage>
+</ValidationRule>

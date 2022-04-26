@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Optimizer_Close_Won_Opportunity</fullName>
+        <ccEmails>pavan.raghavendra@rackspace.com,</ccEmails>
+        <ccEmails>duke.banerjee@rackspace.com,</ccEmails>
+        <ccEmails>prakashsingh.gusain@rackspace.com</ccEmails>
+        <description>Optimizer Close Won Opportunity</description>
+        <protected>false</protected>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>All_Email_Templates/Closed_won_Notification_for_Optimizer_Opportunities</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Opportunity_Category_and_Type</fullName>
+        <field>Opportunity_Catagory_and_Type__c</field>
+        <formula>IF((OR(text(Opportunity_Quote__r.Category__c)&lt;&gt;&quot;Upgrade&quot; ,
+text(Opportunity_Quote__r.Type)&lt;&gt;&quot;Revenue Ticket&quot;)),&quot;&quot;,&quot;Yes&quot;)</formula>
+        <name>Opportunity Category and Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Optimizer_Quote_Line_Added</fullName>
+        <description>set related opportunity field &apos;Optimizer Quote Line added?&apos; to true.</description>
+        <field>Optimizer_Quote_Line_added__c</field>
+        <literalValue>1</literalValue>
+        <name>Optimizer Quote Line Added</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunity_Quote__c</targetObject>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateQuoteLine</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Quote Line) - Create action to create SFDC Devices in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/QuoteNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>old_record_id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateQuoteLine</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateQuoteLine</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Quote Line) - Update action to update SFDC Devices in Current Salesforce and notify SF stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/QuoteNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>old_record_id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateQuoteLine</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateQuoteLine</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateQuoteLine</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Quote Line) - Create action to create SFDC Devices in Current Salesforce.</description>
+        <formula>AND(     NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),     NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity_Quote__r.RecordTypeId)),     ISBLANK(old_record_id__c),     NOT(ISBLANK(Opportunity_Quote__r.Old_Record_Id__c)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateQuoteLine</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateQuoteLine</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Quote Line) - Update action to update SFDC Devices in Current Salesforce and notify SF stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity_Quote__r.RecordTypeId)),NOT(ISBLANK(old_record_id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Opportunity Category and Type</fullName>
+        <actions>
+            <name>Opportunity_Category_and_Type</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR(And(text(Opportunity_Quote__r.Category__c) =&quot;Upgrade&quot;,     text( Opportunity_Quote__r.Type )=&quot;Revenue Ticket&quot;      ),   text(Opportunity_Quote__r.Category__c)&lt;&gt;&quot;Upgrade&quot;,    text(Opportunity_Quote__r.Type )&lt;&gt;&quot;Revenue Ticket&quot;      )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Optimizer Close Won Opportunity</fullName>
+        <actions>
+            <name>Optimizer_Close_Won_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <criteriaItems>
+            <field>Quote_Line__c.Name</field>
+            <operation>contains</operation>
+            <value>Optimizer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Read Only</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.CommunityNickname</field>
+            <operation>notEqual</operation>
+            <value>oraclesoa.user</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Region__c</field>
+            <operation>equals</operation>
+            <value>APAC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ProfileId</field>
+            <operation>notEqual</operation>
+            <value>System Administrator</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Prior_Stage_Name__c</field>
+            <operation>notEqual</operation>
+            <value>closed won,closed lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ProfileId</field>
+            <operation>notEqual</operation>
+            <value>Sales Ops Admin</value>
+        </criteriaItems>
+        <description>When an &apos;Optimizer&apos; quote line is added ...Optimizer Close Won Opportunity</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Optimizer Quote Line Present</fullName>
+        <actions>
+            <name>Optimizer_Quote_Line_Added</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 4) AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Quote_Line__c.Name</field>
+            <operation>contains</operation>
+            <value>Optimizer+</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Optimizer_Quote_Line_added__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>notEqual</operation>
+            <value>Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Quote_Line__c.Name</field>
+            <operation>contains</operation>
+            <value>Optimizer</value>
+        </criteriaItems>
+        <description>When an &apos;Optimizer&apos; quote line is added, related opportunity is unlocked to modify amounts.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

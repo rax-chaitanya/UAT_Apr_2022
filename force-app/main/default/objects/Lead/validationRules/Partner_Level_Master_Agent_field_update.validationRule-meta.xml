@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Level_Master_Agent_field_update</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(IsConverted),
+NOT(ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Master Agent&apos;)),
+NOT(ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Master Agent EMEA&apos;)),
+NOT(ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Regional&apos;)),
+NOT(ISBLANK((Are_you_working_with_an_Agent__c))), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)) 
+)</errorConditionFormula>
+    <errorMessage>The Sub Agent field can only be populated by a Master Agent</errorMessage>
+</ValidationRule>

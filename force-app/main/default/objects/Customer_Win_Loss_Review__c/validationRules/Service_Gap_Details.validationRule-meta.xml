@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Gap_Details</fullName>
+    <active>false</active>
+    <description>Service Gap Details is required if Service Gaps in Rackspace portfolio is True.</description>
+    <errorConditionFormula>AND(RecordType.DeveloperName=&apos;Internal&apos;, Service_Gaps_in_Rackspace_portfolio__c = True, ISBLANK( Requirement_Service_Gap_Detail__c ))</errorConditionFormula>
+    <errorDisplayField>Requirement_Service_Gap_Detail__c</errorDisplayField>
+    <errorMessage>Service Gap Details required if Gaps in Rackspace Portfolio field is checked.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fill_out_all_required_information</fullName>
+    <active>false</active>
+    <description>Require all fields for new user requests</description>
+    <errorConditionFormula>AND(ISPICKVAL(Support_Reason__c,&quot;NEW USER REQUEST&quot;),OR(ISBLANK(SSO__c),ISBLANK(Manager__c),ISBLANK(User_to_Clone__c),ISBLANK(Email__c)))</errorConditionFormula>
+    <errorMessage>All Fields must be populated to continue</errorMessage>
+</ValidationRule>

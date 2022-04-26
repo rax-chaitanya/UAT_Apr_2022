@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Focus_Area_on_Quote_Line_Match</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT( ISCHANGED( Skip_Validation__c ) ),
+ISCHANGED(  Focus_Area__c ), 
+Device_Count__c &gt; 0
+)</errorConditionFormula>
+    <errorDisplayField>Focus_Area__c</errorDisplayField>
+    <errorMessage>The Focus Areas are locked.  Focus Areas is updated based on QM and Raptor data.</errorMessage>
+</ValidationRule>

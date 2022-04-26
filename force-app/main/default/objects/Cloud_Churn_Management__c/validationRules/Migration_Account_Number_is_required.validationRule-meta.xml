@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Migration_Account_Number_is_required</fullName>
+    <active>true</active>
+    <description>Migration Account Number is required if Move to Type field is one of the following: Rax Cloud, Partner Cloud, Other Rackspace Platform</description>
+    <errorConditionFormula>AND(
+ISBLANK(Migration_Account_Number__c),
+OR(
+ISPICKVAL( Move_to_Type__c , &quot;RAX Cloud&quot;),
+ISPICKVAL( Move_to_Type__c , &quot;Partner Cloud&quot;),
+ISPICKVAL( Move_to_Type__c , &quot;Other Rackspace Platform&quot;)
+))</errorConditionFormula>
+    <errorDisplayField>Migration_Account_Number__c</errorDisplayField>
+    <errorMessage>Migration Account Number is required for either of the following Move to Type selections: RAX Cloud, Partner Cloud, Other Rackspace Platform</errorMessage>
+</ValidationRule>

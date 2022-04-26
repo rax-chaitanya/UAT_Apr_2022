@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_and_state_are_required</fullName>
+    <active>true</active>
+    <description>Country and stare are required while filling address.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(AND(CONTAINS( $Label.Q_Team_Profiles , $Profile.Id ),OR(ISCHANGED(Status),ISCHANGED(Reason__c)),CONTAINS( $Label.LeadStatusToSkipValidation , Text(Status) ))),
+
+Country == &apos;United States&apos;,
+ISBLANK(State),
+ NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))
+)</errorConditionFormula>
+    <errorMessage>Country and State are required. Please fill the following fields</errorMessage>
+</ValidationRule>

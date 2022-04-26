@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provide_Contact</fullName>
+    <active>false</active>
+    <description>User must provide the contact that is being requested to update</description>
+    <errorConditionFormula>AND(
+				ISPICKVAL(Support_Reason__c,&quot;UPDATE RECORD&quot;),
+				ISPICKVAL(Record_Type__c,&quot;CONTACT&quot;),
+				ISBLANK(ContactId))</errorConditionFormula>
+    <errorDisplayField>ContactId</errorDisplayField>
+    <errorMessage>Please provide the Contact that needs updated</errorMessage>
+</ValidationRule>

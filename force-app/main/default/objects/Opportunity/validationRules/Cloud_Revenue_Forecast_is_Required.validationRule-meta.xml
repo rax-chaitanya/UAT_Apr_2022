@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cloud_Revenue_Forecast_is_Required</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED(Skip_Validation__c)),
+ISBLANK(cloud_revenue_forecast__c),
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT(ISPICKVAL( Type ,&apos;Professional Services&apos;)), 
+OR(RecordType.Name=&apos;US Cloud&apos;,RecordType.Name=&apos;INTL Cloud&apos;),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id)) 
+)</errorConditionFormula>
+    <errorDisplayField>cloud_revenue_forecast__c</errorDisplayField>
+    <errorMessage>Cloud Revenue Forecast is Required for Us and INTL Cloud Opportunities</errorMessage>
+</ValidationRule>

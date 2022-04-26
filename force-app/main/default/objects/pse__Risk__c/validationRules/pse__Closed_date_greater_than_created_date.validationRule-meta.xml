@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Closed_date_greater_than_created_date</fullName>
+    <active>true</active>
+    <description>The risk&apos;s Closed Date must be after it was raised.</description>
+    <errorConditionFormula>AND( ISPICKVAL( pse__Status__c, &apos;Closed&apos;),pse__Date_Raised__c &gt; pse__Closed_Date__c)</errorConditionFormula>
+    <errorMessage>Closed date for the risk must be after the date it was raised.</errorMessage>
+</ValidationRule>

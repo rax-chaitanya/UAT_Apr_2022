@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Adjustment_Reason_Required</fullName>
+    <active>true</active>
+    <description>Adjustment reason must be provided if adjustment is not equal to 0.</description>
+    <errorConditionFormula>AND(
+Adjustment__c &lt;&gt; 0,
+ISBLANK(TEXT(Adjustment_Reason__c))
+)</errorConditionFormula>
+    <errorDisplayField>Adjustment_Reason__c</errorDisplayField>
+    <errorMessage>If Adjustment is indicated, an adjustment reason is required</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Cannot_become_baseline_when_deleting</fullName>
+    <active>true</active>
+    <description>Error message indicating the version cannot be defined as a baseline as it is being deleted.</description>
+    <errorConditionFormula>AND( pse__Baseline__c  = true, ISPICKVAL (pse__Status__c, &apos;Deleting&apos;))</errorConditionFormula>
+    <errorMessage>Your selected version is queued for deletion and cannot be set as a baseline.</errorMessage>
+</ValidationRule>

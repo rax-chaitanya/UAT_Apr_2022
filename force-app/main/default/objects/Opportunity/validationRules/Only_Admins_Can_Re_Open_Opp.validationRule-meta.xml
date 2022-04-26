@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_Admins_Can_Re_Open_Opp</fullName>
+    <active>true</active>
+    <description>Prevent end user from chaging Opp record type from &apos;Read Only&apos; to any other record type.</description>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),NOT(CONTAINS( $User.Id , OwnerId )), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+PRIORVALUE(RecordTypeId) == $Label.Opp_Read_Only_RecordTypeId, 
+ISCHANGED(RecordTypeId) 
+)</errorConditionFormula>
+    <errorMessage>Please contact Salesforce Admins to Re-Open Opportunity.</errorMessage>
+</ValidationRule>

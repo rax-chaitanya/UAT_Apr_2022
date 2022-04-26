@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Timecard_Split_Resource_is_Constant</fullName>
+    <active>true</active>
+    <description>A Timecard Split&apos;s Resource field value may not be blank and may not be updated once set (unless Admin Global Edit is checked and Audit Notes are provided on the parent Timecard Header and Actuals Calculation Mode is Scheduled).</description>
+    <errorConditionFormula>OR(ISNULL(pse__Resource__c),(pse__Resource__c=&apos;&apos;),AND(ISCHANGED(pse__Resource__c),OR(NOT(pse__Timecard_Header__r.pse__Admin_Global_Edit__c),ISNULL(pse__Timecard_Header__r.pse__Audit_Notes__c),ISBLANK(TRIM(pse__Timecard_Header__r.pse__Audit_Notes__c)))))</errorConditionFormula>
+    <errorDisplayField>pse__Resource__c</errorDisplayField>
+    <errorMessage>A Timecard Split&apos;s Resource field value may not be blank and may not be updated once set (unless Admin Global Edit is checked and Audit Notes are provided on the parent Timecard Header and Actuals Calculation Mode is Scheduled).</errorMessage>
+</ValidationRule>

@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>processSelection</name>
+            <value>
+                <stringValue>Company Access Request (US) - Company_Access_Request_1</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>selectionType</name>
+            <value>
+                <stringValue>selectedProcess</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>submitterType</name>
+            <value>
+                <stringValue>currentUser</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_11_A1</name>
+        <label>Remainder Req. Access</label>
+        <locationX>1100</locationX>
+        <locationY>200</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>I would like access to this company.
+
+[Submitted via &apos;no mgr Id&apos; automated process]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Company_Access_Request_1</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>skipEntryCriteria</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>processSelection</name>
+            <value>
+                <stringValue>Company Access Request (UK/NE/DACH) - Company_Access_Request_2</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>selectionType</name>
+            <value>
+                <stringValue>selectedProcess</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>submitterType</name>
+            <value>
+                <stringValue>currentUser</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>(UK/NE/DACH) Req. Access</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>I would like access to this company.
+
+[Submitted via UK/NE/DACH automated process]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Company_Access_Request_2</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>skipEntryCriteria</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>processSelection</name>
+            <value>
+                <stringValue>Company Access Request (Asia specific) - Company_Access_Request_Asia_specific</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>selectionType</name>
+            <value>
+                <stringValue>selectedProcess</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>submitterType</name>
+            <value>
+                <stringValue>currentUser</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>(Asia Specific) Req. Access</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>I would like access to this company.
+
+[Submitted via Asia Specific automated process]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Company_Access_Request_Asia_specific</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>skipEntryCriteria</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>processSelection</name>
+            <value>
+                <stringValue>Company Access Request (Australia) - Company_Access_Request_4</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>selectionType</name>
+            <value>
+                <stringValue>selectedProcess</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>submitterType</name>
+            <value>
+                <stringValue>currentUser</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_5_A1</name>
+        <label>(AUZ) Req. Access</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>I would like access to this company.
+
+[Submitted via Australia automated process]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Company_Access_Request_4</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>skipEntryCriteria</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>processSelection</name>
+            <value>
+                <stringValue>Company Access Request (Asia) - Company_Access_Request_3</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>selectionType</name>
+            <value>
+                <stringValue>selectedProcess</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>submitterType</name>
+            <value>
+                <stringValue>currentUser</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>(Asia) Req. Access</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>I would like access to this company.
+
+[Submitted via &apos;yes mgr Id&apos; automated process]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Company_Access_Request_3</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>skipEntryCriteria</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>processSelection</name>
+            <value>
+                <stringValue>Company Access Request - Company_Access_Request</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>selectionType</name>
+            <value>
+                <stringValue>selectedProcess</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>submitterType</name>
+            <value>
+                <stringValue>currentUser</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Submit Normal Approval Process</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>comment</name>
+            <value>
+                <stringValue>I would like access to this company.
+
+[Submitted via &apos;yes mgr Id&apos; automated process]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Company_Access_Request</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>skipEntryCriteria</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>UK/NE/DACH</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision10</name>
+        <label>myDecision10</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_11</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_A1</targetReference>
+            </connector>
+            <label>no mgr Id</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Asia Specific</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>AUZ</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision8</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Asia</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision8</name>
+        <label>myDecision8</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision10</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <label>yes mgr Id</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),  
+    NOT(CONTAINS($Label.SuperAdmins, [Account].Company_Access_Submitter__c)),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ([Account].Company_Access_Submitter__c) ),
+    !ISBLANK(  [Account].Company_Access_Submitter__c ),
+    CONTAINS(&apos;EMEA&apos;, TEXT($User.Region__c)),
+    OR(
+AND(
+    NOT(ISBLANK([Account].Owner.UserRoleId)),
+    CONTAINS([Account].Owner.UserRole.Name, &apos;Enterprise&apos;)
+),        
+        ISBLANK([Account].Owner.ManagerId),
+        AND(!ISBLANK([Account].Owner.ManagerId),
+            ![Account].Owner.Manager.IsActive)
+        
+    )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),  
+    NOT(CONTAINS({!$Label.SuperAdmins}, {!myVariable_current.Company_Access_Submitter__c})),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ({!myVariable_current.Company_Access_Submitter__c}) ),
+    !ISBLANK(  {!myVariable_current.Company_Access_Submitter__c} ),
+    CONTAINS(&apos;EMEA&apos;, TEXT({!$User.Region__c})),
+    OR(
+AND(
+    NOT(ISBLANK({!myVariable_current.Owner.UserRoleId})),
+    CONTAINS({!myVariable_current.Owner.UserRole.Name}, &apos;Enterprise&apos;)
+),        
+        ISBLANK({!myVariable_current.Owner.ManagerId}),
+        AND(!ISBLANK({!myVariable_current.Owner.ManagerId}),
+            !{!myVariable_current.Owner.Manager.IsActive})
+        
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+    NOT(CONTAINS($Label.SuperAdmins, [Account].Company_Access_Submitter__c)),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ([Account].Company_Access_Submitter__c) ),
+    !ISBLANK(  [Account].Company_Access_Submitter__c ),
+    OR(
+        ISBLANK([Account].Owner.ManagerId),
+        AND(
+            !ISBLANK([Account].Owner.ManagerId),
+            ![Account].Owner.Manager.IsActive
+        )
+        
+    )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_11</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+    NOT(CONTAINS({!$Label.SuperAdmins}, {!myVariable_current.Company_Access_Submitter__c})),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ({!myVariable_current.Company_Access_Submitter__c}) ),
+    !ISBLANK(  {!myVariable_current.Company_Access_Submitter__c} ),
+    OR(
+        ISBLANK({!myVariable_current.Owner.ManagerId}),
+        AND(
+            !ISBLANK({!myVariable_current.Owner.ManagerId}),
+            !{!myVariable_current.Owner.Manager.IsActive}
+        )
+        
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+    NOT(CONTAINS($Label.SuperAdmins, [Account].Company_Access_Submitter__c)),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ([Account].Company_Access_Submitter__c) ),
+    !ISBLANK(  [Account].Company_Access_Submitter__c ),
+    CONTAINS(&apos;APAC&apos;, TEXT($User.Region__c)),
+	CONTAINS(&apos;Asia&apos;, TEXT($User.Group__c)),
+    OR(
+    NOT(ISBLANK([Account].Owner.UserRoleId)),
+        ISBLANK([Account].Owner.ManagerId),
+        AND(!ISBLANK([Account].Owner.ManagerId),
+            ![Account].Owner.Manager.IsActive)
+        
+    )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+    NOT(CONTAINS({!$Label.SuperAdmins}, {!myVariable_current.Company_Access_Submitter__c})),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ({!myVariable_current.Company_Access_Submitter__c}) ),
+    !ISBLANK(  {!myVariable_current.Company_Access_Submitter__c} ),
+    CONTAINS(&apos;APAC&apos;, TEXT({!$User.Region__c})),
+	CONTAINS(&apos;Asia&apos;, TEXT({!$User.Group__c})),
+    OR(
+    NOT(ISBLANK({!myVariable_current.Owner.UserRoleId})),
+        ISBLANK({!myVariable_current.Owner.ManagerId}),
+        AND(!ISBLANK({!myVariable_current.Owner.ManagerId}),
+            !{!myVariable_current.Owner.Manager.IsActive})
+        
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+    NOT(CONTAINS($Label.SuperAdmins, [Account].Company_Access_Submitter__c)),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ([Account].Company_Access_Submitter__c) ),
+    !ISBLANK(  [Account].Company_Access_Submitter__c ),
+    CONTAINS(&apos;APAC&apos;, TEXT($User.Region__c)),
+    CONTAINS(&apos;ANZ&apos;, TEXT($User.Group__c)),
+    OR(
+    NOT(ISBLANK([Account].Owner.UserRoleId)),
+     ISBLANK([Account].Owner.ManagerId),
+        AND(!ISBLANK([Account].Owner.ManagerId),
+            ![Account].Owner.Manager.IsActive)
+        
+    )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+    NOT(CONTAINS({!$Label.SuperAdmins}, {!myVariable_current.Company_Access_Submitter__c})),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ({!myVariable_current.Company_Access_Submitter__c}) ),
+    !ISBLANK(  {!myVariable_current.Company_Access_Submitter__c} ),
+    CONTAINS(&apos;APAC&apos;, TEXT({!$User.Region__c})),
+    CONTAINS(&apos;ANZ&apos;, TEXT({!$User.Group__c})),
+    OR(
+    NOT(ISBLANK({!myVariable_current.Owner.UserRoleId})),
+     ISBLANK({!myVariable_current.Owner.ManagerId}),
+        AND(!ISBLANK({!myVariable_current.Owner.ManagerId}),
+            !{!myVariable_current.Owner.Manager.IsActive})
+        
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+    NOT(CONTAINS($Label.SuperAdmins, [Account].Company_Access_Submitter__c)),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ([Account].Company_Access_Submitter__c) ),
+    !ISBLANK(  [Account].Company_Access_Submitter__c ),
+    CONTAINS(&apos;APAC&apos;, TEXT($User.Region__c)),
+    OR(
+AND(
+    NOT(ISBLANK([Account].Owner.UserRoleId)),
+    CONTAINS([Account].Owner.UserRole.Name, &apos;Enterprise&apos;)
+)        ,
+        ISBLANK([Account].Owner.ManagerId),
+        AND(!ISBLANK([Account].Owner.ManagerId),
+            ![Account].Owner.Manager.IsActive)
+        
+    )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+    NOT(CONTAINS({!$Label.SuperAdmins}, {!myVariable_current.Company_Access_Submitter__c})),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ({!myVariable_current.Company_Access_Submitter__c}) ),
+    !ISBLANK(  {!myVariable_current.Company_Access_Submitter__c} ),
+    CONTAINS(&apos;APAC&apos;, TEXT({!$User.Region__c})),
+    OR(
+AND(
+    NOT(ISBLANK({!myVariable_current.Owner.UserRoleId})),
+    CONTAINS({!myVariable_current.Owner.UserRole.Name}, &apos;Enterprise&apos;)
+)        ,
+        ISBLANK({!myVariable_current.Owner.ManagerId}),
+        AND(!ISBLANK({!myVariable_current.Owner.ManagerId}),
+            !{!myVariable_current.Owner.Manager.IsActive})
+        
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+    NOT(CONTAINS($Label.SuperAdmins, [Account].Company_Access_Submitter__c)),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ([Account].Company_Access_Submitter__c) ),
+    !ISBLANK(  [Account].Company_Access_Submitter__c ),
+    !ISBLANK([Account].Owner.ManagerId),
+    [Account].Owner.Manager.IsActive
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+    NOT(CONTAINS({!$Label.SuperAdmins}, {!myVariable_current.Company_Access_Submitter__c})),
+    !ISNEW(),
+    ISBLANK ( PRIORVALUE ({!myVariable_current.Company_Access_Submitter__c}) ),
+    !ISBLANK(  {!myVariable_current.Company_Access_Submitter__c} ),
+    !ISBLANK({!myVariable_current.Owner.ManagerId}),
+    {!myVariable_current.Owner.Manager.IsActive}
+)</expression>
+    </formulas>
+    <interviewLabel>GTMO_Kick_Off_Company_Team_Member_Approval_Process-1_InterviewLabel</interviewLabel>
+    <label>GTMO_Kick Off Company Team Member Approval Process</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Account</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

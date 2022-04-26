@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amorgan__first_of_the_month</fullName>
+    <active>true</active>
+    <description>The day must be the first day of the month</description>
+    <errorConditionFormula>DAY(amorgan__Date__c)  &lt;&gt;  1</errorConditionFormula>
+    <errorDisplayField>amorgan__Date__c</errorDisplayField>
+    <errorMessage>Please choose the first day of the month.</errorMessage>
+</ValidationRule>

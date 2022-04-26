@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Milestone_Project_Mismatch</fullName>
+    <active>true</active>
+    <description>Validation rule to check user entering assignment and milestone belonging to the same project.</description>
+    <errorConditionFormula>pse__Assignment__r.pse__Project__c  !=  pse__Milestone__r.pse__Project__c</errorConditionFormula>
+    <errorMessage>A Milestone may only be associated with an Assignment for the same Project.</errorMessage>
+</ValidationRule>

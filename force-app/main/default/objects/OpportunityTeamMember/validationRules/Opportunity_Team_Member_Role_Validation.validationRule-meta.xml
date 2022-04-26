@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Team_Member_Role_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+NOT(Skip_Validation__c), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+CONTAINS($Label.Opportunity_Team_Member_Role,TEXT(TeamMemberRole)), 
+NOT(CONTAINS(Opportunity.Owner.ManagerId,$User.Id)) 
+)</errorConditionFormula>
+    <errorMessage>Only the manager can add the team member.</errorMessage>
+</ValidationRule>

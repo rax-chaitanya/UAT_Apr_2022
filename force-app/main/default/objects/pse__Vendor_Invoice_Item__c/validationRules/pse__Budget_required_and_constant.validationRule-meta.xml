@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Budget_required_and_constant</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(LEN(pse__Budget_Header__c)=0,ISCHANGED(pse__Budget_Header__c))</errorConditionFormula>
+    <errorMessage>Budget Header is required and cannot be changed once set</errorMessage>
+</ValidationRule>

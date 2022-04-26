@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Originating_Oppty_on_MSP_Upgrades</fullName>
+    <active>false</active>
+    <description>Requires that the Onica Originating Oppty field is completed if an MSP Upgrade is selected in MSP Type field.</description>
+    <errorConditionFormula>ISPICKVAL (Onica_MS_Type__c, &quot;EE, Upgraded&quot;) &amp;&amp; ISBLANK( Onica_Originating_Opportunity__c) &amp;&amp; ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_Originating_Opportunity__c</errorDisplayField>
+    <errorMessage>Please link this MSP, Upgrade to the prior MSP Closed/Won deal.</errorMessage>
+</ValidationRule>

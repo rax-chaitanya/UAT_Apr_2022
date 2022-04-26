@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>An email sent to the PE team that a PE User has submitted a general request form.</description>
+        <name>PE_Portal_General_Request_Notice</name>
+        <label>PE Portal General Request Notice</label>
+        <locationX>176</locationX>
+        <locationY>638</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>PE_General_Request_Form_Complete</targetReference>
+        </connector>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>PEGeneralRequestNoticeBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+            <value>
+                <elementReference>PEGeneralRequestEmailAddressCollection</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>PE Portal General Request</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>50.0</apiVersion>
+    <assignments>
+        <name>Set_PE_General_Request_Notice_Email_Recipient_0_0</name>
+        <label>Set PE General Request Notice Email Recipient</label>
+        <locationX>176</locationX>
+        <locationY>518</locationY>
+        <assignmentItems>
+            <assignToReference>PEGeneralRequestEmailAddressCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>PEPortalNotificationEmail</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>PEGeneralRequestEmailAddressCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>EcommEmail</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>PE_Portal_General_Request_Notice</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <description>Request support for pre-diligence</description>
+        <name>PEPortalChoicePreDiligence</name>
+        <choiceText>Request support for pre-diligence</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Request support for pre-diligence</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Request for product information</description>
+        <name>PEPortalChoiceProductInfo</name>
+        <choiceText>Request for product information</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Request for product information</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Request a Quarterly Business Update</description>
+        <name>PEPortalChoiceQBR</name>
+        <choiceText>Request a Quarterly Business Update</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Request a Quarterly Business Update</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Add/update a Schedule 2</description>
+        <name>PEPortalChoiceSchedule2Update</name>
+        <choiceText>Add/update a Schedule 2</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Add/update a Schedule 2</stringValue>
+        </value>
+    </choices>
+    <description>The flow is used in the Private Equity Partner Portal to provide the user with a form to submit a request to the PE team as a Task record attached to the Partner User, Contact, and Account.</description>
+    <interviewLabel>PE Portal General Request {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PE Portal General Request</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_PE_General_Request</name>
+        <label>Create PE General Request</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Set_PE_General_Request_Notice_Email_Recipient_0_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>PETaskDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>PE_User_Account.Account.Owner.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>RequestType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>PE_User_Account.Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>PE_User_Account.Contact.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get the PE Portal User and Account</description>
+        <name>PE_User_Account</name>
+        <label>PE User/Account</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>PE_General_Request_Form</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>AccountId</queriedFields>
+        <queriedFields>ContactId</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <description>The PE Portal General Request form used to populated new tasks and upload files.</description>
+        <name>PE_General_Request_Form</name>
+        <label>Contact Rackspace</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Create_PE_General_Request</targetReference>
+        </connector>
+        <fields>
+            <name>RequestType</name>
+            <choiceReferences>PEPortalChoiceQBR</choiceReferences>
+            <choiceReferences>PEPortalChoiceSchedule2Update</choiceReferences>
+            <choiceReferences>PEPortalChoiceProductInfo</choiceReferences>
+            <choiceReferences>PEPortalChoicePreDiligence</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Request Type</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Request_Details</name>
+            <fieldText>Request Details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>PEPortalGeneralRequestDocument</name>
+            <extensionName>forceContent:fileUpload</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Related Document(s)</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>multiple</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>PE_User_Account.Account.Id</elementReference>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>PE_General_Request_Form_Complete</name>
+        <label>PE General Request Form Complete</label>
+        <locationX>176</locationX>
+        <locationY>758</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>PEPortalGeneralRequestComplete</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;Thank you for submitting this request. The Rackspace Private Equity team will reach out to you shortly.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>PE_User_Account</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>PEGeneralRequestNoticeBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A new Private Equity Portal Request has been submitted.
+Request Type: {!RequestType}
+Company: {!PE_User_Account.Account.Name}
+User: {!PE_User_Account.Name}
+Files Uploaded: {!PEPortalGeneralRequestDocument.fileNames}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>PETaskDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!Request_Details}
+Files Uploaded: {!PEPortalGeneralRequestDocument.fileNames}</text>
+    </textTemplates>
+    <variables>
+        <name>EcommEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>ecomm@rackspace.com</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>PEGeneralRequestEmailAddressCollection</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The email address to sent the PE General Request notices to</description>
+        <name>PEPortalNotificationEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>privateequity@rackspace.com</stringValue>
+        </value>
+    </variables>
+</Flow>

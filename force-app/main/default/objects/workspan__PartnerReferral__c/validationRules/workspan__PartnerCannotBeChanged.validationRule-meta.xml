@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__PartnerCannotBeChanged</fullName>
+    <active>true</active>
+    <description>Partner cannot be changed.</description>
+    <errorConditionFormula>ISCHANGED(workspan__Partner__c)</errorConditionFormula>
+    <errorDisplayField>workspan__Partner__c</errorDisplayField>
+    <errorMessage>Partner cannot be changed.</errorMessage>
+</ValidationRule>

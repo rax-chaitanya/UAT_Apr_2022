@@ -8,7 +8,7 @@ VERSION | AUTHOR | DATE | DESCRIPTION
 1.1 | Atheer Bdaiwi | 17 Nov. 2021 | SFDC-6814 - Updated the formatting & indentation of the code 
 1.3 | Atheer Bdaiwi | 19 Nov. 2021 | SFDC-6814 - Transposed the hard-coded record types into custom labels
 1.4 | Atheer Bdaiwi | 08 Nov. 2021 | SFDC-6814 - Transposed the hard-coded record ID for "Transition Team Intake Form" into a custom label
-
+1.5 | Rohit Kumar   | 20 Apr. 2022 | SFDC-7463 - Created a new call(openIntakeBoard) on the salesforce Intake Request.
 -->
 
 <aura:component
@@ -33,7 +33,7 @@ VERSION | AUTHOR | DATE | DESCRIPTION
             </div>
         
             <div class="slds-col slds-align_absolute-center slds-size_1-of-3">
-                <a onclick="{!c.selectRecordType}" value="Intake Request">
+                <a onclick="{!c.openIntakeBoard}" value="Intake Request">
                     <img id="{!$Label.c.Case_IntakeRequest_RecordType}" src="{!$Resource.Case_Intake_Request_logo}" height="250" width="250"></img>
                 </a>
                 <lightning:helptext

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Closed_Date_Blank_If_Status_Not_Closed</fullName>
+    <active>true</active>
+    <description>The Closed date must be blank if the status is set to  Not Yet Started, In Progress or On Hold.</description>
+    <errorConditionFormula>AND(OR( ISPICKVAL(pse__Status__c ,&apos;Not Yet Started&apos;),ISPICKVAL(pse__Status__c ,&apos;In Progress&apos;),ISPICKVAL(pse__Status__c ,&apos;On Hold&apos;)), (!ISBLANK(pse__Closed_Date__c ))
+)</errorConditionFormula>
+    <errorMessage>The Closed date must be blank if the status is set to  Not Yet Started, In Progress or On Hold.</errorMessage>
+</ValidationRule>

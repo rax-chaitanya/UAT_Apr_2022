@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>ddcdf__Recursive_Required</fullName>
+        <field>ddcdf__Status__c</field>
+        <literalValue>Recursive Required</literalValue>
+        <name>Recursive Required</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Scan_Canceled</fullName>
+        <field>ddcdf__Status__c</field>
+        <literalValue>Canceled</literalValue>
+        <name>Scan Canceled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Scan_Complete</fullName>
+        <field>ddcdf__Status__c</field>
+        <literalValue>Complete</literalValue>
+        <name>Scan Complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Scan_Error</fullName>
+        <description>Indicates an error with the scan</description>
+        <field>ddcdf__Status__c</field>
+        <literalValue>Error</literalValue>
+        <name>Scan Error</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Scan_Stamp_End_Date</fullName>
+        <description>Stamps the date and time that the scan is complete</description>
+        <field>ddcdf__End_Date__c</field>
+        <formula>DATETIMEVALUE(NOW())</formula>
+        <name>Scan Stamp End Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Scan_Stamp_Start_Date</fullName>
+        <description>Stamps the start date to be used with the end date to determine the amount of time need to run the scan</description>
+        <field>ddcdf__Start_Date__c</field>
+        <formula>DATETIMEVALUE(NOW())</formula>
+        <name>Scan Stamp Start Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Scan_Time</fullName>
+        <description>Stamp the number of minutes and seconds it took to complete the scan</description>
+        <field>ddcdf__Scan_Time__c</field>
+        <formula>IF(
+NOT(ISBLANK(ddcdf__Start_Date__c)),
+(DATETIMEVALUE(NOW()) - ddcdf__Start_Date__c)*24*60*60, NULL
+)</formula>
+        <name>Scan Time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ddcdf__Stamp_Include_in_Report</fullName>
+        <description>If a scan is completed successfully, then make it the report scan.</description>
+        <field>ddcdf__Include_in_Export_Report__c</field>
+        <literalValue>1</literalValue>
+        <name>Stamp Include in Report</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>ddcdf__Scan Canceled</fullName>
+        <actions>
+            <name>ddcdf__Scan_Canceled</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Scan_Stamp_End_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Scan_Time</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When the individual metadata scans are flagged as Canceled the overall scan is updated to Canceled too.</description>
+        <formula>OR( TEXT(ddcdf__Metadata_Class__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Field_Update__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Formula_Field__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Integration_Rule__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Report__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Trigger__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Validation_Rule__c) = &apos;Canceled&apos;, TEXT(ddcdf__Metadata_Workflow__c) = &apos;Canceled&apos; )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ddcdf__Scan Complete</fullName>
+        <actions>
+            <name>ddcdf__Scan_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Scan_Stamp_End_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Scan_Time</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Stamp_Include_in_Report</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When the individual metadata scans are flagged as complete and there are no recursive fields, the overall scan is updated to complete.</description>
+        <formula>AND( TEXT(ddcdf__Metadata_Class__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Field_Update__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Formula_Field__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Integration_Rule__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Report__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Trigger__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Validation_Rule__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Workflow__c) = &apos;Complete&apos;, ISBLANK( ddcdf__Recursive_Fields__c )  )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ddcdf__Scan Error</fullName>
+        <actions>
+            <name>ddcdf__Scan_Error</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If any of the metadata scans end in error the whole scan will be flagged accordingly</description>
+        <formula>OR(  TEXT(ddcdf__Metadata_Class__c) = &apos;Error&apos;,  TEXT(ddcdf__Metadata_Field_Update__c) = &apos;Error&apos;, TEXT(ddcdf__Metadata_Formula_Field__c) = &apos;Error&apos;,  TEXT(ddcdf__Metadata_Integration_Rule__c) = &apos;Error&apos;, TEXT(ddcdf__Metadata_Report__c) = &apos;Error&apos;, TEXT(ddcdf__Metadata_Trigger__c) = &apos;Error&apos;,  TEXT(ddcdf__Metadata_Validation_Rule__c) = &apos;Error&apos;,  TEXT(ddcdf__Metadata_Workflow__c) = &apos;Error&apos; )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ddcdf__Scan Recursive Required</fullName>
+        <actions>
+            <name>ddcdf__Recursive_Required</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Scan_Stamp_End_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>ddcdf__Scan_Time</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When the individual metadata scans are flagged as complete and there are recursive fields, the overall scan is updated to Recursive Required.</description>
+        <formula>AND( TEXT(ddcdf__Metadata_Class__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Field_Update__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Formula_Field__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Integration_Rule__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Report__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Trigger__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Validation_Rule__c) = &apos;Complete&apos;, TEXT(ddcdf__Metadata_Workflow__c) = &apos;Complete&apos;, NOT(ISBLANK( ddcdf__Recursive_Fields__c ))  )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ddcdf__Scan Started</fullName>
+        <actions>
+            <name>ddcdf__Scan_Stamp_Start_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Stamps the date and time the scan is started</description>
+        <formula>1=1</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Lead_ID__c</field>
+        <field>Previous_Status__c</field>
+        <field>Reason__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Lead_Rejection_Email_Approval</name>
+                <type>Alert</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Lead Rejected by Sales Rep is sent to Manager for approval or rejection.</description>
+        <label>Approval from Lead Owner&apos;s Manager</label>
+        <name>Step_1</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Notify_Seller_on_Rejection_on_QTM_Approval</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>Q_Team_Manager_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Q_Team_Manager__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Lead Rejection is sent to a Q Team supervisor for approval or rejection.</description>
+        <label>Approval from Lead Generator&apos;s Manager</label>
+        <name>Approval_from_Lead_Generator_s_Manager</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Lead Rejection Approval/Denied Process.</description>
+    <emailTemplate>unfiled$public/Lead_Rejection_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>$Profile.Name &lt;&gt; $Label.RS_Partner_Operations</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Change_Lead_Reason_to_Accepted_Sales</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Lead_Rejection_Denied_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Set_Lead_Status_to_Sales_Working</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Capture_the_Previous_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Capture_the_Rejected_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Set_Lead_Status_to_Pending_Rejection1</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Rejected Or UnQualified To Lead Gen1</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>true</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>2</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

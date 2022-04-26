@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cloud_Supp_and_Cloud_Infra_Fee_1to5</fullName>
+    <active>true</active>
+    <description>Required for:
+
+- Creation of Opps.
+- Stages 1 to 5
+- US &amp; INT Cloud
+- Sys. Admins skipped
+- Lead conversion skipped
+- Excludes Opps. where &quot;Type&quot; = &quot;Professional Services&quot;</description>
+    <errorConditionFormula>AND(
+
+ISNEW(),
+CONTAINS($Label.CloudOpportunityTypes,TEXT(Type)),
+NOT(ISPICKVAL(Type,&quot;Professional Services&quot;)),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+Created_from_Lead__c = FALSE,
+
+OR(
+ISPICKVAL(StageName, &quot;Stage 1 - Planning &amp; Identification&quot;),
+ISPICKVAL(StageName, &quot;Stage 2 - Opportunity Development&quot;),
+ISPICKVAL(StageName, &quot;Stage 3 - Proposal &amp; Quote&quot;),
+ISPICKVAL(StageName, &quot;Stage 4 - Negotiation &amp; Quote Mod&quot;),
+ISPICKVAL(StageName, &quot;Stage 5 - Closing the Business&quot;)
+)
+,
+
+AND(
+OR(ISBLANK(Cloud_Support_Fee__c),Cloud_Support_Fee__c=0),
+OR(ISBLANK(Cloud_Infrastructure_Fee_Forecast__c),Cloud_Infrastructure_Fee_Forecast__c=0)
+)
+)</errorConditionFormula>
+    <errorMessage>&quot;Cloud Support Fee&quot; &amp; &quot;Cloud Infrastructure Fee&quot; are required.</errorMessage>
+</ValidationRule>

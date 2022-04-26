@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_name_is_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(AND(CONTAINS( $Label.Q_Team_Profiles , $Profile.Id ),OR(ISCHANGED(Status),ISCHANGED(Reason__c)),CONTAINS( $Label.LeadStatusToSkipValidation , Text(Status) ))),
+
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), OR( FirstName=null))</errorConditionFormula>
+    <errorDisplayField>FirstName</errorDisplayField>
+    <errorMessage>Please enter a value for Firstname</errorMessage>
+</ValidationRule>

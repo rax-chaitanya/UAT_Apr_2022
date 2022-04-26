@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__check_historical_end_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(pse__Calculate_Historical_Utilization__c, pse__Historical_Utilization_End_Date__c &lt; pse__Historical_Utilization_Start_Date__c)</errorConditionFormula>
+    <errorDisplayField>pse__Historical_Utilization_End_Date__c</errorDisplayField>
+    <errorMessage>End date is prior to the start date</errorMessage>
+</ValidationRule>

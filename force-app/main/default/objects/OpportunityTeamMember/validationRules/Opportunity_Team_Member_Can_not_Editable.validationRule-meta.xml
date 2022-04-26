@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Team_Member_Can_not_Editable</fullName>
+    <active>true</active>
+    <description>Except for admins, No one can edit the Opportunity team member with opportunity read-only.</description>
+    <errorConditionFormula>AND( 
+NOT(Skip_Validation__c), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+Opportunity.RecordType.Name=&apos;Read Only&apos; 
+)</errorConditionFormula>
+    <errorMessage>Opportunity is read-only, can&apos;t modify the opp team member record.</errorMessage>
+</ValidationRule>

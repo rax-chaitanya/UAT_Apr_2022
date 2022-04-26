@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Focus_Area_Opportunity_Match</fullName>
+    <active>false</active>
+    <errorConditionFormula>Opportunity_Quote__c &lt;&gt; FocusArea__r.Opportunity__c</errorConditionFormula>
+    <errorDisplayField>Focus_Area__c</errorDisplayField>
+    <errorMessage>Focus Area and Quote Line should point to same Opportunity</errorMessage>
+</ValidationRule>

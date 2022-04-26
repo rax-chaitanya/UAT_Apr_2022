@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Credited_Projects_may_not_be_Excluded</fullName>
+    <active>true</active>
+    <description>Projects may not be marked as &quot;Time Excluded&quot; if they are also marked as &quot;Time Credited&quot;.</description>
+    <errorConditionFormula>AND(pse__Time_Credited__c,pse__Time_Excluded__c)</errorConditionFormula>
+    <errorDisplayField>pse__Time_Excluded__c</errorDisplayField>
+    <errorMessage>Projects may not be marked as &quot;Time Excluded&quot; if they are also marked as &quot;Time Credited&quot;.</errorMessage>
+</ValidationRule>

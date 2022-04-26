@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initiatives_is_required_for_Sales</fullName>
+    <active>true</active>
+    <description>EMEA and APAC</description>
+    <errorConditionFormula>AND(
+OR(
+$Profile.Name = &quot;Rackspace Manager-INTL&quot;,
+$Profile.Name = &quot;Rackspace Seller-INTL&quot;
+),
+ISBLANK( TEXT(Initiatives__c)),
+NOT(ISBLANK(TEXT( Region__c ))),
+NOT(ISPICKVAL( StageName , &quot;Stage 1 - Planning &amp; Identification&quot;)),
+NOT(ISPICKVAL( StageName, &quot;Stage 2 - Opportunity Development&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>Initiatives__c</errorDisplayField>
+    <errorMessage>Please choose an Initiative.</errorMessage>
+</ValidationRule>

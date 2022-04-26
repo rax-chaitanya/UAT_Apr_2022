@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Parameters</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+ISNULL(DP_Base_Quantity__c),
+ISNULL( DP_Increment_Quantity__c ),
+ISNULL( DP_Maximum_Quantity__c ),
+ISNULL( DP_Minimum_Quantity__c )
+)</errorConditionFormula>
+    <errorMessage>Base, Minimum, Maximum, and Increment are required.</errorMessage>
+</ValidationRule>

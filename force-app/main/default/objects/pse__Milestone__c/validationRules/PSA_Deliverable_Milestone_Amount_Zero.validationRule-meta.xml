@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Deliverable_Milestone_Amount_Zero</fullName>
+    <active>true</active>
+    <description>Validation rule moved from Onica</description>
+    <errorConditionFormula>RecordType.DeveloperName = &quot;Deliverable_Milestone&quot;  &amp;&amp;  pse__Milestone_Amount__c   &gt;   0</errorConditionFormula>
+    <errorDisplayField>pse__Milestone_Amount__c</errorDisplayField>
+    <errorMessage>Deliverable Milestones must have a total amount of $0.00</errorMessage>
+</ValidationRule>

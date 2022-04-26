@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Expense_Line_Report_Fixed_If_Submitted</fullName>
+    <active>true</active>
+    <description>A Expense Line&apos;s Expense Report may not be changed if it is submitted or included in financials.</description>
+    <errorConditionFormula>AND(ISCHANGED(pse__Expense_Report__c),OR(pse__Submitted__c,pse__Include_In_Financials__c))</errorConditionFormula>
+    <errorDisplayField>pse__Expense_Report__c</errorDisplayField>
+    <errorMessage>A Expense Line&apos;s Expense Report may not be changed if it is submitted or included in financials.</errorMessage>
+</ValidationRule>

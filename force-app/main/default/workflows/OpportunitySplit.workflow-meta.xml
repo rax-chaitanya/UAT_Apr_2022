@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_AutoCreateOppSplit</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Split) - create action to create Opp in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Opportunity_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-AutoCreateOppSplit</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateOppSplit</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Split) - create action to create Opp in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Opportunity_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateOppSplit</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateOppSplit</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Split) - update action to update Opp split in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Opportunity_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateOppSplit</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateOppSplitOpp</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Split) - update action to update Opp split in Current Salesforce and notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Opportunity_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateOppSplitOpp</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-AutoCreateOppSplit</fullName>
+        <actions>
+            <name>NewSfdcToFusion_AutoCreateOppSplit</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opp Split) - Auto create action to create Opp in Current Salesforce.</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp; ISBLANK(Opportunity.Old_Record_Id__c) &amp;&amp; SplitOwnerId = Opportunity.OwnerId &amp;&amp; ISBLANK(Old_Opportunity_Id__c) &amp;&amp; SplitType.DeveloperName != &apos;Revenue&apos; &amp;&amp; NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity.RecordTypeId))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateOppSplit</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateOppSplit</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Split) - create action to create Opp in Current Salesforce.</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;  NOT(ISBLANK(Opportunity.Old_Record_Id__c)) &amp;&amp;  SplitOwnerId &lt;&gt; Opportunity.OwnerId &amp;&amp;  ISBLANK(Old_Opportunity_Id__c) &amp;&amp; SplitType.DeveloperName != &apos;Revenue&apos; &amp;&amp; NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity.RecordTypeId))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateOppSplit</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateOppSplit</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Split) - Update action to Update Opp in Current Salesforce.</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp; SplitOwnerId = Opportunity.OwnerId &amp;&amp; NOT(ISBLANK(Old_Opportunity_Id__c)) &amp;&amp; NOT (ISNEW()) &amp;&amp; SplitType.DeveloperName != &apos;Revenue&apos; &amp;&amp; NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity.RecordTypeId))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateOppSplitOpp</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateOppSplitOpp</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Split) - Update action to update Opp in Current Salesforce.</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp; SplitOwnerId &lt;&gt; Opportunity.OwnerId &amp;&amp; NOT(ISBLANK(Old_Opportunity_Id__c)) &amp;&amp; SplitType.DeveloperName != &apos;Revenue&apos; &amp;&amp; NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity.RecordTypeId))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

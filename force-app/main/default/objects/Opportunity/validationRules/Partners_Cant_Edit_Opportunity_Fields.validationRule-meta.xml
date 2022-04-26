@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partners_Cant_Edit_Opportunity_Fields</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id)),
+CONTAINS( $Label.Partner_Profiles ,$User.ProfileId), 
+OR( 
+ISCHANGED( Name ), 
+ISCHANGED( CloseDate ), 
+ISCHANGED( StageName ) 
+)
+)</errorConditionFormula>
+    <errorMessage>Partners Can&apos;t Edit Opportunity Fields Except Partner Stage.</errorMessage>
+</ValidationRule>

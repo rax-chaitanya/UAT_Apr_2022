@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Reason_for_MCO_Program_Payer</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Onica_MCO_Program_Payer__c, &quot;Dedicated Payer&quot; ) &amp;&amp;
+ISBLANK (Onica_Dedicated_Payer_Reason__c) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_Dedicated_Payer_Reason__c</errorDisplayField>
+    <errorMessage>Please enter the Onica Dedicated Payer Reason before proceeding.</errorMessage>
+</ValidationRule>

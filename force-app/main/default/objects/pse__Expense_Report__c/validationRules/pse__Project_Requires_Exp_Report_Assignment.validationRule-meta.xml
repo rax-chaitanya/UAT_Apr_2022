@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Project_Requires_Exp_Report_Assignment</fullName>
+    <active>true</active>
+    <description>Expense Reports for this Project require an Assignment.</description>
+    <errorConditionFormula>AND(NOT(pse__Project__r.pse__Allow_Expenses_Without_Assignment__c),OR(ISNULL(pse__Assignment__c),(pse__Assignment__c = &apos;&apos;)))</errorConditionFormula>
+    <errorDisplayField>pse__Assignment__c</errorDisplayField>
+    <errorMessage>Expense Reports for this Project require an Assignment.</errorMessage>
+</ValidationRule>

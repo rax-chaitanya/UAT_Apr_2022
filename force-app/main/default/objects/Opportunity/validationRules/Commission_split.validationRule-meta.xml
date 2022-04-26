@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commission_split</fullName>
+    <active>true</active>
+    <description>When an opportunity has commission split, please input onica commission split partner.</description>
+    <errorConditionFormula>AND(
+Onica_Commission_Split__c = True,
+ISBLANK( Onica_Commission_Split_Owner__c),ISPICKVAL(Type , &apos;AWS&apos;), ISPICKVAL(Onica_Type__c , &apos;PSO&apos;),$RecordType.Name = &quot;US Cloud&quot;,NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)))</errorConditionFormula>
+    <errorDisplayField>Onica_Commission_Split_Owner__c</errorDisplayField>
+    <errorMessage>Please tell us who you&apos;re splitting this commission with.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__ClosedLostReasonRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>workspan__SourcedToPartner__c = &apos;Amazon&apos;
+&amp;&amp; ISPICKVAL(workspan__ClosedLostReason__c, &apos;&apos;)
+&amp;&amp; ISPICKVAL(workspan__SalesStage__c, &apos;Closed Lost&apos;)</errorConditionFormula>
+    <errorDisplayField>workspan__ClosedLostReason__c</errorDisplayField>
+    <errorMessage>Closed Lost Reason is required if the Referral is shared with Amazon and Sales Stage is marked as &apos;Closed Lost&apos;.</errorMessage>
+</ValidationRule>

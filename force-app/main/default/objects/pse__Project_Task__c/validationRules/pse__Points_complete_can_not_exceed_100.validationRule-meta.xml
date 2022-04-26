@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Points_complete_can_not_exceed_100</fullName>
+    <active>true</active>
+    <description>Points percent compete can not exceed 100%</description>
+    <errorConditionFormula>pse__Percent_Complete_Points__c &gt;1</errorConditionFormula>
+    <errorDisplayField>pse__Percent_Complete_Points__c</errorDisplayField>
+    <errorMessage>Points percent complete can not exceed 100%</errorMessage>
+</ValidationRule>

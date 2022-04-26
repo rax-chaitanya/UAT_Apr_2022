@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Firmographic_Update_Subject_Type</fullName>
+    <active>false</active>
+    <description>Subject and Type should map while creating a Firmographic update task.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+ISPICKVAL(Type, &quot;Company Firmographic Update&quot;), 
+NOT(Subject = &quot;Company Firmographic Update Request&quot;)
+)</errorConditionFormula>
+    <errorDisplayField>Subject</errorDisplayField>
+    <errorMessage>For &quot;Company Firmographic Update&quot; task, subject must be &quot;Company Firmographic Update Request&quot;.</errorMessage>
+</ValidationRule>

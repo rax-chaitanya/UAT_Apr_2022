@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Closed_Date_Greater_Than_Date_Raised</fullName>
+    <active>true</active>
+    <description>The issue&apos;s closed date must be after it was raised.</description>
+    <errorConditionFormula>pse__Closed_Date__c&lt; pse__Date_Raised__c</errorConditionFormula>
+    <errorMessage>The issue&apos;s closed date must be after it was raised.</errorMessage>
+</ValidationRule>

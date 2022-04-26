@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MSIContactOfTypeEmployeeNotAllowed</fullName>
+    <active>false</active>
+    <description>MSI Contact Of Type Employee Not Allowed</description>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(MSIContactId__c)),(00N6100000HQD1Z.RecordType  =  $Label.Employee_Contact_Record_Type))</errorConditionFormula>
+    <errorMessage>Contact does not match filter criteria</errorMessage>
+</ValidationRule>

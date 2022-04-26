@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Weighted_Factor_Blank</fullName>
+    <active>true</active>
+    <description>Weighted factor can&apos;t be blank.</description>
+    <errorConditionFormula>ISBLANK(Weighted_Factor__c)</errorConditionFormula>
+    <errorDisplayField>Weighted_Factor__c</errorDisplayField>
+    <errorMessage>Weighted factor can&apos;t be blank. Set as 1.0 if unsure.</errorMessage>
+</ValidationRule>

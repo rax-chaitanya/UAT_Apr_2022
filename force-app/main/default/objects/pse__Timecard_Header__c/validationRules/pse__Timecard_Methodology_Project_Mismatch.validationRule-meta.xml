@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Timecard_Methodology_Project_Mismatch</fullName>
+    <active>true</active>
+    <description>Validates whether the methodology selected on a timecard belongs to the same project as the timecard.</description>
+    <errorConditionFormula>AND(NOT(ISNULL(pse__Project_Methodology_Object__c)),(pse__Project_Methodology_Object__c &lt;&gt; &apos;&apos;),NOT(ISNULL(pse__Project_Methodology_Object__r.pse__Project__c)),(pse__Project_Methodology_Object__r.pse__Project__c &lt;&gt; &apos;&apos;),(pse__Project__c &lt;&gt; pse__Project_Methodology_Object__r.pse__Project__c))</errorConditionFormula>
+    <errorDisplayField>pse__Project_Methodology_Object__c</errorDisplayField>
+    <errorMessage>Cannot associate the methodology with this timecard. The methodology must belong to the same project as the timecard. Select a methodology that belongs to the same project as the timecard.</errorMessage>
+</ValidationRule>

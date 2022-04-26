@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__PartnerIdCannotBeChanged</fullName>
+    <active>true</active>
+    <description>Partner Id cannot be changed.</description>
+    <errorConditionFormula>ISCHANGED(workspan__WorkSpanId__c)</errorConditionFormula>
+    <errorDisplayField>workspan__WorkSpanId__c</errorDisplayField>
+    <errorMessage>Partner Id cannot be changed.</errorMessage>
+</ValidationRule>

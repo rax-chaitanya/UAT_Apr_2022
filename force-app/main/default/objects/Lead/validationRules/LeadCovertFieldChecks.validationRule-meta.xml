@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LeadCovertFieldChecks</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+IsConverted, 
+OR( 
+OR(ISBLANK(Email),ISNUll(Email)), 
+OR(ISBLANK(Phone),ISNUll(Phone)), 
+OR(ISBLANK(Country),ISNUll(Country)), 
+AND(Country == &apos;United States&apos;,ISBLANK(State)) 
+), 
+
+OR( 
+AND(NOT(CONTAINS( $Label.Countries_Without_State1 ,Country)),NOT(CONTAINS( $Label.Countries_Without_State2 ,Country))), 
+ISBLANK(Phone) 
+) 
+)</errorConditionFormula>
+    <errorMessage>Please fill Email, Phone and Country fields before converting the Lead.</errorMessage>
+</ValidationRule>

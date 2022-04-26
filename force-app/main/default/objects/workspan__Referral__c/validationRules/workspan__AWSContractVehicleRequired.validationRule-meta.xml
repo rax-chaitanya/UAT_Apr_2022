@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__AWSContractVehicleRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>workspan__SourcedToPartner__c = &apos;Amazon&apos;
+&amp;&amp; ISBLANK(workspan__AWSContractVehicle__c)
+&amp;&amp; (ISPICKVAL(workspan__Industry__c, &apos;Government&apos;)
+    || ISPICKVAL(workspan__Industry__c, &apos;Education&apos;))
+&amp;&amp; (workspan__CustomerCountry__c = &apos;US&apos;
+    || workspan__CustomerCountry__c = &apos;USA&apos;
+    || workspan__CustomerCountry__c = &apos;United States&apos;
+    || workspan__CustomerCountry__c = &apos;United States of America&apos;)</errorConditionFormula>
+    <errorDisplayField>workspan__AWSContractVehicle__c</errorDisplayField>
+    <errorMessage>Required for selected Industry and Country.</errorMessage>
+</ValidationRule>

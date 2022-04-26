@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSRO_Supply_PracticeLead_DH</fullName>
+    <active>false</active>
+    <description>Forces users to supply Practice Lead if oppty is above 39%.</description>
+    <errorConditionFormula>( ISPICKVAL( StageName , &apos;Stage 3 - Proposal &amp; Quote&apos;) ||
+ISPICKVAL( StageName , &apos;Stage 4 - Negotiation &amp; Quote Mod&apos;) || ISPICKVAL( StageName , &apos;Stage 5 - Closing the Business&apos;) ) &amp;&amp;
+ISBLANK(TEXT(Onica_Practice_Lead__c)) &amp;&amp; ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; NOT(ISBLANK(TEXT(Onica_Type__c ))) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp; 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_Practice_Lead__c</errorDisplayField>
+    <errorMessage>Please select the Onica Practice Lead for this opportunity.</errorMessage>
+</ValidationRule>

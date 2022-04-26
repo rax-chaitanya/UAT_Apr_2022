@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Market_Source_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT(CONTAINS($Label.Partner_Profiles ,$User.ProfileId)),  
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT($Profile.Name = &quot;System Administrator&quot;),
+NOT($Profile.Name = &quot;Integration API&quot;),NOT($Profile.Name = &quot;Rackspace ProServ - INTL&quot;), 
+NOT($Profile.Name = &quot;Rackspace ProServ - US&quot;), 
+NOT($Profile.Name = &quot;Data Stewards&quot;), 
+
+CASESAFEID(RecordTypeId) != $Setup.RecordTypeIds__c.Opportunity_Read_Only__c, 
+
+NOT(
+OR(
+ISPICKVAL(Type,&quot;Professional Services&quot;),
+ISPICKVAL(Type,&quot;Renewal&quot;))),
+
+ISPICKVAL(Market_Source__c,&quot;&quot;),
+
+OR( 
+AND(Created_from_Lead__c, NOT(ISPICKVAL(StageName,&quot;Stage 1 - Planning &amp; Identification&quot;))),
+!Created_from_Lead__c),
+
+NOT(ISPICKVAL(StageName,&quot;Closed Lost&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>Market_Source__c</errorDisplayField>
+    <errorMessage>Marketing Sourced should be populated</errorMessage>
+</ValidationRule>

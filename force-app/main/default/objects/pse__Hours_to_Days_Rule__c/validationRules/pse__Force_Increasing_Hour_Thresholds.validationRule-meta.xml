@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Force_Increasing_Hour_Thresholds</fullName>
+    <active>true</active>
+    <description>Checks to ensure hour thresholds are in increasing value</description>
+    <errorConditionFormula>NOT(AND(
+OR(ISNULL(pse__Hour_Threshold_2__c ), pse__Hour_Threshold_2__c &gt; pse__Hour_Threshold_1__c),
+OR(ISNULL(pse__Hour_Threshold_3__c ), pse__Hour_Threshold_3__c &gt; pse__Hour_Threshold_2__c),
+OR(ISNULL(pse__Hour_Threshold_4__c ), pse__Hour_Threshold_4__c &gt; pse__Hour_Threshold_3__c),
+OR(ISNULL(pse__Hour_Threshold_5__c ), pse__Hour_Threshold_5__c &gt; pse__Hour_Threshold_4__c),
+OR(ISNULL(pse__Hour_Threshold_6__c ), pse__Hour_Threshold_6__c &gt; pse__Hour_Threshold_5__c),
+OR(ISNULL(pse__Hour_Threshold_7__c ), pse__Hour_Threshold_7__c &gt; pse__Hour_Threshold_6__c),
+OR(ISNULL(pse__Hour_Threshold_8__c ), pse__Hour_Threshold_8__c &gt; pse__Hour_Threshold_7__c),
+OR(ISNULL(pse__Hour_Threshold_9__c ), pse__Hour_Threshold_9__c &gt; pse__Hour_Threshold_8__c),
+OR(ISNULL(pse__Hour_Threshold_10__c ), pse__Hour_Threshold_10__c &gt; pse__Hour_Threshold_9__c),
+OR(ISNULL(pse__Hour_Threshold_11__c ), pse__Hour_Threshold_11__c &gt; pse__Hour_Threshold_10__c),
+OR(ISNULL(pse__Hour_Threshold_12__c ), pse__Hour_Threshold_12__c &gt; pse__Hour_Threshold_11__c),
+OR(ISNULL(pse__Hour_Threshold_13__c ), pse__Hour_Threshold_13__c &gt; pse__Hour_Threshold_12__c),
+OR(ISNULL(pse__Hour_Threshold_14__c ), pse__Hour_Threshold_14__c &gt; pse__Hour_Threshold_13__c),
+OR(ISNULL(pse__Hour_Threshold_15__c ), pse__Hour_Threshold_15__c &gt; pse__Hour_Threshold_14__c),
+OR(ISNULL(pse__Hour_Threshold_16__c ), pse__Hour_Threshold_16__c &gt; pse__Hour_Threshold_15__c),
+ OR(ISNULL(pse__Hour_Threshold_17__c ), pse__Hour_Threshold_17__c &gt; pse__Hour_Threshold_16__c),
+ OR(ISNULL(pse__Hour_Threshold_18__c ), pse__Hour_Threshold_18__c &gt; pse__Hour_Threshold_17__c),
+ OR(ISNULL(pse__Hour_Threshold_19__c ), pse__Hour_Threshold_19__c &gt; pse__Hour_Threshold_18__c),
+ OR(ISNULL(pse__Hour_Threshold_20__c ), pse__Hour_Threshold_20__c &gt; pse__Hour_Threshold_19__c)
+))</errorConditionFormula>
+    <errorMessage>Hour Thresholds must be in increasing order</errorMessage>
+</ValidationRule>

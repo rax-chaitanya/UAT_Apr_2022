@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Status_Qualify</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+ISPICKVAL(Status, &quot;Qualified&quot;), 
+NOT(IsConverted),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)) 
+,NOT(AND(UPPER($User.LastName) = &apos;USER&apos;, UPPER($User.FirstName) = &apos;CONNECTION&apos;)))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Lead Status may only be set as Qualified unless the Lead is converted</errorMessage>
+</ValidationRule>

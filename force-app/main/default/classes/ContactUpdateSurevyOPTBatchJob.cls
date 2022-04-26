@@ -36,6 +36,7 @@ global class ContactUpdateSurevyOPTBatchJob Implements Database.Batchable <sObje
                     emailID.add(eachConRecord.email);
                 }
                 emailContactMap.put(eachConRecord.Email,eachConRecord);
+                   System.debug('each contact in nps out out:::'+eachConRecord);
                 }
                 
             }
@@ -49,7 +50,6 @@ global class ContactUpdateSurevyOPTBatchJob Implements Database.Batchable <sObje
         return Database.getQueryLocator([SELECT id,firstname,email,NPS_Survey_Opt_Out__c,Reasons_to_opt_out__c,NPS_Eligible__c  FROM Contact WHERE id in:contactIds AND Recordtype.DeveloperName != 'Employee' AND NPS_Survey_Opt_Out__c != true]);
     }
     global void execute(Database.BatchableContext bc, List<Contact> scope) {
-        system.debug('excute call');
         List<Contact> updateContact = new List<Contact>();
         // itreate over the all updated records
         for(Contact con : scope){

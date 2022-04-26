@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>An email should be trigger once the Opportunity team member is removed.</description>
+        <name>Opportunity_Team_Member_Removed_Email</name>
+        <label>Opportunity Team Member Removed Email</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <actionName>OpportunityTeamMember.Opportunity_Team_Member_Removed</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <description>SFDC-6908 Notify Opportunity Team members when removed from the team
+-only excludes partner user</description>
+    <formulas>
+        <name>TeamMemberName</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Name}</expression>
+    </formulas>
+    <interviewLabel>Notify Opportunity Team Member deletion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Notify Opportunity Team Member deletion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Opportunity_Team_Member_Removed_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsDeleted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>TeamMemberRole</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Partner User</stringValue>
+            </value>
+        </filters>
+        <object>OpportunityTeamMember</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>chatter message</description>
+        <name>EmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Record.User.Name} has been removed as {!$Record.TeamMemberRole} from Opportunity Team.</text>
+    </textTemplates>
+</Flow>

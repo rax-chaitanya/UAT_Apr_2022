@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Start_Time_must_be_before_End_Time</fullName>
+    <active>true</active>
+    <description>Validation message indicating the Schedule Start Time must be earlier than the End Time.</description>
+    <errorConditionFormula>IF( AND(NOT(ISNULL(pse__Monday_Start_Time__c)),pse__Monday_Start_Time__c  &gt;  pse__Monday_End_Time__c) , TRUE, IF(AND(NOT(ISNULL(pse__Tuesday_Start_Time__c)),pse__Tuesday_Start_Time__c  &gt;  pse__Tuesday_End_Time__c),TRUE,IF(AND(NOT(ISNULL(pse__Wednesday_Start_Time__c)),pse__Wednesday_Start_Time__c  &gt;  pse__Wednesday_End_Time__c),TRUE,IF(AND(NOT(ISNULL(pse__Thursday_Start_Time__c)),pse__Thursday_Start_Time__c  &gt;  pse__Thursday_End_Time__c),TRUE,IF(AND(NOT(ISNULL(pse__Friday_Start_Time__c)),pse__Friday_Start_Time__c  &gt;  pse__Friday_End_Time__c),TRUE,IF(AND(NOT(ISNULL(pse__Saturday_Start_Time__c)),pse__Saturday_Start_Time__c  &gt;  pse__Saturday_End_Time__c),TRUE,IF(AND(NOT(ISNULL(pse__Sunday_Start_Time__c)),pse__Sunday_Start_Time__c  &gt;  pse__Sunday_End_Time__c),TRUE,FALSE)))))))</errorConditionFormula>
+    <errorMessage>The Start Time must be earlier than the End Time.</errorMessage>
+</ValidationRule>

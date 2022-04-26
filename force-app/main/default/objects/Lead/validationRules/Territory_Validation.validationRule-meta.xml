@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Territory_Validation</fullName>
+    <active>true</active>
+    <description>If Territory__c is OFAC then Lead Status must be Rejected</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), ISPICKVAL(Territory__c,&apos;OFAC&apos;),NOT( ISPICKVAL(Status,&apos;Rejected&apos;)))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Lead Status should be &quot;Rejected&quot; as Territory is OFAC</errorMessage>
+</ValidationRule>

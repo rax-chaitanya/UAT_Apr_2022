@@ -1,6 +1,6 @@
 @isTest
 public class ContactHandler_Test {
-
+    
     @TestSetUp
     static void setDataUp(){
         List<Trigger_Manager__c> tms = new List<Trigger_Manager__c>();
@@ -23,22 +23,22 @@ public class ContactHandler_Test {
         
         Account a = new Account(Name='Test Account1234',BillingCountry='India',ShippingCountry='India',RecordTypeId=Label.Standard_Company_RecordTypeId);
         insert a;
-          system.debug(a);
+        system.debug(a);
         Account ac = new Account(Name='Test C Account',Company_Name__c=a.Id,ShippingCountry='India',RecordTypeId=Label.Account_Prospect_RecordType_Id);
-       insert ac;
-       system.debug(ac);
-         Contact c = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida');
+        insert ac;
+        system.debug(ac);
+        Contact c = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida');
         insert c;
-          system.debug('contact' +c);
+        system.debug('contact' +c);
         c.HasOptedOutOfEmail = true;
         update c;
         //List<AccountContactRole> acrs = [Select id from AccountContactRole where AccountId =: a.id];
         
         //System.assert(acrs.size()>0,true);
-
-List<AccountContactRelation> acrs = [Select id from AccountContactRelation where AccountId =: a.id];
         
-       System.assert(acrs.size()>0,true);
+        List<AccountContactRelation> acrs = [Select id from AccountContactRelation where AccountId =: a.id];
+        
+        System.assert(acrs.size()>0,true);
         
         delete c;
         undelete c;
@@ -46,45 +46,46 @@ List<AccountContactRelation> acrs = [Select id from AccountContactRelation where
     @isTest
     static void duplicateCheck(){
         /*List<Trigger_Manager__c> tms = new List<Trigger_Manager__c>();
-        tms.add( new Trigger_Manager__c (Name ='AccountContactRelation',Is_Active__c = true));
-        insert tms;*/
-       /*Account a = new Account(Name='Test Account1234',BillingCountry='India',ShippingCountry='India',RecordTypeId=Label.Standard_Company_RecordTypeId);
-        insert a;*/
+tms.add( new Trigger_Manager__c (Name ='AccountContactRelation',Is_Active__c = true));
+insert tms;*/
+        /*Account a = new Account(Name='Test Account1234',BillingCountry='India',ShippingCountry='India',RecordTypeId=Label.Standard_Company_RecordTypeId);
+insert a;*/
         Id recordTypeIdacc2 = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Standard Company').getRecordTypeId();
         Account a = new Account(Name='Test Account1234',BillingCountry='India',ShippingCountry='India',RecordTypeId=recordTypeIdacc2);
         Test.startTest();
         insert a;
         Account ac22 = new Account(Name='Test C1 Account',Company_Name__c=a.Id,ShippingCountry='India',RecordTypeId=Label.Account_Prospect_RecordType_Id);
-       insert ac22;
+        insert ac22;
         List<Contact> updatedCon = new List<Contact>();
-         Contact primaryCon = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test123@gmail.com' ); /*,NPS_Eligible__c = false,NPS_Survey_Opt_Out__c = true,Reasons_to_opt_out__c = 'Contact no longer with Company'*/
+        Contact primaryCon = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test123@gmail.com' ); /*,NPS_Eligible__c = false,NPS_Survey_Opt_Out__c = true,Reasons_to_opt_out__c = 'Contact no longer with Company'*/
         insert primaryCon;
         CheckRecursive.firstcall= false;
-         Contact secondaryCon = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida' ,Email='Test123@gmail.com');
+        Contact secondaryCon = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida' ,Email='Test123@gmail.com');
         insert secondaryCon;
         CheckRecursive.firstcall= false;
         primaryCon.NPS_Eligible__c = false;
         primaryCon.NPS_Survey_Opt_Out__c = true;
         primaryCon.Reasons_to_opt_out__c = 'Contact no longer with Company';
         update primaryCon;
-        updatedCon.add(primaryCon);
+        Contact secondarytoUpdate = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida' ,Email='Test123@gmail.com');
+        insert secondarytoUpdate;
+        updatedCon.add(secondarytoUpdate);
         database.executeBatch(new ContactUpdateSurevyOPTBatchJob(primaryCon,updatedCon));
         List<Contact> conList = new List<Contact>();
         Account a1 = new Account(Name='Test Account1234',BillingCountry='India',ShippingCountry='India',RecordTypeId=Label.Standard_Company_RecordTypeId);
         insert a1;
-         Contact primaryCon1 = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a1.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test@gmail.com' );
+        Contact primaryCon1 = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a1.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test@gmail.com' );
         insert primaryCon1;
         CheckRecursive.firstcall = false;
-         Contact secondaryCon1 = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a1.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test@gmail.com',NPS_Eligible__c = false,NPS_Survey_Opt_Out__c = true,Reasons_to_opt_out__c = 'Contact no longer with Company');
-        insert secondaryCon1;
+        Contact secondaryCon1 = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a1.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test@gmail.com',NPS_Eligible__c = false,NPS_Survey_Opt_Out__c = true,Reasons_to_opt_out__c = 'Contact no longer with Company');
         conList.add(secondaryCon1);
-        // batchCover = new ContactUpdateSurevyOPTBatchJob();
-         database.executeBatch(new ContactUpdateSurevyOPTBatchJob(null,conList));
+        database.executeBatch(new ContactUpdateSurevyOPTBatchJob(null,conList));
         //Secondary contact update by Mrinal (SFDC-7476)
-        secondaryCon1.email = 'testing@email.com';
-        update secondaryCon1;
-        // Mrinal changes end
-        
+        Contact primaryCon2 = new Contact(firstname='Test Contact',LastName='Test Last',AccountId=a1.id,HasOptedOutOfEmail=false,Btlk_Country__c='United States',Btlk_Sate_Province__c='Florida',Email='Test@gmail.com' );
+        insert primaryCon2;
+        conList.add(primaryCon2);
+        primaryCon2.email = 'testing@email.com';
+        update primaryCon2;
         
     }
 }

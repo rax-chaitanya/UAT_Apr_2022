@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <rules>
+        <fullName>NewSfdcToFusion-CreateRVMember</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateRVMember</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(rvpe__RVAccount__r.Old_Record_Id__c)),  ISBLANK(Old_Record_Id__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateRVMember</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateRVMember</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

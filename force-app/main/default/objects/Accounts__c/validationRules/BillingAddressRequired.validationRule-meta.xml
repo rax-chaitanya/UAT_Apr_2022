@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BillingAddressRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+				NOT(ISCHANGED(ByPassGARProcessing__c)),
+				NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+				NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+				OR(
+								AND(ISNEW(),!Acc_Created_From_Lead__c),
+								!ISNEW()
+				),
+				ISPICKVAL(Billing_Country__c,&quot;United States&quot;),
+				ISBLANK(Text(Billing_State_Province__c))
+)</errorConditionFormula>
+    <errorMessage>State is required when selected United States as the Country.</errorMessage>
+</ValidationRule>

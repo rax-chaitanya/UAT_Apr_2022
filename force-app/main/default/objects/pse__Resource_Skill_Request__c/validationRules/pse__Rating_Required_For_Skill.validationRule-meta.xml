@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Rating_Required_For_Skill</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( pse__Skill_or_Certification__c = &apos;Skill&apos;, ISPICKVAL( pse__Minimum_Rating__c, &quot;&quot; ))</errorConditionFormula>
+    <errorDisplayField>pse__Minimum_Rating__c</errorDisplayField>
+    <errorMessage>Minimum rating is required for skill requests.</errorMessage>
+</ValidationRule>

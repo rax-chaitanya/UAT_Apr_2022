@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>PSA_PM_Assigned_Email_Alert</fullName>
+        <description>PSA PM Assigned Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <field>pse__Project_Manager__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>PSA_Email_Templates/PSA_PM_Assigned</template>
+    </alerts>
+    <alerts>
+        <fullName>PSA_Project_Completion_notification</fullName>
+        <description>PSA Project Completion notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>pse__Project_Manager__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>PSA_Email_Templates/PSA_Project_is_Completed</template>
+    </alerts>
+    <alerts>
+        <fullName>PS_Probabilty_moved_to_High_Alert</fullName>
+        <description>PS Probabilty moved to High Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>jeff.giles@rackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>johnmichael.quarantello@rackspace.com.na34</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mpadilla@datapipe.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Professional_Services/PS_Probability_HIGH_Alert</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>PSA_Active_True</fullName>
+        <field>pse__Is_Active__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA Active = True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Close_for_Exp_Entry_True</fullName>
+        <field>pse__Closed_for_Expense_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Close for Exp Entry = True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Close_for_TE_True</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Close for TE = True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Daily_Timecard_Notes_Required</fullName>
+        <field>pse__Daily_Timecard_Notes_Required__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Daily Timecard Notes Required</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Exclude_from_Planner_true</fullName>
+        <field>pse__Exclude_from_Project_Planner__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Exclude from Planner = true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Include_in_Forecasting_False</fullName>
+        <field>pse__Include_In_Forecasting__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA Include in Forecasting = False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Include_in_Forecasting_True</fullName>
+        <field>pse__Include_In_Forecasting__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Include in Forecasting True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Project_Active_False</fullName>
+        <field>pse__Is_Active__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA Project Active False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Project_Active_True</fullName>
+        <field>pse__Is_Active__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Project Active True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Project_Closed_For_Expense_Entry</fullName>
+        <field>pse__Closed_for_Expense_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Project Closed For Expense Entry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Project_Closed_For_Time_Entry</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Project Closed For Time Entry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Unset_Closed_For_Expense_Entry</fullName>
+        <field>pse__Closed_for_Expense_Entry__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA Unset Closed For Expense Entry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Unset_Project_Closed_For_Time_Entry</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA Unset Project Closed For Time Entry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Update_Project_Current_Time_Period</fullName>
+        <field>pse__Action_Update_Current_Time_Period__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Update Project Current Time Period</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Update_Timecard_Notes_Required_TRUE</fullName>
+        <field>pse__Daily_Timecard_Notes_Required__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Update Timecard Notes Required TRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PS_PO_Field_update</fullName>
+        <field>Funding_Purchase_Order_URL_1__c</field>
+        <formula>pse__Opportunity__r.Onica_Project_Purchase_Order__c</formula>
+        <name>PS PO Field update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Project_Name_Field</fullName>
+        <field>Name</field>
+        <formula>pse__Account__r.Name&amp;&quot; (&quot;&amp; pse__Opportunity__r.Name &amp;&quot;): &quot;&amp;ProjectTypeCode__c&amp;&quot;-&quot;&amp;ProjectNumber__c</formula>
+        <name>Project Name Field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Project_Stage</fullName>
+        <field>pse__Stage__c</field>
+        <literalValue>Planning</literalValue>
+        <name>Project Stage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sets_Allow_Expenses_without_Assignment_f</fullName>
+        <field>pse__Allow_Expenses_Without_Assignment__c</field>
+        <literalValue>1</literalValue>
+        <name>Sets Allow Expenses without Assignment f</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Alert PS Team when PS Probability is moved to HIGH</fullName>
+        <actions>
+            <name>PS_Probabilty_moved_to_High_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>pse__Proj__c.PS_Probability__c</field>
+            <operation>equals</operation>
+            <value>HIGH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Proj__c.Territory__c</field>
+            <operation>equals</operation>
+            <value>US/CANADA</value>
+        </criteriaItems>
+        <description>Alert PS Team when PS Probability is moved to HIGH</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Allow Expenses without Assignment</fullName>
+        <actions>
+            <name>Sets_Allow_Expenses_without_Assignment_f</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Proj__c.pse__Allow_Expenses_Without_Assignment__c</field>
+            <operation>notEqual</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sets Allow Expenses without Assignment field to true on Project create</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Billable Project Defaults On Create</fullName>
+        <actions>
+            <name>PSA_PM_Assigned_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>PSA_Daily_Timecard_Notes_Required</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Project_Active_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Update_Project_Current_Time_Period</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers when a new Billable Project is Created</description>
+        <formula>pse__Is_Billable__c = TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Include in Forecasting - Project</fullName>
+        <actions>
+            <name>PSA_Include_in_Forecasting_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Proj__c.pse__Is_Billable__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>If the project is billable, include it in forecasting.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Notify Project Manager on Project Completion</fullName>
+        <actions>
+            <name>PSA_Project_Completion_notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Projects that are Stage &quot;Completed&quot;, will trigger an email alert to the Project Manager</description>
+        <formula>ISPICKVAL( pse__Stage__c , &apos;Completed&apos;)   &amp;&amp;    NOT(ISPICKVAL(pse__Project_Type__c , &apos;Internal&apos;) || NOT(ISPICKVAL(pse__Project_Type__c , &apos;Pre Sales&apos;)))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Project Activation based on Stage</fullName>
+        <actions>
+            <name>PSA_Project_Active_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Unset_Closed_For_Expense_Entry</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Unset_Project_Closed_For_Time_Entry</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Reactivate Project when changed from Cancelled or Completed</description>
+        <formula>NOT(  ISPICKVAL(pse__Stage__c,&quot;Completed&quot;) ||  ISPICKVAL(pse__Stage__c,&quot;Cancelled&quot;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Project Closure Based on Stage</fullName>
+        <actions>
+            <name>PSA_Project_Active_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Project_Closed_For_Expense_Entry</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Project_Closed_For_Time_Entry</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers when A Project Stage is changed to Completed to Canceled</description>
+        <formula>ISPICKVAL(pse__Stage__c,&quot;Completed&quot;) ||  ISPICKVAL(pse__Stage__c,&quot;Cancelled&quot;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Project Creation</fullName>
+        <actions>
+            <name>PSA_Update_Timecard_Notes_Required_TRUE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Project_Stage</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Proj__c.CreatedDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>All Projects should have Daily Timecard Notes Required and start at stage &quot;Planning&quot; upon create</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Project Name</fullName>
+        <actions>
+            <name>Project_Name_Field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>pse__Proj__c.pse__Is_Template__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Proj__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Funded Project,Customer Funded Project</value>
+        </criteriaItems>
+        <description>This workflow will auto assign the name of the project when a new project is created</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Project PM Changed</fullName>
+        <actions>
+            <name>PSA_PM_Assigned_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers when the Project PM has been changed</description>
+        <formula>(ISNEW() || ISCHANGED( pse__Project_Manager__c )) &amp;&amp;   (pse__Project_Manager__r.pse__Salesforce_User__r.Id &lt;&gt; OwnerId)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Project Stage Completed</fullName>
+        <actions>
+            <name>PSA_Active_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Close_for_Exp_Entry_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Close_for_TE_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Exclude_from_Planner_true</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Include_in_Forecasting_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Proj__c.pse__Stage__c</field>
+            <operation>equals</operation>
+            <value>Completed</value>
+        </criteriaItems>
+        <description>All Projects, regardless of Record Type, that have stage set to &quot;Completed&quot;, should be closed for Expense Entry, Time Entry, marked as Closed/Inactive, excluded from project planner and uncheck include in forecasting.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Update PO URL</fullName>
+        <actions>
+            <name>PS_PO_Field_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update URL from opportunity</description>
+        <formula>NOT( ISNULL( pse__Opportunity__r.Onica_Project_Purchase_Order__c ) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

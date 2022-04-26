@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Edit_Closed_Won_Opportunity</fullName>
+    <active>true</active>
+    <description>Created For SFDC-3929,SFDC-3950, includes exception for Automated Process User</description>
+    <errorConditionFormula>AND(AND(ISPICKVAL(PRIORVALUE(StageName),&apos;Closed Won&apos;) ,NOT(ISCHANGED(Number_Of_Customer_Reviews__c))),
+OR(RecordType.Name == &apos;Read Only&apos;,AND(ISCHANGED(RecordTypeId),PRIORVALUE(RecordTypeId) == $Label.OppReadOnlyRecordTypeId)),
+NOT(CONTAINS($Label.Admin_profiles_Allowed_to_ChangeAccountOwner,$Profile.Id)),NOT($User.Id = &quot;00561000000ly2Z&quot;),
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id))
+)</errorConditionFormula>
+    <errorMessage>An opportunity cannot be modified once the Record Type has been set to &quot;Read Only&quot;(Closed Won).</errorMessage>
+</ValidationRule>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Cannot_Specify_Res_And_Ext_Res</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(pse__Resource__c)), NOT(LEN(pse__External_Resource__c)=0))</errorConditionFormula>
+    <errorMessage>Cannot specify both Resource and External Resource</errorMessage>
+</ValidationRule>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>PSA_New_Sprint_Created</fullName>
+        <description>PSA New Sprint Created</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>roma.shah@rackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>PSA_Email_Templates/PSA_New_Sprint_Milestone</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Exclude_from_Billing_True</fullName>
+        <field>pse__Exclude_from_Billing__c</field>
+        <literalValue>1</literalValue>
+        <name>Exclude from Billing True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Close_for_TE_Ture</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Close for TE = Ture</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_IIF_Ture</fullName>
+        <field>pse__Include_In_Financials__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA IIF = Ture</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_MS_status_Billed</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Billed</literalValue>
+        <name>PSA MS status = Billed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_MS_status_Invoiced</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Invoiced</literalValue>
+        <name>PSA MS status = Invoiced</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Approved_A</fullName>
+        <description>Setup based on Onica</description>
+        <field>pse__Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Approved A</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Approved_True</fullName>
+        <field>pse__Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Approved True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Closed_For_Expense_True</fullName>
+        <field>pse__Closed_for_Expense_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Closed For Expense True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Closed_For_Time_Entry_True</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Closed For Time Entry True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Closed_for_Expense_Entry</fullName>
+        <field>pse__Closed_for_Expense_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Closed for Expense Entry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Closed_for_Time_Entry</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Closed for Time Entry</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Cost_As_External_True</fullName>
+        <field>pse__Log_Milestone_Cost_As_External__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone Cost As External True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_IFF_True</fullName>
+        <field>pse__Include_In_Financials__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Milestone IFF True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Status_Open</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Open</literalValue>
+        <name>PSA Milestone Status Open</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_Status_Set_To_Approved</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>PSA Milestone Status Set To Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Milestone_status_In_Progress</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>In Progress</literalValue>
+        <name>PSA Milestone status In Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Update_Milestone_Closed_for_TE</fullName>
+        <field>pse__Closed_for_Time_Entry__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Update Milestone Closed for TE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Update_Milestone_Status_to_Billed</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Billed</literalValue>
+        <name>PSA Update Milestone Status to Billed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Update_Milestone_Status_to_Completed</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Completed</literalValue>
+        <name>PSA Update Milestone Status to Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>PSA Actual Date Approves And Closes Milestone</fullName>
+        <actions>
+            <name>PSA_Milestone_Approved_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Milestone_Closed_For_Expense_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Milestone_Closed_For_Time_Entry_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Milestone_IFF_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When Milestone Actual Date is entered, Milestone is Approved</description>
+        <formula>Not(isblank(pse__Actual_Date__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Delivery Milestone Default Values Moved from Onica</fullName>
+        <actions>
+            <name>Exclude_from_Billing_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Deliverable Milestone</value>
+        </criteriaItems>
+        <description>Deliverable Milestone Default Values  - Moved from Onica
+Exclude from billing = True 
+Milestone amount = zero</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Fixed Fee Milestone Created</fullName>
+        <actions>
+            <name>PSA_Close_for_TE_Ture</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Milestone_Approved_A</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Fixed Fee Milestone</value>
+        </criteriaItems>
+        <description>Fixed Fee Milestone is created, the status is set to “in progress” and the “Approved” box is automatically checked and closed for Time Entry checked</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Fixed Fee Milestone Ready to bill</fullName>
+        <actions>
+            <name>PSA_IIF_Ture</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Fixed Fee Milestone</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.pse__Status__c</field>
+            <operation>equals</operation>
+            <value>Ready to Bill</value>
+        </criteriaItems>
+        <description>Fixed Fee Milestone status = ready to bill IIF = True</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA MS BE Release %3D True</fullName>
+        <actions>
+            <name>PSA_MS_status_Invoiced</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When the BE is released the MS status auto changes to  invoiced</description>
+        <formula>NOT( ISNULL( pse__Billing_Event_Released__c) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Milestone Billed- Moved from Onica</fullName>
+        <actions>
+            <name>PSA_Update_Milestone_Status_to_Billed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Fixed Fee Milestone</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.pse__Billed__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.pse__Invoiced__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Update Milestone Status to Billed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Milestone Completed - Moved from Onica</fullName>
+        <actions>
+            <name>PSA_Milestone_Closed_for_Expense_Entry</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Milestone_Closed_for_Time_Entry</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Deliverable Milestone</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.pse__Status__c</field>
+            <operation>equals</operation>
+            <value>Cancelled,Completed</value>
+        </criteriaItems>
+        <description>Closed for time entry
+Close for expense entry</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Milestone Create Defaults</fullName>
+        <actions>
+            <name>PSA_Milestone_Cost_As_External_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Milestone_Status_Open</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Defaults that trigger on Milestone Creation - this is the same as what&apos;s  in Rackspace and does not exist in Onica : MS status is set to open and External cost is set to true upon creation</description>
+        <formula>true</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Milestone Invoiced - Moved from Onica</fullName>
+        <actions>
+            <name>PSA_Update_Milestone_Closed_for_TE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PSA_Update_Milestone_Status_to_Completed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Fixed Fee Milestone</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.pse__Invoiced__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Closed for time and expense entry 
+Status = completed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Milestone Status for all Milestone</fullName>
+        <actions>
+            <name>PSA_Milestone_status_In_Progress</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Fixed Fee Milestone,Deliverable Milestone</value>
+        </criteriaItems>
+        <description>PSA Milestone Status for all Milestone = In Progress</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA Milestoned Billed %3D True</fullName>
+        <actions>
+            <name>PSA_MS_status_Billed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.pse__Billed__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MS Billed is checked the status of the MS is changed to Billed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>PSA New Sprint Milestone - Move from Onica</fullName>
+        <actions>
+            <name>PSA_New_Sprint_Created</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>pse__Milestone__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Fixed Fee Milestone</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.Exclude_from_Sprint_Calculations__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>pse__Milestone__c.Name</field>
+            <operation>contains</operation>
+            <value>sprint</value>
+        </criteriaItems>
+        <description>This rule is to notify Finance when a new milestone is created on a T&amp;M - Sprint project. - Moved from Onica</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

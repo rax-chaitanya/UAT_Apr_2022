@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Timecard_Approval_Requires_Submit</fullName>
+    <active>true</active>
+    <description>For a Timecard to be marked as Approved, it must also be marked as Submitted.</description>
+    <errorConditionFormula>AND(pse__Approved__c,NOT(pse__Submitted__c))</errorConditionFormula>
+    <errorDisplayField>pse__Approved__c</errorDisplayField>
+    <errorMessage>For a Timecard to be marked as Approved, it must also be marked as Submitted.</errorMessage>
+</ValidationRule>

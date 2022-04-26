@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ffct__BundleComponent_Type_Mandatory</fullName>
+    <active>true</active>
+    <description>Type field of BundleComponent Object is mandatory</description>
+    <errorConditionFormula>ISBLANK( TEXT( ffct__Type__c ) )</errorConditionFormula>
+    <errorMessage>BundleComponent Type is mandatory field. It cannot be left blank.</errorMessage>
+</ValidationRule>

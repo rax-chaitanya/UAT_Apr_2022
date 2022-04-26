@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_should_not_Tele_Accepted_Lead</fullName>
+    <active>true</active>
+    <description>Sellers should not change the lead status to &apos;Tele Accepted Lead&apos;</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+CONTAINS( $Label.Sales_Rep_Profiles , $Profile.Id ),
+ISCHANGED(Status),
+OR(
+ISPICKVAL(Status , &quot;Tele - Accepted Lead&quot;),
+ISPICKVAL(Status , &quot;Tele - Qualified Lead&quot;)
+)
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Sellers should not change the status to &apos;Tele - Accepted Lead&apos; Or &apos;Tele - Qualified Lead&apos;</errorMessage>
+</ValidationRule>

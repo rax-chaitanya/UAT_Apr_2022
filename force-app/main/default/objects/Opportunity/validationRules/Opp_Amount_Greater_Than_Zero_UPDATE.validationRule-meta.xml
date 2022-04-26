@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opp_Amount_Greater_Than_Zero_UPDATE</fullName>
+    <active>true</active>
+    <description>Same as &quot;Opp_Amount_Greater_Than_Zero&quot;, but, for UPDATE only and Stages 2-5</description>
+    <errorConditionFormula>AND(
+
+NOT(ISBLANK(TEXT(Type))),
+NOT(ISPICKVAL(Type, &quot;Professional Services&quot;)),
+Created_from_Lead__c = FALSE,
+NOT(ISPICKVAL(StageName, &quot;Closed Won&quot;)),
+NOT(CONTAINS($UserRole.Name, &quot;Customer Success&quot;)),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+NOT(ISPICKVAL(Category__c, &quot;POC&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Migration&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Amendment&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Renewal&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Recompete - Downgrade&quot;)),
+
+OR(
+Amount = 0,
+
+AND(
+ISBLANK(Amount),
+
+OR(
+ISPICKVAL(QuotingSystem__c,&apos;Datapipe&apos;),
+ISPICKVAL(Acquisition__c,&apos;Datapipe&apos;)
+)
+
+),
+
+AND(
+Approval_Amount__c =0,
+NOT(ISPICKVAL(QuotingSystem__c,&apos;Datapipe&apos;)),
+NOT(ISPICKVAL(Acquisition__c,&apos;Datapipe&apos;))
+)
+
+),
+
+OR(
+ISPICKVAL(StageName, &quot;Stage 1 - Planning &amp; Identification&quot;),
+ISPICKVAL(StageName, &quot;Stage 2 - Opportunity Development&quot;),
+ISPICKVAL(StageName, &quot;Stage 3 - Proposal &amp; Quote&quot;),
+ISPICKVAL(StageName, &quot;Stage 4 - Negotiation &amp; Quote Mod&quot;),
+ISPICKVAL(StageName, &quot;Stage 5 - Closing the Business&quot;)
+)
+
+)</errorConditionFormula>
+    <errorDisplayField>Amount</errorDisplayField>
+    <errorMessage>&quot;Amount&quot; must be populated with a value greater than 0. This is a calculated field, please fill in the appropriate fees associated with this Opportunity. E.g., Type = Professional Services - fill in &quot;ProServ Fees (One-Time)&quot; or &quot;ProServ Fees (MRR)&quot;.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>UpdateCompanyOICParticipant</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Update OIC participant To True</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>UpdateCompanyOICParticipant</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ids</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>ids</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>UpdateCompanyOICParticipant</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Update OIC participant field value to false</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>UpdateCompanyOICParticipant</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ids</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>ids</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Update OIC Participant to TRUE Criteria</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Update OIC Participant Field To False</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+OR(
+AND( 
+NOT($Permission.OIC_Participant_field_Edit), 
+NOT(ISPICKVAL([Account].Contract_Type__c,&apos;&apos;)),
+NOT(ISPICKVAL([Account].Tier_Level__c,&apos;&apos;)),     
+NOT(ISBLANK([Account].Contract_Signed_Date__c)),
+ISPICKVAL([Account].Partner_Account_Status__c,&apos;Approved&apos;),
+[Account].OIC_Participant__c=false
+),
+AND(
+($Permission.OIC_Participant_field_Edit),
+OR(
+ISCHANGED([Account].Contract_Type__c),
+ISCHANGED([Account].Tier_Level__c),
+ISCHANGED([Account].Contract_Signed_Date__c),
+ISCHANGED([Account].Partner_Account_Status__c)
+),
+AND(
+
+NOT(ISPICKVAL([Account].Contract_Type__c,&apos;&apos;)),
+NOT(ISPICKVAL([Account].Tier_Level__c,&apos;&apos;)),
+NOT(ISBLANK([Account].Contract_Signed_Date__c)),
+ISPICKVAL([Account].Partner_Account_Status__c,&apos;Approved&apos;)
+)
+)
+)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+OR(
+AND( 
+NOT({!$Permission.OIC_Participant_field_Edit}), 
+NOT(ISPICKVAL({!myVariable_current.Contract_Type__c},&apos;&apos;)),
+NOT(ISPICKVAL({!myVariable_current.Tier_Level__c},&apos;&apos;)),     
+NOT(ISBLANK({!myVariable_current.Contract_Signed_Date__c})),
+ISPICKVAL({!myVariable_current.Partner_Account_Status__c},&apos;Approved&apos;),
+{!myVariable_current.OIC_Participant__c}=false
+),
+AND(
+({!$Permission.OIC_Participant_field_Edit}),
+OR(
+ISCHANGED({!myVariable_current.Contract_Type__c}),
+ISCHANGED({!myVariable_current.Tier_Level__c}),
+ISCHANGED({!myVariable_current.Contract_Signed_Date__c}),
+ISCHANGED({!myVariable_current.Partner_Account_Status__c})
+),
+AND(
+
+NOT(ISPICKVAL({!myVariable_current.Contract_Type__c},&apos;&apos;)),
+NOT(ISPICKVAL({!myVariable_current.Tier_Level__c},&apos;&apos;)),
+NOT(ISBLANK({!myVariable_current.Contract_Signed_Date__c})),
+ISPICKVAL({!myVariable_current.Partner_Account_Status__c},&apos;Approved&apos;)
+)
+)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(CONTAINS([Account].RecordType.Name, $Label.CheckCompanyonRecordType),
+([Account].OIC_Participant__c) = true,
+OR(
+AND(
+ISCHANGED([Account].Contract_Type__c),
+(TEXT([Account].Contract_Type__c))=&apos;&apos;
+),
+AND(
+ISCHANGED([Account].Tier_Level__c),
+(TEXT([Account].Tier_Level__c))=&apos;&apos;
+),
+AND(ISCHANGED([Account].Contract_Signed_Date__c),
+(TEXT([Account].Contract_Signed_Date__c))=&apos;&apos;
+),
+AND(ISCHANGED([Account].Partner_Account_Status__c),
+(TEXT([Account].Partner_Account_Status__c))!=&apos;Approved&apos;
+)
+)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(CONTAINS({!myVariable_current.RecordType.Name}, {!$Label.CheckCompanyonRecordType}),
+({!myVariable_current.OIC_Participant__c}) = true,
+OR(
+AND(
+ISCHANGED({!myVariable_current.Contract_Type__c}),
+(TEXT({!myVariable_current.Contract_Type__c}))=&apos;&apos;
+),
+AND(
+ISCHANGED({!myVariable_current.Tier_Level__c}),
+(TEXT({!myVariable_current.Tier_Level__c}))=&apos;&apos;
+),
+AND(ISCHANGED({!myVariable_current.Contract_Signed_Date__c}),
+(TEXT({!myVariable_current.Contract_Signed_Date__c}))=&apos;&apos;
+),
+AND(ISCHANGED({!myVariable_current.Partner_Account_Status__c}),
+(TEXT({!myVariable_current.Partner_Account_Status__c}))!=&apos;Approved&apos;
+)
+)
+)</expression>
+    </formulas>
+    <interviewLabel>GTMO_Update_OIC_Participant_New_Logic-2_InterviewLabel</interviewLabel>
+    <label>GTMO_Update_OIC_Participant_New_Logic</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Account</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

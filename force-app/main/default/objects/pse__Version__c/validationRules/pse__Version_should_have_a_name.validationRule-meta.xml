@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Version_should_have_a_name</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(Name)</errorConditionFormula>
+    <errorMessage>You must provide a name for this project version.</errorMessage>
+</ValidationRule>

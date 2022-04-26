@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StartDateIsRequired</fullName>
+    <active>true</active>
+    <description>Start Date cannot be blank</description>
+    <errorConditionFormula>AND(RecordType.Name = &quot;Employee&quot;, ISBLANK(Start_Date__c))</errorConditionFormula>
+    <errorDisplayField>Start_Date__c</errorDisplayField>
+    <errorMessage>Start Date cannot be blank</errorMessage>
+</ValidationRule>

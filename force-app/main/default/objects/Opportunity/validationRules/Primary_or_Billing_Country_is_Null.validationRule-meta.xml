@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_or_Billing_Country_is_Null</fullName>
+    <active>true</active>
+    <description>Ensures associated product account has primary country and Billing country on Company is filled in before creating or closing an opportunity.</description>
+    <errorConditionFormula>AND(
+				NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+				OR(
+								ISNEW(),
+								NOT(ISPICKVAL(StageName , &quot;Closed Won&quot;)),
+								NOT(ISPICKVAL(StageName , &quot;Closed Lost&quot;))),
+				OR(
+ISBLANK(Account__r.ShippingCountry),
+ISBLANK(Account.BillingCountry))
+)</errorConditionFormula>
+    <errorMessage>Please verify Primary Country/State on associated Account and Billing Country/State on Company is populated. You will need to close this window and return once updates have been made.</errorMessage>
+</ValidationRule>

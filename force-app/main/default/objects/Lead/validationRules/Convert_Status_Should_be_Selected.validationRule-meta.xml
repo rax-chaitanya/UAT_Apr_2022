@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Convert_Status_Should_be_Selected</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT( IsConverted ),CONTAINS(TEXT(Status),&quot;Convert&quot;))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Status &apos;Converted&apos; cannot selected.</errorMessage>
+</ValidationRule>

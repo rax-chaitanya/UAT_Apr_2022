@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__SolutionIdCannotBeChanged</fullName>
+    <active>true</active>
+    <description>Solution ID cannot be changed.</description>
+    <errorConditionFormula>ISCHANGED(workspan__SolutionId__c)</errorConditionFormula>
+    <errorDisplayField>workspan__SolutionId__c</errorDisplayField>
+    <errorMessage>Solution ID cannot be changed.</errorMessage>
+</ValidationRule>

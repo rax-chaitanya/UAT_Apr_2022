@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Plan_must_have_same_currency_as_Practice</fullName>
+    <active>true</active>
+    <description>A Practice Plan record must use the same currency as its parent Practice.</description>
+    <errorConditionFormula>NOT(TEXT(CurrencyIsoCode) = TEXT(pse__Practice__r.CurrencyIsoCode))</errorConditionFormula>
+    <errorDisplayField>CurrencyIsoCode</errorDisplayField>
+    <errorMessage>A Practice Plan record must use the same currency as its parent Practice.</errorMessage>
+</ValidationRule>

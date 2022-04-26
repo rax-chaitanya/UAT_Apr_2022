@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_Billable_Project_cannot_be_recurring</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(If(AND(pse__Is_Billable__c =False, ISPICKVAL( pse__Billing_Type__c ,&apos;Recurring Subscription&apos;)) ,True,False),NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)))</errorConditionFormula>
+    <errorDisplayField>Account_Old__c</errorDisplayField>
+    <errorMessage>Billing Type cannot be &apos;Recurring Subscription&apos; for Non Billable Projects.</errorMessage>
+</ValidationRule>

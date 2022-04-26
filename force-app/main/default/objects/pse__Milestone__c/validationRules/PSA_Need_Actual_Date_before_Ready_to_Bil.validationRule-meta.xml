@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Need_Actual_Date_before_Ready_to_Bil</fullName>
+    <active>true</active>
+    <description>Moved from Onica</description>
+    <errorConditionFormula>AND(
+TEXT(pse__Status__c )=&quot;Ready to Bill&quot;,
+ ISBLANK(pse__Actual_Date__c ))</errorConditionFormula>
+    <errorDisplayField>pse__Actual_Date__c</errorDisplayField>
+    <errorMessage>You must specify the Actual Date before marking this Milestone as &quot;Ready to Bill&quot;</errorMessage>
+</ValidationRule>

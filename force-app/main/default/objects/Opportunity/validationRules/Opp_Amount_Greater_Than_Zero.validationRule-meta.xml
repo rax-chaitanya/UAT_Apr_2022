@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opp_Amount_Greater_Than_Zero</fullName>
+    <active>false</active>
+    <description>- 0 Amount Opps. Not acceptable when CREATING Opps.
+	- Stages 1-5
+	- Exclude:
+	
+	○ Category = Migration
+	○ Category = Amendments
+	○ Category = Renewal
+	○ Category = Recompete - Downgrade
+	○ Closed Won
+	○ Custom Success Roles
+	○ Admin Profiles</description>
+    <errorConditionFormula>AND(
+
+NOT(ISPICKVAL(StageName, &quot;Closed Won&quot;)),
+NOT(CONTAINS($UserRole.Name, &quot;Customer Success&quot;)),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+NOT(ISPICKVAL(Type, &quot;Professional Services&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;POC&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Migration&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Amendment&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Renewal&quot;)),
+NOT(ISPICKVAL(Category__c, &quot;Recompete - Downgrade&quot;)),
+Created_from_Lead__c = FALSE,
+ISNEW(),
+
+OR(
+Amount = 0,
+ISBLANK(Amount)
+),
+
+OR(
+ISPICKVAL(StageName, &quot;Stage 1 - Planning &amp; Identification&quot;),
+ISPICKVAL(StageName, &quot;Stage 2 - Opportunity Development&quot;),
+ISPICKVAL(StageName, &quot;Stage 3 - Proposal &amp; Quote&quot;),
+ISPICKVAL(StageName, &quot;Stage 4 - Negotiation &amp; Quote Mod&quot;),
+ISPICKVAL(StageName, &quot;Stage 5 - Closing the Business&quot;)
+)
+
+)</errorConditionFormula>
+    <errorDisplayField>Amount</errorDisplayField>
+    <errorMessage>&quot;Amount&quot; must be populated with a value greater than 0. This is a calculated field, please fill in the appropriate fees associated with this Opportunity. E.g., Type = Professional Services - fill in &quot;ProServ Fees (One-Time)&quot; or &quot;ProServ Fees (MRR)&quot;.</errorMessage>
+</ValidationRule>

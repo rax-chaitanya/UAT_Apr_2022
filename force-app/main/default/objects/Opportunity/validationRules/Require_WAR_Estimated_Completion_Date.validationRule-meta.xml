@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_WAR_Estimated_Completion_Date</fullName>
+    <active>true</active>
+    <description>This rule is tied to war engagement. If someone marks this as Well Architected funding opportunity , they’ll need to tie in war estimated complete date</description>
+    <errorConditionFormula>ISPICKVAL(Onica_AWS_Funding_Type__c, &quot;Well-Architected&quot;) &amp;&amp;
+ISBLANK(Onica_WAR_Estimated_Completion_Date__c) &amp;&amp; INCLUDES(Focus_Area__c, &apos;Amazon&apos;) &amp;&amp; 
+Probability &gt; 0.96 &amp;&amp; ISPICKVAL(Type , &apos;Professional Services&apos;) &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_WAR_Estimated_Completion_Date__c</errorDisplayField>
+    <errorMessage>Please enter the Onica WAR Estimated Completion date before Closing out this Well Architected funding opportunity as Won.</errorMessage>
+</ValidationRule>

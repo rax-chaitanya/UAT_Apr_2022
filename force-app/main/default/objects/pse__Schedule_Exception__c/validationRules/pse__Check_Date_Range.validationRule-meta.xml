@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Check_Date_Range</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR( pse__Date__c &gt;  pse__Schedule__r.pse__End_Date__c, pse__Date__c &lt; pse__Schedule__r.pse__Start_Date__c, pse__End_Date__c &gt; pse__Schedule__r.pse__End_Date__c, pse__End_Date__c &lt; pse__Schedule__r.pse__Start_Date__c )</errorConditionFormula>
+    <errorMessage>Start and/or End Date does not fall within the start and end dates of the schedule.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Bill_Rate_Required</fullName>
+    <active>true</active>
+    <description>This validation rule forces Bill Rate on Assignment to be required in effect, even if the Bill Rate field itself is eventually marked as NOT required to allow access limitations on it.</description>
+    <errorConditionFormula>ISNULL(pse__Bill_Rate__c)</errorConditionFormula>
+    <errorDisplayField>pse__Bill_Rate__c</errorDisplayField>
+    <errorMessage>Assignment requires a Bill Rate.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Budget_Header_Type_Mismatch</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(LEN(pse__Budget_Header__c)&gt;0,TEXT(pse__Budget_Header__r.pse__Type__c) != TEXT(pse__Type__c))</errorConditionFormula>
+    <errorDisplayField>pse__Type__c</errorDisplayField>
+    <errorMessage>The budget header&apos;s type must match the type on this budget</errorMessage>
+</ValidationRule>

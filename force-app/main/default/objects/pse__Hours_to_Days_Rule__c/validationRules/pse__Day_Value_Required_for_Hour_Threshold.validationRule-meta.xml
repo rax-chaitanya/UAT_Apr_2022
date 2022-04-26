@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Day_Value_Required_for_Hour_Threshold</fullName>
+    <active>true</active>
+    <description>Day Values are required if hour thresholds are specified</description>
+    <errorConditionFormula>OR
+(
+AND(ISNULL(pse__Days_Value_1__c),NOT(ISNULL(pse__Hour_Threshold_1__c))),
+AND(ISNULL(pse__Days_Value_2__c),NOT(ISNULL(pse__Hour_Threshold_2__c))),
+AND(ISNULL(pse__Days_Value_3__c),NOT(ISNULL(pse__Hour_Threshold_3__c))),
+AND(ISNULL(pse__Days_Value_4__c),NOT(ISNULL(pse__Hour_Threshold_4__c))),
+AND(ISNULL(pse__Days_Value_5__c),NOT(ISNULL(pse__Hour_Threshold_5__c))),
+AND(ISNULL(pse__Days_Value_6__c),NOT(ISNULL(pse__Hour_Threshold_6__c))),
+AND(ISNULL(pse__Days_Value_7__c),NOT(ISNULL(pse__Hour_Threshold_7__c))),
+AND(ISNULL(pse__Days_Value_8__c),NOT(ISNULL(pse__Hour_Threshold_8__c))),
+AND(ISNULL(pse__Days_Value_9__c),NOT(ISNULL(pse__Hour_Threshold_9__c))),
+AND(ISNULL(pse__Days_Value_10__c),NOT(ISNULL(pse__Hour_Threshold_10__c))),
+AND(ISNULL(pse__Days_Value_11__c),NOT(ISNULL(pse__Hour_Threshold_11__c))),
+AND(ISNULL(pse__Days_Value_12__c),NOT(ISNULL(pse__Hour_Threshold_12__c))),
+AND(ISNULL(pse__Days_Value_13__c),NOT(ISNULL(pse__Hour_Threshold_13__c))),
+AND(ISNULL(pse__Days_Value_14__c),NOT(ISNULL(pse__Hour_Threshold_14__c))),
+AND(ISNULL(pse__Days_Value_15__c),NOT(ISNULL(pse__Hour_Threshold_15__c))),
+AND(ISNULL(pse__Days_Value_16__c),NOT(ISNULL(pse__Hour_Threshold_16__c))),
+AND(ISNULL(pse__Days_Value_17__c),NOT(ISNULL(pse__Hour_Threshold_17__c))),
+AND(ISNULL(pse__Days_Value_18__c),NOT(ISNULL(pse__Hour_Threshold_18__c))),
+AND(ISNULL(pse__Days_Value_19__c),NOT(ISNULL(pse__Hour_Threshold_19__c))),
+AND(ISNULL(pse__Days_Value_20__c),NOT(ISNULL(pse__Hour_Threshold_20__c)))
+)</errorConditionFormula>
+    <errorMessage>Days Values required if the corresponding Hour Threshold is specified.</errorMessage>
+</ValidationRule>

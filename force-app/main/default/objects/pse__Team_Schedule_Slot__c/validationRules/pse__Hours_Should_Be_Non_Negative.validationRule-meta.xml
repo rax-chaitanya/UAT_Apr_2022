@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Hours_Should_Be_Non_Negative</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(pse__Hours__c &lt; 0 , MOD(pse__Hours__c ,0.25) &lt;&gt; 0)</errorConditionFormula>
+    <errorDisplayField>pse__Hours__c</errorDisplayField>
+    <errorMessage>Hours should be non-negative values in increments of 0.25.</errorMessage>
+</ValidationRule>

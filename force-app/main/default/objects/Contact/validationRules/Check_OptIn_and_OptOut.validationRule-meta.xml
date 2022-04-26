@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_OptIn_and_OptOut</fullName>
+    <active>true</active>
+    <description>Both checkbox can&apos;t be check at same time</description>
+    <errorConditionFormula>(NPS_Survey_Opt_Out__c = True &amp;&amp;  NPS_Eligible__c  = True)</errorConditionFormula>
+    <errorMessage>NPS contact can&apos;t be Opted-Out and Opted-In at the same time.</errorMessage>
+</ValidationRule>

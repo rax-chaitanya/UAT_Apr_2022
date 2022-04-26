@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Source_cannot_be_change</fullName>
+    <active>true</active>
+    <description>Lead Source cannot be change by non-admin profiles</description>
+    <errorConditionFormula>AND(
+ISCHANGED(LeadSource),
+				NOT(ISBLANK(TEXT(PRIORVALUE(LeadSource)))),
+				 $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+					 $Profile.Name &lt;&gt; &apos;Sales Ops Admin&apos;
+  )</errorConditionFormula>
+    <errorDisplayField>LeadSource</errorDisplayField>
+    <errorMessage>Lead Source cannot be changed.</errorMessage>
+</ValidationRule>

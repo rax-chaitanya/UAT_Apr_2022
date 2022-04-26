@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_MRR_must_equal_Cld_Supp_Fee_Forecast</fullName>
+    <active>true</active>
+    <description>Rep is allowed to change only &apos;New MRR&apos; field on Quote Line and must equal Opportunity Cloud Support Fee Forecast</description>
+    <errorConditionFormula>AND(
+$Profile.Name = &quot;Rackspace Seller-US&quot;,
+CONTAINS(Name, &quot;Optimizer+&quot;),
+ISCHANGED(New_MRR__c ),
+New_MRR__c &lt;&gt; Opportunity_Quote__r.Cloud_Support_Fee_Forecast__c
+)</errorConditionFormula>
+    <errorDisplayField>New_MRR__c</errorDisplayField>
+    <errorMessage>New MRR must equal Cloud Support Fee Forecast from the Opportunity.</errorMessage>
+</ValidationRule>

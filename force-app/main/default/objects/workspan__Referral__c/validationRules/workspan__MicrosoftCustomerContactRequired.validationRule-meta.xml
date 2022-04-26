@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__MicrosoftCustomerContactRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>workspan__SourcedToPartner__c = &apos;Microsoft&apos;
+&amp;&amp; ISPICKVAL(workspan__ReferralType__c , &apos;Outgoing&apos;)
+&amp;&amp; NOT(ISPICKVAL(workspan__HelpNeededFromMicrosoft__c, &apos;Unknown&apos;))
+&amp;&amp; (ISBLANK(workspan__CustomerContactEmail__c)
+    || ISBLANK(workspan__CustomerContactFirstName__c)
+    || ISBLANK(workspan__CustomerContactLastName__c)
+    || ISBLANK(workspan__CustomerContactPhone__c)
+    || ISBLANK(workspan__CustomerContactTitle__c))</errorConditionFormula>
+    <errorDisplayField>workspan__HelpNeededFromMicrosoft__c</errorDisplayField>
+    <errorMessage>Please provide Customer Contact First Name, Last Name, Title, Phone, and Email. Or select &apos;No help required at this point of time&apos;.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>fferpcore__ValidatedBillingState__c</field>
+        <field>fferpcore__ValidatedBillingCountry__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>vikas.dalal@rackspace.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Send to Data Stewards</label>
+        <name>Send_to_Data_Stewards</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>ignacio.deleon@rackspace.com.rax</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND(
+ISPICKVAL( Company_Review_Status__c ,&quot;Escalate to BM&quot;),
+ISPICKVAL( Owner.Region__c,&quot;AMER&quot;),
+ISPICKVAL( Owner.Sub_Region__c,&quot;LATAM&quot;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Escalate to LATAM BMs</label>
+        <name>Escalate_to_LATAM_BMs</name>
+        <rejectBehavior>
+            <type>BackToPrevious</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Alert_Data_Stewards_of_review_outcome</name>
+                <type>Alert</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>clay.swenson@rackspace.com.rax</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>megan.mclendon@rackspace.com.rax</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>valerie.mauro@rackspace.com.rax</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>AND( 
+ISPICKVAL( Company_Review_Status__c ,&quot;Escalate to BM&quot;), 
+ISPICKVAL( Owner.Region__c,&quot;AMER&quot;),
+NOT(ISPICKVAL( Owner.Sub_Region__c,&quot;LATAM&quot;) )
+)</formula>
+        </entryCriteria>
+        <label>Escalate to BMs</label>
+        <name>Escalate_to_BMs</name>
+        <rejectBehavior>
+            <type>BackToPrevious</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval Process to start when a new Standard Company is created by an AMER User</description>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(
+Number_of_Cloud_Customer_Accounts__c = 0,
+ISPICKVAL(Owner.Region__c, &quot;AMER&quot;),
+CONTAINS(RecordTypeId , &quot;01261000000X4t2AAC&quot;),
+OR(
+ISPICKVAL( Data_Steward_Approval__c, &quot;Pending Review&quot;),
+ISPICKVAL( Data_Steward_Approval__c, &quot;In Progress&quot;)
+)
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Update_Data_Steward_Approval_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Alert_seller_that_Company_Creation_has_been_Rejected</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_Data_Steward_Approval_Reject</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>AMER Company Data Governance</label>
+    <processOrder>8</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

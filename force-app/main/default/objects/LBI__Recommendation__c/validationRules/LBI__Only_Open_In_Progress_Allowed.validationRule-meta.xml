@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LBI__Only_Open_In_Progress_Allowed</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(LBI__FilteredAccount__c))
+,
+AND(NOT(ISPICKVAL(LBI__Status__c, &apos;Open&apos;)), NOT(ISPICKVAL(LBI__Status__c, &apos;In Progress&apos;)))
+)</errorConditionFormula>
+    <errorDisplayField>LBI__FilteredAccount__c</errorDisplayField>
+    <errorMessage>Filtered account can only be populated when status is &apos;Open&apos; or &apos;In Progress&apos;</errorMessage>
+</ValidationRule>

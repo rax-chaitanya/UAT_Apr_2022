@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lost_Sub_Reason_is_required</fullName>
+    <active>false</active>
+    <description>Lost Sub Reason has the controlling field Lost Reason.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR(
+ISPICKVAL(Lost_Reason__c, &quot;Product/Service Limitation&quot;),
+ISPICKVAL(Lost_Reason__c, &quot;Contract &amp; SLA Terms&quot;),
+ISPICKVAL(Lost_Reason__c, &quot;Project Abandoned&quot;),
+ISPICKVAL(Lost_Reason__c, &quot;Deployment Time&quot;),
+ISPICKVAL(Lost_Reason__c, &quot;Datacenter locations&quot;),
+ISPICKVAL(Lost_Reason__c, &quot;Price&quot;)
+),
+ISPICKVAL(  Lost_Sub_Reason__c ,&quot;&quot;))</errorConditionFormula>
+    <errorMessage>Please select a value for Lost Sub Reason</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Support_Reason</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Status,&quot;Closed&quot;),
+    ISPICKVAL(Support_Reason__c,&quot;&quot;),
+    OR(
+       CONTAINS( RecordType.Id ,&quot;01261000000j2puAAA&quot;),
+       CONTAINS( RecordType.Id ,&quot;012290000001BFHAA2&quot;)
+       )	
+    )</errorConditionFormula>
+    <errorDisplayField>Support_Reason__c</errorDisplayField>
+    <errorMessage>Support Reason must be selected</errorMessage>
+</ValidationRule>

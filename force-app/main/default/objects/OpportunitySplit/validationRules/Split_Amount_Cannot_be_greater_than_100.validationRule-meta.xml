@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Split_Amount_Cannot_be_greater_than_100</fullName>
+    <active>true</active>
+    <description>Allow only Sales Ops to create specialist split records with Amount greater than 100 percent</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+SplitPercentage &gt; 1.0,
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)))</errorConditionFormula>
+    <errorMessage>Please contact Sales Ops for Overlays exceeding 100%</errorMessage>
+</ValidationRule>

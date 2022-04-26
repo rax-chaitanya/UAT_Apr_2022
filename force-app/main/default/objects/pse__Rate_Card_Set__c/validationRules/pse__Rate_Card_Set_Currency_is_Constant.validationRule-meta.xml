@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Rate_Card_Set_Currency_is_Constant</fullName>
+    <active>true</active>
+    <description>A Rate Card Set&apos;s Currency field value may not be updated once set.</description>
+    <errorConditionFormula>ISCHANGED(CurrencyIsoCode)</errorConditionFormula>
+    <errorMessage>A Rate Card Set&apos;s Currency field value may not be updated once set.</errorMessage>
+</ValidationRule>

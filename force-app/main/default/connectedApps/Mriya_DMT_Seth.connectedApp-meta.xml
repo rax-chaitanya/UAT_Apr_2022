@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>seth.cavness@rackspace.com</contactEmail>
+    <label>Mriya_DMT_Seth</label>
+    <oauthConfig>
+        <callbackUrl>https://rax.my.salesforce.com</callbackUrl>
+        <consumerKey>3MVG9qEXqmIutu_QNttBhrw05Q3Ol9eO3pZp3.obCH836TJOD5YNka8.Y_3ondL9Dh5ksJk1bmPJUPqyi6uNi</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UserName_Validation</fullName>
+    <active>false</active>
+    <description>This validation is to enforce Username format as &apos;abc@rackspace.com.rax&apos;</description>
+    <errorConditionFormula>IF($Organization.Id == &apos;00D4C0000000ftu&apos;, NOT(Username = LOWER(Email) &amp; &apos;.rax&apos;), NOT(BEGINS(Username, LOWER(Email) &amp; &apos;.rax&apos;)))</errorConditionFormula>
+    <errorDisplayField>Username</errorDisplayField>
+    <errorMessage>Username should be in the format User&apos;s Email.rax like &apos;abc@rackspace.com.rax&apos;</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Vendor_Invoice_Constant</fullName>
+    <active>true</active>
+    <description>The vendor invoice item cannot be changed once set.</description>
+    <errorConditionFormula>AND(ISCHANGED(pse__Vendor_Invoice_Item__c),LEN(PRIORVALUE(pse__Vendor_Invoice_Item__c))&gt;0)</errorConditionFormula>
+    <errorDisplayField>pse__Vendor_Invoice_Item__c</errorDisplayField>
+    <errorMessage>The vendor invoice item cannot be changed once set.</errorMessage>
+</ValidationRule>

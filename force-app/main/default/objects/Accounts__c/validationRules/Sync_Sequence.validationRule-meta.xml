@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_Sequence</fullName>
+    <active>false</active>
+    <description>Race Condition for Foundation Integration</description>
+    <errorConditionFormula>AND(
+				NOT(ISCHANGED(ByPassGARProcessing__c)), 
+				NOT(ISNEW()), Old_LastModStamp__c  &lt;=  LastModifiedDate
+)</errorConditionFormula>
+    <errorMessage>Old Update from RTB Salesforce failed</errorMessage>
+</ValidationRule>

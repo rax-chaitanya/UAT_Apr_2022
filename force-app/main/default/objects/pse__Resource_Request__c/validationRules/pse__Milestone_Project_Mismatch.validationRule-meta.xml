@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Milestone_Project_Mismatch</fullName>
+    <active>true</active>
+    <description>Validates whether the milestone and resource request belong to the same project.</description>
+    <errorConditionFormula>AND(
+LEN(pse__Project__c) &gt; 0,
+LEN(pse__Milestone__c) &gt; 0,
+pse__Milestone__r.pse__Project__c != pse__Project__c
+)</errorConditionFormula>
+    <errorMessage>Cannot associate the milestone with the resource request. The milestone must belong to the resource request&apos;s project. Either change the milestone or change the project.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_Opportunity_Type_Cannot_Be_RS_Cloud</fullName>
+    <active>true</active>
+    <description>An opportunity cannot be saved if Type equals RS Cloud for mailtrust accounts.</description>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )),  
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id)),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), ISPICKVAL( Type ,&quot;Rackspace Cloud&quot;),  ISPICKVAL(Account__r.Type, &quot;Mailtrust Customer&quot;))</errorConditionFormula>
+    <errorMessage>Rackspace Cloud type Opportunity cannot be created on mailtrust accounts</errorMessage>
+</ValidationRule>

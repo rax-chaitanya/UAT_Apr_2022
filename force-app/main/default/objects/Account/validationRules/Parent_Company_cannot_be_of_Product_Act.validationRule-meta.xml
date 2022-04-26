@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Company_cannot_be_of_Product_Act</fullName>
+    <active>true</active>
+    <description>Product Account cannot be selected as Parent Company.</description>
+    <errorConditionFormula>OR (
+				 Parent.RecordTypeId =&quot;0123f000000XdKG&quot;,
+					Parent.RecordTypeId =&quot;0123f000000XdKQ&quot;,
+					Parent.RecordTypeId =&quot;0123f000000XdHM&quot;,
+					Parent.RecordTypeId =&quot;0123f000000XdKL&quot;,
+					Parent.RecordTypeId =&quot;0123f000000XdKV&quot;,
+					Parent.RecordTypeId =&quot;0123f000000XdKa&quot;
+				)</errorConditionFormula>
+    <errorDisplayField>ParentId</errorDisplayField>
+    <errorMessage>Product Account cannot be selected as Parent Company.</errorMessage>
+</ValidationRule>

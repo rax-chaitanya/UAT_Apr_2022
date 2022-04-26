@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Can_not_complete_if_not_started</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( NOT( pse__Started__c ), pse__Completed__c )</errorConditionFormula>
+    <errorDisplayField>pse__Completed__c</errorDisplayField>
+    <errorMessage>Can not mark as completed if not started</errorMessage>
+</ValidationRule>

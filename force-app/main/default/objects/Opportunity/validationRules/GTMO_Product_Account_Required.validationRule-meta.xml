@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_Product_Account_Required</fullName>
+    <active>true</active>
+    <description>Product Accounts are required to create an Opportunity</description>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id)),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+ISBLANK(Account__c) &amp;&amp; $Profile.Name != &apos;System Administrator&apos; &amp;&amp; !CONTAINS($Label.QLDeleteOppID,Id)
+)</errorConditionFormula>
+    <errorMessage>Please add an account to the opportunity</errorMessage>
+</ValidationRule>

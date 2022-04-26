@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Invoice_Account_Mismatch</fullName>
+    <active>false</active>
+    <errorConditionFormula>pse__Project__r.pse__Account__c != pse__Vendor_Invoice__r.pse__Account__c</errorConditionFormula>
+    <errorDisplayField>pse__Project__c</errorDisplayField>
+    <errorMessage>The selected project&apos;s account must match the account of the Vendor Invoice</errorMessage>
+</ValidationRule>

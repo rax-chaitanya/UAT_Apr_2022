@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Account_Type</fullName>
+    <active>true</active>
+    <description>Add validation for changing the Customer type on Standard Account as part of Redesign.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+NOT( $Profile.Name = &apos;System Administrator&apos;) ,
+NOT(ISCHANGED(ByPassGARProcessing__c)),
+
+OR(
+AND(
+ISPICKVAL(PRIORVALUE(Type),&apos;Customer&apos;),
+AND(
+NOT(ISPICKVAL(Type,&apos;Former Customer&apos;)),
+NOT(ISPICKVAL(Type,&apos;Customer&apos;))
+)
+),
+
+AND(
+ISPICKVAL(PRIORVALUE(Type),&apos;Former Customer&apos;),
+AND(
+NOT(ISPICKVAL(Type,&apos;Customer&apos;)),
+NOT(ISPICKVAL(Type,&apos;Former Customer&apos;))
+)
+)
+)
+)</errorConditionFormula>
+    <errorMessage>A Customer account can only be updated to Former Customer. If you need to switch the account type to another value, please log a case in Salesforce for the Admin team.</errorMessage>
+</ValidationRule>

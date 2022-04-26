@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <attributes>
+        <formula>&apos;Partner User&apos;</formula>
+        <key>AccountType</key>
+    </attributes>
+    <attributes>
+        <formula>$User.Email</formula>
+        <key>Email</key>
+    </attributes>
+    <attributes>
+        <formula>&apos;Partners&apos;</formula>
+        <key>UserGroup</key>
+    </attributes>
+    <attributes>
+        <formula>$User.FederationIdentifier</formula>
+        <key>Username</key>
+    </attributes>
+    <contactEmail>omkar.narkar@rackspace.com</contactEmail>
+    <label>Seismic Community SSO</label>
+    <samlConfig>
+        <acsUrl>https://rackspace.seismic.com/SSO/SAML20/HttpPost.ashx</acsUrl>
+        <encryptionType>AES_128</encryptionType>
+        <entityUrl>https://rackspace.seismic.com</entityUrl>
+        <issuer>https://rax.my.salesforce.com</issuer>
+        <samlNameIdFormat>Unspecified</samlNameIdFormat>
+        <samlSigningAlgoType>SHA1</samlSigningAlgoType>
+        <samlSubjectType>FederationId</samlSubjectType>
+    </samlConfig>
+</ConnectedApp>

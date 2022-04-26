@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RF_Require_ACV_on_MSP_39</fullName>
+    <active>false</active>
+    <description>Requires Onica ACV Value on MSP opps moved to Contracting or above (39%).</description>
+    <errorConditionFormula>Probability &gt; 0.39 &amp;&amp;
+ISBLANK (Onica_ACV__c) &amp;&amp;
+ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_ACV__c</errorDisplayField>
+    <errorMessage>Please enter the Annual Contract Value in the Onica ACV field.</errorMessage>
+</ValidationRule>

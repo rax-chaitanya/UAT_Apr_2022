@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__batch_id_required</fullName>
+    <active>false</active>
+    <description>Add a validation rule to enforce required instead of on the field because the field would otherwise be required on the page layout.</description>
+    <errorConditionFormula>ISBLANK(pse__Batch_Id__c)</errorConditionFormula>
+    <errorDisplayField>pse__Batch_Id__c</errorDisplayField>
+    <errorMessage>Batch ID is required</errorMessage>
+</ValidationRule>

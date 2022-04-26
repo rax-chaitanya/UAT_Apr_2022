@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Task_Key_Constant</fullName>
+    <active>true</active>
+    <description>The Task Key field cannot be changed</description>
+    <errorConditionFormula>AND(ISCHANGED(pse__Task_Key__c),  NOT(ISBLANK(PRIORVALUE(pse__Task_Key__c))))</errorConditionFormula>
+    <errorDisplayField>pse__Task_Key__c</errorDisplayField>
+    <errorMessage>The Task Key field cannot be changed</errorMessage>
+</ValidationRule>

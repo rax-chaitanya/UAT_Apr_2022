@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_01_Opportunity_Required</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISBLANK( Opportunity__c )</errorConditionFormula>
+    <errorDisplayField>Opportunity__c</errorDisplayField>
+    <errorMessage>Error on Approval 01 - Opportunity Field Required</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Cannot_Select_Global_Resource</fullName>
+    <active>true</active>
+    <errorConditionFormula>pse__Region__r.Name = &quot;Global&quot;</errorConditionFormula>
+    <errorDisplayField>pse__Region__c</errorDisplayField>
+    <errorMessage>You may not select &quot;Global&quot; as the Region for this Resource Request.</errorMessage>
+</ValidationRule>

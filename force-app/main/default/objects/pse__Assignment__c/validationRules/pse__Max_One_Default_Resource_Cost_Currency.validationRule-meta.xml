@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Max_One_Default_Resource_Cost_Currency</fullName>
+    <active>true</active>
+    <description>At most one of the two override checkboxes may be set for which currency to hold Resource Cost Rates constant in - Resource or Project.  If neither is checked, the default config is used.</description>
+    <errorConditionFormula>AND(pse__Use_Project_Currency_For_Resource_Cost__c,pse__Use_Resource_Currency_For_Resource_Cost__c)</errorConditionFormula>
+    <errorMessage>At most one of the two override checkboxes may be set for which currency to hold Resource Cost Rates constant in - Resource or Project.  If neither is checked, the default config is used.</errorMessage>
+</ValidationRule>

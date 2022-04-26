@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Closed_date_mandatory_with_closed_status</fullName>
+    <active>true</active>
+    <description>The Closed Date cannot be blank if the status is set to Closed.</description>
+    <errorConditionFormula>AND (ISPICKVAL( pse__Status__c , &apos;Closed&apos;), ISBLANK( pse__Closed_Date__c ))</errorConditionFormula>
+    <errorMessage>Closed date can not be blank if status set to closed.</errorMessage>
+</ValidationRule>

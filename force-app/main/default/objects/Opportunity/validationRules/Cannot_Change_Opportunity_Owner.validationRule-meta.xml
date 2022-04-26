@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Change_Opportunity_Owner</fullName>
+    <active>false</active>
+    <description>Only sys admins can update the Opportunity Owner in NA32 and changes will be reflected back to NA34</description>
+    <errorConditionFormula>AND
+(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations,  $Profile.Name )),
+ISCHANGED( OwnerId )
+)</errorConditionFormula>
+    <errorMessage>Please contact Salesforce Administrators to update Opportunity Owner.</errorMessage>
+</ValidationRule>

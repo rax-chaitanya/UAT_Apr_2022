@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Start_Date_must_be_before_End_Date</fullName>
+    <active>true</active>
+    <description>The start date must be before the end date.</description>
+    <errorConditionFormula>pse__End_Date__c &lt; pse__Start_Date__c</errorConditionFormula>
+    <errorMessage>The start date must be before the end date.</errorMessage>
+</ValidationRule>

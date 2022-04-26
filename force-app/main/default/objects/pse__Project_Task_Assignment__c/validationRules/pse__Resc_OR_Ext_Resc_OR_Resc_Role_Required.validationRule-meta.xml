@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Resc_OR_Ext_Resc_OR_Resc_Role_Required</fullName>
+    <active>true</active>
+    <description>Validation to check project task assignment cannot save without a Resource, External Resource or Resource Role.</description>
+    <errorConditionFormula>AND(ISBLANK(pse__Resource__c),ISBLANK(pse__External_Resource__c),  ISBLANK(TEXT( pse__Resource_Role__c ))   )</errorConditionFormula>
+    <errorMessage>We can&apos;t save a project task assignment without a Resource, External Resource or Resource Role.</errorMessage>
+</ValidationRule>

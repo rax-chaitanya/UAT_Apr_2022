@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Milestone_Invoicing_Requires_Billing</fullName>
+    <active>true</active>
+    <description>For a Milestone to be marked as Invoiced, it must also be marked as Billed.</description>
+    <errorConditionFormula>AND(pse__Invoiced__c,NOT(pse__Billed__c))</errorConditionFormula>
+    <errorDisplayField>pse__Invoiced__c</errorDisplayField>
+    <errorMessage>For a Milestone to be marked as Invoiced, it must also be marked as Billed.</errorMessage>
+</ValidationRule>

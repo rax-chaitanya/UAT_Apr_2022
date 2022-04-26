@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RF_Supply_DealRegistration_on_99</fullName>
+    <active>true</active>
+    <description>Forces users to supply Deal Registration before Closed/Won (99%)</description>
+    <errorConditionFormula>Probability &gt; 0.99 &amp;&amp;
+ISBLANK (Onica_Deal_Registration__c) &amp;&amp;
+ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_Deal_Registration__c</errorDisplayField>
+    <errorMessage>Please select which portal(s) you have logged this opportunity in.</errorMessage>
+</ValidationRule>

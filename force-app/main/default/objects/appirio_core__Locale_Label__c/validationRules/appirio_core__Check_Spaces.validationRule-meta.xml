@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>appirio_core__Check_Spaces</fullName>
+    <active>true</active>
+    <errorConditionFormula>CONTAINS( Name , &quot; &quot;)</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Name cannot contain spaces</errorMessage>
+</ValidationRule>

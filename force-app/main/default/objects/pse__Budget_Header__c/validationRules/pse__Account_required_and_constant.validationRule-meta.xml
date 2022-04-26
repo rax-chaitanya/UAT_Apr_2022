@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Account_required_and_constant</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(LEN(pse__Account__c)=0,ISCHANGED(pse__Account__c))</errorConditionFormula>
+    <errorDisplayField>pse__Account__c</errorDisplayField>
+    <errorMessage>Account is required and cannot be changed once set</errorMessage>
+</ValidationRule>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>PSA_ER_Rejected_Email_Alert</fullName>
+        <description>PSA ER Rejected Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <field>pse__Resource__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>PSA_Email_Templates/PSA_Expense_Report_Rejected</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>PSA_Disable_Auto_Submit_True</fullName>
+        <field>pse__Disable_Approval_Auto_Submit__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Disable Auto Submit True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Approved_False</fullName>
+        <field>pse__Approved__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA ER Approved False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Approved_True</fullName>
+        <field>pse__Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA ER Approved True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Disable_Auto_Submit_False</fullName>
+        <field>pse__Disable_Approval_Auto_Submit__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA ER Disable Auto Submit False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_IFF_False</fullName>
+        <field>pse__Include_In_Financials__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA ER IFF False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_IFF_True</fullName>
+        <field>pse__Include_In_Financials__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA ER IFF True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Status_Approved</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>PSA ER Status Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Status_Draft</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Draft</literalValue>
+        <name>PSA ER Status Draft</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Status_Submitted</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Submitted</literalValue>
+        <name>PSA ER Status Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_ER_Submitted_False</fullName>
+        <field>pse__Submitted__c</field>
+        <literalValue>0</literalValue>
+        <name>PSA ER Submitted False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Expense_Report_Status_Rejected</fullName>
+        <field>pse__Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>PSA Expense Report Status Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PSA_Set_ER_Submitted_True</fullName>
+        <field>pse__Submitted__c</field>
+        <literalValue>1</literalValue>
+        <name>PSA Set ER Submitted True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

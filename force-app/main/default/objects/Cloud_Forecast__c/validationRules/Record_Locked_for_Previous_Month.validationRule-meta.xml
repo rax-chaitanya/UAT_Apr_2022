@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Record_Locked_for_Previous_Month</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(!ISCHANGED( last_day_of_month__c ),Read_only__c, OR(ISCHANGED( User__c),
+ISCHANGED( Region__c),
+ISCHANGED( Azure__c),
+ISCHANGED( Azure_Support__c),
+ISCHANGED( FAWS__c),
+ISCHANGED( FAWS_Support__c),
+ISCHANGED( RAX_Cloud__c),
+ISCHANGED( RAX_Cloud_Support__c),
+ISCHANGED( User_Segment__c),ISCHANGED( Name)))</errorConditionFormula>
+    <errorMessage>You cannot edit previous month record.</errorMessage>
+</ValidationRule>

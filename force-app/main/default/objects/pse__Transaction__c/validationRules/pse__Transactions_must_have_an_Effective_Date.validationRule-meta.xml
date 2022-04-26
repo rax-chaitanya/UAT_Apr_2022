@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Transactions_must_have_an_Effective_Date</fullName>
+    <active>true</active>
+    <description>Transactions must have an Effective Date.</description>
+    <errorConditionFormula>AND(ISBLANK(pse__Effective_Date__c),(OR(ISNEW(),ISCHANGED(pse__Effective_Date__c))))</errorConditionFormula>
+    <errorDisplayField>pse__Effective_Date__c</errorDisplayField>
+    <errorMessage>Transactions must have an Effective Date.</errorMessage>
+</ValidationRule>

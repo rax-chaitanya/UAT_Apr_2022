@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>jsImpacts__Block_autoupdate_from_Data_com</fullName>
+    <active>false</active>
+    <description>Record level prevention of automated Clean jobs from automatically updating field values.</description>
+    <errorConditionFormula>(  jsImpacts__Data_com_does_not_auto_update__c  ) &amp;&amp; ($User.Alias = &quot;autocln&quot;) &amp;&amp; (ISCHANGED(  DunsNumber  )  ||  ISCHANGED(   NumberOfEmployees   ) ||  ISCHANGED(    AnnualRevenue    ) ||  ISCHANGED(  TickerSymbol  ) ||  ISCHANGED(  Website  ) ||  ISCHANGED(  Industry  ) ||  ISCHANGED(   Ownership   ) ||  ISCHANGED(   BillingCity   ) ||  ISCHANGED(   BillingCountry   ) ||  ISCHANGED(   BillingState   ) ||  ISCHANGED(   BillingStreet   ) ||  ISCHANGED(   BillingPostalCode   ) ||  ISCHANGED(   Phone   ) ||  ISCHANGED(   Fax   ) ||  ISCHANGED(  Site   ) ||  ISCHANGED(  Tradestyle   ) ||  ISCHANGED(   YearStarted   ) ||  ISCHANGED(   Sic   ) ||  ISCHANGED(   SicDesc   ) ||  ISCHANGED(   NaicsCode   ) ||  ISCHANGED(   NaicsDesc   ) ||  ISCHANGED(   Description   ) )</errorConditionFormula>
+    <errorMessage>This record has been excluded from automated field updates from Data.com Clean jobs.</errorMessage>
+</ValidationRule>

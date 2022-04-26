@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provide_Company</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+				AND(
+								OR(ISPICKVAL(Support_Reason__c,&quot;UPDATE RECORD&quot;),
+											ISPICKVAL(Support_Reason__c,&quot;OWNERSHIP TRANSFER&quot;),
+											ISPICKVAL(Support_Reason__c,&quot;ERROR MESSAGE&quot;)),
+								ISPICKVAL(Record_Type__c ,&quot;COMPANY&quot;),
+								ISBLANK( AccountId )),
+			 AND(ISPICKVAL(Support_Reason__c,&quot;ADD COMPANY TEAM MEMBER&quot;),
+								ISBLANK(AccountId)))</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>Please provide the Company that needs updated</errorMessage>
+</ValidationRule>

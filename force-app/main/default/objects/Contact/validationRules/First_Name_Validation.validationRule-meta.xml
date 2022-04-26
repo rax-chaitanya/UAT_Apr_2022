@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Name_Validation</fullName>
+    <active>true</active>
+    <description>First name should not be null</description>
+    <errorConditionFormula>OR(
+AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISBLANK( FirstName ),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)) 
+),
+AND(ISBLANK( FirstName ), 
+RecordType.Name=&apos;Employee&apos; ))</errorConditionFormula>
+    <errorDisplayField>FirstName</errorDisplayField>
+    <errorMessage>First Name is required.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Start_Date_may_not_be_After_End_Date</fullName>
+    <active>true</active>
+    <description>The Permission Control Start Date may not be later than the End Date.</description>
+    <errorConditionFormula>AND(NOT(ISNULL(pse__Start_Date__c)),NOT(ISNULL(pse__End_Date__c)),(pse__Start_Date__c&gt;pse__End_Date__c))</errorConditionFormula>
+    <errorMessage>The Permission Control Start Date may not be later than the End Date.</errorMessage>
+</ValidationRule>

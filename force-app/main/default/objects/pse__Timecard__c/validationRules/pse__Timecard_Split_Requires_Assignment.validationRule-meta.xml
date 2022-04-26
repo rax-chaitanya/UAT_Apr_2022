@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Timecard_Split_Requires_Assignment</fullName>
+    <active>true</active>
+    <description>Timecard Splits for this Project and/or Resource require an Assignment.  Only if the Project OR the Resource allows Timecards without Assignment can the Assignment be blank on the Timecard Split.</description>
+    <errorConditionFormula>AND(NOT(pse__Project__r.pse__Allow_Timecards_Without_Assignment__c),NOT(pse__Resource__r.pse__Allow_Timecards_Without_Assignment__c),OR(ISNULL(pse__Assignment__c),(pse__Assignment__c = &apos;&apos;)))</errorConditionFormula>
+    <errorMessage>Timecard Splits for this Project and/or Resource require an Assignment.</errorMessage>
+</ValidationRule>

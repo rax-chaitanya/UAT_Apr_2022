@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Validate_Contact_Is_Resource</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISNEW() 
+			||
+			ISCHANGED( pse__Resource__c) )
+			&amp;&amp;
+			(AND(LEN(pse__Resource__c) &gt; 0,  
+			NOT(pse__Resource__r.pse__Is_Resource__c)))</errorConditionFormula>
+    <errorDisplayField>pse__Resource__c</errorDisplayField>
+    <errorMessage>You must select a Contact that has the Is Resource field set to true</errorMessage>
+</ValidationRule>

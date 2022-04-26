@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_BillingStateCountryRequired</fullName>
+    <active>true</active>
+    <description>Merged Company &amp; Product Account criteria logic as part of Redesign.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR(
+AND(
+NOT(CONTAINS($Label.Partner_Profiles,$Profile.Id)),
+NOT(ISBLANK(DNBoptimizer__DNB_D_U_N_S_Number__c)),
+RecordType.DeveloperName&lt;&gt; &apos;Standard_Company&apos;,
+Company_Name__r.RecordType.DeveloperName&lt;&gt; &apos;Standard_Company&apos;,
+OR(AND(ISNEW(),!Is_Created_From_Lead__c), !ISNEW()),
+Company_Access_Submitter__c != $User.Id
+
+),
+AND(
+ISBLANK(DNBoptimizer__DNB_D_U_N_S_Number__c),
+CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType),
+NOT(CONTAINS($Label.Partner_Profiles,$Profile.Id)),
+OR(AND(ISNEW(),!Is_Created_From_Lead__c), !ISNEW()),
+Company_Access_Submitter__c != $User.Id
+),
+AND(
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+ISBLANK(Company_Name__r.DNBoptimizer__DNB_D_U_N_S_Number__c),
+NOT(ISCHANGED(ByPassGARProcessing__c)),
+ !ISNEW()
+),
+
+AND(
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+Company_Name__r.RecordType.DeveloperName&lt;&gt; &apos;Standard_Company&apos;,
+NOT(ISBLANK(Company_Name__r.DNBoptimizer__DNB_D_U_N_S_Number__c)),
+NOT(ISCHANGED(ByPassGARProcessing__c)),
+ !ISNEW()
+)
+),
+
+
+OR(
+ISBLANK(BillingCountry),
+AND(BillingCountry = &quot;United States&quot;,
+ISBLANK(BillingState))
+)
+)</errorConditionFormula>
+    <errorDisplayField>BillingCountry</errorDisplayField>
+    <errorMessage>The Billing Country is required on the Company or Account. If the Billing Country is &quot;United States,&quot; a Billing State must be selected.</errorMessage>
+</ValidationRule>

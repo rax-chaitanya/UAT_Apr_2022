@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Failed_To_Update_Record</name>
+        <label>Failed To Update Record</label>
+        <locationX>314</locationX>
+        <locationY>516</locationY>
+        <actionName>Opportunity.Opportunity_Flow_Email_Test_Record_Error</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>51.0</apiVersion>
+    <decisions>
+        <description>Check if Close date &gt;= Today()-2</description>
+        <name>Close_Date_Check</name>
+        <label>Close Date Check</label>
+        <locationX>314</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Not Met</defaultConnectorLabel>
+        <rules>
+            <name>X2_Days_Before_Today</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CloseDate</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>varTodayDate_2</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Renewal_Opportunity</targetReference>
+            </connector>
+            <label>Greater Than 2 Days Before Today</label>
+        </rules>
+    </decisions>
+    <description>-Daily Run
+Close Date &gt;= Today() -2</description>
+    <formulas>
+        <name>varTodayDate_2</name>
+        <dataType>Date</dataType>
+        <expression>Today() - 2</expression>
+    </formulas>
+    <interviewLabel>Scheduled Process - Omit Renewals from Forecast {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Scheduled Process - Omit Renewals from Forecast</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Renewal_Opportunity</name>
+        <label>Update Renewal Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>396</locationY>
+        <faultConnector>
+            <targetReference>Failed_To_Update_Record</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ForecastCategoryName</field>
+            <value>
+                <stringValue>Omitted</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Close_Date_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Renewal</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ForecastCategoryName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Omitted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CloseDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <dateValue>2021-01-01</dateValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2021-06-10</startDate>
+            <startTime>09:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

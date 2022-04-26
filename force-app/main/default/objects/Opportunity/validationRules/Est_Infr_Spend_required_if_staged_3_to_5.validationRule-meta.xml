@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Est_Infr_Spend_required_if_staged_3_to_5</fullName>
+    <active>false</active>
+    <description>IF Opportunity Stage (2-5) &quot;Estimated Infrastructure Spend&quot; must be populated</description>
+    <errorConditionFormula>AND(
+
+ISBLANK(Estimated_Infrastructure_Spend__c),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+NOT(ISPICKVAL(Cloud_Contract_Type__c, &quot;DCR&quot;)),
+NOT(ISPICKVAL(Cloud_Contract_Type__c, &quot;DCR - Offset&quot;)),
+
+OR(
+ISPICKVAL(StageName, &quot;Stage 2 - Opportunity Development&quot;),
+ISPICKVAL(StageName, &quot;Stage 3 - Proposal &amp; Quote&quot;),
+ISPICKVAL(StageName, &quot;Stage 4 - Negotiation &amp; Quote Mod&quot;),
+ISPICKVAL(StageName, &quot;Stage 5 - Closing the Business&quot;)
+),
+
+OR(
+$Profile.Id = &quot;00e6100000163tz&quot;,
+$Profile.Id = &quot;00e61000000uSt8&quot;,
+$Profile.Id = &quot;00e6100000168n2&quot;,
+$Profile.Id = &quot;00e6100000163ty&quot;
+),
+
+
+OR(
+ISPICKVAL(Type, &quot;AWS&quot;),
+ISPICKVAL(Type, &quot;Azure&quot;),
+ISPICKVAL(Type, &quot;Azure Resale&quot;),
+ISPICKVAL(Type, &quot;Google&quot;)
+)
+
+)</errorConditionFormula>
+    <errorDisplayField>Access_Request_Status__c</errorDisplayField>
+    <errorMessage>Please populate &quot;Estimated Monthly Infrastructure Spend&quot;</errorMessage>
+</ValidationRule>

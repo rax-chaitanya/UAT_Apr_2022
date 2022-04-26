@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Referral_OR_Reseller_values</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(CONTAINS( $Label.Partner_Profiles ,$User.ProfileId) , 
+OR( 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Referral/Reseller&apos;), 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;ResellerReferralEMEA&apos;) 
+), 
+NOT(ISPICKVAL( Type_Of_Deal__c , &apos;Referral&apos;)), 
+NOT(ISPICKVAL( Type_Of_Deal__c , &apos;Reseller&apos;)), 
+NOT( CONTAINS(LOWER(Partner_Company__r.Name),&apos;sitecore&apos;)) 
+)</errorConditionFormula>
+    <errorDisplayField>Type_Of_Deal__c</errorDisplayField>
+    <errorMessage>You can&apos;t select other then Referral/Reseller</errorMessage>
+</ValidationRule>

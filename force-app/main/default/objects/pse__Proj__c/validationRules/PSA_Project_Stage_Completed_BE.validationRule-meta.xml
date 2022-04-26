@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Project_Stage_Completed_BE</fullName>
+    <active>false</active>
+    <description>A project stage cannot be set to &quot;completed&quot; until all Billing Events are released</description>
+    <errorConditionFormula>BE_Not_Released__c  &gt;= 1 &amp;&amp;
+ISPICKVAL( pse__Stage__c , &apos;Completed&apos;)</errorConditionFormula>
+    <errorDisplayField>pse__Stage__c</errorDisplayField>
+    <errorMessage>There are Billing Events time against this project that are not released, release them before changing the stage to complete</errorMessage>
+</ValidationRule>

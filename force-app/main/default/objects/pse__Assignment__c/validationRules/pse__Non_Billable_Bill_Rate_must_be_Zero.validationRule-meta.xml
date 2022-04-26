@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Non_Billable_Bill_Rate_must_be_Zero</fullName>
+    <active>true</active>
+    <description>Assignments marked non-billable may not have a bill rate greater than zero.</description>
+    <errorConditionFormula>AND(NOT(pse__Is_Billable__c),NOT(pse__Bill_Rate__c = 0.0))</errorConditionFormula>
+    <errorDisplayField>pse__Bill_Rate__c</errorDisplayField>
+    <errorMessage>Assignments marked non-billable may not have a bill rate greater than zero.</errorMessage>
+</ValidationRule>

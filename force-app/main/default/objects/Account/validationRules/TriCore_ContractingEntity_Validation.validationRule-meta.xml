@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TriCore_ContractingEntity_Validation</fullName>
+    <active>true</active>
+    <description>Created validation rule as part of Redesign for TriCore Contracting Entity Validation.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+NOT(ISCHANGED(ByPassGARProcessing__c)),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR(
+AND(ISNEW(), Contracting_Entity__r.Name=&apos;TriCore&apos;),
+AND(!ISNEW(), ISCHANGED(Contracting_Entity__c), Contracting_Entity__r.Name=&apos;TriCore&apos;),
+AND(!ISNEW(), ISCHANGED(Contracting_Entity__c), PRIORValue(Contracting_Entity__c)=$Label.TriCore_CE)
+)
+)</errorConditionFormula>
+    <errorMessage>Cannot assign or update TriCore contracting entity</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Invoice_Override_in_Effect</fullName>
+    <active>true</active>
+    <description>Prevents checking the Override Currency Exchange rate check box on the item, if an invoice level override is in effect</description>
+    <errorConditionFormula>AND(pse__Override_Item_Exchange_Rate__c,(pse__Vendor_Invoice_ER_Override_Applied__c = $Label.pse__common_label_yes))</errorConditionFormula>
+    <errorMessage>Invoice Item Exchange Rate overrides are not permitted when an invoice level override is employed.</errorMessage>
+</ValidationRule>

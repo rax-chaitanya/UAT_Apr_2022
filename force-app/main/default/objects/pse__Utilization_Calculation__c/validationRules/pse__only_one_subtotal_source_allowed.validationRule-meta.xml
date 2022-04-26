@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__only_one_subtotal_source_allowed</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF
+(
+IF(ISBLANK(pse__Subtotal_by_Region__c),0,1) + 
+IF(ISBLANK(pse__Subtotal_by_Practice__c),0,1) +   
+IF(ISBLANK(pse__Subtotal_by_Group__c),0,1) &gt; 1,
+true,
+false
+)</errorConditionFormula>
+    <errorMessage>Only one value may be specified: Subtotal by Region, Practice or Group.</errorMessage>
+</ValidationRule>

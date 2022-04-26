@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <description>- Has &quot;Focus Area Debook Roll-up&quot; changed?
+- &quot;Focus Area Debook Roll-up&quot; &lt;&gt; &quot;Focus Area Debook&quot;</description>
+        <name>Focus_Area_Debook_Roll_Up</name>
+        <label>Focus Area Debook Roll-up changed?</label>
+        <locationX>168</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>End Flow</defaultConnectorLabel>
+        <rules>
+            <name>Focus_Area_Debook_Roll_up_CHANGED</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Focus_Area_Debook__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>FocusAreaDebookRollUp_Multiplied_MinusOne</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Focus_Area_Debook_updated_as_negative_number</targetReference>
+            </connector>
+            <label>Focus Area Debook Roll-up CHANGED</label>
+        </rules>
+    </decisions>
+    <description>New Changes: Removed Is changed on the field. If users edit Debook filed only then is changed on Debook Rollup will not be considered.
+Update Condition to Check if Current value is not equal to Negative(Focus area debook rollup)
+Updates as Fast Flow Update
+
+- SFDC-6685
+- Updates &quot;Focus Area Debook&quot; with negative number if below are met:
+
+AND(
+
+Focus_Area_Debook_Roll__c  &lt;&gt;  Focus_Area_Debook__c,
+ISCHANGED(Focus_Area_Debook_Roll__c)
+
+)</description>
+    <formulas>
+        <name>FocusAreaDebookRollUp_Multiplied_MinusOne</name>
+        <dataType>Number</dataType>
+        <expression>{!$Record.Focus_Area_Debook_Roll__c} * -1</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Focus Area Debook - Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Focus Area Debook - Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Focus_Area_Debook_updated_as_negative_number</name>
+        <label>&quot;Focus Area Debook&quot; updated as negative number</label>
+        <locationX>518</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Focus_Area_Debook__c</field>
+            <value>
+                <elementReference>FocusAreaDebookRollUp_Multiplied_MinusOne</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Focus_Area_Debook_Roll_Up</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Focus_Area_Debook_Roll__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opp_FocusArea__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

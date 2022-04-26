@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>pse__Resource__c</field>
+        <field>pse__Project__c</field>
+        <field>pse__Milestone__c</field>
+        <field>pse__Start_Date__c</field>
+        <field>pse__End_Date__c</field>
+        <field>pse__Total_Hours__c</field>
+        <field>pse__Total_Billable_Amount__c</field>
+        <field>pse__Sunday_Hours__c</field>
+        <field>pse__Monday_Hours__c</field>
+        <field>pse__Tuesday_Hours__c</field>
+        <field>pse__Wednesday_Hours__c</field>
+        <field>pse__Thursday_Hours__c</field>
+        <field>pse__Friday_Hours__c</field>
+        <field>pse__Saturday_Hours__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Project_Owner__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>PSA Resource and PM Submitting the TimeCard on EMEA Projects Where Project type &apos;Customer Project/Internal&apos;.</description>
+        <entryCriteria>
+            <formula>AND(NOT(pse__Project__r.OwnerId = OwnerId),
+pse__Project__r.pse__Region__r.Name =&apos;EMEA&apos;&amp;&amp;  ISPICKVAL(pse__Project__r.pse__Project_Type__c, &apos;Customer Project&apos;)
+)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Resource and PM Submitting the TimeCard on EMEA Projects</label>
+        <name>Resource_and_PM_Submitting_the_TimeCard_on_EMEA_Projects</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Resource and PM Submitting the TimeCard on Internal Projects Or Project Owner Submitting TimeCard</description>
+        <entryCriteria>
+            <formula>OR(pse__Project__r.OwnerId =OwnerId , 
+(ISPICKVAL(pse__Project__r.pse__Project_Type__c ,&apos;Internal&apos;)
+))</formula>
+        </entryCriteria>
+        <label>Resource and PM Submitting the TimeCard on Internal Projects Or Project Owner Submitting TimeCard</label>
+        <name>Resource_and_PM_Submitting_the_TimeCard_on_Internal_Projects_Or_Project_Owner_Su</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <emailTemplate>PSA_Email_Templates/PSA_Timecard_Approval</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND( 
+ISPICKVAL(pse__Status__c, &quot;Submitted&quot;), 
+ISPICKVAL( pse__Project__r.Timecard_Approver__c , &quot;Both&quot;) 
+)</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>PSA_Timecard_Approved_True</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_IFF_True</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_Status_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>PSA_Timecard_Approved_False</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_IFF_False</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_Rejected_Email_Alert</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_Submitted_False</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>DM and PM Approval Timecard</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>true</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>3</processOrder>
+    <recallActions>
+        <action>
+            <name>PSA_Timecard_Approved_False</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_IFF_False</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_Status_Saved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>PSA_Timecard_Submitted_False</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

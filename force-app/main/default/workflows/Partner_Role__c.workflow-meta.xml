@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_ProServe_team_of_new_Channel_ProServ_Opp</fullName>
+        <ccEmails>rps-partner@rackspace.com</ccEmails>
+        <description>Alert ProServe team of new Channel ProServ Opp</description>
+        <protected>false</protected>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Professional_Services/Channel_ProServ_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>Approved_status_update_to_Partner_Role_owner</fullName>
+        <description>Approved status update to Partner Role owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Channel_Email_Templates/Partner_Role_Approved_Status_Update</template>
+    </alerts>
+    <alerts>
+        <fullName>Rejected_status_update_to_Partner_Role_owner</fullName>
+        <description>Rejected status update to Partner Role owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Channel_Email_Templates/Partner_Role_Rejected_Status_Update</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Email_to_Rv_Account_Owner</fullName>
+        <description>Send Email to Rv Account Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Rv_Account_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Notification_to_Rv_Account_Owner</template>
+    </alerts>
+    <alerts>
+        <fullName>Status_update_to_Partner_Role_owner</fullName>
+        <description>Status update to Partner Role owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Channel_Email_Templates/Partner_Role_Approval_Status_Update</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Approval_set_to_false_Approval</fullName>
+        <field>Is_Approval__c</field>
+        <literalValue>0</literalValue>
+        <name>Approval set to false Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_set_to_false_PAM</fullName>
+        <field>Is_Approval__c</field>
+        <literalValue>0</literalValue>
+        <name>Approval set to false PAM</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_set_to_false_PAM_Rejection</fullName>
+        <field>Is_Approval__c</field>
+        <literalValue>0</literalValue>
+        <name>Approval set to false PAM Rejection</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_set_to_false_Rejection</fullName>
+        <field>Is_Approval__c</field>
+        <literalValue>0</literalValue>
+        <name>Approval set to false Rejection</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_set_to_true</fullName>
+        <field>Is_Approval__c</field>
+        <literalValue>1</literalValue>
+        <name>Approval set to true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_set_to_true_PAM</fullName>
+        <field>Is_Approval__c</field>
+        <literalValue>1</literalValue>
+        <name>Approval set to true PAM</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Partner_Approval_checkbox_set_to_True</fullName>
+        <description>When the approval is granted, the Approval__c checkbox needs to be set to True</description>
+        <field>Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Partner Approval checkbox set to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Regional_PAM_Approved</fullName>
+        <field>PAM_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Regional PAM Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Regional_PAM_Rejected</fullName>
+        <field>PAM_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Regional PAM Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Field_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status Field Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Field_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Status Field Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Field_Update</fullName>
+        <field>Status__c</field>
+        <literalValue>Pending Approval</literalValue>
+        <name>Status Field Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_PAM_Status_field</fullName>
+        <description>If partner role is sent to approval then need to update the PAM Status to Pending approval</description>
+        <field>PAM_Status__c</field>
+        <literalValue>Pending Approval</literalValue>
+        <name>Update PAM Status field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Parent_IDs_Role</fullName>
+        <field>Role_Lookup_Field_IDs__c</field>
+        <formula>CASESAFEID(Lead__c) &amp;&quot; &quot;&amp;&quot;,&quot;&amp; CASESAFEID(RV_Account__c) &amp;&quot; &quot;&amp;&quot;,&quot;&amp; CASESAFEID(RV_Member__c) &amp;&quot; &quot;&amp;&quot;,&quot;&amp; IF(Owner:User.Email = &apos;mohan.pk@rackspace.com&apos;, &apos;&apos;, Owner:User.SSO_Username__c) &amp;&quot; &quot;</formula>
+        <name>Update Parent IDs Role</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreatePartnerRole</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Partner Role) - Create action to Create Sales Support in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/CREATELEGACYOPPPARTNERROLE/v01/</endpointUrl>
+        <fields>Approved__c</fields>
+        <fields>Commission_Role__c</fields>
+        <fields>Id</fields>
+        <fields>Justification__c</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>PR_Lead_Number__c</fields>
+        <fields>RV_Acc_Old_Record_Id__c</fields>
+        <fields>RV_Mem_Old_Record_Id__c</fields>
+        <fields>Regional_PAM_SSO__c</fields>
+        <fields>Role__c</fields>
+        <fields>Status__c</fields>
+        <fields>SystemModstamp</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreatePartnerRole</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreatePartnerRolelead</fullName>
+        <apiVersion>39.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/LeadNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreatePartnerRolelead</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdatePartnerRole</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>AND($User.Id &lt;&gt; $Label.FMWFoundationUser, Old_Record_Id__c &lt;&gt; null)</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/UPDATELEGACYOPPPARTNERROLE/v01/</endpointUrl>
+        <fields>Approved__c</fields>
+        <fields>Commission_Role__c</fields>
+        <fields>Id</fields>
+        <fields>Justification__c</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>PR_Lead_Number__c</fields>
+        <fields>RV_Acc_Old_Record_Id__c</fields>
+        <fields>RV_Mem_Old_Record_Id__c</fields>
+        <fields>Regional_PAM_SSO__c</fields>
+        <fields>Role__c</fields>
+        <fields>Status__c</fields>
+        <fields>SystemModstamp</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdatePartnerRole</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdatePartnerRolelead</fullName>
+        <apiVersion>39.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/LeadNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdatePartnerRolelead</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-CreatePartnerRole</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreatePartnerRole</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Partner Role) - Create action to Create Partner Role in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  ISBLANK(Old_Record_Id__c),  NOT(ISBLANK(Opportunity__r.Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreatePartnerRoleLead</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreatePartnerRolelead</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Partner Role) - Create action to Create Partner Role in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  ISBLANK(Old_Record_Id__c),  NOT(ISBLANK( Lead__r.Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdatePartnerRole</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdatePartnerRole</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Partner Role) - Update action to Update Partner Role in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdatePartnerRoleLead</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdatePartnerRolelead</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Partner Role) - Create action to Create Partner Role in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  NOT(ISBLANK(Old_Record_Id__c)),  NOT(ISBLANK( Lead__r.Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Partner Approval</fullName>
+        <actions>
+            <name>Partner_Approval_checkbox_set_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_Field_Approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Partner_Role__c.Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Partner_Role__c.Status__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Partner_Role__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Approval</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Lookups Role</fullName>
+        <actions>
+            <name>Update_Parent_IDs_Role</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR(ISNEW(),ISCHANGED( Lead__c ),ISCHANGED( RV_Account__c ),ISCHANGED( RV_Member__c ),ISCHANGED( OwnerId ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

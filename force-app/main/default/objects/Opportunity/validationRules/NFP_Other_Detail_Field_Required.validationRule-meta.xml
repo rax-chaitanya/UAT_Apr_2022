@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NFP_Other_Detail_Field_Required</fullName>
+    <active>true</active>
+    <description>If New Footprint Rationale = Other, and NFP Other Detail is null, then NFP Other Detail will be required to be populated at stage 2 or beyond</description>
+    <errorConditionFormula>AND( 
+NOT(ISCHANGED( Skip_Validation__c )), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR( 
+CONTAINS( Owner_Role__c , &quot;US Commercial MM&quot;) , 
+CONTAINS(Owner_Role__c , &quot;US Enterprise- IB&quot;) 
+),
+ISPICKVAL( New_Footprint_Rationale__c , &quot;Other&quot;),
+ISBLANK( NFP_Other_Detail__c ),
+NOT(ISPICKVAL(StageName,&quot;Stage 1 - Planning &amp; Identification&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>NFP_Other_Detail__c</errorDisplayField>
+    <errorMessage>NFP Other Detail : Please enter a value</errorMessage>
+</ValidationRule>

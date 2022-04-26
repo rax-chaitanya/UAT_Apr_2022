@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Notify_Cloud_Office_Specialist_when_Tagged_to_an_Opportunity</fullName>
+        <description>Notify Cloud Office Specialist when Tagged to an Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Cloud Office Specialist</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/New_Cloud_Office_Specialist</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Team_Member_Removed</fullName>
+        <description>Opportunity Team Member Removed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Opportunity Owner</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <field>UserId</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Opportunity_Alerts/Removal_of_OPTY_Team_Member</template>
+    </alerts>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateOppTeamMem</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Create action to create Specialist in Current Salesforce and notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>SystemModstamp</fields>
+        <fields>TeamMemberRole</fields>
+        <fields>User_Federation_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateOppTeamMem</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateOppTeamMem</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Update action to update Specialist in Current Salesforce and notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>SystemModstamp</fields>
+        <fields>TeamMemberRole</fields>
+        <fields>User_Federation_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateOppTeamMem</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateOppTeamMem</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateOppTeamMem</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Create action to create Specialist in Current Salesforce and notify SF Stash.</description>
+        <formula>AND(  NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity.RecordTypeId)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), ISNEW() )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateOppTeamMem</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateOppTeamMem</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Update action to update Specialist in Current Salesforce and notify SF Stash.</description>
+        <formula>AND( NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity.RecordTypeId)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISNEW()) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Email Alert when Cloud Office Specialist is tagged on Opportunity</fullName>
+        <actions>
+            <name>Notify_Cloud_Office_Specialist_when_Tagged_to_an_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>OpportunityTeamMember.TeamMemberRole</field>
+            <operation>equals</operation>
+            <value>Cloud Office Specialist</value>
+        </criteriaItems>
+        <description>Send Email Alert to Cloud Office Specialist is tagged on Opportunity</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

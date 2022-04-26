@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Record_Type_Required</fullName>
+    <active>false</active>
+    <description>Make Record type field required when &quot;Record Import&quot; value is selected in &quot;Case Reason&quot; field.</description>
+    <errorConditionFormula>AND(OR(ISPICKVAL(Support_Reason__c,&quot;Record Access&quot;),ISPICKVAL(Support_Reason__c,&quot;Record Import&quot;),ISPICKVAL(Support_Reason__c,&quot;ERROR MESSAGE&quot;),ISPICKVAL(Support_Reason__c,&quot;OPEN/CLOSE RECORD&quot;),ISPICKVAL(Support_Reason__c,&quot;UPDATE RECORD&quot;),ISPICKVAL(Support_Reason__c,&quot;OWNERSHIP TRANSFER&quot;),ISPICKVAL(Support_Reason__c,&quot;SYNC ISSUES&quot;)),ISPICKVAL(Record_Type__c,&quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>Record_Type__c</errorDisplayField>
+    <errorMessage>Record Type must be selected</errorMessage>
+</ValidationRule>

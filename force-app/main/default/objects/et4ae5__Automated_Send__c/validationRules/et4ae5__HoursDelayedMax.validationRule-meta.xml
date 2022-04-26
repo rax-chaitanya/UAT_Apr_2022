@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>et4ae5__HoursDelayedMax</fullName>
+    <active>true</active>
+    <errorConditionFormula>et4ae5__Hours_Delayed__c &gt; 720</errorConditionFormula>
+    <errorMessage>Hours Delayed cannot exceed 720.</errorMessage>
+</ValidationRule>

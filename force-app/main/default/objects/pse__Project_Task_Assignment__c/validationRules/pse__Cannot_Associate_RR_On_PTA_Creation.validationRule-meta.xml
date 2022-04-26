@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Cannot_Associate_RR_On_PTA_Creation</fullName>
+    <active>false</active>
+    <description>Validates whether Resource Request can be associated with Project Task Assignment on creation.</description>
+    <errorConditionFormula>AND(ISNEW() ,NOT( ISBLANK(pse__Resource_Request__c)))</errorConditionFormula>
+    <errorMessage>A resource request will be created automatically with the new project task assignment. Please clear the Resource Request field and try again.</errorMessage>
+</ValidationRule>

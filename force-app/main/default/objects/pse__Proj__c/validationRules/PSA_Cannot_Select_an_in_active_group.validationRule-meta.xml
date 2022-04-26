@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Cannot_Select_an_in_active_group</fullName>
+    <active>false</active>
+    <errorConditionFormula>pse__Group__r.In_Active__c  = True</errorConditionFormula>
+    <errorDisplayField>pse__Group__c</errorDisplayField>
+    <errorMessage>This is an inactive Group, refer to the Active Group list to view active groups</errorMessage>
+</ValidationRule>

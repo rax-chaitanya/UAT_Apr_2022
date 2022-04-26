@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specify_Other</fullName>
+    <active>true</active>
+    <description>Other (Please Specify) is required if Engagement Type selected is “Other”</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISPICKVAL( Engagement_Type__c , &apos;Other&apos;),
+ISBLANK( Others__c )
+)</errorConditionFormula>
+    <errorDisplayField>Others__c</errorDisplayField>
+    <errorMessage>Other (Please Specify) should be filled</errorMessage>
+</ValidationRule>

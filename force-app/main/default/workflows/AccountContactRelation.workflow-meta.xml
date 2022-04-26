@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_CreateACR</fullName>
+        <apiVersion>48.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>Account_Number__c</fields>
+        <fields>ContactId</fields>
+        <fields>DP_Customer_Id__c</fields>
+        <fields>Id</fields>
+        <fields>Roles</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion_CreateACR</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_UpdateACR</fullName>
+        <apiVersion>48.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>Account_Number__c</fields>
+        <fields>ContactId</fields>
+        <fields>DP_ContactId__c</fields>
+        <fields>DP_Customer_Id__c</fields>
+        <fields>Id</fields>
+        <fields>Roles</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion_UpdateACR</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateACR</fullName>
+        <apiVersion>50.0</apiVersion>
+        <description>New Salesforce to FMW Integration (ACR) - Create action to create ACR in Current Salesforce &amp; Notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Contact_ID__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateACR</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateACR_Role</fullName>
+        <apiVersion>48.0</apiVersion>
+        <description>New Salesforce to FMW Integration (ACR) - Update action to update ACR ( Role) in Current Salesforce &amp; Notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateACR_Role</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Send_Contacts_for_Survey_APAC</fullName>
+        <apiVersion>51.0</apiVersion>
+        <description>Send &quot;APAC Region&quot; ACR&apos;s to Qualtrics</description>
+        <endpointUrl>https://maskediad1.qualtrics.com/triggers/api/v1/event?eventType=SalesforceOutboundMessage&amp;s=OC_1g1LPMPHIuFdrsR&amp;u=UR_9yn95U0mBdT0bQh&amp;t=OC_1g1LPMPHIuFdrsR&amp;b=rackspacecx</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>ContactId</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>sfintegrationuser@rackspace.com</integrationUser>
+        <name>Send Contacts for Survey_APAC</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Send_Contacts_for_Survey_EMEA</fullName>
+        <apiVersion>51.0</apiVersion>
+        <description>Send &quot;EMEA Region&quot; ACR&apos;s to Qualtrics</description>
+        <endpointUrl>https://maskediad1.qualtrics.com/triggers/api/v1/event?eventType=SalesforceOutboundMessage&amp;s=OC_SuOywNrAdekSY0C&amp;u=UR_9yn95U0mBdT0bQh&amp;t=OC_SuOywNrAdekSY0C&amp;b=rackspacecx</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>ContactId</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>sfintegrationuser@rackspace.com</integrationUser>
+        <name>Send Contacts for Survey_EMEA</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Send_Contacts_for_Survey_ROW</fullName>
+        <apiVersion>51.0</apiVersion>
+        <description>Send &quot;ROW Region&quot; ACR&apos;s to Qualtrics</description>
+        <endpointUrl>https://maskediad1.qualtrics.com/triggers/api/v1/event?eventType=SalesforceOutboundMessage&amp;s=OC_zOBdn3teH2mBec3&amp;u=UR_9yn95U0mBdT0bQh&amp;t=OC_zOBdn3teH2mBec3&amp;b=rackspacecx</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>ContactId</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>sfintegrationuser@rackspace.com</integrationUser>
+        <name>Send Contacts for Survey_ROW</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>CDH_SfdcToFusion_CreateACR</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_CreateACR</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User), NOT(ISBLANK(Account.RCN__c)) )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_UpdateACR</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_UpdateACR</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( NOT(ISNEW()), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User), NOT(ISBLANK(Account.RCN__c)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateACR</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateACR</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) , ISNEW(), NOT(CONTAINS($Label.GovernmentRecordTypes,Account.RecordTypeId)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateACR_Role</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateACR_Role</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (ACR) - Update action to update ACR ( Role) in Current Salesforce &amp; Notify SF Stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) , NOT(CONTAINS($Label.GovernmentRecordTypes,Account.RecordTypeId)) , NOT(ISNEW()), ISCHANGED(Roles) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Contacts for Survey_APAC</fullName>
+        <actions>
+            <name>Send_Contacts_for_Survey_APAC</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Send &quot;APAC Region&quot; ACR&apos;s to Qualtrics</description>
+        <formula>AND(NOT(PRIORVALUE(NPS_Survey__c)), NPS_Survey__c, Contact.NPS_Survey__c, ISPICKVAL(Contact.Region__c, &apos;APAC&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Contacts for Survey_EMEA</fullName>
+        <actions>
+            <name>Send_Contacts_for_Survey_EMEA</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Send &quot;EMEA Region&quot; ACR&apos;s to Qualtrics</description>
+        <formula>AND(NOT(PRIORVALUE(NPS_Survey__c)), NPS_Survey__c, Contact.NPS_Survey__c, ISPICKVAL(Contact.Region__c, &apos;EMEA&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Contacts for Survey_ROW</fullName>
+        <actions>
+            <name>Send_Contacts_for_Survey_ROW</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Send &quot;ROW Region&quot; ACR&apos;s to Qualtrics</description>
+        <formula>AND(NOT(PRIORVALUE(NPS_Survey__c)), NPS_Survey__c, Contact.NPS_Survey__c, NOT(ISPICKVAL(Contact.Region__c, &apos;EMEA&apos;)), NOT(ISPICKVAL(Contact.Region__c, &apos;APAC&apos;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

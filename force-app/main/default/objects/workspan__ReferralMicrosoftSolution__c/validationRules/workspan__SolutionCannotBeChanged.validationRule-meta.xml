@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__SolutionCannotBeChanged</fullName>
+    <active>true</active>
+    <description>Solution cannot be changed.</description>
+    <errorConditionFormula>ISCHANGED(workspan__MicrosoftSolution__c)</errorConditionFormula>
+    <errorDisplayField>workspan__MicrosoftSolution__c</errorDisplayField>
+    <errorMessage>Solution cannot be changed.</errorMessage>
+</ValidationRule>

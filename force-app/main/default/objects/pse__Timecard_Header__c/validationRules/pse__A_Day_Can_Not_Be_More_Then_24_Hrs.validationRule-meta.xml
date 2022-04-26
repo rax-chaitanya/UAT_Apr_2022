@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__A_Day_Can_Not_Be_More_Then_24_Hrs</fullName>
+    <active>true</active>
+    <description>This will ensure that an individual day is not greater than 24 hrs</description>
+    <errorConditionFormula>OR(pse__Monday_Hours__c &gt; 24, pse__Tuesday_Hours__c &gt; 24,  pse__Wednesday_Hours__c &gt; 24,pse__Thursday_Hours__c &gt; 24, pse__Friday_Hours__c &gt; 24, pse__Saturday_Hours__c &gt; 24, pse__Sunday_Hours__c &gt; 24)</errorConditionFormula>
+    <errorMessage>No individual day for a single line can be more than 24 hours</errorMessage>
+</ValidationRule>

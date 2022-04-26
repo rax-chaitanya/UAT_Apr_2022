@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Referral_should_select_Referral_only</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(CONTAINS( $Label.Partner_Profiles ,$User.ProfileId) , 
+OR( 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Referral&apos;), 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Master Agent&apos;), 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Sub Agent&apos;), 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;ReferralEMEA&apos;), 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Master Agent EMEA&apos;) 
+
+), 
+NOT(ISPICKVAL( Type_Of_Deal__c , &apos;Referral&apos;)), 
+NOT( CONTAINS(LOWER(Partner_Company__r.Name),&apos;sitecore&apos;)) 
+)</errorConditionFormula>
+    <errorDisplayField>Type_Of_Deal__c</errorDisplayField>
+    <errorMessage>You Can Select Type of deal as Referral only.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Points_Complete_Cannot_Exceed_Points</fullName>
+    <active>true</active>
+    <errorConditionFormula>pse__Points_Complete__c &gt; pse__Points__c</errorConditionFormula>
+    <errorDisplayField>pse__Points_Complete__c</errorDisplayField>
+    <errorMessage>Points Complete cannot exceed Points</errorMessage>
+</ValidationRule>

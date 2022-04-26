@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RF_Require_AWS_PSM_after_39</fullName>
+    <active>false</active>
+    <description>Require Onica AWS PSM when an Opportunity reaches Contracting or above.</description>
+    <errorConditionFormula>Probability &gt; 0.39 &amp;&amp; ISBLANK(Onica_AWS_PSM__c) &amp;&amp;
+ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_AWS_PSM__c</errorDisplayField>
+    <errorMessage>Please select the OnicaAWS PSM managing this account. If there is no AWS PSM selected on the Account, please enter it there as well as here. The next time you create an Opportunity, the AWS PSM you selected on the Account will auto-populate in this field.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EmailIsRequired</fullName>
+    <active>true</active>
+    <description>Email cannot be blank</description>
+    <errorConditionFormula>AND(RecordType.Name = &quot;Employee&quot;, ISBLANK(Email))</errorConditionFormula>
+    <errorDisplayField>Email</errorDisplayField>
+    <errorMessage>Email cannot be blank</errorMessage>
+</ValidationRule>

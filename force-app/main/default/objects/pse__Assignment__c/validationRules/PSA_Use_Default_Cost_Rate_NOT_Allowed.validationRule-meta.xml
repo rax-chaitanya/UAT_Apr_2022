@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Use_Default_Cost_Rate_NOT_Allowed</fullName>
+    <active>false</active>
+    <description>10/02/2020 Moved From Onica as per requirement</description>
+    <errorConditionFormula>pse__Use_Resource_Default_Cost_Rate__c = TRUE</errorConditionFormula>
+    <errorDisplayField>pse__Use_Resource_Default_Cost_Rate__c</errorDisplayField>
+    <errorMessage>Uncheck the field, Use Resource Default Cost Rate before creating this assignment.</errorMessage>
+</ValidationRule>

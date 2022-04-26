@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Assignment_Hours</fullName>
+    <active>false</active>
+    <errorConditionFormula>( pse__Assignment__r.pse__Schedule__r.pse__Monday_Hours__c  +  pse__Assignment__r.pse__Schedule__r.pse__Saturday_Hours__c  +  pse__Assignment__r.pse__Schedule__r.pse__Sunday_Hours__c + pse__Assignment__r.pse__Schedule__r.pse__Thursday_Hours__c + pse__Assignment__r.pse__Schedule__r.pse__Tuesday_Hours__c + pse__Assignment__r.pse__Schedule__r.pse__Wednesday_Hours__c +  pse__Assignment__r.pse__Schedule__r.pse__Friday_Hours__c ) &lt;= ( pse__Friday_Hours__c + pse__Monday_Hours__c +  pse__Thursday_Hours__c +  pse__Wednesday_Hours__c +  pse__Tuesday_Hours__c + pse__Sunday_Hours__c +  pse__Saturday_Hours__c )</errorConditionFormula>
+    <errorMessage>You entered more time than scheduled</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__PTA_RR_Project_Mismatch</fullName>
+    <active>true</active>
+    <description>Validates whether the Project Task Assignment and Resource Request belong to the same Project.</description>
+    <errorConditionFormula>AND( NOT(ISBLANK( pse__Resource_Request__c )), pse__Project_Task__r.pse__Project__c  &lt;&gt;  pse__Resource_Request__r.pse__Project__c)</errorConditionFormula>
+    <errorMessage>We cannot associate a project task assignment with the resource request because they do not belong to the same project. Enter a different resource request and try again.</errorMessage>
+</ValidationRule>

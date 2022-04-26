@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_Data_Stewards_of_review_outcome</fullName>
+        <description>Alert Data Stewards of review outcome</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Data_Stewards</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>New_Company_Approval_Process/Company_Ownership_BM_Review</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_US_BMs_of_Company_Ownership_Review</fullName>
+        <description>Alert US BMs of Company Ownership Review</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>megan.mclendon@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>valerie.mauro@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>New_Company_Approval_Process/Escalate_Approval_to_BM</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_seller_that_Company_Creation_has_been_Rejected</fullName>
+        <ccEmails>vikas.dalal@rackspace.com</ccEmails>
+        <description>Alert seller that Company Creation has been Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>New_Company_Approval_Process/New_Company_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Approval_Rejected_Menu_Pricing_Request_email</fullName>
+        <description>Approval - Rejected Menu Pricing Request email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Approval_Rejected_Menu_Pricing_New</template>
+    </alerts>
+    <alerts>
+        <fullName>Company_Access_Request_Approved_Email</fullName>
+        <description>Company Access Request Approved Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Requester__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Company_Access_Request_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Company_Access_Request_Enterprise_Approved_Email</fullName>
+        <description>Company Access Request Enterprise Approved Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Requester__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Company_Access_Request_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Company_Access_Request_Enterprise_Rejected_Email</fullName>
+        <description>Company Access Request Enterprise Rejected Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Requester__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Company_Access_Request_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Company_Access_Request_Rejected_Email</fullName>
+        <description>Company Access Request Rejected Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Requester__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Company_Access_Request_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Company_Billing_Address_Bypass_Alert</fullName>
+        <description>Company Billing Address Bypass Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Company_Billing_Address_Bypass</template>
+    </alerts>
+    <alerts>
+        <fullName>Company_Shipping_Address_Bypass_Alert</fullName>
+        <description>Company Shipping Address Bypass Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Company_Shipping_Address_Bypass</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_when_Application_is_Approved</fullName>
+        <description>Email Alert when Application is Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Primary_Member_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>raxpartnerhelp@channel.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Approval_Process_Templates/Partner_Application_Approved_v3</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_when_Application_is_Rejected</fullName>
+        <description>Email Alert when Application is Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Primary_Member_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Approval_Process_Templates/Application_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>GTMO_Account_Manager_Reassignment_Notification</fullName>
+        <description>GTMO_Account Manager Reassignment Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>All_Email_Templates/GTMO_Notification_to_Account_Owner_of_Account_Manager_reassignment</template>
+    </alerts>
+    <alerts>
+        <fullName>GTMO_Account_Ownership_Reassignment_Notification</fullName>
+        <description>GTMO_Account Ownership Reassignment Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Account_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>All_Email_Templates/GTMO_Notification_to_Account_Manager_of_Account_Owner_reassignment</template>
+    </alerts>
+    <alerts>
+        <fullName>Menu_Pricing_Approved</fullName>
+        <description>Menu Pricing Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Menu_Pricing_to_Finance_New</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Company_Owner</fullName>
+        <ccEmails>laura.torres@rackspace.com</ccEmails>
+        <description>New Company Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/New_Company_Owner_HTML</template>
+    </alerts>
+    <alerts>
+        <fullName>Request_for_Contracting_Entity_change_has_been_rejected</fullName>
+        <description>Request for Contracting Entity change has been rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Approval_Rejected_Contracting_Entity_New</template>
+    </alerts>
+    <alerts>
+        <fullName>primary_address_of_customer_account_gets_changed</fullName>
+        <ccEmails>RIG_contracts@rackspace.com,</ccEmails>
+        <ccEmails>abhishek.vijayvargiya@rackspace.com,</ccEmails>
+        <ccEmails>mayur.solanki@rackspace.com,</ccEmails>
+        <ccEmails>someshwar.ponugoti@rackspace.com</ccEmails>
+        <description>Primary Address of Customer Account gets changed</description>
+        <protected>false</protected>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>All_Email_Templates/Primary_address_of_Customer_Account_gets_changed</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Admin_Comments</fullName>
+        <description>Update Administrator Comments</description>
+        <field>Administrator_Comments__c</field>
+        <name>Admin Comments</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ContractingEntityApproved</fullName>
+        <field>ContractingEntityApproved__c</field>
+        <formula>&apos;Approved&apos;</formula>
+        <name>ContractingEntityApproved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ContractingEntityRejected</fullName>
+        <field>ContractingEntityApproved__c</field>
+        <formula>&apos;Rejected&apos;</formula>
+        <name>ContractingEntityRejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contracting_Entity_Change</fullName>
+        <field>Contracting_Entity_Change__c</field>
+        <literalValue>0</literalValue>
+        <name>Contracting Entity Change</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Ever_Escalated_to_Rackspace_TRUE</fullName>
+        <field>Ever_Escalated_to_Rackspace__c</field>
+        <literalValue>1</literalValue>
+        <name>Ever Escalated to Rackspace = TRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Menu_Pricing_Approved_to_True</fullName>
+        <field>Menu_Pricing_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Menu Pricing Approved to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Partner_Account_Status_update</fullName>
+        <field>Partner_Account_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Partner Account Status update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Company_Review_Status_as_Reviewed</fullName>
+        <field>Company_Review_Status__c</field>
+        <literalValue>Reviewed - Found</literalValue>
+        <name>Set Company Review Status as Reviewed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_Reviewed_By_Value</fullName>
+        <field>Last_Reviewed_By__c</field>
+        <formula>$User.FirstName + &apos; &apos; + $User.LastName</formula>
+        <name>Set Last Reviewed By Value</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_Reviewed_On_Value</fullName>
+        <field>Last_Reviewed_On__c</field>
+        <formula>today()</formula>
+        <name>Set Last Reviewed On Value</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Matched_with_Data_com_On_to_Today</fullName>
+        <field>Matched_with_Data_com_On__c</field>
+        <formula>today()</formula>
+        <name>Set Matched with Data.com On to Today</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sys_Admin_Lookup</fullName>
+        <field>Company_Access_Submitter__c</field>
+        <lookupValue>gtmo_systems@rackspace.com.rax</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Sys Admin Lookup</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sys_Admin_Lookup_Enterprise</fullName>
+        <field>Company_Access_Submitter__c</field>
+        <lookupValue>gtmo_systems@rackspace.com.rax</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Sys Admin Lookup Enterprise</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Upadate_Partner_Account_StatusToRejected</fullName>
+        <field>Partner_Account_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Upadate Partner Account StatusToRejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateCompanyCompanyAccessSub_Blank</fullName>
+        <description>Blank out Company Access Submitter on the Company.</description>
+        <field>Company_Access_Submitter__c</field>
+        <name>UpdateCompanyCompanyAccessSub-Blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateTerritoryonCompanies</fullName>
+        <field>Territory__c</field>
+        <literalValue>Africa</literalValue>
+        <name>UpdateTerritoryonCompanies</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Data_Steward_Approval_Approved</fullName>
+        <field>Data_Steward_Approval__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Update Data Steward Approval - Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Data_Steward_Approval_Reject</fullName>
+        <field>Data_Steward_Approval__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Update Data Steward Approval - Reject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_OIC_Curr_Code_to_USD_if_Reseller</fullName>
+        <description>IF Record Type = Partner
+AND
+Partner Level = &quot;Reseller&quot; or &quot;ResellerEMEA&quot;
+THEN
+OIC Currency Code = &quot;USD&quot;</description>
+        <field>OIC_Currency_Code__c</field>
+        <literalValue>USD</literalValue>
+        <name>Update OIC Curr Code to USD if Reseller</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Owner_To_Luke</fullName>
+        <field>OwnerId</field>
+        <lookupValue>luke.jemmott@rackspace.com.rax</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Update Owner To Luke</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Partner_Account_Status</fullName>
+        <field>Partner_Account_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Update Partner Account Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Partner_Account_Status_To_Pending</fullName>
+        <field>Partner_Account_Status__c</field>
+        <literalValue>Pending For Approval</literalValue>
+        <name>Update Partner Account Status To Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Partner_Account_Type</fullName>
+        <field>Type__c</field>
+        <literalValue>Prospective Partner</literalValue>
+        <name>Update Partner Account Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Partner_Account_Type_to_Partner</fullName>
+        <field>Type__c</field>
+        <literalValue>Partner</literalValue>
+        <name>Update Partner Account Type to Partner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>set_completion_progress_for_sub_agent</fullName>
+        <field>Completion_Progress__c</field>
+        <formula>100</formula>
+        <name>set completion progress for sub agent</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>set_onboard_step_to_complete</fullName>
+        <field>onboard_step__c</field>
+        <formula>&quot;completed&quot;</formula>
+        <name>set onboard step to complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_CreateAccounts</fullName>
+        <apiVersion>48.0</apiVersion>
+        <description>Workflow for New Salesforce to notify FMW - Create action to Create Account in CMS</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Number__c</fields>
+        <fields>DP_CustomerId__c</fields>
+        <fields>DP_Parent_AccountId__c</fields>
+        <fields>Id</fields>
+        <fields>RCN__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion-CreateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_UpdateAccounts</fullName>
+        <apiVersion>48.0</apiVersion>
+        <description>Workflow for New Salesforce to notify FMW - Update action to update Account in CMS</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Number__c</fields>
+        <fields>DP_CustomerId__c</fields>
+        <fields>DP_Parent_AccountId__c</fields>
+        <fields>Id</fields>
+        <fields>RCN__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion-UpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_UpdateAccountsESS</fullName>
+        <apiVersion>48.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion-UpdateAccountsESS</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>GTMO_NewSfdcToFusion_CreateCompanies</fullName>
+        <apiVersion>50.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Companies) - create action to notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>GTMO_NewSfdcToFusion-CreateCompanies</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>GTMO_NewSfdcToFusion_DeleteUndeleteComp</fullName>
+        <apiVersion>50.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Companies) - soft delete/undelete action to Update companies in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Status__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>GTMO_NewSfdcToFusion-DeleteUndeleteComp</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>GTMO_NewSfdcToFusion_UpdCompOICParticip</fullName>
+        <apiVersion>50.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>OIC_Company_Number__c</fields>
+        <fields>OIC_Participant_Id__c</fields>
+        <fields>OIC_Participant__c</fields>
+        <fields>OIC_Partner_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>GTMO_NewSfdcToFusion-UpdCompOICParticip</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>GTMO_NewSfdcToFusion_UpdateCompanies</fullName>
+        <apiVersion>50.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Companies) - Update action to Update companies in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>GTMO_NewSfdcToFusion-UpdateCompanies</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>GTMO_OIC_SfdcToFusion_UpdatePartnerAcc</fullName>
+        <apiVersion>50.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>OIC_Company_Number__c</fields>
+        <fields>OIC_Participant_Id__c</fields>
+        <fields>OIC_Participant__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>GTMO_OIC_SfdcToFusion-UpdatePartnerAcc</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateAccounts</fullName>
+        <apiVersion>48.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Create action to create Accounts in Current Salesforce &amp; Notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteUndeleteAccounts</fullName>
+        <apiVersion>48.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Delete/Undelete action to Update Accounts in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Status__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteUndeleteAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateAccounts</fullName>
+        <apiVersion>48.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzNewSfdcToFusionUpdateCompanies</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Companies) - Update action to Update companies in Current Salesforce</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>AnnualRevenue</fields>
+        <fields>BillingCity</fields>
+        <fields>Id</fields>
+        <fields>ShippingCity</fields>
+        <fields>ShippingCountry</fields>
+        <fields>ShippingPostalCode</fields>
+        <fields>ShippingState</fields>
+        <fields>ShippingStreet</fields>
+        <fields>Website</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzNewSfdcToFusionUpdateCompanies</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzzzzNewSfdcToFusionUpdateCompanies</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Companies) - Update action to Update companies in Current Salesforce</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>AnnualRevenue</fields>
+        <fields>BillingCity</fields>
+        <fields>Id</fields>
+        <fields>Ownership</fields>
+        <fields>Phone</fields>
+        <fields>ShippingCity</fields>
+        <fields>ShippingCountry</fields>
+        <fields>ShippingPostalCode</fields>
+        <fields>ShippingState</fields>
+        <fields>ShippingStreet</fields>
+        <fields>Website</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzzzzNewSfdcToFusionUpdateCompanies</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>AccountNumberUpdateWhileDataload</fullName>
+        <active>false</active>
+        <description>This rule is created to update Account Number field with new Account Number while data load</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Apex - FAzure - DCR 1328457</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.AccountNumber</field>
+            <operation>contains</operation>
+            <value>safsadfdsaasdasd</value>
+        </criteriaItems>
+        <description>asddddddddddd</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_CreateAccounts</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_CreateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to notify FMW - Create action to Create Account in CMS</description>
+        <formula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User), ISBLANK(RCN__c), OR( CONTAINS($Label.AccountCustomerRecordTypeId,RecordTypeId), CONTAINS($Label.AccountGovernmentRecordTypeId,RecordTypeId), CONTAINS($Label.AccountRBURecordTypeId,RecordTypeId) ) , OR( AND( ISPICKVAL(Type,&quot;Customer&quot;), NOT(CONTAINS($Label.AccountCustomerRecordTypeId,PRIORVALUE(RecordTypeId))) ), ISPICKVAL(Type,&quot;Customer&quot;), ISPICKVAL(Type,&quot;Former Customer&quot;) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_UpdateAccounts</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_UpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to notify FMW - Update action to update Account in CMS</description>
+        <formula>AND( NOT( CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType) ),  NOT($User.Id=$Label.FMW_API_User), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(RCN__c)), NOT(ISNEW()) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_UpdateAccountsESS</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_UpdateAccountsESS</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to notify FMW - Update action to Update Account in CMS &amp; ESS</description>
+        <formula>AND( NOT( CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType) ), NOT(ISNEW()), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User), OR(NOT(ISBLANK(RCN__c)),NOT(ISBLANK(DDI__c))),ISCHANGED(OwnerId) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Company Billing Address Bypass</fullName>
+        <actions>
+            <name>Company_Billing_Address_Bypass_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISCHANGED( Billing_Address_Bypassed__c ),Billing_Address_Bypassed__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Account Manager Is Reassigned</fullName>
+        <actions>
+            <name>GTMO_Account_Manager_Reassignment_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(NOT(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType)), NOT(ISBLANK( Account_Manager__c )), Account_Manager__r.IsActive = TRUE, NOT(ISBLANK(OwnerId )), Owner.IsActive = TRUE, ISCHANGED(Account_Manager__c) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Account Owner Is Reassigned</fullName>
+        <actions>
+            <name>GTMO_Account_Ownership_Reassignment_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Account owner is modified, alert the Account Manager.</description>
+        <formula>AND(NOT(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType)), NOT(ISBLANK(OwnerId)), Owner.IsActive = TRUE, NOT(ISBLANK( Account_Manager__c )), Account_Manager__r.IsActive = TRUE, ISCHANGED(OwnerId) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Alert BMs of Company Creation needing Review</fullName>
+        <actions>
+            <name>Alert_US_BMs_of_Company_Ownership_Review</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), OR( ISPICKVAL( Data_Steward_Approval__c ,&quot;Pending Review&quot;), ISPICKVAL( Data_Steward_Approval__c ,&quot;In Progress&quot;) ), ISPICKVAL( Company_Review_Status__c ,&quot;Escalate to BM&quot;), NOT(ISPICKVAL( Owner.Sub_Region__c,&quot;LATAM&quot;) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Alert LATAM BMs of Company Ownership Review</fullName>
+        <active>true</active>
+        <description>Send email to LATAM BMs when a New Company needs Ownership review</description>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), ISPICKVAL( Company_Review_Status__c ,&quot;Escalate to BM&quot;), ISPICKVAL( Owner.Sub_Region__c,&quot;LATAM&quot;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_AutoUpdateTerritoryOnCompanies</fullName>
+        <actions>
+            <name>UpdateTerritoryonCompanies</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Account.BillingCity</field>
+            <operation>notEqual</operation>
+            <value>qwertyuio</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.BillingCountry</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Territory__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Migration Record Account</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Company Shipping Address Bypass</fullName>
+        <actions>
+            <name>Company_Shipping_Address_Bypass_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), ISCHANGED( Shipping_Address_Bypassed__c ), Shipping_Address_Bypassed__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Modify Onboarding for SubAgent</fullName>
+        <actions>
+            <name>set_completion_progress_for_sub_agent</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>set_onboard_step_to_complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType),  ISPICKVAL(Partner_Level__c, &apos;Sub Agent&apos;)  )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_NewSfdcToFusion-CreateCompanies</fullName>
+        <actions>
+            <name>GTMO_NewSfdcToFusion_CreateCompanies</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration (Companies) - create action to notify SFDC Cache..</description>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), ISNEW(), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_NewSfdcToFusion-DeleteUndeleteCompanies</fullName>
+        <actions>
+            <name>GTMO_NewSfdcToFusion_DeleteUndeleteComp</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow Rule for New Salesforce to FMW Integration (Companies) - soft delete/undelete action to Update companies in Current Salesforce &amp; notify SFDC Cache.</description>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), NOT(ISNEW()), ISCHANGED(Status__c), OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_NewSfdcToFusion-UpdateCompanies</fullName>
+        <actions>
+            <name>GTMO_NewSfdcToFusion_UpdateCompanies</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration (Companies) - Update action to Update companies in Current Salesforce &amp; SFDC Cache.</description>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(ISNEW()), NOT(AND(ISCHANGED(Status__c), OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)))) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_NewSfdcToFusion-UpdateCompanyOICParticipant</fullName>
+        <actions>
+            <name>GTMO_NewSfdcToFusion_UpdCompOICParticip</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), OIC_Participant__c  = True,  OIC_Participant_Id__c  = null)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_OIC_SfdcToFusion-UpdatePartnerAccount</fullName>
+        <actions>
+            <name>GTMO_OIC_SfdcToFusion_UpdatePartnerAcc</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(CONTAINS(RecordType.Name, $Label.CheckCompanyonRecordType), NOT(ISBLANK(OIC_Participant_Id__c)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), OIC_Participant__c=true, OR( AND(ISCHANGED(Partner_Level__c), NOT(ISBLANK(Text(Partner_Level__c))) ) , AND( ISCHANGED(Primary_Member__c), NOT(ISBLANK(Primary_Member__c)) ), AND(ISCHANGED(Contract_Type__c), NOT(ISBLANK(Text(Contract_Type__c))) ), AND(ISCHANGED(Tier_Level__c), NOT(ISBLANK(Text(Tier_Level__c))) ), ISCHANGED(Contract_Signed_Date__c), AND (ISCHANGED(Oracle_Vendor_ID__c), NOT(ISBLANK(Oracle_Vendor_ID__c)) ), AND (ISCHANGED(Oracle_Site_Id__c), NOT(ISBLANK(Oracle_Site_Id__c))) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Update OIC Currency Code to USD if Reseller or Resller EMEA</fullName>
+        <actions>
+            <name>Update_OIC_Curr_Code_to_USD_if_Reseller</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>IF Record Type = Partner Company
+AND
+Partner Level = &quot;Reseller&quot; or &quot;ResellerEMEA&quot;
+THEN
+OIC Currency Code = &quot;USD&quot;</description>
+        <formula>AND( RecordType.Name = &apos;Partner Company&apos;, OR( ISPICKVAL(Partner_Level__c,&quot;Reseller&quot;), ISPICKVAL(Partner_Level__c,&quot;ResellerEMEA&quot; )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Update Partner Account Status on Partner Company</fullName>
+        <actions>
+            <name>Partner_Account_Status_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When Partner Ops/PAMs/Partner Directors manually create a partner company, the Partner Approval Status should default to &quot;Approved&quot;.</description>
+        <formula>AND(CONTAINS(RecordType.DeveloperName, $Label.Partner_Company_RecordTypeName), OR($Profile.Name =&apos;Rackspace-Partner Operations&apos;, $Profile.Name =&apos;Rackspace - PAM INTL&apos;, $Profile.Name =&apos;Rackspace - PAM US&apos;, $Profile.Name = &apos;Rackspace - PAM Director INTL&apos;, $Profile.Name = &apos;Rackspace - PAM Director US&apos;))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateAccounts</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Create action to Create Accounts in Current Salesforce</description>
+        <formula>AND(NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), ISNEW() )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteUndeleteAccounts</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteUndeleteAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - soft Delete/Undelete action to update Accounts in Current Salesforce &amp; notify SFDC Stash</description>
+        <formula>AND(NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)),NOT(ISNEW()),ISCHANGED(Status__c),OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)),NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateAccounts</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce</description>
+        <formula>AND(NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)), NOT(ISNEW()), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(AND(ISCHANGED(Status__c),OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)))))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Company Reviewed Status When Matched</fullName>
+        <actions>
+            <name>Set_Company_Review_Status_as_Reviewed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Matched_with_Data_com_On_to_Today</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When a Company is set to one of Data.com&apos;s &quot;Matched&quot; statuses, automatically mark it as being Reviewed</description>
+        <formula>OR(    AND(      ISNEW(),      jsImpacts__Data_com_Matched__c = &quot;Matched&quot;    ),    AND(      NOT(ISNEW()),      ISCHANGED(jsImpacts__Data_com_Matched__c),      jsImpacts__Data_com_Matched__c = &quot;Matched&quot;    ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Tracking Metrics When Reviewed Status Changes</fullName>
+        <actions>
+            <name>Set_Last_Reviewed_By_Value</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Last_Reviewed_On_Value</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>When the Company Review Status is changed, update the tracking metrics</description>
+        <formula>OR(   AND(     ISNEW(),     NOT(ISBLANK(TEXT(Company_Review_Status__c)))   ),   AND(     NOT(ISNEW()),     ISCHANGED(Company_Review_Status__c)   ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Track Escalations to Rackspace</fullName>
+        <actions>
+            <name>Ever_Escalated_to_Rackspace_TRUE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.Company_Review_Status__c</field>
+            <operation>equals</operation>
+            <value>Escalated to Rackspace</value>
+        </criteriaItems>
+        <description>If the Company is ever set to be Company Review Status = Escalated to Rackspace, set the Ever Escalated to Rackspace? checkbox to true</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzFusionToUpdateCompaniesInOldSfdc</fullName>
+        <actions>
+            <name>zzzNewSfdcToFusionUpdateCompanies</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Companies) - Update action to Update companies in Current Salesforce</description>
+        <formula>AND( $User.Id !=  $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c, Old_Record_Id__c &lt;&gt; null , OR(ISCHANGED(Id), ISCHANGED(Name), ISCHANGED(Old_Record_Id__c), ISCHANGED(DunsNumber), ISCHANGED(AnnualRevenue), ISCHANGED(Industry), ISCHANGED( Website), ISCHANGED(Ownership), ISCHANGED(NumberOfEmployees), ISCHANGED(BillingStreet), ISCHANGED(BillingCity), ISCHANGED(BillingState), ISCHANGED(BillingCountry), ISCHANGED(BillingPostalCode), ISCHANGED(ShippingStreet), ISCHANGED(ShippingCity), ISCHANGED(ShippingState), ISCHANGED(ShippingCountry), ISCHANGED(ShippingPostalCode), ISCHANGED(Phone)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzzzzFusionToUpdateCompaniesInOldSfdc</fullName>
+        <actions>
+            <name>zzzzzzNewSfdcToFusionUpdateCompanies</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Companies) - Update action to Update companies in Current Salesforce</description>
+        <formula>AND( $User.Id !=  $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c, Old_Record_Id__c &lt;&gt; null , OR(ISCHANGED(Id), ISCHANGED(Name), ISCHANGED(Old_Record_Id__c), ISCHANGED(DunsNumber), ISCHANGED(AnnualRevenue), ISCHANGED(Industry), ISCHANGED( Website), ISCHANGED(Ownership), ISCHANGED(NumberOfEmployees), ISCHANGED(BillingStreet), ISCHANGED(BillingCity), ISCHANGED(BillingState), ISCHANGED(BillingCountry), ISCHANGED(BillingPostalCode), ISCHANGED(ShippingStreet), ISCHANGED(ShippingCity), ISCHANGED(ShippingState), ISCHANGED(ShippingCountry), ISCHANGED(ShippingPostalCode), ISCHANGED(Phone)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Mandatory_Info_On_Lead_Qualify</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR(ISNEW(),ISCHANGED(Status)),
+TEXT(Status)= $Label.Lead_Status_Sent_To_Sales, OR(ISBLANK(FirstName),ISBLANK(LastName),ISBLANK(Company),ISPICKVAL(Lead_Type__c,&quot;&quot;),ISPICKVAL( LeadSource ,&quot;&quot;),ISBLANK(Country),ISBLANK(Focus_Area__c),ISNULL(AnnualRevenue)))</errorConditionFormula>
+    <errorMessage>Company, First Name, Last Name,Status, Lead Type, Lead Source, Country, Territory, Focus Area and Annual Revenue are Mandatory</errorMessage>
+</ValidationRule>

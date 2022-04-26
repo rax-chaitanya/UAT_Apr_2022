@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Total_Overrun_Requires_Other_Overrun</fullName>
+    <active>true</active>
+    <description>If the total overrun is allowed, amount overrun and/or expense overrun must also be allowed</description>
+    <errorConditionFormula>AND(pse__Total_Amount_Overrun_Allowed__c,NOT(pse__Amount_Overrun_Allowed__c),NOT(pse__Expense_Amount_Overrun_Allowed__c))</errorConditionFormula>
+    <errorDisplayField>pse__Total_Amount_Overrun_Allowed__c</errorDisplayField>
+    <errorMessage>If Total Amount Overrun Allowed is checked, Amount Overrun Allowed and/or Expense Amount Overrun Allowed must also be checked.</errorMessage>
+</ValidationRule>

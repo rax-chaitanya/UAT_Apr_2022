@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MileStone_Amount_not_More_Project_Amount</fullName>
+    <active>true</active>
+    <description>Mile Stone Amount Cannot be More than Project Amount</description>
+    <errorConditionFormula>if((pse__Milestone_Amount__c
+&gt; pse__Project__r.Project_Amount__c),True,False)</errorConditionFormula>
+    <errorDisplayField>pse__Actual_Date__c</errorDisplayField>
+    <errorMessage>Mile Stone Amount Cannot be More than Project Amount</errorMessage>
+</ValidationRule>

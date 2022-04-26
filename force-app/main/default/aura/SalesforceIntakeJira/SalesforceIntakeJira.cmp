@@ -1,3 +1,9 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-    <a onclick="{!c.openIntakeJiraBoard}" value="Sales Academy Request"/>
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <div class="actualNode">
+        <div class="createRecordWrapper forceCommunityCreateRecordButton" data-aura-class="forceCommunityCreateRecordButton">
+            <button aria-live="off" type="button" class="slds-button slds-button--brand actionButton uiButton" aria-label="" data-aura-class="uiButton" onclick="{!c.openIntakeJiraBoard}">
+                <span dir="ltr" class=" label bBody">Salesforce Intake Request</span></button></div>
+    </div>
+    
 </aura:component>

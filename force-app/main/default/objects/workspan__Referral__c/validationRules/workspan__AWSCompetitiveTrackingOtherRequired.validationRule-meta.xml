@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__AWSCompetitiveTrackingOtherRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>workspan__SourcedToPartner__c = &apos;Amazon&apos;
+&amp;&amp; ISPICKVAL(workspan__AWSCompetitiveTracking__c , &apos;*Other&apos;)
+&amp;&amp; ISBLANK(workspan__AWSCompetitiveTrackingOther__c)</errorConditionFormula>
+    <errorDisplayField>workspan__AWSCompetitiveTrackingOther__c</errorDisplayField>
+    <errorMessage>Specify the Tracking.</errorMessage>
+</ValidationRule>

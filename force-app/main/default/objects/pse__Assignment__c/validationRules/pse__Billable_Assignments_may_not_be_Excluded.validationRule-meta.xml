@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Billable_Assignments_may_not_be_Excluded</fullName>
+    <active>true</active>
+    <description>Assignments may only be marked as &quot;Time Excluded&quot; if they are Non-Billable.</description>
+    <errorConditionFormula>AND(pse__Is_Billable__c,pse__Time_Excluded__c)</errorConditionFormula>
+    <errorDisplayField>pse__Time_Excluded__c</errorDisplayField>
+    <errorMessage>Assignments may only be marked as &quot;Time Excluded&quot; if they are Non-Billable.</errorMessage>
+</ValidationRule>

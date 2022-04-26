@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_Lock_Fields_in_Partner_Company_OIC</fullName>
+    <active>true</active>
+    <description>Selected fields will be used to drive Partner Commissions team/OIC automation, these field will need to be managed by select teams, including: Partner Operations and Partner Commissions.</description>
+    <errorConditionFormula>AND(
+NOT(ISNEW()),
+RecordType.DeveloperName = &apos;Partner&apos;,
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+NOT(CONTAINS($Label.OIC_Field_Admins,$User.Id)),
+NOT(CONTAINS($Label.Partner_Profiles,$Profile.Id)),
+NOT( $Profile.Name = &apos;Rackspace - Partners Login&apos;),
+NOT( $Profile.Name = &apos;Rackspace-Partners&apos;),
+NOT( $Profile.Name = &apos;Partner Community User&apos;) ,
+OR(
+
+ISCHANGED(BillingStreet),
+ISCHANGED(BillingCity),
+ISCHANGED(BillingState),
+ISCHANGED(BillingPostalCode),
+ISCHANGED(Territory__c),
+ISCHANGED( BillingCountry ),
+ISCHANGED( OIC_Currency_Code__c ),
+ISCHANGED( Partner_Type__c ),
+ISCHANGED( Contract_Type__c ),
+ISCHANGED( Contract_Signed_Date__c ),
+ISCHANGED( Oracle_Vendor_ID__c ),
+ISCHANGED( Tier_Level__c ),
+ISCHANGED( Partner_Account_Status__c ),
+ISCHANGED( Contact_Status__c )
+)
+)</errorConditionFormula>
+    <errorMessage>This field is locked now to ensure the data in SFDC is accurate to send commission payment information to OIC and Accounts Payable.</errorMessage>
+</ValidationRule>

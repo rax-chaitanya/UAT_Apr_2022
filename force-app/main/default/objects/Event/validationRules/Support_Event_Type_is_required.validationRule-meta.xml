@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Support_Event_Type_is_required</fullName>
+    <active>true</active>
+    <description>&quot;Type&quot; is required within the &quot;Support Event&quot; record type</description>
+    <errorConditionFormula>AND
+(
+$RecordType.Name = &quot;Support Event&quot;,
+ISBLANK(TEXT(Type
+)))</errorConditionFormula>
+    <errorDisplayField>Type</errorDisplayField>
+    <errorMessage>&quot;Type&quot; must be populated.</errorMessage>
+</ValidationRule>

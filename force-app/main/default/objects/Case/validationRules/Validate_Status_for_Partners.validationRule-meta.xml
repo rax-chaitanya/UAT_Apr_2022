@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Status_for_Partners</fullName>
+    <active>true</active>
+    <description>Partner Portal should select Status as new while case creation</description>
+    <errorConditionFormula>AND(CONTAINS( $Label.Partner_Profiles , $Profile.Id ),AND(ISNEW(),NOT( ISPICKVAL(Status,&quot;New&quot;))))</errorConditionFormula>
+    <errorMessage>Case Status should be &apos;New&apos;.</errorMessage>
+</ValidationRule>

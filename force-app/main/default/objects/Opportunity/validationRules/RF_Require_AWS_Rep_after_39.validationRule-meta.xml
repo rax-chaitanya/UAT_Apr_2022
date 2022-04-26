@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RF_Require_AWS_Rep_after_39</fullName>
+    <active>true</active>
+    <description>Require AWS Rep when an Opportunity reaches Contracting or above.</description>
+    <errorConditionFormula>Probability &gt; 0.39 &amp;&amp; ISBLANK(Onica_AWS_Rep__c) &amp;&amp; (Owner_Sub_Segment__c = &apos;AWS&apos; || Owner_Sub_Segment__c = &apos;Canada&apos;) &amp;&amp; ISPICKVAL(Type , &apos;Professional Services&apos;) &amp;&amp; INCLUDES(Focus_Area__c, &apos;Amazon&apos;) &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>Onica_AWS_Rep__c</errorDisplayField>
+    <errorMessage>Please select the OnicaAWS Rep managing this account. If there is no AWS Rep selected on the Account, please enter it there as well as here. The next time you create an Opportunity, the AWS Rep you selected on the Account will auto-populate in this field.</errorMessage>
+</ValidationRule>

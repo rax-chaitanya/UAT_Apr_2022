@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Resources_Limit</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(pse__Resources_Required__c &lt; 1,pse__Resources_Required__c &gt; 99)</errorConditionFormula>
+    <errorDisplayField>pse__Resources_Required__c</errorDisplayField>
+    <errorMessage>Number of Resources should be between 1 to 99.</errorMessage>
+</ValidationRule>

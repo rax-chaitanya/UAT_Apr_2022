@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recurring_subscription_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(IF(AND(ISPICKVAL( Frequency__c ,&quot;3 Months&quot;), (pse__End_Date__c - pse__Start_Date__c)&lt; 90),true,False),IF(AND(ISPICKVAL( Frequency__c ,&quot;6 Months&quot;), (pse__End_Date__c - pse__Start_Date__c)&lt; 180),true,False),IF(AND(ISPICKVAL( Frequency__c ,&quot;12 Months&quot;), (pse__End_Date__c - pse__Start_Date__c)&lt; 365),true,False)),NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)))</errorConditionFormula>
+    <errorDisplayField>pse__Percent_Hours_Completed_For_Recognition__c</errorDisplayField>
+    <errorMessage>Invalid Duration - Subscription duration cannot extend longer than project end date</errorMessage>
+</ValidationRule>

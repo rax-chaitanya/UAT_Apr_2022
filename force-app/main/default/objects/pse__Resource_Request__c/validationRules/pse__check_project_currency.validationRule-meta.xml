@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__check_project_currency</fullName>
+    <active>true</active>
+    <description>Insure the requested currency is the same as the project&apos;s currency</description>
+    <errorConditionFormula>AND(LEN(pse__Project__c)&gt;0, TEXT(pse__Project__r.CurrencyIsoCode) != TEXT(CurrencyIsoCode))</errorConditionFormula>
+    <errorDisplayField>CurrencyIsoCode</errorDisplayField>
+    <errorMessage>The currency for the Resource Request must match the currency for the Project</errorMessage>
+</ValidationRule>

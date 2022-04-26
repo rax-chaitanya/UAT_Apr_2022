@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StartDate_GreaterThan_EndDate</fullName>
+    <active>true</active>
+    <errorConditionFormula>Activity_Start_Date__c &gt; Activity_End_Date__c</errorConditionFormula>
+    <errorDisplayField>Activity_End_Date__c</errorDisplayField>
+    <errorMessage>Activity End Date must be greater than Activity Start Date</errorMessage>
+</ValidationRule>

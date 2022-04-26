@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__ExpenseReport_Asgnmt_Project_Mismatch</fullName>
+    <active>true</active>
+    <description>Assignment Project must match Expense Report Project.</description>
+    <errorConditionFormula>AND(NOT(ISNULL(pse__Assignment__c)),NOT(ISNULL(pse__Assignment__r.pse__Project__c)),(pse__Assignment__r.pse__Project__c &lt;&gt; &apos;&apos;),(pse__Project__c &lt;&gt; pse__Assignment__r.pse__Project__c))</errorConditionFormula>
+    <errorDisplayField>pse__Assignment__c</errorDisplayField>
+    <errorMessage>Assignment Project must match Expense Report Project.</errorMessage>
+</ValidationRule>

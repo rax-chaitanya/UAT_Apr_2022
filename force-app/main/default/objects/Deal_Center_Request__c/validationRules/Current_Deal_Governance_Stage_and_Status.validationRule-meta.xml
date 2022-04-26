@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Deal_Governance_Stage_and_Status</fullName>
+    <active>true</active>
+    <description>If gov stage is set then status is required</description>
+    <errorConditionFormula>AND(
+				ISPICKVAL(Status__c,&quot;&quot;),
+				OR(
+								DEAL_INTAKE__c = TRUE,
+								RSDR__c = TRUE,
+								RDG__c = TRUE
+				))</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>A Status must be selected for the current Deal Governance stage</errorMessage>
+</ValidationRule>

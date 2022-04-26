@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ob1__Attachments_Require_Message</fullName>
+    <active>true</active>
+    <description>When sending an attachment style message, you must provide the attachment message</description>
+    <errorConditionFormula>NOT(ISBLANK(ob1__Content_Type_Extension__c)) &amp;&amp; ISBLANK(ob1__Attachment_Message__c)</errorConditionFormula>
+    <errorDisplayField>ob1__Attachment_Message__c</errorDisplayField>
+    <errorMessage>You must provide an attachment message for reports that are sent as attachments</errorMessage>
+</ValidationRule>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReadOnly_Record_cannot_edit</fullName>
+    <active>true</active>
+    <errorConditionFormula>$RecordType.Name = &quot;ReadOnly&quot; &amp;&amp;  NOT(ISNEW() ) &amp;&amp; $Profile.Name  &lt;&gt; &apos;System Administrator&apos;</errorConditionFormula>
+    <errorMessage>ReadOnly Record cannot be editted</errorMessage>
+</ValidationRule>

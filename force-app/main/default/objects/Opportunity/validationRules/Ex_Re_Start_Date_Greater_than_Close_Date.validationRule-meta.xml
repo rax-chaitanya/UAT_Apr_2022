@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ex_Re_Start_Date_Greater_than_Close_Date</fullName>
+    <active>true</active>
+    <description>Expected Revenue Start Date must be greater than Close Date</description>
+    <errorConditionFormula>AND(
+ExpectedRevenue &gt;= 20000,
+ISPICKVAL(StageName,&quot;Closed Won&quot;),
+Expected_Revenue_Start_Date__c &lt;= CloseDate,
+NOT(ISPICKVAL(Cloud_Contract_Type__c,&quot;DCR&quot;)),
+NOT(ISPICKVAL(Cloud_Contract_Type__c,&quot;DCR - Offset&quot;)),
+NOT(ISPICKVAL(Type,&quot;Renewal&quot;)),
+NOT(ISPICKVAL(Category__c,&quot;Renewal&quot;)))</errorConditionFormula>
+    <errorDisplayField>Expected_Revenue_Start_Date__c</errorDisplayField>
+    <errorMessage>Expected Revenue Start Date must be greater than Close Date</errorMessage>
+</ValidationRule>

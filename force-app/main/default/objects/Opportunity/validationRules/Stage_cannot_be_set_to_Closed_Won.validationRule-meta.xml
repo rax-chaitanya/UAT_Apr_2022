@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage_cannot_be_set_to_Closed_Won</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+AND(ISCHANGED( StageName ),ISPICKVAL( StageName , &apos;Closed Won&apos;)), 
+    NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+NOT($Profile.Name = &quot;Rackspace ProServ - INTL&quot;), 
+NOT($Profile.Name = &quot;Rackspace ProServ - US&quot;),  
+    OR( 
+        (ISPICKVAL( PRIORVALUE(StageName) , &apos;Stage 1 - Planning &amp; Identification&apos;) 
+         || 
+         ISPICKVAL( PRIORVALUE(StageName), &apos;Stage 2 - Opportunity Development&apos;)) 
+        , 
+        (ISBLANK(Focus_Area__c ) || INCLUDES(Focus_Area__c , &apos;Customer Uncertain&apos;) ) 
+        , 
+        (ISPICKVAL($User.Region__c , &apos;AMER&apos;) &amp;&amp; MONTH(TODAY()) &gt; 4 &amp;&amp; ( YEAR(TODAY()) &gt; YEAR(CloseDate) || (YEAR(TODAY()) = YEAR(CloseDate) &amp;&amp; MONTH(TODAY()) &gt; MONTH(CloseDate)) ) )
+        
+        
+        
+    ),
+NOT( ISCHANGED( Number_Of_Customer_Reviews__c )) 
+)</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>Stage cannot be set to Closed Won</errorMessage>
+</ValidationRule>

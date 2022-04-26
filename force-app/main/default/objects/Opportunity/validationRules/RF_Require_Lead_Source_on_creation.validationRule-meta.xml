@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RF_Require_Lead_Source_on_creation</fullName>
+    <active>true</active>
+    <description>Require Lead Source when an Opportunity reaches Solutionizing or above (19%)</description>
+    <errorConditionFormula>Probability &gt; 0.01 &amp;&amp; ISBLANK(TEXT(LeadSource)) &amp;&amp;
+ISPICKVAL(Type , &apos;AWS&apos;) &amp;&amp; ISPICKVAL(Onica_Type__c , &apos;PSO&apos;) &amp;&amp; $RecordType.Name = &quot;US Cloud&quot; &amp;&amp; NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) &amp;&amp;
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))</errorConditionFormula>
+    <errorDisplayField>LeadSource</errorDisplayField>
+    <errorMessage>Please tell us where this opportunity came from.</errorMessage>
+</ValidationRule>

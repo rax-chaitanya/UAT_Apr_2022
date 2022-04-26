@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Active_Project</fullName>
+    <active>true</active>
+    <description>Validation message indicating that a project must be active when associated with a team</description>
+    <errorConditionFormula>AND( NOT(ISNULL(pse__Project__c)), pse__Project__r.pse__Is_Active__c  = false)</errorConditionFormula>
+    <errorMessage>A project must be active to associate it with a team.</errorMessage>
+</ValidationRule>

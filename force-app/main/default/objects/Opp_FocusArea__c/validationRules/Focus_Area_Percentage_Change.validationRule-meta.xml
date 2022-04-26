@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Focus_Area_Percentage_Change</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),Opportunity__r.Device_Count__c &gt; 0
+&amp;&amp; NOT(ISCHANGED(Bypass_Validation_Timestamp__c))
+&amp;&amp; ISCHANGED( Focus_Area_Percentage__c ))</errorConditionFormula>
+    <errorMessage>Focus Area Percentage cannot be changed when Quote Lines are present.</errorMessage>
+</ValidationRule>

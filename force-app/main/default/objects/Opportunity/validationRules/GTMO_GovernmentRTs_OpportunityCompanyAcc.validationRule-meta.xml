@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_GovernmentRTs_OpportunityCompanyAcc</fullName>
+    <active>false</active>
+    <description>The opportunity, company, and contact must have a record type of &quot;Government.&quot;</description>
+    <errorConditionFormula>AND(ISPICKVAL( StageName , &quot;Closed Lost&quot;),
+AND(
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS($Label.QLDeleteOppID,Id)),
+OR(
+AND(
+CONTAINS($Label.GovernmentRecordTypes, RecordTypeId),
+NOT(CONTAINS($Label.GovernmentRecordTypes, Account.RecordTypeId))
+
+), 
+AND(
+NOT(CONTAINS($Label.GovernmentRecordTypes, RecordTypeId)),
+OR(
+CONTAINS($Label.GovernmentRecordTypes, Account.RecordTypeId)
+
+)
+)
+)
+)
+)</errorConditionFormula>
+    <errorMessage>Government opportunities can only be associated with government companies and product accounts. Non-government opportunities can only be associated with non-government companies and product accounts.</errorMessage>
+</ValidationRule>

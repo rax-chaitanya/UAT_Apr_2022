@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Data_Center</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+ISNULL(DP_Data_Center__c),
+ISBLANK(DP_Data_Center__c)
+)</errorConditionFormula>
+    <errorDisplayField>DP_Data_Center__c</errorDisplayField>
+    <errorMessage>Data Center is required</errorMessage>
+</ValidationRule>

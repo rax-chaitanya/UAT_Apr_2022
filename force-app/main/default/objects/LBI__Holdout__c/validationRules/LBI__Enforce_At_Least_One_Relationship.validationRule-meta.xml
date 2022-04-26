@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LBI__Enforce_At_Least_One_Relationship</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISBLANK(LBI__Account__c)
+,
+ISBLANK(LBI__LEAccount__c)
+)</errorConditionFormula>
+    <errorMessage>At least one Account or LE Account Id required.</errorMessage>
+</ValidationRule>

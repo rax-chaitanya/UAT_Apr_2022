@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__continuous_dates</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( pse__Calculate_Historical_Utilization__c , pse__Calculate_Scheduled_Utilization__c, OR(pse__Scheduled_Utilization_Start_Date__c &gt; (pse__Historical_Utilization_End_Date__c + 1), pse__Scheduled_Utilization_Start_Date__c &lt; pse__Historical_Utilization_End_Date__c))</errorConditionFormula>
+    <errorDisplayField>pse__Scheduled_Utilization_Start_Date__c</errorDisplayField>
+    <errorMessage>Scheduled utilization start date must immediately follow the historical utilization end date.</errorMessage>
+</ValidationRule>

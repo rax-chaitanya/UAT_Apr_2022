@@ -462,10 +462,12 @@ issued as its own query because it needs to be queried again to display updated,
                        opportunity.RecordType.Name == INTLCloudRecordType || 
                        opportunity.RecordType.Name == GovernmentRecordType ||
                        opportunity.RecordType.Name == RBURecordType) && (Label.CloudOpportunityTypes.contains(opportunity.type) ||
-                                                                         Label.Manual_Merge_Opportunity_Types.contains(opportunity.type))){
-                                                                             setrscloud=true;
-                                                                             RSCloudContinue();
-                                                                         }
+                                                                         Label.GovernmentCloudOpportunityTypes.contains(opportunity.type) ||
+                                                                         Label.Manual_Merge_Opportunity_Types.contains(opportunity.type)))
+                {
+                    setrscloud=true;
+                    RSCloudContinue();
+                }
                 if(AccContList != null){ toUpdate.addAll( (List<SObject>) AccContList); }
                 if(RSOppList != null) { toUpdate.addAll( (List<SObject>) RsOppList); }                //transfer all to new DDI account
                 if(RSTaskList != null){ toUpdate.addAll( (List<SObject>) RSTaskList);}

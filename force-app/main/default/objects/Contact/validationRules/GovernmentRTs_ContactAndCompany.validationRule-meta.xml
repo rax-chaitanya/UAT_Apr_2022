@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GovernmentRTs_ContactAndCompany</fullName>
+    <active>true</active>
+    <description>Both the company and contact must have a record type of &quot;Government.&quot;</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.FMW_API_User,$User.Id)), 
+NOT(CONTAINS($Label.FMWFoundationUser,$User.Id)), 
+NOT(CONTAINS($Label.AddDocSkipUserId,$User.Id)),
+OR( 
+AND( 
+CONTAINS($Label.GovernmentRecordTypes, RecordTypeId), 
+NOT(ISBLANK(Account.RecordTypeId)), 
+NOT(CONTAINS($Label.GovernmentRecordTypes, Account.RecordTypeId)) 
+), 
+AND( 
+
+NOT(ISBLANK(RecordTypeId)),NOT(ISBLANK(Account.RecordTypeId)),
+NOT(CONTAINS($Label.GovernmentRecordTypes, RecordTypeId)), 
+CONTAINS($Label.GovernmentRecordTypes, Account.RecordTypeId) 
+) 
+) 
+)</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>Government contacts can only be associated with government companies. Non-government contacts can only be associated with non-government companies.</errorMessage>
+</ValidationRule>

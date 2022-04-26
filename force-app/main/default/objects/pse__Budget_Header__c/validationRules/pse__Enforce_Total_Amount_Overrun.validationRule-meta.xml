@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Enforce_Total_Amount_Overrun</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(pse__Total_Amount_Overrun_Allowed__c,
+    pse__Total_Amount_Consumed__c &gt; (1+pse__Total_Amount_Overrun_Percentage__c)*pse__Total_Amount__c,
+    pse__Total_Amount_Consumed__c &gt; pse__Total_Amount__c)</errorConditionFormula>
+    <errorMessage>Cannot update budget amount because the amount consumed is greater than the maximum allowable total amount.</errorMessage>
+</ValidationRule>

@@ -3,6 +3,11 @@
 Author: Pradeep Guttha
 Description: This apex class is created to Create Focus Area records upon the create action on Opportunity & Opp_FocusArea__c object. 
 
+@changes - updated exception to ignore custom validation to not throw exception as this is already throwing validation
+@dev- chaitanya
+@date- APR 2022
+@jira- SFDC-7331
+@Test Class- CreateFocusAreaRecords_Test
 **********************************************************************************/
 public class CreateFocusAreaRecords {
     
@@ -67,7 +72,7 @@ public class CreateFocusAreaRecords {
             }
             Database.delete([SELECT Id FROM Opp_FocusArea__c WHERE Opportunity__c IN: keepFAOppIds AND FA_OppExtId__c NOT IN: keepFAExtIds]);
             Database.upsert(FocusAreaList, Opp_FocusArea__c.fields.FA_OppExtId__c, true);
-        } catch (Exception e) {
+        } catch (Exception e) { //SFDC-7331 to remove validation thrown in exception
             if( system.isBatch() == false){
                 ExceptionHandler.postToAll(e, false);
                 //SFDC-7331 Added check for FIELD_CUSTOM_VALIDATION_EXCEPTION 

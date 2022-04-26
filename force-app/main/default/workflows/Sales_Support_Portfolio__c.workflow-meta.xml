@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateSalesSupport</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Sales Support Portfolio) - Create action to Create Sales Support in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce//CREATELEGACYSSP/v01/</endpointUrl>
+        <fields>Assigned_to_SSO__c</fields>
+        <fields>CVP__c</fields>
+        <fields>Id</fields>
+        <fields>Legal_Deviations__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>One_Off_Approval__c</fields>
+        <fields>Presentation__c</fields>
+        <fields>Proactive_Proposal__c</fields>
+        <fields>Proposal_Contract_Generation__c</fields>
+        <fields>Proposal_Contract_Revision__c</fields>
+        <fields>Pursuit_Management__c</fields>
+        <fields>QC_Space_Power__c</fields>
+        <fields>Questionairre__c</fields>
+        <fields>RFI_RFQ__c</fields>
+        <fields>RFP__c</fields>
+        <fields>Requestor_SSO__c</fields>
+        <fields>SOQ__c</fields>
+        <fields>Status__c</fields>
+        <fields>Strategic_Pricing_Approval__c</fields>
+        <fields>SystemModstamp</fields>
+        <fields>TCO__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateSalesSupport</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateSalesSupport</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Sales Support Portfolio) - Update action to Update Sales Support in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/UPDATELEGACYSSP/v01/</endpointUrl>
+        <fields>Assigned_to_SSO__c</fields>
+        <fields>CVP__c</fields>
+        <fields>Id</fields>
+        <fields>Legal_Deviations__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>One_Off_Approval__c</fields>
+        <fields>Presentation__c</fields>
+        <fields>Proactive_Proposal__c</fields>
+        <fields>Proposal_Contract_Generation__c</fields>
+        <fields>Proposal_Contract_Revision__c</fields>
+        <fields>Pursuit_Management__c</fields>
+        <fields>QC_Space_Power__c</fields>
+        <fields>Questionairre__c</fields>
+        <fields>RFI_RFQ__c</fields>
+        <fields>RFP__c</fields>
+        <fields>Requestor_SSO__c</fields>
+        <fields>SOQ__c</fields>
+        <fields>Status__c</fields>
+        <fields>Strategic_Pricing_Approval__c</fields>
+        <fields>SystemModstamp</fields>
+        <fields>TCO__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateSalesSupport</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateSalesSupport</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateSalesSupport</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Sales Support Portfolio) - Create action to Create Sales Support in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  ISBLANK(Old_Record_Id__c),  NOT(ISBLANK(Opportunity__r.Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateSalesSupport</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateSalesSupport</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Sales Support Portfolio) - Update action to Update Sales Support in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

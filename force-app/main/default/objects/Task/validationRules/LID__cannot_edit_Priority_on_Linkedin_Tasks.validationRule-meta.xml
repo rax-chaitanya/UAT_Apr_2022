@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LID__cannot_edit_Priority_on_Linkedin_Tasks</fullName>
+    <active>false</active>
+    <description>Validation Rule not in use</description>
+    <errorConditionFormula>false</errorConditionFormula>
+    <errorDisplayField>Priority</errorDisplayField>
+    <errorMessage>You cannot edit the Priority field on LInkedin Tasks</errorMessage>
+</ValidationRule>

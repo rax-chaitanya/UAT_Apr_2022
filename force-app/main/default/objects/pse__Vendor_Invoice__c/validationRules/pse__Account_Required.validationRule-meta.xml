@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Account_Required</fullName>
+    <active>true</active>
+    <description>Account Field is Required (Always)</description>
+    <errorConditionFormula>OR(ISNULL(pse__Account__c),ISBLANK(pse__Account__c))</errorConditionFormula>
+    <errorDisplayField>pse__Account__c</errorDisplayField>
+    <errorMessage>Account is required.</errorMessage>
+</ValidationRule>

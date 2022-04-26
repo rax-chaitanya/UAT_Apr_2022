@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exceeding_Project_End_Date</fullName>
+    <active>false</active>
+    <description>Target Date Exceeding the Project End Date</description>
+    <errorConditionFormula>if((pse__Target_Date__c &gt; pse__Project__r.pse__End_Date__c),True,False)</errorConditionFormula>
+    <errorDisplayField>pse__Target_Date__c</errorDisplayField>
+    <errorMessage>Target Date cannot be more than Project End Date.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approver_Needed_If_PS_Time_Discounted</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), PS_Time_Discounted__c,
+ISBLANK( Discount_Approver__c )
+)</errorConditionFormula>
+    <errorDisplayField>Discount_Approver__c</errorDisplayField>
+    <errorMessage>Discount Approver needed if PS Time is discounted.</errorMessage>
+</ValidationRule>

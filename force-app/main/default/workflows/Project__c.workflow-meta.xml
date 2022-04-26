@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Closed_Won_US_ProServ_Project</fullName>
+        <ccEmails>SFDC@professionalservices.rax.io</ccEmails>
+        <ccEmails>RPS-PMO@rackspace.com</ccEmails>
+        <ccEmails>ekerr@rackspace.com</ccEmails>
+        <description>Closed Won -US ProServ Project</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Share_All/Closed_Won_US_ProServ_Project</template>
+    </alerts>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreatePSProjectNotifySta</fullName>
+        <apiVersion>43.0</apiVersion>
+        <endpointUrl>https://MASKEDdev-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreatePSProjectNotifySta</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdatePSProjectNotifySta</fullName>
+        <apiVersion>43.0</apiVersion>
+        <endpointUrl>https://MASKEDdev-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdatePSProjectNotifySta</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-CreatePSProjectNotifyStash</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreatePSProjectNotifySta</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(  ISNEW(),  OR(  RecordType.DeveloperName = &quot;EMEA_ProServices&quot;,  RecordType.DeveloperName = &quot;Professional_Services&quot;  )  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdatePSProjectNotifyStash</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdatePSProjectNotifySta</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(  !ISNEW(),  OR(  RecordType.DeveloperName = &quot;EMEA_ProServices&quot;,  RecordType.DeveloperName = &quot;Professional_Services&quot;  )  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>US ProServ Closed Won Project</fullName>
+        <actions>
+            <name>Closed_Won_US_ProServ_Project</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Project__c.SFDC_Project_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed Won,Closed Won – Signed Agreement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Project__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Professional Services</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

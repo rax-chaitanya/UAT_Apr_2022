@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Amount_Calculation_Error</fullName>
+    <active>true</active>
+    <description>Verify Amount = Quantity * Unit Price if set.</description>
+    <errorConditionFormula>AND(NOT(ISNULL( pse__Quantity__c )), NOT(ISNULL( pse__Unit_Price__c )),ABS(pse__Amount__c - (pse__Quantity__c*pse__Unit_Price__c))&gt;=0.01)</errorConditionFormula>
+    <errorDisplayField>pse__Amount__c</errorDisplayField>
+    <errorMessage>Amount field does not match Quantity times Unit Price</errorMessage>
+</ValidationRule>

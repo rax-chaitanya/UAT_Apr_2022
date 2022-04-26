@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GovernmentRTs_AccountAndCompany</fullName>
+    <active>true</active>
+    <description>Both the company and product account must have a record type of &quot;Government.&quot;
+Created this Validation Rule as part of Redesign.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+OR(
+AND(
+$User.FederationIdentifier != &apos;vlad7399&apos;, NOT(ISCHANGED(ByPassGARProcessing__c)),
+CONTAINS($Label.GovernmentRecordTypes, RecordTypeId),
+NOT(ISBLANK(Company_Name__c)),
+NOT(CONTAINS($Label.GovernmentRecordTypes, Company_Name__r.RecordTypeId))
+),
+AND(
+$User.FederationIdentifier != &apos;vlad7399&apos;, NOT(ISCHANGED(ByPassGARProcessing__c)),
+NOT(CONTAINS($Label.GovernmentRecordTypes, RecordTypeId)),
+NOT(ISBLANK(Company_Name__c)),
+CONTAINS($Label.GovernmentRecordTypes, Company_Name__r.RecordTypeId)
+)
+)
+)</errorConditionFormula>
+    <errorDisplayField>Company_Name__c</errorDisplayField>
+    <errorMessage>Government accounts can only be associated with government companies. Non-government accounts can only be associated with non-government companies.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Version_Perm_Support_No_Team_Or_Resource</fullName>
+    <active>true</active>
+    <description>Project Version Permission Controls must reference a Region/Practice/Group or Project.</description>
+    <errorConditionFormula>AND(OR(pse__Compare_Project_Version__c,pse__Create_Project_Version__c),OR(NOT(ISNULL(pse__Resource__c)),NOT(pse__Resource__c=&apos;&apos;)),OR(NOT(ISNULL(pse__Team__c)),NOT(pse__Team__c=&apos;&apos;)),OR(ISNULL(pse__Region__c),(pse__Region__c=&apos;&apos;)),OR(ISNULL(pse__Practice__c),(pse__Practice__c=&apos;&apos;)),OR(ISNULL(pse__Group__c),(pse__Group__c=&apos;&apos;)),OR(ISNULL(pse__Project__c),(pse__Project__c=&apos;&apos;)))</errorConditionFormula>
+    <errorMessage>Permission Control must reference either a Region/Practice/Group or a Project when assigning Project Version permissions.</errorMessage>
+</ValidationRule>

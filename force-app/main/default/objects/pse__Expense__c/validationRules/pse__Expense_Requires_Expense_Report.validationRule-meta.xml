@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Expense_Requires_Expense_Report</fullName>
+    <active>false</active>
+    <description>By default expenses will require expense reports. This rule may be deactivated if standalone expenses are allowed.</description>
+    <errorConditionFormula>OR(ISNULL(pse__Expense_Report__c),LEN(pse__Expense_Report__c)=0)</errorConditionFormula>
+    <errorDisplayField>pse__Expense_Report__c</errorDisplayField>
+    <errorMessage>Expense Report is required</errorMessage>
+</ValidationRule>

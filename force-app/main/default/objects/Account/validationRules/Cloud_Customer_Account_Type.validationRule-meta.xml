@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cloud_Customer_Account_Type</fullName>
+    <active>true</active>
+    <description>Add validation for changing the cloud Customer type on Standard Account as part of Redesign.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+NOT( $Profile.Name = &apos;System Administrator&apos;) ,
+NOT(ISCHANGED(ByPassGARProcessing__c)),
+OR(
+
+AND(
+ISPICKVAL(PRIORVALUE(Type),&apos;Cloud Customer&apos;),
+AND(
+NOT(ISPICKVAL(Type,&apos;Former Cloud Customer&apos;)),
+NOT(ISPICKVAL(Type,&apos;Cloud Customer&apos;))
+)
+),
+
+AND(
+ISPICKVAL(PRIORVALUE(Type),&apos;Former Cloud Customer&apos;),
+AND(
+NOT(ISPICKVAL(Type,&apos;Former Cloud Customer&apos;)),
+NOT(ISPICKVAL(Type,&apos;Cloud Customer&apos;))
+)
+)
+)
+)</errorConditionFormula>
+    <errorMessage>A Cloud Customer account can only be updated to Former Cloud Customer. If you need to switch the account type to another value, please log a case in Salesforce for the Admin team.</errorMessage>
+</ValidationRule>

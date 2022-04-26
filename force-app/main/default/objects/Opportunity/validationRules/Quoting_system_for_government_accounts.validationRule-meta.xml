@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quoting_system_for_government_accounts</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND(NOT(Contains( $Label.Admin_Profiles, $User.ProfileId )),NOT( skip_government_validation__c ),Contains( $Label.GovernmentRecordTypes , Account.RecordType.Id ), NOT(ISPICKVAL( QuotingSystem__c , &apos;Datapipe&apos;)),
+IF(NOT(ISNEW())
+   ,IF( ISCHANGED(QuotingSystem__c),true,false) ,true)
+), true, false)</errorConditionFormula>
+    <errorDisplayField>QuotingSystem__c</errorDisplayField>
+    <errorMessage>Quoting system should be &apos;Datapipe&apos; for Gorvenment Accounts</errorMessage>
+</ValidationRule>

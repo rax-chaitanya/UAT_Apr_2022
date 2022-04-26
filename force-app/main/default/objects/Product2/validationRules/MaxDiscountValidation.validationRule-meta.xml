@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MaxDiscountValidation</fullName>
+    <active>false</active>
+    <errorConditionFormula>DP_Max_Discount__c &gt; DP_Markup__c</errorConditionFormula>
+    <errorDisplayField>DP_Max_Discount__c</errorDisplayField>
+    <errorMessage>Max Discount can not exceed Markup value</errorMessage>
+</ValidationRule>

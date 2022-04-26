@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description_for_Other_Segment</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+OR(
+AND(ISPICKVAL(Proposed_Segment__c , &quot;Other&quot;), ISBLANK(Other__c) ),
+AND(ISBLANK(TEXT(Proposed_Segment__c)), NOT(ISBLANK(Other__c)))
+)
+)</errorConditionFormula>
+    <errorMessage>Please provide explanation for Other</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Validate_Lag_Unit</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( pse__Lag_Time_Hours__c &lt;&gt; 0, 
+            CONTAINS(LOWER(pse__Dependency_Display_Units__c),&apos;h&apos;), 
+            CONTAINS(LOWER(pse__Dependent_Task__r.pse__Duration_Unit__c),&apos;d&apos;) )</errorConditionFormula>
+    <errorMessage>The lag unit of a dependency can&apos;t be in hours when the duration of the successor task is in day units. Change the lag unit of the dependency, or change the duration unit of the successor task.</errorMessage>
+</ValidationRule>

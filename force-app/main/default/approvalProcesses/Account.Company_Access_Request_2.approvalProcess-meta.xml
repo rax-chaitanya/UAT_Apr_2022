@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>allInternalUsers</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>adam.shapiro@rackspace.co.uk</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>mohamedfaiz@rackspace.com</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>paul.lewendon-wicks@rackspace.co.uk.rax</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Route to business manager for approval.</description>
+        <label>Step 1</label>
+        <name>Step_1</name>
+    </approvalStep>
+    <description>If ENT Company is owned by rep in UK, Northern Europe, or DACH, then request should be sent to Begoña Fuentes, Paul Lewendon-Wicks, Shanwaz Ahmed, Steve Jun, and Valentina Stanciu. If Non-ENT Company and owner&apos;s manager is inactive, then request should be sent to the designated Business Manager for the region.</description>
+    <emailTemplate>unfiled$public/Company_Access_Request_Sent_To_Owner_HTML</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <finalApprovalActions>
+        <action>
+            <name>Company_Access_Request_Enterprise_Approved_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Sys_Admin_Lookup_Enterprise</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Company_Access_Request_Enterprise_Rejected_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>UpdateCompanyCompanyAccessSub_Blank</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Company Access Request (UK/NE/DACH)</label>
+    <processOrder>3</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

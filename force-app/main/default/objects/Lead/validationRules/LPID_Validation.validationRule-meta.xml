@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPID_Validation</fullName>
+    <active>false</active>
+    <description>LPID is required if the Lead Source is either Instant Service, Live Person, or Site Submission.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(AND(CONTAINS( $Label.Q_Team_Profiles , $Profile.Id ),OR(ISCHANGED(Status),ISCHANGED(Reason__c)),CONTAINS( $Label.LeadStatusToSkipValidation , Text(Status) ))),
+
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+OR(ISPICKVAL(LeadSource,&apos;Site Submission&apos;), 
+ISPICKVAL(LeadSource,&apos;Live Person&apos;), 
+ISPICKVAL(LeadSource,&apos;Instant Service&apos;) 
+), 
+OR(ISNULL(LPID__c),ISBLANK(LPID__c)))</errorConditionFormula>
+    <errorDisplayField>LPID__c</errorDisplayField>
+    <errorMessage>LPID is required if the Lead Source is either Instant Service, Live Person, or Site Submission.</errorMessage>
+</ValidationRule>

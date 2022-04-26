@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Email_ALert_For_Forecast_2000</name>
+        <label>Email ALert For Forecast &gt;2000</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>Opportunity.Alert_when_Forecast_status</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>Profile_check</name>
+        <label>Profile check</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_a_Sys_Admin_and_Integraion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.ProfileId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>00e61000000l8Bs</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.ProfileId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>00e6100000163tsAAA</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.ProfileId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>00e6100000163u0</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_ALert_For_Forecast_2000</targetReference>
+            </connector>
+            <label>Not a Sys Admin and Integraion</label>
+        </rules>
+    </decisions>
+    <description>updated is changed on the forecast status and skipped integration API, sys admin profiles for an email alert.</description>
+    <formulas>
+        <name>ProfileList</name>
+        <dataType>String</dataType>
+        <expression>{!$Profile.Name}</expression>
+    </formulas>
+    <interviewLabel>Opp Forecast status update with amount &gt;=2k {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opp Forecast status update with amount &gt;=5k</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Profile_check</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3 AND 4 AND 5 AND 6</filterLogic>
+        <filters>
+            <field>Forecast_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>In Upside</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Forecast_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>In Forecast</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Amount</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <numberValue>5000.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Forecast_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Region__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>EMEA</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

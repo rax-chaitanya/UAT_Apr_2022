@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Strategic_Partners_cant_select_Sitecore</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+CONTAINS( $Label.Partner_Profiles ,$User.ProfileId),
+OR( 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Strategic&apos;),
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;StrategicEMEA&apos;)
+),
+ISPICKVAL( Type_Of_Deal__c , &apos;Sitecore&apos;),
+NOT( CONTAINS(LOWER(Partner_Company__r.Name),&apos;sitecore&apos;) )
+)</errorConditionFormula>
+    <errorDisplayField>Type_Of_Deal__c</errorDisplayField>
+    <errorMessage>Strategic Partners Can&apos;t select Type of Deal as Sitecore.They can select Referral,Reseller or No Commissions as Type of Deal.</errorMessage>
+</ValidationRule>

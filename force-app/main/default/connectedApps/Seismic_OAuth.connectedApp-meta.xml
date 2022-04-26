@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>Padmaja.gadepalli@rackspace.com</contactEmail>
+    <label>Seismic OAuth</label>
+    <oauthConfig>
+        <callbackUrl>https://rackspace.seismic.com/Integration/SalesforceOauth.aspx</callbackUrl>
+        <consumerKey>3MVG9qEXqmIutu_QNttBhrw05Q4VQ2RkqfkUA_nq5nGZLGQtvfAOUqeVTM9QBdWBY7H_f.uAQYC1zQpmI1yNI</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

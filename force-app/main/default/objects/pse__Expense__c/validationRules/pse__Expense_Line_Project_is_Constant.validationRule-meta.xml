@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Expense_Line_Project_is_Constant</fullName>
+    <active>true</active>
+    <description>A Expense Line&apos;s Project field value may not be updated once set (unless parent Expense Report is changed, Admin Global Edit is checked, Audit Notes are provided, and Actuals Calculation Mode is Scheduled).</description>
+    <errorConditionFormula>AND(ISCHANGED(pse__Project__c),OR(NOT(pse__Admin_Global_Edit__c),ISNULL(pse__Audit_Notes__c),ISBLANK(TRIM(pse__Audit_Notes__c))),NOT(ISCHANGED(pse__Expense_Report__c)))</errorConditionFormula>
+    <errorDisplayField>pse__Project__c</errorDisplayField>
+    <errorMessage>A Expense Line&apos;s Project field value may not be updated once set (unless parent Expense Report is changed, Admin Global Edit is checked, Audit Notes are provided, and Actuals Calculation Mode is Scheduled).</errorMessage>
+</ValidationRule>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Update_Company_Record</fullName>
+    <active>false</active>
+    <description>Seller and Manager profiles cannot update company record once created EXCEPT custom revenue and Account owner filed</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(isnew()),
+NOT(ISCHANGED(Custom_Revenue__c)),
+NOT(ISCHANGED(Closed_Won_Opps__c)),
+NOT(ISCHANGED(Open_Opps__c)),
+
+
+NOT(ISCHANGED(ShippingCity)),
+NOT(ISCHANGED(ShippingCountry)),
+NOT(ISCHANGED(ShippingState)),
+NOT(ISCHANGED(ShippingStreet)),
+NOT(ISCHANGED(ShippingPostalCode)),
+
+
+NOT(ISCHANGED(Number_of_Accounts_Old__c)),
+NOT(ISCHANGED(Number_of_Cloud_Accounts_Old__c)),
+NOT(ISCHANGED(Number_of_Customer_Accounts_Old__c)),
+NOT(ISCHANGED(Number_of_P1_Accounts__c)),
+NOT(ISCHANGED(Number_of_P2_Accounts__c)),
+NOT(ISCHANGED(Number_of_P3_Accounts__c)),
+NOT(ISCHANGED(Number_of_P4_Accounts__c)),
+NOT(ISCHANGED(Number_of_P5_Accounts__c)),
+NOT(ISCHANGED(Num_of_Accounts_Owned_by_Inactive_Users__c)),
+
+
+
+OR(CONTAINS($Profile.Name,&apos;Seller&apos;),
+CONTAINS($Profile.Name,&apos;Marketing&apos;),
+
+CONTAINS($Profile.Name,&apos;Manager-INTL&apos;),
+CONTAINS($Profile.Name,&apos;Manager-US&apos;))
+)</errorConditionFormula>
+    <errorMessage>Company cannot be updated, please contact system administrator for any edits.</errorMessage>
+</ValidationRule>

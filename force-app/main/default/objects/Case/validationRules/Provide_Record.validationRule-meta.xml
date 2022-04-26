@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provide_Record</fullName>
+    <active>false</active>
+    <description>Requires that record needing updated is populated by submitter</description>
+    <errorConditionFormula>OR(
+				ISPICKVAL(Support_Reason__c,&quot;Error Message&quot;),
+				ISPICKVAL(Support_Reason__c,&quot;Open/Close Record&quot;),
+				ISPICKVAL(Support_Reason__c,&quot;Overlay Request&quot;),
+				ISPICKVAL(Support_Reason__c,&quot;Sync Issues&quot;),
+				ISPICKVAL(Support_Reason__c,&quot;Team Member Request&quot;),
+				ISPICKVAL(Support_Reason__c,&quot;Update Record&quot;)
+				)
+&amp;&amp;
+				AND(
+				    ISBLANK(AccountId),
+				    ISBLANK(Account_Old__c),
+				    ISBLANK(Opportunity_Name__c),
+        ISBLANK(Lead__c)
+								)</errorConditionFormula>
+    <errorMessage>Provide the Company/Account/Opportunity/Lead the needs updated.</errorMessage>
+</ValidationRule>

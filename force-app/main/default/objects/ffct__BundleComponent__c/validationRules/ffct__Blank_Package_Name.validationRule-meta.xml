@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ffct__Blank_Package_Name</fullName>
+    <active>true</active>
+    <description>If Bundle Component Type is selected as Installed Package then Package Name should not be empty</description>
+    <errorConditionFormula>CONTAINS( TEXT( ffct__Type__c ) , &apos;InstalledPackage&apos;)  &amp;&amp;  ISBLANK( ffct__PackageName__c )</errorConditionFormula>
+    <errorMessage>Enter Package Name  to be installed or choose BundleComponent Type other than &apos;InstalledPackage&apos;.</errorMessage>
+</ValidationRule>

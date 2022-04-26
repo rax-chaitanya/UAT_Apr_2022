@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotChangeAccountName</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+				NOT(ISCHANGED(ByPassGARProcessing__c)),
+				NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+				NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+				NOT($User.Id=Acc_Owner__c),
+				ISCHANGED(Name)
+)</errorConditionFormula>
+    <errorMessage>The Account Name cannot be Changed.</errorMessage>
+</ValidationRule>

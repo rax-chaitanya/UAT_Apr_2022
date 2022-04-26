@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Date_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+ISCHANGED(StageName), 
+OR(
+ISPICKVAL(StageName, &quot;Closed Won&quot;),
+ISPICKVAL(StageName, &quot;Closed Lost&quot;)
+),
+CloseDate&lt;&gt;Today() 
+)</errorConditionFormula>
+    <errorDisplayField>CloseDate</errorDisplayField>
+    <errorMessage>Please select Today&apos;s date if Closing the Opp</errorMessage>
+</ValidationRule>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Email Alert</description>
+        <name>Email_Alert</name>
+        <label>Email Alert</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>Account.primary_address_of_customer_account_gets_changed</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>Profile_checking</name>
+        <label>Profile checking</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Profile_verification</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Profileverify</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rackspace Seller-US</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Profileverify</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rackspace Seller-INTL</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Profileverify</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rackspace - Standard Support User US</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Profileverify</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rackspace - Standard Support User INTL</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Alert</targetReference>
+            </connector>
+            <label>Profile verification</label>
+        </rules>
+    </decisions>
+    <description>Primary address of Customer Account gets changed</description>
+    <formulas>
+        <name>Profileverify</name>
+        <dataType>String</dataType>
+        <expression>{!$Profile.Name}</expression>
+    </formulas>
+    <interviewLabel>Primary address of Customer Account gets changed {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Primary address of Customer Account gets change</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Profile_checking</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3 OR 5 OR 6 OR 7 OR 8 OR 9) AND 4</filterLogic>
+        <filters>
+            <field>ShippingCity</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingAddress</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingCountry</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123f000000XdKGAA0</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingCountryCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingPostalCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingState</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingStateCode</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ShippingStreet</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

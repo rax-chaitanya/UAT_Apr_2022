@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ffct__EndDateShouldBeLessThanCurrentTime</fullName>
+    <active>true</active>
+    <description>The end date should be less than current time</description>
+    <errorConditionFormula>ffct__EndDate__c  &gt;  NOW()</errorConditionFormula>
+    <errorDisplayField>ffct__EndDate__c</errorDisplayField>
+    <errorMessage>The End Date must be earlier than the current time.</errorMessage>
+</ValidationRule>

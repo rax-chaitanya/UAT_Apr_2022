@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Assignment_Resource_is_Required</fullName>
+    <active>false</active>
+    <description>An Assignment&apos;s Resource field value may not be blank.</description>
+    <errorConditionFormula>ISBLANK(pse__Resource__c)</errorConditionFormula>
+    <errorDisplayField>pse__Resource__c</errorDisplayField>
+    <errorMessage>An Assignment&apos;s Resource field value may not be blank.</errorMessage>
+</ValidationRule>

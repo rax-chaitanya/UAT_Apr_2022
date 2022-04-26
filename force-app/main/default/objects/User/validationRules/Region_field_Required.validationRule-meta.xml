@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region_field_Required</fullName>
+    <active>false</active>
+    <description>For users with profile of Rackspace - Seller - US, Rackspace - Seller - INTL, Rackspace - Manager - US or Rackspace - Manager - INTL, the Region field must be required.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+CONTAINS($Label.Business_Profiles, ProfileId),
+ISBLANK(TEXT(Region__c))
+)</errorConditionFormula>
+    <errorDisplayField>Region__c</errorDisplayField>
+    <errorMessage>Region is mandatory</errorMessage>
+</ValidationRule>

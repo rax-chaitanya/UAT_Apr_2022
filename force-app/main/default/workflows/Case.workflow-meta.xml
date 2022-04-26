@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_BSA_of_Pending_Intake</fullName>
+        <description>Alert BSA of Pending Intake</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>amie.veselka@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>annie.flores@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/Alert_BSA_of_Pending_Intake</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_BSA_of_Pending_Intake_Time</fullName>
+        <description>Alert BSA of Pending Intake</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>amie.veselka@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>annie.flores@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>elisa.trevino@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/Alert_BSA_of_Pending_Intake</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Intake_Case_status_alert_to_user</fullName>
+        <description>Case - Intake Case status alert to user</description>
+        <protected>false</protected>
+        <recipients>
+            <field>User__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/Intake_Case_Status_Updates</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_Tool_Help_Case_status_alert_to_user</fullName>
+        <description>Case - Tool Help Case status alert to user</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/Tool_Help_Case_Status_Updates</template>
+    </alerts>
+    <alerts>
+        <fullName>Case_assigned_to_GSCS_Support_Queue</fullName>
+        <ccEmails>qm@rackspace.com</ccEmails>
+        <description>Case assigned to GSCS Support Queue</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/GSCS_Case_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_ROE_Escalation_Case_Approved</fullName>
+        <description>Email Alert for ROE Escalation Case Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/Approved_ROE_Escalation_Case</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_ROE_Escalation_Case_Rejection</fullName>
+        <description>Email Alert for ROE Escalation Case Rejection</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Case_Alerts/Rejected_ROE_Escalation_Case</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_blank_Sub_Region_Field_for_User</fullName>
+        <description>Email Alert for blank Sub Region Field for User</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>caleb.garcia@rackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>kyle.kincaid@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Alerts/Notify_for_blank_Sub_Region_field</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_to_Americas_Partner_Compensation_Queue</fullName>
+        <description>Email Notification to Americas Partner Compensation Queue</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Sales_Commissions_New_Case</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_to_Creator_when_assigned_to_admin</fullName>
+        <description>Email to Creator when assigned to admin</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Alerts/Email_to_Creator_On_assigned_to_Admin</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Partner_Compensation_Case_Submitted</fullName>
+        <ccEmails>partnercommmissions@rackspace.com</ccEmails>
+        <description>New Partner Compensation Case Submitted</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ashley.mayes@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>raxpartnerhelp@channel.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Alerts/New_Partner_Comp_Case</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Partner_Portal_Case</fullName>
+        <ccEmails>abhishek.vijayvargiya@rackspace.com,</ccEmails>
+        <ccEmails>someshwar.ponugoti@rackspace.com</ccEmails>
+        <description>New Partner Portal Case</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>juanpedro.garcia@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>raxpartnerhelp@channel.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Alerts/New_Partner_Portal_Case</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Creator_on_Comment_Change</fullName>
+        <description>Notify Creator on Comment Change</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Notify_Creator_on_Comment_Change_New_v1</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Owner_on_Comment_Change</fullName>
+        <description>Notify Owner on Comment Change</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Notify_Owner_on_Comment_Change_New_v1</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Email_to_Case_Owner</fullName>
+        <description>Send Email to Case Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>raxpartnerhelp@channel.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Case_Alerts/Case_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Email_to_Queue_watchers</fullName>
+        <description>Send Email to Queue watchers</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>gtmo_systems@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SFDC_Case_Recieved</template>
+    </alerts>
+    <alerts>
+        <fullName>Transition_Team_Intake_Notification</fullName>
+        <ccEmails>dp_transition_team@raxglobal.onmicrosoft.com</ccEmails>
+        <description>Transition Team Intake Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Transition_team_Intake_Form</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Assign_Case_to_US_SF_Support_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_SF_Support_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Assign Case to US SF Support Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Dummy_Edit_Case</fullName>
+        <field>Dummy_Edit__c</field>
+        <literalValue>1</literalValue>
+        <name>Dummy Edit Case</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ROE_Escalation_Case_Approved</fullName>
+        <field>Status</field>
+        <literalValue>Approved</literalValue>
+        <name>ROE Escalation Case Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ROE_Escalation_Case_In_Progress</fullName>
+        <description>Change status to in progress</description>
+        <field>Status</field>
+        <literalValue>Assigned/In Progress</literalValue>
+        <name>ROE Escalation Case In Progress</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Rejected_ROE_Escalation_Case</fullName>
+        <description>Set Status to Rejected</description>
+        <field>Status</field>
+        <literalValue>Rejected</literalValue>
+        <name>Rejected ROE Escalation Case</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SFDC_Intake_Case_Deployed_Closed</fullName>
+        <description>Status changed from &quot;Deployed&quot; &gt; &quot;Closed&quot; 7 days later.</description>
+        <field>Status</field>
+        <literalValue>Closed</literalValue>
+        <name>SFDC Intake Case &quot;Deployed&quot; &gt; &quot;Closed&quot;</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Send_to_TES</fullName>
+        <field>Stage__c</field>
+        <literalValue>Sent to TES</literalValue>
+        <name>Send to TES</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>rvee__NotifyRVMemberReset</fullName>
+        <field>rvpe__NotifyRVMember__c</field>
+        <literalValue>0</literalValue>
+        <name>Notify RV Member Reset</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Alert to EMEA SFDC Admins once Case has been created</fullName>
+        <active>false</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Tool Help</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Tool__c</field>
+            <operation>equals</operation>
+            <value>Salesforce</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Region__c</field>
+            <operation>notEqual</operation>
+            <value>AMER</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.SuppliedEmail</field>
+            <operation>notEqual</operation>
+            <value>erin.kerr@rackspace.com</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.CreatedById</field>
+            <operation>notEqual</operation>
+            <value>System</value>
+        </criteriaItems>
+        <description>This sends an alert to EMEA SFDC Admins once a user raised a case directed to &quot;Support Queue&quot;</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Americas Partner Compensation Queue New Case Assignment</fullName>
+        <actions>
+            <name>Email_Notification_to_Americas_Partner_Compensation_Queue</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Sales Commissions</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Reason</field>
+            <operation>equals</operation>
+            <value>Partner Compensation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>Americas Partner Compensation Queue</value>
+        </criteriaItems>
+        <description>A new Sales Comisisons case created and Case Reason = Partner Compensation</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Assign New US Cases to US SF Support Queue</fullName>
+        <actions>
+            <name>Assign_Case_to_US_SF_Support_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Tool Help</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Tool__c</field>
+            <operation>equals</operation>
+            <value>Salesforce</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Support_Reason__c</field>
+            <operation>equals</operation>
+            <value>New User Request</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Case assigned to GSCS Queue</fullName>
+        <actions>
+            <name>Case_assigned_to_GSCS_Support_Queue</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>GSCS Support Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raptor Support,QM Support,Tool Help</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Tool__c</field>
+            <operation>equals</operation>
+            <value>QM,Raptor</value>
+        </criteriaItems>
+        <description>Case tool = QM,Raptor</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Dummy Edit Case - High</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>US SF Support Queue,Support Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Priority</field>
+            <operation>equals</operation>
+            <value>High</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Dummy_Edit_Case</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.CreatedDate</offsetFromField>
+            <timeLength>24</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Email Notification to BSA</fullName>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>Case.Stage__c</field>
+            <operation>equals</operation>
+            <value>Sent to BSA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Assigned_BSA__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Jira_Ticket_Number__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>Send an email alert to BSA of pending intake cases</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Alert_BSA_of_Pending_Intake_Time</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Email Notification to Owner</fullName>
+        <actions>
+            <name>Send_Email_to_Case_Owner</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Reason</field>
+            <operation>equals</operation>
+            <value>MDF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Portal</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email to Creator On assigned to Admin</fullName>
+        <actions>
+            <name>Email_to_Creator_when_assigned_to_admin</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(
+ISCHANGED( OwnerId ), 
+NOT(ISBLANK( Owner:User.Id )),
+(CreatedBy.LastName &lt;&gt; &quot;System&quot;),
+CASESAFEID(OwnerId ) &lt;&gt; CASESAFEID( CreatedById )
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Intake Case %28Deployed %3E Closed 7 days later%29</fullName>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>SFDC Intake Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Intake Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Deployed</value>
+        </criteriaItems>
+        <description>Intake Case changed to &quot;Closed&quot; 7 days after deployment</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>SFDC_Intake_Case_Deployed_Closed</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>7</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>New Partner Compensation Case Submitted</fullName>
+        <actions>
+            <name>New_Partner_Compensation_Case_Submitted</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Portal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Reason</field>
+            <operation>equals</operation>
+            <value>Partner Compensation</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Partner Portal Case Submitted</fullName>
+        <actions>
+            <name>New_Partner_Portal_Case</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Portal</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Case to TES</fullName>
+        <actions>
+            <name>Send_to_TES</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Salesforce Intake Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Assigned_BSA__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Jira_Ticket_Number__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Change Stage of Case to Send to TES</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Email when Case Submitted to Support Queue</fullName>
+        <actions>
+            <name>Send_Email_to_Queue_watchers</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>Support Queue</value>
+        </criteriaItems>
+        <description>Send Email when Case Submitted to Support Queue</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Transition Team Intake Form</fullName>
+        <actions>
+            <name>Transition_Team_Intake_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Transition Team Intake Form</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>rvee__Notify RV Member</fullName>
+        <actions>
+            <name>rvee__NotifyRVMemberReset</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>(rvpe__NotifyRVMember__c == true)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

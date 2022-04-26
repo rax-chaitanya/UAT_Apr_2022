@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lost_Reason_Required_for_Lost_Project</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISPICKVAL( Proposal_Stage__c , &quot;LOST&quot;),ISPICKVAL( Lost_Reason__c ,&quot;&quot;) )</errorConditionFormula>
+    <errorDisplayField>INTL_Project_Lost_Reason__c</errorDisplayField>
+    <errorMessage>Lost reason is required when proposal stage is &apos;Lost&apos;</errorMessage>
+</ValidationRule>

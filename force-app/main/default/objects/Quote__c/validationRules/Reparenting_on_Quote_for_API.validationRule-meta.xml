@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reparenting_on_Quote_for_API</fullName>
+    <active>true</active>
+    <description>Validation rule to prevent end users except  Integration API profile users from changing Opportunity on Quote.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISCHANGED(Opportunity__c),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))
+)</errorConditionFormula>
+    <errorMessage>Quote cannot be moved in Salesforce</errorMessage>
+</ValidationRule>

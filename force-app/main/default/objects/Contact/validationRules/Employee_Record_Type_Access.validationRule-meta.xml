@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Record_Type_Access</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.BrightTalkSkipUser,$User.Id)),
+NOT(CONTAINS($Label.AddDocSkipUserId,$User.Id)),
+!ISNEW(),
+$Profile.Name !=&apos;Integration API&apos;,
+RecordType.Name=&apos;Employee&apos;
+)</errorConditionFormula>
+    <errorMessage>Record cannot be edited.</errorMessage>
+</ValidationRule>

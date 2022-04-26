@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__only_one_source_allowed</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(CONTAINS(TEXT(pse__Type__c),&apos;by&apos;),
+IF
+( 
+IF(ISBLANK(pse__Region__c),0,1) +
+IF(ISBLANK(pse__Practice__c),0,1) +
+IF(ISBLANK(pse__Group__c),0,1) +
+IF(ISBLANK(pse__Resource__c),0,3) &gt; 2,
+true,
+false
+),
+IF
+( 
+IF(ISBLANK(pse__Region__c),0,1) +
+IF(ISBLANK(pse__Practice__c),0,1) +
+IF(ISBLANK(pse__Group__c),0,1) +
+IF(ISBLANK(pse__Resource__c),0,1) &gt; 1,
+true,
+false
+)
+)</errorConditionFormula>
+    <errorMessage>Only one of Region, Practice, Group, or Resource may be specified.
+Resource cannot be specified for a subtotal detail record.</errorMessage>
+</ValidationRule>

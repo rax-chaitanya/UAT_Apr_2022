@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>appirio_core__Picklist_Values_Check</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISNULL( appirio_core__Picklist_Values__c ),  LEN( appirio_core__Picklist_Values__c ) = 0 ),  ISPICKVAL( appirio_core__Type__c , &apos;Picklist&apos;) )</errorConditionFormula>
+    <errorDisplayField>appirio_core__Picklist_Values__c</errorDisplayField>
+    <errorMessage>Picklist values are required for type Picklist</errorMessage>
+</ValidationRule>

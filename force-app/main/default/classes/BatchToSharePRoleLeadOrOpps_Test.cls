@@ -11,6 +11,10 @@ public class BatchToSharePRoleLeadOrOpps_Test {
         List<FieldMapping__c> fieldMappings = new List<FieldMapping__c>();
         fieldMappings.add(new FieldMapping__c(Name = 'Territory-Contact', CompName__c = 'Contact', SourceField__c = 'MailingCountry', TargetField__c = 'Territory__c'));
         insert fieldMappings;
+        
+        Trigger_Manager__c accTm = new Trigger_Manager__c (Name ='AccountContactRelation',Is_Active__c = true);
+        insert accTm;
+        
         Lead l = new Lead(FirstName = 'Dummy', LastName='Lead', Company = 'Dummy Company',
                           Email = 'dummylead@rackspace.com.test', LeadSource = 'Chat', Lead_Type__c = 'AWS',
                           Focus_Area__c = 'Amazon', Street = 'Church Street', City = 'San Antonio', 

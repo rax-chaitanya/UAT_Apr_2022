@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Non_Billable_Subtotal_Invalid</fullName>
+    <active>true</active>
+    <description>The non-billable incurred subtotal for an Expense (any non-billable amount plus any non-billable tax) must not be greater than the Expense amount itself (or zero, whichever is greater).</description>
+    <errorConditionFormula>((pse__Non_Billable_Incurred_Amount__c + IF(pse__Incurred_Tax_Non_Billable__c,pse__Incurred_Tax__c,0.00)) &gt; MAX(pse__Amount__c,0.00))</errorConditionFormula>
+    <errorMessage>The non-billable incurred subtotal for an Expense (any non-billable amount plus any non-billable tax) must not be greater than the Expense amount itself.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rejected_Lead_must_have_date_and_reason</fullName>
+    <active>true</active>
+    <description>Rejected lead record must have rejected date and rejected reason</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),Reject__c,OR(ISBLANK( Rejected_Date__c ),ISBLANK( Lead_Generator__c ),ISBLANK( Lead_Date_Passed__c ),ISPICKVAL( Reason__c ,&quot;&quot;)))</errorConditionFormula>
+    <errorMessage>Rejected lead must have Rejected Date, Reason, Lead Generator and Lead Date Passed</errorMessage>
+</ValidationRule>

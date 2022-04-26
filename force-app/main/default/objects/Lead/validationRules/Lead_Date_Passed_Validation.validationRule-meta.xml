@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Date_Passed_Validation</fullName>
+    <active>false</active>
+    <description>LeadGeneratorRole__c is NOT null then the LeadDatePassed__c is required.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(AND(CONTAINS( $Label.Q_Team_Profiles , $Profile.Id ),OR(ISCHANGED(Status),ISCHANGED(Reason__c)),CONTAINS( $Label.LeadStatusToSkipValidation , Text(Status) ))),
+
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),NOT(ISBLANK(Lead_Generator_Role__c)),OR(ISNULL(Lead_Date_Passed__c),ISBLANK(Lead_Date_Passed__c)))</errorConditionFormula>
+    <errorDisplayField>Lead_Date_Passed__c</errorDisplayField>
+    <errorMessage>Please enter a value for Lead Date Passed</errorMessage>
+</ValidationRule>

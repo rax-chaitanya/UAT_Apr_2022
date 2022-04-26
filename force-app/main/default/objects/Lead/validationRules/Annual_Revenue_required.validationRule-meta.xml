@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Annual_Revenue_required</fullName>
+    <active>true</active>
+    <description>Annual revenue is required for &quot;Rackspace- Seller-US&quot; and &quot;Rackspace-Manager-US&quot; profiles.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+OR(
+$Profile.Name = &quot;Rackspace Manager-US&quot;,$Profile.Name = &quot;Rackspace Seller-US&quot;
+),
+OR(
+ISNULL( AnnualRevenue ),
+AnnualRevenue &lt; 0
+),
+NOT(CONTAINS(&quot;New,Marketing Engaged,Marketing Qualified,Tele - Accepted Lead&quot;,TEXT(Status)))
+)</errorConditionFormula>
+    <errorDisplayField>AnnualRevenue</errorDisplayField>
+    <errorMessage>Annual Revenue is required</errorMessage>
+</ValidationRule>

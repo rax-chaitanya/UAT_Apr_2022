@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Validate</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(Contains(Contact.Email, &apos;@rackspace.&apos;)),RecordType.Name &lt;&gt; &apos;Partner Portal&apos;,RecordType.Name &lt;&gt; &apos;ROE Escalations&apos;)</errorConditionFormula>
+    <errorDisplayField>ContactEmail</errorDisplayField>
+    <errorMessage>Email Domain must be @rackspace.com</errorMessage>
+</ValidationRule>

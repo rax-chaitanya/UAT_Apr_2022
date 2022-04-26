@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>gts-dlg-amer@rackspace.local</contactEmail>
+    <description>The Environment Hub lets you view, connect to, and access all your organizations from one location.</description>
+    <iconUrl>https://rax.my.salesforce.com/environmenthub/images/connected_app_logo.png</iconUrl>
+    <label>Environment Hub</label>
+    <logoUrl>https://rax.my.salesforce.com/environmenthub/images/connected_app_logo.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>https://rax.my.salesforce.com/environmenthub/callback.apexp</callbackUrl>
+        <consumerKey>3MVG9qEXqmIutu_QNttBhrw05Q3Ol9eO3pZp38SDBzEoi7Qg9_Fgpgd1siKIBpwEgYHQeIsHe3_BUYMqNMIIQ</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>If_YES_has_it_been_updated_rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+TEXT(Is_the_Acct_on_the_Top_200_spreadsheet__c)= &quot;Yes&quot;, 
+ ISBLANK( TEXT(If_YES_has_it_been_updated__c )))</errorConditionFormula>
+    <errorDisplayField>If_YES_has_it_been_updated__c</errorDisplayField>
+    <errorMessage>You must select a value here as you selected  &apos;Is the Acct on the Top 200 spreadsheet?&apos;  is &quot;Yes&quot;</errorMessage>
+</ValidationRule>

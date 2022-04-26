@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hosting_Fee_and_Contract_Length_Required</fullName>
+    <active>true</active>
+    <description>Required only for US Dedicated Opportunities with Renewal Type.</description>
+    <errorConditionFormula>AND(
+RecordType.DeveloperName = &quot;US_Dedicated&quot;,
+ISPICKVAL(Type, &quot;Renewal&quot;),
+NOT($Profile.Name = &quot;System Administrator&quot;),
+OR(
+ISBLANK(Hosting_Fee__c),
+ISBLANK(Contract_Length__c))
+)</errorConditionFormula>
+    <errorDisplayField>Hosting_Fee__c</errorDisplayField>
+    <errorMessage>Hosting Fee and Contract Length are required.</errorMessage>
+</ValidationRule>

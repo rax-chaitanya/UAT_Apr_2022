@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Footprint_Rationale_Field_Required</fullName>
+    <active>true</active>
+    <description>This validation rule is for making the mandatoriness to &quot;Footprint Rationale&apos; field, if the Category is &quot;New Footprint/New Logo&quot;</description>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )), 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR(
+ISPICKVAL(Category__c, &quot;New Footprint&quot;),
+ISPICKVAL(Category__c, &quot;New Logo&quot;)
+),
+NOT(ISPICKVAL(StageName, &quot;Stage 1 - Planning &amp; Identification&quot;)
+),
+ISBLANK(TEXT(New_Footprint_Rationale__c )),
+OR(
+ CONTAINS( Owner_Role__c , &quot;US Commercial MM&quot;) ,
+CONTAINS(Owner_Role__c , &quot;US Enterprise&quot;)
+)
+)</errorConditionFormula>
+    <errorDisplayField>New_Footprint_Rationale__c</errorDisplayField>
+    <errorMessage>New Footprint or New Logo Rationale : Please enter a value</errorMessage>
+</ValidationRule>

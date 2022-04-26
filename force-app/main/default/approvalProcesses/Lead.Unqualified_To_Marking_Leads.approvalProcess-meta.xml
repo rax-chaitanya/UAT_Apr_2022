@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Notify_Seller_on_Rejection_on_QTM_Approval</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>Q_Team_Manager_Approved</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <description>Unqualified - To Marketing lead to should goto Lead owner&apos;s Manager</description>
+        <label>Approval from Lead Owner&apos;s Manager</label>
+        <name>X3</name>
+    </approvalStep>
+    <description>Lead Rejection Approval/Denied Process.</description>
+    <emailTemplate>unfiled$public/Lead_Sent_To_Marketing_Approval_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Change_Lead_Reason_to_Accepted_Sales</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Lead_Rejection_Denied_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Set_Lead_Status_to_Sales_Working</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Capture_the_Previous_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Capture_the_Rejected_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Set_Lead_Status_to_Pending_Rejection1</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Unqualified To Marking Leads</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>true</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

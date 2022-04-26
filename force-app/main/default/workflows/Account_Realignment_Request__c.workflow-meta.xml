@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Submitter_Email_Alert</fullName>
+        <description>Submitter Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Global_Account_Realignment/GTMO_Submitter_Email_Template</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Status_Pending_For_Approval</fullName>
+        <description>Field Update for updating the Status Field to &apos;Pending for Approval&apos;</description>
+        <field>Status__c</field>
+        <literalValue>Pending for Approval</literalValue>
+        <name>Status Pending For Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Update_to_Approved</fullName>
+        <description>Field Update for updating the Status Field to &apos;Approved&apos;</description>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status Update to Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Update_to_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Status Update to Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Updated_to_Auto_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Auto Approved</literalValue>
+        <name>Status Updated to Auto Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

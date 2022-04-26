@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LBI__You_May_Not_Deactivate_a_Standard_Rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(LBI__isActive__c) &amp;&amp; LBI__IsStandardRule__c</errorConditionFormula>
+    <errorDisplayField>LBI__isActive__c</errorDisplayField>
+    <errorMessage>You May Not Deactivate a Standard Rule</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Permission_May_Not_Have_Multiple_Targets</fullName>
+    <active>true</active>
+    <description>Permission Control must not reference more than one of the following:  Resource, Region, Practice, Group, Project or Team</description>
+    <errorConditionFormula>IF(ISBLANK(pse__Resource__c),0,1) +
+IF(ISBLANK(pse__Region__c),0,1) +
+IF(ISBLANK(pse__Practice__c),0,1) +
+IF(ISBLANK(pse__Group__c),0,1) +
+IF(ISBLANK(pse__Project__c),0,1) +
+IF(ISBLANK(pse__Team__c),0,1) &gt; 1</errorConditionFormula>
+    <errorMessage>Permission Control must not reference more than one of the following: Resource, Region, Practice, Group, Project or Team</errorMessage>
+</ValidationRule>

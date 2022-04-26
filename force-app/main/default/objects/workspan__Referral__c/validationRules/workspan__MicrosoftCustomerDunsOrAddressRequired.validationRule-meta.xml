@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__MicrosoftCustomerDunsOrAddressRequired</fullName>
+    <active>true</active>
+    <errorConditionFormula>workspan__SourcedToPartner__c = &apos;Microsoft&apos;
+&amp;&amp; ISPICKVAL(workspan__ReferralType__c , &apos;Outgoing&apos;)
+&amp;&amp; (ISBLANK(workspan__CustomerDUNS__c)
+    &amp;&amp; (ISBLANK(workspan__CustomerStreetAddress__c)
+        || ISBLANK(workspan__CustomerCity__c)
+        || ISBLANK(workspan__CustomerCountry__c)))</errorConditionFormula>
+    <errorMessage>Please provide either Customer DUNS or Customer address (Customer Street Address, Customer City, and Customer Country).</errorMessage>
+</ValidationRule>

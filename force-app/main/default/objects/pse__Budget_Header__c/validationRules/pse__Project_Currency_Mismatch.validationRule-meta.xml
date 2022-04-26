@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Project_Currency_Mismatch</fullName>
+    <active>true</active>
+    <errorConditionFormula>TEXT(CurrencyIsoCode) != TEXT(pse__Project__r.CurrencyIsoCode)</errorConditionFormula>
+    <errorDisplayField>pse__Project__c</errorDisplayField>
+    <errorMessage>The project&apos;s currency must match the currency of this budget header</errorMessage>
+</ValidationRule>

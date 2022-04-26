@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subject_is_required_for_Proserv</fullName>
+    <active>false</active>
+    <description>Subject must be either Billable Hours or Non-Billable Hours when Type is Professional Services - Delivery.</description>
+    <errorConditionFormula>AND(
+ISPICKVAL(Type, &quot;Professional Services - Delivery&quot;),
+NOT(
+  OR(Subject = &quot;Billable Hours&quot;,Subject = &quot;Non-Billable Hours&quot;)
+  )
+)</errorConditionFormula>
+    <errorDisplayField>Subject</errorDisplayField>
+    <errorMessage>Subject must be either &quot;Billable Hours&quot; or &quot;Non-Billable Hours&quot;  for Professional Services - Delivery Type.</errorMessage>
+</ValidationRule>

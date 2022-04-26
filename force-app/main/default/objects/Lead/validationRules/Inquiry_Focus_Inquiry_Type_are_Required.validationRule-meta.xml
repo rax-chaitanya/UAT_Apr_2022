@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inquiry_Focus_Inquiry_Type_are_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+		NOT( $Profile.Name = &apos;System Administrator&apos;),
+  ISPICKVAL($User.Region__c,&apos;EMEA&apos;),
+  OR( 
+TEXT(EMEA_Inquiry_Focus_Solution__c)=&apos;&apos;,
+TEXT(EMEA_Inquiry_Type_Product__c)=&apos;&apos;
+    )				
+)</errorConditionFormula>
+    <errorMessage>EMEA Inquiry Focus (Solution) and EMEA Inquiry Type (Product) must be selected.</errorMessage>
+</ValidationRule>

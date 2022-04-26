@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Maximum_limit</fullName>
+    <active>true</active>
+    <description>The maximum value cannot be greater than 1000. If a larger value is needed then leave the maximum at 0 and the quantity for this child will be a free form number input.</description>
+    <errorConditionFormula>DP_Maximum_Quantity__c &gt; 1000</errorConditionFormula>
+    <errorDisplayField>DP_Maximum_Quantity__c</errorDisplayField>
+    <errorMessage>Must be less than 1000</errorMessage>
+</ValidationRule>

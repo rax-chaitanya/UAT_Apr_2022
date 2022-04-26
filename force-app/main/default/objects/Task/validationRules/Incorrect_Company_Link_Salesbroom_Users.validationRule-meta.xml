@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incorrect_Company_Link_Salesbroom_Users</fullName>
+    <active>false</active>
+    <description>Incorrect Company Linkage tasks must be assigned to Salesbroom Managers and Salesbroom Users.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+OR( 
+DATEVALUE(CreatedDate) &gt; Datevalue(&quot;2017-10-09&quot;), 
+ISNULL(CreatedDate) 
+), 
+OR( 
+OR( 
+AND(Subject = &quot;Account Linkage Update Needed&quot;,OR(ISBLANK(WhatId),(LEFT( WhatId, 3) = &apos;001&apos;))), 
+AND(ISPICKVAL(Type, &quot;Data Type&quot;),OR(ISBLANK(WhatId),(LEFT( WhatId, 3) = &apos;001&apos;))) 
+), 
+OR( 
+AND(Subject = &quot;Account Linkage Update Needed&quot;,OR(ISBLANK(WhatId),(LEFT( WhatId, 3) = &apos;a00&apos;))), 
+AND(ISPICKVAL(Type, &quot;Data Type&quot;),OR(ISBLANK(WhatId),(LEFT( WhatId, 3) = &apos;a00&apos;))) 
+) 
+), 
+OR( 
+OR( 
+AND(Subject = &quot;Account Linkage Update Needed&quot;,(ISBLANK(WhoId))), 
+AND(ISPICKVAL(Type, &quot;Data Type&quot;),(ISBLANK(WhoId))) 
+), 
+OR( 
+AND(Subject = &quot;Account Linkage Update Needed&quot;,(ISBLANK(WhoId))), 
+AND(ISPICKVAL(Type, &quot;Data Type&quot;),(ISBLANK(WhoId))) 
+) 
+) 
+, 
+IF( 
+OR(	
+ISPICKVAL(Type, &quot;Data Type&quot;), 
+Subject = &quot;Account Linkage Update Needed&quot; 
+), 
+AND( 
+NOT(CONTAINS($Label.Salesbroom_Managers_Users, OwnerId)), 
+OR(ISBLANK(Owner:User.UserRoleId),NOT(Owner:User.UserRole.Name=$Label.Salesbroom_Users)), 
+NOT(CONTAINS(Owner:User.Profile.Name, $Label.Salesbroom_Users)), 
+NOT(CONTAINS(Owner:User.Profile.Name, $Label.Salesbroom_Users)) 
+
+), 
+FALSE 
+) 
+)</errorConditionFormula>
+    <errorDisplayField>OwnerId</errorDisplayField>
+    <errorMessage>Incorrect Company Linkage task can only be assigned to Salesbroom Managers group or Salesbroom Users group.</errorMessage>
+</ValidationRule>

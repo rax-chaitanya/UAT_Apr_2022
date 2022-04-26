@@ -1,0 +1,2259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_Lead_Owner_s_Manager_if_Lead_is_not_converted_or_rejected_within_10_days</fullName>
+        <description>Alert Lead Owner&apos;s Manager if Lead is not converted or rejected within 10 days</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Owner_s_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/Lead_over_10_Days_SLA</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_RD_team_when_a_DRaaS_Lead_is_created</fullName>
+        <ccEmails>DRaaS_Leads@rackspace.com</ccEmails>
+        <description>Alert RD team when  a DRaaS Lead is created</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>gtmo_systems@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/DRaaS_Alert</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_to_OCRE_queue_members</fullName>
+        <description>Alert to OCRE queue members</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>david.degroot@rackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>hollie.blake@rackspace.co.uk.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>michael.meijers@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>tom.holland@rackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/Alert_to_OCRE_queue</template>
+    </alerts>
+    <alerts>
+        <fullName>DemandGen_A_new_Site_Submission_has_been_assigned_to_a_Lead_Generator</fullName>
+        <description>DemandGen: A new Site Submission has been assigned to a Lead Generator</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>kyle.kincaid@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Leads/DemandGen_A_New_Site_Submission_has_been_Assigned_to_you</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_to_PAM_When_Lead_is_Created</fullName>
+        <description>Email Alert to PAM When Lead is Created</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PAM_email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Email_Notification_To_PAM_or_RAXPartnerHelp</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_to_Partner_When_Lead_is_Recieved</fullName>
+        <description>Email Alert to Partner When Lead is Recieved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Email_Notification_To_Partners</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_to_Partner_When_Lead_is_Rejected</fullName>
+        <description>Email Alert to Partner When Lead is Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Channel_Email_Templates/Partner_Notification_Lead_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_to_RAXPartnerHelp_When_Lead_is_Created</fullName>
+        <ccEmails>RAXPartnerHelp@Rackspace.com</ccEmails>
+        <description>Email Alert to RAXPartnerHelp When Lead is Created</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Email_Notification_To_PAM_or_RAXPartnerHelp</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification</fullName>
+        <description>Email Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/Lead_Notification_Email_to_Owner</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_Partner_Ops</fullName>
+        <description>Email Notification Partner Ops</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>julia.miller@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/X48hr_Email_Notification_Partners</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_to_PAM_when_Lead_is_assigned_to_seller</fullName>
+        <description>Email Notification to PAM when Lead is assigned to seller</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Partner_Account_Manager__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Channel_Email_Templates/Partner_Lead_Assigned_Notification_to_Seller</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_to_US_Lead_Queue_On_Lead_Submission</fullName>
+        <description>Email Notification to US Lead Queue On Lead Submission</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Lead_Notification_Email_to_US_Lead_Queue</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Notification_to_seller_when_Lead_is_assigned_to_sales_profile</fullName>
+        <description>Email Notification to seller when Lead is assigned to sales profile</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Channel_Email_Templates/Partner_Lead_Assigned_Notification_to_Seller</template>
+    </alerts>
+    <alerts>
+        <fullName>Emailnotification_US_MDR</fullName>
+        <description>Emailnotification_US MDR</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Lead_Notification_Email_to_Owner</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_Rejection_Approval_Mail</fullName>
+        <description>Lead Rejection Approval Mail</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Lead_Generator__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Rejected_Lead_Final_Approved_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_Rejection_Denied_Email</fullName>
+        <description>Lead Rejection Denied Email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Rejected_Lead_Denied_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_Rejection_Email_Approval</fullName>
+        <description>Lead Rejection Email Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Rejected_Lead_Approved_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_conversion_Notification_to_Lead_owner</fullName>
+        <description>Lead conversion Notification to Lead owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Lead_conversion_notification_to_owner</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_hasn_t_been_actioned_for_24_hours_alert_to_Sales_Manager</fullName>
+        <description>Lead hasn&apos;t been actioned for 24 hours - alert to Sales Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Owner_s_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/Lead_over_24_Hours_SLA</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_hasn_t_been_actioned_for_48_hours_alert_to_Sales_Manager</fullName>
+        <description>Lead hasn&apos;t been actioned for 48 hours - alert to Sales Manager</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Owner_s_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/Alert_to_Sales_Manager_if_Lead_not_actioned_within_48_hours</template>
+    </alerts>
+    <alerts>
+        <fullName>Lead_hasn_t_been_actioned_for_72_hours_alert_to_Sales_Manager</fullName>
+        <description>Lead hasn&apos;t been actioned for 72 hours - alert to Sales Director</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>UK_Commercial_Leader</recipient>
+            <type>role</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/Alert_to_Sales_Director_if_Lead_not_actioned_within_72_hours</template>
+    </alerts>
+    <alerts>
+        <fullName>MSFT_Public_email_alert_when_leads_are_passed</fullName>
+        <description>MSFT Public email alert when leads are passed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>blake.closner@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chris.caravajal@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>dora.guerrero@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>eran.samocha@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>gtmo_systems@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>matt.langston@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>ryan.hawkins@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>veronica.servantez@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/MSFT_Public_Lead_Passed</template>
+    </alerts>
+    <alerts>
+        <fullName>New_AWS_Lead_submitted</fullName>
+        <ccEmails>addison.martinez@rackspace.com</ccEmails>
+        <description>New AWS Lead submitted</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/US_AWS_Internal_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Lead_Generator_on_Approval</fullName>
+        <description>Notify Lead Generator on Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Lead_Generator__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Notify_LeadGenerator_On_Approval</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Seller_on_Rejection_on_QTM_Approval</fullName>
+        <description>Notify Seller on Rejection on QTM Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Rejected_Lead_Approved_by_QT_Manager</template>
+    </alerts>
+    <alerts>
+        <fullName>OpenStack_Private_Lead_has_been_Passed</fullName>
+        <ccEmails>OpenStack_Sales@rackspace.com</ccEmails>
+        <ccEmails>privatecloudspecialists@rackspace.com</ccEmails>
+        <description>OpenStack Private Lead has been Passed</description>
+        <protected>false</protected>
+        <senderType>CurrentUser</senderType>
+        <template>Share_All/OpenStack_Private_Lead_Passed</template>
+    </alerts>
+    <alerts>
+        <fullName>Partner_Lead_has_been_Converted</fullName>
+        <description>Partner Lead has been Converted</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/Partner_Notification_Lead_Converted</template>
+    </alerts>
+    <alerts>
+        <fullName>Partner_Lead_has_been_closed_lost</fullName>
+        <description>Partner Lead has been closed lost</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PAM_email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Lead_Alerts/PAM_notification_Lead_Closed_Lost</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_notification_to_the_lead_owner_when_an_activity_hasn_t_been_created_in_3_da</fullName>
+        <description>Send notification to the lead owner when an activity hasn&apos;t been created in 3 days</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Lead_needs_to_be_actioned</template>
+    </alerts>
+    <alerts>
+        <fullName>US_Azure_Internal_Notification</fullName>
+        <description>US Azure Internal Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>amanda.burkhardt@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chris.caravajal@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>dvanderw@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>mike.pool@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>nathan.stull@rackspace.com.rax.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>prashanth.chandrasekar@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>ramakant.pandrangi@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>ryan.hawkins@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sunny.patel@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>veronica.servantez@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/US_Azure_Internal_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>US_Google_Internal_Notification</fullName>
+        <description>US Google Internal Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>jason.vaughn@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jeneen.minnick@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>john.dumalac@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>patrick.lee@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/US_Google_Internal_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>US_MPC_Internal_Site_Sub_Notification</fullName>
+        <description>US MPC Internal Site Sub Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>amanda.clark@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>brooke.jackson@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jessica.orozco@rackspace.com.rax</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/US_MPC_Internal_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Welcome_Email_New_Generic_LATAM_Leads</fullName>
+        <description>Welcome Email - New Generic LATAM Leads</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Leads/Welcome_Email_LATAM_Generic</template>
+    </alerts>
+    <alerts>
+        <fullName>X1_Hour_SLA_Lead_Alert_Urgent</fullName>
+        <description>1 Hour SLA Lead Alert - Urgent</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/X1_Hour_SLA_Lead_Alert_Urgent</template>
+    </alerts>
+    <alerts>
+        <fullName>X24_Hours_SLA_Lead_Alert_Standard</fullName>
+        <description>24 Hours SLA Lead Alert - Standard</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Owner_s_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>VP_SLA__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/X24_Hours_SLA_Lead_Alert_Standard</template>
+    </alerts>
+    <alerts>
+        <fullName>X24_Hours_SLA_Lead_Alert_Urgent</fullName>
+        <description>24 Hours SLA Lead Alert - Urgent</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Owner_s_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>VP_SLA__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/X24_Hours_SLA_Lead_Alert_Urgent</template>
+    </alerts>
+    <alerts>
+        <fullName>X3_Hours_SLA_Lead_Alert_Urgent</fullName>
+        <description>3 Hours SLA Lead Alert - Urgent</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Owner_s_Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Lead_Alerts/X3_Hours_SLA_Lead_Alert_Urgent</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Assign_to_APAC_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Asia_India_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Assign to APAC Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Assign_to_Aus_NZ_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Australia_New_Zealand_New_Inbound_Leads</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Assign to Aus/NZ Queue</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CASL_Lead_Update_Field</fullName>
+        <field>CASL_Lead_Consent_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - CASL Lead Update Field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Capture_the_Previous_Status</fullName>
+        <field>Previous_Status__c</field>
+        <formula>TEXT(Status)</formula>
+        <name>Capture the Previous Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Capture_the_Rejected_Date</fullName>
+        <field>Rejected_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Capture the Rejected Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Lead_Reason_to_Accepted_Sales</fullName>
+        <field>Reason__c</field>
+        <literalValue>Accepted-Sales</literalValue>
+        <name>Change Lead Reason to &apos;Accepted Sales&apos;</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Data_Request_field_update</fullName>
+        <field>GDPR_Request_Data_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - Data Request field update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Data_Request_field_update_delete_Lead</fullName>
+        <field>GDPR_Request_Delete_Date__c</field>
+        <formula>NOW()+90</formula>
+        <name>SFMC - Data Request fld update del Lead</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Double_Opt_In_Lead_Date_Update</fullName>
+        <field>Double_Opt_In_Lead_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - Double Opt In Lead Date Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>GDPR_Lead_Consent_Date_Update</fullName>
+        <field>GDPR_Lead_Consent_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - GDPR Lead Consent Date Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>IntegrationTypeAWS</fullName>
+        <description>This field denotes integration type: ACE CRM</description>
+        <field>Integration_Type__c</field>
+        <literalValue>ACE CRM</literalValue>
+        <name>IntegrationTypeAWS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LATAM_Assign_Campaign_ID_LDM_AWS</fullName>
+        <field>BrightTALK__Campaign_ID__c</field>
+        <formula>&quot;7014N00000231jZQAQ&quot;</formula>
+        <name>LATAM Assign Campaign ID - LDM AWS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LATAM_Assign_Campaign_ID_LDM_Dedicated</fullName>
+        <field>BrightTALK__Campaign_ID__c</field>
+        <formula>&quot;LDM_DEDI&quot;</formula>
+        <name>LATAM Assign Campaign ID - LDM Dedicated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Lead_Consent_is_False</fullName>
+        <field>GDPR_Lead_Consent__c</field>
+        <literalValue>0</literalValue>
+        <name>SFMC - Lead Consent is False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Lead_Double_Opt_In_False</fullName>
+        <field>Double_Opt_In_Lead__c</field>
+        <literalValue>0</literalValue>
+        <name>SFMC - Lead Double Opt In False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Lead_Owner_Email</fullName>
+        <field>Lead_Owner_Email__c</field>
+        <formula>Owner:User.Email</formula>
+        <name>Lead Owner Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Lead_Owner_to_US_SDR</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_SDR_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Lead Owner to US - SDR</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Lead_Rejected_in_New_SFDC_set_to_flase</fullName>
+        <description>If lead rejection is rejected by manager, then this field should be set to false</description>
+        <field>Lead_Rejected_in_New_SFDC__c</field>
+        <literalValue>0</literalValue>
+        <name>Lead Rejected in New SFDC set to flase</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Lead_Rejected_in_New_SFDC_set_to_true</fullName>
+        <description>If lead rejection approved by manger, then this field should be set to true.</description>
+        <field>Lead_Rejected_in_New_SFDC__c</field>
+        <literalValue>1</literalValue>
+        <name>Lead Rejected in New SFDC set to true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Move_to_US_BDR_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_BDR</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Move to US BDR Queue</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Move_to_US_Lead_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_Lead_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Move to US Lead Queue</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Owner_s_Manager_Email_Update</fullName>
+        <description>Update the field with Manager&apos;s email.</description>
+        <field>Owner_s_Manager_Email__c</field>
+        <formula>Owner:User.Manager.Email</formula>
+        <name>Owner&apos;s Manager Email Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Owner_to_update</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Holding_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Owner to update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Q_Team_Manager_Approved</fullName>
+        <field>Approval_Status__c</field>
+        <formula>&quot;QTeam Manager Approved&quot;</formula>
+        <name>Q Team Manager Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SendLeadUpdatesToAWS</fullName>
+        <description>this field determines lead updates are flowing to AWS</description>
+        <field>Integration_Status__c</field>
+        <formula>&quot;ReadyToSyncWithAWS&quot;</formula>
+        <name>SendLeadUpdatesToAWS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Lead_Status_to_Marketing_Engaged</fullName>
+        <description>See MO-430</description>
+        <field>Status</field>
+        <literalValue>Marketing Engaged</literalValue>
+        <name>Set Lead Status to Marketing Engaged</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Lead_Status_to_Marketing_Qualified</fullName>
+        <description>Created For SFDC-6371</description>
+        <field>Status</field>
+        <literalValue>Marketing Qualified</literalValue>
+        <name>Set Lead Status to Marketing Qualified</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Lead_Status_to_Pending_Rejection1</fullName>
+        <description>The lead status automatically changes to &quot;Pending Rejection&quot; when the rejection is submitted for approval by the sales rep.</description>
+        <field>Status</field>
+        <literalValue>Pending Approval</literalValue>
+        <name>Set Lead Status to Pending Rejection</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Lead_Status_to_Sales_Working</fullName>
+        <description>If the lead rejection is denied by Sales Supervisor or Q Team Manager then Lead Status is set to &apos;Sales Working&apos; .</description>
+        <field>Status</field>
+        <literalValue>Sales - Accepted Lead</literalValue>
+        <name>Set Lead Status to Sales Working</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Original_Queue_by_District</fullName>
+        <description>Set Original Queue for Marketing Qualified Leads based on Q2 Sales MM/ENT Districts</description>
+        <field>Original_Queue__c</field>
+        <formula>CASE(
+	IF(
+		OR(AnnualRevenue &lt; 100000000, ISNULL(AnnualRevenue)),
+		&quot;MDR&quot;,
+		IF(AnnualRevenue &lt; 500000000, &quot;MM&quot;, &quot;ENT&quot;)
+	)
+	&amp; &quot;-&quot; &amp;
+	IF(REGEX(State, &quot;^(Pennsylvania|New York|New Jersey|Connecticut|Maine|Vermont|New Hampshire|Massachusetts|Rhode Island)$&quot;), &quot;North&quot;,
+	IF(REGEX(State, &quot;^(Arkansas|Louisiana|Texas|Oklahoma|North Carolina|South Carolina|Georgia|Alabama|Mississippi|Tennessee|Florida)$&quot;), &quot;South&quot;,
+	IF(REGEX(State, &quot;^(North Dakota|South Dakota|Iowa|Illinois|Michigan|Minnesota|Kansas|Nebraska|Missouri|Wisconsin|Indiana|Ohio|Kentucky|West Virginia|Delaware)$&quot;), &quot;Central&quot;,
+	IF(REGEX(State, &quot;^(California|Oregon|Washington|Arizona|Colorado|Alaska|Hawaii|New Mexico|Wyoming|Idaho|Nevada|Utah|Montana)$&quot;), &quot;West&quot;,
+	IF(AND(REGEX(State, &quot;^(Maryland|Virginia)$&quot;), AnnualRevenue &lt; 500000000), &quot;Central&quot;,
+	IF(AND(REGEX(State, &quot;^(Maryland|Virginia)$&quot;), AnnualRevenue &gt;= 500000000), &quot;South&quot;,
+	&quot;MDR&quot; /* Default for other values of State field */
+	)))))), 
+	&quot;MM-North&quot;, $Label.US_MM_SDR_Northeast, /* US MM SDR Northeast */
+	&quot;MM-South&quot;, $Label.US_MM_SDR_Southeast, /* US MM SDR Southeast */
+	&quot;MM-Central&quot;, $Label.US_MM_SDR_Central, /* US MM SDR Central */
+	&quot;MM-West&quot;, $Label.US_MM_SDR_West, /* US MM SDR West */
+	&quot;ENT-North&quot;, $Label.US_ENT_ISR_Northeast, /* US ENT ISR Northeast */
+	&quot;ENT-South&quot;, $Label.US_ENT_ISR_Southeast, /* US ENT ISR Southeast */
+	&quot;ENT-Central&quot;, $Label.US_ENT_ISR_Central, /* US ENT ISR Central */
+	&quot;ENT-West&quot;, $Label.US_ENT_ISR_West, /* US ENT ISR West */
+	$Label.US_MDR /* US MDR - Default */
+)</formula>
+        <name>Set Original Queue by District</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Original_Queue_to_Data_ServicesQueue</fullName>
+        <field>Original_Queue__c</field>
+        <formula>$Label.Data_Services_Queue</formula>
+        <name>Set Original Queue to Data ServicesQueue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Original_Queue_to_US_MDR</fullName>
+        <field>Original_Queue__c</field>
+        <formula>$Label.US_MDR_Site_Sub</formula>
+        <name>Set Original Queue to US MDR</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Original_Queue_to_US_SDR</fullName>
+        <description>Set Original Queue for Marketing Qualified Leads to US SDR Round Robin Queue</description>
+        <field>Original_Queue__c</field>
+        <formula>$Label.US_SDR</formula>
+        <name>Set Original Queue to US SDR</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Owner_to_Innova_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Innova_Scrub</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Set Owner to Innova Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>US_SDR_Queue_queue_update</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_SDR_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>US - SDR Queue queue update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateTerritoryOnLeads</fullName>
+        <field>Territory__c</field>
+        <literalValue>Africa</literalValue>
+        <name>UpdateTerritoryOnLeads</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Approval_Status_to_Not_Required</fullName>
+        <field>Approval_Status__c</field>
+        <formula>&quot;Not Required&quot;</formula>
+        <name>Update Approval Status to Not Required</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Commissions_Role_Don_t_Pay_Comm</fullName>
+        <field>Commissions_Role__c</field>
+        <literalValue>Don&apos;t pay commissions</literalValue>
+        <name>Update Commissions Role &gt; Don&apos;t Pay Comm</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Created_From_Lead_to_True</fullName>
+        <field>Created_from_Lead__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Created From Lead to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Lead_Owner_to_LATAM_Nurture_Track</fullName>
+        <description>leads that are done with Marketo tracks will enter SF tied to the LATAM Marketing queue. To differentiate these from the others that come into this queue, (site subs, etc) these will then be placed into LATAM&apos;s nurture queue for manual follow up</description>
+        <field>OwnerId</field>
+        <lookupValue>LATAM_Nurture_Follow_up</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Update Lead Owner to LATAM Nurture Track</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Lead_Status_to_TQL</fullName>
+        <description>When &quot;Max Lead Gen&quot; IS NOT NULL &amp; Lead Status = Tele - Accepted Lead &gt; Lead Status &gt; &quot;Tele-Qualified&quot; (TQL)</description>
+        <field>Status</field>
+        <literalValue>Tele - Qualified Lead</literalValue>
+        <name>Update Lead Status to TQL</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_PAM_Email</fullName>
+        <field>PAM_email__c</field>
+        <formula>Partner_Account_Manager__r.Email</formula>
+        <name>Update PAM Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Parent_IDs_Lead</fullName>
+        <field>Lead_Lookup_IDs__c</field>
+        <formula>CASESAFEID(Product_Account_Duplicate__c) &amp;&quot; &quot;&amp;&quot;,&quot;&amp; RecordType.Name &amp;&quot; &quot;&amp;&quot;,&quot;&amp; IF(Owner:User.Email = &apos;jayant.yadav@rackspace.com&apos;, &apos;&apos;, Owner:User.SSO_Username__c) 
+&amp;&quot; &quot;&amp;&quot;,&quot;&amp; IF(LDT_Rep__r.Email = &apos;jayant.yadav@rackspace.com&apos;, &apos;&apos;, LDT_Rep__r.SSO_Username__c) 
+&amp;&quot; &quot;&amp;&quot;,&quot;&amp; IF(Lead_Generator__r.Email = &apos;jayant.yadav@rackspace.com&apos;, &apos;&apos;, Lead_Generator__r.SSO_Username__c) 
+&amp;&quot; &quot;&amp;&quot;,&quot;&amp; Country &amp;&quot; &quot;&amp;&quot;,&quot;&amp; State &amp;&quot; &quot;&amp;&quot;,&quot;&amp; CASESAFEID(rvpe__RVAccount__c) &amp;&quot; &quot;&amp;&quot;,&quot;&amp; CASESAFEID(rvpe__RVMember__c)&amp;&quot; &quot;</formula>
+        <name>Update Parent IDs Lead</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Rejection_Approved_Date</fullName>
+        <field>Rejection_Approved_Date__c</field>
+        <formula>Now()</formula>
+        <name>Update Rejection Approved Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Status_for_MQL_score_ups</fullName>
+        <field>Status</field>
+        <literalValue>New</literalValue>
+        <name>Update Status for MQL score ups</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_to_ISR_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_ISR_Acq_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>Update to ISR Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Welcome_Email_LATAM_Generic</fullName>
+        <field>BrightTALK__Campaign_ID__c</field>
+        <formula>&quot;LDM_GEN&quot;</formula>
+        <name>Welcome Email LATAM - Generic</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>owner_field_update</fullName>
+        <field>OwnerId</field>
+        <lookupValue>Marketing_Engaged_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>owner field update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>owner_field_updates</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_SDR_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>owner field updates</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>rvee__AssignedToPartnerModified</fullName>
+        <field>rvpe__PartnerLastModifiedDate__c</field>
+        <name>Assigned to Partner Modified</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>rvee__AssignedToPartnerPending</fullName>
+        <field>rvpe__PartnerLeadAcceptance__c</field>
+        <literalValue>Pending</literalValue>
+        <name>Assigned to Partner Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>rvee__AssignedToPartnerTimestamp</fullName>
+        <field>rvpe__DateAssignedToPartner__c</field>
+        <formula>NOW()</formula>
+        <name>Assigned to Partner Timestamp</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>rvee__NotifyRVMemberReset</fullName>
+        <field>rvpe__NotifyRVMember__c</field>
+        <literalValue>0</literalValue>
+        <name>Notify RV Member Reset</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>update_LDT_leads_to_SDR</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_SDR_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>update LDT leads to SDR</name>
+        <notifyAssignee>true</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>update_lead_owner_to_US_ISR_Queue</fullName>
+        <field>OwnerId</field>
+        <lookupValue>US_ISR_Acq_Queue</lookupValue>
+        <lookupValueType>Queue</lookupValueType>
+        <name>update lead owner to US ISR Queue</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateLeads</fullName>
+        <apiVersion>39.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/LeadNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateLeads</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateLeads</fullName>
+        <apiVersion>39.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/LeadNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateLeads</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Alert Disaster Recovery Team when a lead is created</fullName>
+        <actions>
+            <name>Alert_RD_team_when_a_DRaaS_Lead_is_created</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Solution_Area__c</field>
+            <operation>equals</operation>
+            <value>Disaster Recovery</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Alert to OCRE queue members</fullName>
+        <actions>
+            <name>Alert_to_OCRE_queue_members</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Online Order Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Site Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CMP__c</field>
+            <operation>equals</operation>
+            <value>Q121_NE_Campaign_Parent_OCRE_AWS_Owned</value>
+        </criteriaItems>
+        <description>Case #00050020</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Alert to Sales Manager if Lead not converted%2Fclosed within 48 hours</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>notEqual</operation>
+            <value>,Converted,Sales - Accepted Lead,Unqualified - To Lead Gen,Unqualified - To Marketing,Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Created_By_Profile__c</field>
+            <operation>equals</operation>
+            <value>Rackspace - Standard Support User INTL</value>
+        </criteriaItems>
+        <description>Alert to Sales Manager if Lead has not been converted or closed by the Sales Rep within 48 hours of it being assigned.</description>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Lead_hasn_t_been_actioned_for_48_hours_alert_to_Sales_Manager</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>48</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert to Sales Manager if Lead not converted%2Fclosed within 72 hours</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>notContain</operation>
+            <value>Sales - Accepted Lead,Unqualified - To Lead Gen,Unqualified - To Marketing,Rejected,Converted</value>
+        </criteriaItems>
+        <description>Alert to Sales Director if Lead has not been converted or closed by the Sales Rep within 72 hours of it being assigned.</description>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Lead_hasn_t_been_actioned_for_72_hours_alert_to_Sales_Manager</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>72</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Asign campaña</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Lead.Original_Campaign_Code__c</field>
+            <operation>equals</operation>
+            <value>Q319_LATAM_Online_Display_LDM-DIGITAL_AWS_Owned</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>AutoUpdateTerritoryOnLeads</fullName>
+        <actions>
+            <name>UpdateTerritoryOnLeads</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.FirstName</field>
+            <operation>notEqual</operation>
+            <value>qwertyuiop</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Country</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Territory__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>DemandGen%3A Alert Lead Generator of new Site Submission</fullName>
+        <actions>
+            <name>DemandGen_A_new_Site_Submission_has_been_assigned_to_a_Lead_Generator</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ 			CONTAINS( Lead_Board__c , &quot;00Q4N00000Z2tWD&quot;),
+				ISPICKVAL(  LeadSource , &quot;Site Submission&quot;)
+				)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification to Lead Owner</fullName>
+        <actions>
+            <name>Email_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>This will send email to Lead owner</description>
+        <formula>AND(
+NOT($Profile.Id = &quot;00e6100000163tr&quot;),				
+NOT(CONTAINS(FirstName,&quot;Sales Play&quot;)),
+OR( 
+        ISNEW(),
+        AND(ISCHANGED(OwnerId),
+        NOT(BEGINS(OwnerId, &quot;00G&quot;)))))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification to Lead Owner - Innova</fullName>
+        <actions>
+            <name>Email_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>This will send email to Lead owner once scrubbed by Innova</description>
+        <formula>AND( NOT(CONTAINS(FirstName,&quot;Sales Play&quot;)), NOT(BEGINS(OwnerId, &quot;00G&quot;)), $Profile.Id = &quot;00e6100000163tr&quot;,  OR(  ISNEW(), ISCHANGED(OwnerId)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email Notification to US Lead Queue</fullName>
+        <actions>
+            <name>Email_Notification_to_US_Lead_Queue_On_Lead_Submission</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>This will send email to Lead owner</description>
+        <formula>AND(ISPICKVAL( LeadSource , &quot;Site Submission&quot;),  CONTAINS( $Label.USLeadQueueId ,  OwnerId ) )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_Update Lookups Lead</fullName>
+        <actions>
+            <name>Update_Parent_IDs_Lead</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR( ISNEW(), ISCHANGED( RecordTypeId ), ISCHANGED( Product_Account__c ), ISCHANGED( OwnerId ), ISCHANGED( LDT_Rep__c ), ISCHANGED( Lead_Generator__c ), ISCHANGED( rvpe__RVAccount__c ), ISCHANGED( rvpe__RVMember__c ), ISCHANGED( Country ), ISCHANGED( State  ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>LATAM Nurture Track leads</fullName>
+        <actions>
+            <name>Update_Lead_Owner_to_LATAM_Nurture_Track</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>equals</operation>
+            <value>LATAM Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.MQL_Campaign_Code__c</field>
+            <operation>equals</operation>
+            <value>L_DMG_NPG_JAN-17_PRT_AWS_NONE_Nurture_Track_FAWS</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead Assignment Rule - Marketing Qualified APAC</fullName>
+        <actions>
+            <name>Assign_to_APAC_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Marketing Qualified</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LastModifiedById</field>
+            <operation>equals</operation>
+            <value>Marketo User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Named_Account__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.ABM_Lead__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>equals</operation>
+            <value>Marketing Engaged Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Territory__c</field>
+            <operation>equals</operation>
+            <value>Asia</value>
+        </criteriaItems>
+        <description>when leads change from Marketing Engaged to Marketing Qualified move to APAC</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead Assignment Rule - Marketing Qualified AUS%2FNZ</fullName>
+        <actions>
+            <name>Assign_to_Aus_NZ_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Marketing Qualified</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LastModifiedById</field>
+            <operation>equals</operation>
+            <value>Marketo User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Named_Account__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.ABM_Lead__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>equals</operation>
+            <value>Marketing Engaged Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Territory__c</field>
+            <operation>equals</operation>
+            <value>ANZ</value>
+        </criteriaItems>
+        <description>when leads change from Marketing Engaged to Marketing Qualified move to AUS/ NZ Queue</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead Assignment Rule - US MDR to US MDR Round Robin Queue</fullName>
+        <actions>
+            <name>Set_Original_Queue_to_US_MDR</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Reassign Leads in the US MDR queue using the US MDR Round Robin Queue</description>
+        <formula>OwnerId = $Label.US_MDR_Queue_ID</formula>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>DemandGen_A_new_Site_Submission_has_been_assigned_to_a_Lead_Generator</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Lead Assignment Rule - US Marketing Qualified to Round Robin Queues</fullName>
+        <actions>
+            <name>Set_Original_Queue_to_US_SDR</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>US Lead Assignment for Marketing Qualified Leads - See MO-425, SFDC-3160</description>
+        <formula>AND(   ISPICKVAL(Status,&apos;Marketing Qualified&apos;),   
+			OR(	OwnerId = $Label.Marketing_Engaged_Queue_Id,   OwnerId = &apos;0053f000000pHFzAAM&apos;),
+				ISPICKVAL(Territory__c ,&apos;US/CANADA&apos;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead Assignment Rule -Data Services Queue</fullName>
+        <actions>
+            <name>Set_Original_Queue_to_Data_ServicesQueue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <field>Lead.Integration_Type__c</field>
+            <operation>equals</operation>
+            <value>ObjectRocket - HubSpot</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Territory__c</field>
+            <operation>equals</operation>
+            <value>US/CANADA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Marketing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.OR_HubSpot_Form_Type__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Reassign Leads in the Data Services Queue using Round Robin Queue</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead Owner Email</fullName>
+        <actions>
+            <name>Lead_Owner_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISCHANGED(OwnerId  ), NOT( $Profile.Id = &apos;00e6100000163ts&apos;),  APN_CRM_Unique_Identifier__c !=&apos;&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead Status - Set New to Marketing Engaged for Marketing Engaged Queue</fullName>
+        <actions>
+            <name>Set_Lead_Status_to_Marketing_Engaged</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>equals</operation>
+            <value>Marketing Engaged Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <description>Set the Lead Status from New to Marketing Engaged when a Lead is assigned to the Marketing Engaged Queue. See MO-430</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Lead updates to AWS</fullName>
+        <actions>
+            <name>IntegrationTypeAWS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>SendLeadUpdatesToAWS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This WF sets Integration Status for ReadyToSyncWithAWS</description>
+        <formula>AND( ISCHANGED(LastModifiedDate), APN_CRM_Unique_Identifier__c != NULL, ISPICKVAL(Integration_Type__c , &apos;ACE CRM&apos;), LastModifiedBy.Username  !=&apos;mulesoft.user@rackspace.com.rax&apos;, RecordType.DeveloperName =&apos;Marketing&apos;, NOT(ISPICKVAL(Status, &apos;Pending Approval&apos;)), NOT(ISPICKVAL(Status, &apos;SFU Required&apos;)), NOT(ISPICKVAL(Status, &apos;Unqualified - To Lead Gen&apos;)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>MQL score ups back to New Status</fullName>
+        <actions>
+            <name>Update_Status_for_MQL_score_ups</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Unqualified - To Marketing,Tele - Accepted Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LastModifiedById</field>
+            <operation>equals</operation>
+            <value>Oracle Soa</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>MSFT Public Lead Passed</fullName>
+        <actions>
+            <name>MSFT_Public_email_alert_when_leads_are_passed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
+        <criteriaItems>
+            <field>Lead.Focus_Area__c</field>
+            <operation>includes</operation>
+            <value>MSFT Public</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Lead_Generator__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Lead_Date_Passed__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Owner_Role__c</field>
+            <operation>notContain</operation>
+            <value>US Q Team</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>notEqual</operation>
+            <value>US Lead Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Lead_Type__c</field>
+            <operation>equals</operation>
+            <value>Office 365</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LastModifiedById</field>
+            <operation>notEqual</operation>
+            <value>Data.com Clean</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Requested_Products__c</field>
+            <operation>includes</operation>
+            <value>Fanatical Support for 0365 – Navigator,Fanatical Support for O365 – Aviator</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mkto Lead Assign US - ISR</fullName>
+        <actions>
+            <name>update_lead_owner_to_US_ISR_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Lead.Queue_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Queue_Name__c</field>
+            <operation>equals</operation>
+            <value>US ISR ACQ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Username</field>
+            <operation>notContain</operation>
+            <value>automatedclean</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mkto Lead Assign US - SDR</fullName>
+        <actions>
+            <name>Lead_Owner_to_US_SDR</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Lead.Queue_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Queue_Name__c</field>
+            <operation>equals</operation>
+            <value>US SDR QUEUE</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Username</field>
+            <operation>notContain</operation>
+            <value>automatedclean</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Mkto Lead Assign US - SDR2</fullName>
+        <actions>
+            <name>US_SDR_Queue_queue_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Lead.Queue_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Queue_Name__c</field>
+            <operation>equals</operation>
+            <value>US - SDR Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Username</field>
+            <operation>notContain</operation>
+            <value>automatedclean</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>New AWS Lead</fullName>
+        <actions>
+            <name>New_AWS_Lead_submitted</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Lead.Campaign_Interest__c</field>
+            <operation>equals</operation>
+            <value>AWS Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CMP__c</field>
+            <operation>contains</operation>
+            <value>managed-aws</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Azure Lead</fullName>
+        <actions>
+            <name>US_Azure_Internal_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Site Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CMP__c</field>
+            <operation>contains</operation>
+            <value>managed-azure</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Google Cloud Lead</fullName>
+        <actions>
+            <name>US_Google_Internal_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Site Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CMP__c</field>
+            <operation>contains</operation>
+            <value>managed-google</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Web_Form_Information__c</field>
+            <operation>contains</operation>
+            <value>managed-google</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New MPC Site Sub</fullName>
+        <actions>
+            <name>US_MPC_Internal_Site_Sub_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Site Submission</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CMP__c</field>
+            <operation>contains</operation>
+            <value>microsoft-cloud-platform,hyper-v</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateLeads</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateLeads</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(ISBLANK(Old_Record_Id__c), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateLeadNum</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateLeads</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(  $User.Id = $Label.FMWFoundationUser,  NOT(ISBLANK(Old_Record_Id__c))  )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateLeads</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateLeads</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(NOT(ISBLANK(Old_Record_Id__c)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>No activitiy on lead in 3 days</fullName>
+        <actions>
+            <name>Send_notification_to_the_lead_owner_when_an_activity_hasn_t_been_created_in_3_da</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Tele - Accepted Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Number_of_days_since_last_activity__c</field>
+            <operation>equals</operation>
+            <value>3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>greaterOrEqual</operation>
+            <value>Ricky Rowe,Josh Gallagher</value>
+        </criteriaItems>
+        <description>This workflow will send an email to the lead owner if a activity hast been completed in 10 days on an open lead</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ObjectRocket - HubSpot Form Lead Status Update</fullName>
+        <actions>
+            <name>Set_Lead_Status_to_Marketing_Qualified</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Lead.OR_HubSpot_Form_Type__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Integration_Type__c</field>
+            <operation>equals</operation>
+            <value>ObjectRocket - HubSpot</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Marketing</value>
+        </criteriaItems>
+        <description>Created for SFDC-6371</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Once max lead gen info is input %28As long as lead is in tele accepted status%29%2C status should automatically change to TQL</fullName>
+        <actions>
+            <name>Update_Lead_Status_to_TQL</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>When &quot;Max Lead Gen&quot; IS NOT NULL &amp; Lead Status = Tele Accepted &gt; Lead Status &gt; &quot;Tele-Qualified&quot; (TQL)</description>
+        <formula>AND(
+NOT(ISBLANK(Lead_Generator__c)), 
+NOT(ISBLANK(Lead_Date_Passed__c)),
+ISPICKVAL(PRIORVALUE(Status), &quot;Tele - Accepted Lead&quot;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>OpenStack Private Lead Passed</fullName>
+        <actions>
+            <name>OpenStack_Private_Lead_has_been_Passed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Lead.Focus_Area__c</field>
+            <operation>includes</operation>
+            <value>OpenStack Private</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Lead_Generator__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Lead_Date_Passed__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Owner_Role__c</field>
+            <operation>notContain</operation>
+            <value>US Q Team</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>notEqual</operation>
+            <value>US Lead Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LastModifiedById</field>
+            <operation>notEqual</operation>
+            <value>Data.com Clean</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Owner%27s Manager Email Update</fullName>
+        <actions>
+            <name>Owner_s_Manager_Email_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update the field with Manager&apos;s email.</description>
+        <formula>OR( ISNEW(), ISCHANGED(OwnerId) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Partner Lead Closed Lost</fullName>
+        <actions>
+            <name>Email_Alert_to_Partner_When_Lead_is_Rejected</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Partner_Lead_has_been_closed_lost</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Partner Network</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Rejected</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Partner Lead Converted</fullName>
+        <actions>
+            <name>Partner_Lead_has_been_Converted</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Email Alert sent to Partner when Partner Lead is Converted</description>
+        <formula>AND(IsConverted =True,CONTAINS( $Label.Partner_Profiles , CreatedBy.ProfileId ) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - CASL Lead Rule</fullName>
+        <actions>
+            <name>CASL_Lead_Update_Field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.CASL_Lead_Consent__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFDC-3306 Lead and Contact Changes for Marketing Cloud</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Date of Lead Consent</fullName>
+        <actions>
+            <name>GDPR_Lead_Consent_Date_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.GDPR_Lead_Consent__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFDC-3306 Lead and Contact Changes for Marketing Cloud</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Double Opt In Lead Rule</fullName>
+        <actions>
+            <name>Double_Opt_In_Lead_Date_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Double_Opt_In_Lead__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFDC-3306 Lead and Contact Changes for Marketing Cloud</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Lead Email Opt Out</fullName>
+        <actions>
+            <name>Lead_Consent_is_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Lead_Double_Opt_In_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.HasOptedOutOfEmail</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFDC-3306 Lead and Contact Changes for Marketing Cloud</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Request Data Delete Lead Rule</fullName>
+        <actions>
+            <name>Data_Request_field_update_delete_Lead</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.GDPR_Request_Delete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFDC-3306 Lead and Contact Changes for Marketing Cloud</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Request Data Lead Rule</fullName>
+        <actions>
+            <name>Data_Request_field_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.GDPR_Request_Data__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>SFDC-3306 Lead and Contact Changes for Marketing Cloud</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Notification Email To Partners After 48hrs</fullName>
+        <active>true</active>
+        <formula>AND(ISPICKVAL( LeadSource ,&apos;Partner Network&apos;),CONTAINS( $Label.Partner_Profiles, CreatedBy.ProfileId),CONTAINS( $Label.UnitedStates_Canada ,  Partner_Company__r.BillingCountry ),ISPICKVAL(Status,&apos;New&apos;))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Email_Notification_Partner_Ops</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Lead.CreatedDate</offsetFromField>
+            <timeLength>2</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>TypeOfDeal_Dis_Commissions_Role</fullName>
+        <actions>
+            <name>Update_Commissions_Role_Don_t_Pay_Comm</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Partner Network</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Type_Of_Deal__c</field>
+            <operation>equals</operation>
+            <value>Distribution</value>
+        </criteriaItems>
+        <description>When the &quot;Distribution&quot; option is selected set “Commissions Role” field to “Don’t Pay Commissions” 
+
+Case #64573</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>US MDR Email Notification to Lead Owner</fullName>
+        <actions>
+            <name>Emailnotification_US_MDR</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>This Workflow rule is used to send email notification to the lead was subsequently assigned to an MDR user via the US MDR Round Robin queue</description>
+        <formula>Original_Queue__c=$Label.US_MDR_Site_Sub</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Approval Status on Seller Rejection</fullName>
+        <actions>
+            <name>Update_Approval_Status_to_Not_Required</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Lead is created and rejected by seller then approval status fields to ;Not Required&apos; to check in Approval Process</description>
+        <formula>AND( CreatedById =  OwnerId,OwnerId = $User.Id,CONTAINS( $Label.Sales_Rep_Profiles ,$Profile.Id),ISCHANGED(Status),OR(ISPICKVAL(Status,&quot;Unqualified - To Lead Gen&quot;),ISPICKVAL(Status,&quot;Unqualified - To Marketing&quot;)),CONTAINS( $Label.RejectReasonsforApproval ,TEXT(Reason__c)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Created from Lead to True</fullName>
+        <actions>
+            <name>Update_Created_From_Lead_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Created_from_Lead__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Update the Created From Lead to true</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update PAM Email</fullName>
+        <actions>
+            <name>Update_PAM_Email</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(      CONTAINS( $Label.Partner_Profiles ,$User.ProfileId),      ISBLANK(PAM_email__c) )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update The Lead Owner</fullName>
+        <actions>
+            <name>owner_field_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Marketo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Marketing Engaged</value>
+        </criteriaItems>
+        <description>Update the lead owner as a Marketing Engaged Queue when the lead status is equals to Marketing Engaged.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update The Lead Owner Field</fullName>
+        <actions>
+            <name>owner_field_updates</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.LeadSource</field>
+            <operation>equals</operation>
+            <value>Marketo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.Status</field>
+            <operation>equals</operation>
+            <value>Marketing Qualified</value>
+        </criteriaItems>
+        <description>Update the lead owner field as a US SDR Queue when the lead status is equals to Marketing Qualified.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Updated Leads going to LDT queue</fullName>
+        <actions>
+            <name>update_LDT_leads_to_SDR</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>equals</operation>
+            <value>US LDT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CreatedById</field>
+            <operation>equals</operation>
+            <value>Oracle Soa</value>
+        </criteriaItems>
+        <description>push anything still routed to LDT queue, to US- SDR queue.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Updated Leads going to OSR queue</fullName>
+        <actions>
+            <name>Update_to_ISR_Queue</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 and (2 or 3)</booleanFilter>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>equals</operation>
+            <value>US OSR Queue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.CreatedById</field>
+            <operation>equals</operation>
+            <value>Oracle Soa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LastModifiedById</field>
+            <operation>equals</operation>
+            <value>Oracle Soa</value>
+        </criteriaItems>
+        <description>push anything still routed to OSR queue, to US- ISR queue.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>rvee__Assigned to Partner</fullName>
+        <actions>
+            <name>rvee__AssignedToPartnerModified</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>rvee__AssignedToPartnerPending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>rvee__AssignedToPartnerTimestamp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>(rvpe__IsDealRegistration__c == false) &amp;&amp; (ISNEW() || ISCHANGED(rvpe__RVMember__c)) &amp;&amp; (rvpe__RVMember__c != null)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>rvee__Deal Registration Denied</fullName>
+        <active>false</active>
+        <formula>(rvpe__IsDealRegistration__c == true) &amp;&amp; (rvpe__DealRegistrationDenied__c == true)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>rvee__Notify RV Member</fullName>
+        <actions>
+            <name>rvee__NotifyRVMemberReset</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>(rvpe__NotifyRVMember__c == true)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

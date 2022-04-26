@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Has_non_negative_pre_billed_amount</fullName>
+    <active>true</active>
+    <description>This check will ensure that the budget pre billed amount is not a negative value</description>
+    <errorConditionFormula>pse__PreBilledAmount__c  &lt;  0</errorConditionFormula>
+    <errorDisplayField>pse__PreBilledAmount__c</errorDisplayField>
+    <errorMessage>Pre Billed Amount should be a positive value</errorMessage>
+</ValidationRule>

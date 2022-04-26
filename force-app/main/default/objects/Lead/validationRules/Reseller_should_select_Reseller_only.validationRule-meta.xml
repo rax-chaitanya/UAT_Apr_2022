@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reseller_should_select_Reseller_only</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+CONTAINS( $Label.Partner_Profiles ,$User.ProfileId), 
+OR( 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;Reseller&apos;), 
+ISPICKVAL(Partner_Company__r.Partner_Level__c,&apos;ResellerEMEA&apos;) 
+), 
+NOT(ISPICKVAL( Type_Of_Deal__c , &apos;Reseller&apos;)), 
+NOT( CONTAINS(LOWER(Partner_Company__r.Name),&apos;sitecore&apos;)) 
+)</errorConditionFormula>
+    <errorDisplayField>Type_Of_Deal__c</errorDisplayField>
+    <errorMessage>Resellers Must Select Type of deal as Reseller only.</errorMessage>
+</ValidationRule>

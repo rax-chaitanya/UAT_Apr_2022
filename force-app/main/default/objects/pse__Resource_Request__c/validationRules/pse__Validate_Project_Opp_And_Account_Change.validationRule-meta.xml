@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Validate_Project_Opp_And_Account_Change</fullName>
+    <active>true</active>
+    <description>Rule to validate the change to project, opportunity or account of the resource request populated with a resource request set.</description>
+    <errorConditionFormula>AND (NOT( ISBLANK(pse__Resource_Request_Set__c)), ( OR( ISCHANGED( pse__Account__c ), ISCHANGED( pse__Opportunity__c ) , ISCHANGED( pse__Project__c ) ) ) )</errorConditionFormula>
+    <errorMessage>You cannot change the project, opportunity and account of a resource request that belongs to a resource request set.</errorMessage>
+</ValidationRule>

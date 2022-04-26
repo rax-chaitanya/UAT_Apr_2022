@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>ForecastingQuota</baseObject>
+    <category>forecasts</category>
+    <deployed>true</deployed>
+    <description>Forecasts with Opp Fields (Cloud &amp; Dedi)</description>
+    <join>
+        <join>
+            <outerJoin>true</outerJoin>
+            <relationship>ForecastingFactOppSplits</relationship>
+        </join>
+        <outerJoin>true</outerJoin>
+        <relationship>ForecastingQuotaItems</relationship>
+    </join>
+    <label>Forecasts with Opp Fields (Cloud &amp; Dedi)</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EndDate</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Quota: Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>QuotaAmount</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CurrencyIsoCode</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Quota Start Date</displayNameOverride>
+            <field>StartDate</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Quota: Owner Role</displayNameOverride>
+            <field>Owner.UserRole.Name</field>
+            <table>ForecastingQuota</table>
+        </columns>
+        <masterLabel>Forecasting Quotas</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AmountWithoutAdjustments</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AmountWithoutManagerAdjustment</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CurrencyIsoCode</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EndDate</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ForecastAmount</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ForecastCategoryName</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ForecastingItemCategory</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HasAdjustment</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HasOwnerAdjustment</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast Owner: Forecast Amount</displayNameOverride>
+            <field>OwnerOnlyAmount</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>StartDate</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ForecastingType.IsActive</field>
+            <table>ForecastingQuota.ForecastingQuotaItems</table>
+        </columns>
+        <masterLabel>Forecasting Items</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Debook</displayNameOverride>
+            <field>Opportunity.Debook__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Debook Amount</displayNameOverride>
+            <field>Opportunity.Debook_Amount__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Debook Type</displayNameOverride>
+            <field>Opportunity.Debook_Type__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Opportunity.LBI__LatticeAccountName__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Number</displayNameOverride>
+            <field>Opportunity.Acc_Number__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Amount</displayNameOverride>
+            <field>Opportunity.Amount</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Stage</displayNameOverride>
+            <field>Opportunity.StageName</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Type</displayNameOverride>
+            <field>Opportunity.Type</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity.Focus_Area__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity.LeadSource</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Close Date</displayNameOverride>
+            <field>Opportunity.CloseDate</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Opportunity</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Company Name</displayNameOverride>
+            <field>Opportunity.Account_Old__c.Company_Name__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Owner</displayNameOverride>
+            <field>Opportunity.Owner</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SplitAmountCalculated</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Category</displayNameOverride>
+            <field>Opportunity.Category__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Lead Generator</displayNameOverride>
+            <field>Opportunity.Lead_Generator__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Num</displayNameOverride>
+            <field>Opportunity.Opportunity_ID__c</field>
+            <table>ForecastingQuota.ForecastingQuotaItems.ForecastingFactOppSplits</table>
+        </columns>
+        <masterLabel>Opportunity Splits</masterLabel>
+    </sections>
+</ReportType>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSA_Milestone_Required</fullName>
+    <active>true</active>
+    <description>Milestone mandatory for time entry</description>
+    <errorConditionFormula>ISBLANK( pse__Milestone__c )</errorConditionFormula>
+    <errorDisplayField>pse__Milestone__c</errorDisplayField>
+    <errorMessage>Milestone must be selected</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>START_and_STOP_Churn_Date_are_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+ISPICKVAL( Customer_s_Current_Pulse__c , &quot;Customer is exhibiting churn indicators (including lack of interactions)Customer is leaving Rackspace&quot;) , 
+OR( ISBLANK( Expected_START_Churn_Date__c ) ,
+    ISBLANK( Expected_STOP_Churn_Date__c ) 
+  ) 
+)</errorConditionFormula>
+    <errorDisplayField>Account_Manager__c</errorDisplayField>
+    <errorMessage>Expected START Churn Date and Expected STOP Churn Date are Required.</errorMessage>
+</ValidationRule>

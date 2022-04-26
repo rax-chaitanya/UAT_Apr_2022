@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_Cannot_edit_CVP_true_Opportunity</fullName>
+    <active>true</active>
+    <description>Prevent user from editing Opportunity record if CVP verified field equals to true.</description>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT(CONTAINS($Label.Partner_Profiles ,$User.ProfileId)),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations,  $Profile.Name )),
+PRIORVALUE( CVP_Verified__c ) = True, NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id)),
+NOT( ISCHANGED( Number_Of_Customer_Reviews__c )),
+NOT( $Profile.Name = &quot;Rackspace - SE US&quot;),
+NOT( $Profile.Name = &quot;Rackspace - SE INTL&quot;),
+NOT( $Profile.Name = &quot;Rackspace - SE Manager&quot;),
+NOT( $Profile.Name = &quot;Rackspace ProServ - US&quot;)
+)</errorConditionFormula>
+    <errorDisplayField>CVP_Verified__c</errorDisplayField>
+    <errorMessage>You Can not edit the Opportunity once CVP verified is set to TRUE</errorMessage>
+</ValidationRule>

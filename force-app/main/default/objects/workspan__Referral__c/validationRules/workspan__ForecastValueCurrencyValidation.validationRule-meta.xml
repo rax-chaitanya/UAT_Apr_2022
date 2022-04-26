@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>workspan__ForecastValueCurrencyValidation</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK(workspan__ForecastValueCurrency__c) || REGEX(workspan__ForecastValueCurrency__c, &apos;[a-zA-Z]{3}&apos;))</errorConditionFormula>
+    <errorDisplayField>workspan__ForecastValueCurrency__c</errorDisplayField>
+    <errorMessage>Currency code must have exactly three letters.</errorMessage>
+</ValidationRule>

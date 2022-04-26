@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>david.porter@rackspace.com</contactEmail>
+    <label>Retail</label>
+    <oauthConfig>
+        <callbackUrl>https://admin.rackspace.com/salesforce/oauth_callback</callbackUrl>
+        <consumerKey>3MVG9qEXqmIutu_QNttBhrw05Q_7xJPC.Qo8zowERd5_RA.PiFsNyRohRgc2IA2Ve0eJUrPvraUYdLFtZycAM</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_Customer_Win_Loss_Validation</fullName>
+    <active>true</active>
+    <description>Users should not be able to create a Customer Win/Loss record (Customer_Win_Loss_Review__c) with record type of External, 
+unless a Customer Win/Loss record with record type of Internal exists on the related Opportunity.</description>
+    <errorConditionFormula>ISNEW() &amp;&amp; Opportunity__r.Internal_Customer_Win_Loss_Review_Count__c == 0 &amp;&amp; RecordType.Name == &apos;External&apos;</errorConditionFormula>
+    <errorMessage>External Reviews can only be created if an Internal Review exists on this opportunity</errorMessage>
+</ValidationRule>

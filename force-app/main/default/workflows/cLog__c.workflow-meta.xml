@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>CDH_NewSfdcToFusion_DeleteContact</fullName>
+        <apiVersion>43.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Contact) - Delete action to Notify CMS.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>RPN__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_NewSfdcToFusion-DeleteContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>GTMO_NewSfdcToFusion_MergeAccounts</fullName>
+        <apiVersion>50.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Merge action to Update accounts in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>GTMO_NewSfdcToFusion-MergeAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteACR</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (ACR) - Delete action to delete ACR in Current Salesforce &amp; Notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>OLD_Related_Id__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteACR</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteAccount</fullName>
+        <apiVersion>47.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Account) - Delete action to Notify SF Stash ( Hard Delete).</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteAccount</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteCampaignMember</fullName>
+        <apiVersion>38.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Campaign Members) - delete action to Delete a Campaign Member in Old SFDC.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/DELETELEGACYCAMPAIGNMEM/v01/</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteCampaignMember</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteContact</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Contact) - Delete action to Notify SF Stash ( Hard Delete).</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteDealCenterRequest</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Deal Center Request) - Delete action to delete Sort Engagement in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteDealCenterRequest</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteOppCompetitor</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opportunity Competitor) - Delete action to delete Opportunity Competitor in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/DELETELEGACYOPPCOMPETITOR/v01/</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteOppCompetitor</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteOppFocusArea</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Focus Area) - Delete action to Update Opp in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Focus_Area__c</fields>
+        <fields>Id</fields>
+        <fields>OLD_Related_Id__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteOppFocusArea</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteOppSplit</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp split) - Delete action to delete Opp in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteOppSplit</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteOppTeamMem</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Delete action to delete specialist in Current Salesforce and notify SF stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteOppTeamMem</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteOpportunity</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp) - Delete action to delete Opp in Current Salesforce &amp; Notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteOpportunity</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeletePartnerRole</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Partner Role) - Delete action to delete Partner Role in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/DELETELEGACYOPPPARTNERROLE/v01/</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeletePartnerRole</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeletePartnerRoleLead</fullName>
+        <apiVersion>39.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/LeadNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>IsDeleted</fields>
+        <fields>OLD_Related_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeletePartnerRoleLead</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteQuote</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Quote) - Delete action to delete Quote in Current Salesforce and notify SF stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/QuoteNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteQuote</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteQuoteLine</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Quote Line) - Delete action to delete SFDC Device in Current Salesforce and notify SF stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/QuoteNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteQuoteLine</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteRVCompensation</fullName>
+        <apiVersion>41.0</apiVersion>
+        <description>New Salesforce to FMW Integration - Delete action to delete RV Compensation in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/DELETELEGACYRVCOMPENSATION/v01/</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteRVCompensation</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteRVCompensationDeta</fullName>
+        <apiVersion>41.0</apiVersion>
+        <description>New Salesforce to FMW Integration - Delete action to delete RV Compensation in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/DELETELEGACYRVCOMPENSATIONDETAIL/v01/</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteRVCompensationDeta</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteSalesSupport</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Sales Support) - Delete action to delete Sales Support in Current Salesforce.</description>
+        <endpointUrl>https://raxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/DELETELEGACYSSP/v01/</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteSalesSupport</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteSpecialistLead</fullName>
+        <apiVersion>39.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/LeadNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>IsDeleted</fields>
+        <fields>IsDeleted__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteSpecialistLead</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_MergeCompanies</fullName>
+        <apiVersion>38.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Companies) - Merge action to Update companies in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-MergeCompanies</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>UndeleteCompaniesOBMtoFusion</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>OBM that holds undelete event records from Companies stored on cLog Object</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>UndeleteCompaniesOBMtoFusion</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzDeleteCompaniesOBMtoFusion</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>OBM that holds delete event records from Companies stored on cLog Object</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzDeleteCompaniesOBMtoFusion</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzUndeleteCompaniesOBMtoFusion</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>OBM that holds undelete event records from Companies stored on cLog Object</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzUndeleteCompaniesOBMtoFusion</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzzzDeleteCompaniesOBMtoFusion</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>OBM that holds delete event records from Companies stored on cLog Object</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzzzDeleteCompaniesOBMtoFusion</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzzzzUndeleteCompaniesOBMtoFusion</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>OBM that holds undelete event records from Companies stored on cLog Object</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/CompanyNotifications</endpointUrl>
+        <fields>Action_Name__c</fields>
+        <fields>Action_Record_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzzzzUndeleteCompaniesOBMtoFusion</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>CDH_NewSfdcToFusion-DeleteContact</fullName>
+        <actions>
+            <name>CDH_NewSfdcToFusion_DeleteContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration  - to notify deleted contacts to Stash</description>
+        <formula>AND(  NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User), NOT(ISBLANK(RPN__c)), Name = &apos;Contact&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_NewSfdcToFusion-MergeAccounts</fullName>
+        <actions>
+            <name>GTMO_NewSfdcToFusion_MergeAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Accounts) - Merge action to Update accounts in Current Salesforce &amp; notify SFDC Cache.</description>
+        <formula>AND( Name = &apos;Account&apos;, IsMerged__c = True, NOT(ISBLANK(Master_Id__c)), Product_Account__c=true )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteACR</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteACR</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (ACR) - Delete action to delete ACR in Current Salesforce &amp; Notify SF Stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Account_Contact_Role__c&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteAccount</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteAccount</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration - to notify deleted Accounts to Stash</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), Name = &apos;Account&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteCampaignMember</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteCampaignMember</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Campaign Members) - delete action to Delete a Campaign Member in Old SFDC.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  NOT(ISBLANK(Old_Record_Id__c)),  Name = &apos;CampaignMember&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteContact</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Workflow for New Salesforce to FMW Integration  - to notify deleted contacts to Stash</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Contact&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteDealCenterRequest</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteDealCenterRequest</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Deal Center Request) - Delete action to delete Sort Engagement in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),   NOT(ISBLANK(Old_Record_Id__c )),   Name = &apos;Deal_Center_Request__c&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteOppCompetitor</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteOppCompetitor</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opportunity Competitor) - Delete action to delete Opportunity Competitor in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),   Name = &apos;Opportunity_Competitor__c&apos;,   NOT(ISBLANK(Old_Record_Id__c )))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteOppFocusArea</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteOppFocusArea</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Focus Area) - Delete action to Update Opportunity  Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  NOT(ISBLANK(Old_Record_Id__c)),  Name = &apos;Opp_FocusArea__c&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteOppSplit</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteOppSplit</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opp Split) - Delete action to delete Opp in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;OpportunitySplit&apos;,  NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteOppTeamMem</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteOppTeamMem</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Delete action to delete Specialist in Current Salesforce and notify SF stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;OpportunityTeamMember&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteOpportunity</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteOpportunity</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Opp) - Delete action to delete Opp in Current Salesforce &amp; Notify SF Stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),   Name = &apos;Opportunity&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeletePartnerRole</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeletePartnerRole</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Partner Role) - Delete action to delete Partner Role in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Partner_Role__c&apos;,  NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeletePartnerRoleLead</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeletePartnerRoleLead</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Partner Role) - Delete action to delete Partner Role in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Partner_Role_Lead__c&apos;,  NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteQuote</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteQuote</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Quote) - Delete action to delete Quote in Current Salesforce and notify SF stash.</description>
+        <formula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), Name = &apos;Quote__c&apos; )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteQuoteLine</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteQuoteLine</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Quote Line) - Delete action to delete SFDC Devices in Current Salesforce and notify SF stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Quote_Line__c&apos;,  NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteRVCompensation</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteRVCompensation</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration - Delete action to delete RV Compensation in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),   Name = &apos;RV_Compensation__c&apos;,   NOT(ISBLANK(Old_Record_Id__c )))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteRVCompensationDetail</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteRVCompensationDeta</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration - Delete action to delete RV Compensation Detail in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),   Name = &apos;RV_Compensation_Detail__c&apos;,   NOT(ISBLANK(Old_Record_Id__c )))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteSalesSupport</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteSalesSupport</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (SalesSupport) - Delete action to delete SalesSupportin Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Sales_Support_Portfolio__c&apos;,  NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteSpecialistLead</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteSpecialistLead</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opp Team Mem) - Delete action to delete Specialist in Current Salesforce and notify SF stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  Name = &apos;Specialist__c&apos;,  NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-MergeCompanies</fullName>
+        <actions>
+            <name>NewSfdcToFusion_MergeCompanies</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Companies) - Merge action to Update companies in Current Salesforce &amp; notify SFDC Cache.</description>
+        <formula>AND( Name = &apos;Account&apos;, IsMerged__c = True, NOT(ISBLANK(Master_Id__c)) )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzDeleteCompaniesToFusion</fullName>
+        <actions>
+            <name>zzzDeleteCompaniesOBMtoFusion</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow that triggers OBM on clog object for delete companies action on Companies to Fusion</description>
+        <formula>AND( $User.Id !=  $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c,  Action_Name__c = &apos;Delete&apos;,  IsDeleted__c = true)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzUndeleteCompaniesToFusion</fullName>
+        <actions>
+            <name>UndeleteCompaniesOBMtoFusion</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <actions>
+            <name>zzzUndeleteCompaniesOBMtoFusion</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow that triggers OBM on clog object for Undelete companies action on Companies to Fusion</description>
+        <formula>AND( $User.Id !=  $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c,  Action_Name__c = &apos;UnDelete&apos;,  IsDeleted__c = false)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzzzDeleteCompaniesToFusion</fullName>
+        <actions>
+            <name>zzzzzDeleteCompaniesOBMtoFusion</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow that triggers OBM on clog object for delete companies action on Companies to Fusion</description>
+        <formula>AND( $User.Id !=  $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c,  Action_Name__c = &apos;Delete&apos;,  IsDeleted__c = true)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzzzzUndeleteCompaniesToFusion</fullName>
+        <actions>
+            <name>zzzzzzUndeleteCompaniesOBMtoFusion</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow that triggers OBM on clog object for Undelete companies action on Companies to Fusion</description>
+        <formula>AND( $User.Id !=  $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c,  Action_Name__c = &apos;UnDelete&apos;,  IsDeleted__c = false)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>mohan.pk@rackspace.com</contactEmail>
+    <label>Oracle_Incentive_cloud</label>
+    <samlConfig>
+        <acsUrl>https://ejgu.login.us6.oraclecloud.com/oam/server/fed/sp/sso</acsUrl>
+        <encryptionType>AES_128</encryptionType>
+        <entityUrl>https://ejgu.login.us6.oraclecloud.com:443/oam/fed</entityUrl>
+        <issuer>https://rax.my.salesforce.com</issuer>
+        <samlNameIdFormat>Unspecified</samlNameIdFormat>
+        <samlSigningAlgoType>SHA1</samlSigningAlgoType>
+        <samlSubjectType>FederationId</samlSubjectType>
+    </samlConfig>
+    <startUrl>https://ejgu.fa.us6.oraclecloud.com/fscmUI/faces/FuseWelcome</startUrl>
+</ConnectedApp>

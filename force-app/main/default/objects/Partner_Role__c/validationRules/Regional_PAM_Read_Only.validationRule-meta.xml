@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Regional_PAM_Read_Only</fullName>
+    <active>true</active>
+    <description>If PAM Status is Approved then Regional_PAM__c is read only and can only be edited by Sys admin, Integration and Sales Ops Admin</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+TEXT(PAM_Status__c) ==&apos;Approved&apos;,
+ISCHANGED(Regional_PAM__c),NOT(AND(UPPER($User.LastName) = &apos;USER&apos;, UPPER($User.FirstName) = &apos;CONNECTION&apos;))
+)</errorConditionFormula>
+    <errorMessage>Can not edit  Regional PAM</errorMessage>
+</ValidationRule>

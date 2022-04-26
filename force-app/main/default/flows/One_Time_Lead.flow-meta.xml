@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>X10_Day_SLA_Lead_Alert</name>
+        <label>10 Day SLA Lead Alert</label>
+        <locationX>463</locationX>
+        <locationY>416</locationY>
+        <actionName>Lead.Alert_Lead_Owner_s_Manager_if_Lead_is_not_converted_or_rejected_within_10_days</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <description>one time search of leads that are in sales rep ownership for over 10 days</description>
+        <name>SLA_is_not_met_after_10_days</name>
+        <label>SLA is not met after 10 days</label>
+        <locationX>453</locationX>
+        <locationY>132</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SLA_after_10_days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DifferenceofDaysbetweenTodayandMXDayPassed</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>10.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X10_Day_SLA_Lead_Alert</targetReference>
+            </connector>
+            <label>SLA after 10 days</label>
+        </rules>
+    </decisions>
+    <description>To schedule a once time mass email alert to Sales Reps with leads owned for over 10 days</description>
+    <formulas>
+        <name>DifferenceofDaysbetweenTodayandMXDayPassed</name>
+        <dataType>Number</dataType>
+        <expression>Today() - {!$Record.LastModifiedDateWD__c}</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>One Time Lead {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>One Time Lead Inactivity Alert Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>52</locationY>
+        <connector>
+            <targetReference>SLA_is_not_met_after_10_days</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3 AND 4 AND 5 AND 6</filterLogic>
+        <filters>
+            <field>Lead_Owner_Profile_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rackspace Seller-US</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Lead_Owner_Profile_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rackspace - Standard Support User US</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Max_Date_Passed__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <dateTimeValue>2020-06-01T05:00:00.000Z</dateTimeValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Owner_Manager__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Converted</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <schedule>
+            <frequency>Once</frequency>
+            <startDate>2020-07-10</startDate>
+            <startTime>15:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

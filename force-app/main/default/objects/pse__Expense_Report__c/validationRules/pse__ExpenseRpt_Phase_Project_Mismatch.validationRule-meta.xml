@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__ExpenseRpt_Phase_Project_Mismatch</fullName>
+    <active>true</active>
+    <description>Validates whether the phase selected on a expense report belongs to the same project as the expense report.</description>
+    <errorConditionFormula>AND(NOT(ISNULL( pse__Project_Phase__c )),( pse__Project_Phase__c &lt;&gt; &apos;&apos;),NOT(ISNULL( pse__Project_Phase__r.pse__Project__c)),(pse__Project_Phase__r.pse__Project__c &lt;&gt; &apos;&apos;),(pse__Project__c &lt;&gt; pse__Project_Phase__r.pse__Project__c))</errorConditionFormula>
+    <errorDisplayField>pse__Project_Phase__c</errorDisplayField>
+    <errorMessage>Cannot associate the phase with this expense report. The phase must belong to the same project as the expense report. Select a phase that belongs to the same project as the expense report.</errorMessage>
+</ValidationRule>

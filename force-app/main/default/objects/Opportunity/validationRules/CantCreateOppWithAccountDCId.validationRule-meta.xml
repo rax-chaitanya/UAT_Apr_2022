@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CantCreateOppWithAccountDCId</fullName>
+    <active>false</active>
+    <description>From SFDC-799: A validation rule is needed to prevent the user from creating an opportunity where the associated account has a DC ID.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS($Label.Admin_Profiles,$User.ProfileId)), 
+ISNEW(), 
+!ISBLANK(Account_Old__r.DC_Account_Number__c) 
+)</errorConditionFormula>
+    <errorMessage>This opportunity cannot be created because the DC Account Number is populated on the related Account.</errorMessage>
+</ValidationRule>

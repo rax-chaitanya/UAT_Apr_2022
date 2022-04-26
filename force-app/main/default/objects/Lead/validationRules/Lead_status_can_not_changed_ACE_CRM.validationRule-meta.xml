@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_status_can_not_changed_ACE_CRM</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISCHANGED( Status ) , RecordType.DeveloperName =&apos;Awaiting_Qualification&apos;)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>You are not allowed to change the status of lead on Awaiting Qualification</errorMessage>
+</ValidationRule>

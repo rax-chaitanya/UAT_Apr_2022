@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Invoice_Submitted_Check</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(pse__Vendor_Invoice__r.pse__Submitted__c,OR(ISCHANGED(pse__Amount__c),ISCHANGED(pse__Date__c)))</errorConditionFormula>
+    <errorMessage>The Amount and Date fields cannot be changed for submitted vendor invoices</errorMessage>
+</ValidationRule>

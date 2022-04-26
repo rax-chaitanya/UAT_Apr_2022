@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Billing_Requires_Inclusion</fullName>
+    <active>true</active>
+    <description>For a Timecard to be marked as Billed, it must also be marked as Included in Financials and Approved.</description>
+    <errorConditionFormula>AND(pse__Billed__c,OR(NOT(pse__Include_In_Financials__c),NOT(pse__Approved__c)))</errorConditionFormula>
+    <errorDisplayField>pse__Billed__c</errorDisplayField>
+    <errorMessage>For a Timecard to be marked as Billed, it must also be marked as Included in Financials and Approved.</errorMessage>
+</ValidationRule>

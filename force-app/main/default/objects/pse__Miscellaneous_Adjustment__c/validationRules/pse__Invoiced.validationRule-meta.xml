@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Invoiced</fullName>
+    <active>true</active>
+    <description>Invoice Number or Date is not allowed on record unless it is invoiced</description>
+    <errorConditionFormula>(pse__Invoice_Number__c != null ||
+pse__Invoice_Date__c != null) &amp;&amp; pse__Invoiced__c = false</errorConditionFormula>
+    <errorMessage>Invoice Number or Date is not allowed on record unless it is invoiced</errorMessage>
+</ValidationRule>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Validate_Status</fullName>
+    <active>true</active>
+    <description>Don&apos;t allow the Active status until the associated opportunity is closed/won and the request has a project.</description>
+    <errorConditionFormula>AND(
+    LEN(pse__Opportunity__c) &gt; 0,
+    ISPICKVAL( pse__Status__c , &apos;Active&apos;),
+    OR( 
+        NOT( pse__Opportunity__r.IsClosed ), 
+        NOT( pse__Opportunity__r.IsWon ),
+        LEN(pse__Project__c) = 0
+    )
+)</errorConditionFormula>
+    <errorDisplayField>pse__Status__c</errorDisplayField>
+    <errorMessage>The Active status can only be used for closed, won opportunities and must have a project set.</errorMessage>
+</ValidationRule>

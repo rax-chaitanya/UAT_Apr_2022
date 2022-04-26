@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incorrect_Company_Linkage_Subject_Type</fullName>
+    <active>false</active>
+    <description>Subject and Type should map while creating an Incorrect Company Linkage task.</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+ISPICKVAL(Type, &quot;Data Type&quot;), 
+NOT(Subject = &quot;Account Linkage Update Needed&quot;) 
+)</errorConditionFormula>
+    <errorDisplayField>Subject</errorDisplayField>
+    <errorMessage>For &quot;Data Type&quot; task Type, subject must be &quot;Account Linkage Update Needed&quot;.</errorMessage>
+</ValidationRule>

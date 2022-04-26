@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Account_Billing_Address_Bypass_Alert</fullName>
+        <description>Account Billing Address Bypass Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Accounts_Address_Bypass</template>
+    </alerts>
+    <alerts>
+        <fullName>Approval_Rejected_Menu_Pricing_Request_email</fullName>
+        <description>Approval - Rejected Menu Pricing Request email</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Approval_Rejected_Menu_Pricing</template>
+    </alerts>
+    <alerts>
+        <fullName>Linked_to_Wrong_Company_Email_Alert</fullName>
+        <description>Linked to Wrong Company-Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>egallegos@newrackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>samuel.kj@rackspace.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Email_Linked_to_Wrong_Company</template>
+    </alerts>
+    <alerts>
+        <fullName>Menu_Pricing_Approved</fullName>
+        <description>Menu Pricing Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Menu_Pricing_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Account_Owner</fullName>
+        <description>New Account Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/New_Account_Owner_HTML</template>
+    </alerts>
+    <alerts>
+        <fullName>Request_for_Contracting_Entity_change_has_been_rejected</fullName>
+        <description>Request for Contracting Entity change has been rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Approval_Rejected_Contracting_Entity</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>ContractingEntityApproved</fullName>
+        <field>ContractingEntityApproved__c</field>
+        <formula>&apos;Approved&apos;</formula>
+        <name>ContractingEntityApproved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ContractingEntityRejected</fullName>
+        <field>ContractingEntityApproved__c</field>
+        <formula>&apos;Rejected&apos;</formula>
+        <name>ContractingEntityRejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contracting_Entity_Change</fullName>
+        <field>Contracting_Entity_Change__c</field>
+        <literalValue>0</literalValue>
+        <name>Contracting Entity Change</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Ever_Escalated_to_Rackspace_TRUE</fullName>
+        <field>Ever_Escalated_to_Rackspace__c</field>
+        <literalValue>1</literalValue>
+        <name>Ever Escalated to Rackspace = TRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Menu_Pricing_Approved_to_True</fullName>
+        <field>Menu_Pricing_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Menu Pricing Approved to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_Reviewed_By_Value</fullName>
+        <field>Last_Reviewed_By__c</field>
+        <formula>$User.FirstName + &apos; &apos; + $User.LastName</formula>
+        <name>Set Last Reviewed By Value</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Last_Reviewed_On_Value</fullName>
+        <field>Last_Reviewed_On__c</field>
+        <formula>today()</formula>
+        <name>Set Last Reviewed On Value</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Spark_company_To_true</fullName>
+        <field>Spark_Company__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Spark company To true</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Company_Name__c</targetObject>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_CreateAccounts</fullName>
+        <apiVersion>43.0</apiVersion>
+        <description>Workflow for New Salesforce to notify FMW - Create action to Create Account in CMS</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Number__c</fields>
+        <fields>DP_AccountId__c</fields>
+        <fields>DP_CustomerId__c</fields>
+        <fields>Id</fields>
+        <fields>RCN__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion-CreateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_UpdateAccounts</fullName>
+        <apiVersion>43.0</apiVersion>
+        <description>Workflow for New Salesforce to notify FMW - Update action to update Account in CMS</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Number__c</fields>
+        <fields>DP_AccountId__c</fields>
+        <fields>DP_CustomerId__c</fields>
+        <fields>Id</fields>
+        <fields>RCN__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion-UpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_UpdateAccountsESS</fullName>
+        <apiVersion>43.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Acc_Owner_Fed_Id__c</fields>
+        <fields>Acc_Owner_Name__c</fields>
+        <fields>Account_Number__c</fields>
+        <fields>CurrencyIsoCode</fields>
+        <fields>DDI__c</fields>
+        <fields>DP_AccountId__c</fields>
+        <fields>DP_CustomerId__c</fields>
+        <fields>Id</fields>
+        <fields>RCN__c</fields>
+        <fields>Type__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion-UpdateAccountsESS</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToDPCRM_UpdateAccounts</fullName>
+        <apiVersion>42.0</apiVersion>
+        <endpointUrl>https://maskedapi.datapipe.net/salesforce/listeners/rax/updateaccounts.asmx</endpointUrl>
+        <fields>Acc_Owner__c</fields>
+        <fields>Billing_City__c</fields>
+        <fields>Billing_Country__c</fields>
+        <fields>Billing_State_Province__c</fields>
+        <fields>Billing_Street__c</fields>
+        <fields>Billing_Zip_Postal_Code__c</fields>
+        <fields>CreatedById</fields>
+        <fields>CreatedDate</fields>
+        <fields>CurrencyIsoCode</fields>
+        <fields>DP_AccountId__c</fields>
+        <fields>DP_BillingSystem__c</fields>
+        <fields>DP_CustomerId__c</fields>
+        <fields>Id</fields>
+        <fields>Industry__c</fields>
+        <fields>Name</fields>
+        <fields>RecordTypeId</fields>
+        <fields>Website__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToDPCRM-UpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateAccounts</fullName>
+        <apiVersion>36.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Create action to create Accounts in Current Salesforce &amp; Notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteUndeleteAccounts</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Delete/Undelete action to Update Accounts in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Status__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteUndeleteAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateAccounts</fullName>
+        <apiVersion>36.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce &amp; notify SFDC Cache.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzNewSfdcToFusionCreateAccounts</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Create action to create Accounts in Current Salesforce</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Id__c</fields>
+        <fields>Billing_City__c</fields>
+        <fields>Billing_Street__c</fields>
+        <fields>Billing_Zip_Postal_Code__c</fields>
+        <fields>CreatedById</fields>
+        <fields>CreatedDate</fields>
+        <fields>DDI__c</fields>
+        <fields>Id</fields>
+        <fields>LastModifiedById</fields>
+        <fields>LastModifiedDate</fields>
+        <fields>Name</fields>
+        <fields>Named_Account__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Record_Type_Name__c</fields>
+        <fields>Shipping_City__c</fields>
+        <fields>Shipping_Street__c</fields>
+        <fields>Shipping_Zip_Postal_Code__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzNewSfdcToFusionCreateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzNewSfdcToFusionUpdateAccounts</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Id__c</fields>
+        <fields>Billing_City__c</fields>
+        <fields>Billing_Street__c</fields>
+        <fields>Billing_Zip_Postal_Code__c</fields>
+        <fields>CreatedById</fields>
+        <fields>CreatedDate</fields>
+        <fields>DDI__c</fields>
+        <fields>DUNS_Number__c</fields>
+        <fields>Id</fields>
+        <fields>LastModifiedById</fields>
+        <fields>LastModifiedDate</fields>
+        <fields>Name</fields>
+        <fields>Named_Account__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Record_Type_Name__c</fields>
+        <fields>Shipping_City__c</fields>
+        <fields>Shipping_Street__c</fields>
+        <fields>Shipping_Zip_Postal_Code__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzNewSfdcToFusionUpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzzzNewSfdcToFusionCreateAccounts</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Create action to create Accounts in Current Salesforce</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Id__c</fields>
+        <fields>Billing_City__c</fields>
+        <fields>Billing_Street__c</fields>
+        <fields>Billing_Zip_Postal_Code__c</fields>
+        <fields>CreatedById</fields>
+        <fields>CreatedDate</fields>
+        <fields>DDI__c</fields>
+        <fields>Id</fields>
+        <fields>LastModifiedById</fields>
+        <fields>LastModifiedDate</fields>
+        <fields>Name</fields>
+        <fields>Named_Account__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Record_Type_Name__c</fields>
+        <fields>Shipping_City__c</fields>
+        <fields>Shipping_Street__c</fields>
+        <fields>Shipping_Zip_Postal_Code__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzzzNewSfdcToFusionCreateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>zzzzzzNewSfdcToFusionUpdateAccounts</fullName>
+        <apiVersion>35.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Account_Id__c</fields>
+        <fields>Billing_City__c</fields>
+        <fields>Billing_Street__c</fields>
+        <fields>Billing_Zip_Postal_Code__c</fields>
+        <fields>CreatedById</fields>
+        <fields>CreatedDate</fields>
+        <fields>DDI__c</fields>
+        <fields>DUNS_Number__c</fields>
+        <fields>Id</fields>
+        <fields>LastModifiedById</fields>
+        <fields>LastModifiedDate</fields>
+        <fields>Name</fields>
+        <fields>Named_Account__c</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Record_Type_Name__c</fields>
+        <fields>Shipping_City__c</fields>
+        <fields>Shipping_Street__c</fields>
+        <fields>Shipping_Zip_Postal_Code__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>zzzzzzNewSfdcToFusionUpdateAccounts</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Account Billing Address Bypass</fullName>
+        <actions>
+            <name>Account_Billing_Address_Bypass_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(ISCHANGED(  Billing_Address_Bypassed__c  ),  Billing_Address_Bypassed__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_CreateAccounts</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_CreateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to notify FMW - Create action to Create Account in CMS</description>
+        <formula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User), ISBLANK(RCN__c),  OR( CONTAINS($Label.AccountCustomerRecordTypeId,RecordTypeId), CONTAINS($Label.AccountGovernmentRecordTypeId,RecordTypeId), CONTAINS($Label.AccountRBURecordTypeId,RecordTypeId) ) ,  OR( AND( ISPICKVAL(Type__c,&quot;Customer&quot;), NOT(CONTAINS($Label.AccountCustomerRecordTypeId,PRIORVALUE(RecordTypeId))) ), ISPICKVAL(Type__c,&quot;Customer&quot;), ISPICKVAL(Type__c,&quot;Former Customer&quot;) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_UpdateAccounts</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_UpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to notify FMW - Update action to update Account in CMS</description>
+        <formula>AND( NOT($User.Id=$Label.FMW_API_User), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(RCN__c)), NOT(ISNEW()) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>CDH_SfdcToFusion_UpdateAccountsESS</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_UpdateAccountsESS</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to notify FMW - Update action to Update Account in CMS &amp; ESS</description>
+        <formula>AND(  NOT(ISNEW()), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT($User.Id=$Label.FMW_API_User),  OR(NOT(ISBLANK(RCN__c)),NOT(ISBLANK(DDI__c))),ISCHANGED(Acc_Owner__c) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Identify Spark company</fullName>
+        <actions>
+            <name>Update_Spark_company_To_true</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Accounts__c.Spark_Account__c</field>
+            <operation>equals</operation>
+            <value>Spark</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToDPCRM-UpdateAccounts</fullName>
+        <actions>
+            <name>NewSfdcToDPCRM_UpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Notifies DP CRM that a product account has been modified.</description>
+        <formula>AND( NOT(CONTAINS($Label.DP_DatapipeCRMUser,$User.Id)), NOT(ISBLANK(Company_Name__r.DP_AccountId__c)), NOT(ISBLANK(DP_CustomerId__c)), ISPICKVAL(NotifiedSystems__c, &quot;Datapipe&quot;), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateAccounts</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Create action to Create Accounts in Current Salesforce</description>
+        <formula>AND(NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), ISNEW() )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteUndeleteAccounts</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteUndeleteAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - soft Delete/Undelete action to update Accounts in Current Salesforce &amp; notify SFDC Stash</description>
+        <formula>AND( NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(ISNEW()), ISCHANGED(Status__c), OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)),  NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateAccountNum</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New SFDC to Fusion update accounts event to update the CORE Account Number back in Old SFDC.</description>
+        <formula>AND(  $User.Id = $Label.FMWFoundationUser, NOT(ISBLANK(Old_Record_Id__c ))  )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateAccounts</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce</description>
+        <formula>AND( NOT(ISNEW()), NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)), NOT(AND(ISCHANGED(Status__c),OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)))))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notify that Wrong Company Changed</fullName>
+        <actions>
+            <name>Linked_to_Wrong_Company_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>This rule checks to see if the &quot;Linked_to_Wrong_Company__c&quot; API field name was marked as true either when the record was created or when it was modified to be true.</description>
+        <formula>AND(      NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),      OR(                   AND(              ISNEW(),              Linked_to_Wrong_Company__c = true          ),                   AND(              ISCHANGED(Linked_to_Wrong_Company__c),              Linked_to_Wrong_Company__c = true          )      )  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Tracking Metrics When Reviewed Status Changes</fullName>
+        <actions>
+            <name>Set_Last_Reviewed_By_Value</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Last_Reviewed_On_Value</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>When the Account Review Status is changed, update the tracking metrics</description>
+        <formula>OR(   AND(     ISNEW(),     NOT(ISBLANK(TEXT(Account_Review_Status__c)))   ),   AND(     NOT(ISNEW()),     ISCHANGED(Account_Review_Status__c)   ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Track Escalations to Rackspace</fullName>
+        <actions>
+            <name>Ever_Escalated_to_Rackspace_TRUE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Accounts__c.Account_Review_Status__c</field>
+            <operation>equals</operation>
+            <value>Escalated to Rackspace</value>
+        </criteriaItems>
+        <description>If the Account is ever set to be Account Review Status = Escalated to Rackspace, set the Ever Escalated to Rackspace? checkbox to true</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzFusionToCreateAccountsInOldSfdc</fullName>
+        <actions>
+            <name>zzzNewSfdcToFusionCreateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Create action to Create Accounts in Current Salesforce</description>
+        <formula>AND($User.Id != $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c, Old_Record_Id__c  =  null)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzFusionToUpdateAccountsInOldSfdc</fullName>
+        <actions>
+            <name>zzzNewSfdcToFusionUpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce</description>
+        <formula>AND($User.Id != $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c, Old_Record_Id__c &lt;&gt; null, OR( ISCHANGED(Id), ISCHANGED(Old_Record_Id__c), ISCHANGED(Name),  ISCHANGED(Record_Type_Name__c), ISCHANGED(Named_Account__c), ISCHANGED(Old_Parent_Id__c), ISCHANGED(Account_Id__c), ISCHANGED(Account_Number__c), ISCHANGED(DDI__c), ISCHANGED(Billing_Street__c), ISCHANGED(Billing_City__c), ISCHANGED(Billing_Zip_Postal_Code__c), ISCHANGED(Shipping_Street__c), ISCHANGED(Shipping_City__c),   ISCHANGED(Shipping_Zip_Postal_Code__c), ISCHANGED(LastModifiedDate), ISCHANGED(LastModifiedById), ISCHANGED(CreatedDate), ISCHANGED(CreatedById)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzzzzFusionToUpdateAccountsInOldSfdc</fullName>
+        <actions>
+            <name>zzzzzzNewSfdcToFusionUpdateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Update action to Update Accounts in Current Salesforce</description>
+        <formula>AND($User.Id != $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c, Old_Record_Id__c &lt;&gt; null, OR( ISCHANGED(Id), ISCHANGED(Old_Record_Id__c), ISCHANGED(Name),  ISCHANGED(Record_Type_Name__c), ISCHANGED(Named_Account__c), ISCHANGED(Old_Parent_Id__c), ISCHANGED(Account_Id__c), ISCHANGED(Account_Number__c), ISCHANGED(DDI__c), ISCHANGED(Billing_Street__c), ISCHANGED(Billing_City__c), ISCHANGED(Billing_Zip_Postal_Code__c), ISCHANGED(Shipping_Street__c), ISCHANGED(Shipping_City__c),   ISCHANGED(Shipping_Zip_Postal_Code__c), ISCHANGED(LastModifiedDate), ISCHANGED(LastModifiedById), ISCHANGED(CreatedDate), ISCHANGED(CreatedById)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>zzzzzzzFusionToCreateAccountsInOldSfdc</fullName>
+        <actions>
+            <name>zzzzzNewSfdcToFusionCreateAccounts</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Workflow for New Salesforce to FMW Integration (Accounts) - Create action to Create Accounts in Current Salesforce</description>
+        <formula>AND($User.Id != $Setup.RestrictUsersForFusionOBMs__c.Integration_User_Id__c, Old_Record_Id__c  =  null)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

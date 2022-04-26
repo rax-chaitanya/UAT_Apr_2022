@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Resource_OR_External_Resource_Required</fullName>
+    <active>false</active>
+    <description>[DEPRECATED]</description>
+    <errorConditionFormula>AND(ISBLANK(pse__Resource__c),ISBLANK(pse__External_Resource__c))</errorConditionFormula>
+    <errorMessage>Resource or External Resource is required</errorMessage>
+</ValidationRule>

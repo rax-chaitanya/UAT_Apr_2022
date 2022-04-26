@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Project_Milestone_Mismatch</fullName>
+    <active>true</active>
+    <description>Milestone Project must match Task Project.</description>
+    <errorConditionFormula>AND(NOT(ISNULL(pse__Milestone__c)),(pse__Milestone__c &lt;&gt; &apos;&apos;),NOT(ISNULL(pse__Milestone__r.pse__Project__c)),(pse__Milestone__r.pse__Project__c &lt;&gt; &apos;&apos;),(pse__Project__c &lt;&gt; pse__Milestone__r.pse__Project__c))</errorConditionFormula>
+    <errorDisplayField>pse__Milestone__c</errorDisplayField>
+    <errorMessage>Milestone Project must match Task Project.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>New_ProServe_Event_Created_for_Sales</fullName>
+        <description>New ProServe Event Created for Sales</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>sfdcsupport@rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/ProServe_Task_Created_for_Rep</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Event_Activity_Type</fullName>
+        <field>Activity_Type__c</field>
+        <formula>TEXT(Type)</formula>
+        <name>Event Activity Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_type_field_to_meeting</fullName>
+        <field>Type</field>
+        <literalValue>Meeting</literalValue>
+        <name>Update type field to meeting</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateEvent</fullName>
+        <apiVersion>38.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Event) - Create action to Create Event in Old Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/CREATELEGACYEVENT/v01/</endpointUrl>
+        <fields>ActivityDate</fields>
+        <fields>ActivityDateTime</fields>
+        <fields>CurrencyIsoCode</fields>
+        <fields>Description</fields>
+        <fields>EndDateTime</fields>
+        <fields>EventSubtype</fields>
+        <fields>Id</fields>
+        <fields>IsAllDayEvent</fields>
+        <fields>IsPrivate</fields>
+        <fields>Lookup_Ids__c</fields>
+        <fields>ShowAs</fields>
+        <fields>StartDateTime</fields>
+        <fields>Subject</fields>
+        <fields>Type</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateEvent</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateEvent</fullName>
+        <apiVersion>38.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Event) - Update action to Update Event in Old Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/UPDATELEGACYEVENT/v01/</endpointUrl>
+        <fields>ActivityDate</fields>
+        <fields>ActivityDateTime</fields>
+        <fields>CurrencyIsoCode</fields>
+        <fields>Description</fields>
+        <fields>EndDateTime</fields>
+        <fields>EventSubtype</fields>
+        <fields>Id</fields>
+        <fields>IsAllDayEvent</fields>
+        <fields>IsPrivate</fields>
+        <fields>Lookup_Ids__c</fields>
+        <fields>ShowAs</fields>
+        <fields>StartDateTime</fields>
+        <fields>Subject</fields>
+        <fields>Type</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateEvent</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Activity Type Update based on Event Type</fullName>
+        <actions>
+            <name>Event_Activity_Type</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>Event.Type</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>To populate standard type field from task to Activity obj task for using in reports.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateEvent</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateEvent</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Event) - Create action to Create Event in Old Salesforce.</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateEvent</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateEvent</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Event) - Update action to Update Event in Old Salesforce.</description>
+        <formula>NOT(CONTAINS($Label.SkipUserIDs,$User.Id))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>ProServe Task Created for Rep</fullName>
+        <actions>
+            <name>New_ProServe_Event_Created_for_Sales</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Event.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Professional Services</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.UserRoleId</field>
+            <operation>notContain</operation>
+            <value>Professional Services</value>
+        </criteriaItems>
+        <description>send email to rep assigned to task, each time a ProServe team member creates an event and assigns it to them.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update event type %28Meeting%29</fullName>
+        <actions>
+            <name>Update_type_field_to_meeting</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>User.Region__c</field>
+            <operation>equals</operation>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.UserRoleId</field>
+            <operation>notContain</operation>
+            <value>INTL Executive Assistant Team,Service Delivery Team,Service Delivery Manager,EMEA SDM,UK Enterprise Customer Care Manager</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Event.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Standard Event</value>
+        </criteriaItems>
+        <description>This workflow will populate the event type field to &apos;meeting&apos; when initially created</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Expense_Report_May_Not_Be_Billable</fullName>
+    <active>true</active>
+    <description>An Expense Report may only be marked as Billable if its Project is Billable and its Assignment, if any, is Billable.</description>
+    <errorConditionFormula>AND(pse__Billable__c, OR(AND(NOT(ISNULL(pse__Assignment__c)), (pse__Assignment__c &lt;&gt; &apos;&apos;), NOT(pse__Assignment__r.pse__Is_Billable__c)), AND(NOT(ISNULL(pse__Project__c)), (pse__Project__c &lt;&gt; &apos;&apos;), NOT(pse__Project__r.pse__Is_Billable__c))))</errorConditionFormula>
+    <errorDisplayField>pse__Billable__c</errorDisplayField>
+    <errorMessage>An Expense Report may only be marked as Billable if its Project is Billable and its Assignment, if any, is Billable.</errorMessage>
+</ValidationRule>

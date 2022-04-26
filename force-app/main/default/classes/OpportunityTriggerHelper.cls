@@ -48,24 +48,24 @@ public with sharing class OpportunityTriggerHelper {
         //END RECORD COLLECTION REGION      [BEFORE UPDATE]
         
         // BEGIN SECOND ITERATION REGION    [BEFORE UPDATE]
-        set<string> ddi=new set<string>();
-        set<string> ddiprospect=new set<string>();
-        for (Opportunity opp : (List<Opportunity>) Trigger.new) 
-        {
-            opportunity oppstage =(opportunity)trigger.oldmap.get(opp.id);
-            system.debug('opp.DDI__c-----------'+opp.DDI__c);
-            system.debug('oppstage.DDI__c------------'+oppstage.DDI__c);
-            if(opp.DDI__c!=null && oppstage.DDI__c!=null && opp.DDI__c!=oppstage.DDI__c && opp.Account__r.Type=='Prospect' &&opp.RecordType.Name == 'US Cloud'  && opp.Integration_Status__c=='Success' && !System.Label.SkipUserIDs.contains(UserInfo.getUserId())){
-                ddi.add(opp.DDI__c);
-            }
-            
-            /*if(opp.DDI__c!=null  && opp.Type=='AWS' && opp.QuotingSystem__c == 'Onica' && !System.Label.SkipUserIDs.contains(UserInfo.getUserId())){
+        /* set<string> ddi=new set<string>();
+set<string> ddiprospect=new set<string>();
+for (Opportunity opp : (List<Opportunity>) Trigger.new) 
+{
+opportunity oppstage =(opportunity)trigger.oldmap.get(opp.id);
+system.debug('opp.DDI__c-----------'+opp.DDI__c);
+system.debug('oppstage.DDI__c------------'+oppstage.DDI__c);
+if(opp.DDI__c!=null && oppstage.DDI__c!=null && opp.DDI__c!=oppstage.DDI__c && opp.Account__r.Type=='Prospect' &&opp.RecordType.Name == 'US Cloud'  && opp.Integration_Status__c=='Success' && !System.Label.SkipUserIDs.contains(UserInfo.getUserId())){
+ddi.add(opp.DDI__c);
+} 
+//SFDC-7331 commented this block code as this is used anywhere  
+/*if(opp.DDI__c!=null  && opp.Type=='AWS' && opp.QuotingSystem__c == 'Onica' && !System.Label.SkipUserIDs.contains(UserInfo.getUserId())){
 system.debug('opp.account__r.Type------'+opp.DDI__c);
 ddiprospect.add(opp.DDI__c);
 
-}*/
-            
-            /* 
+}*/ //SFDC-7331 commented this block code as this is used anywhere
+        
+        /* 
 //SFDC-535 [before update]
 if (isClosedINTLNonUSDOpp(opp)) {
 opp.CurrencyIsoCode = 'USD';
@@ -74,14 +74,15 @@ System.debug(opp.CurrencyIsoCode);
 //SFDC-535 [after update]       [BEFORE UPDATE]
 //
 */
-            
-        }
+        
+        // } //SFDC-7331 commented this line as this is used anywhere
         // END SECOND ITERATION REGION      [BEFORE UPDATE]
         // 
-        if(ddi.size()>0 ){
-            
-            List<Account> accddi=[select id,name from Account where DDI__c in:ddi and DDI__c!=null and Type='Prospect'];
-            /*  List<Account> accddiprospect=[select id,name from Account where DDI__c in:ddiprospect and DDI__c!=null and Type='Prospect'];
+        /* if(ddi.size()>0 ){ //SFDC-7331 commented this block code as this is used anywhere
+
+List<Account> accddi=[select id,name from Account where DDI__c in:ddi and DDI__c!=null and Type='Prospect'];
+*/ //SFDC-7331 commented this block as this is used anywhere
+        /*  List<Account> accddiprospect=[select id,name from Account where DDI__c in:ddiprospect and DDI__c!=null and Type='Prospect'];
 for (Opportunity opp : (List<Opportunity>) Trigger.new) 
 {
 system.debug('accddiprospect--------'+accddiprospect);
@@ -93,16 +94,16 @@ system.debug('accddiprospect--------'+accddiprospect);
 opp.adderror('Please Enter Valid DDI.');
 }
 }*/
-            if(accddi.isempty()){
-                for (Opportunity opp : (List<Opportunity>) Trigger.new) 
-                {
-                    //opp.adderror(System.Label.InvalidDDI);
-                }
-            }
-            
-            
-            
-        }  
+        /*if(accddi.isempty()){  //SFDC-7331 commented this code as this is used anywhere
+for (Opportunity opp : (List<Opportunity>) Trigger.new) 
+{
+//opp.adderror(System.Label.InvalidDDI);
+}
+}
+
+
+
+}  */ //SFDC-7331 commented this code as this is used anywhere
         
         
     }
@@ -887,7 +888,8 @@ update acclisttoupdate;
     ////Refactored Below Method for SFDC-7331
     //public static void grossMarginValidation(List<Opportunity> opplist,boolean isValidation){
     public static void grossMarginValidation(List<Opportunity> opplist,boolean isValidation,Set<Id> grossMarginOppOwners){
-        //system.debug('In grossMarginValidation........'+isValidation);
+
+
         if(isValidation && isloggeduserNotAdmin()){
             
             //if((!System.Label.OptyReadOnlyRecordTypeId.contains(opp.RecordTypeId) && opp.type != 'Mail Contract Signup' &&  opp.type != 'Mail Online Signup' && opp.type != 'Revenue Ticket'  && opp.type != 'RBU' && opp.type != 'Renewal' && opp.Category__c != 'Renewal' && opp.Region__c=='APAC' && !System.Label.Sales_ops_Admin_Profile.contains(UserInfo.getProfileId()) && !System.Label.System_Admin_Integration_Profiles.contains(UserInfo.getProfileId()) && (opp.Amount > 0 || (opp.Approval_Amount__c > 0 && !System.Label.Opp_Professional_Service_Record_TypeId.contains(opp.RecordTypeId) && opp.QuotingSystem__c !='Datapipe' && opp.Acquisition__c !='Datapipe'))) && (opp.StageName== 'Stage 1 - Planning & Identification' || opp.StageName== 'Stage 2 - Opportunity Development' || opp.StageName== 'Stage 3 - Proposal & Quote' || opp.StageName== 'Stage 4 - Negotiation & Quote Mod' || opp.StageName== 'Stage 5 - Closing the Business' ) && (opp.Gross_Margin_Min__c == 0 || opp.Gross_Margin_Min__c == null || opp.Gross_Margin_Max__c  == 0 || opp.Gross_Margin_Max__c == null) ){
@@ -925,8 +927,8 @@ update acclisttoupdate;
         List<String> oppTypeNotReqForGrossMargin = System.Label.OppTypeNotReqForGrossMargin.Split(',');
         List<String> optyINTLRecordTypeIds = System.Label.OptyINTLRecordTypeIds.Split(',');
         /*If Opp is Not closed and Type not in 'Mail Contract Signup,Mail Online Signup,Revenue Ticket,RBU,Renewal' 
-		and Category Not in 'Renewal' then proceed validation conditions for Error Message
-		Else return blank string */
+and Category Not in 'Renewal' then proceed validation conditions for Error Message
+Else return blank string */
         if(grossMarginOppOwnersMap.get(opp.OwnerId)!=null
            && !oppTypeNotReqForGrossMargin.contains(opp.type)
            && !oppCategoryNotReqForGrossMargin.contains(opp.Category__c)
@@ -943,16 +945,16 @@ update acclisttoupdate;
             System.debug('not req cat--'+oppCategoryNotReqForGrossMargin+'--not req type--'+oppTypeNotReqForGrossMargin);
             
             /*when the above conditions match amount will be updated by workflow with Approval_Amount__c value,
-			so we are checking if Approval amount is >0 and this condition matches we consider it as amount > 0 */
+so we are checking if Approval amount is >0 and this condition matches we consider it as amount > 0 */
             /*  if(!System.Label.Opp_Professional_Service_Record_TypeId.contains(opp.RecordTypeId) && opp.QuotingSystem__c !='Datapipe' && opp.Acquisition__c !='Datapipe')
-				{
-					amouncanupdatebywf = true;  
-				} */
+{
+amouncanupdatebywf = true;  
+} */
             /*If Owner Region is APAC and Gross MIN or MAx value Zero and AMount >0 then Validation will occur for 
-			*Gross Margin Min and Max
-			*Else-If Owner Region is EMEA and Gross MIN value Zero and AMount >5000 and Opp Record type Includes 
-			*INTL RECORD TYPE and Owner Profile is Rackspace Seller INTL then Validation
-			*will occur for Gross MarginMin */
+*Gross Margin Min and Max
+*Else-If Owner Region is EMEA and Gross MIN value Zero and AMount >5000 and Opp Record type Includes 
+*INTL RECORD TYPE and Owner Profile is Rackspace Seller INTL then Validation
+*will occur for Gross MarginMin */
             // && ((opp.Amount > 0  && !amouncanupdatebywf ) || (opp.Approval_Amount__c > 0 && amouncanupdatebywf )))
             if (grossMarginOppOwnersMap.get(opp.OwnerId).region__c=='APAC' 
                 && (grossminValueholder==0 || grossmaxValueholder==0)
@@ -975,6 +977,7 @@ update acclisttoupdate;
     
     //Added this method for SFDC-7331 to check logged user is not Admin
     public static Boolean  isloggeduserNotAdmin() {
+        system.debug('user info'+UserInfo.getFirstName());
         return (!System.Label.Sales_ops_Admin_Profile.contains(UserInfo.getProfileId())
                 && !System.Label.System_Admin_Integration_Profiles.contains(UserInfo.getProfileId())); 
         

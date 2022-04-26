@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>triggered opps that met criteria in incorrect cloud bookings calculation.</description>
+        <name>Email_Alert_to_Opp_Owner</name>
+        <label>Email Alert to Opp Owner</label>
+        <locationX>50</locationX>
+        <locationY>396</locationY>
+        <actionName>Opportunity.Cloud_Bookings_Calculation</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>52.0</apiVersion>
+    <decisions>
+        <description>check if Cloud Bookings != Amount OR Cloud Infra + Cloud Support Fee != Cloud Bookings</description>
+        <name>Cloud_Bookings_Verify</name>
+        <label>Cloud Bookings Verify</label>
+        <locationX>182</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cloud_Infra_Cloud_Support_Fee_NOT_Equal_Cloud_Bookings</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CloudBookingsCalc</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Cloud_Support_Fee__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Cloud_Infrastructure_Fee_Forecast__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Cloud_Support_Fee_Forecast__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Alert_to_Opp_Owner</targetReference>
+            </connector>
+            <label>Cloud Infra + Cloud Support Fee NOT Equal Cloud Bookings</label>
+        </rules>
+    </decisions>
+    <description>Excluded Category = Bookings, Cloud Infra = Cloud Bookings opp</description>
+    <formulas>
+        <description>Cloud infra + Cloud Support Fee = Cloud Bookings</description>
+        <name>CloudBookingsCalc</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+{!$Record.Cloud_Infrastructure_Fee_Forecast__c} + {!$Record.Cloud_Support_Fee__c} = {!$Record.Cloud_Support_Fee_Forecast__c} , TRUE, FALSE)</expression>
+    </formulas>
+    <interviewLabel>Opportunity Email Alert (Cloud Bookings) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Email Alert (Cloud Bookings)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Cloud_Bookings_Verify</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3) AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>AWS</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Azure</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Google</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CloseDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <dateValue>2021-06-01</dateValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Quote_Id__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Amount</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Cloud</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Bookings Credit</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <schedule>
+            <frequency>Once</frequency>
+            <startDate>2021-08-24</startDate>
+            <startTime>12:30:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

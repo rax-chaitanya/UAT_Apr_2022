@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contracting_Entity_and_Description</fullName>
+    <active>true</active>
+    <description>Contracting Entity for Approve to be filled and followed by Description</description>
+    <errorConditionFormula>AND( OR( RecordType.DeveloperName  = &quot;Customer&quot;,
+         RecordType.DeveloperName  = &quot;Prospect&quot; ),
+        NOT(ISNEW()),
+                   ISCHANGED( Contracting_Entity_to_Approve__c ) ,
+        ISBLANK(Description))</errorConditionFormula>
+    <errorDisplayField>Description</errorDisplayField>
+    <errorMessage>Please provide reason for contracting entity change request in “Description” field.</errorMessage>
+</ValidationRule>

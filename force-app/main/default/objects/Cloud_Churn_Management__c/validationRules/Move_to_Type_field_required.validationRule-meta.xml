@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Move_to_Type_field_required</fullName>
+    <active>true</active>
+    <description>Move to Type fields is required if Churn Type is &apos;Downgrade&apos; or &apos;Defection&apos;</description>
+    <errorConditionFormula>AND(
+ISPICKVAL(Move_to_Type__c, &quot;&quot;), 
+OR(
+ISPICKVAL(Churn_Type__c , &quot;Downgrade&quot;),
+ISPICKVAL(Churn_Type__c , &quot;Defection&quot;)
+))</errorConditionFormula>
+    <errorDisplayField>Move_to_Type__c</errorDisplayField>
+    <errorMessage>Move to Type is required for Churn Type selections &apos;Downgrade&apos; or &apos;Defection&apos;</errorMessage>
+</ValidationRule>

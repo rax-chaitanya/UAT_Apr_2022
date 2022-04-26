@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LID__Check_CompanyId_Value</fullName>
+    <active>false</active>
+    <description>Throws an exception message if the company id contains non-numerics</description>
+    <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+    <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+    <errorMessage>CompanyId should be a numeric value</errorMessage>
+</ValidationRule>

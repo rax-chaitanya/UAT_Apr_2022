@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Reset_time</fullName>
+        <field>LBI__LastSuccessfulRunDate__c</field>
+        <formula>NOW()</formula>
+        <name>Reset time</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Reset Timestamp to today</fullName>
+        <actions>
+            <name>Reset_time</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ischanged(LBI__LastSuccessfulRunDate__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

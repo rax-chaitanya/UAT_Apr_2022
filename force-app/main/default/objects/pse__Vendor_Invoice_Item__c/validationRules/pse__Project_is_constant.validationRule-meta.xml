@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Project_is_constant</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(ISCHANGED(pse__Project__c),LEN(pse__Project__c)=0)</errorConditionFormula>
+    <errorDisplayField>pse__Project__c</errorDisplayField>
+    <errorMessage>Project is required and cannot be changed once set</errorMessage>
+</ValidationRule>

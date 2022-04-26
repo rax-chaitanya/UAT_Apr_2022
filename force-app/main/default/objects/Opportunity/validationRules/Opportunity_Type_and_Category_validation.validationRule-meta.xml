@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Type_and_Category_validation</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(ISNEW() , NOT( ISCHANGED( Skip_Validation__c )) ,
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+OR(ISPICKVAL( Type, &apos;Professional Services&apos;),
+ISPICKVAL( Type, &apos;TriCore ProServe&apos;)),
+NOT(ISPICKVAL( Category__c, &apos;Bookings Credit&apos;))
+)</errorConditionFormula>
+    <errorMessage>Professional Service or TriCore ProServe Opportunities should be Category &apos;Booking credit&apos; .</errorMessage>
+</ValidationRule>

@@ -1,0 +1,3475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>ACR_Billing_Addres_Not_Availble</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACR Billing Addres Not Availble</shortDescription>
+        <value>The Billing Address is not available on the selected Account</value>
+    </labels>
+    <labels>
+        <fullName>ACR_Billing_Primary_Addres_Not_Availble</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACR_Billing_Primary_Addres_Not_Availble</shortDescription>
+        <value>The Billing and Primary Address is not available on the selected Account.</value>
+    </labels>
+    <labels>
+        <fullName>ACR_Primary_Addres_Not_Availble</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACR Primary Addres Not Availble</shortDescription>
+        <value>The Primary Address is not available on the selected Account.</value>
+    </labels>
+    <labels>
+        <fullName>ACR_Role_Business</fullName>
+        <categories>AccountContactRoleHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACR Role Business</shortDescription>
+        <value>Business</value>
+    </labels>
+    <labels>
+        <fullName>ACR_Role_Primary_Contact</fullName>
+        <categories>AccountContactRoleHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACR Role Primary Contact</shortDescription>
+        <value>Primary Contact</value>
+    </labels>
+    <labels>
+        <fullName>AMER_Company_Data_Governance</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AMER_Company_Data_Governance</shortDescription>
+        <value>AMER_Company_Data_GovernanceV4</value>
+    </labels>
+    <labels>
+        <fullName>APAC_Countries</fullName>
+        <categories>Case Helper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>APAC Countries</shortDescription>
+        <value>Afghanistan,Antarctica,Armenia,Australia,Azerbaijan,Bahrain,Bangladesh,Bhutan,Brunei Darussalam,Cambodia,China,Christmas Island,Cyprus,Fiji,Hong Kong,India,Indonesia,Iraq,Israel,Japan,Jordan,Kiribati,Kuwait,Kyrgyzstan,Lao People&apos;s Democratic Republic,Lebanon,Macao,Malaysia,Maldives,Marshall Islands,Myanmar,Mongolia,Nauru,Nepal,New Zealand,Niue,Norfolk Island,Oman,Pakistan,Papua New Guinea,Philippines,Qatar,Saudi Arabia,Sri Lanka,Syrian Arab Republic,Tajikistan,Thailand,Timor-Leste,Tokelau,Tonga,Turkey,Turkmenistan,Tuvalu,Uzbekistan,Vanuatu,Samoa,Yemen</value>
+    </labels>
+    <labels>
+        <fullName>AWS_Strategic_Pursuit_Director_Role</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AWS Strategic Pursuit Director Role</shortDescription>
+        <value>AWS Strategic Pursuit Director</value>
+    </labels>
+    <labels>
+        <fullName>Access_Rep_Chat_Survey</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Access Rep Chat Survey</shortDescription>
+        <value>0CP61000000LF3P</value>
+    </labels>
+    <labels>
+        <fullName>AccountCustomerRecordTypeId</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountCustomerRecordTypeId</shortDescription>
+        <value>0123f000000XdKGAA0</value>
+    </labels>
+    <labels>
+        <fullName>AccountGovernmentRecordTypeId</fullName>
+        <categories>OpportunityTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountGovernmentRecordTypeId</shortDescription>
+        <value>0123f000000XdKQAA0</value>
+    </labels>
+    <labels>
+        <fullName>AccountNotifiedSystems</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountNotifiedSystems</shortDescription>
+        <value>Datapipe</value>
+    </labels>
+    <labels>
+        <fullName>AccountPlanApprovalProfiles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPlanApprovalProfiles</shortDescription>
+        <value>Rackspace Seller-US</value>
+    </labels>
+    <labels>
+        <fullName>AccountPlanInvalidSubmitter</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPlanInvalidSubmitter</shortDescription>
+        <value>You are not allowed to submit this record for approval.</value>
+    </labels>
+    <labels>
+        <fullName>AccountPlanRecordApproved</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPlanRecordApproved</shortDescription>
+        <value>Record is already approved.</value>
+    </labels>
+    <labels>
+        <fullName>AccountPlanRecordUnderApproval</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPlanRecordUnderApproval</shortDescription>
+        <value>Record is already under approval.</value>
+    </labels>
+    <labels>
+        <fullName>AccountPlanStep1Line</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPlanStep1Line</shortDescription>
+        <value>An account plan, with your assigned company, has been submitted for approval.</value>
+    </labels>
+    <labels>
+        <fullName>AccountPlanStep2Line</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountPlanStep2Line</shortDescription>
+        <value>An account plan was submitted by your team member for final approval.</value>
+    </labels>
+    <labels>
+        <fullName>AccountRBURecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountRBURecordTypeId</shortDescription>
+        <value>0123f000000XdKVAA0</value>
+    </labels>
+    <labels>
+        <fullName>AccountRecordTypes</fullName>
+        <categories>ProductAccountRecord Types: Prospect Account,Government Account,Customer Account,RBU Account,Readonly Account</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountRecordTypes</shortDescription>
+        <value>0123f000000XdKLAA0,0123f000000XdKQAA0,0123f000000XdKGAA0,0123f000000XdKVAA0,0123f000000XdKaAAK</value>
+    </labels>
+    <labels>
+        <fullName>Account_Executive_Role</fullName>
+        <categories>Account Executive can be added twice</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Executive Role</shortDescription>
+        <value>Account Executive</value>
+    </labels>
+    <labels>
+        <fullName>Account_Prospect_RecordType_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Prospect RecordType ID</shortDescription>
+        <value>0123f000000XdKLAA0</value>
+    </labels>
+    <labels>
+        <fullName>Account_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountType</shortDescription>
+        <value>Prospect</value>
+    </labels>
+    <labels>
+        <fullName>Accounttypecustomer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Accounttypecustomer</shortDescription>
+        <value>Customer</value>
+    </labels>
+    <labels>
+        <fullName>AddDocSkipUserId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AddDocSkipUserId</shortDescription>
+        <value>0053f000000pDhpAAE,0053f000000pD8fAAE</value>
+    </labels>
+    <labels>
+        <fullName>Address_Accepted_Codes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Address Accepted Codes</shortDescription>
+        <value>C4,C3,C2,C1,V1,V2,V3,V4,I3,I4</value>
+    </labels>
+    <labels>
+        <fullName>Admin_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Admin Profile</shortDescription>
+        <value>00e61000000l8BsAAI</value>
+    </labels>
+    <labels>
+        <fullName>Admin_Profiles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Admin Profiles</shortDescription>
+        <value>00e61000000l8BsAAI, 00e6100000163trAAA, 00e6100000163tsAAA, 00e6100000163u0AAA, 00e61000000ZEpCAAW, 00e61000000uSpLAAU,00e61000000l8BwAAI</value>
+    </labels>
+    <labels>
+        <fullName>Admin_profiles_Allowed_to_ChangeAccountOwner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Admin_profiles_Allowed_to_ChangeAccountOwner</shortDescription>
+        <value>00e61000000l8BsAAI, 00e6100000163trAAA, 00e6100000163tsAAA, 00e6100000163u0AAA</value>
+    </labels>
+    <labels>
+        <fullName>Administrative_Profiles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Administrative Profiles</shortDescription>
+        <value>00e61000000l8BsAAI|00e6100000163tsAAA|00e6100000163u0AAA|00e61000000ZEpCAAW|00e61000000uSpLAAU|00e61000000ZERtAAO|00e61000000ZERuAAO|00e61000000uSrWAAU|00e61000000uSrbAAE</value>
+    </labels>
+    <labels>
+        <fullName>Alert_Bright_Skies_GMBH_contracting_entity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Alert Bright_Skies_GMBH_contracting_entity</shortDescription>
+        <value>You cannot build a QM quote with under an account with the Bright Skies GmbH Contracting Entity. Please move the opportunity to an account with the correct Rackspace Contracting Entity</value>
+    </labels>
+    <labels>
+        <fullName>Approved</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Approved</shortDescription>
+        <value>Approved</value>
+    </labels>
+    <labels>
+        <fullName>Asset_Library_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Asset Library Id</shortDescription>
+        <value>05861000000J32pAAC</value>
+    </labels>
+    <labels>
+        <fullName>AutoConvertedOpportunityStage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AutoConvertedOpportunityStage</shortDescription>
+        <value>Stage 4 – Negotiation &amp; Quote Mod</value>
+    </labels>
+    <labels>
+        <fullName>AutomaticDDIgeneration</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AutomaticDDIgenerationprocess</shortDescription>
+        <value>There is a problem with Automatic DDI generation process. To continue manually create the DDI via the website or the Internal Cart.</value>
+    </labels>
+    <labels>
+        <fullName>Avoid_Company_Delete</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Avoid_Company_Delete</shortDescription>
+        <value>This Company has Accounts associated with it, and cannot be deleted. Please contact a Salesforce Administrator for assistance.</value>
+    </labels>
+    <labels>
+        <fullName>BrightTalkSkipUser</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BrightTalkSkipUser</shortDescription>
+        <value>00561000001zsbFAAQ,0054N000003q1JH</value>
+    </labels>
+    <labels>
+        <fullName>Bright_Skies_GMBH_contracting_entity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Bright Skies GMBH contracting entity</shortDescription>
+        <value>Bright Skies GMBH</value>
+    </labels>
+    <labels>
+        <fullName>Business_Profiles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Business Profiles</shortDescription>
+        <value>00e6100000163tzAAA,00e6100000163tyAAA,00e6100000163tuAAA,00e6100000163tvAAA</value>
+    </labels>
+    <labels>
+        <fullName>CACRecordTypes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CACRecordTypes</shortDescription>
+        <value>US Cloud,INTL Cloud,RBU</value>
+    </labels>
+    <labels>
+        <fullName>CINTCOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer INTL Cloud Opportunity Types # 1</shortDescription>
+        <value>AWS,Mailgun,ObjectRocket,Rackspace Cloud,Azure,TriCore,Google,Azure Resale,RSVC</value>
+    </labels>
+    <labels>
+        <fullName>CINTDOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer INTL Dedicated Opportunity Types # 1</shortDescription>
+        <value>Dedicated/Private Cloud,Mail Contract Signup,Open Stack Private</value>
+    </labels>
+    <labels>
+        <fullName>CINTDOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer INTL Dedicated Opportunity Types # 2</shortDescription>
+        <value>Professional Services</value>
+    </labels>
+    <labels>
+        <fullName>CINTDOT_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer INTL Dedicated Opportunity Types # 3</shortDescription>
+        <value>Renewal</value>
+    </labels>
+    <labels>
+        <fullName>CL_WDWL_Hide_on_Select</fullName>
+        <categories>Close Lost, Why Did We Lose?, Hide on Select</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CL WDWL Hide on Select</shortDescription>
+        <value>Closed via Ticket,Existing Opp,Project Canceled/Postponed</value>
+    </labels>
+    <labels>
+        <fullName>CSM_Profiles_for_Bckt_Scr</fullName>
+        <categories>Rackspace - Standard Support User INTL,Rackspace - Standard Support User US</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSM Profiles for Bckt Scr</shortDescription>
+        <value>00e61000000ZFAZAA4, 00e61000000ZFAe, 00e61000000ZFAeAAO, 00e61000000ZFAZ</value>
+    </labels>
+    <labels>
+        <fullName>CUSCOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer US Cloud Opportunity Types # 1</shortDescription>
+        <value>AWS,Mailgun,ObjectRocket,Rackspace Cloud,Azure,TriCore,Google,Azure Resale,RSVC</value>
+    </labels>
+    <labels>
+        <fullName>CUSCOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer US Cloud Opportunity Types # 2</shortDescription>
+        <value>Mail Online Signup</value>
+    </labels>
+    <labels>
+        <fullName>CUSDOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer US Dedicated Opportunity Types # 1</shortDescription>
+        <value>Dedicated/Private Cloud,Mail Contract Signup,Open Stack Private</value>
+    </labels>
+    <labels>
+        <fullName>CUSDOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer US Dedicated Opportunity Types # 2</shortDescription>
+        <value>Professional Services</value>
+    </labels>
+    <labels>
+        <fullName>CUSDOT_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer US Dedicated Opportunity Types # 3</shortDescription>
+        <value>Renewal,Revenue Ticket</value>
+    </labels>
+    <labels>
+        <fullName>CW_User_Region_Required</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CW User Region Required</shortDescription>
+        <value>The opportunity cannot be closed because the user&apos;s region is not set. Please contact an administrator.</value>
+    </labels>
+    <labels>
+        <fullName>CW_Why_Did_We_Win</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CW Why Did We Win?</shortDescription>
+        <value>1500</value>
+    </labels>
+    <labels>
+        <fullName>Cannot_Send_to_eConnect</fullName>
+        <categories>error message, error, validation, javascript</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cannot Send to eConnect</shortDescription>
+        <value>This opportunity type is set as &apos;{!Opportunity.Type}&apos;, which cannot be sent to eConnect.</value>
+    </labels>
+    <labels>
+        <fullName>CasePartnerRecordTypeId</fullName>
+        <categories>CaseHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CasePartnerRecordTypeId</shortDescription>
+        <value>01261000000MVYeAAO</value>
+    </labels>
+    <labels>
+        <fullName>Case_IntakeRequest_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_IntakeRequest_RecordType</shortDescription>
+        <value>0126100000110xlAAA</value>
+    </labels>
+    <labels>
+        <fullName>Case_PartnerPortal_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_PartnerPortal_RecordType</shortDescription>
+        <value>01261000000MVYeAAO</value>
+    </labels>
+    <labels>
+        <fullName>Case_RaptorSupport_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_RaptorSupport_RecordType</shortDescription>
+        <value>0124N000000kyEtQAI</value>
+    </labels>
+    <labels>
+        <fullName>Case_RoeEscalations_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_RoeEscalations_RecordType</shortDescription>
+        <value>0124N000000kyKcQAI</value>
+    </labels>
+    <labels>
+        <fullName>Case_SalesAcademyRequest_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_SalesAcademyRequest_RecordType</shortDescription>
+        <value>0124N000000j4aNQAQ</value>
+    </labels>
+    <labels>
+        <fullName>Case_SalesCommissions_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_SalesCommissions_RecordType</shortDescription>
+        <value>01261000000j2puAAA</value>
+    </labels>
+    <labels>
+        <fullName>Case_ToolHelp_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_ToolHelp_RecordType</shortDescription>
+        <value>01261000000MVYfAAO</value>
+    </labels>
+    <labels>
+        <fullName>Case_TransitionTeamIntakeForm_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_TransitionTeamIntakeForm_RecordType</shortDescription>
+        <value>0123f000000GrG9AAK</value>
+    </labels>
+    <labels>
+        <fullName>Case_qmSupport_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Case_qmSupport_RecordType</shortDescription>
+        <value>0124N000000kyEyQAI</value>
+    </labels>
+    <labels>
+        <fullName>Channel_Distribution_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Channel Distribution Agreement</shortDescription>
+        <value>Channel Distribution Agreement</value>
+    </labels>
+    <labels>
+        <fullName>CheckAccountRecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CheckAccountRecordType</shortDescription>
+        <value>Account</value>
+    </labels>
+    <labels>
+        <fullName>CheckCompanyonRecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CheckCompanyonRecordType</shortDescription>
+        <value>Company</value>
+    </labels>
+    <labels>
+        <fullName>CloudOpportunityTypes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CloudOpportunityTypes</shortDescription>
+        <value>AWS,Google,RSVC,Azure</value>
+    </labels>
+    <labels>
+        <fullName>CommunityUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CommunityUrl</shortDescription>
+        <value>https://uat-rackspace.cs213.force.com/partners</value>
+    </labels>
+    <labels>
+        <fullName>CompanyAddressUpdate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CompanyAddressUpdate</shortDescription>
+        <value>CompanyAddressUpdate</value>
+    </labels>
+    <labels>
+        <fullName>CompanyRecordTypes</fullName>
+        <categories>Standard Company, Partner Company, Government Company, RBU Company ::  Record Types</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CompanyRecordTypes</shortDescription>
+        <value>01261000000X4t2AAC,01261000000X4tgAAC,01261000000X4wGAAS,0124N000000kyjXQAQ</value>
+    </labels>
+    <labels>
+        <fullName>Company_Partner_RecordTypeID</fullName>
+        <categories>Approve Partner Account,Auto Approval Submission</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Company Partner RecordTypeID</shortDescription>
+        <value>01261000000X4tgAAC</value>
+    </labels>
+    <labels>
+        <fullName>Company_Standard_RecordTypeName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Company_Standard_RecordTypeName</shortDescription>
+        <value>Standard_Company</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Partner_RecordTypeID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Partner RecordTypeID</shortDescription>
+        <value>01261000000X4thAAC</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Record_Type_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact Record Type Error</shortDescription>
+        <value>You cannot edit Customer Contact</value>
+    </labels>
+    <labels>
+        <fullName>Contract_Optional_Types</fullName>
+        <categories>AWS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contract Optional Types</shortDescription>
+        <value>AliCloud,RBU</value>
+    </labels>
+    <labels>
+        <fullName>ContractingEntitiesToSkip</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContractingEntitiesToSkip</shortDescription>
+        <value>a0M61000007TkH8EAK</value>
+    </labels>
+    <labels>
+        <fullName>ContractingEntity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ContractingEntity</shortDescription>
+        <value>a0M6100000AhAhXEAV</value>
+    </labels>
+    <labels>
+        <fullName>Countries_Without_State1</fullName>
+        <categories>Validation Rules</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Countries Without State1</shortDescription>
+        <value>Aland Islands,American Samoa,Angola,Anguilla,Antarctica,Antigua and Barbuda,Aruba,Bahrain,Benin,Bonaire, Sint Eustatius and Saba,Bouvet Island,British Indian Ocean Territory,Burkina Faso,Central African Republic,Chad,Christmas Island,Cocos (Keeling) Islands,Comoros,Congo,Congo, the Democratic Republic of the,Cook Islands,Cote d&apos;Ivoire,Curaçao,Djibouti,Equatorial Guinea,Eritrea,Ethiopia,Faroe Islands,Finland,France,French Guiana,French Polynesia,French Southern Territories,Ghana,Greece,Guadeloupe,Guinea,Heard Island and McDonald Islands,Holy See (Vatican City State),Honduras,Iceland,Isle of Man,Jordan,Kiribati,Korea, Democratic People&apos;s Republic of,Lao People&apos;s Democratic Republic,Lesotho,Luxembourg,Macedonia, the former Yugoslav Republic of,Malaysia,Mali,Malta,Martinique,Mayotte,MicrMicronesia, Fed. States of,Moldova, Republic of,Monaco,Mongolia,Montserrat,Nauru,Netherlands Antilles,Niger,Nigeria,Niue,Norfolk Island,Northern Mariana Islands,Norway,Palestinian Territory, Occupied,Panama</value>
+    </labels>
+    <labels>
+        <fullName>Countries_Without_State2</fullName>
+        <categories>Validation Rules</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Countries Without State2</shortDescription>
+        <value>Paraguay,Philippines,Pitcairn,Reunion,Saint Barthélemy,Saint Helena, Ascension and Tristan da Cunha,Saint Martin (French part),Saint Pierre and Miquelon,Saint Vincent and the Grenadines,Samoa,Sao Tome and Principe,Serbia,Sierra Leone,Singapore,Sint Maarten (Dutch part),Solomon Islands,South Georgia and the South Sandwich Islands,South Sudan,Sudan,Suriname,Svalbard and Jan Mayen,Syrian Arab Republic,Tanzania, United Republic of,Timor-Leste,Togo,Tokelau,Tonga,Turkmenistan,Turks and Caicos Islands,Uganda,Uruguay,Vanuatu,Vietnam,Wallis and Futuna,Western Sahara,Yugoslavia,Zaire</value>
+    </labels>
+    <labels>
+        <fullName>Credit_to_this_Opp_Acct</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Credit to this Opp-Acct</shortDescription>
+        <value>Credit to this Opp-Acct</value>
+    </labels>
+    <labels>
+        <fullName>Customer_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer Account</shortDescription>
+        <value>Customer</value>
+    </labels>
+    <labels>
+        <fullName>DCR_CC_Types</fullName>
+        <categories>Cloud contract types label used in Sfdc-6007, classes -CompanyTriggerHelper,PartnerRoleHandler,PartnerRoleTriggerHelper1</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DCR CC Types</shortDescription>
+        <value>DCR,DCR - Offset,DCR Revenue</value>
+    </labels>
+    <labels>
+        <fullName>DDIgenerationinProgress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DDIgenerationinProgress</shortDescription>
+        <value>Automatic DDI generation is still in progress, Please try after 30 Seconds.</value>
+    </labels>
+    <labels>
+        <fullName>DPAccountNotifiedSystem</fullName>
+        <categories>OpportunityTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DPAccountNotifiedSystem</shortDescription>
+        <value>Datapipe</value>
+    </labels>
+    <labels>
+        <fullName>DP_DatapipeCRMUser</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DP Datapipe CRM User</shortDescription>
+        <value>00561000003CvumAAC,005610000035F9FAAU</value>
+    </labels>
+    <labels>
+        <fullName>DUNS_Number_Not_Found</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DUNS Number Not Found</shortDescription>
+        <value>No DunsNumber Found for this Company</value>
+    </labels>
+    <labels>
+        <fullName>DataMigrationUsers</fullName>
+        <categories>Varsha: 00561000001zsC0AAI</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Migration Users</shortDescription>
+        <value>005610000020IMVAA2, 00561000001zsC0AAI</value>
+    </labels>
+    <labels>
+        <fullName>DataPipe_Opportunity_Types</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DataPipe Opportunity Types</shortDescription>
+        <value>Molo,Colo,AliCloud</value>
+    </labels>
+    <labels>
+        <fullName>DataStewardsProfileId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DataStewardsProfileId</shortDescription>
+        <value>00e6100000163trAAA</value>
+    </labels>
+    <labels>
+        <fullName>Data_Services_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data_Services_Queue</shortDescription>
+        <value>a3r3f000000LHtZAAW</value>
+    </labels>
+    <labels>
+        <fullName>Datacleanuser</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Datacleanuser</shortDescription>
+        <value>Data.com Clean</value>
+    </labels>
+    <labels>
+        <fullName>Datapipe_contracting_entity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Datapipe contracting entity</shortDescription>
+        <value>Datapipe</value>
+    </labels>
+    <labels>
+        <fullName>DealGovOppStages</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DealGovOppStages</shortDescription>
+        <value>Stage 2 - Opportunity Development,Stage 3 - Proposal &amp; Quote,Stage 4 - Negotiation &amp; Quote Mod,Stage 5 - Closing the Business</value>
+    </labels>
+    <labels>
+        <fullName>Dont_pay_commissions</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dont pay commissions</shortDescription>
+        <value>Don&apos;t pay commissions</value>
+    </labels>
+    <labels>
+        <fullName>DuplicateRole</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DuplicateRole</shortDescription>
+        <value>Access for the role you are requesting has already been requested by/granted to some other user.!</value>
+    </labels>
+    <labels>
+        <fullName>EMEA_Countries</fullName>
+        <categories>Case Helper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EMEA Countries</shortDescription>
+        <value>Albania,Algeria,Andorra,Angola,Bahrain,Belarus,Belgium,Benin,Bosnia and Herzegovina,Botswana,Bulgaria,Burkina Faso,Burundi,Cameroon,Cape Verde,Central African Republic,Chad,Comoros,Croatia,Cyprus,Czech Republic,Djibouti,Egypt,Equatorial Guinea,Eritrea,Estonia,Ethiopia,Faroe Islands,Finland,France,Gabon,Gambia,Georgia,Ghana,Gibraltar,Greece,Guernsey,Guinea,Guinea-Bissau,Hungary,Iceland,Iraq,Isle of Man,Israel,Italy,Jersey,Jordan,Kuwait,Latvia,Lebanon,Lesotho,Liberia,Liechtenstein,Lithuania,Luxembourg,Malawi,Mali,Malta,Mauritius,Monaco,Montenegro,Morocco,Mozambique,Namibia,Niger,Nigeria,Norway,Oman,Poland,Portugal,Qatar,Romania,Rwanda,San Marino,Senegal,Serbia,Slovakia,Slovenia,Somalia,South Africa,Sudan,Swaziland,Sweden,Togo,Tunisia,Turkey,Uganda,Ukraine,United Arab Emirates,United Kingdom,Western Sahara,Zimbabwe</value>
+    </labels>
+    <labels>
+        <fullName>EMEA_Opportunity_OwnerId</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EMEA Opportunity OwnerId</shortDescription>
+        <value>0056100000262SnAAI</value>
+    </labels>
+    <labels>
+        <fullName>Edit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Employee_Contact_Record_Type</fullName>
+        <categories>Record Types</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Employee Contact Record Type</shortDescription>
+        <value>0124N000000kyLGQAY</value>
+    </labels>
+    <labels>
+        <fullName>ErrMsg_OpportunityStage_SendToRaptorUK</fullName>
+        <categories>Opportunity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ErrMsg_OpportunityStage_SendToRaptorUK</shortDescription>
+        <value>Opportunities sent to UK OVT must be Closed Won.</value>
+    </labels>
+    <labels>
+        <fullName>ErrMsg_OpportunityStage_SendToRaptorUS</fullName>
+        <categories>Opportunity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ErrMsg_OpportunityStage_SendToRaptorUS</shortDescription>
+        <value>Opportunities sent to US CVP must be Closed Won.</value>
+    </labels>
+    <labels>
+        <fullName>ErrMsg_OpportunityTeamMember_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ErrMsg_OpportunityTeamMember_1</shortDescription>
+        <value>This Apex rule allows only system admins and Integration API users to create an Opportunity Team Member with a Team Member Role of Partner Account Owner.&apos;</value>
+    </labels>
+    <labels>
+        <fullName>ErrMsg_Opportunity_SendToCountry</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ErrMsg_Opportunity_SendToCountry</shortDescription>
+        <value>There is no contract uploaded to this opportunity, so it should not be sent to eConnect.</value>
+    </labels>
+    <labels>
+        <fullName>ErrMsg_Opportunity_SendToRaptor</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ErrMsg_Opportunity_SendToRaptor</shortDescription>
+        <value>There is no contract uploaded to this opportunity, so it should not be sent to Raptor.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_on_Approved_Partner_Roles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error Message on Approved Partner Roles</shortDescription>
+        <value>Maximum of two approved partner roles can exist</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_on_one_approved_Source_role</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error Message on one approved Source role</shortDescription>
+        <value>There can only be one approved Source role</value>
+    </labels>
+    <labels>
+        <fullName>Exclude_Country</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Exclude Country</shortDescription>
+        <value>United States,UNITED STATES,USA,usa</value>
+    </labels>
+    <labels>
+        <fullName>FMWFoundationUser</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FMWFoundationUser</shortDescription>
+        <value>00561000001zo2k</value>
+    </labels>
+    <labels>
+        <fullName>FMW_API_User</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FMW API User</shortDescription>
+        <value>00561000001znTu</value>
+    </labels>
+    <labels>
+        <fullName>Federation_Id_Mandatory_EM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Federation Id Mandatory EM</shortDescription>
+        <value>Federation Id cannot be blank</value>
+    </labels>
+    <labels>
+        <fullName>Files_Image_Id</fullName>
+        <categories>Background image of div which is used to show Links in Community content</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Files Image Id</shortDescription>
+        <value>06861000004U9btAAC</value>
+    </labels>
+    <labels>
+        <fullName>ForgotPassword</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ForgotPassword</shortDescription>
+        <value>/partners/secur/forgotpassword.jsp</value>
+    </labels>
+    <labels>
+        <fullName>Fortune_Rank_No_Access</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fortune Rank No Access</shortDescription>
+        <value>You don&apos;t have sufficient access to perform this Activity</value>
+    </labels>
+    <labels>
+        <fullName>Fortune_Rank_Not_found</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fortune Rank Not found</shortDescription>
+        <value>This Company does not fall under fortune 1000 ranking</value>
+    </labels>
+    <labels>
+        <fullName>Furtune_Rank_Update_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fortune Rank Update Success</shortDescription>
+        <value>Fortune Rank Updated Successfully.</value>
+    </labels>
+    <labels>
+        <fullName>GARTCompanyRecTypes</fullName>
+        <categories>GlobalAccountSearchController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GARTCompanyRecTypes</shortDescription>
+        <value>0124N000000kyjXQAQ,01261000000X4t2AAC,01261000000X4wGAAS</value>
+    </labels>
+    <labels>
+        <fullName>GAR_Approval_Invalid_User_Message</fullName>
+        <categories>GAR</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GAR_Approval_Invalid_User_Message</shortDescription>
+        <value>You are not allowed to Approve/Reject this request</value>
+    </labels>
+    <labels>
+        <fullName>GAR_Approval_Request_Processed_Message</fullName>
+        <categories>GAR</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GAR_Approval_Request_Processed_Message</shortDescription>
+        <value>Request has been already</value>
+    </labels>
+    <labels>
+        <fullName>GAR_Initial_Search_Count</fullName>
+        <categories>Global_Account_SearchHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GAR_Initial_Search_Count</shortDescription>
+        <value>100</value>
+    </labels>
+    <labels>
+        <fullName>GAR_Org_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GAR_Org_URL</shortDescription>
+        <value>https://rax.my.salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>GTS_Encore_Account_Number</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GTS Encore Account Number</shortDescription>
+        <value>/details/account/MANAGED_HOSTING/</value>
+    </labels>
+    <labels>
+        <fullName>GTS_Encore_DDI</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GTS Encore DDI</shortDescription>
+        <value>/details/account/Cloud/</value>
+    </labels>
+    <labels>
+        <fullName>GTS_High</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GTS High</shortDescription>
+        <value>GTS_High</value>
+    </labels>
+    <labels>
+        <fullName>Global_Referral_Agreement_labels</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Global Referral Agreement labels</shortDescription>
+        <value>Global Referral Agreement,Global Referral/Reseller Agreement,Global Reseller Agreement</value>
+    </labels>
+    <labels>
+        <fullName>Global_Strategic_Partner_Agreement_labels</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Global Strategic Partner Agreement  labels</shortDescription>
+        <value>Global Strategic Partner Agreement,Global Strategic Partner Agreement (RGS Only),Global Strategic Partner Agreement + Comm and RGS Add,Global Strategic Partner Agreement + Comm Resell Add</value>
+    </labels>
+    <labels>
+        <fullName>Global_Strategic_referral_Partner_Agreements</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Global Strategic/referral Partner Agreements</shortDescription>
+        <value>Strategic Partner Agreement,Global Strategic Partner Agreement,Global Strategic Partner Agreement (RGS Only),Global Strategic Partner Agreement + Comm and RGS Add,Global Strategic Partner Agreement + Comm Resell Add,Global Referral Agreement,Global Referral/Reseller Agreement,Global Reseller Agreement,Channel Distribution Agreement</value>
+    </labels>
+    <labels>
+        <fullName>Go_To_Core_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go To Core Account</shortDescription>
+        <value>https://core.rackspace.com/py/core/#/account/Account_number</value>
+    </labels>
+    <labels>
+        <fullName>Go_To_Core_Account_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go To Core Account Staging</shortDescription>
+        <value>https://staging.core.rackspace.com/py/core/#/account/Account_number</value>
+    </labels>
+    <labels>
+        <fullName>Go_to_CRM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go to CRM</shortDescription>
+        <value>https://crm.datapipe.net/Customer/</value>
+    </labels>
+    <labels>
+        <fullName>Go_to_Quote_Management</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go to Quote Management</shortDescription>
+        <value>https://quote-management.gscs.rackspace.com/opportunities/:OPPORTUNITYID/from_salesforce</value>
+    </labels>
+    <labels>
+        <fullName>Go_to_Quote_Management_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go to Quote Management (Staging)</shortDescription>
+        <value>https://int-quote-management.gscs.rackspace.com/opportunities/:OPPORTUNITYID/from_salesforce</value>
+    </labels>
+    <labels>
+        <fullName>Go_to_eConnect_Record</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go to eConnect Record</shortDescription>
+        <value>https://econnect.rackspace.com/contract_hand_off/cp?opportunity_number=:OPPORTUNITYNUMBER</value>
+    </labels>
+    <labels>
+        <fullName>Go_to_eConnect_Record_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Go to eConnect Record (Staging)</shortDescription>
+        <value>https://qa-econnect.gscs.rackspace.com/contract_hand_off/cp?opportunity_id=:OPPORTUNITYID</value>
+    </labels>
+    <labels>
+        <fullName>GovernmentCloudOpportunityTypes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GovernmentCloudOpportunityTypes</shortDescription>
+        <value>Dedicated/Private Cloud,Professional Services</value>
+    </labels>
+    <labels>
+        <fullName>GovernmentOpportunityTypes</fullName>
+        <categories>Opportunity Type: Aws,Google</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GovernmentOpportunityTypes</shortDescription>
+        <value>AWS,Google,Azure</value>
+    </labels>
+    <labels>
+        <fullName>GovernmentRecordType</fullName>
+        <categories>Government Company:RecordType</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GovernmentRecordType</shortDescription>
+        <value>01261000000X4wGAAS</value>
+    </labels>
+    <labels>
+        <fullName>GovernmentRecordTypes</fullName>
+        <categories>Government Company,Government Account,Government Contact,Government  Lead,Government  Opportunity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GovernmentRecordTypes</shortDescription>
+        <value>01261000000X4wGAAS,0123f000000XdKQAA0,01261000000X4wIAAS,01261000000X4wRAAS,01261000000X4wSAAS</value>
+    </labels>
+    <labels>
+        <fullName>Government_Company_RecordTypeName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Government_Company_RecordTypeName</shortDescription>
+        <value>Government_Company</value>
+    </labels>
+    <labels>
+        <fullName>Gross_Margin_Min_Required</fullName>
+        <categories>OpportunityTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gross Margin Min Required</shortDescription>
+        <value>Please populate “Gross Margin Min” with a percentage greater than zero..</value>
+    </labels>
+    <labels>
+        <fullName>Gross_Margin_Min_and_Max_are_Required</fullName>
+        <categories>OpportunityTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gross Margin Min and Max are Required</shortDescription>
+        <value>Please populate both “Gross Margin Min and Max” with a percentage greater than zero..</value>
+    </labels>
+    <labels>
+        <fullName>INTL_ReferralAgreementId</fullName>
+        <categories>PartnerAgreementsController,AgreementDownloadController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>INTL_ReferralAgreementId</shortDescription>
+        <value>06961000004FTI1AAO</value>
+    </labels>
+    <labels>
+        <fullName>INTL_ResellerAgreementId</fullName>
+        <categories>PartnerAgreementsController,AgreementDownloadController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>INTL_ResellerAgreementId</shortDescription>
+        <value>06961000004FTJYAA4</value>
+    </labels>
+    <labels>
+        <fullName>INTL_StrategicAgreementId</fullName>
+        <categories>PartnerAgreementsController,AgreementDownloadController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>INTL_StrategicAgreementId</shortDescription>
+        <value>06961000004FTJdAAO</value>
+    </labels>
+    <labels>
+        <fullName>INTL_UserIds_Allowed_to_ChangeAccountOwner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>INTL _UserIds Allowed to ChangeAccountOwner</shortDescription>
+        <value>00561000002yP47AAE, 005610000020lXDAAY, 00561000001zrATAAY, 00561000001zrlmAAA, 0056100000351kTAAQ, 00561000002m3VMAAY, 00561000001zn6hAAA, 00561000001zn6iAAA, 00561000001zn8QAAQ, 005610000033pJhAAI, 005610000020lT1AAI, 00561000001zn2nAAA, 00561000001zrm8AAA, 00561000001zrATAAY, 00561000002yP47AAE, 00561000001zrmiAAA, 00561000001zt4sAAA</value>
+    </labels>
+    <labels>
+        <fullName>Integration_API_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration API Profile</shortDescription>
+        <value>00e6100000163tsAAA</value>
+    </labels>
+    <labels>
+        <fullName>InvalidDDI</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>InvalidDDI</shortDescription>
+        <value>This is an invalid DDI. Please input valid DDI in Opportunity.</value>
+    </labels>
+    <labels>
+        <fullName>JiraIntakeBoard</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>JiraIntakeBoard</shortDescription>
+        <value>https://rackspace.atlassian.net/jira/software/c/projects/INTAKE/boards/1951</value>
+    </labels>
+    <labels>
+        <fullName>LATAM_Countries</fullName>
+        <categories>Case Helper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LATAM Countries</shortDescription>
+        <value>Belize,Costa Rica,El Salvador,Guatemala,Honduras,Mexico,Nicaragua,Panama,Argentina,Bolivia,Brazil,Chile,Colombia,Ecuador,French Guiana,Guyana,Paraguay,Peru,Suriname,Uruguay,Venezuela,Cuba,Dominican Republic,Haiti,Guadeloupe,Martinique,Puerto Rico,Saint-Barthélemy,Saint-Martin,United States, Canada</value>
+    </labels>
+    <labels>
+        <fullName>LATAM_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LATAM Queue</shortDescription>
+        <value>LATAM_CS,LATAM_ENT_Linux,LATAM_ENT_Windows,LATAM_Hybrid_Linux,LATAM_Hybrid_Windows,LATAM_Marquee,LATAM_MC_Linux,LATAM_MC_Windows</value>
+    </labels>
+    <labels>
+        <fullName>LA_Chat_Ended_PostChatButton_04I610000004C9D</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Chat_Ended_PostChatButton_04I610000004C9D</shortDescription>
+        <value>How Was Your Experience?</value>
+    </labels>
+    <labels>
+        <fullName>LA_Chat_Ended_PostChatButton_04I61000000Gmas</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Chat_Ended_PostChatButton_04I61000000Gmas</shortDescription>
+        <value>How Was Your Experience?</value>
+    </labels>
+    <labels>
+        <fullName>LA_Chat_Ended_PostChatButton_04I61000000Gmax</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Chat_Ended_PostChatButton_04I61000000Gmax</shortDescription>
+        <value>How Was Your Experience?</value>
+    </labels>
+    <labels>
+        <fullName>LA_Chat_Ended_PostChatButton_04I61000000Gmb2</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Chat_Ended_PostChatButton_04I61000000Gmb2</shortDescription>
+        <value>How Was Your Experience?</value>
+    </labels>
+    <labels>
+        <fullName>LA_Chat_Ended_PostChatButton_04I61000000Gmb7</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Chat_Ended_PostChatButton_04I61000000Gmb7</shortDescription>
+        <value>How Was Your Experience?</value>
+    </labels>
+    <labels>
+        <fullName>LA_Chat_Ended_PostChatButton_04I61000000GmbC</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Chat_Ended_PostChatButton_04I61000000GmbC</shortDescription>
+        <value>How Was Your Experience?</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentBodyApology_04I610000004C9D</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentBodyApology_04I610000004C9D</shortDescription>
+        <value>We appreciate your patience and look forward to assisting you soon!</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmas</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmas</shortDescription>
+        <value>We appreciate your patience and look forward to assisting you soon!</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmax</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmax</shortDescription>
+        <value>We appreciate your patience and look forward to assisting you soon!</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmb2</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmb2</shortDescription>
+        <value>We appreciate your patience and look forward to assisting you soon!</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmb7</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000Gmb7</shortDescription>
+        <value>We appreciate your patience and look forward to assisting you soon!</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000GmbC</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentBodyApology_04I61000000GmbC</shortDescription>
+        <value>We appreciate your patience and look forward to assisting you soon!</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentHeader_04I610000004C9D</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentHeader_04I610000004C9D</shortDescription>
+        <value>Thank you for your patience. All Rackers are currently serving other customers.</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmas</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmas</shortDescription>
+        <value>Thank you for your patience. All Rackers are currently serving other customers.</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmax</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmax</shortDescription>
+        <value>Thank you for your patience. All Rackers are currently serving other customers.</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmb2</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmb2</shortDescription>
+        <value>Thank you for your patience. All Rackers are currently serving other customers.</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmb7</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000Gmb7</shortDescription>
+        <value>Thank you for your patience. All Rackers are currently serving other customers.</value>
+    </labels>
+    <labels>
+        <fullName>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000GmbC</fullName>
+        <categories>Snap-ins</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LA_Waiting_Error_ErrorNoAgentHeader_04I61000000GmbC</shortDescription>
+        <value>Thank you for your patience. All Rackers are currently serving other customers.</value>
+    </labels>
+    <labels>
+        <fullName>Lead</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead</shortDescription>
+        <value>Lead</value>
+    </labels>
+    <labels>
+        <fullName>LeadAssignmentProfiles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadAssignmentProfiles</shortDescription>
+        <value>00e61000000l8BsAAI,00e6100000163u0AAA,00e6100000163tsAAA,00e61000000FKF9AAO,00e61000000FKFAAA4,00e61000000FKFBAA4,00e61000000FKFCAA4,00e61000000uSk1AAE,00e61000000uSk2AAE,00e61000000uSpLAAU,00e61000000uSrWAAU,00e61000000uSrbAAE,00e6100000163trAAA</value>
+    </labels>
+    <labels>
+        <fullName>LeadConvertEM</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadConvertEM</shortDescription>
+        <value>00e6100000163ttAAA</value>
+    </labels>
+    <labels>
+        <fullName>LeadGovernmentrecordtypeid</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadGovernmentrecordtypeid</shortDescription>
+        <value>01261000000X4wRAAS</value>
+    </labels>
+    <labels>
+        <fullName>LeadGroup</fullName>
+        <categories>Lead Owner groups</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadGroup</shortDescription>
+        <value>Australia,CEMA,Hong Kong,US Ent,LATAM,UK Commercial,UK Enterprise,US Cloud Office,US Commercial,DACH</value>
+    </labels>
+    <labels>
+        <fullName>LeadNotConvertedDays</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadNotConvertedDays</shortDescription>
+        <value>14</value>
+    </labels>
+    <labels>
+        <fullName>LeadRejectionApprovalStatus</fullName>
+        <categories>Lead</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadRejectionApprovalStatus</shortDescription>
+        <value>QTeam Manager Approved</value>
+    </labels>
+    <labels>
+        <fullName>LeadSourceDealRegistration</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadSourceDealRegistration</shortDescription>
+        <value>Deal Registration</value>
+    </labels>
+    <labels>
+        <fullName>LeadSourcePartnerNetwork</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadSourcePartnerNetwork</shortDescription>
+        <value>Partner Network</value>
+    </labels>
+    <labels>
+        <fullName>LeadSourceSiteSubmission</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadSourceSiteSubmission</shortDescription>
+        <value>Site Submission</value>
+    </labels>
+    <labels>
+        <fullName>LeadStatusRejected</fullName>
+        <categories>Lead</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStatusRejected</shortDescription>
+        <value>Rejected</value>
+    </labels>
+    <labels>
+        <fullName>LeadStatusTeleQualifiedLead</fullName>
+        <categories>Process Builder</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStatusTeleQualifiedLead</shortDescription>
+        <value>Tele - Qualified Lead</value>
+    </labels>
+    <labels>
+        <fullName>LeadStatusToSkipValidation</fullName>
+        <categories>Validation Rules</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStatusToSkipValidation</shortDescription>
+        <value>Unqualified - To Marketing,Rejected</value>
+    </labels>
+    <labels>
+        <fullName>LeadStatusUnQualifiedToLeadGen</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStatusUnQualifiedToLeadGen</shortDescription>
+        <value>Unqualified - To Lead Gen</value>
+    </labels>
+    <labels>
+        <fullName>LeadStatusUnQualifiedToMarketing</fullName>
+        <categories>Process Builder</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeadStatusUnQualifiedToMarketing</shortDescription>
+        <value>Unqualified - To Marketing</value>
+    </labels>
+    <labels>
+        <fullName>Lead_Status_Lead_Gen_Working</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead Status &apos;Lead Gen Working&apos;</shortDescription>
+        <value>Lead Gen Working</value>
+    </labels>
+    <labels>
+        <fullName>Lead_Status_Sent_To_Sales</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead Status &apos;Sent To Sales&apos;</shortDescription>
+        <value>Tele - Qualified Lead</value>
+    </labels>
+    <labels>
+        <fullName>Lead_type_values</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Lead_type_values</shortDescription>
+        <value>AWS,Azure,AliCloud,Colo,Dedicated/Private Cloud,Google,Mail Contract Signup,Mailgun,Mail Online Signup,Molo,ObjectRocket,Open Stack Private,Professional Services,Rackspace Cloud,TriCore,TriCore ProServe,Renewal,Revenue Ticket</value>
+    </labels>
+    <labels>
+        <fullName>Linkage_Field</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Linkage Field</shortDescription>
+        <value>Old_Record_Id__c</value>
+    </labels>
+    <labels>
+        <fullName>LiveAgentEndPointURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LiveAgentEndPointURL</shortDescription>
+        <value>https://rax.my.salesforce.com/services/Soap/u/39.0</value>
+    </labels>
+    <labels>
+        <fullName>Live_Transfer_Available</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Live Transfer Available</shortDescription>
+        <value>You are now available for Live Transfer</value>
+    </labels>
+    <labels>
+        <fullName>Live_Transfer_Unavailable</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Live Transfer Unavailable</shortDescription>
+        <value>You are now unavailable for Live Transfer</value>
+    </labels>
+    <labels>
+        <fullName>Loginfailed</fullName>
+        <categories>Partnerlogin</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Loginfailed</shortDescription>
+        <value>Your login attempt has failed. Make sure the username and password are correct.</value>
+    </labels>
+    <labels>
+        <fullName>MDF_AccountsPayableEmailId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MDF_AccountsPayableEmailId</shortDescription>
+        <value>accountspayable-US@rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>Manual_Merge_Opportunity_Types</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Manual Merge Opportunity Types</shortDescription>
+        <value>AliCloud,Azure Resale,Rackspace Cloud,RBU</value>
+    </labels>
+    <labels>
+        <fullName>Marketing_Engaged_Queue_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Marketing Engaged Queue Id</shortDescription>
+        <value>00G61000001fCqt</value>
+    </labels>
+    <labels>
+        <fullName>Marketing_Innova_Queue_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Marketing Innova Queue ID</shortDescription>
+        <value>00G4N000001sZnN</value>
+    </labels>
+    <labels>
+        <fullName>Master_Agent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Master Agent</shortDescription>
+        <value>Master Agent</value>
+    </labels>
+    <labels>
+        <fullName>Master_Agent_EMEA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Master Agent EMEA</shortDescription>
+        <value>Master Agent EMEA</value>
+    </labels>
+    <labels>
+        <fullName>Master_Agent_Update_Error_Message</fullName>
+        <categories>CompanyTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Master_Agent_Update_Error_Message</shortDescription>
+        <value>The record may not be updated because it has associated Sub-Agent record or Master-Agent record</value>
+    </labels>
+    <labels>
+        <fullName>MigrationRecordAccount</fullName>
+        <categories>record type id: Migration Record Account</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MigrationRecordAccount</shortDescription>
+        <value>0126w0000004HziAAE</value>
+    </labels>
+    <labels>
+        <fullName>NPSACREligibleQuery</fullName>
+        <categories>NPS ACR Eligible Query String Condition,Updated With EyDomain</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSACREligibleQuery</shortDescription>
+        <value>(account.RecordTypeId IN :acRTIds AND account.status__c =: accStatus) AND (account.NPS_Collection_Status__c != null AND account.NPS_Collection_Status__c NOT IN: Skip_Colle_Status) AND (Contact.NPS_Survey_Opt_Out__c = false) AND (Account.Contracting_Entity__c NOT IN :Skip_OnicaCEIds) AND (NOT Contact.Email LIKE :SoqlSFDomain) AND (NOT Contact.Email LIKE :SoqlrackDomain) AND (NOT Contact.Email LIKE :SoqlEyDomain) AND (NOT Contact.Email LIKE :SoqlBrEyDomain) AND (NOT Contact.Email LIKE :SoqlRacspaceUk) ORDER BY Createddate ASC</value>
+    </labels>
+    <labels>
+        <fullName>NPSACRQueryFieldsString</fullName>
+        <categories>NPS ACR Fields Query String</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSACRQueryFieldsString</shortDescription>
+        <value>SELECT Id,NPS_Survey__c,AccountId,ContactId,Account.Account_Number__c,Account.Support_Team__c,Contact.CreatedDate,Contact.NPS_Eligible__c,Contact.Email,Contact.NPS_CCDate__c,Contact.Last_date_of_survey__c,Contact.Region__c,Contact.NPS_Survey_Opt_Out__c,Account.Status__c,Account.NPS_Collection_Status__c,Account.Contracting_Entity__c,Roles FROM AccountContactRelation WHERE</value>
+    </labels>
+    <labels>
+        <fullName>NPSACR_In_EligibleQuery</fullName>
+        <categories>NPS ACR InEligible Query String Condition</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSACR_In_EligibleQuery</shortDescription>
+        <value>(account.RecordTypeId IN :acRTIds) AND (account.status__c != :accStatus OR account.NPS_Collection_Status__c = null OR account.NPS_Collection_Status__c IN: Skip_Colle_Status OR Contact.NPS_Survey_Opt_Out__c = true OR Account.Contracting_Entity__c IN :Skip_OnicaCEIds OR Contact.Email LIKE :SFDomain OR Contact.Email LIKE :rackDomain) ORDER BY Createddate ASC</value>
+    </labels>
+    <labels>
+        <fullName>NPSEmailRoleBasedUsersQuery</fullName>
+        <categories>This Query helps to get RoleUsers of internal CSM team Users in Access to NPS Contacts public Group</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSEmailRoleBasedUsersQuery</shortDescription>
+        <value>SELECT Id,Name,Email,isActive,Profile.Name,UserRole.Name FROM User WHERE isActive = true AND (NOT Email LIKE &apos;%invalid&apos;) AND (UserRole.Name = &apos;US Service Delivery&apos; OR UserRole.Name = &apos;US Service Delivery Org&apos; OR Profile.Name = &apos;Rackspace Manager-US&apos; OR Profile.Name = &apos;Rackspace Seller-US&apos;)</value>
+    </labels>
+    <labels>
+        <fullName>NPSEmailUsersQuery</fullName>
+        <categories>This Query helps to get the internal CSM team Users in Access to NPS Contacts public Group</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSEmailUsersQuery</shortDescription>
+        <value>SELECT Id,Name,Email,isActive FROM User WHERE Id IN (SELECT userorgroupId FROM Groupmember WHERE group.name = &apos;Access to NPS Contacts&apos;)</value>
+    </labels>
+    <labels>
+        <fullName>NPSFailedQualifiedTemplateName</fullName>
+        <categories>&quot;Failed NPS Qualified Contacts for Survey&quot; Email Template Template Unique Name</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSFailedQualifiedTemplateName</shortDescription>
+        <value>Failed_NPS_Qualified_Contacts_for_Survey</value>
+    </labels>
+    <labels>
+        <fullName>NPSQualifiedTemplateName</fullName>
+        <categories>&quot;NPS Contacts Qualified for Survey&quot; Email Template Template Unique Name</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSQualifiedTemplateName</shortDescription>
+        <value>NPS_Contacts_Qualified_for_Survey</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Account_Status</fullName>
+        <categories>Should be Active on Product Account Status field for NPS Survey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Account Status</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Cohort_Additional_Months</fullName>
+        <categories>Add next survey additional months Ex : if half yearly means (1 + 6 = 7 is the Value) or if quarterly means (1 + 3 = 4 is the Value)</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Cohort Additional Months</shortDescription>
+        <value>7</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Cohort_Initial_Month</fullName>
+        <categories>Add Cohort First Survey Initial Month</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Cohort Initial Month</shortDescription>
+        <value>1</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Contact_Role</fullName>
+        <categories>NPS Contact Role</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Contact Role</shortDescription>
+        <value>NPS Contact ONLY</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Eligible_Days</fullName>
+        <categories>NPS Contact First Survey Eligible Days</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Eligible Days</shortDescription>
+        <value>31</value>
+    </labels>
+    <labels>
+        <fullName>NPS_SkipAccountTeams</fullName>
+        <categories>Used in NPS_Survey__c(contact) formula field</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS_SkipAccountTeams</shortDescription>
+        <value>Team D11,Team D4,Team D14,ENTZ-1MIX,ENTZ-2MIX,ENTZ-7MIX,ENTZ-8MIX</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_Collection_Status</fullName>
+        <categories>Skip NPS Collection Status Contacts for NPS Survey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Skip Collection Status</shortDescription>
+        <value>DELINQUENT_LEVEL_1,DELINQUENT_LEVEL_2,DISABLED,WRITTEN_OFF</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_Email_Domain1</fullName>
+        <categories>Don&apos;t consider Salesforce Domain Contacts for NPS Survey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Skip Email Domain1</shortDescription>
+        <value>@salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_Email_Domain2</fullName>
+        <categories>Don&apos;t consider Rackspace Domain Contacts for NPS Survey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS Skip Email Domain2</shortDescription>
+        <value>@rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_Email_Domain_Ey_com</fullName>
+        <categories>used in NPS_Contact_and_Role_Creation</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS_Skip_Email_Domain@Ey.com</shortDescription>
+        <value>@ey.com</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_Email_Domain_br_ey_com</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS_Skip_Email_Domain@br.ey.com</shortDescription>
+        <value>@br.ey.com</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_Email_Domain_rackspaceuk</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS_Skip_Email_Domain@rackspaceuk</shortDescription>
+        <value>@rackspace.co.uk</value>
+    </labels>
+    <labels>
+        <fullName>NPS_Skip_OnicaCntrType</fullName>
+        <categories>Skip Onica Records</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPS_Skip_OnicaCntrType</shortDescription>
+        <value>a0M3f000000ZZeiEAG,a0M3f000000ZZenEAG</value>
+    </labels>
+    <labels>
+        <fullName>NPSallexclusionemails</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSallexclusionemails</shortDescription>
+        <value>ey.com,ae.ey.com,ar.ey.com,au.ey.com,be.ey.com,br.ey.com,ca.ey.com,ch.ey.com,co.ey.com,de.ey.com,es.ey.com,eyg.ey.com,gds.ey.com,ge.ey.com,hk.ey.com,ie.ey.com,il.ey.com,in.ey.com,mitchelltitus.ey.com,mx.ey.com,nl.ey.com,parthenon.ey.com,pt.ey.com,ra.ey.com,ru.ey.com,sg.ey.com,tw.ey.com,ug.ey.com,uk.ey.com,xe02.ey.com,xe04.ey.com,za.ey.com,rackspace.co.uk,rackspace.com,salesforce.com</value>
+    </labels>
+    <labels>
+        <fullName>News</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>News</shortDescription>
+        <value>News</value>
+    </labels>
+    <labels>
+        <fullName>Next_N_Months</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Next N Months</shortDescription>
+        <value>6</value>
+    </labels>
+    <labels>
+        <fullName>No_Commissions</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No Commissions</shortDescription>
+        <value>No Commissions</value>
+    </labels>
+    <labels>
+        <fullName>Non_Synch_Governament_Record_Type_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Non Synch Governament Record Type Error Message</shortDescription>
+        <value>The Account you selected is not a Government Account, Please select the correct account.</value>
+    </labels>
+    <labels>
+        <fullName>NotSigned</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NotSigned</shortDescription>
+        <value>NotSigned</value>
+    </labels>
+    <labels>
+        <fullName>Not_Sent_to_Raptor_ProServ</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not Sent to Raptor ProServ</shortDescription>
+        <value>Professional Services,TriCore ProServe</value>
+    </labels>
+    <labels>
+        <fullName>Not_Sent_to_eConnect</fullName>
+        <categories>Mail Online Signup,Mailgun,ObjectRocket,Rackspace Cloud,Revenue Ticket</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not Sent to eConnect</shortDescription>
+        <value>Mail Online Signup,Mailgun,ObjectRocket,Rackspace Cloud,Revenue Ticket</value>
+    </labels>
+    <labels>
+        <fullName>Not_part_of_any_Queue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Not part of any Queue</shortDescription>
+        <value>You are not part of any Queue. Please reach out to Admins to avail this feature</value>
+    </labels>
+    <labels>
+        <fullName>NotifyPartnerEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NotifyPartnerEmail</shortDescription>
+        <value>julia.miller@rackspace.com,sean.girvin@rackspace.com,vicki.patten@rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>OIC_Field_Admins</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OIC Field Admins</shortDescription>
+        <value>00561000001zrqEAAQ,00561000003csn2AAA,0054N000003pRgPQAU,0056100000266BHAAY,00561000001znaFAAQ</value>
+    </labels>
+    <labels>
+        <fullName>OPPCloudType</fullName>
+        <categories>AWS,Azure Resale,Google,AliCloud,ObjectRocket,Mailgun,Rackspace Cloud,RBU for SFDC-5805</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OPPCloudType</shortDescription>
+        <value>AWS,Azure Resale,Google,AliCloud,ObjectRocket,Mailgun,Rackspace Cloud,RBU</value>
+    </labels>
+    <labels>
+        <fullName>OppCategoryNotReqForGrossMargin</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppCategoryNotReqForGrossMargin</shortDescription>
+        <value>Renewal,</value>
+    </labels>
+    <labels>
+        <fullName>OppReadOnlyRecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppReadOnlyRecordTypeId</shortDescription>
+        <value>01261000000iv0i</value>
+    </labels>
+    <labels>
+        <fullName>OppStagesForAWS_ReqProducts</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppStagesForAWS_Google_ReqProducts</shortDescription>
+        <value>Stage 2 - Opportunity Development,Stage 3 - Proposal &amp; Quote,Stage 4 - Negotiation &amp; Quote Mod,Stage 5 - Closing the Business</value>
+    </labels>
+    <labels>
+        <fullName>OppTeamMember</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppTeamMember</shortDescription>
+        <value>You are already a opportunity team member</value>
+    </labels>
+    <labels>
+        <fullName>OppTypeNotReqForGrossMargin</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppTypeNotReqForGrossMargin</shortDescription>
+        <value>Mail Contract Signup,Mail Online Signup,Revenue Ticket,RBU,Renewal</value>
+    </labels>
+    <labels>
+        <fullName>OppTypes_FAWS_Tracker</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OppTypes_FAWS_Tracker</shortDescription>
+        <value>AWS,Azure,Google,Azure Resale,RSVC</value>
+    </labels>
+    <labels>
+        <fullName>Opp_Professional_Service_Record_TypeId</fullName>
+        <categories>Create Opportunity on Invoice Creation (Process Builder)</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opp Professional Service Record TypeId</shortDescription>
+        <value>01261000000MWjUAAW</value>
+    </labels>
+    <labels>
+        <fullName>Opp_Read_Only_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opp Read Only RecordTypeId</shortDescription>
+        <value>01261000000iv0i</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity</shortDescription>
+        <value>Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityOwner</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityOwner</shortDescription>
+        <value>You are the owner of opportunity</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityTeamMember_AdminOnlyCreatableRole</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OpportunityTeamMember_AdminOnlyCreatableRole</shortDescription>
+        <value>Partner Account Owner</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Account_Team_ManagerId</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Account Team ManagerId</shortDescription>
+        <value>00561000001znphAAA</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Not_In_Contracting</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Not In Contracting</shortDescription>
+        <value>You can only submit for approval if the Opportunity Stage is Stage 3 - Proposal.  Please update the Opportunity to Stage 3 - Proposal and submit for approval again.</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Team_Member_Role</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Team Member Role</shortDescription>
+        <value>Strategic Pursuit Director,Proposal Manager,Pursuit Manager,Pricing Strategist</value>
+    </labels>
+    <labels>
+        <fullName>OptyAccExecErrorMessage</fullName>
+        <categories>Account Executive not able to add more than  OTM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OptyAccExecErrorMessage</shortDescription>
+        <value>Team member already exists with the same role - cannot add more than Two.</value>
+    </labels>
+    <labels>
+        <fullName>OptyINTLRecordTypeIds</fullName>
+        <categories>OpportunityTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OptyINTLRecordTypeIds</shortDescription>
+        <value>01261000000iv0fAAA,01261000000iv0gAAA</value>
+    </labels>
+    <labels>
+        <fullName>OptyMemberErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OptyMemberErrorMessage</shortDescription>
+        <value>Team member already exists with the same role - cannot add more than one.</value>
+    </labels>
+    <labels>
+        <fullName>OptyReadOnlyRecordTypeId</fullName>
+        <categories>PsClone</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OptyReadOnlyRecordTypeId</shortDescription>
+        <value>01261000000iv0iAAA</value>
+    </labels>
+    <labels>
+        <fullName>OutlookMailID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OutlookMailID</shortDescription>
+        <value>Mailto:partnermarketing@rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>PAM_Director_Profiles</fullName>
+        <categories>Company Validation Rules</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PAM Director Profiles</shortDescription>
+        <value>00e61000000ZERtAAO,00e61000000ZERuAAO</value>
+    </labels>
+    <labels>
+        <fullName>PAM_US_And_INTL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PAM US And INTL</shortDescription>
+        <value>00e61000000uSrW,00e61000000uSrb</value>
+    </labels>
+    <labels>
+        <fullName>PAM_and_Partner_Ops_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PAM and Partner Ops Profile</shortDescription>
+        <value>00e61000000ZERt,00e61000000ZERu,00e61000000uSrW,00e61000000uSrb,00e61000000uSpL</value>
+    </labels>
+    <labels>
+        <fullName>PFC_Morethan_1_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PFC Morethan 1 Error</shortDescription>
+        <value>You Can&apos;t Create More Than 1 Partner Fund Claim</value>
+    </labels>
+    <labels>
+        <fullName>PINTCOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect INTL Cloud Opportunity Types # 1</shortDescription>
+        <value>AWS,Mailgun,ObjectRocket,Rackspace Cloud,Google,Azure Resale,RSVC</value>
+    </labels>
+    <labels>
+        <fullName>PINTCOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect INTL Cloud Opportunity Types # 2</shortDescription>
+        <value>Azure,TriCore</value>
+    </labels>
+    <labels>
+        <fullName>PINTCOT_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect INTL Cloud Opportunity Types # 3</shortDescription>
+        <value>Mail Online Signup</value>
+    </labels>
+    <labels>
+        <fullName>PINTDOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect INTL Dedicated Opportunity Types # 1</shortDescription>
+        <value>Dedicated/Private Cloud,Mail Contract Signup,Open Stack Private</value>
+    </labels>
+    <labels>
+        <fullName>PINTDOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect INTL Dedicated Opportunity Types # 2</shortDescription>
+        <value>Professional Services</value>
+    </labels>
+    <labels>
+        <fullName>PINTDOT_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect INTL Dedicated Opportunity Types # 3</shortDescription>
+        <value>Renewal,Revenue Ticket</value>
+    </labels>
+    <labels>
+        <fullName>PSA_RecordType</fullName>
+        <categories>PSA RecordType Id</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PSA RecordType</shortDescription>
+        <value>01261000000j2upAAA</value>
+    </labels>
+    <labels>
+        <fullName>PUSCOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect US Cloud Opportunity Types # 1</shortDescription>
+        <value>AWS,Mailgun,ObjectRocket,Rackspace Cloud,Google,Azure Resale,RSVC</value>
+    </labels>
+    <labels>
+        <fullName>PUSCOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect US Cloud Opportunity Types # 2</shortDescription>
+        <value>Azure,TriCore</value>
+    </labels>
+    <labels>
+        <fullName>PUSCOT_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect US Cloud Opportunity Types # 3</shortDescription>
+        <value>Mail Online Signup</value>
+    </labels>
+    <labels>
+        <fullName>PUSDOT_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect US Dedicated Opportunity Types # 1</shortDescription>
+        <value>Dedicated/Private Cloud,Mail Contract Signup,Open Stack Private</value>
+    </labels>
+    <labels>
+        <fullName>PUSDOT_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect US Dedicated Opportunity Types # 2</shortDescription>
+        <value>Professional Services</value>
+    </labels>
+    <labels>
+        <fullName>PUSDOT_3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect US Dedicated Opportunity Types # 3</shortDescription>
+        <value>Renewal,Revenue Ticket</value>
+    </labels>
+    <labels>
+        <fullName>PartnerLevel_MasterAgent</fullName>
+        <categories>CompanyTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PartnerLevel_MasterAgent</shortDescription>
+        <value>Master Agent</value>
+    </labels>
+    <labels>
+        <fullName>PartnerLevel_SubAgent</fullName>
+        <categories>CompanyTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PartnerLevel_SubAgent</shortDescription>
+        <value>Sub Agent</value>
+    </labels>
+    <labels>
+        <fullName>PartnerPortalName</fullName>
+        <categories>AgreementController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PartnerPortalName</shortDescription>
+        <value>partners</value>
+    </labels>
+    <labels>
+        <fullName>PartnerRecordtype</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PartnerRecordtype</shortDescription>
+        <value>01261000000X4tgAAC</value>
+    </labels>
+    <labels>
+        <fullName>Partner_All_cloud_user</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner All cloud user</shortDescription>
+        <value>allcloudsguide@rackspace.com.rax</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Company_RecordTypeName</fullName>
+        <categories>Partner Company: value</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner_Company_RecordTypeName</shortDescription>
+        <value>Partner_Company</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Level_Distribution</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Level Distribution</shortDescription>
+        <value>Distribution</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Level_Referral_Reseller_Step</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Level Referral/Reseller Step</shortDescription>
+        <value>Reseller,Referral,Referral/Reseller,ReferralEMEA,ResellerEMEA,ResellerReferralEMEA</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Level_Strategic_Step</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Level Strategic Step</shortDescription>
+        <value>Strategic,Master Agent,Sub Agent,Prospect,StrategicEMEA,Master Agent EMEA,Regional,RGS Partner</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Level_all_values</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Level all values</shortDescription>
+        <value>Strategic,Master Agent,Sub Agent,Prospect,StrategicEMEA,Master Agent EMEA,Regional,RGS Partner,Reseller,Referral,Referral/Reseller,ReferralEMEA,ResellerEMEA,ResellerReferralEMEA,Distribution</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Master_Agent_Role</fullName>
+        <categories>CommunitySharingHelper,PartnerRoleTriggerHelper1</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Master Agent Role</shortDescription>
+        <value>Master Agent</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Operations_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner_Operations_Profile</shortDescription>
+        <value>00e61000000uSpLAAU,00e3f000000YK5lAAG</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Portal_Profile</fullName>
+        <categories>Approve Partner Account(AP),Auto Approval Submission(PB)</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Portal Profile</shortDescription>
+        <value>Rackspace Partner Network Profile</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Primary_Member_Creation_Error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Primary Member Creation Error</shortDescription>
+        <value>You cannot create/Edit Partner Contact. Please contact the primary member.</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Profiles</fullName>
+        <categories>Lead Validation Rules,Opportunity Validation Rules,UserTriggerHelper,LeadHelper,Lead Email Alerts to PAM or RAXPartnerHelp(PB),Create Partner Role on Partner Lead Creation(PB),Lead Workflow Rules</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Profiles</shortDescription>
+        <value>00e61000000uSpGAAU,00e61000000uSqEAAU</value>
+    </labels>
+    <labels>
+        <fullName>Partner_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner Record Type</shortDescription>
+        <value>01261000000X4thAAC</value>
+    </labels>
+    <labels>
+        <fullName>Partner_User</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner User</shortDescription>
+        <value>Partner User</value>
+    </labels>
+    <labels>
+        <fullName>Partner_User_Role</fullName>
+        <categories>CommunitySharingHelper,PartnerRoleTriggerHelper1</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner User Role</shortDescription>
+        <value>Partner User</value>
+    </labels>
+    <labels>
+        <fullName>Partner_all_cloud_ownerId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner all cloud ownerId</shortDescription>
+        <value>0054N000003odorQAA</value>
+    </labels>
+    <labels>
+        <fullName>Partner_other_that_primary_member_edit_error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Partner other that primary member edit error</shortDescription>
+        <value>This record cannot be edited as this is not a Partner Contact.</value>
+    </labels>
+    <labels>
+        <fullName>PasswordTextHide</fullName>
+        <categories>Partnerlogin</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PasswordTextHide</shortDescription>
+        <value>Enter a value in the Password field.</value>
+    </labels>
+    <labels>
+        <fullName>Pay_Commissions</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Pay Commissions</shortDescription>
+        <value>Pay Commissions</value>
+    </labels>
+    <labels>
+        <fullName>PaymentFormsFolder</fullName>
+        <categories>PaymentController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PaymentFormsFolder</shortDescription>
+        <value>05861000000PucZAAS</value>
+    </labels>
+    <labels>
+        <fullName>PhoneLeadError1</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PhoneLeadError1</shortDescription>
+        <value>Company, First Name, Last Name,Status, Lead Type, Lead Source, Country, Territory, Focus Area and Annual Revenue are Mandatory</value>
+    </labels>
+    <labels>
+        <fullName>PhoneLeadError2</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PhoneLeadError2</shortDescription>
+        <value>Phone Or Email is Mandatory</value>
+    </labels>
+    <labels>
+        <fullName>PhoneLeadError3</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PhoneLeadError3</shortDescription>
+        <value>State and Country are Required</value>
+    </labels>
+    <labels>
+        <fullName>PhoneLeadSourceValue</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PhoneLeadSourceValue</shortDescription>
+        <value>Call In</value>
+    </labels>
+    <labels>
+        <fullName>Pilot_Agreements_Folder</fullName>
+        <categories>PilotAgreementController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Pilot_Agreements_Folder</shortDescription>
+        <value>05861000000JRRdAAO</value>
+    </labels>
+    <labels>
+        <fullName>Portal_Url</fullName>
+        <categories>selfAccountRegistration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Portal Url</shortDescription>
+        <value>https://www.rackspace.com/partners</value>
+    </labels>
+    <labels>
+        <fullName>Primary_Member_self_deactivation_error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Primary Member self deactivation error</shortDescription>
+        <value>You cannot Inactive your own Partner User</value>
+    </labels>
+    <labels>
+        <fullName>Prod_Org_ID</fullName>
+        <categories>production id, prod id, prod, id</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Production Org ID from na34</shortDescription>
+        <value>00D780000004ehNEA0</value>
+    </labels>
+    <labels>
+        <fullName>ProductAcc_CustomerRecordtype</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAcc_CustomerRecordtype</shortDescription>
+        <value>0123f000000XdKGAA0</value>
+    </labels>
+    <labels>
+        <fullName>ProductAcc_GovernmentRecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAcc_GovernmentRecordType</shortDescription>
+        <value>0123f000000XdKQAA0</value>
+    </labels>
+    <labels>
+        <fullName>ProductAcc_ProspectRecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAcc_ProspectRecordType</shortDescription>
+        <value>0123f000000XdKLAA0</value>
+    </labels>
+    <labels>
+        <fullName>ProductAcc_RBURecordTypes</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAcc_RBURecordTypes</shortDescription>
+        <value>0123f000000XdKVAA0</value>
+    </labels>
+    <labels>
+        <fullName>ProductAcc_ReadOnlyRecordtype</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAcc_ReadOnlyRecordtype</shortDescription>
+        <value>0123f000000XdKaAAK</value>
+    </labels>
+    <labels>
+        <fullName>ProductAccountCreationRestricted_Profiles</fullName>
+        <categories>profiles:Rax Standard-US,Rax Standard-INTL</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAccountCreationRestricted_Profiles</shortDescription>
+        <value>00e61000000uSk2AAE, 00e61000000uSk1AAE</value>
+    </labels>
+    <labels>
+        <fullName>ProductAccountDeletionRestricted</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProductAccountDeletionRestricted</shortDescription>
+        <value>LA_Cloud_Office_Support_Permission_Set,LA_Supervisor_Cloud_Office_Support_Permission_Set,LA_Sales_Chat_Permission_Set,LA_Supervisor_Sales_Chat_Permission_Set</value>
+    </labels>
+    <labels>
+        <fullName>ProfileIdQueueMangement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProfileIdQueueMangement</shortDescription>
+        <value>00e61000000FKFB,00e61000000FKFC,00e61000000uSk1,00e61000000uSk2,00e6100000163ty,00e6100000163tz</value>
+    </labels>
+    <labels>
+        <fullName>ProfileList_Restricting_Deletion_ProductAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProfileList_Restricting_Deletion_ProductAccount</shortDescription>
+        <value>00e61000000uSk1AAE,
+00e61000000uSk2AAE</value>
+    </labels>
+    <labels>
+        <fullName>ProfileNames</fullName>
+        <categories>CannotChangeCompanyName (Validation Rule)</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProfileNames</shortDescription>
+        <value>Data Stewards,Salesbroom,Salesbroom Manager</value>
+    </labels>
+    <labels>
+        <fullName>Profiles_INTL_1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Profiles INTL (Seller/Manager)</shortDescription>
+        <value>00e6100000163tuAAA,00e6100000163tyAAA,00e61000000FKFBAA4,00e61000000FKF9AAO</value>
+    </labels>
+    <labels>
+        <fullName>ProjectCommissionPercentageRequired</fullName>
+        <categories>ProjectExtensionController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectCommissionPercentageRequired</shortDescription>
+        <value>Commission percentage required</value>
+    </labels>
+    <labels>
+        <fullName>ProjectDiscountApproverRequired</fullName>
+        <categories>ProjectExtensionController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectDiscountApproverRequired</shortDescription>
+        <value>Discount Approver needed if PS Time is discounted.</value>
+    </labels>
+    <labels>
+        <fullName>ProjectIntlLostReasonRequired</fullName>
+        <categories>ProjectExtensionController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectIntlLostReasonRequired</shortDescription>
+        <value>Lost reason is required when proposal stage is \&apos;Lost\&apos;</value>
+    </labels>
+    <labels>
+        <fullName>ProjectListViewURL</fullName>
+        <categories>ProjectViewController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectListViewURL</shortDescription>
+        <value>/a06/o</value>
+    </labels>
+    <labels>
+        <fullName>ProjectRecordTypeEMEAProServces</fullName>
+        <categories>ProjectCreateRedirectController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectRecordTypeEMEAProServces</shortDescription>
+        <value>EMEA ProServices</value>
+    </labels>
+    <labels>
+        <fullName>ProjectRedirectUrl</fullName>
+        <categories>ProjectCreateRedirectController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ProjectRedirectUrl</shortDescription>
+        <value>/a06/e?retURL=%2Fa06%2Fo&amp;RecordType=</value>
+    </labels>
+    <labels>
+        <fullName>Prospect_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prospect Account</shortDescription>
+        <value>Prospect</value>
+    </labels>
+    <labels>
+        <fullName>QLDeleteOppID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QLDeleteOppID</shortDescription>
+        <value>0066100000ForZAAAZ</value>
+    </labels>
+    <labels>
+        <fullName>Q_Team_Profiles</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Q Team Profiles</shortDescription>
+        <value>00e61000000FKF9AAO,00e61000000FKFAAA4,00e61000000FKFBAA4,00e61000000FKFCAA4,00e61000000uSk1AAE,00e61000000uSk2AAE</value>
+    </labels>
+    <labels>
+        <fullName>Q_Team_Queue_Ids</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Q Team Queue Ids</shortDescription>
+        <value>00G29000000IxN6EAK</value>
+    </labels>
+    <labels>
+        <fullName>QueueDeleteError</fullName>
+        <categories>QueueController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QueueDeleteError</shortDescription>
+        <value>There are existing records owned by current Queue.Please change ownership to delete Queue.</value>
+    </labels>
+    <labels>
+        <fullName>QueueMemberDeleteError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QueueMemberDeleteError</shortDescription>
+        <value>Queue may not be deleted because active members are associated to this queue. Please reassign active members to a new queue then you may proceed with deleting this queue.</value>
+    </labels>
+    <labels>
+        <fullName>QuickTextShare_UserOrGroupId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QuickTextShare UserOrGroupId</shortDescription>
+        <value>00G61000000i7EQEAY</value>
+    </labels>
+    <labels>
+        <fullName>RBUAccountRecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBUAccountRecordTypeId</shortDescription>
+        <value>0123f000000XdKVAA0</value>
+    </labels>
+    <labels>
+        <fullName>RBURecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBURecordType</shortDescription>
+        <value>0124N000000kyjXQAQ</value>
+    </labels>
+    <labels>
+        <fullName>RBU_Company_RecordTypeName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBU_Company_RecordTypeName</shortDescription>
+        <value>RBU_Company</value>
+    </labels>
+    <labels>
+        <fullName>RBU_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RBU Record Type</shortDescription>
+        <value>0124N000000kyjhQAA,0124N000000kyjXQAQ,0124N000000kyjmQAA</value>
+    </labels>
+    <labels>
+        <fullName>RE_Lead_ProdEndpoint</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_Lead_ProdEndpoint</shortDescription>
+        <value>https://login.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8</value>
+    </labels>
+    <labels>
+        <fullName>RE_Lead_StagingEndpoint</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_Lead_StagingEndpoint</shortDescription>
+        <value>https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8</value>
+    </labels>
+    <labels>
+        <fullName>RE_Lead_payload</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RE_Lead_payload</shortDescription>
+        <value>oid=00D80000000PUGw&amp;retURL=http://www.rackspace-thank-you-page.com&amp;lead_source=Rackspace&amp;debug=1&amp;debugEmail=rajesh.sukamanchi@rackspace.com&amp;</value>
+    </labels>
+    <labels>
+        <fullName>RIS_Last_N_Months</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RIS Last N Months</shortDescription>
+        <value>3</value>
+    </labels>
+    <labels>
+        <fullName>RIS_Next_N_Months</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RIS Next N Months</shortDescription>
+        <value>6</value>
+    </labels>
+    <labels>
+        <fullName>RS_Partner_Operations</fullName>
+        <categories>Profile Labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RS Partner Operations</shortDescription>
+        <value>Rackspace-Partner Operations</value>
+    </labels>
+    <labels>
+        <fullName>RacksapceHelpDeskEmail</fullName>
+        <categories>RaxInfoController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RackspaceHelpDeskEmail</shortDescription>
+        <value>RAXPartnerHelp@Rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>Rackspace_Partner_Network_Site_Guest_User</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rackspace Partner Network Site Guest User</shortDescription>
+        <value>00561000003ChHb</value>
+    </labels>
+    <labels>
+        <fullName>Rackspace_Partners_Login_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rackspace Partners Login Profile</shortDescription>
+        <value>00e61000000uSqEAAU</value>
+    </labels>
+    <labels>
+        <fullName>Rackspace_Partners_Profile</fullName>
+        <categories>CompanyTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rackspace Partners Profile</shortDescription>
+        <value>00e61000000uSpGAAU</value>
+    </labels>
+    <labels>
+        <fullName>Rackspace_SE_US_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rackspace - SE US Profile</shortDescription>
+        <value>00e61000000uSsyAAE</value>
+    </labels>
+    <labels>
+        <fullName>Rackspace_Seller_INTL_PID</fullName>
+        <categories>OpportunityTriggerHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rackspace Seller-INTL PID</shortDescription>
+        <value>00e6100000163tyAAA</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Account_Documents</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Account Documents</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/attachments/list_type/accounts/upload?salesforce_id=:ACCOUNTID</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Account_Documents_staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Account Documents staging</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/attachments/list_type/accounts/upload?salesforce_id=:ACCOUNTID</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Documents</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Documents</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/attachments/upload?salesforce_id=:OPPORTUNITYID</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Documents_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Documents Staging</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/attachments/upload?salesforce_id=:OPPORTUNITYID</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Kickbacks</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Kickbacks</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/kickbacks</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Kickbacks_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Kickbacks Staging</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/kickbacks</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Record</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Record</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/contracts?terms=:OPPORTUNITYNUMBER</value>
+    </labels>
+    <labels>
+        <fullName>Raptor_Record_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Raptor Record Staging</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/contracts?terms=:OPPORTUNITYNUMBER</value>
+    </labels>
+    <labels>
+        <fullName>Read</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Read</shortDescription>
+        <value>Read</value>
+    </labels>
+    <labels>
+        <fullName>ReadOnlyOppError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReadOnlyOppError</shortDescription>
+        <value>You are not Authorised to create the Request. Please contact administrator.</value>
+    </labels>
+    <labels>
+        <fullName>Reasons_To_Lead_Gen</fullName>
+        <categories>Workflows and approval process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reasons To Lead Gen</shortDescription>
+        <value>Missing Key Info, Need Additional Nurture, No Response</value>
+    </labels>
+    <labels>
+        <fullName>Reasons_To_Marketing</fullName>
+        <categories>Process Builder and Approval Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reasons To Marketing</shortDescription>
+        <value>No Budget,Lost to Competitor, No Product Fit,Timing Too Far Out,,No Response</value>
+    </labels>
+    <labels>
+        <fullName>Reasons_To_Rejected</fullName>
+        <categories>Process Builder and Approval Process</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reasons To Rejected</shortDescription>
+        <value>Bad Data,Do Not Contact,Duplicate Lead,Existing Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>RecordTypeLabel</fullName>
+        <categories>ProjectCreateRedirectController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RecordTypeLabel</shortDescription>
+        <value>RecordType</value>
+    </labels>
+    <labels>
+        <fullName>Referral</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Referral</shortDescription>
+        <value>Referral</value>
+    </labels>
+    <labels>
+        <fullName>ReferralEMEA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReferralEMEA</shortDescription>
+        <value>ReferralEMEA</value>
+    </labels>
+    <labels>
+        <fullName>Referral_Reseller</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Referral/Reseller</shortDescription>
+        <value>Referral/Reseller</value>
+    </labels>
+    <labels>
+        <fullName>RejectReasonsforApproval</fullName>
+        <categories>Approval Process and Process Builder</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RejectReasonsforApproval</shortDescription>
+        <value>Missing Key Info,Need Additional Nurture,No Response,No Budget,Lost to Competitor,No Product Fit,Timing Too Far Out,Bad Data,Do Not Contact,Duplicate Lead,Existing Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>Rejected_Status_QueueId</fullName>
+        <categories>Process Builder</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Rejected Status QueueId</shortDescription>
+        <value>00G61000001evqMEAQ</value>
+    </labels>
+    <labels>
+        <fullName>Required_CW_Address_Fields</fullName>
+        <categories>Closed Won, Close Won, Opportunity, Wizard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Required CW Address Fields</shortDescription>
+        <value>mailingcity,mailingstreet,mailingcountry,mailingpostalcode,mailingstate</value>
+    </labels>
+    <labels>
+        <fullName>Reseller</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reseller</shortDescription>
+        <value>Reseller</value>
+    </labels>
+    <labels>
+        <fullName>ResellerEMEA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ResellerEMEA</shortDescription>
+        <value>ResellerEMEA</value>
+    </labels>
+    <labels>
+        <fullName>Reseller_AgreementId</fullName>
+        <categories>AgreementController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reseller AgreementId</shortDescription>
+        <value>06961000003GS5DAAW</value>
+    </labels>
+    <labels>
+        <fullName>Reseller_Referral</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reseller_Referral</shortDescription>
+        <value>ResellerReferral</value>
+    </labels>
+    <labels>
+        <fullName>Reseller_ReferralEMEA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reseller_ReferralEMEA</shortDescription>
+        <value>ResellerReferralEMEA</value>
+    </labels>
+    <labels>
+        <fullName>RevenueEmails</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RevenueEmails</shortDescription>
+        <value>bbelasco@rackspace.com,Andrew.Welsh@rackspace.com,Kimberly.Gamboa@rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>SFDC_TES_Admin_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SFDC TES Admin Id</shortDescription>
+        <value>00561000000hXDG</value>
+    </labels>
+    <labels>
+        <fullName>Sales_Development_Representatives</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Development Representatives</shortDescription>
+        <value>00e61000000FKF9AAO,00e61000000FKFAAA4,00e61000000FKFBAA4,00e61000000FKFCAA4,00e6100000163trAAA,00e61000000l8BsAAI</value>
+    </labels>
+    <labels>
+        <fullName>Sales_Rep_Profiles</fullName>
+        <categories>LeadHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Rep Profiles</shortDescription>
+        <value>00e6100000163tuAAA,00e6100000163tvAAA,00e6100000163tyAAA,00e6100000163tzAAA</value>
+    </labels>
+    <labels>
+        <fullName>Sales_Rep_Queue_Ids</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Rep Queue Ids</shortDescription>
+        <value>00G29000000IxNBEA0</value>
+    </labels>
+    <labels>
+        <fullName>Sales_ops_Admin_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales ops Admin Profile</shortDescription>
+        <value>00e6100000163u0AAA</value>
+    </labels>
+    <labels>
+        <fullName>Salesbroom_Managers</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesbroom_Managers</shortDescription>
+        <value>00561000000SIHBAA4,005610000020RUYAA2</value>
+    </labels>
+    <labels>
+        <fullName>Salesbroom_Managers_Users</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesbroom_Managers_Users</shortDescription>
+        <value>00561000000SIHBAA4,005610000020RUYAA2,00561000001zt4r</value>
+    </labels>
+    <labels>
+        <fullName>Salesbroom_Users</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesbroom Users</shortDescription>
+        <value>Salesbroom</value>
+    </labels>
+    <labels>
+        <fullName>Salesforce_IQIntgration_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesforce_IQIntgration_Profile</shortDescription>
+        <value>00e610000016B45AAE</value>
+    </labels>
+    <labels>
+        <fullName>Second_Level_Approver</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Second Level Approver</shortDescription>
+        <value>00561000001zsEDAAY</value>
+    </labels>
+    <labels>
+        <fullName>Seller_Profiles</fullName>
+        <categories>CL_Wizard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Seller_Profiles</shortDescription>
+        <value>Rackspace Seller-US,Rackspace Seller-INTL,Rackspace Manager-INTL,Rackspace Manager-US,System Administrator,Sales Ops Admin</value>
+    </labels>
+    <labels>
+        <fullName>Seller_Profiles_For_Partner_Lead</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Seller Profiles For Partner Lead</shortDescription>
+        <value>Rackspace Seller-US,Rackspace Seller-INTL,Rackspace Manager-US,Rackspace Manager-INTL</value>
+    </labels>
+    <labels>
+        <fullName>Seller_US_Manager_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Seller US  Manager Profile</shortDescription>
+        <value>00e6100000163tvAAA</value>
+    </labels>
+    <labels>
+        <fullName>Seller_US_Profile</fullName>
+        <categories>For Submit a Pricing Request button in opportunity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Seller US Profile</shortDescription>
+        <value>00e6100000163tzAAA</value>
+    </labels>
+    <labels>
+        <fullName>Send_Survey_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send Survey Email</shortDescription>
+        <value>&lt;a href=https://rax.my.salesforce.com/apex/OPCRecordView?AccManager=</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_CVP_Send_to_UK_OVT_INTL_Profiles</fullName>
+        <categories>NA34: 00e61000000l8BsAAI,00e6100000163tsAAA,00e6100000163u0AAA,00e61000000ZEzMAAW,00e6100000163tzAAA,00e61000000ZFAeAAO</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to CVP/Send to UK OVT (INTL) Profiles</shortDescription>
+        <value>00e61000000l8BsAAI,00e6100000163tsAAA,00e6100000163u0AAA,00e61000000ZEzMAAW,00e6100000163tzAAA,00e61000000ZFAeAAO,00e61000000ZEzNAAW,00e61000000uSrlAAE,00e6100000163tuAAA,00e6100000163tvAAA,00e6100000163tyAAA</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_Country</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to Country</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/contracts/transfer?salesforce_id=:OPPORTUNITYID&amp;processing_region=:COUNTRYCODE</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_Country_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to Country (Staging)</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/contracts/transfer?salesforce_id=:OPPORTUNITYID&amp;processing_region=:COUNTRYCODE</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_UK_OVT_Raptor</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to UK OVT Raptor</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/contracts/transfer?salesforce_id=:OPPORTUNITYID&amp;processing_region=intl</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_UK_OVT_Raptor_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to UK OVT Raptor Staging</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/contracts/transfer?salesforce_id=:OPPORTUNITYID&amp;processing_region=intl</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_US_CVP</fullName>
+        <categories>eConnect, US, CVP, prod</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to US (CVP)</shortDescription>
+        <value>https://econnect.rackspace.com/opportunity/xfer?opportunity_id=:OPPORTUNITYID&amp;process=us</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_US_CVP_Raptor</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to US CVP Raptor</shortDescription>
+        <value>https://raptor.gscs.rackspace.com/contracts/transfer?salesforce_id=:OPPORTUNITYID&amp;processing_region=us</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_US_CVP_Raptor_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to US CVP Raptor Staging</shortDescription>
+        <value>https://int-raptor.gscs.rackspace.com/contracts/transfer?salesforce_id=:OPPORTUNITYID&amp;processing_region=us</value>
+    </labels>
+    <labels>
+        <fullName>Send_to_US_CVP_Staging</fullName>
+        <categories>eConnect, US, CVP, staging, qa, qe</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Send to US (CVP) (Staging)</shortDescription>
+        <value>https://qa-econnect.gscs.rackspace.com/opportunity/xfer?opportunity_id=:OPPORTUNITYID&amp;process=us</value>
+    </labels>
+    <labels>
+        <fullName>Sf2SfConnectionName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sf2SfConnectionId</shortDescription>
+        <value>04P61000000KzEJEA0</value>
+    </labels>
+    <labels>
+        <fullName>Sitecore</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sitecore</shortDescription>
+        <value>Sitecore</value>
+    </labels>
+    <labels>
+        <fullName>SkipOpportunityValidations</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SkipOpportunityValidations</shortDescription>
+        <value>Rackspace ProServ - US,Rackspace ProServ - INTL</value>
+    </labels>
+    <labels>
+        <fullName>SkipOracleuserFoundation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SkipOracleuserFoundation</shortDescription>
+        <value>00561000001zo2kAAA,00561000001znTuAAI</value>
+    </labels>
+    <labels>
+        <fullName>SkipUserIDs</fullName>
+        <categories>Juan: 00561000001q2QAAAY, Vladimir: 005610000020IMVAA2, Raj:00561000001znTRAAY, Jayant: 005610000020rxqAAA, Mohan:00561000000eR4sAAE, Kartik: 00561000003CwWCAA0, Varsha: 00561000001zsC0AAI, Data.com: 00561000000SNsbAAG Padmaja :00561000003CkUn</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SkipUserIDs</shortDescription>
+        <value>005610000020IMVAA2,00561000001zo2kAAA,00561000000conaAAA,00561000000SNsbAAG,00561000001zsCAAAY,00561000001znSnAAI,005610000020rxqAAA,00561000003CwWCAA0,005610000020jaPAAQ,00561000001znJTAAY,00561000003CkUnAAK,00561000001znTRAAY, 00561000001zrVrAAI, 00561000001zsC0AAI,00e6100000163trAAA,00e61000000cX27AAE,0054N000003ow6QQAQ,00561000001zsbFAAQ,0054N000003ozohQAA,0054N000003oztkQAA,00561000001znJD,0053f000000pKS8AAM,0053f000000pL9qAAE,0054N000003ozYNQAY,0053f000000pL9vAAE,0053f000000pLA0AAM,0054N000003ozohQAA,0054N000003ozofQAA,0053f000000pLAPAA2,0053f000000pFnGAAU,0053f000000pLAKAA2,0053f000000pLAFAA2,0053f000000pDhpAAE,0053f000000pCZaAAM,0053f000000pKS8AAM,00561000003Mg39AAC,0053f000000pFnLAAU,0054N000003ozogQAA,0053f000000pOEPAA2,00561000001zo7tAAA,0053f000000pRVsAAM,0053f000000pFbtAAE,0053f000000pD8f,0053f000000pD8fAAE,0053f000000ttAgAAI,	
+0054N000003qGQIQA2,0053f000000pE6QAAU,0054N000003pJmK,	0053f000000WEIOAA4</value>
+    </labels>
+    <labels>
+        <fullName>Skip_Team_Roles</fullName>
+        <categories>OpportunityTeamMemberHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Skip Team Roles</shortDescription>
+        <value>Partner User,Master Agent</value>
+    </labels>
+    <labels>
+        <fullName>SkipuserDnB</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SkipuserDnB</shortDescription>
+        <value>0054N000003ozYNQAY</value>
+    </labels>
+    <labels>
+        <fullName>Solution_Architect_Member_Role</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Solution Architect Member Role</shortDescription>
+        <value>Solution Architect Specialist</value>
+    </labels>
+    <labels>
+        <fullName>Solution_Architect_Roles</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Solution Architect Roles</shortDescription>
+        <value>US GSS - SA FAWS#00E61000000tV6ZEAU|US GSS - SA Digital#00E61000000tV6UEAU</value>
+    </labels>
+    <labels>
+        <fullName>Source</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Source</shortDescription>
+        <value>Source</value>
+    </labels>
+    <labels>
+        <fullName>SplitTypeID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SplitTypeID</shortDescription>
+        <value>14961000000EKvxAAG</value>
+    </labels>
+    <labels>
+        <fullName>StageClosedWon</fullName>
+        <categories>Opportunity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StageClosedWon</shortDescription>
+        <value>Closed Won</value>
+    </labels>
+    <labels>
+        <fullName>StandardRecordType</fullName>
+        <categories>Standard :Record type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StandardRecordType</shortDescription>
+        <value>01261000000X4t2AAC</value>
+    </labels>
+    <labels>
+        <fullName>Standard_Company_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Standard_Company_RecordTypeId</shortDescription>
+        <value>01261000000X4t2AAC</value>
+    </labels>
+    <labels>
+        <fullName>StateRequiredError</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StateRequiredError</shortDescription>
+        <value>Please select the State</value>
+    </labels>
+    <labels>
+        <fullName>Strategic</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Strategic</shortDescription>
+        <value>Strategic</value>
+    </labels>
+    <labels>
+        <fullName>StrategicEMEA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>StrategicEMEA</shortDescription>
+        <value>StrategicEMEA</value>
+    </labels>
+    <labels>
+        <fullName>Strategic_Content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Strategic Content</shortDescription>
+        <value>Strategic</value>
+    </labels>
+    <labels>
+        <fullName>Strategic_Partner_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Strategic Partner Agreement</shortDescription>
+        <value>Strategic Partner Agreement</value>
+    </labels>
+    <labels>
+        <fullName>Submit_a_Pricing_Request_Prod</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit a Pricing Request Prod</shortDescription>
+        <value>https://rackspace.service-now.com/rack_sp?id=sc_cat_item&amp;sys_id=b46e2280db9fab00e93ff2e9af961907&amp;kb_sysid=</value>
+    </labels>
+    <labels>
+        <fullName>Submit_a_Pricing_Request_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit a Pricing Request Staging</shortDescription>
+        <value>https://rackspace.service-now.com/rack_sp?id=sc_cat_item&amp;sys_id=b46e2280db9fab00e93ff2e9af961907&amp;kb_sysid=</value>
+    </labels>
+    <labels>
+        <fullName>SubmitforApproval</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SubmitforApproval</shortDescription>
+        <value>You have successfully requested access for</value>
+    </labels>
+    <labels>
+        <fullName>SuperAdmins</fullName>
+        <categories>Used for process builders, batches by an abstract admin. Do not add a concrete user Id to the values.</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SuperAdmins</shortDescription>
+        <value>00538000005NJYrAAO</value>
+    </labels>
+    <labels>
+        <fullName>Support_Community_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Support Community Name</shortDescription>
+        <value>SFDCSupport</value>
+    </labels>
+    <labels>
+        <fullName>Support_Community_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Support Community URL</shortDescription>
+        <value>https://rackspace.force.com/SFDCSupport</value>
+    </labels>
+    <labels>
+        <fullName>Survey_not_completed_Body</fullName>
+        <categories>OPC Survey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Survey not completed Body</shortDescription>
+        <value>You have not completed your Survey.</value>
+    </labels>
+    <labels>
+        <fullName>Survey_not_completed_Subject</fullName>
+        <categories>OPC Survey</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Survey not completed Subject</shortDescription>
+        <value>Survey is not completed</value>
+    </labels>
+    <labels>
+        <fullName>System_Admin_Integration_Profiles</fullName>
+        <categories>System Admin: 00e61000000l8BsAAI, Integration API: 00e6100000163tsAAA,  API Only: 00e61000000izkP, Integration API: Read Only: 00e3f000000p6dE, AutoProc:00e61000000l8BwAAI, Oracle Soa: 00561000001znTuAAI, Oracle SOA Foundation: 00561000001zo2kAAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>System Admin Integration Profiles</shortDescription>
+        <value>00e61000000l8BsAAI,
+00e6100000163tsAAA, 
+00e61000000izkP, 
+00e3f000000p6dE,
+00e61000000l8BwAAI, 
+00561000001znTuAAI, 
+00561000001zo2kAAA</value>
+    </labels>
+    <labels>
+        <fullName>System_Admin_Profile</fullName>
+        <categories>Used in Go to QM</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>System Admin Profile</shortDescription>
+        <value>00e61000000l8BsAAI</value>
+    </labels>
+    <labels>
+        <fullName>System_Administrator_Profile_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>System Administrator Profile Id</shortDescription>
+        <value>00e61000000l8BsAAI</value>
+    </labels>
+    <labels>
+        <fullName>TandDDocumentid</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TandDDocumentid</shortDescription>
+        <value>0693f0000034xI4</value>
+    </labels>
+    <labels>
+        <fullName>Task_Sales_Activity_Record_Type</fullName>
+        <categories>Used in CreateLatticeContactClass</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Task Sales Activity Record Type</shortDescription>
+        <value>01261000000j3YQ</value>
+    </labels>
+    <labels>
+        <fullName>TeamMemberAccess</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TeamMemberAccess</shortDescription>
+        <value>You have been granted team member access with  role</value>
+    </labels>
+    <labels>
+        <fullName>TeamMemberApproval</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TeamMemberApproval</shortDescription>
+        <value>has already placed this Opportunity in an approval process. Please wait until it has been approved or rejected.</value>
+    </labels>
+    <labels>
+        <fullName>TeamMemberRequestError</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TeamMemberRequestError</shortDescription>
+        <value>Something went wrong. Please try after some time.</value>
+    </labels>
+    <labels>
+        <fullName>Territories_under_AUS_Agreement</fullName>
+        <categories>AUS Contract Agreements</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Territories under AUS Agreement</shortDescription>
+        <value>ANZ,Asia,ROW</value>
+    </labels>
+    <labels>
+        <fullName>Territories_under_EMEA_Agreement</fullName>
+        <categories>EMEA Contract Agreements</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Territories under EMEA Agreement</shortDescription>
+        <value>Africa,Benelux,DACH,EMEA,Israel,Middle East,Nordic</value>
+    </labels>
+    <labels>
+        <fullName>Territories_under_LATAM_Agreement</fullName>
+        <categories>LATAM Contract Agreements</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Territories under LATAM Agreement</shortDescription>
+        <value>LATAM</value>
+    </labels>
+    <labels>
+        <fullName>Territories_under_US_Agreement</fullName>
+        <categories>US/CANADA Agreement</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Territories under US Agreement</shortDescription>
+        <value>US/CANADA</value>
+    </labels>
+    <labels>
+        <fullName>TestNPSDate</fullName>
+        <categories>In Production add value as &quot;NULL&quot; else add value &quot;YYYY-MM-DD&quot; format in Test Environments and this Label referred in &quot;NPS Survey&quot; Formula field for Testing Eligible NPS Contacts</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TestNPSDate</shortDescription>
+        <value>NULL</value>
+    </labels>
+    <labels>
+        <fullName>TriCore_CE</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TriCore_CE</shortDescription>
+        <value>a0M61000005wS1A</value>
+    </labels>
+    <labels>
+        <fullName>UCRB_CreatedDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CreatedDate (UpdateChildRelationshipsBatch.apxc)</shortDescription>
+        <value>LAST_N_DAYS:3</value>
+    </labels>
+    <labels>
+        <fullName>UK_DunsNumber</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UK DunsNumber</shortDescription>
+        <value>239064194</value>
+    </labels>
+    <labels>
+        <fullName>USLeadQueueId</fullName>
+        <categories>Workflow Rules</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>USLeadQueueId</shortDescription>
+        <value>00G61000001evqfEAA</value>
+    </labels>
+    <labels>
+        <fullName>US_DunsNumber</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US DunsNumber</shortDescription>
+        <value>829207120</value>
+    </labels>
+    <labels>
+        <fullName>US_ENT_ISR_Central</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US ENT ISR Central</shortDescription>
+        <value>a3r4N000000tR2TQAU</value>
+    </labels>
+    <labels>
+        <fullName>US_ENT_ISR_Northeast</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US ENT ISR Northeast</shortDescription>
+        <value>a3r4N000000tR37QAE</value>
+    </labels>
+    <labels>
+        <fullName>US_ENT_ISR_Southeast</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US ENT ISR Southeast</shortDescription>
+        <value>a3r4N000000tR32QAE</value>
+    </labels>
+    <labels>
+        <fullName>US_ENT_ISR_West</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US ENT ISR West</shortDescription>
+        <value>a3r4N000000tR1pQAE</value>
+    </labels>
+    <labels>
+        <fullName>US_INT_Cloud_Record_Types</fullName>
+        <categories>US Cloud, INT Cloud</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US_INT_Cloud_Record_Types</shortDescription>
+        <value>01261000000iv0j, 01261000000iv0f</value>
+    </labels>
+    <labels>
+        <fullName>US_MDR</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MDR</shortDescription>
+        <value>a3r610000016OlJAAU</value>
+    </labels>
+    <labels>
+        <fullName>US_MDR_Queue_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MDR Queue ID</shortDescription>
+        <value>00G61000002CKH9</value>
+    </labels>
+    <labels>
+        <fullName>US_MDR_Site_Sub</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US_MDR_Site_Sub</shortDescription>
+        <value>a3r4N000001F1gWQAS</value>
+    </labels>
+    <labels>
+        <fullName>US_MM_SDR_Central</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MM SDR Central</shortDescription>
+        <value>a3r4N000000tQztQAE</value>
+    </labels>
+    <labels>
+        <fullName>US_MM_SDR_Northeast</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MM SDR Northeast</shortDescription>
+        <value>a3r4N000000tR0wQAE</value>
+    </labels>
+    <labels>
+        <fullName>US_MM_SDR_Southeast</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MM SDR Southeast</shortDescription>
+        <value>a3r4N000000tQzyQAE</value>
+    </labels>
+    <labels>
+        <fullName>US_MM_SDR_West</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MM SDR West</shortDescription>
+        <value>a3r4N000000tQz5QAE</value>
+    </labels>
+    <labels>
+        <fullName>US_MRP_Queue_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US MRP Queue ID</shortDescription>
+        <value>00G4N000001sKA5UAM</value>
+    </labels>
+    <labels>
+        <fullName>US_Pursuit_Request</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US Pursuit Request</shortDescription>
+        <value>0124N000000j4ZGQAY</value>
+    </labels>
+    <labels>
+        <fullName>US_Referral_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US Referral Agreement</shortDescription>
+        <value>US Referral Agreement</value>
+    </labels>
+    <labels>
+        <fullName>US_Referral_AgreemntId</fullName>
+        <categories>AgreementController</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US Referral AgreemntId</shortDescription>
+        <value>06961000003GOcIAAW</value>
+    </labels>
+    <labels>
+        <fullName>US_Referral_Reseller_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US Referral/Reseller Agreement</shortDescription>
+        <value>US Referral/Reseller Agreement</value>
+    </labels>
+    <labels>
+        <fullName>US_Reseller_Agreement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US Reseller Agreement</shortDescription>
+        <value>US Reseller Agreement</value>
+    </labels>
+    <labels>
+        <fullName>US_SDR</fullName>
+        <categories>Custom Queue ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>US SDR</shortDescription>
+        <value>a3r61000000gd02AAA</value>
+    </labels>
+    <labels>
+        <fullName>UnitedStates_Canada</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnitedStates/Canada</shortDescription>
+        <value>United States,Canada</value>
+    </labels>
+    <labels>
+        <fullName>UnqualifiedTo_MarketingQueueId</fullName>
+        <categories>Process Builder</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnqualifiedTo MarketingQueueId</shortDescription>
+        <value>00G61000001evqsEAA</value>
+    </labels>
+    <labels>
+        <fullName>Upload_Logo_Val1</fullName>
+        <categories>error message, error, validation, generic visualforce</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please choose a logo to upload.</shortDescription>
+        <value>Please choose a logo to upload.</value>
+    </labels>
+    <labels>
+        <fullName>Upload_Logo_Val2</fullName>
+        <categories>error message, error, validation, generic visualforce</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Upload only the images.</shortDescription>
+        <value>Please upload only images.</value>
+    </labels>
+    <labels>
+        <fullName>Us_Cloud_rec_type_profiles_not_req_cloud_revenue_and_support_fee</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Us Cloud rec type profiles not req cloud revenue and support fee</shortDescription>
+        <value>00e61000000uLr7,00e6100000163tr,00e61000000uSpG,00e61000000uSqE,00e61000000cX27</value>
+    </labels>
+    <labels>
+        <fullName>UsernameTextHide</fullName>
+        <categories>Partnerlogin</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UsernameTextHide</shortDescription>
+        <value>Enter a value in the User Name field.</value>
+    </labels>
+    <labels>
+        <fullName>Valid_Image_Types</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Valid Image Types</shortDescription>
+        <value>peg, png, gif, jpg, bmp</value>
+    </labels>
+    <labels>
+        <fullName>ValidateAnnualRevenue</fullName>
+        <categories>LeadHelper</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ValidateAnnualRevenue</shortDescription>
+        <value>Annual Revenue Should be greater than 0</value>
+    </labels>
+    <labels>
+        <fullName>Validate_Reason_Not_Required</fullName>
+        <categories>Validation</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Validate Reason Not Required</shortDescription>
+        <value>Unqualified - To Lead Gen,Unqualified - To Marketing,Rejected</value>
+    </labels>
+    <labels>
+        <fullName>eConnect_Documents</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>eConnect Documents</shortDescription>
+        <value>https://econnect.rackspace.com/attachment/sfdc_list?opportunity_id=:OPPORTUNITYID</value>
+    </labels>
+    <labels>
+        <fullName>eConnect_Documents_Staging</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>eConnect Documents (Staging)</shortDescription>
+        <value>https://qa-econnect.gscs.rackspace.com/attachment/sfdc_list?opportunity_id=:OPPORTUNITYID</value>
+    </labels>
+    <labels>
+        <fullName>opportuitygovernmentrecordtypeid</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>opportuitygovernmentrecordtypeid</shortDescription>
+        <value>01261000000X4wSAAS</value>
+    </labels>
+    <labels>
+        <fullName>opportunity_amount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>opportunity amount used for creating deal center request</shortDescription>
+        <value>50000</value>
+    </labels>
+    <labels>
+        <fullName>partnerhelpcontactemail</fullName>
+        <categories>Payments and PaymentsTab Lightning component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>partnerhelpcontactemail</shortDescription>
+        <value>raxpartnerhelp@rackspace.com</value>
+    </labels>
+    <labels>
+        <fullName>selfAccountRegistration</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>selfAccountRegistration</shortDescription>
+        <value>/partners/apex/selfAccountRegistration</value>
+    </labels>
+</CustomLabels>

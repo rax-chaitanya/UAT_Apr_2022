@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JPY_Curr_RBU_Only</fullName>
+    <active>true</active>
+    <description>Japanese Yen currency to only be permitted for the &quot;RBU&quot; record type.</description>
+    <errorConditionFormula>AND(
+
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+NOT(RecordTypeId = &quot;0124N000000kyjhQAA&quot;),
+ISPICKVAL(CurrencyIsoCode, &quot;JPY&quot;)
+
+)</errorConditionFormula>
+    <errorDisplayField>CurrencyIsoCode</errorDisplayField>
+    <errorMessage>JPY currency can only be selected for  &quot;RBU&quot; opportunities.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__TimecardSplit_Assignment_Res_Mismatch</fullName>
+    <active>true</active>
+    <description>Timecard Split Resource must match Assignment Resource.</description>
+    <errorConditionFormula>AND(NOT(ISNULL(pse__Assignment__c)),(pse__Assignment__c &lt;&gt; &apos;&apos;),NOT(ISNULL(pse__Assignment__r.pse__Resource__c)),(pse__Assignment__r.pse__Resource__c &lt;&gt; &apos;&apos;),(pse__Resource__c &lt;&gt; pse__Assignment__r.pse__Resource__c))</errorConditionFormula>
+    <errorDisplayField>pse__Assignment__c</errorDisplayField>
+    <errorMessage>Timecard Split Resource must match Assignment Resource.</errorMessage>
+</ValidationRule>

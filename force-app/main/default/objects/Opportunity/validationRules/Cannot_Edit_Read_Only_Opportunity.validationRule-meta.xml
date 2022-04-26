@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Edit_Read_Only_Opportunity</fullName>
+    <active>true</active>
+    <description>Validation rule that prevents an end user from modifying an opportunity if the end user&apos;s Profile ID is not in a set of approved admin IDs and the Opportunity Type is &quot;Read Only&quot;.</description>
+    <errorConditionFormula>AND(
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+NOT(CONTAINS( $Label.Partner_Operations_Profile ,$Profile.Id)),
+NOT($Profile.Name = &quot;Salesbroom Manager&quot;),
+NOT(CONTAINS( $User.Id , OwnerId )),
+RecordType.Name == &apos;Read Only&apos;,
+ISPICKVAL(StageName, &quot;Closed Lost&quot;),
+NOT(ISCHANGED(RecordTypeId)) ,
+(NOW() - LastModifiedDate)*86400 &gt; 5,
+NOT( ISCHANGED( Number_Of_Customer_Reviews__c ))
+)</errorConditionFormula>
+    <errorMessage>An opportunity cannot be modified once the Record Type has been set to &quot;Read Only&quot;.</errorMessage>
+</ValidationRule>

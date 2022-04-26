@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CEStashNotification</fullName>
+        <apiVersion>41.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CEStashNotification</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_Contracting_Entity_Chang</fullName>
+        <apiVersion>45.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/AccountNotifications</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-Contracting Entity Chang</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Contracting Entity Send OBM</fullName>
+        <actions>
+            <name>NewSfdcToFusion_Contracting_Entity_Chang</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CEStashNotification</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CEStashNotification</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( NOT(ISNEW()), OR( ISCHANGED(Code__c), ISCHANGED(Country__c), ISCHANGED(SSO__c), ISCHANGED(Territory__c), ISCHANGED(Default__c), ISCHANGED(Sales_Rep_Region__c) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

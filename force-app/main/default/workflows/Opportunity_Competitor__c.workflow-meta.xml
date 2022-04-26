@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateOppCompetitor</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opportunity Competitor) - Create action to Create Opportunity Competitor in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/CREATELEGACYOPPCOMPETITOR/v01/</endpointUrl>
+        <fields>Category__c</fields>
+        <fields>CompSales_OldContactId__c</fields>
+        <fields>Competitive_Bid__c</fields>
+        <fields>Description__c</fields>
+        <fields>Id</fields>
+        <fields>Incumbent__c</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Strengths__c</fields>
+        <fields>SystemModstamp</fields>
+        <fields>Weaknesses__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateOppCompetitor</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateOppCompetitor</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opportunity Competitor) - Update action to Update Opportunity Competitor in Current Salesforce.</description>
+        <endpointUrl>https://maskedraxfusion-a425146.integration.us2.oraclecloud.com:443/integration/flowsvc/salesforce/UPDATELEGACYOPPCOMPETITOR/v01/</endpointUrl>
+        <fields>Category__c</fields>
+        <fields>CompSales_OldContactId__c</fields>
+        <fields>Competitive_Bid__c</fields>
+        <fields>Description__c</fields>
+        <fields>Id</fields>
+        <fields>Incumbent__c</fields>
+        <fields>Name</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Strengths__c</fields>
+        <fields>SystemModstamp</fields>
+        <fields>Weaknesses__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateOppCompetitor</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateOppCompetitor</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateOppCompetitor</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opportunity Competitor) - Create action to Create Opportunity Competitor in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  ISBLANK(Old_Record_Id__c),  NOT(ISBLANK(Opportunity__r.Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateOppCompetitor</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateOppCompetitor</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opportunity Competitor) - Update action to Update Opportunity Competitor in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) , NOT(ISBLANK(Old_Record_Id__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

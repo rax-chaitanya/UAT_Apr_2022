@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ContractingEntityReadonly_While_Creation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+NOT(ISBLANK(  Contracting_Entity_to_Approve__c )),  ISNEW()  
+)</errorConditionFormula>
+    <errorDisplayField>Contracting_Entity_to_Approve__c</errorDisplayField>
+    <errorMessage>Contracting Entity to Approve field can only be set after the Account is created. Please leave the field blank</errorMessage>
+</ValidationRule>

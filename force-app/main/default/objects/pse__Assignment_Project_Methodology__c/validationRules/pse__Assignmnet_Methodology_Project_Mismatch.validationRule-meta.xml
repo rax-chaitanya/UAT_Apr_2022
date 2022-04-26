@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Assignmnet_Methodology_Project_Mismatch</fullName>
+    <active>false</active>
+    <description>[DEPRECATED(Duplicate)] Validates whether the project methodology and assignment belong to the same project.</description>
+    <errorConditionFormula>pse__Assignment__r.pse__Project__c != pse__Project_Methodology__r.pse__Project__c</errorConditionFormula>
+    <errorMessage>Cannot associate a the project methodology with the assignment. These records do not belong to the same project. Enter a project phase and milestone that belong to the same project.</errorMessage>
+</ValidationRule>

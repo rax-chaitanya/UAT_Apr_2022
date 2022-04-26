@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Assignment_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISBLANK(pse__Assignment__c), ISBLANK(pse__Resource_Request__c))</errorConditionFormula>
+    <errorMessage>The estimates versus actuals comparison record requires either an assignment or a resource request.</errorMessage>
+</ValidationRule>

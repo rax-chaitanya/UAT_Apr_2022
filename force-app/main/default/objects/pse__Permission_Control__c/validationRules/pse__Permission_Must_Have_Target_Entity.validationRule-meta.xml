@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Permission_Must_Have_Target_Entity</fullName>
+    <active>true</active>
+    <description>Permission Control must reference either a Resource or a Region/Practice/Group or Project.</description>
+    <errorConditionFormula>IF(ISBLANK(pse__Resource__c),0,1) +
+IF(ISBLANK(pse__Region__c),0,1) +
+IF(ISBLANK(pse__Practice__c),0,1) +
+IF(ISBLANK(pse__Group__c),0,1) +
+IF(ISBLANK(pse__Project__c),0,1) +
+IF(ISBLANK(pse__Team__c),0,1) = 0</errorConditionFormula>
+    <errorMessage>Permission Control must reference either a Resource or a Region/Practice/Group or a Project or Team</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Territory_should_not_be_Unassigned</fullName>
+    <active>true</active>
+    <description>SFDC-2966</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), 
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), 
+IsConverted, 
+CONTAINS(TEXT(Territory__c),&apos;Unassigned&apos;) 
+)</errorConditionFormula>
+    <errorDisplayField>Territory__c</errorDisplayField>
+    <errorMessage>Territory field should not be &apos;Unassigned&apos;. Please update the appropriate territory</errorMessage>
+</ValidationRule>

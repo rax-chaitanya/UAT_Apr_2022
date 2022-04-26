@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>SwagIQ_Order_has_expired</fullName>
+        <description>SwagIQ Order has expired</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PFLSwagIQ__Ordered_By__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/SwagIQ_Order_Expired</template>
+    </alerts>
+    <alerts>
+        <fullName>SwagIQ_Order_was_Delivered</fullName>
+        <ccEmails>caleb.garcia@rackspace.com</ccEmails>
+        <description>SwagIQ Order was Delivered</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PFLSwagIQ__Ordered_By__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>emailalert@sf.rackspace.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/SwagIQ_Order_Delivered</template>
+    </alerts>
+    <rules>
+        <fullName>SwagIQ Request Expired</fullName>
+        <actions>
+            <name>SwagIQ_Order_has_expired</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>auto sends email alert to Lead/Contact Owner who requested order.</description>
+        <formula>AND( 				ISPICKVAL(PFLSwagIQ__Status__c , &quot;Request Expired&quot;), 				NOT(ISBLANK(PFLSwagIQ__Ordered_By__c)), 				PFLSwagIQ__Ordered_By__r.IsActive = TRUE)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

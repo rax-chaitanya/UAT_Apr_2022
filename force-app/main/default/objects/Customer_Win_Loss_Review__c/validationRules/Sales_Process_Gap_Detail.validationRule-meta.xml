@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Process_Gap_Detail</fullName>
+    <active>true</active>
+    <description>If Sales Process Gap is true, the Sales Process Details are required.</description>
+    <errorConditionFormula>AND(RecordType.DeveloperName=&apos;Internal&apos;,  Process_Gap_in_Rackspace_Sale_Process__c  = True, ISBLANK(  Process_Gap_Details__c  ))</errorConditionFormula>
+    <errorDisplayField>Process_Gap_Details__c</errorDisplayField>
+    <errorMessage>Process Gap Details is required if Process Gap in Rackspace Sales Process field is checked.</errorMessage>
+</ValidationRule>

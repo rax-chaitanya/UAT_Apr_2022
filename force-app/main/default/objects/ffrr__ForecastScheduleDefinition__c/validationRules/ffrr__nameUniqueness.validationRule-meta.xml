@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ffrr__nameUniqueness</fullName>
+    <active>true</active>
+    <errorConditionFormula>Id &lt;&gt; VLOOKUP( $ObjectType.ffrr__ForecastScheduleDefinition__c.Fields.Id , $ObjectType.ffrr__ForecastScheduleDefinition__c.Fields.Name , Name )
+
+&amp;&amp; NOT(ISBLANK(VLOOKUP( $ObjectType.ffrr__ForecastScheduleDefinition__c.Fields.Id , $ObjectType.ffrr__ForecastScheduleDefinition__c.Fields.Name , Name )))</errorConditionFormula>
+    <errorMessage>A forecast schedule definition with this name already exists.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RV_Member_required</fullName>
+    <active>false</active>
+    <description>RV Member is required if RV Account is selected</description>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), NOT(ISBLANK(RV_Account__c)) , ISBLANK( RV_Member__c),NOT(AND(UPPER($User.LastName) = &apos;USER&apos;, UPPER($User.FirstName) = &apos;CONNECTION&apos;)) )</errorConditionFormula>
+    <errorDisplayField>RV_Member__c</errorDisplayField>
+    <errorMessage>RV Member is required</errorMessage>
+</ValidationRule>

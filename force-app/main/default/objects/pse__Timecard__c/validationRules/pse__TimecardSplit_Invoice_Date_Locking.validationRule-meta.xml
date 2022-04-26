@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__TimecardSplit_Invoice_Date_Locking</fullName>
+    <active>true</active>
+    <description>Invoice Date is locked if Invoiced.</description>
+    <errorConditionFormula>AND(pse__Invoiced__c,NOT(ISCHANGED(pse__Invoiced__c)),ISCHANGED(pse__Invoice_Date__c))</errorConditionFormula>
+    <errorDisplayField>pse__Invoice_Date__c</errorDisplayField>
+    <errorMessage>Invoice Date is locked if Invoiced.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Other_Email_Address_Fields_are_Blank</fullName>
+    <active>true</active>
+    <description>Message indicating the field must not be blank when associated field is selected.</description>
+    <errorConditionFormula>OR((AND(pse__Schedule_Send_Email_To_Others__c, ISBLANK(pse__Schedule_Other_Email_Addresses__c))), (AND(pse__Swap_Send_Email_To_Others__c, ISBLANK(pse__Swap_Other_Email_Addresses__c))))</errorConditionFormula>
+    <errorMessage>One or both of the email address fields do not contain a value.</errorMessage>
+</ValidationRule>

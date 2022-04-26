@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Resource_Should_Be_In_Range</fullName>
+    <active>true</active>
+    <description>Validation message indicating number of required resources on a time slot can be from 1 to 99.</description>
+    <errorConditionFormula>OR(pse__Resources_Required__c &lt; 1,pse__Resources_Required__c &gt; 99)</errorConditionFormula>
+    <errorDisplayField>pse__Resources_Required__c</errorDisplayField>
+    <errorMessage>Number of Resources should be between 1 to 99.</errorMessage>
+</ValidationRule>

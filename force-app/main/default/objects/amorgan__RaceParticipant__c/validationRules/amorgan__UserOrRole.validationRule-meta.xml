@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>amorgan__UserOrRole</fullName>
+    <active>true</active>
+    <description>Either one of user or role must be entered, not both.</description>
+    <errorConditionFormula>(isblank(amorgan__User__c) &amp;&amp; isblank(amorgan__RoleId__c)) || (not(isblank(amorgan__User__c)) &amp;&amp; not(isblank(amorgan__RoleId__c)))</errorConditionFormula>
+    <errorMessage>Either one of user or role must be entered, not both.</errorMessage>
+</ValidationRule>

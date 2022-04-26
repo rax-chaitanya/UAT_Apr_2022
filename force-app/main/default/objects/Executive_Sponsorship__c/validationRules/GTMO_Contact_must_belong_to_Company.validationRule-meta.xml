@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_Contact_must_belong_to_Company</fullName>
+    <active>true</active>
+    <description>Contact must belong to the parent company of account selected.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+IF(
+ISBLANK(Customer_Point_of_Contact__c),
+FALSE,
+Account__r.Company_Name__c &lt;&gt;
+Customer_Point_of_Contact__r.AccountId
+)
+)</errorConditionFormula>
+    <errorDisplayField>Customer_Point_of_Contact__c</errorDisplayField>
+    <errorMessage>Customer Point of Contact must be associated to the Company.</errorMessage>
+</ValidationRule>

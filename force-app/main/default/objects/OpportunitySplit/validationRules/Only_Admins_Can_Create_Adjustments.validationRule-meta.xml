@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_Admins_Can_Create_Adjustments</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), SplitType.MasterLabel = &apos;Adjustments&apos;  &amp;&amp; 
+ NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)))</errorConditionFormula>
+    <errorMessage>Adjustments are allowed only by Sales Ops. Please contact a Sales Ops to enter Adjustments.</errorMessage>
+</ValidationRule>

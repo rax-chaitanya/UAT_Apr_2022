@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Invoice_Submitted_No_New_Items</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(pse__Vendor_Invoice__r.pse__Submitted__c,ISNEW())</errorConditionFormula>
+    <errorMessage>Cannot create new items for a submitted vendor invoice</errorMessage>
+</ValidationRule>

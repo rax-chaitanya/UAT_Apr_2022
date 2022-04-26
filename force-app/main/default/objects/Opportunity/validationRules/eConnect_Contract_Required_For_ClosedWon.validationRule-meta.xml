@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>eConnect_Contract_Required_For_ClosedWon</fullName>
+    <active>true</active>
+    <description>A contract needs to be uploaded to Raptor before allowing the opp to be close/won</description>
+    <errorConditionFormula>AND (
+NOT(ISCHANGED( Skip_Validation__c )),
+NOT(CONTAINS($Label.Partner_Profiles ,$User.ProfileId)),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT( CONTAINS($Label.SkipOpportunityValidations, $Profile.Name )),
+AND(ISCHANGED( StageName ),ISPICKVAL( StageName , &apos;Closed Won&apos;)),
+( NOT(Contract_Received__c) ),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+NOT(CONTAINS($Label.Not_Sent_to_eConnect, TEXT(Type))),
+NOT(CONTAINS($Label.Contract_Optional_Types, TEXT(Type)))
+)</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>A contract needs to be uploaded to Raptor before allowing the opp to be close/won</errorMessage>
+</ValidationRule>

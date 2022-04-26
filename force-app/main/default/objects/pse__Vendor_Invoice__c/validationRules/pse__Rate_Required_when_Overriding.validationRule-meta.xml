@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Rate_Required_when_Overriding</fullName>
+    <active>true</active>
+    <description>Ensures that a rate is provided if the Override Currency Exchange Rate checkbox is checked.</description>
+    <errorConditionFormula>AND(pse__Override_Vendor_Invoice_Exchange_Rate__c=TRUE,
+  OR(ISNULL(pse__Vendor_Invoice_Exchange_Rate_Override__c) ,
+       ISBLANK(pse__Vendor_Invoice_Exchange_Rate_Override__c) 
+      )
+)</errorConditionFormula>
+    <errorDisplayField>pse__Vendor_Invoice_Exchange_Rate_Override__c</errorDisplayField>
+    <errorMessage>Vendor Invoice Exchange Rate Override must be supplied when checking the Override check box.</errorMessage>
+</ValidationRule>

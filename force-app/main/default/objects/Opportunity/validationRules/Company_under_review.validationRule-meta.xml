@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_under_review</fullName>
+    <active>true</active>
+    <description>Opportunity cannot be closed won while Company Creation is still under review</description>
+    <errorConditionFormula>AND(
+				OR(
+							ISPICKVAL(Account.Data_Steward_Approval__c, &quot;Pending Review&quot;),
+					  ISPICKVAL(Account.Data_Steward_Approval__c, &quot;In Progress&quot;),
+							ISPICKVAL(Account.Data_Steward_Approval__c, &quot;Rejected&quot;)
+							),
+				DAY(CloseDate) &lt; 25,
+				ISPICKVAL(StageName, &quot;Closed Won&quot;)
+				)</errorConditionFormula>
+    <errorMessage>Company creation is still under review. Opportunity cannot be Closed Won until the new Company is Approved.</errorMessage>
+</ValidationRule>

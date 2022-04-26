@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Validate_Ready_to_Staff</fullName>
+    <active>true</active>
+    <description>Validate that correct fields are set to enter ready to staff state.</description>
+    <errorConditionFormula>AND(  ISPICKVAL( pse__Status__c , &apos;Ready to Staff&apos;) ,  OR( ISNULL(pse__Start_Date__c) , ISNULL(pse__SOW_Hours__c) ))</errorConditionFormula>
+    <errorMessage>You must have a valid Start Date and Hours to change status to Ready to Staff</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Non_Billable_Incurred_Amount_Invalid</fullName>
+    <active>true</active>
+    <description>If provided, the non-billable incurred amount for an Expense must not be less than zero or greater than the Expense amount itself.  (If Expense amount is negative, non-billable incurred amount must be null or zero).</description>
+    <errorConditionFormula>NOT(OR(ISNULL(pse__Non_Billable_Incurred_Amount__c),AND((pse__Non_Billable_Incurred_Amount__c &gt;= 0.00),(pse__Non_Billable_Incurred_Amount__c &lt;= MAX(pse__Amount__c,0.00)))))</errorConditionFormula>
+    <errorDisplayField>pse__Non_Billable_Incurred_Amount__c</errorDisplayField>
+    <errorMessage>If provided, the non-billable incurred amount for an Expense must not be less than zero or greater than the Expense amount itself.</errorMessage>
+</ValidationRule>

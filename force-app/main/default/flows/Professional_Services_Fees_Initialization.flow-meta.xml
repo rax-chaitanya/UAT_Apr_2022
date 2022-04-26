@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <description>this will replace WFR :ProServ Fees (MRR) Calculations	, Field Update: ProServ Fees (MRR) field update.
+-added update filter condition.
+convert to assignment rather than dml statement</description>
+    <formulas>
+        <description>ProServeFeesOneTime / 10</description>
+        <name>varProServFeesMRR</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.service_fees__c} / 10</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Professional Services Fees Initialization {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Professional Services Fees Initialization</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Only executes update if the ProServ Fees MRR does not already equal:
+ProServ Fees One Time / 10</description>
+        <name>Update_ProServ_MRR_Field</name>
+        <label>Update ProServ MRR Field</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <filterLogic>1</filterLogic>
+        <filters>
+            <field>service_fees_mrr__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>varProServFeesMRR</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>service_fees_mrr__c</field>
+            <value>
+                <elementReference>varProServFeesMRR</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_ProServ_MRR_Field</targetReference>
+        </connector>
+        <filterLogic>(1 AND (8 OR 5) AND (2 OR 3 OR 4)) OR (6 AND 7 AND (5 OR 8))</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Professional Services</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New Logo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New Footprint</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Bookings Credit</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>service_fees__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>TriCore ProServe</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Bookings Credit</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>service_fees__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

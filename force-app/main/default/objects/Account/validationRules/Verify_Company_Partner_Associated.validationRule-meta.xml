@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Verify_Company_Partner_Associated</fullName>
+    <active>true</active>
+    <description>View 360 field can be edited once Company Partner Associated field has been populated. Created this Validation Rule as part of Redesign.</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType)),
+ISCHANGED( View_360__c ),
+ISBLANK(Company_Name__r.PartnerAssociated__c)
+)</errorConditionFormula>
+    <errorDisplayField>View_360__c</errorDisplayField>
+    <errorMessage>Company Level Partner Associated must be assigned. Please contact Partner Ops.</errorMessage>
+</ValidationRule>

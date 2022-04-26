@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTMO_CannotChangeCompanyType</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+CONTAINS(RecordType.Name,$Label.CheckCompanyonRecordType),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+ISCHANGED(Type),NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id))
+)</errorConditionFormula>
+    <errorDisplayField>Type</errorDisplayField>
+    <errorMessage>The Company Type cannot be changed.</errorMessage>
+</ValidationRule>

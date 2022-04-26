@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_Amount_Should_Not_Editable</fullName>
+    <active>true</active>
+    <description>Budget Amount Can not be change once Project is Closed Won Or  Budget is Approved.</description>
+    <errorConditionFormula>AND(ISCHANGED( pse__Amount__c),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+NOT($Permission.Edit_Budget_Amount_users),
+OR(ISPICKVAL( pse__Project__r.SFDC_Project_Status__c , &apos;Closed Won&apos;),
+(pse__Project__r.PS_Probability__c = &apos;Closed Won&apos;),
+ISPICKVAL( pse__Status__c ,&apos;Approved&apos;))
+)</errorConditionFormula>
+    <errorDisplayField>pse__Amount__c</errorDisplayField>
+    <errorMessage>Budget Amount should not change once Project is Closed Won Or  Budget is Approved.</errorMessage>
+</ValidationRule>

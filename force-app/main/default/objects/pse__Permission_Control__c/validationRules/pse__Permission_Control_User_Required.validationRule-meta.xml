@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Permission_Control_User_Required</fullName>
+    <active>true</active>
+    <description>Permission Controls must specify a User.</description>
+    <errorConditionFormula>OR(ISNULL(pse__User__c),(pse__User__c=&apos;&apos;))</errorConditionFormula>
+    <errorDisplayField>pse__User__c</errorDisplayField>
+    <errorMessage>Permission Controls must specify a User.</errorMessage>
+</ValidationRule>

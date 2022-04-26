@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Stamp_Focus_Area_Total</fullName>
+        <field>Focus_Area_Total_Number__c</field>
+        <formula>Focus_Area_Total__c</formula>
+        <name>Stamp Focus Area Total</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateOppFocusArea</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Opp Focus Area) - Update action to Update Opp in Current Salesforce.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/OpportunityNotifications</endpointUrl>
+        <fields>Focus_Area_Debook__c</fields>
+        <fields>Focus_Area_Percentage__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateOppFocusArea</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Focus Area Sync</fullName>
+        <active>false</active>
+        <formula>AND(true,
+NOT(CONTAINS($Label.GovernmentRecordTypes,Opportunity__r.RecordTypeId))
+)</formula>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>NewSfdcToFusion_UpdateOppFocusArea</name>
+                <type>OutboundMessage</type>
+            </actions>
+            <offsetFromField>Opp_FocusArea__c.DateTime__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateOppFocusArea</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateOppFocusArea</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Opp Focus Area) - Update action to Update Opp in Current Salesforce.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)) ,
+NOT(CONTAINS($Label.GovernmentRecordTypes,
+Opportunity__r.RecordTypeId)
+)
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Stamp Focus Area Total</fullName>
+        <actions>
+            <name>Stamp_Focus_Area_Total</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR( 
+NOT(ISBLANK(Focus_Area_Total__c)), 
+ISCHANGED(Focus_Area_Total__c), 
+ISCHANGED(Focus_Area_Roll_up__c), 
+ISCHANGED(Focus_Area_Percentage__c) 
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

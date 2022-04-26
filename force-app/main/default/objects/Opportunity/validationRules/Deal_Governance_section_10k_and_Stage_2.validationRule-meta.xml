@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Governance_section_10k_and_Stage_2</fullName>
+    <active>true</active>
+    <description>IF Amount &gt; 10K
+AND
+Stage &gt;=2
+THEN
+
+Make &quot;Deal Governance&quot; section mandatory</description>
+    <errorConditionFormula>AND(
+OR(Amount &gt;= 10000,AND(Approval_Amount__c &gt;= 10000, NOT(CONTAINS( $Label.Opp_Professional_Service_Record_TypeId ,RecordTypeId )), NOT(ISPICKVAL(QuotingSystem__c,&apos;Datapipe&apos;)), NOT(ISPICKVAL(Acquisition__c,&apos;Datapipe&apos;))) ),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+
+OR(
+ISPICKVAL(StageName,&quot;Stage 2 - Opportunity Development&quot;),
+ISPICKVAL(StageName,&quot;Stage 3 - Proposal &amp; Quote&quot;),
+ISPICKVAL(StageName,&quot;Stage 4 - Negotiation &amp; Quote Mod&quot;),
+ISPICKVAL(StageName,&quot;Stage 5 - Closing the Business&quot;)
+),
+
+AND(
+None__c = FALSE,
+Offering_with_non_standard_solution_i_e__c = FALSE,
+Offering_a_Balance_of_Trade__c = FALSE,
+Offering_discounting_or_exchanging_curre__c = FALSE,
+Offering_net_new_services_discounted_p__c = FALSE,
+Offering_DataPipe_to_Rackspace_solutions__c = FALSE,
+Offering_based_on_customer_legal_terms__c	= FALSE)
+)</errorConditionFormula>
+    <errorMessage>Please populate the &quot;Deal Governance&quot; section</errorMessage>
+</ValidationRule>

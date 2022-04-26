@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_revenue_Date_Mandatory</fullName>
+    <active>true</active>
+    <description>This is inline with a new project by ELT to accelerate revenue materialization for opps greater than $20K</description>
+    <errorConditionFormula>AND(
+NOT( $Profile.Name = &apos;System Administrator&apos;),
+NOT( $Profile.Name = &apos;Integration API&apos;),				
+ExpectedRevenue &gt;= 20000,
+ISPICKVAL(StageName,&quot;Closed Won&quot;), 
+ISBLANK(Expected_Revenue_Start_Date__c),
+NOT(ISPICKVAL(Cloud_Contract_Type__c,&quot;DCR&quot;)),
+NOT(ISPICKVAL(Cloud_Contract_Type__c,&quot;DCR - Offset&quot;)),
+NOT(ISPICKVAL(Type,&quot;Renewal&quot;)),
+NOT(ISPICKVAL(Category__c,&quot;Renewal&quot;)))</errorConditionFormula>
+    <errorDisplayField>Expected_Revenue_Start_Date__c</errorDisplayField>
+    <errorMessage>Expected Revenue Start Date must be populated</errorMessage>
+</ValidationRule>

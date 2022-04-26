@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Executive_Sponsor_Type_Activities</fullName>
+    <active>true</active>
+    <description>Executive Sponsor type activities should only be created on Executive Sponsor records.</description>
+    <errorConditionFormula>AND(
+NOT(LEFT(WhatId,3) = &apos;a1S&apos;),
+OR(
+ISPICKVAL( Type , &apos;Executive Sponsor - External&apos;),
+ISPICKVAL( Type , &apos;Executive Sponsor - Internal&apos;)
+)
+)</errorConditionFormula>
+    <errorDisplayField>WhatId</errorDisplayField>
+    <errorMessage>Executive Sponsor-External or Executive Sponsor-Internal activities can only be created on an Executive Sponsor.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_this_Opportunity_an_EE_Plus_Deal</fullName>
+    <active>true</active>
+    <description>Is this an EE+ Deal field is required; when
+a.	The Opportunity Record Type is INTL Cloud OR INTL Dedicated
+b.	AND the Type is Professional Services</description>
+    <errorConditionFormula>AND(ISPICKVAL(Type, &quot;Professional Services&quot;),
+ISPICKVAL(PS_EE_Plus_Deal__c, &apos;&apos;),
+OR(RecordType.DeveloperName = &quot;INTL_Cloud&quot;, RecordType.DeveloperName = &quot;INTL_Dedicated&quot;),
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(CONTAINS($Label.System_Admin_Integration_Profiles,$Profile.Id)),
+NOT(IsClosed),
+NOT(ISPICKVAL(StageName, &quot;Stage 1 - Planning &amp; Identification&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>PS_EE_Plus_Deal__c</errorDisplayField>
+    <errorMessage>For Professional Services “Is this an EE+ Deal?“ is a required field.</errorMessage>
+</ValidationRule>

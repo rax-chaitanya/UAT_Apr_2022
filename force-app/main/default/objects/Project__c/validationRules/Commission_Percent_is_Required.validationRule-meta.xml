@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commission_Percent_is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), ISPICKVAL( Commissions__c , &quot;Yes&quot;),ISNULL( Commission_Percentage__c ) )</errorConditionFormula>
+    <errorDisplayField>Commission_Percentage__c</errorDisplayField>
+    <errorMessage>Commission percentage required</errorMessage>
+</ValidationRule>

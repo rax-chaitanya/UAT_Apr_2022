@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Has_non_negative_budget_amount</fullName>
+    <active>false</active>
+    <description>This check will ensure that the budget amount is not a negative value</description>
+    <errorConditionFormula>pse__Amount__c   &lt;  0</errorConditionFormula>
+    <errorDisplayField>pse__Amount__c</errorDisplayField>
+    <errorMessage>Amount should be a positive value</errorMessage>
+</ValidationRule>

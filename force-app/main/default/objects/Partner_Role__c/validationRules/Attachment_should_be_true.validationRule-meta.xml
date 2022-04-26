@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attachment_should_be_true</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)),
+   ISPICKVAL( Role__c , &quot;Influence&quot;),ISPICKVAL( Status__c, &quot;Approved&quot;), OR(ISCHANGED(Status__c),ISNEW()),NOT( Has_Attachment__c ) )</errorConditionFormula>
+    <errorMessage>Please upload the attachment before approving the Partner Role</errorMessage>
+</ValidationRule>

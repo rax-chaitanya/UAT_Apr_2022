@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Check_Hours</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(pse__Sunday_Hours__c &lt; 0, pse__Sunday_Hours__c &gt; 24, pse__Monday_Hours__c &lt; 0, pse__Monday_Hours__c &gt; 24, pse__Tuesday_Hours__c &lt; 0, pse__Tuesday_Hours__c &gt; 24, pse__Wednesday_Hours__c &lt; 0, pse__Wednesday_Hours__c &gt; 24, pse__Thursday_Hours__c &lt; 0, pse__Thursday_Hours__c &gt; 24, pse__Friday_Hours__c &lt; 0, pse__Friday_Hours__c &gt; 24, pse__Saturday_Hours__c &lt; 0, pse__Saturday_Hours__c &gt; 24)</errorConditionFormula>
+    <errorMessage>Hours cannot be negative or greater than 24.</errorMessage>
+</ValidationRule>

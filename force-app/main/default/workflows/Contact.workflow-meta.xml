@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Contact_Mailing_Address_Bypass_Alert</fullName>
+        <description>Contact Mailing Address Bypass Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Contact_Address_Bypass</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>CASL_Contact_Update_Field</fullName>
+        <field>CASL_Contact_Consent_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - CASL Contact Update Field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contact_Consent_is_False</fullName>
+        <field>GDPR_Contact_Consent__c</field>
+        <literalValue>0</literalValue>
+        <name>SFMC - Contact Consent is False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contact_Double_Opt_In_False</fullName>
+        <field>Double_Opt_In_Contact__c</field>
+        <literalValue>0</literalValue>
+        <name>SFMC - Contact Double Opt In False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Data_Request_Contact_field_update</fullName>
+        <field>GDPR_Request_Data_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - Data Request Contact field update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Data_Request_field_update_delete_Contact</fullName>
+        <field>GDPR_Request_Delete_Date__c</field>
+        <formula>NOW()+90</formula>
+        <name>SFMC - Data Req fld update del Contact</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Double_Opt_In_Contact_Date_Update</fullName>
+        <field>Double_Opt_In_Contact_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - Double Opt In Contact Date Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>End_Date_is_Null</fullName>
+        <description>If the Start Date is greater than the End Date, that the End Date is made null</description>
+        <field>End_Date__c</field>
+        <name>End Date is Null</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>GDPR_Contact_Consent_Date_Update</fullName>
+        <field>GDPR_Contact_Consent_Date__c</field>
+        <formula>NOW()</formula>
+        <name>SFMC - GDPR Contact Consent Date Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Type_equals_AWS</fullName>
+        <description>Onica AWS role = PSM , Sales Rep</description>
+        <field>Type__c</field>
+        <literalValue>AWS</literalValue>
+        <name>Type equals AWS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateTerritoryonContacts</fullName>
+        <field>Territory__c</field>
+        <literalValue>Africa</literalValue>
+        <name>UpdateTerritoryonContacts</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>CDH_SfdcToFusion_UpdateContact</fullName>
+        <apiVersion>43.0</apiVersion>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>DP_ContactId__c</fields>
+        <fields>Id</fields>
+        <fields>RPN__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>CDH_SfdcToFusion_UpdateContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToDPCRM_UpdateContact</fullName>
+        <apiVersion>42.0</apiVersion>
+        <description>sent to DPCRM when a contact is updated</description>
+        <endpointUrl>https://maskedapi.datapipe.net/salesforce/listeners/rax/updatecontact.asmx</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>Email</fields>
+        <fields>Fax</fields>
+        <fields>Id</fields>
+        <fields>MasterRecordId</fields>
+        <fields>MobilePhone</fields>
+        <fields>OtherCity</fields>
+        <fields>OtherCountry</fields>
+        <fields>OtherCountryCode</fields>
+        <fields>OtherGeocodeAccuracy</fields>
+        <fields>OtherLatitude</fields>
+        <fields>OtherLongitude</fields>
+        <fields>OtherPhone</fields>
+        <fields>OtherPostalCode</fields>
+        <fields>OtherState</fields>
+        <fields>OtherStateCode</fields>
+        <fields>OtherStreet</fields>
+        <fields>OwnerId</fields>
+        <fields>Owner_Role__c</fields>
+        <fields>Owner_SSO__c</fields>
+        <fields>Phone</fields>
+        <fields>RecordTypeId</fields>
+        <fields>ReportsToId</fields>
+        <fields>Salutation</fields>
+        <fields>Suffix</fields>
+        <fields>Title</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToDPCRM-UpdateContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_CreateContact</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Contact) - Create action to Notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-CreateContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_DeleteUndeleteContact</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Contact) - delete/undelete action Notify SF Stash (Soft Delete).</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <fields>Status__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-DeleteUndeleteContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>NewSfdcToFusion_UpdateContact</fullName>
+        <apiVersion>37.0</apiVersion>
+        <description>New Salesforce to FMW Integration (Contact) - Update action to update Contact in Current Salesforce &amp; Notify SF Stash.</description>
+        <endpointUrl>https://qa-fusion.api.rackspacecloud.com/SFDC/ContactNotifications</endpointUrl>
+        <fields>Id</fields>
+        <fields>Old_Record_Id__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>sfdc_tes_admin@rackspace.com</integrationUser>
+        <name>NewSfdcToFusion-UpdateContact</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>CDH_SfdcToFusion_UpdateContact</fullName>
+        <actions>
+            <name>CDH_SfdcToFusion_UpdateContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  NOT(ISNEW()), NOT($User.Id=$Label.FMW_API_User),  NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),  NOT(ISBLANK(RPN__c))  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Contact Mailing Address Bypass</fullName>
+        <actions>
+            <name>Contact_Mailing_Address_Bypass_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISCHANGED(  Mailing_Address_Bypassed__c  ),  Mailing_Address_Bypassed__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Enddate make null when start date is greater than End date</fullName>
+        <actions>
+            <name>End_Date_is_Null</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND($Profile.Name =&apos;Integration API&apos;,RecordType.Name = &quot;Employee&quot;,Start_Date__c &gt; End_Date__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>GTMO_AutoUpdateTerritoryOnContacts</fullName>
+        <actions>
+            <name>UpdateTerritoryonContacts</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.FirstName</field>
+            <operation>notEqual</operation>
+            <value>qwertyuio</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.MailingCountry</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.Territory__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToDPCRM-UpdateContact</fullName>
+        <actions>
+            <name>NewSfdcToDPCRM_UpdateContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>Evaluate the rule when a record is created, and every time it&apos;s edited</description>
+        <formula>AND( NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(ISBLANK(AccountId)), NOT(ISBLANK(Account.DP_AccountId__c)), ISPICKVAL(Account.NotifiedSystems__c, &quot;Datapipe&quot;)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-CreateContact</fullName>
+        <actions>
+            <name>NewSfdcToFusion_CreateContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Contact) - Create action to Notify SF Stash.</description>
+        <formula>AND(NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)),
+NOT(CONTAINS($Label.GovernmentRecordTypes,Account.RecordTypeId))
+
+ )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-DeleteUndeleteContact</fullName>
+        <actions>
+            <name>NewSfdcToFusion_DeleteUndeleteContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>New Salesforce to FMW Integration (Contact) - delete/undelete action Notify SF Stash (Soft Delete).</description>
+        <formula>AND(ISCHANGED(Status__c), OR(ISPICKVAL(Status__c,&apos;Deleted&apos;),ISPICKVAL(PRIORVALUE(Status__c),&apos;Deleted&apos;)),NOT(CONTAINS($Label.SkipUserIDs,$User.Id)), NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NewSfdcToFusion-UpdateContact</fullName>
+        <actions>
+            <name>NewSfdcToFusion_UpdateContact</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>New Salesforce to FMW Integration (Contact) - Update action to update Contact in Current Salesforce &amp; Notify SF Stash.</description>
+        <formula>AND(NOT(ISNEW()) ,NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),NOT(CONTAINS($Label.GovernmentRecordTypes,RecordTypeId)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Onica AWS Contact</fullName>
+        <actions>
+            <name>Type_equals_AWS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.Type__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.Onica_AWS_Role__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Company_Number__c</field>
+            <operation>equals</operation>
+            <value>1314606</value>
+        </criteriaItems>
+        <description>rule triggers when Onica Aws PSM, Onica Aws Rep is created.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - CASL Contact Rule</fullName>
+        <actions>
+            <name>CASL_Contact_Update_Field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.CASL_Contact_Consent__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Contact Email Opt Out</fullName>
+        <actions>
+            <name>Contact_Consent_is_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Contact_Double_Opt_In_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.HasOptedOutOfEmail</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Date of Contact Consent</fullName>
+        <actions>
+            <name>GDPR_Contact_Consent_Date_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.GDPR_Contact_Consent__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Double Opt In Contact Rule</fullName>
+        <actions>
+            <name>Double_Opt_In_Contact_Date_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.Double_Opt_In_Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Request Data Contact Rule</fullName>
+        <actions>
+            <name>Data_Request_Contact_field_update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.GDPR_Request_Data__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SFMC - Request Data Delete Contact Rule</fullName>
+        <actions>
+            <name>Data_Request_field_update_delete_Contact</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.GDPR_Request_Delete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

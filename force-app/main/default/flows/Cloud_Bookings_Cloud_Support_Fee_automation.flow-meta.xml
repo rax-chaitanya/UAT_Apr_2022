@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <decisions>
+        <name>Quote_Lines_Present</name>
+        <label>Quote Lines Present?</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>QL_not_present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getQL</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Delete_QL__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>All</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cloud_Support_fee_PLUS_Cloud_Infra_Fee</targetReference>
+            </connector>
+            <label>QL not present</label>
+        </rules>
+        <rules>
+            <name>QL_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getQL</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Cloud_Support_Fee_Forecast__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cloud_Bookings_MINUS_Cloud_Infra_fee</targetReference>
+            </connector>
+            <label>QL Present</label>
+        </rules>
+    </decisions>
+    <description>-Removing Professional Services from Cloud Bookings calculation</description>
+    <formulas>
+        <description>If Quote Lines are present, “Cloud Support Fee” is calculated as Cloud Support Fee= Cloud Bookings- Cloud Infra fee</description>
+        <name>CloudBookings_MINUS_CloudInfraFee</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Cloud_Support_Fee_Forecast__c} - {!$Record.Cloud_Infrastructure_Fee_Forecast__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>CloudSupportFee_PLUS_CloudInfraFee</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Cloud_Support_Fee__c} + {!$Record.Cloud_Infrastructure_Fee_Forecast__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Cloud Bookings &amp; Cloud Support Fee automation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Cloud Bookings &amp; Cloud Support Fee automation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>getQL</name>
+        <label>getQL</label>
+        <locationX>314</locationX>
+        <locationY>311</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Quote_Lines_Present</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Opportunity_Quote__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Quote_Line__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>If Quote Lines are present, “Cloud Support Fee” is calculated as Cloud Support Fee= Cloud Bookings- Cloud Infra fee</description>
+        <name>Cloud_Bookings_MINUS_Cloud_Infra_fee</name>
+        <label>Cloud Bookings MINUS Cloud Infra fee</label>
+        <locationX>314</locationX>
+        <locationY>551</locationY>
+        <inputAssignments>
+            <field>Cloud_Support_Fee__c</field>
+            <value>
+                <elementReference>CloudBookings_MINUS_CloudInfraFee</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>If Quote lines are not present- “Cloud Bookings” field is calculated as Cloud Bookings= Cloud Support fee + Cloud Infra Fee</description>
+        <name>Cloud_Support_fee_PLUS_Cloud_Infra_Fee</name>
+        <label>Cloud Support fee PLUS Cloud Infra Fee</label>
+        <locationX>50</locationX>
+        <locationY>551</locationY>
+        <inputAssignments>
+            <field>Cloud_Support_Fee_Forecast__c</field>
+            <value>
+                <elementReference>CloudSupportFee_PLUS_CloudInfraFee</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>getQL</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Cloud</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Professional Services</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

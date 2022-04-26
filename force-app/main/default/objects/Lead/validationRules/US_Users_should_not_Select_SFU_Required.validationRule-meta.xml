@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>US_Users_should_not_Select_SFU_Required</fullName>
+    <active>false</active>
+    <description>US users may not select the Status = SFU Required</description>
+    <errorConditionFormula>AND(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+NOT(AND(CONTAINS( $Label.Q_Team_Profiles , $Profile.Id ),OR(ISCHANGED(Status),ISCHANGED(Reason__c)),CONTAINS( $Label.LeadStatusToSkipValidation , Text(Status) ))),
+
+NOT(CONTAINS($Label.Admin_Profiles,$Profile.Id)), Contains($Profile.Name,&apos;-US&apos;),ISPICKVAL(Status,&apos;SFU Required&apos;))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>US users may not select Stage - SFU Required on Leads</errorMessage>
+</ValidationRule>

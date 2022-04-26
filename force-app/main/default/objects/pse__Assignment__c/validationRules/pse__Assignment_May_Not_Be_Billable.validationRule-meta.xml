@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Assignment_May_Not_Be_Billable</fullName>
+    <active>true</active>
+    <description>An Assignment may only be marked &apos;Is Billable&apos; if it is for a Billable Project.</description>
+    <errorConditionFormula>AND(pse__Is_Billable__c, NOT(ISNULL(pse__Project__c)), (pse__Project__c &lt;&gt; &apos;&apos;),  NOT(pse__Project__r.pse__Is_Billable__c))</errorConditionFormula>
+    <errorDisplayField>pse__Is_Billable__c</errorDisplayField>
+    <errorMessage>An Assignment may only be marked &apos;Is Billable&apos; if it is for a Billable Project.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Skill_Must_be_for_Exactly_One_Zone_RPG</fullName>
+    <active>true</active>
+    <description>The Skill Zone must specify either a Region or a Practice or a Group for which it applies, but no more than one.</description>
+    <errorConditionFormula>OR(AND(OR(ISNULL(pse__Region__c),(pse__Region__c=&apos;&apos;)),OR(ISNULL(pse__Practice__c),(pse__Practice__c=&apos;&apos;)),OR(ISNULL(pse__Group__c),(pse__Group__c=&apos;&apos;))),AND(NOT(OR(ISNULL(pse__Region__c),(pse__Region__c=&apos;&apos;))),NOT(OR(ISNULL(pse__Practice__c),(pse__Practice__c=&apos;&apos;)))),AND(NOT(OR(ISNULL(pse__Region__c),(pse__Region__c=&apos;&apos;))),NOT(OR(ISNULL(pse__Group__c),(pse__Group__c=&apos;&apos;)))),AND(NOT(OR(ISNULL(pse__Practice__c),(pse__Practice__c=&apos;&apos;))),NOT(OR(ISNULL(pse__Group__c),(pse__Group__c=&apos;&apos;)))))</errorConditionFormula>
+    <errorMessage>The Skill Zone must specify either a Region or a Practice or a Group for which it applies (but no more than one).</errorMessage>
+</ValidationRule>

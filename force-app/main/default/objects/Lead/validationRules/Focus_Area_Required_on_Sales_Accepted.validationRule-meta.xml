@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Focus_Area_Required_on_Sales_Accepted</fullName>
+    <active>true</active>
+    <description>Requires that Focus Area &amp; Phone are only required when Lead is set to Sales - Accepted</description>
+    <errorConditionFormula>AND
+(
+NOT(CONTAINS($Label.SkipUserIDs,$User.Id)),
+AND(
+ ISPICKVAL(Status, &quot;Sales - Accepted Lead&quot;),
+AND(OR(
+ ISBLANK(Focus_Area__c),
+ ISBLANK(Phone)
+))))</errorConditionFormula>
+    <errorMessage>Focus Area &amp; Phone must be populated when accepting a Lead</errorMessage>
+</ValidationRule>

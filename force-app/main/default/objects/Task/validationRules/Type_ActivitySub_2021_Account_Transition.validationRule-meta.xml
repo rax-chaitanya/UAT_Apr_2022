@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_ActivitySub_2021_Account_Transition</fullName>
+    <active>true</active>
+    <description>restrict activity sub types for Account Transition type</description>
+    <errorConditionFormula>AND(
+ISPICKVAL(Type, &apos;2021 Account Transition&apos;),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Complete account plan&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Complete Monthly Service Review&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Complete handover old and new CE&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Complete handover old and new CSM&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;New CE confirms account handover checklist&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;New CSM confirms account handover checklist&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Introductory meeting with client stakeholders&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Introductory meeting with exec sponsor and new team&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Onboarding meeting with the working team&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;De-brief conversation by ‘POD manager’&apos;)),
+				NOT(ISPICKVAL(ActSubType__c ,&apos;Document account transition in salesforce&apos;))
+				)</errorConditionFormula>
+    <errorDisplayField>ActSubType__c</errorDisplayField>
+    <errorMessage>The activity sub type you&apos;ve chosen is not valid for this task type.</errorMessage>
+</ValidationRule>

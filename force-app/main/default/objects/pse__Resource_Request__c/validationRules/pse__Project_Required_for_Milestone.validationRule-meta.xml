@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pse__Project_Required_for_Milestone</fullName>
+    <active>true</active>
+    <description>Validates that the project is not blank when a milestone is selected on the resource request.</description>
+    <errorConditionFormula>AND(LEN( pse__Milestone__c ) &gt; 0, ISBLANK(pse__Project__c))</errorConditionFormula>
+    <errorMessage>Project cannot be blank if a milestone is selected.</errorMessage>
+</ValidationRule>

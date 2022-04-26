@@ -1,0 +1,3789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Mail Type Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision11</name>
+        <label>myDecision11</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision16</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_12</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_12</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_12_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Type Aws,Azure,Google,OR and RC Opp with Negative amounts</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision16</name>
+        <label>myDecision16</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision20</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_17</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_17</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_17_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Prof Services Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision20</name>
+        <label>myDecision20</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision27</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_21</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_21</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_21_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Prof Services Opp with Negative Amounts</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>6.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision27</name>
+        <label>myDecision27</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision30</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_28</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_28</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_28_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Dedicated Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision3</name>
+        <label>myDecision3</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision8</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_4</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_4_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Mail Type Opp with Negative Amounts</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision30</name>
+        <label>myDecision30</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_31</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_31</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_31_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Dedicated Opp with Negative Amounts</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision8</name>
+        <label>myDecision8</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision11</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_pmetdec</targetReference>
+            </connector>
+            <label>Is Primary and Type Aws,Azure,Google,OR and RC Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_12_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>1200</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_12_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_12_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_12_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_12_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_12_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_17_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>1700</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_17_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_17_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_17_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_17_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_17_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_21_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>2100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_21_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_21_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_21_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_21_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_21_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_28_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>2800</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_28_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_28_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_28_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_28_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_28_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_31_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>3100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_31_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_31_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_31_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_31_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_31_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_4_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>400</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_4_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_4_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_4_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_4_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_4_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_9_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>900</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_9_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_9_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>SFDC-6979 Updated Is Primary and Dedicate Opp condition by adding One time Fee in  MRR + Setup Fee + One time Fee+ Utility fee &gt;0  and Updated API version to 53,Treating all null values using blank value method in logical operations with currency fields including less and great comparisons</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_10_myRule_9_A1_4657996658</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].MRR__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_13_myRule_12_A1_2200460753</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.MRR__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_14_myRule_12_A1_6604650439</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].Utility_Fee__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_15_myRule_12_A1_7963458252</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.Utility_Fee__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_18_myRule_17_A1_4799605603</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(Text([Quote__c].Opportunity__c.Category__c) = &apos;Bookings Credit&apos;,[Quote__c].Opportunity__c.service_fees__c* 0.1,[Quote__c].MRR__c  )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_19_myRule_17_A1_9417626650</name>
+        <dataType>Currency</dataType>
+        <expression>IF(Text({!myVariable_current.Opportunity__r.Category__c}) = &apos;Bookings Credit&apos;,{!myVariable_current.Opportunity__r.service_fees__c}* 0.1,{!myVariable_current.MRR__c}  )</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].MRR__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_22_myRule_21_A1_7345950303</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.MRR__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_23_myRule_21_A1_7468382747</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].Utility_Fee__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_24_myRule_21_A1_3053652502</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.Utility_Fee__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Setup_Fee__c + [Quote__c].One_Time_Fee__c</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_25_myRule_21_A1_1079082441</name>
+        <dataType>Currency</dataType>
+        <expression>{!myVariable_current.Setup_Fee__c} + {!myVariable_current.One_Time_Fee__c}</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(Text([Quote__c].Opportunity__c.Category__c) = &apos;Bookings Credit&apos;,[Quote__c].Opportunity__c.service_fees__c* 0.1,[Quote__c].MRR__c )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_26_myRule_21_A1_8980475321</name>
+        <dataType>Currency</dataType>
+        <expression>IF(Text({!myVariable_current.Opportunity__r.Category__c}) = &apos;Bookings Credit&apos;,{!myVariable_current.Opportunity__r.service_fees__c}* 0.1,{!myVariable_current.MRR__c} )</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c , 0) + BLANKVALUE( [Quote__c].One_Time_Fee__c   , 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_29_myRule_28_A1_9335457198</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c} , 0) + BLANKVALUE( {!myVariable_current.One_Time_Fee__c}   , 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_1645249286</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].MRR__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_32_myRule_31_A1_0842177216</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.MRR__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_33_myRule_31_A1_0215601364</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(NOT(ISPICKVAL([Quote__c].Service_Level__c,&quot;&quot;)),NOT(ISPICKVAL([Quote__c].Service_Level__c, &quot;Cloud&quot;)), NOT(ISPICKVAL([Quote__c].Service_Level__c,&quot;Email &amp; Apps&quot;))),0,[Quote__c].Utility_Fee__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_34_myRule_31_A1_7074841075</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(NOT(ISPICKVAL({!myVariable_current.Service_Level__c},&quot;&quot;)),NOT(ISPICKVAL({!myVariable_current.Service_Level__c}, &quot;Cloud&quot;)), NOT(ISPICKVAL({!myVariable_current.Service_Level__c},&quot;Email &amp; Apps&quot;))),0,{!myVariable_current.Utility_Fee__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].MRR__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_5_myRule_4_A1_7126314397</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.MRR__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>BLANKVALUE([Quote__c].Setup_Fee__c, 0) + BLANKVALUE([Quote__c].One_Time_Fee__c, 0)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_6_myRule_4_A1_9028522877</name>
+        <dataType>Currency</dataType>
+        <expression>BLANKVALUE({!myVariable_current.Setup_Fee__c}, 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c}, 0)</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>IF(AND(Text([Quote__c].Service_Level__c) != &apos;Cloud&apos;, Text([Quote__c].Service_Level__c) != &apos;Email &amp; Apps&apos;),0,[Quote__c].Utility_Fee__c)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_7_myRule_4_A1_2016201517</name>
+        <dataType>Currency</dataType>
+        <expression>IF(AND(Text({!myVariable_current.Service_Level__c}) != &apos;Cloud&apos;, Text({!myVariable_current.Service_Level__c}) != &apos;Email &amp; Apps&apos;),0,{!myVariable_current.Utility_Fee__c})</expression>
+        <scale>18</scale>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+CONTAINS(Text([Quote__c].Opportunity__c.Type),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) )&amp;&amp;
+NOT( BLANKVALUE([Quote__c].MRR__c , 0)&lt; 0) &amp;&amp;
+NOT(BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0) &amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;
+
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+CONTAINS(Text({!myVariable_current.Opportunity__r.Type}),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) )&amp;&amp;
+NOT( BLANKVALUE({!myVariable_current.MRR__c} , 0)&lt; 0) &amp;&amp;
+NOT(BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0) &amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Rackspace Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;ObjectRocket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Azure&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;AWS&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Google&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;RSVC&apos; 
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0 ||
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_12</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+( 
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Rackspace Cloud&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;ObjectRocket&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Azure&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;AWS&apos;  ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Google&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;RSVC&apos; 
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_current.MRR__c}, 0) &lt; 0 ||
+BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0
+)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Rackspace Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;ObjectRocket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Azure&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;AWS&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Google&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;RSVC&apos; 
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0 ||
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_12_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+( 
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Rackspace Cloud&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;ObjectRocket&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Azure&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;AWS&apos;  ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Google&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;RSVC&apos; 
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_old.MRR__c}, 0) &lt; 0 ||
+BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0
+)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+Text([Quote__c].Opportunity__c.Type)=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_17</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE({!myVariable_current.MRR__c}, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+Text([Quote__c].Opportunity__c.Type)=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_17_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE({!myVariable_old.MRR__c}, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+CONTAINS(Text([Quote__c].Opportunity__c.Type),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) )&amp;&amp;
+NOT( BLANKVALUE([Quote__c].MRR__c , 0)&lt; 0) &amp;&amp;
+NOT(BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0) &amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;
+
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+CONTAINS(Text({!myVariable_old.Opportunity__r.Type}),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) )&amp;&amp;
+NOT( BLANKVALUE({!myVariable_old.MRR__c} , 0)&lt; 0) &amp;&amp;
+NOT(BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0) &amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+Text([Quote__c].Opportunity__c.Type)=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0 ||
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_21</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_current.MRR__c}, 0) &lt; 0 ||
+BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0
+)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+Text([Quote__c].Opportunity__c.Type)=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0 ||
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_21_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Professional Services&apos; &amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_old.MRR__c}, 0) &lt; 0 ||
+BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0
+)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Open Stack Private&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Revenue Ticket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Dedicated/Private Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Colo&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)&amp;&amp;
+(BLANKVALUE([Quote__c].MRR__c, 0) + BLANKVALUE([Quote__c].Setup_Fee__c , 0) +  BLANKVALUE([Quote__c].Utility_Fee__c  , 0) + BLANKVALUE([Quote__c].One_Time_Fee__c , 0)   &gt; 0) &amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_28</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+
+( 
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Open Stack Private&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Revenue Ticket&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Dedicated/Private Cloud&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Colo&apos;  ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) 
+)&amp;&amp;
+(BLANKVALUE({!myVariable_current.MRR__c}, 0) + BLANKVALUE({!myVariable_current.Setup_Fee__c} , 0) +  BLANKVALUE({!myVariable_current.Utility_Fee__c}  , 0) + BLANKVALUE({!myVariable_current.One_Time_Fee__c} , 0)   &gt; 0) &amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Open Stack Private&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Revenue Ticket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Dedicated/Private Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Colo&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)&amp;&amp;
+(BLANKVALUE([Quote__c].MRR__c, 0) + BLANKVALUE([Quote__c].Setup_Fee__c , 0) +  BLANKVALUE([Quote__c].Utility_Fee__c  , 0) + BLANKVALUE([Quote__c].One_Time_Fee__c , 0)   &gt; 0) &amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_28_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+
+( 
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Open Stack Private&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Revenue Ticket&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Dedicated/Private Cloud&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Colo&apos;  ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) 
+)&amp;&amp;
+(BLANKVALUE({!myVariable_old.MRR__c}, 0) + BLANKVALUE({!myVariable_old.Setup_Fee__c} , 0) +  BLANKVALUE({!myVariable_old.Utility_Fee__c}  , 0) + BLANKVALUE({!myVariable_old.One_Time_Fee__c} , 0)   &gt; 0) &amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Open Stack Private&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Revenue Ticket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Dedicated/Private Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Colo&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c , 0)+
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_31</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+
+( 
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Open Stack Private&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Revenue Ticket&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Dedicated/Private Cloud&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Colo&apos;  ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_current.MRR__c} , 0)+
+BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0
+)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Open Stack Private&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Revenue Ticket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Dedicated/Private Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Colo&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c , 0)+
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_31_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+
+( 
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Open Stack Private&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Revenue Ticket&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Dedicated/Private Cloud&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Colo&apos;  ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Molo&apos; 
+
+)&amp;&amp;
+
+(ISNEW()  || (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) 
+)
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_old.MRR__c} , 0)+
+BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0
+)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+CONTAINS(Text([Quote__c].Opportunity__c.Type),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+) ) 
+
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c, 0)  &lt; 0 ||
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+) &amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_4</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+CONTAINS(Text({!myVariable_current.Opportunity__r.Type}),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+) ) 
+
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_current.MRR__c}, 0)  &lt; 0 ||
+BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0
+) &amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+CONTAINS(Text([Quote__c].Opportunity__c.Type),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+) ) 
+
+&amp;&amp;
+(
+BLANKVALUE([Quote__c].MRR__c, 0)  &lt; 0 ||
+BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0
+) &amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_4_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+CONTAINS(Text({!myVariable_old.Opportunity__r.Type}),&apos;Mail&apos;)   &amp;&amp;
+ (ISNEW()  ||
+ (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+) ) 
+
+&amp;&amp;
+(
+BLANKVALUE({!myVariable_old.MRR__c}, 0)  &lt; 0 ||
+BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0
+) &amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Rackspace Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;ObjectRocket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Azure&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;AWS&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Google&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;RSVC&apos; 
+
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Is_Primary__c} &amp;&amp;
+( 
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Rackspace Cloud&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;ObjectRocket&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Azure&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;AWS&apos;  ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;Google&apos; ||
+Text({!myVariable_current.Opportunity__r.Type})=&apos;RSVC&apos; 
+
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_current.Is_Primary__c}) || 
+ISCHANGED({!myVariable_current.Contract_Term__c}) || 
+ISCHANGED({!myVariable_current.Contract_Length__c})||
+ISCHANGED({!myVariable_current.Quote_Id__c} )||
+ISCHANGED({!myVariable_current.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_current.MRR__c} )||
+ISCHANGED({!myVariable_current.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_current.Setup_Fee__c} )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE({!myVariable_current.MRR__c}, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE({!myVariable_current.Utility_Fee__c}, 0) &lt; 0)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Quote__c].Is_Primary__c &amp;&amp;
+( 
+Text([Quote__c].Opportunity__c.Type)=&apos;Rackspace Cloud&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;ObjectRocket&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Azure&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;AWS&apos;  ||
+Text([Quote__c].Opportunity__c.Type)=&apos;Google&apos; ||
+Text([Quote__c].Opportunity__c.Type)=&apos;RSVC&apos; 
+
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED([Quote__c].Is_Primary__c) || 
+ISCHANGED([Quote__c].Contract_Term__c) || 
+ISCHANGED([Quote__c].Contract_Length__c)||
+ISCHANGED([Quote__c].Quote_Id__c )||
+ISCHANGED([Quote__c].Utility_Fee__c ) || 
+ISCHANGED([Quote__c].MRR__c )||
+ISCHANGED([Quote__c].One_Time_Fee__c )||
+ISCHANGED([Quote__c].Setup_Fee__c )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE([Quote__c].MRR__c, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE([Quote__c].Utility_Fee__c, 0) &lt; 0)&amp;&amp;
+$User.FederationIdentifier != &apos;vlad7399&apos;</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_old.Is_Primary__c} &amp;&amp;
+( 
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Rackspace Cloud&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;ObjectRocket&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Azure&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;AWS&apos;  ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;Google&apos; ||
+Text({!myVariable_old.Opportunity__r.Type})=&apos;RSVC&apos; 
+
+
+)&amp;&amp;
+ 
+(ISNEW()  || (
+ISCHANGED({!myVariable_old.Is_Primary__c}) || 
+ISCHANGED({!myVariable_old.Contract_Term__c}) || 
+ISCHANGED({!myVariable_old.Contract_Length__c})||
+ISCHANGED({!myVariable_old.Quote_Id__c} )||
+ISCHANGED({!myVariable_old.Utility_Fee__c} ) || 
+ISCHANGED({!myVariable_old.MRR__c} )||
+ISCHANGED({!myVariable_old.One_Time_Fee__c} )||
+ISCHANGED({!myVariable_old.Setup_Fee__c} )
+
+) 
+)&amp;&amp;
+NOT(BLANKVALUE({!myVariable_old.MRR__c}, 0) &lt; 0) &amp;&amp;
+NOT(BLANKVALUE({!myVariable_old.Utility_Fee__c}, 0) &lt; 0)&amp;&amp;
+{!$User.FederationIdentifier} != &apos;vlad7399&apos;</expression>
+    </formulas>
+    <interviewLabel>Update_Quote_Data_on_Opp-18_InterviewLabel</interviewLabel>
+    <label>Update Quote Data on Opp Final v12</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Quote__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_12_A1</name>
+        <label>Update Opp Amounts for Negative</label>
+        <locationX>1200</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Cloud Support Fee Forecast</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Cloud_Support_Fee_Forecast__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Mail Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Exchange_Fee__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Hosting Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Hosting_Fee__c</field>
+            <value>
+                <elementReference>formula_13_myRule_12_A1_2200460753</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_14_myRule_12_A1_6604650439</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>formula_15_myRule_12_A1_7963458252</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_17_A1</name>
+        <label>Update Opportunuty</label>
+        <locationX>1700</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>myVariable_current.Utility_Fee__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ProServ Fees (One-Time)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>service_fees__c</field>
+            <value>
+                <elementReference>formula_18_myRule_17_A1_4799605603</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ProServ Fees (MRR)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>service_fees_mrr__c</field>
+            <value>
+                <elementReference>formula_19_myRule_17_A1_9417626650</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Update Opportunity Fields</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Mail Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Exchange_Fee__c</field>
+            <value>
+                <elementReference>myVariable_current.Utility_Fee__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Hosting Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Hosting_Fee__c</field>
+            <value>
+                <elementReference>myVariable_current.MRR__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_1645249286</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_21_A1</name>
+        <label>Update Opportunity for Negative values</label>
+        <locationX>2100</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Cloud Support Fee Forecast</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Cloud_Support_Fee_Forecast__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Mail Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Exchange_Fee__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Hosting Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Hosting_Fee__c</field>
+            <value>
+                <elementReference>formula_22_myRule_21_A1_7345950303</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_23_myRule_21_A1_7468382747</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>formula_24_myRule_21_A1_3053652502</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ProServ Fees (One-Time)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>service_fees__c</field>
+            <value>
+                <elementReference>formula_25_myRule_21_A1_1079082441</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>ProServ Fees (MRR)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>service_fees_mrr__c</field>
+            <value>
+                <elementReference>formula_26_myRule_21_A1_8980475321</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_28_A1</name>
+        <label>Update Opportunity Fees</label>
+        <locationX>2800</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Hosting Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Hosting_Fee__c</field>
+            <value>
+                <elementReference>myVariable_current.MRR__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_29_myRule_28_A1_9335457198</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>myVariable_current.Utility_Fee__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_31_A1</name>
+        <label>Update Opportunity for Negative values</label>
+        <locationX>3100</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Cloud Support Fee Forecast</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Cloud_Support_Fee_Forecast__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Mail Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Exchange_Fee__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Hosting Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Hosting_Fee__c</field>
+            <value>
+                <elementReference>formula_32_myRule_31_A1_0842177216</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_33_myRule_31_A1_0215601364</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>formula_34_myRule_31_A1_7074841075</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_4_A1</name>
+        <label>Update Opp Fields for Negative</label>
+        <locationX>400</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Cloud Support Fee Forecast</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Cloud_Support_Fee_Forecast__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Mail Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Exchange_Fee__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Hosting Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Hosting_Fee__c</field>
+            <value>
+                <elementReference>formula_5_myRule_4_A1_7126314397</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_6_myRule_4_A1_9028522877</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>formula_7_myRule_4_A1_2016201517</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Quote__c].Opportunity</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Update Opp Amounts</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Cloud Support Fee Forecast</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Cloud_Support_Fee_Forecast__c</field>
+            <value>
+                <elementReference>myVariable_current.MRR__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Length (months)</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Length__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Length__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Picklist</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Contract Type</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Contract_Type__c</field>
+            <value>
+                <elementReference>myVariable_current.Contract_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Setup Fee</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Setup_Fee__c</field>
+            <value>
+                <elementReference>formula_10_myRule_9_A1_4657996658</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Currency</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>VM Fees</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>VM_Fees__c</field>
+            <value>
+                <elementReference>myVariable_current.Utility_Fee__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <startElementReference>myDecision</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Quote__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Quote__c</objectType>
+    </variables>
+</Flow>
